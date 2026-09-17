@@ -1,0 +1,120 @@
+<div class="row" ng-show="state.dataReady && !state.dataEmpty">
+    <div class="filters-panel form-sm form-horizontal col-md-6 filters-panel-compact">
+        <div class="form-group">
+            <label class="control-label col-md-4 col-lg-5 col-sm-4">{{language.Generic.ServAdmin.kCities}}</label>
+            <div class="col-md-8 col-lg-6 col-sm-8">
+                <div class="input-group">
+                    <input type="text" ng-model="search.address">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4 col-lg-5 col-sm-4">{{language.Generic.ServAdmin.kShortEOName_}}</label>
+            <div class="col-md-8 col-lg-6 col-sm-8">
+                <div class="input-group">
+                    <input type="text" ng-model="search.schoolName">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+                <label class="control-label col-md-4 col-lg-5 col-sm-4">{{language.Generic.FilterUsers.kNumOfRecords}}</label>
+            <div class="col-md-8 col-lg-6 col-sm-8">
+                <div class="input-group">
+                    <input type="number" ng-model="paging.size" min="{{paging.limits.min}}" max="{{paging.limits.max}}" step="{{paging.limits.step}}" ng-step="{{paging.limits.ngStep}}" save-state required title=" ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-if="state.dataReady && !state.dataEmpty">
+    <div class="col-md-12">
+        <div class="buttons-panel">
+            <div class="buttons-panel-left">
+                <button class="btn btn-primary" ng-click="SaveAll()" title="{{language.Generic.Buttons.kSave}}" ng-disabled="!(appIds.filter(filterChanged).length)">
+                    <span class="glyphicon glyphicon-save"></span>
+                    {{language.Generic.Buttons.kSave}}
+                </button>        
+				<button title="{{language.Generic.Buttons.kReset}}" type="button" class="btn btn-info" ng-click="Reset()">
+                    <span class="glyphicon glyphicon-repeat"></span>
+                    <span>{{language.Generic.Buttons.kReset}}</span>
+                </button>                        
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="state.dataReady && !paging.size">
+    <div class="col-md-10 col-lg-8">
+        <div class="alert alert-info" role="alert" >
+            Число записей на странице может принимать значение от {{paging.limits.min}} до {{paging.limits.max}}
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="state.dataReady && state.dataEmpty && !filtredData.length">
+    <div class="col-md-10 col-lg-8">
+        <div class="alert alert-info" role="alert" >
+            Нет ни одной организации
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="state.dataReady && !state.dataEmpty && !data.length">
+    <div class="col-md-10 col-lg-8">
+        <div class="alert alert-info" role="alert" >
+            {{language.Generic.Common.kNoDataForFilter}}
+        </div>
+    </div>
+</div>
+
+<ul 
+    ng-show="state.dataReady && !state.emptyData && (filtredData.length > paging.size)" 
+    uib-pagination total-items="filtredData.length" 
+    ng-model="paging.page" items-per-page="paging.size" 
+    max-size="15" class="pagination-sm" 
+    direction-links="false" force-ellipses="true"
+></ul>
+
+<div class="row" ng-show="state.dataReady && paging.size && (!state.dataEmpty && filtredData.length)">
+    <div class="col-md-10 col-lg-8">
+        <table class="table table-bordered table-condensed school-codes-table table-striped table-hover table-sm">
+            <thead>
+                <tr>
+                    <th>{{language.Generic.ServAdmin.kCities}}</th>
+                    <th>{{language.Generic.ServAdmin.kShortEOName_}}</th>
+                    <th>{{language.Generic.ServAdmin.kServerS2}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in (data = (filtredData = (appIds | filter:search)).slice((paging.page-1)*paging.size, (paging.page)*paging.size))" id="{{item.id}}">
+                    <td>{{item.address}}</td>
+                    <td>{{item.schoolName}}</td>
+                    <td ng-click="Select(item, false)">
+                        <div ng-if="selectedItem !== item">
+                            {{item.applicationKey}}
+                        </div>
+                        <div ng-if="selectedItem === item">
+                            <input track-changes type="text" ng-model="item.applicationKey">                                         
+                        </div>
+                    </td>
+                    <td style="width: 1%; cursor:pointer;" ng-click="Select(item, true)">
+                        <i title="{{language.Generic.Buttons.kSave}}" class="icon-save" ng-click="Save(item)" ng-hide="defaults[item.schoolId] === item.applicationKey"></i>
+                        <i title="{{language.Generic.Buttons.kEdit}}" class="icon-edit"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ul 
+    ng-show="state.dataReady && !state.emptyData && (filtredData.length > paging.size)" 
+    uib-pagination total-items="filtredData.length" 
+    ng-model="paging.page" items-per-page="paging.size" 
+    max-size="15" class="pagination-sm" 
+    direction-links="false" force-ellipses="true"
+></ul>

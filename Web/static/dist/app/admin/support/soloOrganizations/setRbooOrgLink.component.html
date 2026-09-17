@@ -1,0 +1,139 @@
+<div class="bootstrap-dialog type-primary">
+
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+
+	<div class="modal-body">
+		<form class="form-xs" name="ctrl.setRbooOrgLinkForm">
+			<fieldset>
+				<legend class="edit-block-legend">{{$ctrl.language.Generic.Common.kGeneralInformation}}</legend>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="school-input" class="control-label">{{$ctrl.language.Generic.ServAdmin.kSchools}}</label>
+						<div>
+							<input id="school-input" class="form-control" type="text" disabled="" ng-model="$ctrl.school.name">
+						</div>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="inn-input-info" class="control-label">{{$ctrl.language.Generic.SchoolInfo.kINN}}</label>
+						<div>
+							<input id="inn-input-info" class="form-control" type="text" ng-model="$ctrl.school.inn" disabled>
+						</div>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="ogrn-input-info" class="control-label">{{$ctrl.language.Generic.SchoolInfo.kOGRN}}</label>
+						<div>
+							<input id="ogrn-input-info" class="form-control" type="text" ng-model="$ctrl.school.ogrn" disabled>
+						</div>
+					</div>
+				</div>
+
+				<legend class="edit-block-legend" ng-if="$ctrl.school.rbOoId">Текущая привязка</legend>
+
+				<div class="row" ng-if="$ctrl.school.rbOoId">
+					<div class="form-group col-md-6">
+						<label for="school-input" class="control-label">{{$ctrl.language.Generic.ServAdmin.kSchools}}</label>
+						<div>
+							<input id="school-input-solo" class="form-control" type="text" disabled="" ng-model="$ctrl.school.rbOoName">
+						</div>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="inn-input-info" class="control-label">{{$ctrl.language.Generic.SchoolInfo.kINN}}</label>
+						<div>
+							<input id="inn-input-solo" class="form-control" type="text" ng-model="$ctrl.school.innSolo" disabled>
+						</div>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="ogrn-input-info" class="control-label">{{$ctrl.language.Generic.SchoolInfo.kOGRN}}</label>
+						<div>
+							<input id="ogrn-input-solo" class="form-control" type="text" ng-model="$ctrl.school.ogrnSolo" disabled>
+						</div>
+					</div>
+				</div>
+
+				<legend class="edit-block-legend">Поиск</legend>
+				<div class="form-group">
+					<label for="name-input" class="control-label">{{$ctrl.language.Generic.Common.kName2}}</label>
+					<div class="input-group">
+						<input id="name-input" class="form-control" type="text" ng-model="$ctrl.searchSettings.name">
+						<span class="input-group-btn"><button class="btn btn-default" ng-click="$ctrl.clearName()" type="button">X</button></span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 form-group">
+						<label for="inn-input" class="control-label">{{$ctrl.language.Generic.SchoolInfo.kINN}}</label>
+						<div class="input-group">
+							<input id="inn-input" class="form-control" type="text" ng-model="$ctrl.searchSettings.inn">
+							<span class="input-group-btn"><button class="btn btn-default" ng-click="$ctrl.clearInn()" type="button">X</button></span>
+						</div>
+					</div>
+
+					<div class="col-md-6 form-group">
+						<label for="ogrn-input" class="control-label">{{$ctrl.language.Generic.SchoolInfo.kOGRN}}</label>
+						<div class="input-group">
+							<input id="ogrn-input" class="form-control" type="text" ng-model="$ctrl.searchSettings.ogrn">
+							<span class="input-group-btn"><button class="btn btn-default" ng-click="$ctrl.clearOgrn()" type="button">X</button></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="alert alert-info" role="alert" ng-if="$ctrl.emptyData && $ctrl.searchBtnPressed && !$ctrl.searching">Поиск не дал результатов</div>
+
+				<div ng-if="!$ctrl.emptyData" style="max-height: 300px; overflow-y: auto" class="form-group">
+					<label for="find-results" class="control-label">Результаты поиска</label>
+					<div id="find-results" class="table-responsive">
+						<table class="table table-thin table-xs table-xs table-bright table-bright-hover table table-selectable">
+							<tr>
+								<th>Id</th>
+								<th>{{$ctrl.language.Generic.Common.kShortName}}</th>
+								<th>{{$ctrl.language.Generic.SchoolInfo.kINN}}</th>
+								<th>{{$ctrl.language.Generic.SchoolInfo.kOGRN}}</th>
+							</tr>
+							<tr ng-class="{'selected': $ctrl.selection.isSelected(rbooOrg)}" ng-click="$ctrl.selection.select(rbooOrg)" ng-repeat="rbooOrg in $ctrl.rbooOrgs">
+								<td>{{rbooOrg.id}}</td>
+								<td>{{rbooOrg.name}}</td>
+								<td>{{rbooOrg.inn}}</td>
+								<td>{{rbooOrg.ogrn}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary btn-sm" ng-click="$ctrl.searchOrgs()" ng-class="{'btn-default': $ctrl.selection.selected, 'btn-primary': !$ctrl.selection.selected}">
+			<span class="glyphicon glyphicon-search"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kSearch}}</span>
+		</button>
+
+		<button class="btn btn-sm" ng-click="$ctrl.save()" ng-disabled="!$ctrl.selection.selected" ng-class="{'btn-default': !$ctrl.selection.selected, 'btn-primary': $ctrl.selection.selected}">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<button class="btn btn-sm" ng-click="$ctrl.create()" ng-disabled="$ctrl.selection.selected" ng-class="{'btn-default': $ctrl.selection.selected, 'btn-primary': !$ctrl.selection.selected}">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kCreate}}</span>
+		</button>
+
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+	</div>
+</div>

@@ -1,0 +1,5122 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetCity.Common.DTO</name>
+    </assembly>
+    <members>
+        <member name="T:NetCity.Common.DTO.AddCertifCategory.AddCertifCategoryDto">
+            <summary>
+            Категория сертификата
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Address.AddressCodesData">
+            <summary>
+            Данные о кодах адреса КЛАДР, ФИАС
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressCodesData.KLADRCode">
+            <summary>
+            КЛАДР код
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressCodesData.FiasCode">
+            <summary>
+            ФИАС идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressCodesData.OKATOCode">
+            <summary>
+            Окато
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Address.AddressData">
+            <summary>
+            Данные по адресу
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.Id">
+            <summary>
+            Системный идентификатор адреса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.Codes">
+            <summary>
+            Данные о кодах адреса КЛАДР, ФИАС
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.Type">
+            <summary>
+            Тип адреса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.Temporary">
+            <summary>
+            Временный
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.ExpirationTemporaryRegistration">
+            <summary>
+            Дата окончания действия временной регистрации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.TemporaryRegistrationDate">
+            <summary>
+            Дата временной регистрации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.TemporaryRegistrationNumber">
+            <summary>
+            Регистрационный номер временной регистрации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.ZipCode">
+            <summary>
+            Почтовый индекс
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.Region">
+            <summary>
+            Регион (states)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.Province">
+            <summary>
+            Район (provinces)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.City">
+            <summary>
+            Населенный пункт (cities)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.District">
+            <summary>
+            Район (provinces)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.Location">
+            <summary>
+            Улица (location)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.House">
+            <summary>
+            Дом
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.Corp">
+            <summary>
+            Корпус
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.Struc">
+            <summary>
+            Строение
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressData.Flat">
+            <summary>
+            Квартира
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditRequest.Region">
+            <summary>
+            Страна
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditRequest.District">
+            <summary>
+            Район
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditRequest.City">
+            <summary>
+            Нас. пункт
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditRequest.Street">
+            <summary>
+            Улица
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditRequest.Building">
+            <summary>
+            Дом
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditRequest.ZipCode">
+            <summary>
+            Индекс
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditRequest.Flat">
+            <summary>
+            Квартира
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditRequest.Corp">
+            <summary>
+            Корпус
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditRequest.Struc">
+            <summary>
+            Строение
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.AddressId">
+            <summary>
+            Идентификатор адреса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.AddressType">
+            <summary>
+            Тип адреса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.Country">
+            <summary>
+            Страна
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.Region">
+            <summary>
+            Регион
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.District">
+            <summary>
+            Мун. район
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.City">
+            <summary>
+            Нас. пункт
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.Street">
+            <summary>
+            Улица
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.Building">
+            <summary>
+            Дом
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.BuildingFiasId">
+            <summary>
+            ФИАС дома
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.Flat">
+            <summary>
+            Квартира
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.Corp">
+            <summary>
+            Корпус
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.Struc">
+            <summary>
+            Строение
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.FiasId">
+            <summary>
+            ФИАС
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.KladrCode">
+            <summary>
+            КЛДАР
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressEditResponse.ZipCode">
+            <summary>
+            Индекс
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Address.AddressElement">
+            <summary>
+            Простое описание адресного элемента
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressElement.Id">
+            <summary>
+            Системный идентификатор адресного элемента
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressElement.FiasId">
+            <summary>
+            ФИАС id
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressElement.Name">
+            <summary>
+            Название адресного элемента
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AddressElement.Type">
+            <summary>
+            Тип адресного элемента (посёлок, город, улица)
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Address.AddressType">
+            <summary>
+            тип адреса
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Address.AddressType.Factual">
+            <summary>
+            Фактический
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Address.AddressType.Registration">
+            <summary>
+            Адрес регистрации
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Address.AddressType.PostAddress">
+            <summary>
+            Почтовый адрес
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Address.AddressType.LocalRegistration">
+            <summary>
+            Адрес регистрации по месту пребывания 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.AtoTypeDto.Level">
+            <summary>
+            Уровень
+            </summary>
+            <example>4 -- Населённый пункт </example>
+            <example>5 -- Место (улица, садовое товарищество, мост)</example>
+        </member>
+        <member name="T:NetCity.Common.DTO.Address.CityFilterInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.CityFilterInfo.CountryId">
+            <summary>
+            Страна
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.CityFilterInfo.StateId">
+            <summary>
+            Регион
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.CityFilterInfo.MunInfoId">
+            <summary>
+            Гор. округ / мун. район
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.CityFilterInfo.CityId">
+            <summary>
+            Город
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.OrgAddressInfoDto.CityId">
+            <summary>
+            Город расположения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.OrgAddressInfoDto.ParentCityId">
+            <summary>
+            Городской округ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.OrgAddressInfoDto.ProvinceId">
+            <summary>
+            Муниципальный район расположения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.OrgAddressInfoDto.MunicipalityDistrictId">
+            <summary>
+            гор.округ / мун. район
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.OrgAddressInfoDto.FuncType">
+            <summary>
+            Тип образовательной организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.OrgAddressInfoDto.CityDistrictId">
+            <summary>
+            Район города
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.SchoolAddressEditResponse.AddressType">
+            <summary>
+            Тип адреса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.UserAddressEditResponse.AddressType">
+            <summary>
+            Тип адреса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.UserAddressEditResponse.Neighbours">
+            <summary>
+            Сожители
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Address.UserAddressEditResponse.IsTempAddress">
+            <summary>
+            Временный адрес
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Addresses.Context.AddressDataSearchCtx">
+            <summary>
+            Общий контекст идентификации адреса
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Addresses.Context.AddressElementSearchCtx">
+            <summary>
+            Контекст идентификации адресного элемента
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Addresses.Context.AddressElementSearchCtx.Id">
+            <summary>
+            Идентификатор в БД
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Addresses.Context.AddressElementSearchCtx.SetFiasId">
+            <summary>
+            Новый ФИАС ID
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Addresses.Context.AddressElementSearchCtx.SetKladr">
+            <summary>
+            Новый КЛАДР код 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Addresses.Context.AddressElementSearchCtx.SetName">
+            <summary>
+            Новое имя адресного объекта, которое необходимо установить 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Addresses.Context.AddressElementSearchCtx.SetTypeName">
+            <summary>
+            Новое имя типа адресного объекта, которое необходимо установить 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Addresses.Context.AddressElementSearchCtx.SetTypeId">
+            <summary>
+            Новый тип адресного объекта, которое необходимо установить 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Addresses.Context.AddressElementSearchCtx.Element">
+            <summary>
+            Реквизиты по элементу
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Addresses.Context.AddressElementSearchCtx.FiasSearchResult">
+            <summary>
+            Информация в ФИАС по элементу
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.AcademicAwardDto.AcademicDegree">
+            <summary>
+            Присужденная ученая степень
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.AcademicAwardDto.AcademicTitle">
+            <summary>
+            Присужденное ученое звание
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.AcademicAwardDto.AwardDocument">
+            <summary>
+            Документ о присуждении
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.AcademicAwardDto.Speciality">
+            <summary>
+            Специальность
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.AwardDocumentDto.Series">
+            <summary>
+            Серия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.AwardDocumentDto.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.AwardDocumentDto.DocType">
+            <summary>
+            Тип документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.AwardDocumentDto.AwardDate">
+            <summary>
+            Дата получения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.AwardDocumentDto.Organization">
+            <summary>
+            Организация
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.CompletionDocumentDto.Series">
+            <summary>
+            Серия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.CompletionDocumentDto.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.CompletionDocumentDto.DocName">
+            <summary>
+            Название документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.CompletionDocumentDto.DocType">
+            <summary>
+            Тип документа 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.CompletionDocumentDto.IssueDate">
+            <summary>
+            Дата выдачи
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.CompletionDocumentDto.RegNumber">
+            <summary>
+            Регистрационный номер документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffAttestRequestDto.AttestId">
+            <summary>
+            Номер запроса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffAttestRequestDto.Position">
+            <summary>
+            Должность подавшего запрос
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffAttestRequestDto.CommissionDate">
+            <summary>
+            Дата аттестационной комиссии
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffAttestRequestDto.Decision">
+            <summary>
+            Решение
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffAttestRequestDto.StartDate">
+            <summary>
+            Дата начала действия аттестации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffAttestRequestDto.EndDate">
+            <summary>
+            Дата окончания действия аттестации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffAttestRequestDto.Status">
+            <summary>
+            Статус запроса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffAttestRequestDto.RequestDate">
+            <summary>
+            Дата запроса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffAttestRequestDto.Number">
+            <summary>
+            Рег. номер заявления на аттестацию
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Attestation.StaffCommonTrainingDto">
+            <summary>
+            Базовая информация об подготовке/переподготовке педагога
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffCommonTrainingDto.Organization">
+            <summary>
+            Организация
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffCommonTrainingDto.Place">
+            <summary>
+            Место
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffCommonTrainingDto.Period">
+            <summary>
+            Период
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffCommonTrainingDto.CompletionDocument">
+            <summary>
+            Документ об окончании
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffCommonTrainingDto.Hours">
+            <summary>
+            Часов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffEducationDto.Municipality">
+            <summary>
+            Муниципалитет
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffEducationDto.Organization">
+            <summary>
+            Организация
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffEducationDto.Period">
+            <summary>
+            Период обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffEducationDto.CompletionDocument">
+            <summary>
+            Документ об окончании
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffEducationDto.Speciality">
+            <summary>
+            Специальность по диплому
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffEducationDto.Qualification">
+            <summary>
+            Квалификация
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffEducationDto.SecondName">
+            <summary>
+            Фамилия, указанная в дипломе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffMethodicalActivityDto.Period">
+            <summary>
+            Период работы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffMethodicalActivityDto.WorkName">
+            <summary>
+            Название работы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffMethodicalActivityDto.ProductName">
+            <summary>
+            Название продукта
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffMethodicalActivityDto.Level">
+            <summary>
+            Уровень работы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffMethodicalActivityDto.ImplementedIn">
+            <summary>
+            Реализовано
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffMethodicalActivityDto.HostingAddress">
+            <summary>
+            Эл. адрес публикации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffMethodicalActivityDto.Participation">
+            <summary>
+            Статус участия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.UserId">
+            <summary>
+            Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.MainPosition">
+            <summary>
+            Основная должность
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.AddPosition">
+            <summary>
+            Дополнтиельная должность
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.EducationData">
+            <summary>
+            Информация об образовании
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.AcademicAwardsData">
+            <summary>
+            Информация о профессональных достижениях
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.StaffTrainingsData">
+            <summary>
+            Информация о курсах повышения квалификации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.StaffRetrainingsData">
+            <summary>
+            Информация по переподготовке
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.StaffMethodicalActivityData">
+            <summary>
+            Информация о научно-методической деятельности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioDto.StaffPortfolioFilesData">
+            <summary>
+            Список файлов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioFileDto.Description">
+            <summary>
+            Описание
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffPortfolioFileDto.OriginalFileName">
+            <summary>
+            Имя файла
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Attestation.StaffPositionInfoDto">
+            <summary>
+            Информация о должности
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Attestation.StaffRetrainingDto">
+            <summary>
+            Участие в курсах переподготовки
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffRetrainingDto.Speciality">
+            <summary>
+            Специальность
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffRetrainingDto.Qualification">
+            <summary>
+            Квалификация
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffRetrainingDto.Note">
+            <summary>
+            Примечание
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffRetrainingDto.SecondName">
+            <summary>
+            Фамилия, указанная в дипломе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffRetrainingDto.RetrainingType">
+            <summary>
+            Вид обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffTrainingDto.Theme">
+            <summary>
+            Тема курсов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffTrainingDto.Level">
+            <summary>
+            Уровень мероприятия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Attestation.StaffTrainingDto.Form">
+            <summary>
+            Форма участия/проведения
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Classes.AddSchoolGroupDto">
+            <summary>
+            Объединение ОДО
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Classes.ClassDto">
+            <summary>
+            Класс
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Classes.DouGroupDto">
+            <summary>
+            Группа ДОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.DouGroupDto.DouGroupAge">
+            <summary>
+            Возрастной диапазон
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.DouGroupDto.DouGroupAgeCategory">
+            <summary>
+            Возрастная категория
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.DouGroupDto.DouGroupType">
+            <summary>
+            Тип/специализация
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.DouGroupDto.StayRegime">
+            <summary>
+            Режим пребывания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.DouGroupDto.EducPrograms">
+            <summary>
+            Образовательные программы
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.DouGroupDto.SeatsForShort">
+            <summary>
+            Количество мест для детей с кратковременным режимом пребывания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.DouGroupDto.SeatsForTransfer">
+            <summary>
+            Количество мест для перевода детей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.DouGroupDto.SubGroupsCount">
+            <summary>
+            Количество подгрупп
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.DouGroupDto.NoInformika">
+            <summary>
+            Признак не выгружать в Информику
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Classes.EducGroupDto">
+            <summary>
+            Базовая информация о группе обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.Room">
+            <summary>
+            кабинет/помещение
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.Grade">
+            <summary>
+            параллель/ступень обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.Letter">
+            <summary>
+            Литера
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.FuncType">
+            <summary>
+            функциональность
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.ProfileId">
+            <summary>
+            Идентификатор профиля
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.EducProgram">
+            <summary>
+            программа обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.ClassType">
+            <summary>
+            Тип группы / Специализация группы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.AddSpecialization">
+            <summary>
+            Доп. специализация группы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.Chiefs">
+            <summary>
+            руководители
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.Using">
+            <summary>
+            признак - используется в системе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.EducGroupDto.HasClassNotWorkingTeacher">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Classes.RoomDto">
+            <summary>
+            Помещение/кабинет
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Floor">
+            <summary>
+            Этаж
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Roomname">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Corpus">
+            <summary>
+            Корпус
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Length">
+            <summary>
+            Длина (м)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Width">
+            <summary>
+            Ширина (м)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Area">
+            <summary>
+            Площадь (м2)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Responsible">
+            <summary>
+            ответственный сотрудник
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Study">
+            <summary>
+            Учебное помещение
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Seats">
+            <summary>
+            Максимальная наполняемость по СанПИН
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Used">
+            <summary>
+            Помещение используется
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.RoomDto.Classes">
+            <summary>
+            Связанные с помещением классы в текущем году
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Classes.FindOrCreateRoomRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.FindOrCreateRoomRequest.RoomName">
+            <summary>
+            Название класса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.FindOrCreateRoomRequest.Floor">
+            <summary>
+            Этаж
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Classes.FindOrCreateRoomRequest.Seats">
+            <summary>
+            Максимальная наполняемость по СанПИН
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Curriculum.CurriculumDto.DifferentHoursEqualityComparer">
+            <summary>
+            Сравнение без учёта часов.
+            В общем случае сюда попадут записи как с одинаковыми, так и с разными часами.
+            Если сравнивать два множества, которые не имеют одинаковых записей с точностью до часов
+            (т.е. было проведено предварительное сравнение/фильтрация с учётом одинаковых часов),
+            то получится множество записей с разными (изменёнными) часами - нужно для UPDATE.
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Curriculum.CurriculumDto.ProfileId">
+            <summary>
+            Classic spicific
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Curriculum.CurriculumDto.ClassId">
+            <summary>
+            Classic spicific
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Curriculum.CurriculumDto.Level">
+            <summary>
+            IUP spicific
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Curriculum.CurriculumDto.DirectionId">
+            <summary>
+            EA spicific
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Curriculum.SaveCurriculumResultDto.SavingSuccess">
+            <summary>
+            Успешно или нет произошло сохранение уч. плана
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Curriculum.SaveCurriculumResultDto.CurriculumViolation">
+            <summary>
+            Здесь формируется пример нарушения, из-за которого уч. план нельзя изменить
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Curriculum.SaveCurriculumResultDto.SgCreated">
+            <summary>
+            Сколько предмето-групп было создано
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Curriculum.SaveCurriculumResultDto.SgFailed">
+            <summary>
+            Сколько предмето-групп не удалось создать по разным причинам
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Curriculum.SaveCurriculumResultDto.SgDeleted">
+            <summary>
+            Сколько предмето-групп было удалено
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Curriculum.SaveCurriculumResultDto.CanCopyCuriculum">
+            <summary>
+            Можно ли копировать уч. план из предыдущего учебного периода
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.EducCertificates.EducCertificateDto.CertificateSettings">
+            <summary>
+            Настройки, используемые при создании сертификата
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.EducCertificates.CertificateSettings.NeedSchool">
+            <summary>
+            Требуется проверка наличия школы. По умолчанию = true
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.EducCertificates.CertificateSettings.NeedCheckParents">
+            <summary>
+            Требуется проверка наличия прикрепленных родителей. По умолчанию = true
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.EducCertificates.CertificateSettings.MustSend">
+            <summary>
+            Требуется ли выбрасывать исключение при неудачной отправке сертификата. По умолчанию = false
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.EducCertificates.CertificateSettings.MustSave">
+            <summary>
+            Требуется ли сохранить сертификат при неудачной отправке. По умолчанию = true
+            При значении false после неудачной отправки сертификат удаляется
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.EducCertificates.EmCertificateSettingsDto.EmId">
+            <summary>
+            Муниципальное УО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.EducCertificates.EmCertificateSettingsDto.MinCertifiateStudentAge">
+            <summary>
+            Нижняя граница возраста для получения сертификата
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.EducCertificates.EmCertificateSettingsDto.HasParentApplicationBlank">
+            <summary>
+            Шаблон заявления для родителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.EducCertificates.EmCertificateSettingsDto.HasStudentApplicationBlank">
+            <summary>
+            Шаблон заявления для учащегося старше 14 лет
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.EducCertificates.SearchCertifStudentDto.SystemId">
+            <summary>
+            Ид внешней системы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.ExternalStudents.SearchStudentResultDto.SystemInstanceId">
+            <summary>
+            Идентификатор экземпляра системы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.ExternalStudents.SearchStudentResultDto.MunicipalityName">
+            <summary>
+            Муниципалитет обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.ExternalStudents.SearchStudentResultDto.CityName">
+            <summary>
+            Населенный пункт обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.ExternalStudents.SearchStudentResultDto.OrganizationName">
+            <summary>
+            Органзиация обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.ExternalStudents.SearchStudentResultDto.IdentityDocument">
+            <summary>
+            Документ, удостоверящий личность
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.FileAttachmentDto.Id">
+            <summary>
+            Идентификатор вложения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.FileAttachmentDto.FileName">
+            <summary>
+            Имя файла
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.FileAttachmentDto.Description">
+            <summary>
+            Описание
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.FileAttachmentDto.AFile">
+            <summary>
+            Данные файла
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.FileAttachmentDto.Saved">
+            <summary>
+            Признак - сохранен
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.FileAttachmentDto.UserId">
+            <summary>
+            Идентификатор пользователя для вложений к ЛК пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.AttendanceDto.StudentId">
+            <summary>
+            ид ученика
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.AttendanceDto.CmId">
+            <summary>
+            ид занятия в расписании
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.AttendanceDto.Mark">
+            <summary>
+            отметка о посещаемости
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.Attendance.AttendanceReasonStat">
+            <summary>
+            стат. инфа по посещаемости
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.AttendanceReasonStat.Reason">
+            <summary>
+            отметка о посещаемости
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.AttendanceReasonStat.Count">
+            <summary>
+            кол-во отметок
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.Attendance.EditDayAttendanceDto">
+            <summary>
+            устанавливаемая информация о посещаемости 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.EditDayAttendanceDto.StudentId">
+            <summary>
+            ид ученика
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.EditDayAttendanceDto.DayNum">
+            <summary>
+            номер дня
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.EditDayAttendanceDto.Day">
+            <summary>
+            день
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.EditDayAttendanceDto.Mark">
+            <summary>
+            отметка о посещаемости
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.Attendance.StudentDayAttendanceDto">
+            <summary>
+            Информация о посещаемости за день
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.StudentDayAttendanceDto.StudentId">
+            <summary>
+            ид ученика
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.StudentDayAttendanceDto.DayNum">
+            <summary>
+            Номер дня
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.StudentDayAttendanceDto.Day">
+            <summary>
+            День
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Attendance.StudentDayAttendanceDto.ReasonStats">
+            <summary>
+            Отметки о посещаемости
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.Diary.AssignmentInfoDto">
+            <summary>
+            Вспомогательный класс для получения данных о задании при выполнении процедуры перехода на сайт стороннего поставщика информации
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto">
+            <summary>
+            Подробная информация о задании в дневнике 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.Id">
+            <summary>
+            Идентификатор задания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.AssignmentName">
+            <summary>
+            Имя задания / краткий текст
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.ActivityName">
+            <summary>
+            Название учебного курса.
+            Для заданий из УК
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.ProblemName">
+            <summary>
+            Задание в УК
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.SubjectGroup">
+            <summary>
+            Информация о предмето-группе для которой выдано задание
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.Teachers">
+            <summary>
+            Информация о преподавателях
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.ProductId">
+            <summary>
+            Идентификатор поставщика УК
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.IsDeleted">
+            <summary>
+            Признак - удаленный УК
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.Weight">
+            <summary>
+            Вес задания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.Date">
+            <summary>
+            Дата задания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.Description">
+            <summary>
+            Подробности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDetailsDto.Attachments">
+            <summary>
+            Файловые вложения
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDto">
+            <summary>
+            Задание дневника учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDto.Result">
+            <summary>
+            Оценка за задание
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDto.DutyMark">
+            <summary>
+            Отметка обязательности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDto.Mark">
+            <summary>
+            Оценка за задание
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDto.SubjectGroupId">
+            <summary>
+            служебная ссылка на группу
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDto.SubjectName">
+            <summary>
+            Предмет.
+            Заполняется не всегда
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDto.TextAnswer">
+            <summary>
+            Текстовый ответ на задание
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryAssignmentDto.MarkComment">
+            <summary>
+            Комментарий к оценке.
+            Заполняется не всегда
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.Diary.DiaryDayDto">
+            <summary>
+            День в дневнике учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryDayDto.Date">
+            <summary>
+            Дата
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryDayDto.Lessons">
+            <summary>
+            Список уроков
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryDayDto.LaAssignments">
+            <summary>
+            Задания по УК на этот день
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto">
+            <summary>
+            Урок в дневнике учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.ClassmeetingId">
+            <summary>
+            Ссылка на урок в расписании
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.Day">
+            <summary>
+            День
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.Number">
+            <summary>
+            Номер урока
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.Relay">
+            <summary>
+            Смена
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.Room">
+            <summary>
+            Кабинет
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.StartTime">
+            <summary>
+            Время начала
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.EndTime">
+            <summary>
+            Время окончания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.SubjectName">
+            <summary>
+            Предмет
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.Assignments">
+            <summary>
+            Список заданий на уроке
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.IsDistanceLesson">
+            <summary>
+            Признак - дистанционный
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.DiaryLessonDto.IsEaLesson">
+            <summary>
+            Признак - урок по Внеурочной деятельности
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.Diary.StudentDiaryAttachmentsDto">
+            <summary>
+            Информация о вложениях
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryAttachmentsDto.AssignmentId">
+            <summary>
+            Идентификатор задания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryAttachmentsDto.Attachments">
+            <summary>
+            Файлы. Заполняется не всегда
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryAttachmentsDto.AnswerFiles">
+            <summary>
+            Файлы, прилагаемые учеником к домашнему заданию
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryCtx.MaxMark">
+            <summary>
+            Максимальный бал
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryCtx.WithLaAssigns">
+            <summary>
+            Есть ли интерграция с учебными курсами
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.Diary.StudentDiaryData">
+            <summary>
+            Дневник учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryData.WeekStart">
+            <summary>
+            Дата начала недели
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryData.WeekEnd">
+            <summary>
+            Дата окончания недели
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryData.WeekDays">
+            <summary>
+            Дни дневника
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryData.LaAssigns">
+            <summary>
+            Задания из УК невключенные в КЖ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryData.TermName">
+            <summary>
+            Учебный период
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.Diary.StudentDiaryData.ClassName">
+            <summary>
+            Класс обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.QualityAsessment.TestTaskDto.Number">
+            <summary>
+            Номер задания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.QualityAsessment.TestTaskDto.Difficult">
+            <summary>
+            Уровень сложности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.QualityAsessment.TestTaskDto.MistakeType">
+            <summary>
+            Тип ошибок
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.QualityAsessment.TestTaskDto.PossiblePoints">
+            <summary>
+            Количество возможных баллов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.QualityAsessment.TestTaskDto.ContentElements">
+            <summary>
+            Элементы содержания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.QualityAsessment.TestTaskDto.Additional">
+            <summary>
+            уточнения к заданию 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.SchoolSettingDto.MarkAveraging">
+            <summary>
+            Способ усреднения оценок
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.SchoolSettingDto.MinMark">
+            <summary>
+            Мин. оценка
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Grade.SchoolSettingDto.MaxMark">
+            <summary>
+            Макс. оценка
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.MarkAveragingMethod">
+            <summary>
+            Способ усреднения оценок
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Grade.MarkAveragingMethod.Arithmetical">
+            <summary>
+            среднее арифметическое
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Grade.MarkAveragingMethod.Weight">
+            <summary>
+            среднее взвешенное
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.SmsGate">
+            <summary>
+            Настройки СМС
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Grade.SmsGate.EMail">
+            <summary>
+            Email - шлюз
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Grade.SmsGate.Web">
+            <summary>
+            Web - шлюз
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.AdminEdit">
+            <summary>
+            Доступ к сведениям пользователя "admin"
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Grade.AdminEdit.AccessYes">
+            <summary>
+            Доступ разрешен
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Grade.AdminEdit.AccessNo">
+            <summary>
+            Доступ запрещен
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Grade.WindowsAuth">
+            <summary>
+            Windows аутентификация
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Grade.WindowsAuth.WinAuthYes">
+            <summary>
+            Включена
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Grade.WindowsAuth.WinAuthNo">
+            <summary>
+            Отключена
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.Base.IRecipientSpecificator">
+            <summary>
+            Интерфейс-маркер спецификатора группы получаетелей рассылки
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.Enums.OrganizationType">
+            <summary>
+            Типы организаций - получаетелей
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.Enums.UserGroup">
+            <summary>
+            Группы пользователей - получаетелей
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.MessageAttachement">
+            <summary>
+            Вложение
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.MessageAttachement.Id">
+            <summary>
+            Идентификатор вложения в БД
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.MessageAttachement.Url">
+            <summary>
+            Сссылка для скачивания файла
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.MessageAttachement.Bytes">
+            <summary>
+            Поток байтов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.MessageAttachement.FileName">
+            <summary>
+            Наименование файла
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.MessageAttachement.FileDescription">
+            <summary>
+            Описание файла
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.RecipientInfo.Recipient">
+            <summary>
+            Получатель - конкретный пользователь или группа пользователей в рамках одной организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.RecipientInfo.MassRecipient">
+            <summary>
+            Получатель - группа пользователей 
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.RecipientGroup">
+            <summary>
+            Класс описывающий группу получателей почтовой рассылки
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.Specificators.AddressRecipientSpecificator">
+            <summary>
+            Спецификатор группы получаетелей рассылки по адресу
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.AddressRecipientSpecificator.CityIds">
+            <summary>
+            Идентификаторы нас. пунктов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.AddressRecipientSpecificator.MunicipalityIds">
+            <summary>
+            Идентификаторы муниципалитетов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.AddressRecipientSpecificator.CityNames">
+            <summary>
+            Наименование нас. пунктов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.AddressRecipientSpecificator.MunicipalityNames">
+            <summary>
+            Наименование муниципалитетов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.AddressRecipientSpecificator.KladrCodes">
+            <summary>
+            КЛАДР получаетелей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.EnrollmentSpecification.Class">
+            <summary>
+            Класс
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.EnrollmentSpecification.Literal">
+            <summary>
+            Литера
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.EnrollmentSpecification.Grade">
+            <summary>
+            Параллель
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.Specificators.OrganizationRecipientSpecificator">
+            <summary>
+            Спецификатор группы получаетелей рассылки по организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.OrganizationRecipientSpecificator.Id">
+            <summary>
+            Идентификатор ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.OrganizationRecipientSpecificator.EmId">
+            <summary>
+            Идентификатор УО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.OrganizationRecipientSpecificator.OwnedOrgs">
+            <summary>
+            Признак - организации прямого подчинения (УО)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.OrganizationRecipientSpecificator.Name">
+            <summary>
+            Наименование ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.OrganizationRecipientSpecificator.Type">
+            <summary>
+            Тип ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.OrganizationRecipientSpecificator.City">
+            <summary>
+            Нас. пункт
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.OrganizationRecipientSpecificator.Province">
+            <summary>
+            Мун. район
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.Specificators.ServerRecipientSpecificator">
+            <summary>
+            Спецификатор группы получаетелей рассылки по серверу СГО
+            </summary>
+            <remarks>
+            Используется в рег. почте
+            </remarks>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.ServerRecipientSpecificator.SyncClientId">
+            <summary>
+            Идентификатор клиента синхронизации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.ServerRecipientSpecificator.ServerId">
+            <summary>
+            Идентификатор сервера
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.Specificators.UsersRecipientSpecification">
+            <summary>
+            Спецификатор группы получаетелей рассылки по свойствам пользователей в системе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.UsersRecipientSpecification.Id">
+            <summary>
+            Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.UsersRecipientSpecification.Group">
+            <summary>
+            Роль/группа пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Specificators.UsersRecipientSpecification.Person">
+            <summary>
+            Свойство персоны
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.Structs.AgeRange">
+            <summary>
+            Описание диапазона возрастов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Structs.AgeRange.Min">
+            <summary>
+            Возраст
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Structs.AgeRange.Max">
+            <summary>
+            Возраст
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.Structs.Class">
+            <summary>
+            Описание классов
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Mail.Structs.RecipientPerson">
+            <summary>
+            Описание персоны
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Structs.RecipientPerson.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Structs.RecipientPerson.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Structs.RecipientPerson.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Mail.Structs.RecipientPerson.Age">
+            <summary>
+            Возраст
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.OpenAuth.ParentStudentInfo">
+            <summary>
+            Информация о ребенке родителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.ParentStudentInfo.Id">
+            <summary>
+            Идентификатор ребенка
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.ParentStudentInfo.FirstName">
+            <summary>
+            Имя ребенка
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.ParentStudentInfo.LastName">
+            <summary>
+            Фамилия ребенка
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.ParentStudentInfo.MiddleName">
+            <summary>
+            Отчество ребенка
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.ParentStudentInfo.BirthDate">
+            <summary>
+            Дата рождения ребенка
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.ParentStudentInfo.Gender">
+            <summary>
+            Пол ребенка
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.ParentStudentInfo.Educations">
+            <summary>
+            Информация о текущих организациях и текущих классах ребенка
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.OpenAuth.EducationInfo">
+            <summary>
+            Информация о текущем обучении ребенка родителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.StaffInfo.WorkPhone">
+            <summary>
+            Рабочий телефон
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.StaffInfo.Position">
+            <summary>
+            Должность
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.StaffInfo.Roles">
+            <summary>
+            Набор прав
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.OpenAuth.UserInfoClass">
+            <summary>
+            Класс / группа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoClass.Id">
+            <summary>
+            Идентификатор класса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoClass.OrganizationId">
+            <summary>
+            Идентификатор организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoClass.OrganizationGuid">
+            <summary>
+            Идентификатор организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoClass.Name">
+            <summary>
+            Название класса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoClass.Grade">
+            <summary>
+            Параллель
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoClass.Letter">
+            <summary>
+            Название литеры класса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoIdentityDocumentDto.DocType">
+            <summary>
+            Тип документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoIdentityDocumentDto.Series">
+            <summary>
+            Серия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoIdentityDocumentDto.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoIdentityDocumentDto.ActNumber">
+            <summary>
+            Номер актовой записи (свид-во о рождении)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoIdentityDocumentDto.Issuer">
+            <summary>
+            Кем выдан
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoIdentityDocumentDto.IssuerCode">
+            <summary>
+            Код выдавшей организации (Код подразделения для паспорта)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoIdentityDocumentDto.IssueDate">
+            <summary>
+            Дата выдачи
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoIdentityDocumentDto.ExpireDate">
+            <summary>
+            Действителен до
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoIdentityDocumentDto.OtherDocName">
+            <summary>
+            Название другого документа, удостоверяющего личность
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.OpenAuth.UserInfoOrganization">
+            <summary>
+            Организация
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoOrganization.Guid">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoOrganization.ShortName">
+            <summary>
+            Краткое название
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoOrganization.FuncType">
+            <summary>
+            Тип
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.UserId">
+            <summary>
+            Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.EducManagement">
+            <summary>
+            Информация об органе УО для сотрудников УО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.Organizations">
+            <summary>
+            Организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.SessionInfo">
+            <summary>
+            Информация о текущем сеансе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.RoleGroups">
+            <summary>
+            Роль
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.UserInfoResponse.Gender">
+            <summary>
+            Пол
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.OpenAuth.SessionInfo">
+            <summary>
+            Информация о текущем сеансе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.SessionInfo.Organization">
+            <summary>
+            Организация
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.SessionInfo.Class">
+            <summary>
+            Класс
+            </summary>
+            <remarks>
+            Заполняется только для ученика
+            </remarks>
+        </member>
+        <member name="P:NetCity.Common.DTO.OpenAuth.SessionInfo.RoleGroup">
+            <summary>
+            Роль
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.EducManagementDto.Level">
+            <summary>
+            Уровень иерархии
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.EducManagementDto.ParentFounderId">
+            <summary>
+            Ссылка на вышестоящее управление
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.EducManagementDto.Schools">
+            <summary>
+            Список подчиненных организаций
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.EducManagementDto.NationOlympOrg">
+            <summary>
+            Может являться организатором этапа ВсОШ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.EducManagementDto.ChildFounders">
+            <summary>
+            Подчиненные управления
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.EducManagementDto.IsExistsEmCertificates">
+            <summary>
+            Есть ли от данного управления в БД уже выданные сертификаты
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderDto.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderDto.StateId">
+            <summary>
+            Регион
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderDto.CityId">
+            <summary>
+            Нас. пункт
+            </summary>
+            <remarks>
+            Только для управление уровня района города
+            </remarks>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderDto.Name">
+            <summary>
+            Наименование учредителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderDto.FullName">
+            <summary>
+            Полное наименование учредителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderDto.Code">
+            <summary>
+            Код муниципалитета
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderDto.FounderType">
+            <summary>
+            Тип учредителя по отношению к учётной записи в системе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderDto.FounderKind">
+            <summary>
+            Тип учредителя по справочнику УФТТ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderDto.IsAuthority">
+            <summary>
+            Признак "Является ведомством"
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderDto.AuthorityType">
+            <summary>
+            Тип ведомства
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Organizations.FounderTreeDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderTreeDto.Id">
+            <summary>
+            Идентификатор учредителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderTreeDto.Name">
+            <summary>
+            Название учредителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderTreeDto.TreeLevel">
+            <summary>
+            Уровень в дереве
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderTreeDto.TreeOrder">
+            <summary>
+            Порядок в дереве
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderTreeDto.Tabs">
+            <summary>
+            Количество символов табуляции
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.FounderTreeDto.ElementName">
+            <summary>
+            Название узла дерева
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SchoolSearchInfo.ShortName">
+            <summary>
+            Краткое имя 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.Name">
+            <summary>
+            Текст в наименовании организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.StateId">
+            <summary>
+            Регион
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.ProvinceId">
+            <summary>
+            Мун. район
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.EmId">
+            <summary>
+            УО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.CityId">
+            <summary>
+            Населенный пункт
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.Take">
+            <summary>
+            Кол-во записей 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.ExcludeSchoolId">
+            <summary>
+            Исключая школу
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.Inn">
+            <summary>
+            Поиск по ИНН
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.Ogrn">
+            <summary>
+            Поиск по ОГРН
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.FuncType">
+            <summary>
+            Поиск по типу функциональности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Organizations.SearchSchoolRequest.WithAddress">
+            <summary>
+            Признак - необходимость вернуть информацию по адресу
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.PagedRequestData">
+            <summary>
+            Данные запроса постраничного вывода
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.PagedRequestData.Page">
+            <summary>
+            Запрашиваемая странрица
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.PagedRequestData.PageSize">
+            <summary>
+            Количество записей на странице
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.PagedResponse`1">
+            <summary>
+            Постраничный ответ
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:NetCity.Common.DTO.PagedResponse`1.Data">
+            <summary>
+            Данные
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.PagedResponse`1.Page">
+            <summary>
+            Страница
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.PagedResponse`1.PageSize">
+            <summary>
+            Размер страницы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.PagedResponse`1.TotalRows">
+            <summary>
+            Всего записей
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.PagedResponseData">
+            <summary>
+            Данные ответа постраничного вывода
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.PagedResponseData.CurrentPage">
+            <summary>
+            Номер страницы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.PagedResponseData.TotalPages">
+            <summary>
+            Всего страниц
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.PagedResponseData.RowsByPage">
+            <summary>
+            Строк на странице
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:NetCity.Common.DTO.References.GlobalSubjectDto.Name" -->
+        <member name="P:NetCity.Common.DTO.References.GlobalSubjectDto.ShortName">
+            <summary>
+            Аббревиатура
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.References.GlobalSubjectDto.IsFederal">
+            <summary>
+            Зафиксировано в нормативно-правовых документах
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.Citizenships">
+            <summary>
+            Гражданство
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.TermTypes">
+            <summary>
+            Типы учебных периодов
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.GlobalYears">
+            <summary>
+            Учебный год
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.GlobalSubjects">
+            <summary>
+            Общие предметы
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.SubjectFields">
+            <summary>
+            Образовательные области
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.ExamTypes">
+            <summary>
+            Типы экзаменов
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.AssignmentTypes">
+            <summary>
+            Типы заданий
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.UserInfoListItems">
+            <summary>
+            Значения поля личной карточки
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.ExtraActivitiesOrgForms">
+            <summary>
+            Значения поля личной карточки
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.OlympSubjects">
+            <summary>
+            Предметы ВсОШ
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.ProjectTypeForSchool">
+            <summary>
+            Значения поля личной карточки
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.References.RefType.SeniorityTypes">
+            <summary>
+            Виды стажа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.ShortName">
+            <summary>
+            Краткое название
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.Teachers">
+            <summary>
+            Преподаватели предмета
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.Groups">
+            <summary>
+            Подгруппы предмета
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.ParentSubject">
+            <summary>
+            Группа предметов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.SubjectField">
+            <summary>
+            Образовательная область
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.GlobalSubject">
+            <summary>
+            Общий предмет
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.Order">
+            <summary>
+            Порядковый номер
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.Using">
+            <summary>
+            Признак того, что предмет используется или использовался ранее
+            Такой предмет нельзя удалить
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.UsingInYear">
+            <summary>
+            Признак того, что предмет используется в теущем учебном году
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.ExtraCurricular">
+            <summary>
+            Не включать в учебный план
+            Этот предмет относится к Внеурочной деятельности, это Программа ВД
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.IsModular">
+            <summary>
+            Признак - модульный предмет
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.UseExemption">
+            <summary>
+            Признак - Разрешена отметка "Освобожден" в журнале посещаемости
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SchoolSubjectDto.Direction">
+            <summary>
+            Направление ВД
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.ParentSubjectDto.Abbr">
+            <summary>
+            Аббревиатура
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.ParentSubjectDto.Subjects">
+            <summary>
+            Список предметов
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.SubjectSubGroupDto">
+            <summary>
+            Подгруппа предмета
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectSubGroupDto.ShortName">
+            <summary>
+            Краткое название
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.ClassId">
+            <summary>
+            фильтр по классу
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.IupClassId">
+            <summary>
+            фильтр по ИУП классам
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.Grade">
+            <summary>
+            фильтр по параллели (КПГ и ИУП)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.SubjectId">
+            <summary>
+            фильтр по предмету
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.IupLevelId">
+            <summary>
+            фильтр по ИУП уровню
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.IupGrade">
+            <summary>
+            фильтр по ИУП параллели
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.TermTypeId">
+            <summary>
+            фильтр по типу периода
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.TeacherId">
+            <summary>
+            фильтр по преподавателю
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.AllTeacherId">
+            <summary>
+            преподаватель из SubjectGroup.AllTeachers
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.ExtraCurricular">
+            <summary>
+            фильтр - ПО внеурочной деятельности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.Modular">
+            <summary>
+            фильтр - модульные ПГ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.Module">
+            <summary>
+            фильтр - ПГ учебные модули 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.EaDirectionId">
+            <summary>
+            фильтр - направление внеурочной деятельности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.Iup">
+            <summary>
+            фильтр - ИУП группы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.EaRegime">
+            <summary>
+            Способ учёта ВД.
+            <see cref="!:CmFilter.EaRegime"/>
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectGroups.SubjectGroupsFilter.StudentId">
+            <summary>
+            фильтр по ученику
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.SubjectGroups.UseInfoData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonDetailedDto.DetailInfComponent">
+            <summary>
+            Lesson.Extrainfo1
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonDetailedDto.TotalLearningAndSubjectSkills">
+            <summary>
+            Lesson.Extrainfo2
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonDetailedDto.ValuablyFocusedComponent">
+            <summary>
+            Lesson.Extrainfo3
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonDetailedDto.TeachConditionAndImplementer">
+            <summary>
+            Lesson.Extrainfo4
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonLearnActivityDto.Activity">
+            <summary>
+            Осуществляемые действия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonLearnActivityDto.Results">
+            <summary>
+            Формируемые умения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapClassDto.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapClassDto.Name">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapClassDto.Grade">
+            <summary>
+            Параллель
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.SubjectPlan.LessonMapDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapDto.AccessInfo">
+            <summary>
+            Доступ к ТКУ
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.SubjectPlan.LessonMapAccess">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapAccess.ReadOnly">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.SubjectPlan.LessonMapShortInfo">
+            <summary>
+            Краткая информация ТКУ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapShortInfo.Id">
+            <summary>
+            Идентификатор ТКУ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapShortInfo.LessonPlanUnitName">
+            <summary>
+            Раздел рабочей программы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapShortInfo.LessonTheme">
+            <summary>
+            Тема урока
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapShortInfo.SubjectGroup">
+            <summary>
+            Предмето-группа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapShortInfo.UmkAuthor">
+            <summary>
+            Автор Умк
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapShortInfo.Type">
+            <summary>
+            Тип урока
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapShortInfo.Model">
+            <summary>
+            Модель урока
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapShortInfo.Subject">
+            <summary>
+            Предмет
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapSubjectDto.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapSubjectDto.Name">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapTaskDto.Id">
+            <summary>
+            Идентификатор задания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapTaskDto.LessonMap">
+            <summary>
+            Идентификатор ТКУ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapTaskDto.ModelStage">
+            <summary>
+            Этап урока
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapTaskDto.Number">
+            <summary>
+            Номер задания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapTaskDto.Task">
+            <summary>
+            Задание
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapTaskDto.TeacherActivity">
+            <summary>
+            Деятельность учителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapTaskDto.CommunicationForm">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapTaskDto.ControlForm">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapTaskDto.SubjectSkills">
+            <summary>
+            Предметные умения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonMapTaskDto.Activities">
+            <summary>
+            УУД
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonModelStageDto.ModelId">
+            <summary>
+            Идентификатор модели
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonModelStageDto.ModelName">
+            <summary>
+            Название модели
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonModelStageDto.Number">
+            <summary>
+            Номер этапа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonModelStageDto.ParentStageNumber">
+            <summary>
+            Номер родительского этапа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonModelStageDto.ParentStageId">
+            <summary>
+            Идентификатор родительского этапа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonModelStageDto.TeacherActivities">
+            <summary>
+            Деятельность учителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonModelStageDto.HasChilds">
+            <summary>
+            Есть дочерние этапы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonTypeDto.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.LessonTypeDto.Name">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.SubjectPlanDataDto.SubjectPlanId">
+            <summary>
+            Идентификатор КТП
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.SubjectPlanDataDto.Lessons">
+            <summary>
+            Список уроков КТП
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.SubjectPlanDataDto.SubjectPlan">
+            <summary>
+            План КТП
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.SubjectPlanDataDto.VariantsExists">
+            <summary>
+            Признак наличия планов
+            Несет смысл только в случае SubjetPlanId == null
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.SubjectSkillDto.Subject">
+            <summary>
+            Предметные умения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.SubjectSkillDto.Step">
+            <summary>
+            Ступень
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.SubjectSkillDto.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.SubjectSkillDto.Name">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.SubjectSkillDto.Classes">
+            <summary>
+            Параллели
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.SubjectPlan.SubjectSkillDto.ParentId">
+            <summary>
+            Идентификатор родителя
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Terms.EducYearDto">
+            <summary>
+            Объект учебного года
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Terms.EducYearDto.StartDate">
+            <summary>
+            Дата начала учебного года
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Terms.EducYearDto.EndDate">
+            <summary>
+            Дата окончания учебного года
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesBaseQuery.CloneType">
+            <summary>
+            Тип/критерий поиска дублей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesBaseQuery.SchoolId">
+            <summary>
+            Ид организации - контекста поиска
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesBaseQuery.EmId">
+            <summary>
+            Ид УО - контекста УО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesBaseQuery.WithoutPoolNa">
+            <summary>
+            Признак - не учитывать учащихся в архивном пуле  
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesBaseQuery.WithoutMainOrganization">
+            <summary>
+            Признак - выводить дублей среди записей без основных организаций
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesBaseQuery.OutOfSystem">
+            <summary>
+            Признак - выводить дубли из списка не зачисленных всистему
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesBaseQuery.ActiveEnrollmentInSchool">
+            <summary>
+            Признак - выводить дубли из списка зачисленных в организацию на текущий момент
+            Имеет смысл только с фильтром по SchoolId
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesBaseQuery.Role">
+            <summary>
+            Роль
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesBaseQuery.IdentityDocumentType">
+            <summary>
+            Тип ДУЛ для поиска по документам
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.UserClones.GetUserClonesGroupsQuery">
+            <summary>
+            Запрос на поиск дублирующихся пользователей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesGroupsQuery.LastName">
+            <summary>
+            Фильтр по фамилии дубля
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.UserClones.GetUserClonesInfoQuery">
+            <summary>
+            Запрос на получение информации о конкретных дублирующихся пользователях 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesInfoQuery.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesInfoQuery.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesInfoQuery.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesInfoQuery.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesInfoQuery.DocSeries">
+            <summary>
+            Серия документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesInfoQuery.DocNumber">
+            <summary>
+            Номер документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.GetUserClonesInfoQuery.Snils">
+            <summary>
+            СНИЛС
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.UserClones.StudentCloneMovement">
+            <summary>
+            Информация о движении дублирующегося ученика 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.StudentCloneMovement.Id">
+            <summary>
+            Ид
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.StudentCloneMovement.Num">
+            <summary>
+            № по порядку (в ОДО нумерация по программам)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.StudentCloneMovement.EoName">
+            <summary>
+            Наименование организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.StudentCloneMovement.FuncType">
+            <summary>
+            Функциональность
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.StudentCloneMovement.ProgramName">
+            <summary>
+            Наименование программы доп. образования
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.StudentCloneMovement.DocDate">
+            <summary>
+            Дата приказа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.StudentCloneMovement.DocNumber">
+            <summary>
+            Номер приказа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.StudentCloneMovement.ClassFrom">
+            <summary>
+            Класс/группа выбытия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.StudentCloneMovement.ClassTo">
+            <summary>
+            Класс/группа зачисления
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.UserClones.UserCloneGroup">
+            <summary>
+            Группа дублирующихся пользователей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneGroup.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneGroup.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneGroup.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneGroup.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneGroup.Snils">
+            <summary>
+            Снилс
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneGroup.DocSeries">
+            <summary>
+            Серия документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneGroup.DocNumber">
+            <summary>
+            Номер документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneGroup.Count">
+            <summary>
+            Количество дублирующихся пользователей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneStudent.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneStudent.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneStudent.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneStudent.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.UserClones.UserCloneInfo">
+            <summary>
+            Информация о дублирующемся пользователе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneInfo.UserId">
+            <summary>
+            Ид пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneInfo.Fio">
+            <summary>
+            ФИО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneInfo.Snils">
+            <summary>
+            СНИЛС
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneInfo.Documents">
+            <summary>
+            ДУЛ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneInfo.Organizations">
+            <summary>
+            Организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneInfo.Relatives">
+            <summary>
+            Родители/дети
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneInfo.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneInfo.Address">
+            <summary>
+            Адрес
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneInfo.PoolStatus">
+            <summary>
+            Статус
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.UserClones.UserCloneOrganization">
+            <summary>
+            Информация об организации дублирующего пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneOrganization.UserId">
+            <summary>
+            Ид пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneOrganization.IsActive">
+            <summary>
+            "Активная" - т.е. пользователь на данный момент связан (зачислен) с организацией
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneOrganization.Roles">
+            <summary>
+            Роли
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneOrganization.FuncType">
+            <summary>
+            Функциональность организации
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.UserClones.UserCloneRelative">
+            <summary>
+            Информация о родственнике
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneRelative.UserId">
+            <summary>
+            Ид пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneRelative.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneRelative.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneRelative.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneRelative.NickName">
+            <summary>
+            Имя на экране
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneRelative.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserClones.UserCloneRelative.RoleGroups">
+            <summary>
+            Роли
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.UserClones.UserCloneType">
+            <summary>
+            Тип/критерий дублирования 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserContextState.MailMessagesUnreadCount">
+            <summary>
+            Количество непрочитанных сообщений
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserContextState.MailError">
+            <summary>
+            Текст ошибки при обращении к сервису почты
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserContextState.ActiveSessionsCount">
+            <summary>
+            Количество активных сессий
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.EmUserStatEmDto.StatDate">
+            <summary>
+            Дата, за которую получаем статистику
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.EmUserStatEmDto.EmAdmEntriesAmount">
+            <summary>
+            Кол-во входов администраторов УО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.EmUserStatEmDto.EmBossEntriesAmount">
+            <summary>
+            Кол-во входов начальников УО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.EmUserStatEmDto.EmStaffEntriesAmount">
+            <summary>
+            Кол-во входов сотрудников УО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.UserStatEmDto.OrgName">
+            <summary>
+            Название организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.UserStatEmDto.SchoolId">
+            <summary>
+            Идентификатор школы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.UserStatEmDto.StatDate">
+            <summary>
+            Дата, за которую получаем статистику
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.UserStatEmDto.StaffEntriesAmount">
+            <summary>
+            Кол-во входов персонала
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.UserStatEmDto.StudentsEntriesAmount">
+            <summary>
+            Количество входов учащихся
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.UserStatEmDto.ParentsEntriesAmount">
+            <summary>
+            Кол-во входов родителей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.UserStatEmDto.UniqueStaffEntriesAmount">
+            <summary>
+            Кол-во уникальных входов персонала
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.UserStatEmDto.UniqueStudentsEntriesAmount">
+            <summary>
+            Кол-во уникальных входов учащихся
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.UserStatEmDto.UniqueParentsEntriesAmount">
+            <summary>
+            Кол-во уникальных входов родителей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.CommonUserStatEmDto.AllEntriesAmount">
+            <summary>
+            Общее количество входов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.UserStat.CommonUserStatEmDto.UniqueEntriesAmount">
+            <summary>
+            Общее кол-во уникальных входов
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Documents.Document">
+            <summary>
+            Документ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.Document.Series">
+            <summary>
+            Серия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.Document.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.Document.ActNumber">
+            <summary>
+            Номер актовой записи
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.Document.Issuer">
+            <summary>
+            Выдан
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.Document.IssuerCode">
+            <summary>
+            Код подразделения (паспорт РФ)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.Document.Issued">
+            <summary>
+            Дата выдачи
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.Document.Type">
+            <summary>
+            Тип документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.Document.Expire">
+            <summary>
+            Действителен до
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.Document.OtherDocName">
+            <summary>
+            Наименование другого документа
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Documents.DocumentsData">
+            <summary>
+            Данные по документам
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.DocumentsData.Documents">
+            <summary>
+            Список документов
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Documents.DocumentType">
+            <summary>
+            Тип документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.DocumentType.PredefinedType">
+            <summary>
+            Предопределенный тип документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.DocumentType.OtherName">
+            <summary>
+            Наименование типа
+            </summary>
+            <remarks>
+            Требуется к заполнении в случае если <see cref="P:NetCity.Common.DTO.Users.Documents.DocumentType.PredefinedType"/> == <see cref="F:NetCity.Common.DTO.Users.Documents.PredefinedDocumentType.Unknown"/>
+            </remarks>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Documents.DocumentType.DocumentTypeCode">
+            <summary>
+            Код документа по УФТТ.
+            Соответствует <see cref="T:NetCity.Common.ObjectModel.Nhibernate.Users.Documents.IdentityDocumentType"/>
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Documents.PredefinedDocumentType">
+            <summary>
+            Тип документа
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Documents.PredefinedDocumentType.Unknown">
+            <summary>
+            Другой
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Documents.PredefinedDocumentType.Passport">
+            <summary>
+            Паспорт РФ
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Documents.PredefinedDocumentType.BirthCertificate">
+            <summary>
+            Свидетесльтво о рождении РФ
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Documents.PredefinedDocumentType.Snils">
+            <summary>
+            СНИЛС
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.ActiveSchoolYearDto.SchoolId">
+            <summary>
+            Идентификатор школы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.ActiveSchoolYearDto.SchoolyearId">
+            <summary>
+            Учебный год
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PedagogueDto.UserId">
+            <summary>
+            Идентификатор педагога
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PedagogueDto.ActiveSchoolYear">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PedagogueDto.HasFirstQualification">
+            <summary>
+            Имеет первую квалификацию
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PedagogueDto.HasHighQualification">
+            <summary>
+            Имеет высшую квалификацию
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.PersonData">
+            <summary>
+            Данные о персоне
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonData.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonData.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonData.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonData.NoMiddleName">
+            <summary>
+            Нет отчества
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonData.Gender">
+            <summary>
+            Пол
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.PersonData.GetFullName">
+            <summary>
+            Получение ФИО
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonDto.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonDto.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonDto.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonDto.Gender">
+            <summary>
+            Пол
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonDto.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.PersonDto.NoMiddleName">
+            <summary>
+            Отсутствует отчество
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.PersonGender">
+            <summary>
+            Пол персоны
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.SearchUserRequest">
+            <summary>
+            Запрос поиска пользователей
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.SililarsCheckBehavior">
+            <summary>
+            Режим поиска
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SililarsCheckBehavior.FindFirsts">
+            <summary>
+            поиск до первого
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SililarsCheckBehavior.FindAll">
+            <summary>
+            Поиск всех
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarLocation.InSchool">
+            <summary>
+            в текущей ОО 
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarLocation.InPool">
+            <summary>
+            в пуле
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarLocation.InOtherSchoolsExcludeUDODs">
+            <summary>
+            в другой ОО, здесь не смотрятся УДОДы
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarLocation.InOtherSchools">
+            <summary>
+            в другой ОО, здесь смотрятся и УДОДы
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarLocation.Any">
+            <summary>
+            в любом месте
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.SimilarsCheckLimitation">
+            <summary>
+            Ограничение контекста поиска дублей
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarsCheckLimitation.WithoutLimitation">
+            <summary>
+            Без ограничений
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarsCheckLimitation.MunicipalitySearch">
+            <summary>
+            В рамках муниципалитета
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest">
+            <summary>
+            Запрос на поиск дублей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.RequestId">
+            <summary>
+            Идентификатор пользователя, для которого будет осуществляться поиск дублей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.Person">
+            <summary>
+            Данные по персоне
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.UserType">
+            <summary>
+            Тип пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.Documents">
+            <summary>
+            Данные о документах уд. личности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.SchoolId">
+            <summary>
+            Идентификатор текущей организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.Locations">
+            <summary>
+            Контекст поиска дублей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.Limitation">
+            <summary>
+            Уточнение контекста поиска дублей
+            </summary>
+            <remarks>
+            Имеет смысл только при значениях <see cref="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.Locations"/> равным <see cref="F:NetCity.Common.DTO.Users.Similars.SimilarLocation.InOtherSchools"/>
+            </remarks>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.Behavior">
+            <summary>
+            Режим поиска
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.SimilarTypes">
+            <summary>
+            Критерии поиска. Типы дублей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.ProximityСoefficient">
+            <summary>
+            Коэффициент схожести
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.SimilarStudents">
+            <summary>
+            Найденные дубли учащихся
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.SimilarsCheckRequest.FillPersonInfo(NetCity.Common.DTO.Users.PersonData,System.Nullable{System.DateTime},System.Int32,NetCity.Common.DTO.Users.Documents.DocumentsData)">
+            <summary>
+            Метод заполнения базовой части запроса описывающей суму персону
+            </summary>
+            <param name="personData"></param>
+            <param name="birthdate"></param>
+            <param name="schoolId"></param>
+            <param name="documentsData"></param>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.SimilarsCheckResult">
+            <summary>
+            Результат поиска дублей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckResult.RequestId">
+            <summary>
+            Идентификатор пользователя из запроса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckResult.Similars">
+            <summary>
+            Список обнаруженных дублей
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.SimilarsCheckUnit">
+            <summary>
+            Шаг алгоритма поиска дублей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckUnit.SimilarsCheckRequest">
+            <summary>
+            Данные запроса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckUnit.Options">
+            <summary>
+            Набор возможных опций которые доступны в случае обнаружения дублей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckUnit.InterruptFlag">
+            <summary>
+            Признак того что необходимо прервать выполнение поиска при обнаружении хотя бы одного дубля
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarsCheckUnit.Order">
+            <summary>
+            Порядок
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarsType.SimilarFiSolidMiddleSoftBirthDate">
+            <summary>
+            дубль по фио
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarsType.SimilarFiSoftMiddleSolidBirthDate">
+            <summary>
+            дубль по фио и д.р.
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarsType.SimilarFiSoftMiddleSolidOneOrMoreDocuments">
+            <summary>
+            дубль по фио и документу
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarsType.SimilarFuzzyLastMoreThanOneDocuments">
+            <summary>
+            дубль по документам
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarsType.SimilarFuzzyFiSoftFuzzyMiddleOther">
+            <summary>
+            дубль с нечетким сравнением ФИО
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarsType.SimilarSimilarStudentParentsFi">
+            <summary>
+            дубль с нечетким сравнением ФИО
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarsType.SimilarFiSoftMiddle">
+            <summary>
+            поиск по ФИ и нестрогому соответствию отчества
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.SimilarsType.SimilarFiSoftMiddleSoftBirthDate">
+            <summary>
+            дубль по фи и нестрогому соответствию отчества и д.р.
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.SimilarUser">
+            <summary>
+            Информация о дубле пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.UserId">
+            <summary>
+            Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.CanUse">
+            <summary>
+            Признак обозначающий возможность использования данной записи для зачисления
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.FullName">
+            <summary>
+            Полное имя персоны
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.Gender">
+            <summary>
+            Пол
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.Organization">
+            <summary>
+            Текущая организация куда зачислен дубль
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.Class">
+            <summary>
+            Текущий класс/группа куда зачислен дубль
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.Type">
+            <summary>
+            Тип дубля
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.Location">
+            <summary>
+            Местонахождение дубля
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.AuxComment">
+            <summary>
+            Дополнительная информация для идентификация дубля пользователем в интерфейсе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.SimilarUser.RelatedForUserId">
+            <summary>
+            Дубль связан с другим дублем
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.SimilarUser.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <returns>
+            true if the specified object  is equal to the current object; otherwise, false.
+            </returns>
+            <param name="obj">The object to compare with the current object. </param>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.SimilarUser.GetHashCode">
+            <summary>
+            Serves as the default hash function. 
+            </summary>
+            <returns>
+            A hash code for the current object.
+            </returns>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentChoice">
+            <summary>
+            Выбор пользователя при разрешении дублей пользователей
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentChoice.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentChoice.#ctor(System.Nullable{System.Int32},NetCity.Common.DTO.Users.Similars.UserChoice.PersonEnrollmentOption)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentChoice.ExistingUserId">
+            <summary>
+            Идентификатор существующего учащегося если на этапе анализа выбран существующий пользователь системы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentChoice.Choice">
+            <summary>
+            Выбор пользователя
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentChoice.IsSolved">
+            <summary>
+            Разрешена ли ситуация с дублем
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentChoice.IsIgnored">
+            <summary>
+            Выбрана опция Игнорировать
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentOptions">
+            <summary>
+            Информация о вариантах зачисления персоны
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentOptions.Options">
+            <summary>
+            Варианты зачисления
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentOptions.Similars">
+            <summary>
+            Список схожих пользователей в системе
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.UserChoice.PersonEnrollmentChoice">
+            <summary>
+            Выбор пользователя при разрешении дублей пользователей
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.UserChoice.PersonEnrollmentChoice.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.UserChoice.PersonEnrollmentChoice.#ctor(System.String,NetCity.Common.DTO.Users.Similars.UserChoice.EnrollmentChoice)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.PersonEnrollmentChoice.PersonId">
+            <summary>
+            Идентификатор персоны
+            </summary>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.UserChoice.PersonEnrollmentOption.NewPerson">
+            <summary>
+            новая запись
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.UserChoice.PersonEnrollmentOption.ExistingPerson">
+            <summary>
+            существующая запись
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.UserChoice.PersonEnrollmentOption.IgnorePerson">
+            <summary>
+            пропуск персоны 
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.UserChoice.PersonEnrollmentOption.DuplicatePerson">
+            <summary>
+            дубль персоны
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.UserChoice.PersonSimilarsResolveData">
+            <summary>
+            Данные о разрешении дублей для персоны
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.PersonSimilarsResolveData.PersonId">
+            <summary>
+            Идентификатор персоны
+            </summary>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.PersonSimilarsResolveData.FullName">
+            <summary>
+            Полное имя персоны
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.PersonSimilarsResolveData.Options">
+            <summary>
+            Варианты разрешения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.PersonSimilarsResolveData.Choice">
+            <summary>
+            Выбор пользователя
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.UserChoice.PersonSimilarsResolveData.IsSolved">
+            <summary>
+            Разрешена ли ситуация с дублем
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.UserChoice.PersonSimilarsResolveData.IsIgnored">
+            <summary>
+            Признак выбора - Игнорировать
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.UserChoice.StudentEnrollmentChoice">
+            <summary>
+            Выбор пользователя при разрешении дублей учащихся
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.StudentEnrollmentChoice.ParentsEnrollmentChoices">
+            <summary>
+            выпол пользователя при разрешении дублей родителей учащегося
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.Similars.UserChoice.StudentSimilarsResolveData">
+            <summary>
+            Данные о разрешении дублей для учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.Similars.UserChoice.StudentSimilarsResolveData.ParentsSimilarsResolveData">
+            <summary>
+            Данные о разрешении дублей для родителей
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.UserChoice.StudentSimilarsResolveData.IsSolved">
+            <summary>
+            Разрешена ли ситуация с дублем
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Common.DTO.Users.Similars.UserChoice.StudentSimilarsResolveData.IsIgnored">
+            <summary>
+            Выбрана ли опция Игнорировать
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.UserType.Staff">
+            <summary>
+            Сотрудник
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.UserType.Student">
+            <summary>
+            учащийся
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.UserType.Parent">
+            <summary>
+            Родитель
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.DTO.Users.Similars.UserType.EmUser">
+            <summary>
+            Родитель
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Users.StudentDateRangeDto">
+            <summary>
+            Диапазон обучения ученика в классе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.StudentDateRangeDto.StudentId">
+            <summary>
+            ид ученик
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.StudentDateRangeDto.StartDate">
+            <summary>
+            Дата зачисления
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Users.StudentDateRangeDto.EndDate">
+            <summary>
+            Дата выбытия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Years.DatesPeriodDto.Start">
+            <summary>
+            Дата начала
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Years.DatesPeriodDto.End">
+            <summary>
+            Дата окончания
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.DTO.Years.MoveDayDto">
+            <summary>
+            Информация о переносе дня
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Years.MoveDayDto.DateFrom">
+            <summary>
+            Дата, с которой переносится
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Years.MoveDayDto.DateTo">
+            <summary>
+            Дата, на которую переносится
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Years.MoveDayDto.Description">
+            <summary>
+            Причина переноса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Years.YearsPeriodDto.Start">
+            <summary>
+            Год начала
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.DTO.Years.YearsPeriodDto.End">
+            <summary>
+            Год окончания
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ObjectModel.Nhibernate.Queue.TaskEnqueueInfo">
+            <summary>
+            Информация о постановке задачи в очередь
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Nhibernate.Queue.TaskEnqueueInfo.TaskId">
+            <summary>
+            Идентификатор задачи
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Nhibernate.Queue.TaskEnqueueInfo.QueueKey">
+            <summary>
+            Ключ очереди
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Nhibernate.Queue.TaskEnqueueInfo.ActiveConnectionExec">
+            <summary>
+            Признак - выполнения задачи только при активном соединении
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Nhibernate.Queue.TaskEnqueueInfo.Cancellable">
+            <summary>
+            Признак - возможность отмены
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ObjectModel.Movement.MoveDoc">
+            <summary>
+            Документ о движении
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Movement.MoveDoc.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Movement.MoveDoc.SchoolYearId">
+            <summary>
+            Идентификатор учебного года
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Movement.MoveDoc.DocName">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Movement.MoveDoc.DocDate">
+            <summary>
+            Дата документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Movement.MoveDoc.AdminDate">
+            <summary>
+            Дата распорядительного документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Movement.MoveDoc.DocType">
+            <summary>
+            Тип документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ObjectModel.Movement.MoveDoc.DocSubType">
+            <summary>
+            Подтип документа
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.Address.AddressInfo">
+            <summary>
+            Хранит информацию по адресу
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.KLADRCode">
+            <summary>
+            Кладр
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.FiasCode">
+            <summary>
+            ФИАС идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.OKATOCode">
+            <summary>
+            Окато
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.Name">
+            <summary>
+            Полный адрес
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.Index">
+            <summary>
+            Индекс
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.House">
+            <summary>
+            Дом
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.Corp">
+            <summary>
+            Корпус
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.Building">
+            <summary>
+            Строение
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.Flat">
+            <summary>
+            Квартира
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.AddInfo">
+            <summary>
+            Дополнительная информация
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.LocationType">
+            <summary>
+            Тип сокращений улиц
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Address.AddressInfo.City">
+            <summary>
+            Город
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.EducProgram.EducProgramInfo">
+            <summary>
+            Информация по образовательной программе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.EducProgram.EducProgramInfo.ProgramType">
+            <summary>
+            Тип программы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.EducProgram.EducProgramInfo.Adaptibility">
+            <summary>
+            Адаптированность
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.ValueObjects.EducProgram.EducProgramInfo.GetEducationLevel">
+            <summary>
+            уровень образования ("Начальное общее образование", "Основное общее образование", .....)
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.ValueObjects.EducProgram.EducProgramInfo.GetAdaptibilityName">
+            <summary>
+            получить имя типа программы (адаптивна, не адаптивна)
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.ValueObjects.EducProgram.EducProgramInfo.GetProgramTypeNamme">
+            <summary>
+            полуить имя образовательной программы ("Основная общеобразовательная программа", "Образовательная программа дошкольного образования")
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.EducProgram.EducProgramType">
+            <summary>
+            Справочник типов образовательных программ
+            Источник: УФТТ. Цифровые и текстовые значения строго соответствуют данному справочнику
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.EducProgram.EducProgramTypeEnumItem.FuncTypes">
+            <summary>
+            Соответствие функциональность ОО = типу образовательной программы 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.EducProgram.EducProgramTypeEnumItem.Level">
+            <summary>
+            Уровень
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.ValueObjects.EducProgram.EducProgramTypeAttribute.Gets">
+            <summary>
+             Метод получения значений перечисления как <see cref="T:NetCity.Infrastructure.Common.Enums.EnumItem"/>
+            </summary>
+            <returns>
+             Набор элементов <see cref="T:NetCity.Infrastructure.Common.Enums.EnumItem"/> описывающих значения перечисления
+             </returns>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.HeavySession">
+            <summary>
+            Данные о "тяжелом" процессе
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.ValueObjects.HeavySession.#ctor(System.String,NetCity.Common.Enums.HeavySessionType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.HeavySession.Guid">
+            <summary>
+            Уникальный идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.HeavySession.Type">
+            <summary>
+            Тип процесса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.HeavySession.AccessToken">
+            <summary>
+            Идентификатор сессии инициатора процесса
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.HeavySession.StartTime">
+            <summary>
+            Дата начала процесса
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow">
+            <summary>
+            Объект представляющий одну строку из файла импорта результатов ГИА
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.RowIndex">
+            <summary>
+            индекс строки (как в массиве начиная с 0)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.RowNumber">
+            <summary>
+            Номер строки в документе excel
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.Num">
+            <summary>
+            № - Номер записи
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.Auditory">
+            <summary>
+            Аудитория
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.CodeOU">
+            <summary>
+            Код ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.Class">
+            <summary>
+            Класс
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.DocSerial">
+            <summary>
+            Серия документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.DocNumber">
+            <summary>
+            Номер документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.Mask_Short">
+            <summary>
+            Задания с кратким ответом
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.Mask_Detailed">
+            <summary>
+            Задания с развернутым ответом
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.Mask_C">
+            <summary>
+            Задания типа C (Устная часть в иностр языках)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.PrimaryScore_S">
+            <summary>
+            Первичный балл (исходная строка)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.PrimaryScore">
+            <summary>
+            Первичный балл
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.TotalScore_S">
+            <summary>
+            Итоговый балл (исходная строка)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.TotalScore">
+            <summary>
+            Итоговый балл
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.TotalMark_S">
+            <summary>
+            Итоговая оценка  (исходная строка)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.TotalMark">
+            <summary>
+            Итоговая оценка
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.OralScore_S">
+            <summary>
+            Первичный балл устной части (исходная строка)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.OralScore">
+            <summary>
+            Первичный балл устной части
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.WrittenScore_S">
+            <summary>
+            Первичный балл письм. части(исходная строка)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.WrittenScore">
+            <summary>
+            Первичный балл письм. части
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.TestScore_S">
+            <summary>
+            Тестовый балл(исходная строка)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.TestScore">
+            <summary>
+            исходная строка
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.ValueObjects.Import.EGEResults.EGEResultRow.CheckValid(System.Type)">
+            <summary>
+            получить все ошибки валидации в этой строке
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.ValueObjects.Import.EGEResults.ReadEgeExcelResult.Errors">
+            <summary>
+            Ошибка
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.ValueObjects.Import.EGEResults.ReadEgeExcelResult.EGESubjectId">
+            <summary>
+            Идентификатор предмета для ГИА
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.ValueObjects.Import.EGEResults.ReadEgeExcelResult.EGESubjectName">
+            <summary>
+            Название предмета ГИА
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.ValueObjects.Import.EGEResults.ReadEgeExcelResult.EGEResultRowList">
+            <summary>
+            Список импортируемых строк из Excel файла
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow">
+            <summary>
+            ValueObject для КТП
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.UnitName">
+            <summary>
+            Раздел
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.UnitDescription">
+            <summary>
+            Описание раздела
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.ThemeLesson">
+            <summary>
+            Тема урока
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.Hours">
+            <summary>
+            Количество часов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.ContentLesson">
+            <summary>
+            Содержание урока
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.CodeElementContent">
+            <summary>
+            Коды элементов содержания (КЭС)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.Materials">
+            <summary>
+            Материалы, пособия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.Homeassignment">
+            <summary>
+            Домашнее задание
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.Lessondetails">
+            <summary>
+            Подробности урока
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.SubjectInfoComponent">
+            <summary>
+            Предметно-информационная составляющая (знать, понимать)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.CommunicativeComponent">
+            <summary>
+            Деятельностно-коммуникативная составляющая
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.OrientationComponent">
+            <summary>
+            Ценностно-ориентационная составляющая
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.KTP.KTPExcelFileRow.ImplementationGOS">
+            <summary>
+            Педагогические условия и средства реализации ГОСа
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.Import.Schools.SchoolVO">
+            <summary>
+            ValueObject для школы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.StateName">
+            <summary>
+            Регион
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.ProvinceName">
+            <summary>
+            Наименование мун. района
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.CityName">
+            <summary>
+            Населенный пункт
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.DistrictName">
+            <summary>
+            Район города
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.SchoolNumber">
+            <summary>
+            Номер ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.ShortName">
+            <summary>
+            Краткое наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.FullName">
+            <summary>
+            Полное наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.TypeName">
+            <summary>
+            Тип ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.FormName">
+            <summary>
+            Вид ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.LegalFormName">
+            <summary>
+            Правовая форма ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.EoLegalFormId">
+            <summary>
+            Распознанный идентификатор правовой формы ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.CityId">
+            <summary>
+            Распознанный идентификатор населенного пункта
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.DistrictId">
+            <summary>
+            Распознанный район города
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.EoForm">
+            <summary>
+            Вид ОУ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.Inn">
+            <summary>
+            ИНН
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.EmShortName">
+            <summary>
+            Краткое название органа управления для данной импортируемой организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.EmId">
+            <summary>
+            Распознанный идентификатор органа управления
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.Comment">
+            <summary>
+            Комментарий к записи для импорта
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.CanImport">
+            <summary>
+            Признак возможности выполнения импорта данной записи
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.SchoolVO.AlreadyExists">
+            <summary>
+            Признак наличия уже существующей записи в БД
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.ValueObjects.Import.Schools.ReadSchoolsExcelResult.Errors">
+            <summary>
+            Ошибка
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.ValueObjects.Import.Schools.ReadSchoolsExcelResult.Schools">
+            <summary>
+            Список импортируемых ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.ReadSchoolsExcelResult.AlreadyCreated">
+            <summary>
+            Признак - все ОО уже присутсвуют в БД
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.Schools.ReadSchoolsExcelResult.SchoolList">
+            <summary>
+            Список импортируемых ОО
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.ValueObjects.Import.Schools.ImportSchoolsResult.NotImportedSchools">
+            <summary>
+            Список неимпортированных ОО
+            </summary>
+        </member>
+        <member name="F:NetCity.Common.ValueObjects.Import.Schools.ImportSchoolsResult.ImportedSchools">
+            <summary>
+            Список импортированных ОО
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.Import.TestPlan.TestTaskVO">
+            <summary>
+            ValueObject для школы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.TestTaskVO.TaskDifficult">
+            <summary>
+            Уровень сложности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.TestTaskVO.TaskMistakeType">
+            <summary>
+            Вид ошибок
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.TestTaskVO.MaxMark">
+            <summary>
+            Максимальный балл
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.TestTaskVO.NumbersContentElements">
+            <summary>
+            КЭС
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.TestTaskVO.ContentElements">
+            <summary>
+            КЭС
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.TestTaskVO.Number">
+            <summary>
+            № задания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.TestTaskVO.Additional">
+            <summary>
+            уточнения к заданию 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.ReadTestPlansExcelResult.Warnings">
+            <summary>
+            Список уведомлений
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.ReadTestPlansExcelResult.Confirmations">
+            <summary>
+            Список подтверждений
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.ReadTestPlansExcelResult.SubjectFipi">
+            <summary>
+            Предмет ФИПИ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.ReadTestPlansExcelResult.Year">
+            <summary>
+            Год кодификатора ФИПИ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.ReadTestPlansExcelResult.BHaveContentElements">
+            <summary>
+            Является ли Subject в импортируемом файле Предметом ФИПИ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.ReadTestPlansExcelResult.TestLevel">
+            <summary>
+            Уровень контрольной работы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.ReadTestPlansExcelResult.CertificationType">
+            <summary>
+            Уровень
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Import.TestPlan.ReadTestPlansExcelResult.TestTaskList">
+            <summary>
+            Список импортируемых Планов контрольных работ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Organizations.SchoolLocationInfo.LocationType">
+            <summary>
+            Тип местности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Organizations.SchoolLocationInfo.InProvinceCenter">
+            <summary>
+            Нажодится в райцентре
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Organizations.SchoolLocationInfo.IsProvinceSchoolInCity">
+            <summary>
+            Признак - сельская школа (в городе)
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.CodifiersVO.CurentCodeBook">
+            <summary>
+            Выбранный codeBook
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.CodifiersVO.Codifiers">
+            <summary>
+            Cписки кодификаторов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwSpecialistDto.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwSpecialistDto.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwSpecialistDto.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwSpecialistDto.Position">
+            <summary>
+            Должность
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwSpecialistDto.UserId">
+            <summary>
+            Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwSpecialistDto.DwRole">
+            <summary>
+            Роль специалиста
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwSpecialistDto.DwId">
+            <summary>
+            Идентификатор диагностической работы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwSpecialistDto.SchoolId">
+            <summary>
+            Идентификатор школы
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.QA.DwVariantDto">
+            <summary>
+            Варианты диагностических работ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwVariantDto.DiagnosticWork">
+            <summary>
+            Диагностическая работа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwVariantDto.Id">
+            <summary>
+            Id варианта диагностической работы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwVariantDto.Name">
+            <summary>
+            Наименование варианта диагностической работы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwVariantDto.TestPlanId">
+            <summary>
+            Id плана контрольной работы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwVariantDto.TestTasksAmount">
+            <summary>
+            Количество записей в плане работы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwVariantDto.Schools">
+            <summary>
+            Список школ, которым назначен вариант
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwVariantDto.Founders">
+            <summary>
+            Список муниципалитетов которым назначен вариант
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.DwVariantDto.AppointedType">
+            <summary>
+            Тип назначения
+            -1 -- назначен всем;
+            0 -- назначен школам;
+            1 -- назначен муниципалитетам.
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.ViewTestTask.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.ViewTestTask.Number">
+            <summary>
+            Номер задания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.ViewTestTask.Difficult">
+            <summary>
+            Уровень сложности
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.ViewTestTask.MistakeType">
+            <summary>
+            Тип ошибок
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.ViewTestTask.PossiblePoints">
+            <summary>
+            Количество возможных баллов
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.ViewTestTask.ContentElementsCodes">
+            <summary>
+            Список кодов элементов содержания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.ViewTestTask.ContentElementsNames">
+            <summary>
+            Список пояснений к кодам элементов содержания
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.QA.ViewTestTask.Additional">
+            <summary>
+            уточнения к заданию 
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.RefBooks.UserInfoListItemDTO.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.RefBooks.UserInfoListItemDTO.ParameterId">
+            <summary>
+            Параметр
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.RefBooks.UserInfoListItemDTO.SchoolId">
+            <summary>
+            Школа
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.RefBooks.UserInfoListItemDTO.ItemName">
+            <summary>
+            Наименование параметра
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.RefBooks.UserInfoListItemDTO.ItemName2">
+            <summary>
+            Наименование параметра
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.RefBooks.UserInfoListItemDTO.ItemName3">
+            <summary>
+            Наименование параметра
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.RefBooks.UserInfoListItemDTO.ItemOrderNo">
+            <summary>
+            Предустановленное значение параметра
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.SchoolDetailsDto.OwnEducManagementsIds">
+            <summary>
+            Вышестоящие УО
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.School.EducOrganizationWithCityAndTypeDto">
+            <summary>
+            Информация об образовательной организации с городом расположения и типом образовательной программы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.EducOrganizationWithCityAndTypeDto.FuncType">
+            <summary>
+            Тип образовательной организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.EducOrganizationWithCityAndTypeDto.CityId">
+            <summary>
+            Город расположения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.EducOrganizationWithCityAndTypeDto.ParentCityId">
+            <summary>
+            Городской округ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.EducOrganizationWithCityAndTypeDto.ProvinceId">
+            <summary>
+            Муниципальный район расположения
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.EducOrganizationWithCityAndTypeDto.MunicipalityDistrictId">
+            <summary>
+            гор.округ / мун. район
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.SchoolInfoValues.Address">
+            <summary>
+            Адрес
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.SchoolInfoValues.Okpo">
+            <summary>
+            Код ОКПО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.SchoolInfoValues.Independ">
+            <summary>
+            Код организации – локальный
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.SchoolInfoValues.Okato">
+            <summary>
+            Код ОКАТО
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.SchoolInfoValues.Okogu">
+            <summary>
+            Код ОКОГУ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.SchoolInfoValues.Okfs">
+            <summary>
+            Форма собств-ти по ОКФС
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.SchoolInfoValues.Inn">
+            <summary>
+            ИНН
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.SchoolInfoValues.Kpp">
+            <summary>
+            КПП
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.School.SchoolInfoValues.Ogrn">
+            <summary>
+            ОГРН/ОГРНИП
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.Sms.MultiSmsInfo">
+            <summary>
+            Пакет СМС. Несколько отправителей, и несколько получаетелей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Sms.MultiSmsInfo.UserIds">
+            <summary>
+            Список идентификаторов Отправителей СМС. Разделитель - пробел
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.ValueObjects.Sms.MultiSmsInfo.GetUsersIdsArray">
+            <summary>
+            Получение списка идентификаторов отправителей в виде массива
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Sms.MultiSmsInfo.MobilePhones">
+            <summary>
+            Список телефонов получателей. Разделитель - пробел
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Sms.MultiSmsInfo.Messsage">
+            <summary>
+            Сообщения
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.Sms.UserSms">
+            <summary>
+            Сущность описывающая смс сообщение с информацией об отправителе
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Sms.UserSms.UserId">
+            <summary>
+            Идентификатор отправителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Sms.UserSms.SchoolId">
+            <summary>
+            Идентификатор ОО отправителя
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Sms.UserSms.SmsType">
+            <summary>
+            Тип СМС
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Sms.UserSms.SmsEventType">
+            <summary>
+            Тип события отправки СМС
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Sms.UserSms.RegionId">
+            <summary>
+            Кладркод региона, в котором находится школа
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.StatForms.StatFormCell">
+            <summary>
+            Ячейка формы ФГСН
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormCell.Letter">
+            <summary>
+            название ячейки для именованных ячеек
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormCell.SectionNum">
+            <summary>
+            номер раздела
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormCell.SectionPoint">
+            <summary>
+            Номер подраздела
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormCell.CellRow">
+            <summary>
+            Номер строки
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormCell.CellCol">
+            <summary>
+            Номер столбца
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormCell.DestCellRow">
+            <summary>
+            Строка в файле ексцель
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormCell.DestCellCol">
+            <summary>
+            Графа в файле ексцель
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormCell.CellName">
+            <summary>
+            Название ячейки
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.StatForms.StatFormSection">
+            <summary>
+            раздел
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormSection.Name">
+            <summary>
+            Название
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormSection.Number">
+            <summary>
+            номер раздела
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormSection.SectionPoint">
+            <summary>
+            номер подраздела
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormSection.StatForm">
+            <summary>
+            Форма ФГСН
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.StatForms.StatFormSection.StatFormCells">
+            <summary>
+            Набор ячеек раздела
+            </summary>
+        </member>
+        <member name="T:NetCity.Common.ValueObjects.SystemNotify">
+            <summary>
+            класс описывающий системной уведомление для пользователей
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.SystemNotify.RedirectTo">
+            <summary>
+            url экрана отображающего уведомление
+            </summary>
+        </member>
+        <member name="M:NetCity.Common.ValueObjects.SystemNotify.GetRedirectParams">
+            <summary>
+            набор параметров при переходе на страницу RedirectTo
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.SystemNotify.Action">
+            <summary>
+            доп. действие выполняемое в момент необходимости уведомления
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.SystemNotify.Condition">
+            <summary>
+            словие показа уведомления
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Terms.TermDto.Id">
+            <summary>
+            Ключ
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Terms.TermDto.TermName">
+            <summary>
+            Наименование типа учебного периода
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Terms.TermDto.TermTypeId">
+            <summary>
+            Ссылка на тип учебного периода
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Terms.TermDto.StartDate">
+            <summary>
+            Дата начала учебного периода
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Terms.TermDto.EndDate">
+            <summary>
+            Дата окончания учебного периода
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.Terms.TermDto.SchoolYearId">
+            <summary>
+            Ссылка на школьный год
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.WelcomePageInfo.Url">
+            <summary>
+            Url страницы
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.WelcomePageInfo.IsVisit">
+            <summary>
+            Признак того, что страница просмотрена
+            </summary>
+        </member>
+        <member name="P:NetCity.Common.ValueObjects.WelcomePageInfo.IsDefaultDesktop">
+            <summary>
+            Признак рабочего стола по умолчанию
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,168 @@
+<h3 class="first">Общая информация</h3>
+
+
+<form role="form" name="menuInfoForm" class="form-horizontal form-sm">
+	<div class="form-group">
+		<label for="menu-name" class="control-label col-md-4 col-lg-2 col-sm-4">Название меню</label>
+		<div class="col-md-5 col-lg-2 col-sm-8">
+			<input type="text" id="menu-name" ng-model="data.menu.name" class="form-control" ng-change="lazySave()"/>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="menu-ageRange" class="control-label col-md-4 col-lg-2 col-sm-4">Сезонность</label>
+		<div class="col-md-5 col-lg-2 col-sm-8">
+			<select class="form-control" id="menu-season" ng-options="season.key as season.name for season in refs.seasonTypes" ng-init="data.menu.season" ng-model="data.menu.season" ng-change="save()"></select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="menu-ageRange" class="control-label col-md-4 col-lg-2 col-sm-4">Возрастной диапазон</label>
+		<div class="col-md-5 col-lg-2 col-sm-8">
+			<select class="form-control" id="menu-ageRange" ng-options="ageRange.id as ageRange.name for ageRange in refs.ageRanges" ng-init="data.menu.douGroupAgeId" ng-model="data.menu.douGroupAgeId" ng-change="save()"></select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="menu-stayRegime" class="control-label col-md-4 col-lg-2 col-sm-4">Режим работы групп</label>
+		<div class="col-md-5 col-lg-2 col-sm-8">
+			<select class="form-control" id="menu-stayRegime" ng-options="stayRegime.id as stayRegime.name for stayRegime in refs.stayRegimes" ng-init="data.menu.douGroupRegimeId" ng-model="data.menu.douGroupRegimeId" ng-change="save()"></select>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="menu-ageRange" class="control-label col-md-4 col-lg-2 col-sm-4">Статус</label>
+		<div class="col-md-5 col-lg-2 col-sm-8">
+			<select class="form-control" id="menu-status" ng-options="status.key as status.name for status in refs.statusTypes" ng-init="data.menu.status" ng-model="data.menu.status" ng-change="save()"></select>
+		</div>
+	</div>
+</form>
+
+<hr />
+
+<div>
+	<h3 class="first">Расписание приема пищи</h3>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+
+				<button type="button" title="Добавить прием пищи" class="btn btn-info" ng-click="addEatingTime()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="editEatingTime(data.selection.eatingTimes.selected)" ng-disabled="!data.selection.eatingTimes.selected">
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span>{{language.Generic.Buttons.kEdit}}</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="removeEatingTime(data.selection.eatingTimes.selected)" ng-disabled="!data.selection.eatingTimes.selected">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{language.Generic.Buttons.kRemove}}</span>
+				</button>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-12">
+			
+			<div class="alert alert-info col-md-6" role="alert" ng-if="!data.menu.eatingTimes || !data.menu.eatingTimes.length">
+				Расписание приема пищи не заполнено
+			</div>
+
+			<table name="EatingTimes" class="table table-xs table-bright table-bright-hover table-selectable table-thin" ng-if="data.menu.eatingTimes.length">
+				<tr>
+					<th rowspan="2">Название приёма пищи</th>
+					<th colspan="2">Время приёма пищи</th>
+				</tr>
+				<tr>
+					<th>с</th>
+					<th>по</th>
+				</tr>
+				<tr ng-repeat="eatingTime in data.menu.eatingTimes" ng-class="{'selected': data.selection.eatingTimes.isSelected(eatingTime)}" ng-click="data.selection.eatingTimes.select(eatingTime)">
+					<td name="TypeName">
+						<span class="big">{{ eatingTime.type.name }}</span>
+					</td>
+					<td class="text-center">{{eatingTime.startStr}}</td>
+					<td class="text-center">{{eatingTime.endStr}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<hr />
+
+<div>
+	<h3 class="first">Меню по дням</h3>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+
+				<button type="button" title="Добавить меню на день" class="btn btn-info" ng-click="addDayMenu()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="editDayMenu(data.selection.dayMenus.selected)" ng-disabled="!data.selection.dayMenus.selected">
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span>{{language.Generic.Buttons.kEdit}}</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="removeDayMenu(data.selection.dayMenus.selected)" ng-disabled="!data.selection.dayMenus.selected">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{language.Generic.Buttons.kRemove}}</span>
+				</button>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-12">
+			
+			<div class="alert alert-info col-md-6" role="alert" ng-if="!data.menu.dayMenu || !data.menu.dayMenu.length">
+				Меню по дням не заполнено
+			</div>
+
+			<table class="table table-xs table-bright table-bright-hover table-selectable table-thin" ng-if="data.menu.dayMenu.length">
+				<tr>
+					<th>Номер дня</th>
+					<th>Прием пищи</th>
+					<th>Блюда</th>
+					<th>Выход, г.</th>
+					<th>Белки, г.</th>
+					<th>Жиры, г.</th>
+					<th>Углеводы, г.</th>
+					<th>Калорийность, Ккал.</th>
+					<th>Витамин C, мг.</th>
+				</tr>
+				<tr ng-repeat="dayMenu in data.menu.dayMenu" ng-class="{'selected': data.selection.dayMenus.isSelected(dayMenu)}" ng-click="data.selection.dayMenus.select(dayMenu)">
+					<td>
+						{{ dayMenu.dayNum }}
+					</td>
+
+					<td>{{dayMenu.eatingTime.type.name}}</td>
+					<td>
+						<span ng-repeat="content in dayMenu.contents">
+							{{content.dish.name}}<br/>
+						</span>
+						<span ng-if="!dayMenu.contents.length">-</span>
+					</td>
+					<td>{{totals.weight}}</td>
+					<td>{{totals.proteins}}</td>
+					<td>{{totals.fats}}</td>
+					<td>{{totals.carbohydrate}}</td>
+					<td>{{totals.caloricValue}}</td>
+					<td>{{totals.vitaminC}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

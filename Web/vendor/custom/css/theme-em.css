@@ -1,0 +1,357 @@
+﻿/************************кнопки справа на уровне хлебных крошек************************/
+/************************* Цвета для таблиц *********************/
+/*==============================Частные случаи:====================================*/
+/******************************** Цвета для "классного журнала"*********************/
+/****************Цвета для календаря*********************/
+/****************Цвета скролла*********************/
+/*==========================путь картинки силуета=======================*/
+.em {
+  /***********кнопки************/
+}
+.em .header {
+  background-color: #e47f25;
+}
+.em .header .title_product {
+  color: #ffffff;
+}
+.em .header .navbar {
+  border: 1px solid #cd6909;
+  background: #cd6909;
+  /**************************************************************/
+  /*переключатель "текущего" и "будущего" года*/
+}
+.em .header .navbar .navbar-nav > .open > a {
+  background: #e67f23;
+}
+.em .header .navbar .navbar-nav .dropdown a,
+.em .header .navbar .navbar-nav li a {
+  color: #fff;
+}
+.em .header .navbar .navbar-nav .dropdown a:hover,
+.em .header .navbar .navbar-nav li a:hover,
+.em .header .navbar .navbar-nav .dropdown a:focus,
+.em .header .navbar .navbar-nav li a:focus,
+.em .header .navbar .navbar-nav .dropdown a:active,
+.em .header .navbar .navbar-nav li a:active,
+.em .header .navbar .navbar-nav .dropdown a:visited,
+.em .header .navbar .navbar-nav li a:visited {
+  background: #ffffff;
+}
+.em .header .navbar .navbar-nav .dropdown > a:hover,
+.em .header .navbar .navbar-nav li > a:hover,
+.em .header .navbar .navbar-nav .dropdown > a:focus,
+.em .header .navbar .navbar-nav li > a:focus,
+.em .header .navbar .navbar-nav .dropdown > a:active,
+.em .header .navbar .navbar-nav li > a:active,
+.em .header .navbar .navbar-nav .dropdown > a:visited,
+.em .header .navbar .navbar-nav li > a:visited {
+  background: #e67f23;
+  color: #fff;
+}
+.em .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded] {
+  background-color: #e67f23;
+}
+.em .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:hover,
+.em .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:focus,
+.em .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:active,
+.em .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:visited {
+  background-color: #e67f23;
+}
+.em .header .navbar .navbar-nav .active a {
+  background: #e67f23;
+}
+.em .header .navbar .navbar-nav .dropdown-menu .dropdown-header {
+  background-color: #eb8033;
+  color: #fff;
+}
+.em .header .navbar .navbar-nav .dropdown-menu li {
+  color: #fff;
+}
+.em .header .navbar .navbar-nav .dropdown-menu li a {
+  background: #f5eae0;
+  color: #333;
+}
+.em .header .navbar .navbar-nav .dropdown-menu li + li.divider {
+  background-color: #D0D0D0;
+}
+.em .header .navbar .navbar-nav .dropdown-menu > .active > a {
+  background: #f2d8c4;
+  color: #222;
+}
+.em .header .navbar .navbar-nav .dropdown-menu > .active > a:hover {
+  background: #f2d8c4;
+}
+.em .header .navbar .navbar-nav .dropdown-menu > .active > a,
+.em .header .navbar .navbar-nav .dropdown-menu > .active > a:hover,
+.em .header .navbar .navbar-nav .dropdown-menu > .active > a:focus,
+.em .header .navbar .navbar-nav .bg-primary {
+  background-color: #f2d8c4;
+}
+.em .header .navbar .navbar-nav .open .dropdown-menu li:first-child.dropdown-header,
+.em .header .navbar .navbar-nav .open-menu .dropdown-menu li:first-child.dropdown-header,
+.em .header .navbar .navbar-nav .dropdown .dropdown-menu li:first-child.dropdown-header {
+  border-top: 1px solid #74A1C6;
+}
+.em .header .navbar .switch-year .switch-year-btn {
+  background: #e79446;
+}
+.em .header .navbar .switch-year .switch-year-btn .lever-switch span {
+  background: #fbdec1;
+}
+.em .header .navbar .switch-year .switch-year-btn.go_left {
+  background: #B20186;
+}
+.em .header .navbar .switch-year .switch-year-btn.go_left .lever-switch span {
+  background: #ff99e6;
+}
+.em .block-personal-cabinet .number-employees-in-system {
+  color: #ffffff;
+}
+.em .block-personal-cabinet .number-employees-in-system p a span + span {
+  color: #cd6909;
+}
+.em .block-personal-cabinet ul li.separator button {
+  background: #e79446;
+}
+.em .block-personal-cabinet ul li.separator button > div#flip_container {
+  color: #ffffff;
+}
+.em .block-personal-cabinet ul li.separator button > div#flip_container div.lever-switch span {
+  background: #fbdec1;
+}
+.em .block-personal-cabinet ul li.separator button[class*="go_left"] #flip_container .lever-switch span {
+  background: #e0669c;
+}
+.em span.content-page-preloader:before {
+  color: #e47f25;
+}
+.em a {
+  color: #cd6909;
+  outline: 0 none;
+}
+.em .year-calendar > li > a {
+  background: #fe8306;
+  color: #fff;
+}
+.em .year-calendar > li > a:hover {
+  background: #ff7924;
+}
+.em .year-calendar > li > div.weekday div {
+  background: #ffe5c7;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+  border-bottom: 0px solid #fff;
+}
+.em .year-calendar > li > div.weekday div:first-child {
+  border-left: 1px solid #bdbdbd;
+}
+.em .year-calendar > li > div > div > div:hover {
+  background: #ffb78a;
+}
+.em .year-calendar > li a:hover,
+.em .year-calendar > li span:hover,
+.em .year-calendar > li a:focus,
+.em .year-calendar > li span:focus {
+  background: #ffb78a;
+}
+.em .block-content a.active {
+  color: #ffffff;
+}
+.em .block-content h1 {
+  color: #b25706;
+  background: #faebdb;
+}
+.em .block-content .top-right-menu a {
+  color: #e47f25;
+}
+.em .block-content .top-right-menu a:hover {
+  color: #e79f5a;
+}
+.em input:hover,
+.em textarea:hover,
+.em input:active,
+.em textarea:active,
+.em input:focus,
+.em textarea:focus,
+.em input.form-control:hover,
+.em textarea.form-control:hover,
+.em input.form-control:active,
+.em textarea.form-control:active,
+.em input.form-control:focus,
+.em textarea.form-control:focus {
+  color: #be6618;
+  border: 1px solid #e47f25;
+  /*стили для обсуждения*/
+  -webkit-box-shadow: inset 0 0 7px 0 #feae7b;
+  -moz-box-shadow: inset 0 0 7px 0 #feae7b;
+  box-shadow: inset 0 0 7px 0 #feae7b;
+}
+.em input.form-control[disabled],
+.em textarea.form-control[disabled],
+.em input[disabled]:hover,
+.em textarea[disabled]:hover,
+.em input[disabled]:focus,
+.em textarea[disabled]:focus,
+.em input[disabled]:active,
+.em textarea[disabled]:active,
+.em input.form-control[disabled]:hover,
+.em textarea.form-control[disabled]:hover,
+.em input.form-control[disabled]:focus,
+.em textarea.form-control[disabled]:focus,
+.em input.form-control[disabled]:active,
+.em textarea.form-control[disabled]:active {
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  color: #666;
+  border-radius: 3px;
+}
+.em input[disabled]:hover,
+.em textarea[disabled]:hover,
+.em input[disabled]:focus,
+.em textarea[disabled]:focus,
+.em input[disabled]:active,
+.em textarea[disabled]:active,
+.em input.form-control[disabled]:hover,
+.em textarea.form-control[disabled]:hover,
+.em input.form-control[disabled]:focus,
+.em textarea.form-control[disabled]:focus,
+.em input.form-control[disabled]:active,
+.em textarea.form-control[disabled]:active,
+.em input[disabled],
+.em textarea[disabled],
+.em input.form-control[disabled],
+.em textarea.form-control[disabled],
+.em input.form-control[disabled],
+.em textarea.form-control[disabled] {
+  border: 1px solid #eee;
+}
+.em select[multiple],
+.em select[size] {
+  background-color: #fff;
+}
+.em .panel-collapse select[size] {
+  background-image: none;
+  padding-right: 8px;
+}
+.em .alert-info {
+  background-color: #fef7f1;
+  border-color: #fce4cf;
+  color: #c06c21;
+}
+.em .bg-info {
+  background-color: #fef7f1;
+}
+.em .buttons-panel-right button.btn:hover,
+.em .form-edit .buttons-panel .buttons-panel-right button.btn:hover,
+.em .buttons-panel-right button.btn:hover span,
+.em .form-edit .buttons-panel .buttons-panel-right button.btn:hover span {
+  color: #c9660d;
+}
+.em .head {
+  background-color: #faebdb;
+}
+.em .editjournal .head {
+  background-color: #e19a50;
+}
+.em .editjournal .new-assignment-container {
+  /*.assignments-header {
+
+		}*/
+}
+.em .editjournal .new-assignment-container .new-challenge-text {
+  background-color: #e46625;
+}
+.em .editjournal .assignment-title .assignment-name,
+.em .editjournal .assignment-title .assignment-activity span {
+  color: #faebdb;
+}
+.em .table th {
+  background-color: #faebdb;
+  /* закоментированые стили - нужно добавить их впоследствии, 
+			в случае если шапка таблицы будет тёмной.*/
+  /*color: #fff;
+		border-top: 1px solid #fff;
+		border-right: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+		&:first-child {
+			border-left: 1px solid #fff;
+		}*/
+}
+.em .journal-total th,
+.em .journal-student th,
+.em .journal-marks th {
+  background-color: #faebdb;
+}
+.em .table-bright-striped th {
+  /*стили для обсуждения*/
+  background-color: #e5953e;
+  border: 1px solid #fff;
+  color: #fff;
+  vertical-align: middle;
+}
+.em .table-bright-striped th a {
+  color: #fff;
+  text-decoration: underline;
+}
+.em .table-bright-striped td {
+  border: 1px solid #fff;
+}
+.em .table-bright-striped tr:nth-child(even) td {
+  background-color: #fde8d3;
+}
+.em .table-bright-striped tr:nth-child(odd) td {
+  background-color: #fff2e6;
+}
+.em .table-bright-hover tr:hover td {
+  background-color: #ffffff;
+}
+.em span.form-control {
+  background-color: #fbecdf;
+  /**убираем тени**/
+  -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+}
+.em .btn-primary {
+  color: #fff;
+  background-color: #e67f23;
+  border-color: #cd6909;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+}
+.em .btn-primary:hover {
+  background-color: #e79f5a;
+}
+.em .btn-menu {
+  background-color: #cd6909;
+  border: 1px solid #cd6909;
+}
+.em .bootstrap-dialog .bootstrap-dialog-title {
+  font-size: 1.3em;
+  color: #fff;
+}
+.em .bootstrap-dialog.type-primary .modal-header {
+  background-color: #e47f25;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-top-left-radius: 4px;
+  -ms-border-top-left-radius: 4px;
+  -o-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-top-right-radius: 4px;
+  -ms-border-top-right-radius: 4px;
+  -o-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.em .bootstrap-dialog.type-primary .modal-body .progress-bar {
+  background-color: #e47f25;
+}
+.em .mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.em .mCS-3d.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.em .mCS-3d.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background: #e47f25;
+  /*решено убрать @scroll-bg*/
+}
+/*# sourceMappingURL=theme-em.css.map */

@@ -1,0 +1,68 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+
+			<button type="button" class="btn btn-info" ng-click="add()">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span>{{language.Generic.Buttons.kAdd}}</span>
+			</button>
+
+			<button type="button" class="btn btn-info" ng-click="edit(data.selection.selected)" ng-disabled="!data.selection.selected">
+				<span class="glyphicon glyphicon-pencil"></span>
+				<span>{{language.Generic.Buttons.kEdit}}</span>
+			</button>
+
+			<button type="button" class="btn btn-danger" ng-click="remove(data.selection.selected)" ng-disabled="!data.selection.selected">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{language.Generic.Buttons.kRemove}}</span>
+			</button>
+			
+			<button title="{{language.Generic.Buttons.kExport}}" type="button" class="btn btn-default menu-export-btn" ng-disabled="!data.menus.length">
+				<span class="glyphicon glyphicon-export"></span>
+				<span>{{language.Generic.Buttons.kExport}}</span>
+			</button>
+
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="state.dataReady && state.emptyData">
+		<div class="alert alert-info" role="alert">Список меню пуст</div>
+	</div>
+</div>
+
+<div class="row" ng-show="state.dataReady && !state.emptyData">
+	<div class="col-md-12">
+		<table class="table table-xs table-bright table-bright-hover table-selectable table-thin">
+			<tr>
+				<th>№ п/п</th>
+				<th>Наименование</th>
+				<th>Сезонность</th>
+				<th>Возрастной диапазон</th>
+				<th>Режим работы групп</th>
+				<th>Статус</th>
+			</tr>
+			<tr ng-repeat="menu in data.menus" ng-class="{'selected': data.selection.isSelected(menu)}" ng-click="data.selection.select(menu)">
+				<td class="text-center">
+					{{$index + 1}}
+				</td>
+				<td>
+					<span class="big">{{ menu.name }}</span>
+				</td>
+				<td>
+					{{menu.season}}
+				</td>
+				<td>
+					{{menu.douGroupAge.name}}
+				</td>
+				<td>
+					{{menu.douGroupRegime.name}}
+				</td>
+				<td>
+					{{menu.status}}
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

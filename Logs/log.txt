@@ -1,0 +1,8 @@
+------------
+SCHOOLDOCS:
+
+
+Processed rows: 87
+Path not found: C:\Program Files\NetCity2\DB\SubjectPlans\
+Path not found: C:\Program Files\NetCity2\DB\Portfolio\
+Path not found: C:\Program Files\NetCity2\DB\Photo\

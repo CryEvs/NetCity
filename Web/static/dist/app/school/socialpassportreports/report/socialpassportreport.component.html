@@ -1,0 +1,66 @@
+
+<div class="row">
+	<div class="col-md-8">
+		<form name="Reports">
+			<div class="buttons-filters-panel form-horizontal">
+				<filter-panel class="filters-panel" ng-if="ctrl.filterPanelSettings" fp="ctrl.filterPanel" fp-settings="ctrl.filterPanelSettings"></filter-panel>
+			</div>
+		</form>
+
+	</div>
+</div>
+<hr>
+<div class="row ns-cloak">
+	<div class="col-md-12">
+
+		<div class="buttons-panel" id="buttonPanel">
+
+			<div class="buttons-panel-left" ng-if="!ctrl.emptyChoice">
+				<div class="display-inline" ng-if="ctrl.canBeGenerated">
+					<button title="{{ctrl.language.Generic.Buttons.kGenerate}}" type="button" class="btn" ng-click="ctrl.generate()">
+						<span class="glyphicon glyphicon-random"></span>
+						<span>{{ctrl.language.Generic.Buttons.kGenerate}}</span>
+					</button>
+					<button title="{{ctrl.language.Generic.Buttons.kGenerate}} PDF" type="button" class="btn" ng-click="ctrl.generatePdf()">
+						<span class="glyphicon glyphicon-random"></span>
+						<span>{{ctrl.language.Generic.Buttons.kGenerate}} PDF</span>
+					</button>
+				</div>
+				<button title="{{ctrl.language.Generic.Buttons.kGenerate}} Excel" type="button" class="btn" ng-click="ctrl.generateExcel()">
+					<span class="glyphicon glyphicon-random"></span>
+					<span>{{ctrl.language.Generic.Buttons.kGenerate}} Excel</span>
+				</button>
+				<button title="{{ctrl.language.Reports.kSendReportSelectedStudentsAndParents}}" type="button" class="btn" ng-click="ctrl.emailDelivery()" ng-if="ctrl.options.emailDelivery">
+					<span class="glyphicon glyphicon-random"></span>
+					<span>{{ctrl.language.Reports.kSendReportSelectedStudentsAndParents}}</span>
+				</button>
+			</div>
+
+			<div class="buttons-panel-right" id="actionPanel" style="display: block;" ng-if="ctrl.state.generated">
+				<button title="{{ctrl.language.Generic.Buttons.kPrint}}" type="button" class="btn btn-default" ng-click="ctrl.print()">
+					<span class="glyphicon glyphicon-print"></span>
+					<span>{{ctrl.language.Generic.Buttons.kPrint}}</span>
+				</button>
+				<button title="{{ctrl.language.Generic.Buttons.kInSeparateWindow}}" type="button" class="btn btn-default" ng-click="ctrl.popup()">
+					<span class="glyphicon glyphicon-fullscreen"></span>
+					<span>{{ctrl.language.Generic.Buttons.kInSeparateWindow}}</span>
+				</button>
+
+				<div class="display-inline">
+					<button title="{{ctrl.language.Generic.Buttons.kSend}}" type="button" class="btn btn-default" ng-if="ctrl.canSend()" ng-click="ctrl.send()">
+						<span class="glyphicon glyphicon-envelope"></span>
+						<span>{{ctrl.language.Generic.Buttons.kSend}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div id="report" ng-if="ctrl.reportHtml" ng-bind-html="ctrl.reportHtml">
+
+		</div>
+	</div>
+</div>
+

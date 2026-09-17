@@ -1,0 +1,51 @@
+<form name="Gradebook" ACTION="SaveTotal.asp" METHOD="post" onsubmit="return false;">
+	<div class="row">
+		<div class="journal-total-wrapper-block">
+			<table class="table table-bordered table-xs table-middle-cells table-hover table-thin-sm">
+				<tr>
+					<th>{{language.Common.kStudents}}</th>
+					{{#each addMarks}}
+						<th class="text-nowrap">
+							{{title}}
+						</th>
+					{{/each}}
+					<th>{{language.Generic.Common.kMark}}</th>
+				</tr>
+				{{#each students}}
+				<tr class="journal-row{{#if individualEduc}} individual-educ{{/if}}">
+					<td class="student-name text-nowrap"><span>{{match @index}}. {{fullName}} {{#if free}}{{../../language.Generic.LearnApp.kDeleted}}{{/if}}</span>
+						<input name="SID" type="hidden" value="{{studentId}}">
+					</td>
+					{{#each ../addMarks}}
+						<td class="text-center">{{elementByIndex marks ../studentId "mark"}}</td>
+					{{/each}}
+					<td class="text-center">
+						<select name="MarkType" class="form-control form-control-inline" onchange="dataChanged();">
+							{{#ifEqual ../gradingSys 1}}
+								<option value="0">&nbsp;</option>
+							{{else}}
+								<option value="1">{{../../language.Generic.Common.kMark_}}:</option>
+							{{/ifEqual}}
+							{{#each ../markTypes}}
+								{{#ifEqual @index 0}}
+								{{else}}
+									<option {{#ifEqual ../../totalMark markTypeName}} selected{{/ifEqual}} value="{{markTypeId}}">{{markTypeName}}</option>
+								{{/ifEqual}}
+							{{/each}}
+						</select>
+						<input type="text" class="text-center form-control-inline" autocomplete="off" onKeyDown="return !this.disabled" onchange="dataChanged();"
+							{{#each ../markTypes}}
+								{{#ifEqual ../totalMark markTypeName}} disabled style="background-color: lightgray;"{{/ifEqual}}
+							{{/each}}
+							{{#if totalMark}}
+							{{else}}
+								markType ="true"
+							{{/if}}
+							name="Mark" value="{{totalMark}}" size="3" length="5">
+					</td>
+				</tr>
+				{{/each}}
+			</table>
+		</div>
+	</div>
+</form>

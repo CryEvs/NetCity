@@ -1,0 +1,11 @@
+﻿.hover {
+  color: #2e95d7;
+  -webkit-box-shadow: inset 0px 0px 6px 1px rgba(5, 157, 255, 0.2);
+  -moz-box-shadow: inset 0px 0px 6px 1px rgba(5, 157, 255, 0.2);
+  -ms-box-shadow: inset 0px 0px 6px 1px rgba(5, 157, 255, 0.2);
+  -o-box-shadow: inset 0px 0px 6px 1px rgba(5, 157, 255, 0.2);
+  box-shadow: inset 0px 0px 6px 1px rgba(5, 157, 255, 0.2);
+  border: 1px solid #2e95d7;
+  outline: none;
+}
+/*# sourceMappingURL=var.css.map */

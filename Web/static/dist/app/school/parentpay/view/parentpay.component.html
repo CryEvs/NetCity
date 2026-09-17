@@ -1,0 +1,60 @@
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+		<div class="buttons-panel">
+			<div class="buttons-panel-right">
+				<button title="{{$ctrl.language.Generic.Common.kBtnPrint}}" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+					<span class="glyphicon glyphicon-print"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kPrint}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default" ng-click="$ctrl.export()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>{{$ctrl.language.Generic.Common.kBtnExcel}}</span>
+				</button>
+			</div>
+		</div>
+		<filter-panel class="filters-panel filters-panel-compact" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings">
+		</filter-panel>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+
+		<div class="alert alert-info print-block" ng-if="$ctrl.emptyStudents" role="alert">{{$ctrl.language.Filter.kNoStudents}}</div>
+
+		<form name="$ctrl.parentPayForm" class="form-sm" ng-if="!$ctrl.emptyStudents">
+			<table class="table table-bordered table-xs table-striped table-hover print-block parent-pay">
+				<tr>
+					<th rowspan="2">{{$ctrl.language.Common.kStudents}}</th>
+					<th rowspan="2">{{$ctrl.language.Generic.Grade.kOverpayDebt}}</th>
+					<th colspan="3" ng-repeat="payMonth in $ctrl.payMonths">
+						<a href="javascript:void(0)" ng-click="$ctrl.editMonth(payMonth)" title="{{$ctrl.language.Generic.Grade.kParentsPayFilling}}">{{payMonth.title}}</a>
+					</th>
+					<th rowspan="2">{{$ctrl.language.Generic.Grade.kOverpayDebt}}</th>
+				</tr>
+
+				<tr>
+					<th nowrap ng-repeat-start="payMonth in $ctrl.payMonths">{{$ctrl.language.Generic.Grade.kAttendanceS}}</th>
+					<th nowrap>{{$ctrl.language.Generic.Grade.kForContentS}}</th>
+					<th nowrap ng-repeat-end>{{$ctrl.language.Generic.Grade.kToCompensS}}</th>
+				</tr>
+
+				<tr ng-repeat="studentPays in $ctrl.studentsPays">
+					<td align="left">
+						<nobr>{{$index + 1}}. {{studentPays.student.name}}</nobr>
+					</td>
+
+					<td ng-style="{'color': $ctrl.isNegative(studentPays.initDebt) ? 'red' : ''}">{{studentPays.initDebt | float2str}}</td>
+
+					<td ng-repeat-start="monthPay in studentPays.monthPays">{{monthPay.attendanceCount}}</td>
+					<td>{{monthPay.content | float2str}}</td>
+					<td ng-repeat-end>{{monthPay.compensation | float2str}}</td>
+
+					<td ng-style="{'color': $ctrl.isNegative(studentPays.lastDebt) ? 'red' : ''}">{{studentPays.lastDebt | float2str}}</td>
+				</tr>
+
+			</table>
+		</form>
+
+	</div>
+</div>

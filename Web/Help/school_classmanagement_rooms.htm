@@ -1,0 +1,86 @@
+<html>
+<head>
+   <title>Список кабинетов и других помещений школы</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Кабинеты, список,Помещения,Максимальная наполняемость">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?school_classmanagement_rooms.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Список кабинетов и других помещений школы
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Списоккабинетов"></a>Список кабинетов</b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Список кабинетов используется при составлении расписания вручную на экране <b><a href=school_schedule_edit.htm#Созданиерасписания>Составить расписание</a></b>, а также при использовании программ <b>Хронограф, Ректор, </b><b>AVTOR,</b> помогающих составить расписание автоматически. Для ведения списка кабинетов у пользователя должно быть право доступа <b>Составлять расписание и определять список кабинетов школы</b>. По умолчанию, это право доступа есть только у пользователей с ролью <i>завуча</i>.
+<br>
+
+<br>
+Кроме кабинетов, в список должны быть включены спортзалы, бассейны, мастерские и прочие помещения школы.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Признак "Учебное помещение"
+<br>
+</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Если отмечен признак "Учебное помещение", то данный кабинет разрешён к использованию при составлении расписания.
+<br>
+Возможна ситуация, когда невозможно снять данный признак: это значит, что кабинет уже используется в расписании в текущем учебном году.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Поле "Максимальная наполняемость"
+<br>
+</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Данное поле означает максимальную наполняемость (вместимость) кабинета по СанПиН.  Значение, введённое здесь, также выводится на экране <b>Обучение </b><b>-&gt; </b><b>Классы</b>.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Объединениекабинетов"></a>Объединение кабинетов</b></span><span style="font-family:Helvetica,Arial; font-size:14pt; color:#000000"><b>
+<br>
+</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Иногда возникает ситуация, когда один и тот же кабинет введен сразу под несколькими названиями. Например, актовый зал назван <b>а/з</b>, <b>а\з</b> и<b> акт.зал</b>. Чтобы исправить опечатки и объединить кабинеты с разными названиями, надо во всех строках, обозначающих данный кабинет, ввести одинаковое название, и нажать кнопку <b>Сохранить</b>. На экране появится предупреждение:
+<br>
+
+<br>
+<b>Названия кабинетов совпадают. Вы хотите перенести уроки в один кабинет?</b>
+<br>
+
+<br>
+После нажатия кнопки <b>О</b><b>k</b>, данные кабинеты объединятся в один. Остальные свойства (вместимость, этаж) берутся у того кабинета, который был введен последним в список.</span><span style="font-family:Helvetica,Arial; font-size:14pt; color:#000000"><b>
+<br>
+</b></span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('5.7',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('5.8',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

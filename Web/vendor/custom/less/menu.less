@@ -1,0 +1,448 @@
+@import (reference) "var.less";
+@import (reference) "mixins.less";
+@import (reference) "responsive.less";
+
+/*===================================================================*/
+/*============== Базовые стили для адаптивного меню  ================*/
+/*===================================================================*/
+
+.navbar {
+	.border-radius (@radius: @border-radius-base - 4px); // radius = null
+	min-height: 36px;
+	margin-bottom: 0px;
+	position: relative;
+	
+}
+.navbar-nav {
+	& > li {
+		& > a {
+			padding: @padding-base-vertical + 1px @padding-base-horizontal - 2px;
+			letter-spacing: -0.04em !important;
+		}
+		&:hover {
+			& > a {
+				background-color: darken(@gray-lighter, 3%); // #e7e7e7
+			}
+			&:hover {
+				background-color: darken(@gray-lighter, 3%); // #e7e7e7
+			}
+		}
+	}
+}
+.dropdown {
+	&:last-child {
+		& > .dropdown-menu {
+			position: absolute;
+			top: 100%;
+			left: auto;
+			right: 0;
+		}
+	}
+}
+.dropdown-menu {
+	.divider {
+		.margin;
+	}
+	.dropdown-header {
+		padding: @padding-small-vertical @padding-small-horizontal;
+		padding-bottom: @padding-small-vertical - 2px;
+		color: lighten(@gray-light, 10%);
+	}
+	li {
+		position: relative;
+		&:last-child {
+			& > a {
+				.border-bottom-right-radius (@radius: @border-radius-base);
+				.border-bottom-left-radius (@radius: @border-radius-base);
+				padding-bottom: @padding-large-vertical; // 10px
+
+			}
+		}
+		a {
+			padding: @padding-base-vertical @padding-large-horizontal; // 6px 16px
+			padding-right: @padding-large-horizontal + 10px;
+		}
+	}
+}
+.dropdown-submenu {
+	& > a:after {
+		display:block;
+		content:" ";
+		float:right;
+		width:0;
+		height:0;
+		border-color:transparent;
+		border-style:solid;
+		border-width:5px 0 5px 5px;
+		border-left-color: @dropdown-fallback-border;
+		.margin (@top: 6px, @right: -16px);
+		
+	}
+	&.active  > a:after{
+		border-left-color: #fff;
+	}
+	& > .dropdown-menu {
+		top:0;
+		left:100%;
+		.margin (@top: -6px, @left: -1px);
+		.border-radius (@radius: @border-radius-base);
+		li {
+			a {
+				padding: @padding-base-vertical @padding-large-horizontal; // 6px 16px
+			}
+			&:last-child {
+				& > a {
+					.border-bottom-right-radius;
+					.border-bottom-left-radius;
+					padding-bottom: @padding-large-vertical; // 10px
+
+				}
+			}
+			&:first-child {
+				& > a {
+					.border-top-right-radius;
+					.border-top-left-radius;
+				}
+			}
+		}
+	}
+	&:hover > .dropdown-menu {
+		display: block;
+	}
+}
+// Фиксируем ширину для горизонтального меню
+@media (max-width:@screen-sm-max) { // 991px @screen-sm-max:(@screen-md-min - 1);
+	.navbar-nav {
+		width: @screen-sm-max !important; // 991px @screen-sm-max:(@screen-md-min - 1);
+		position: absolute;
+		left: 26px;
+	}
+	.slide-menu-left {
+		left: 0px;
+	}
+	.slide-menu-right {
+		width: 26px;
+	}
+}
+@media screen and (min-width: 1px) { // Пусть наше меню будет всегда горизонтальным
+	.navbar-nav > li {
+		float: left;
+	}
+}
+@media (max-width: 767px) { // Пусть наше меню будет всегда горизонтальным и корректным даже для экранов меньше 767 ))
+	& .navbar-default {
+		& .navbar-nav {
+			& .open {
+				& .dropdown-menu {
+					background-color: @btn-default-bg;
+					border: 1px solid rgba(0,0,0,.15);
+					position: absolute;
+					float: left;
+					.box-shadow(@x: 0, @y: 6px, @blur: 12px, @ext: 0, @color: rgba(0, 0, 0, 0.175));
+					z-index: @zindex-dropdown;
+					& > li {
+						position: relative;
+						& > a {
+							padding: @padding-base-vertical @padding-large-horizontal; // 6px 16px
+							padding-right: @padding-large-horizontal + 10px;
+							color: @btn-default-color;
+							&:hover, &:focus {
+								background-color: @dropdown-link-hover-bg;
+								color: @btn-default-color;
+							}
+						}
+						&:last-child {
+							& > a {
+								.border-bottom-right-radius;
+								.border-bottom-left-radius;
+								padding-bottom: @padding-large-vertical; // 10px
+
+							}
+						}
+
+					}
+					& > .dropdown-submenu {
+						& > .dropdown-menu {
+							.margin (@top: -6px, @left: -1px);
+						}
+					}
+				}
+			}
+		}
+	}
+} // /. закрытие - правки для всегда горизонтального и корректного меню экранов меньше 767
+
+
+
+
+
+/*===================================================================*/
+/*======== Кнопка "свернуть/развернуть" для адаптивного меню  =======*/
+/*===================================================================*/
+.btn-menu {
+	min-height: 35px;
+	position: relative;
+	.btn-menu-body {	
+		padding: 7px 17px 5px 17px;
+		background: #125084;
+		cursor: pointer;
+		position: absolute;
+		span {
+			font-size: 21px;
+		}
+	}
+	.btn-menu-text {
+		font-size: 16px;
+		padding: 5px 0 0 60px;
+	}
+}
+
+/*====================================================================*/
+/*====== Стили для адаптивного меню при небольших разрешениях  =======*/
+/*====================================================================*/
+@media only screen and (min-width:@sm-screen-width) and (max-width:800px){
+	.header {
+		.navbar {
+			.switch-year  {
+				.go_left {
+					width: 50px;
+					#future {
+						visibility: hidden;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width:664px) {
+
+	.header {
+		// включаем кнопку адаптивного меню
+		.btn-menu {
+			display: block;
+		}
+
+		.block-logo {
+			.title_product { padding-top: 10px; }
+			.school {
+				margin-top: 3px; 
+				font-size: 17px;
+			}
+		}
+
+		.navbar-default  {
+			.navbar-nav {
+				position: static;
+
+				& > li {
+					float: none;
+					a {
+						border-top: 1px solid rgba(255,255,255,0.4);
+						text-align: left;
+						padding-left: 17px;
+					}
+
+					&:hover {
+						&:hover {
+						}
+					}
+					&:last-child {
+						a {
+							border-bottom: 0 solid rgba(255,255,255,0.4);
+						}
+					}
+				}
+				.dropdown-menu {
+					.dropdown-header {
+						font-size: 13px !important;
+					}
+				}
+
+
+				.open, .open-menu, .dropdown  {
+					.dropdown-menu {
+						float: none;
+						position: static;
+						border: 0 solid rgba(0,0,0,.1);
+						border-radius: 0;
+						.divider {
+							height: 0;
+						}
+						li+li.divider {
+							background-color: #BEBEBE !important;
+							height: 1px;
+						}
+						.dropdown-header {
+							border: 0 solid #E4E4E4;
+						}
+
+						& > .active > a {
+							border: 0 solid #fff;
+						}
+						& > .active + li {
+							& > a {
+								border: 0 solid #fff;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+			border-color: rgba(255, 255, 255, 0.4);
+		}
+
+		.navbar-nav>li>.dropdown-menu {
+			width: 100%;
+			border: 0px solid;
+			position: relative;
+		}
+
+		.navbar  {
+			border: 0 solid rgba(0,0,0,.1);
+			//position: absolute;	(пометка- на случай если нужно будет 
+									// чтоб контент не двигался: 19.06.2015)
+			position: relative;
+			z-index: 11;
+			width: 100%;
+			min-height: 0;
+			.switch-year {
+				float: none; 
+				position: absolute;
+				top: -34px;
+				right: 0;
+			}
+
+			.navbar-nav .open .dropdown-menu>li>a,
+			.navbar-nav .open-menu .dropdown-menu>li>a,
+			.navbar-nav .dropdown .dropdown-menu>li>a {
+				padding-left: 35px;
+				border-color:  rgba(250, 250, 250, 1);
+			}
+			
+			.navbar-nav .open .dropdown-menu .dropdown-header {
+				padding: @padding-small-vertical @padding-small-horizontal;
+				padding-bottom: @padding-small-vertical - 2px;
+			}
+
+
+			.navbar-inner  {
+				display:none;
+			}
+		}
+	}
+
+	/*===================================================================*/
+	/*отключение избыточной информации в "шапке" при маленьком разрешении*/
+	.number-employees-in-system {
+		display: none;
+	}
+
+	.separator_small, .no_separator {
+		a {
+			span + span {
+				display: none;
+			}
+		}
+	}
+	.switch-year-text {
+		p {
+			span {
+				display: none;
+				&.year {
+					display: block;
+				}
+			}
+		}
+	}
+
+	/*===============================================*/
+	/*заголовок*/
+	.block-content {
+		h1 {
+			letter-spacing: -0.06em;
+			font-size: 18px;
+			padding-top: 11px;
+		}
+	}
+
+}
+
+/*скрываем год*/
+@media only screen and (max-width:@xs-screen-width){
+	.switch-year-text {
+		display: none !important;
+	}
+}
+/*под очень маленькое разрешение*/
+@media only screen and (max-width:370px){
+	.title_product {
+		letter-spacing: -0.06em;
+	}
+	.header .block-personal-cabinet ul li.separator_small { 
+		
+		margin-right: 15px;
+		span.glyphicon {
+			margin-right: 0;
+		}
+		&:after {
+			right: -10px;
+		}
+	}
+	.header {
+		.navbar { 
+			.switch-year  { 
+				.switch-year-btn {
+					width: 50px;
+					#future {
+						visibility: hidden;
+					}
+					#current {
+						margin-left: -214px;
+						visibility: hidden;
+					}
+				}
+				.go_left {
+					width: 50px;
+					#current {
+						visibility: hidden;
+						margin-left: -1px;
+					}
+				}
+			}
+		}
+	}
+
+}
+/*необходимо перекрвать "работу" скрипта*/
+@media only screen and (min-width:@sm-screen-width){
+	.navbar-inner {
+		display: block !important;
+	}
+
+}
+
+
+
+
+
+/*===================================================================*/
+/*===============  удаление стрелок прокрутки меню  =================*/
+/*===================================================================*/
+body {
+	.slide-menu-right, .slide-menu-left {
+		height: 0;
+		width: 0;
+	}
+}
+/*===================================================================*/
+/*= удаление ошибки растягивание активной вкладки адаптивного меню ==*/
+/*===================================================================*/
+@media (max-width:@screen-sm-max) { // 991px @screen-sm-max:(@screen-md-min - 1);
+	.navbar-nav {
+		width: auto !important; // 991px @screen-sm-max:(@screen-md-min - 1);
+		left: 0;
+	}
+}

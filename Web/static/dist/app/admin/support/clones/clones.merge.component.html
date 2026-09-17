@@ -1,0 +1,272 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+	<form class="form-horizontal form-sm" ng-if="$ctrl.ready" name="$ctrl.form">
+		<ns-form>
+
+			<ns-panel panel-id="common-info" class="info" title="Основная информация" expanded="true">
+				<ns-form-group title="Основная запись">
+					<select class="form-control" name="mainPerson" ng-model="$ctrl.mainPerson" ng-options="clone as clone.userId + ' ' + clone.fio for clone in $ctrl.clones"></select>
+				</ns-form-group>
+			</ns-panel>
+
+			<ns-panel panel-id="add-info" class="warning" title="Поля личной карточки" expanded="false"  ng-if="$ctrl.userParameters.length">
+				<ns-form-group title="{{data.parameterName}}" ng-repeat="data in $ctrl.userParameters" ng-class="{'has-error': $ctrl.form['userparameter-'+data.parameterId].$invalid && (!$ctrl.form['userparameter-'+data.parameterId].$pristine || $ctrl.form.$displayErrors)}">
+					<div class="radio" ng-repeat="option in data.options">
+						<label>
+							<input type="radio" required name="userparameter-{{data.parameterId}}" ng-value="option.userId" ng-model="data.resolved"> 
+							<!-- <input type="checkbox" required name="userparameter-{{data.parameterId}}" ng-value="option.value.itemId" ng-checked="data.resolved.indexOf(option.value.itemId) > -1" ng-model="data.resolved" ng-if="data.parameterType == 'MultiChoice' || data.parameterType == 'Relation'">  -->
+							{{option.value.text}} {{option.value.date | nsDate}} ({{option.userId}})
+						</label>
+					</div>
+					<p ng-show="$ctrl.form['userparameter-'+data.parameterId].$invalid && (!$ctrl.form['userparameter-'+data.parameterId].$pristine || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+				</ns-form-group>
+			</ns-panel>
+
+			<ns-panel panel-id="auth-data" class="danger" title="Логин/пароль" expanded="false">
+				<table class="table table-xs table-bright">
+					<tr>
+						<th>Пользователь</th>
+						<th>Логин</th>
+						<th>Дата последнего входа в систему</th>
+						<th>Опции</th>
+					</tr>
+					<tr ng-repeat="a in $ctrl.authInfo.options">
+						<td>
+							<p>{{a.fio}} ({{a.userId}})</p>
+						</td>
+						<td>
+							<p>{{a.loginName}}</p>
+						</td>
+						<td>
+							<p>{{a.lastLoginTime | nsDateTime }}</p>
+						</td>
+						<td ng-class="{'has-error': $ctrl.form.auth.$invalid && (!$ctrl.form.auth.$pristine || $ctrl.form.$displayErrors)}">
+							<div class="radio">
+								<label>
+									<input type="radio" required name="auth" ng-value="a.userId" ng-model="$ctrl.authInfo.resolved"> Использовать данные логин и пароль
+								</label>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div class="alert alert-danger" role="alert" ng-if="$ctrl.form.auth.$invalid && (!$ctrl.form.auth.$pristine || $ctrl.form.$displayErrors)"> 
+					Необходимо выбрать один из вариантов
+				</div>
+			</ns-panel>
+
+			<ns-panel panel-id="identity-documents" class="danger" title="Документы, удостоверяющие личность" expanded="false" ng-if="$ctrl.identityDocuments.length">
+				<ns-form-group title="{{data.documentTypeName}}" ng-repeat="data in $ctrl.identityDocuments" ng-class="{'has-error': $ctrl.form['identity-doc-'+data.documentType].$invalid && (!$ctrl.form['identity-doc-'+data.documentType].$pristine || $ctrl.form.$displayErrors)}">
+					<div class="radio" ng-repeat="document in data.documents">
+						<label>
+							<input type="radio" required name="identity-doc-{{data.documentType}}" ng-value="document.userId" ng-model="data.resolved"> 
+							{{document.series}} {{document.number}} {{document.issuer}} ({{document.userId}})
+						</label>
+					</div>
+					<p ng-show="$ctrl.form['identity-doc-'+data.documentType].$invalid && (!$ctrl.form['identity-doc-'+data.documentType].$pristine || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+				</ns-form-group>
+			</ns-panel>
+
+			<ns-panel panel-id="addresses" class="default" title="Адреса" expanded="false" ng-if="$ctrl.addressInfo.regAddress.options.length > 0 || $ctrl.addressInfo.homeAddress.options.length > 0">
+				<ns-form-group title="Адрес регистрации" ng-if="$ctrl.addressInfo.regAddress.options.length > 0" ng-class="{'has-error': $ctrl.form.addresses-reg.$invalid && (!$ctrl.form.addresses-reg.$pristine || $ctrl.form.$displayErrors)}">
+					<div class="radio" ng-repeat="data in $ctrl.addressInfo.regAddress.options">
+						<label>
+							<input type="radio" required name="addresses-reg" ng-value="data.addressId" ng-model="$ctrl.addressInfo.regAddress.resolved"> 
+							{{data.address}} ({{data.userId}})
+						</label>
+					</div>
+					<p ng-show="$ctrl.form.addresses-reg.$invalid && (!$ctrl.form.addresses-reg.$pristine || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+				</ns-form-group>
+				<ns-form-group title="Адрес проживания" ng-if="$ctrl.addressInfo.homeAddress.options.length > 0" ng-class="{'has-error': $ctrl.form.addresses-home.$invalid && (!$ctrl.form.addresses-home.$pristine || $ctrl.form.$displayErrors)}">
+					<div class="radio" ng-repeat="data in $ctrl.addressInfo.homeAddress.options">
+						<label>
+							<input type="radio" required name="addresses-home" ng-value="data.addressId" ng-model="$ctrl.addressInfo.homeAddress.resolved"> 
+							{{data.address}} ({{data.userId}})
+						</label>
+					</div>
+					<p ng-show="$ctrl.form.addresses-home.$invalid && (!$ctrl.form.addresses-home.$pristine || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+				</ns-form-group>
+			</ns-panel>
+
+			<ns-panel panel-id="movement-info" class="default" title="Движение" ng-if="$ctrl.role == 'Students'">
+
+				<table class="table table-xs table-bright">
+					<tr>
+						<th>Ид пользователя</th>
+						<th>Дата документа</th>
+						<th>Организация</th>
+						<th></th>
+					</tr>
+
+					<th colspan="4" ng-if="$ctrl.commonEducation.length">Основное образование</th>
+
+					<tr ng-repeat="movement in $ctrl.commonEducation" ng-class="{'has-error': movement.conflict}">
+						<td>{{movement.clone.userId}} <span ng-if="movement.conflict">(пересечение {{movement.conflict.num}})</span></td>
+						<td>{{movement.document.docDate | nsDate}}</td>
+						<td>{{movement.document.eoName}}</td>
+						<td>
+							<span ng-if="movement.document.classFrom && movement.document.classTo">перевод</span>
+							<span ng-if="!movement.document.classFrom && movement.document.classTo">зачисление в </span>
+							<span ng-if="movement.document.classFrom && !movement.document.classTo">выбытие из </span>
+							<span ng-if="movement.document.classFrom">"{{movement.document.classFrom.name}}"</span>
+							<span ng-if="movement.document.classFrom && movement.document.classTo"> => </span>
+							<span ng-if="movement.document.classTo">"{{movement.document.classTo.name}}"</span>
+						</td>
+					</tr>
+
+					<th colspan="4" ng-if="$ctrl.addEducation.length">Дополнительное образование</th>
+
+					<tr ng-repeat="movement in $ctrl.addEducation">
+						<td>{{movement.clone.userId}}</td>
+						<td>{{movement.document.docDate | nsDate}}</td>
+						<td>{{movement.document.eoName}}</td>
+						<td>
+							<span ng-if="movement.document.classFrom && movement.document.classTo">перевод</span>
+							<span ng-if="!movement.document.classFrom && movement.document.classTo">зачисление в </span>
+							<span ng-if="movement.document.classFrom && !movement.document.classTo">выбытие из </span>
+							<span ng-if="movement.document.classFrom">"{{movement.document.classFrom.name}}"</span>
+							<span ng-if="movement.document.classFrom && movement.document.classTo"> => </span>
+							<span ng-if="movement.document.classTo">"{{movement.document.classTo.name}}"</span>
+						</td>
+					</tr>
+
+				</table>
+
+
+				<div class="legend" ng-if="!$ctrl.valid">
+					<div>
+						<p><span class="legend-label legend-invalid-movements"></span><span class="legend-description"> — Пересекающися документы</span></p>
+					</div>
+				</div>
+
+			</ns-panel>
+
+			<ns-panel panel-id="educ-certificate-info" class="danger" title="Сертификат доп. образования" ng-if="$ctrl.role == 'Students' && $ctrl.integrationPfdoType == 'IRTechEes' && $ctrl.educCertificates.options.length">
+				<table class="table table-xs table-bright">
+					<tr>
+						<th rowspan="2">Ид пользователя</th>
+						<th rowspan="2">Номер сертификата</th>
+						<th rowspan="2">Статус сертификата</th>
+						<th colspan="2">Прикрепление</th>
+						<th rowspan="2">Опции</th>
+					</tr>
+					<tr>
+						<th>Организация</th>
+						<th>Программа</th>
+					</tr>
+
+					<tr ng-repeat="certif in $ctrl.educCertificates.options">
+						<td>{{certif.userId}}</td>
+						<td>{{certif.certificateNumber}}</td>
+						<td>{{certif.certificateStatus}}</td>
+						<td>{{certif.attachment.organization}}</td>
+						<td>{{certif.attachment.addProgram}}</td>
+						<td class="radio">
+							<label>
+								<input type="radio" required name="certif" ng-value="certif.userId" ng-model="$ctrl.educCertificates.resolved"> Использовать данный сертификат
+							</label>
+						</td>
+					</tr>
+
+				</table>
+			</ns-panel>
+
+			<ns-panel panel-id="parent-info-{{resolveParent.key}}" class="success" ng-if="$ctrl.role == 'Students'" title="Родитель: {{resolveParent.lastName}} {{resolveParent.firstName}}" ng-repeat="resolveParent in $ctrl.parents">
+				<table class="table table-xs table-bright">
+					<tr>
+						<th>Родитель</th>
+						<th>Роль</th>
+						<th>Дети</th>
+						<th>Опции</th>
+					</tr>
+					<tr ng-repeat="parent in resolveParent.relatives">
+						<td>
+							<p>{{parent.lastName}} {{parent.firstName}} {{parent.middleName}} {{parent.birthDate | nsDate}} ({{parent.userId}})</p>
+						</td>
+						<td>
+							<p ng-repeat="role in parent.roleGroups">{{$ctrl.getRoleGroupTitle(role)}}</p>
+						</td>
+						<td>
+							<p ng-repeat="student in parent.students">{{student.lastName}} {{student.firstName}} {{student.middleName}} {{student.birthDate | nsDate}} ({{student.studentId}})</p>
+						</td>
+						<td ng-class="{'has-error': ($ctrl.form['parent-' + resolveParent.key + '-' + parent.userId].$invalid || resolveParent.invalid) && (!$ctrl.form['parent-' + resolveParent.key + '-' + parent.userId].$pristine || $ctrl.form.$displayErrors)}">
+							<select class="form-control" required name="parent-{{resolveParent.key}}-{{parent.userId}}" ng-options="option.id as option.name for option in resolveParent.resolveOptions" ng-model="parent.option" ng-change="resolveParent.onChangeUseOption(parent)"></select>
+							<p ng-show="$ctrl.form['parent-' + resolveParent.key + '-' + parent.userId].$invalid && (!$ctrl.form['parent-' + resolveParent.key + '-' + parent.userId].$pristine || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+						</td>
+					</tr>
+				</table>
+				<div class="alert alert-danger" role="alert" ng-if="resolveParent.mustSelectMainRelative()"> 
+					Необходимо выбрать одну из записей - основной
+				</div>
+				<div class="alert alert-danger" role="alert" ng-if="!resolveParent.mustSelectMainRelative() && resolveParent.isTeacherNotMain()"> 
+					Родитель с ролью "Сотрудник" должен быть выбран в качестве основной записи
+				</div>
+
+				<ns-form-group title="Логин/пароль" ng-class="{'has-error': $ctrl.form['auth-parent-' + resolveParent.key].$invalid && (!$ctrl.form['auth-parent-' + resolveParent.key].$pristine || $ctrl.form.$displayErrors)}">
+					<div class="radio" ng-repeat="option in resolveParent.data.authInfo.options">
+						<label>
+							<input type="radio" required name="auth-parent-{{resolveParent.key}}" ng-value="option.userId" ng-model="resolveParent.data.authInfo.resolved"> 
+							{{option.loginName}} <span ng-if="option.lastLoginTime">(дата последнего входа: {{option.lastLoginTime | nsDateTime}})</span>
+						</label>
+					</div>
+					<p ng-show="$ctrl.form['auth-parent-' + resolveParent.key].$invalid && (!$ctrl.form['auth-parent-' + resolveParent.key].$pristine || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+				</ns-form-group>
+
+				<ns-form-group title="Адрес регистрации" ng-if="resolveParent.data.addressInfo.regAddress.options.length > 0" ng-class="{'has-error': $ctrl.form['addresses-reg-' + resolveParent.key].$invalid && (!$ctrl.form['addresses-reg-' + resolveParent.key].$pristine || $ctrl.form.$displayErrors)}">
+					<div class="radio" ng-repeat="data in resolveParent.data.addressInfo.regAddress.options">
+						<label>
+							<input type="radio" required name="addresses-reg-{{resolveParent.key}}" ng-value="data.addressId" ng-model="resolveParent.data.addressInfo.regAddress.resolved"> 
+							{{data.address}}
+						</label>
+					</div>
+					<p ng-show="$ctrl.form['addresses-reg-' + resolveParent.key].$invalid && (!$ctrl.form['addresses-reg-' + resolveParent.key].$pristine || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+				</ns-form-group>
+
+				<ns-form-group title="Адрес проживания" ng-if="resolveParent.data.addressInfo.homeAddress.options.length > 0" ng-class="{'has-error': $ctrl.form['addresses-home-' + resolveParent.key].$invalid && (!$ctrl.form['addresses-home-' + resolveParent.key].$pristine || $ctrl.form.$displayErrors)}">
+					<div class="radio" ng-repeat="data in resolveParent.data.addressInfo.homeAddress.options">
+						<label>
+							<input type="radio" required name="addresses-home-{{resolveParent.key}}" ng-value="data.addressId" ng-model="resolveParent.data.addressInfo.homeAddress.resolved"> 
+							{{data.address}}
+						</label>
+					</div>
+					<p ng-show="$ctrl.form['addresses-home-' + resolveParent.key].$invalid && (!$ctrl.form['addresses-home-' + resolveParent.key].$pristine || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+				</ns-form-group>
+
+				<ns-form-group title="{{data.parameterName}}" ng-repeat="data in resolveParent.data.userParameters" ng-class="{'has-error': $ctrl.form['userparameter-parent-' + resolveParent.key + '-' + data.parameterId].$invalid && (!$ctrl.form['userparameter-parent-' + resolveParent.key + '-' + data.parameterId].$pristine || $ctrl.form.$displayErrors)}">
+					<div class="radio" ng-repeat="option in data.options">
+						<label>
+							<input type="radio" required name="userparameter-parent-{{resolveParent.key}}-{{data.parameterId}}" ng-value="option.userId" ng-model="data.resolved"> 
+							{{option.value.text}} {{option.value.date | nsDate}} ({{option.userId}})
+						</label>
+					</div>
+					<p ng-show="$ctrl.form['userparameter-parent-' + resolveParent.key + '-' + data.parameterId].$invalid && (!$ctrl.form['userparameter-parent-' + resolveParent.key + '-' + data.parameterId].$pristine || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+				</ns-form-group>
+
+				<ns-form-group title="{{data.documentTypeName}}" ng-repeat="data in resolveParent.data.identityDocuments" ng-class="{'has-error': $ctrl.form['parent-identity-doc-' + resolveParent.key + '-' + data.documentType].$invalid && (!$ctrl.form['parent-identity-doc-' + resolveParent.key + '-' + data.documentType].$pristine || $ctrl.form.$displayErrors)}">
+					<div class="radio" ng-repeat="document in data.documents">
+						<label>
+							<input type="radio" required name="parent-identity-doc-{{resolveParent.key}}-{{data.documentType}}" ng-value="document.userId" ng-model="data.resolved"> 
+							{{document.series}} {{document.number}} {{document.issuer}} ({{document.userId}})
+						</label>
+					</div>
+					<p ng-show="$ctrl.form['parent-identity-doc-' + resolveParent.key + '-' + data.documentType].$invalid && (!$ctrl.form['parent-identity-doc-' + resolveParent.key + '-' + data.documentType].$pristine || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+				</ns-form-group>
+
+			</ns-panel>
+			
+		</ns-form>
+	</form>
+
+	<div class="alert alert-danger" role="alert" ng-if="$ctrl.ready && $ctrl.conflictRanges.length"> 
+		В объединенном движении присутствуют конфликты дат документов.
+		Объединение данных пользователей невозможно.
+	</div>
+
+	<div class="alert alert-danger" role="alert" ng-if="$ctrl.ready && $ctrl.staffUsers.length"> 
+		Нельзя объединять пользователей являющихся сотрудниками - {{$ctrl.staffUsers[0].fio}} ({{$ctrl.staffUsers[0].userId}}).
+	</div>
+
+	<div class="alert alert-warning" role="alert" ng-if="$ctrl.ready && $ctrl.valid"> 
+		В случае продолжения все записи будут слиты в одну
+	</div>
+</ns-modal>

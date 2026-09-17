@@ -1,0 +1,647 @@
+﻿/**********будущий год - future***********/
+.future .header {
+  background: #b20186 !important;
+}
+.content {
+  padding: 16px 10px 16px 10px;
+  min-height: 430px;
+}
+.block-content {
+  position: relative;
+  min-height: 550px;
+}
+.block-content .back {
+  /*кнопка "назад" */
+  position: absolute;
+  left: 10px;
+  top: 22px;
+  width: 27px;
+  height: 19px;
+  font-size: 26px;
+  text-decoration: initial;
+  background: transparent !important;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.block-content .back span.icon-signout:before {
+  -moz-transform: scale(1.2, 1);
+  -ms-transform: scale(1.2, 1);
+  -o-transform: scale(1.2, 1);
+  -webkit-transform: scale(1.2, 1);
+  transform: scale(1.2, 1);
+}
+.block-content .back.back-fixed {
+  position: fixed;
+  top: 28px;
+  left: 6px;
+  z-index: 9999;
+}
+.block-content .back.active {
+  cursor: default;
+}
+.block-content h1 {
+  padding: 9px 130px 11px 51px;
+  font-weight: 400;
+  color: #0d76b9;
+  font-size: 20px;
+  background: #F2F4F8;
+  height: 42px;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.block-content ul.top-right-menu {
+  position: absolute;
+  color: #dff0d8;
+  color: #0BB381;
+  top: 1px;
+  right: 8px;
+  height: 30px;
+  margin-bottom: 0;
+}
+.block-content ul.top-right-menu li {
+  height: 100%;
+  display: inline-block;
+  padding: 0 3px;
+}
+.block-content ul.top-right-menu li a {
+  font-size: 25px;
+  position: relative;
+  display: table;
+  height: 100%;
+  outline: none;
+}
+.block-content ul.top-right-menu li a:hover,
+.block-content ul.top-right-menu li a:focus {
+  text-decoration: inherit;
+}
+.block-content ul.top-right-menu li:nth-child(odd) a {
+  margin-top: 1px;
+}
+.block-content ul.top-right-menu li:only-child {
+  margin-right: 16px;
+}
+/************************************************************************************/
+/*кнопка "назад" */
+/*==================================================*/
+/*хак для ff*/
+@-moz-document url-prefix() {
+  .block-content .back {
+    top: 24px;
+  }
+}
+.header,
+.left-menu,
+.footer,
+.title {
+  margin: 0;
+  padding: 0;
+}
+.header div,
+.left-menu div,
+.footer div,
+.title div,
+.header span,
+.left-menu span,
+.footer span,
+.title span,
+.header h1,
+.left-menu h1,
+.footer h1,
+.title h1,
+.header h2,
+.left-menu h2,
+.footer h2,
+.title h2,
+.header h3,
+.left-menu h3,
+.footer h3,
+.title h3,
+.header h4,
+.left-menu h4,
+.footer h4,
+.title h4,
+.header h5,
+.left-menu h5,
+.footer h5,
+.title h5,
+.header h6,
+.left-menu h6,
+.footer h6,
+.title h6,
+.header p,
+.left-menu p,
+.footer p,
+.title p,
+.header ul,
+.left-menu ul,
+.footer ul,
+.title ul,
+.header li,
+.left-menu li,
+.footer li,
+.title li {
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  line-height: 1.5;
+  min-height: 100%;
+  position: relative;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 110px;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: 'PT Sans Caption';
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  min-width: 330px;
+}
+body .title_product {
+  white-space: nowrap;
+}
+.header {
+  color: #fff;
+  background: url('/vendor/custom/img/header-right-bg.png') no-repeat right 4px #97d9f7;
+  position: relative !important;
+}
+.header .navbar {
+  min-height: 36px;
+  /******************************************************************************/
+  /*переключатель "учебного года" */
+  /*************************************************************************/
+}
+.header .navbar .navbar-nav .dropdown li ul {
+  margin-top: -1px;
+}
+.header .navbar .navbar-nav a {
+  outline: none;
+  color: #fff;
+}
+.header .navbar .navbar-nav .dropdown-menu .dropdown-header {
+  font-size: 14px;
+  text-align: center;
+}
+.header .navbar .switch-year {
+  float: right;
+  margin-top: 4px;
+  margin-right: 10px;
+}
+.header .navbar .switch-year .switch-year-btn {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 0px solid;
+  width: 157px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-radius: 12px;
+  position: relative;
+  height: 26px;
+  -webkit-transition: background 1.4s;
+  -moz-transition: background 1.4s;
+  -ms-transition: background 1.4s;
+  -o-transition: background 1.4s;
+  transition: background 1.4s;
+  overflow: hidden;
+  background: #418FCD;
+}
+.header .navbar .switch-year .switch-year-btn > div {
+  top: 1px;
+  width: 270px;
+  left: 7px;
+  text-transform: lowercase;
+  position: absolute;
+}
+.header .navbar .switch-year .switch-year-btn > div div {
+  display: inline-block;
+  margin-top: -1px;
+}
+.header .navbar .switch-year .switch-year-btn > div div.lever-switch {
+  width: 30px;
+  position: relative;
+  margin-left: 0px;
+}
+.header .navbar .switch-year .switch-year-btn > div div.lever-switch span {
+  position: absolute;
+  top: -13px;
+  width: 19px;
+  height: 18px;
+  display: block;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-transition: background 1s;
+  -moz-transition: background 1s;
+  -ms-transition: background 1s;
+  -o-transition: background 1s;
+  transition: background 1s;
+  left: 7px;
+  background: #AFD2F0;
+}
+.header .navbar .switch-year .switch-year-btn.go_left #flip_container {
+  left: -119px !important;
+}
+.header .navbar .switch-year .switch-year-btn.go_left #flip_container .lever-switch span {
+  left: 4px;
+}
+.header a {
+  color: white;
+  text-decoration: initial;
+}
+.header .block-logo {
+  line-height: 1.4;
+  /* You may have to set 'display: block' */
+  width: 260px;
+  height: 97px;
+  background: url('../img/sprite-template.png') -1px -201px;
+  height: 66px;
+  width: auto;
+  background-repeat: no-repeat;
+}
+.header .logo-servadmin {
+  /* You may have to set 'display: block' */
+  width: 48px;
+  height: 49px;
+  background: url('../img/sprite-template.png') -1px -1px;
+}
+.header .logo-preschool {
+  /* You may have to set 'display: block' */
+  width: 48px;
+  height: 49px;
+  background: url('../img/sprite-template.png') -1px -101px;
+}
+.header .logo-school {
+  /* You may have to set 'display: block' */
+  width: 48px;
+  height: 49px;
+  background: url('../img/sprite-template.png') -1px -1px;
+}
+.header .logo-addschool {
+  /* You may have to set 'display: block' */
+  width: 48px;
+  height: 49px;
+  background: url('../img/sprite-template.png') -1px -51px;
+}
+.header .logo.profschool {
+  /* You may have to set 'display: block' */
+  width: 48px;
+  height: 49px;
+  background: url('../img/sprite-template.png') -1px -1px;
+}
+.header .logo-em {
+  /* You may have to set 'display: block' */
+  width: 48px;
+  height: 49px;
+  background: url('../img/sprite-template.png') -1px -1px;
+}
+.header .logo-ns {
+  /* You may have to set 'display: block' */
+  width: 48px;
+  height: 49px;
+  background: url('../img/sprite-template.png') -1px -151px;
+}
+.header .logo {
+  display: block;
+  margin: 6px 12px 6px 8px;
+  float: left;
+  cursor: default;
+  border-radius: 7px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+.header .title_product {
+  font-size: 15px;
+  font-weight: 100;
+  color: #D0EBF9;
+  padding-top: 6px;
+}
+.header .school {
+  font-size: 20px;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 30px;
+}
+.header .block-personal-cabinet {
+  float: right;
+  margin: 8px 10px 0 0;
+}
+.header .block-personal-cabinet a {
+  color: #fff;
+  font-size: 15px;
+}
+.header .block-personal-cabinet .date {
+  text-align: right;
+  font-size: 13px;
+  color: #D0EBF9;
+  margin-bottom: 1px;
+}
+.header .block-personal-cabinet ul li {
+  display: inline-block;
+  float: left;
+  margin-top: 2px;
+  margin-right: 4px;
+}
+.header .block-personal-cabinet ul li > a > img {
+  margin-right: 4px;
+  float: left;
+  margin-top: 3px;
+}
+.header .block-personal-cabinet ul li.switch-year-text {
+  margin-right: 23px;
+  position: relative;
+}
+.header .block-personal-cabinet ul li.switch-year-text:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  /* You may have to set 'display: block' */
+  width: 5px;
+  height: 48px;
+  background: url('../img/sprite-template.png') -1px -350px;
+}
+.header .block-personal-cabinet ul li.switch-year-text > p {
+  font-size: 15px;
+}
+.header .block-personal-cabinet ul li.switch-year-text button {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 0 solid;
+}
+.header .block-personal-cabinet ul li.switch-year-text button > div#flip_container {
+  top: 0;
+  width: 405px;
+  left: 0;
+  text-transform: lowercase;
+}
+.header .block-personal-cabinet ul li.switch-year-text button > div#flip_container div.lever-switch {
+  width: 30px;
+  position: relative;
+}
+.header .block-personal-cabinet ul li.switch-year-text button > div#flip_container div.lever-switch span {
+  position: absolute;
+  top: -13px;
+  width: 19px;
+  height: 18px;
+  display: block;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-transition: background 1s;
+  -moz-transition: background 1s;
+  -ms-transition: background 1s;
+  -o-transition: background 1s;
+  transition: background 1s;
+  left: 7px;
+}
+.header .block-personal-cabinet ul li.switch-year-text button.go_left #flip_container {
+  left: -189px;
+}
+.header .block-personal-cabinet ul li.switch-year-text button.go_left #flip_container .lever-switch span {
+  left: 7px;
+}
+.header .block-personal-cabinet ul li.switch-year-text .switсh_year {
+  width: 216px;
+  overflow: hidden;
+  height: 24px;
+  margin-top: 1px;
+}
+.header .block-personal-cabinet ul li.separator_small {
+  margin-right: 20px;
+  position: relative;
+}
+.header .block-personal-cabinet ul li.separator_small:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: -5px;
+  right: -13px;
+  /* You may have to set 'display: block' */
+  width: 3px;
+  height: 36px;
+  background: url('../img/sprite-template.png') -1px -399px;
+}
+.header .block-personal-cabinet ul li.separator_small span.glyphicon {
+  margin-right: 4px;
+  font-size: 14px;
+}
+.header .block-personal-cabinet ul li.no_separator > a span.icon-off {
+  font-size: 16px;
+  margin-right: 5px;
+}
+.header .block-personal-cabinet .number-employees-in-system {
+  margin-top: 0;
+  position: relative;
+  text-align: right;
+  padding-right: 20px;
+  color: #d0ebf9;
+}
+.header .block-personal-cabinet .number-employees-in-system > p {
+  font-size: 15px;
+}
+.header .block-personal-cabinet .number-employees-in-system > p > a {
+  width: 23px;
+  position: absolute;
+  top: 1px;
+}
+.header .block-personal-cabinet .number-employees-in-system > p > a span {
+  position: absolute;
+  left: -1px;
+  top: 5px;
+  font-size: 12px;
+  z-index: 2;
+}
+.header .block-personal-cabinet .number-employees-in-system > p > a span + span {
+  color: #502e93;
+  font-size: 13px;
+  z-index: 1;
+  right: 5px;
+  top: 2px;
+}
+.header .block-personal-cabinet .number-employees-in-system > p .number-employees-span {
+  padding-right: 5px;
+}
+/************************************************************************************/
+/*переключатель "учебного года" */
+/*==================================================*/
+/*хак для ff*/
+@-moz-document url-prefix() {
+  .header .navbar .switch-year {
+    margin-top: 1px;
+  }
+  .header .navbar .switch-year .switch-year-btn > div {
+    top: 2px;
+  }
+  .header .navbar .switch-year .switch-year-btn > div .lever-switch span {
+    top: -14px !important;
+  }
+}
+/*=====================================================*/
+/*цвета для темы "preschool"*/
+.preschool .navbar .switch-year-btn {
+  background: #418FCD !important;
+}
+.preschool .navbar .switch-year-btn .lever-switch span {
+  background: #AFD2F0;
+}
+/************************************************************************************/
+.header .div_top_menu ul.top-menu li.active,
+.header .div_top_menu ul.top-menu li:hover {
+  background: #F2F4F8;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #2889c7;
+}
+.header .div_top_menu ul.top-menu li.active a,
+.header .div_top_menu ul.top-menu li a:hover {
+  color: #2889c7;
+}
+.switсh_year {
+  width: 233px;
+  background: #18a2eb;
+  border: 1px solid #6FCAFF;
+  -webkit-box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  height: 26px;
+  margin-top: 1px;
+  -webkit-transition: background 1.4s;
+  -moz-transition: background 1.4s;
+  -ms-transition: background 1.4s;
+  -o-transition: background 1.4s;
+  transition: background 1.4s;
+}
+.switсh_year[class*="go_left"] {
+  background: #30a057;
+  /* desaturate(spin("Базовый цвет темы", 300), 40%) */
+}
+.switсh_year div,
+.switсh_year img {
+  display: inline-block;
+}
+.switсh_year:focus {
+  outline: none;
+}
+.switсh_year #flip_container {
+  width: 410px;
+  position: absolute;
+  height: 26px;
+  left: 3px;
+  top: 0;
+  -webkit-transition: left .5s;
+  -moz-transition: left .5s;
+  -ms-transition: left .5s;
+  -o-transition: left .5s;
+  transition: left .5s;
+}
+.switсh_year #flip_container #current,
+.switсh_year #flip_container #future {
+  height: 26px;
+}
+.go_left #flip_container {
+  left: -185px;
+}
+@-moz-document url-prefix() {
+  .block-content ul.left-menu li {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+  }
+  .block-content ul.left-menu li:hover {
+    background: #F0F0F0;
+    border-top: 1px solid #C5C5C5;
+    border-bottom: 1px solid #C5C5C5;
+    outline: 0px solid #C5C5C5;
+  }
+  .block-content ul.left-menu li .absolute_div_ul li {
+    border-bottom: 0px solid #E4E4E4;
+    border-top: 0px solid #E4E4E4;
+  }
+  .block-content ul.left-menu li .absolute_div_ul > a {
+    padding: 5px 15px 6px 1px;
+  }
+}
+/*хаки на IE*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /*9,10,11*/
+  .header .block-personal-cabinet {
+    margin: 8px 20px 0 0;
+  }
+  .block-content ul.top-right-menu {
+    right: 18px;
+  }
+  .footer {
+    padding: 5px 10px 15px 0;
+  }
+}
+.mail {
+  overflow: hidden;
+  position: relative;
+}
+.numberMail {
+  font-family: Verdana;
+  font-size: 11px;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -ms-border-radius: 14px;
+  -o-border-radius: 14px;
+  border-radius: 12px;
+  background: #00B507;
+  position: relative;
+  display: inline-block;
+  top: -8px;
+  min-width: 2px;
+  max-width: 37px;
+  width: auto;
+  margin: auto;
+  right: 13px;
+  padding: 4px 5px;
+  line-height: 6px;
+  border: 2px solid #c9ddf0;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  vertical-align: middle;
+  z-index: 1;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-right: -16px;
+}
+/*# sourceMappingURL=page-template.css.map */

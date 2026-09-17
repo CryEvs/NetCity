@@ -1,0 +1,220 @@
+@mixin totals(){
+  font-size: 12px;
+  background-color: #eaeaea;
+  text-align:center;
+}
+@mixin subtotals(){
+  font-size: 12px;
+  background-color: #eaeaea;
+  text-align:center;
+}
+@mixin subtotals2(){
+  font-size: 12px;
+  background-color: #eaeaea;
+  text-align:center;
+}
+@mixin table-print($align:center, $format:"\$"){
+	border-spacing: 0 0;
+	empty-cells: show;
+	font-size: 11px;
+	color: #111;
+	th {
+		font-size: 12px;
+		border: 1px solid black;
+		text-align: center;
+		font-weight: bold;
+		padding: 4px;
+		background-color: #eaeaea;
+		&.vertical {
+			text-align: center;
+			& > i {
+				writing-mode: vertical-rl;
+				transform: rotate(180deg);
+				text-align: center;
+				text-orientation: sideways;
+				font-style: normal;
+				white-space: nowrap;
+                @supports (contain: size) {
+                    white-space: normal;
+                }
+			}
+		}
+		&.small {
+			font-size: 10px;
+			line-height: 1.2;
+		}
+	}
+
+	td {
+		border: 1px solid black;
+		padding: 2px 4px 2px 4px;
+		text-align: $align;
+	}
+
+	.cell-num {
+		text-align: right !important;
+	}
+
+	.cell-num-center {
+		text-align: center !important;
+	}
+
+	.cell-date {
+		text-align: left ;
+	}
+
+	.cell-date-time {
+		text-align: left ;
+	}
+
+	.cell-text {
+		text-align: left ;
+	}
+
+	.cell-text-center {
+		text-align: center ;
+	}
+
+	.cell-text-right {
+		text-align: right ;
+	}
+
+	.cell-date-short {
+		text-align: left ;
+	}
+
+	.cell-num-1 {
+		text-align: right ;
+	}
+
+	.cell-num-2 {
+		text-align: right ;
+	}
+
+	.separator {
+		height: 15px;
+	}
+
+	.text-top {
+		vertical-align:top;
+	}
+
+	.text-bottom {
+		vertical-align:bottom;
+	}
+
+	.text-vmiddle {
+		vertical-align:middle;
+	}
+
+	.text-top-center {
+		vertical-align:top;
+		td{
+			text-align:center
+		}
+	}
+
+
+
+	tr.totals {
+		td {
+			@include totals;
+		}
+	}
+	td.totals {
+		@include totals;
+	}
+
+
+
+	tr.subtotals {
+		td {
+		@include subtotals;
+		}
+	}
+
+	td.subtotals {
+		@include subtotals;
+	}
+	
+
+
+	tr.subtotals2 {
+		td {
+			@include subtotals2;
+		}
+	}
+	
+	td.subtotals2 {
+		@include subtotals2;
+	}
+}
+
+table.table-print {
+	@include table-print();
+}
+
+table.table-print-num {
+	@include table-print(right, 0);
+}
+
+table.table-print-num-1 {
+	@include table-print(right,"0.0");
+}
+
+table.table-print-text {
+	@include table-print(left);
+}
+
+.report-title {
+	font-weight: bold;
+	font-size: 18pt;
+	text-align:center;
+}
+
+.report-title-school {
+	text-align:center;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.text-valing-top{
+	vertical-align:top;
+}
+
+table.NullTable {
+		font-size:small;
+		border: none;
+		padding: 0;
+		border-collapse: separate;
+		float: none;
+	}
+table.NullTable th {
+	border: none;
+	text-align: left;
+	background-color: transparent;
+	padding: 0;
+}
+table.NullTable td {
+	border: none;
+	padding: 0;
+}
+
+.message {
+	font-size: 40.0pt;
+}
+
+.table-striped {
+  > tbody > tr:nth-child(odd) {
+    > td,
+    > th {
+      background-color: #eaeaea;
+    }
+  }
+}
+
+hr.page-break-after {
+	page-break-after: always;
+	margin: 0;
+}
+

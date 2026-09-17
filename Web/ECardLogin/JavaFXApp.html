@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru-RU">
+<head>
+	<meta charset="utf-8"/>
+  <!--<SCRIPT src="http://java.com/js/dtjava.js"></SCRIPT>-->
+ <SCRIPT src="dtjava.js"></SCRIPT>
+<script>
+    function launchApplication(jnlpfile) {
+        dtjava.launch(            {
+                url : 'JavaFXApp.jnlp'
+            },
+            {
+                javafx : '2.2+'
+            },
+            {}
+        );
+        return false;
+    }
+	function certToLogin(){
+		
+		var cert = JavaFXApp_id.getCert();
+	//	alert(cert);
+		document.getElementById("login").value = cert;
+	}
+</script>
+
+<script>
+    function javafxEmbed_JavaFXApp_id() {
+        dtjava.embed(
+            {
+                id : 'JavaFXApp_id',
+                url : 'JavaFXApp.txt',
+                placeholder : 'javafx-app-placeholder',
+                width : 600,
+                height : 300
+            },
+            {
+                javafx : '2.2+'
+            },
+            {}
+        );
+    }
+    <!-- Embed FX application into web page once page is loaded -->
+    dtjava.addOnloadCallback(javafxEmbed_JavaFXApp_id);
+</script>
+
+</head><body>
+<h2>Test page for <b>JavaFXApp</b></h2>
+  <b>Webstart:</b> <a href='JavaFXApp.jnlp' onclick="return launchApplication('JavaFXApp.txt');">click to launch this app as webstart</a><br><hr><br>
+
+  <!-- Applet will be inserted here -->
+  <div id='javafx-app-placeholder'></div>
+  
+   
+  <form>
+	Логин : <input type="text" id="login" name="login"><br>
+	Пароль: <input type="text" id="password" name="password"><br>
+	<button>OK</button>
+  </form>
+  
+</body></html>

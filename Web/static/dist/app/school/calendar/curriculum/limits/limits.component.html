@@ -1,0 +1,169 @@
+<style>
+table.table-sm td.input-cell > input{
+	border: 0px solid #c5c5c5 !important;
+}
+.table.table-sm td.has-error > input{
+	border: 1px solid #a94442 !important;
+}
+</style>
+
+<!-- Классические -->
+<div class="panel panel-danger">
+	<div class="panel-heading" role="tab" id="headingtitle_UPLimits">
+		<h4 class="panel-title">
+			<a data-toggle="collapse" class="collapsed" data-target="#title_UPLimits" aria-expanded="true" aria-controls="title_UPLimits">{{$ctrl.language.Generic.SetupSchoolCalendar.kTitleUPLimits}}</a>
+		</h4>
+	</div>
+	<div id="title_UPLimits" class="panel-collapse collapse in" aria-labelledby="headingtitle_UPLimits" role="tabpanel">
+		<div class="panel-body">
+			<form name="$ctrl.MainForm">
+				
+				<div class="row" ng-if="!$ctrl.state.readOnly">
+					<div class="col-md-12">
+						<div class="buttons-panel">
+							<div class="buttons-panel-left">
+								<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.lazySave($ctrl.MainForm.$valid)">
+									<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+								</button>
+								<button title="{{$ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="$ctrl.lazyReset()">
+									<span class="glyphicon glyphicon-repeat"></span> <span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+								</button>
+								<button title="{{$ctrl.language.Generic.Common.kAdd}}" type="button" class="btn btn-info" ng-click="$ctrl.lazyAddLimits()">
+									<span class="glyphicon glyphicon-plus-sign"></span> <span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+								</button>
+							</div>
+							<div class="buttons-panel-right"></div>
+							<div class="buttons-panel-adaptive btn-group" style="float: right; display: none; margin-right: 0px; right: 0px;">
+								<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									<span class="glyphicon glyphicon-menu-hamburger"></span> <span id="action">{{$ctrl.language.Generic.Buttons.kActions}}</span> <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu buttons-panel-right buttons-panel-adaptive-wrapper pull-right" role="menu"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-if="!($ctrl.prepared.viewComponents && $ctrl.prepared.viewComponents.length)">
+					<div class="col-md-12">
+						<div class="alert alert-info" role="alert">
+							{{$ctrl.language.Generic.SetupSchoolCalendar.kNoLimits}}
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-if="$ctrl.prepared.viewComponents && $ctrl.prepared.viewComponents.length">
+					<div class="col-md-12">
+						<table class="table table-bordered table-sm table-condensed">
+							<tbody>
+							<tr>
+								<th rowspan="2">{{$ctrl.language.Generic.SetupSchoolCalendar.kComponent}}</th>
+								<th colspan="{{$ctrl.data.grades.length}}">
+									{{$ctrl.language.SetupSchoolCalendar.kGradesHours}}
+								</th>
+							</tr>
+							<tr>
+								<th ng-repeat="grade in $ctrl.data.grades">
+									{{grade.name}}
+								</th>
+							</tr>
+							<tr ng-repeat="component in $ctrl.prepared.viewComponents">
+								<td>{{component.name}}</td>
+								<td ng-repeat="grade in $ctrl.data.grades" ng-if="$ctrl.state.readOnly">
+									{{$ctrl.prepared.limits[component.id][grade.id].hours}}
+								</td>
+								<td ng-repeat="grade in $ctrl.data.grades" class="input-cell" ng-class="{ 'has-error': hoursForm.Hours.$error.minmax || $ctrl.prepared.limits[component.id][grade.id].hasErrorFlag }" ng-if="!$ctrl.state.readOnly" ng-form name="hoursForm">
+									<input track-changes numeric-input="{negative: false, fractional: true, allownull: true}" name="Hours" ng-model="$ctrl.prepared.limits[component.id][grade.id].hours" maxlength="5" size="2" min="0.02" max="99.99" step="0.01" ng-blur="$ctrl.changeLimit($ctrl.prepared.limits[component.id][grade.id])">
+								</td>
+							</tr>
+							<tr class="text-center warning">
+								<td>{{$ctrl.language.Generic.SetupSchoolCalendar.kTotalHours}}</td>
+								<td ng-repeat="totals in $ctrl.prepared.totalGradeHours track by $index" class="sum-col text-data" ng-style="totals.overflow && {'background-color': '#ff7f7f'}">
+									<div ng-show="totals.hours > 0">{{totals.hours}}</div>
+								</td>
+							</tr>
+							
+							</tbody>
+						</table>
+						<div class="alert alert-danger" ng-show="$ctrl.MainForm.$invalid">
+							Введите число от 0.02 до 99.99
+						</div>
+						<div class="alert alert-danger" ng-show="$ctrl.state.overflow">
+							{{$ctrl.language.Generic.SetupSchoolCalendar.kUndefinedLimit}} {{$ctrl.language.SetupSchoolCalendar.kForLimit}}
+						</div>
+						<div class="alert alert-danger" ng-show="$ctrl.state.overflowLimitTotal && !$ctrl.state.overflow">
+							{{$ctrl.language.Generic.SetupSchoolCalendar.kSumLimit1}} {{$ctrl.language.SetupSchoolCalendar.kSumLimit2}}
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- ИУП -->
+<div class="panel panel-success" ng-if="$ctrl.isSchool">
+	<div class="panel-heading" role="tab" id="headingtitle_IUPLimits">
+		<h4 class="panel-title">
+			<a data-toggle="collapse" class="collapsed" data-target="#title_IUPLimits" aria-expanded="true" aria-controls="title_IUPLimits">{{$ctrl.language.Generic.SetupSchoolCalendar.kTitleIUPLimits}}</a>
+		</h4>
+	</div>
+	<div id="title_IUPLimits" class="panel-collapse collapse in" aria-labelledby="headingtitle_IUPLimits" role="tabpanel">
+		<div class="panel-body">
+			<form name="$ctrl.IUPForm">
+
+				<div class="row" ng-if="!$ctrl.state.readOnly">
+					<div class="col-md-12">
+						<div class="buttons-panel">
+							<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.lazySave($ctrl.IUPForm.$valid, true)">
+								<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+							</button>
+							<button title="{{$ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="$ctrl.lazyReset(true)">
+								<span class="glyphicon glyphicon-repeat"></span> <span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+							</button>
+							<button title="{{$ctrl.language.Generic.Common.kAdd}}" type="button" class="btn btn-info" ng-click="$ctrl.lazyAddLimits(true)">
+								<span class="glyphicon glyphicon-plus-sign"></span> <span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-if="!($ctrl.prepared.viewIupComponents && $ctrl.prepared.viewIupComponents.length)">
+					<div class="col-md-12">
+						<div class="alert alert-info" role="alert">
+							{{$ctrl.language.Generic.SetupSchoolCalendar.kNoLimits}}
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-if="$ctrl.prepared.viewIupComponents && $ctrl.prepared.viewIupComponents.length">
+					<div class="col-md-12">
+						<table class="table table-bordered table-sm table-condensed">
+							<tbody>
+								<tr>
+									<th rowspan="2">{{$ctrl.language.Generic.SetupSchoolCalendar.kComponent}}</th>
+									<th colspan="{{$ctrl.data.grades.length}}">
+										{{$ctrl.language.SetupSchoolCalendar.kGradesHours}}
+									</th>
+								</tr>
+								<tr>
+									<th ng-repeat="grade in $ctrl.data.grades">
+										{{grade.name}}
+									</th>
+								</tr>
+								<tr ng-repeat="component in $ctrl.prepared.viewIupComponents">
+									<td>{{component.name}}</td>
+									
+									<td ng-repeat="grade in $ctrl.data.grades" ng-if="$ctrl.state.readOnly">
+										{{$ctrl.prepared.iupLimits[component.id][grade.id].hours}}
+									</td>
+									<td ng-repeat="grade in $ctrl.data.grades" class="input-cell" ng-class="{ 'has-error': iupHoursForm.Hours.$error.minmax }" ng-if="!$ctrl.state.readOnly" ng-form name="iupHoursForm">
+										<input track-changes numeric-input="{negative: false, fractional: true, allownull: true}" name="Hours" type="text" ng-model="$ctrl.prepared.iupLimits[component.id][grade.id].hours" maxlength="5" size="2" min="0" max="99.99" step="0.01" ng-blur="$ctrl.changeLimit($ctrl.prepared.iupLimits[component.id][grade.id], true)">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="alert alert-danger" ng-show="$ctrl.IUPForm.$invalid">
+							Введите число от 0 до 99.99
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

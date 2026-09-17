@@ -1,0 +1,101 @@
+﻿
+
+<style>
+	/*!!!!*/
+	div.similar-user-resolve-dialog {
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: 500px;
+		padding: 0 5px 0 5px;
+	}
+
+
+	.hideBtn {
+		display: none;
+	}
+
+
+	tr.validation-error > td {
+		background-color: rgb(255, 147, 147) !important;
+	}
+
+	.red{
+		color:red;
+	}
+
+</style>
+
+
+<div id="validationErrors" class="similar-user-resolve-dialog">
+	<table class="table table-bordered table-bright-striped table-xs print-block">
+		<tr>
+			<th style="min-width:40px; ">{{{language.Generic.Filter.kN_PP}}}</th>
+
+			<th>Строка №</th>
+			<th>Столбец №</th>
+			<th>Имя столбца</th>
+			<th>Описание ошибки</th>
+			<th>Текущее значение</th>
+			{{#if showColumnEnabledValues}}
+			<th width="565px">Возможные значения</th>{{/if}}
+		</tr>
+		{{#each errorsWraps}}
+		<tr {{#ifCond error.errorType "===" "Critical"}} class="validation-error" {{/ifCond}} >
+			<td class="text-center">{{match @index}}</td>
+			<td class="text-center">{{error.rowNumber}}</td>
+			<td class="text-center">{{error.colNumber}}</td>
+			<td>{{error.title}}</td>
+			<td>
+				{{error.message}}
+			</td>
+			<td style="width:10%">
+				{{error.currentValue}}
+			</td>
+
+
+			<!--если есть столбец с допустимыми значениями-->
+			{{#if ../showColumnEnabledValues}}
+
+			<!--если показать допустимые значения сразу (без спойлера )     -->
+			{{#if showEnabledValues}}
+			<td class="errorDescription">{{error.enabledValues}}</td>
+			{{/if}}
+
+
+
+			<!--если допустимых значений много их показываем в спойлере-->
+			{{#if showSpoilerButtonEnabledValues}}
+			<td class="errorDescription">
+				{{#if error.enabledValues}}
+				<button style="width:90px; margin-left:15px" class="btn btn-info" data-toggle="collapse" data-target="#hide-me{{match @index}}" onclick="$(this).text(function (i, text) { return text === 'Скрыть' ? 'Показать' : 'Скрыть'; })">
+					Показать
+				</button>
+				<div id="hide-me{{match @index}}" class="collapse">
+					{{error.enabledValues}}
+				</div>
+				{{/if}}
+			</td>
+
+			{{/if}}
+			{{/if}}
+
+
+
+		</tr>
+		{{/each}}
+	</table>
+
+	<div style="float:right" class="radioImportOption">
+		<div class="radio">
+			<label>
+				<input type="radio" name="optionsRadios" id="skipInvalidStudents"> Импортировать полностью корректные строки
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" name="optionsRadios" id="skipInvalidData" value="option2"> Импортировать полностью корректные строки и строки с некритичными ошибками
+			</label>
+		</div>
+	</div>
+
+</div>

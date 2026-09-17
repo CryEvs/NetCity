@@ -1,0 +1,64 @@
+<div class="row">
+	<div class="col-md-10">
+		
+		<div class="alert alert-info" role="alert" ng-show="$ctrl.state.dataReady && $ctrl.state.emptyData">
+			Нет данных об участии в мероприятиях.
+		</div>
+		
+		<div class="alert alert-info" role="alert" ng-show="!$ctrl.state.dataReady">
+			{{$ctrl.language.Generic.Movement.kPleaseWait}}
+		</div>
+		
+		<div class="alert alert-danger" role="alert" ng-show="$ctrl.error">
+			{{$ctrl.error}}
+		</div>
+
+		<table class="table table-xs table-hover table-selectable" ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData && !$ctrl.error">
+			<tr>
+				<th>Мероприятие</th>
+				<th>Дата проведения</th>
+				<th>Статус</th>
+				<th>Результат</th>
+			</tr>
+			<tr ng-repeat="event in $ctrl.data.events" ng-class="{'selected': $ctrl.data.selection.isSelected(event)}" ng-click="$ctrl.data.selection.select(event)">
+				<td>{{event.eventInfo.name}}</td>
+				<td>{{event.eventInfo.date}}</td>
+				<td>{{event.eventInfo.status.name}}</td>
+				<td>
+					<div ng-repeat="result in event.participationInfo.results">
+						<span class="result-type">{{result.type}}</span>: <span class="result-item">{{result.item}}</span>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-2">
+		<div class="btn-group" ng-show="$ctrl.state.dataReady && !$ctrl.state.readOnly && !$ctrl.error">
+			<button class="btn btn-default btn-sm" ng-click="$ctrl.add()" type="button" title="Добавить информацию об участии в мероприятии">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			</button>
+
+			<button class="btn btn-warning btn-sm" ng-click="$ctrl.edit()" type="button" ng-disabled="!$ctrl.data.selection.selected" ng-hide="$ctrl.state.emptyData" title="Редактировать информацию об участии в мероприятии">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-pencil"></span>
+			</button>
+			
+			<button class="btn btn-warning btn-sm" ng-click="$ctrl.remove()" type="button" ng-disabled="!$ctrl.data.selection.selected" ng-hide="$ctrl.state.emptyData" title="Удалить информацию об участии в мероприятии">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-minus-sign"></span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<style>
+	.table-selectable tr.already-member td {
+		cursor: not-allowed;
+		background-color: #ffe074;
+	}
+	.table-selectable tr.cancelled td {
+		text-decoration: line-through;
+	}
+	.table-selectable tr.unavailable td {
+		cursor: not-allowed;
+		background-color: #bfbfbf;
+	}
+</style>

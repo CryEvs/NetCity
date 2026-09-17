@@ -1,0 +1,26 @@
+<div ng-model="Em.Indicators.EditIndicator.EditExplanation">
+	<form name="fillParameterValues">
+		<div class="bootstrap-dialog type-primary">
+			<div class="modal-header">
+				<div class="bootstrap-dialog-header">
+					<div class="bootstrap-dialog-title">
+						<h4 class="modal-title">{{language.Generic.StatReports.kEditingExplanation}}</h4>
+					</div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<textarea ng-model="model.indicatorExplanation" class="form-control" rows="10" maxlength="5000" style="height: 130px; resize: none;"></textarea>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" x-ng-click="ok()">
+					<span class="glyphicon glyphicon-save"></span>
+					{{language.Generic.Buttons.kSave}}
+				</button>
+				<button class="btn btn-default" x-ng-click="cancel()">
+					<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+					{{language.Generic.Curriculum.kBtnCancel}}
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

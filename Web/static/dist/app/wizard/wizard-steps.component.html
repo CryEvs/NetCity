@@ -1,0 +1,58 @@
+<style>
+	.wizard-steps-block {
+		border: 1px solid #C7C7C7;
+		margin-bottom: 20px;
+		display: inline-block;
+	}
+	.wizard-step {
+		display: inline-block;
+		font-family: arial narrow;
+		font-size:10pt;
+		padding: 10px;
+		cursor: pointer;
+	}
+
+	.wizard-step.inactive {
+		cursor: default;
+		background-color: #bbbbbb !important;
+	}
+
+	.wizard-step:hover {
+		background-color: #ffef93;
+	}
+
+	.wizard-step.active {
+		background-color: #ffef93;
+	}
+
+	.wizard-step.active a {
+		font-weight: bold;
+	}
+</style>
+
+<div class="wizard-steps-block">
+	<div class="wizard-step" ng-repeat="step in $ctrl.steps" ng-class="{'active': step.number == $ctrl.step, 'inactive': !step.active}" ng-click="$ctrl.goStep(step);">
+		{{step.order}} {{step.name}}
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">	
+			<button title="Выход" type="button" class="btn btn-default" ng-click="$ctrl.logout()">
+				<span class="glyphicon glyphicon-off"></span> 
+				<span>Выход</span>
+			</button>
+			<button title="К предыдущему шагу" type="button" class="btn btn-default" ng-click="$ctrl.prevStep()" ng-if="$ctrl.showPrev">
+				<span class="glyphicon glyphicon-circle-arrow-left"></span> 
+				<span>Пред.</span>
+			</button>
+			<button title="К следующему шагу" type="button" class="btn btn-default" ng-click="$ctrl.nextStep()" ng-if="$ctrl.showNext">
+				<span>След.</span>
+				<span class="glyphicon glyphicon-circle-arrow-right"></span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<hr />

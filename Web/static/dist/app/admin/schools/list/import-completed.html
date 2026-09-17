@@ -1,0 +1,21 @@
+{{#if model.alreadyCreated}}
+<b>{{language.Generic.Import.kSchoolsAlreadyCreated}}</b>
+{{/if}}
+<div style="overflow-y: auto; max-height: 400px">
+	{{#if model.ImportedSchools.length}}
+	{{language.Generic.Import.kSuccessImportSchools}}:
+	<ul>
+		{{#each model.ImportedSchools}}
+		<li>{{SchoolName}}</li>
+		{{/each}}
+	</ul>
+	{{/if}}
+	{{#if model.NotImportedSchools.length}}
+	{{language.Generic.Import.kFailImportSchools}}:
+	<ul>
+		{{#each model.NotImportedSchools}}
+		<li>{{SchoolName}} <span class="alert-danger small">({{Result}})</span></li>
+		{{/each}}
+	</ul>
+	{{/if}}
+</div>

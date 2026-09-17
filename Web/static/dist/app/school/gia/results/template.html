@@ -1,0 +1,80 @@
+<script language="javascript" src="/vendor/select2/js/select2.full.min.js"></script>
+<script language="javascript" src="/vendor/select2/js/i18n/ru.js"></script>
+
+<div class="row" ng-if="state.staffMode">
+	<div class="col-md-12">
+		<div class="buttons-filters-panel form-horizontal single-row">
+			<div class="row">
+				<div class="buttons-panel">
+					<div class="buttons-panel-right">
+						<button title="{{language.Generic.EGE.kEgePersons}}" type="button" class="btn btn-default" ng-click="goEgePersons()">
+							<span>{{language.Generic.EGE.kEgePersons}}</span>
+						</button>
+						<button title="{{language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default" ng-click="exportGiaExcel()">
+							<span class="glyphicon glyphicon-export"></span>
+							<span>{{language.Generic.Common.kBtnExcel}}</span>
+						</button>
+					</div>
+				</div>
+				<div class="filters-panel col-md-12 filters-panel-compact"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12 info-panel"></div>
+	<hr />
+</div>
+
+<div class="row" ng-show="state.dataReady && !state.emptyChoice && state.emptyData">
+	<div class="col-md-8">
+		<div class="alert alert-info" role="alert">{{language.Generic.EGE.kNoEgeResultsByFilter}}</div>
+	</div>
+</div>
+
+<div class="row" ng-show="state.dataReady && !state.emptyData && !state.emptyChoice">
+	<div class="col-md-12">
+		<table class="table table-bordered table-xs table-hover table-striped">
+			<tr>
+				<th>№</th>
+				<th>{{language.Generic.EGE.kAuditory}}</th>
+				<th>{{language.Common.kClass}}</th>
+				<th>{{language.Generic.Common.kSubject}}</th>
+				<th>{{language.Generic.Reports.kFIOstud}}</th>
+				<th>{{language.Generic.UsersExport_1C.kSeriesDocument}}</th>
+				<th>{{language.Generic.UsersExport_1C.kNumberDocument}}</th>
+				<th ng-if="isForeignLanguage()">{{language.Generic.EGE.kShortAnswerPart}}</th>
+				<th ng-if="data.giaSubject == '-1' || !isForeignLanguage()">{{language.Generic.EGE.kAssignmentsWithShortAnswer}}</th>
+				<th ng-if="isForeignLanguage()">{{language.Generic.EGE.kAssignmentsWithDetailedAnswer}}</th>
+				<th ng-if="data.giaSubject == '-1' || !isForeignLanguage()">{{language.Generic.EGE.kAssignmentsWithDetailedAnswer}}</th>
+				<th ng-if="data.giaSubject == '-1' || isForeignLanguage()">{{language.Generic.EGE.kOralPart}}</th>
+				<th ng-if="data.giaSubject == '-1' || (isForeignLanguage() && data.giaExamType == 0)">{{language.Generic.EGE.kWrittenPartPrimaryScore}}</th>
+				<th ng-if="data.giaSubject == '-1' || (isForeignLanguage() && data.giaExamType == 0)">{{language.Generic.EGE.kOralPartPrimaryScore}}</th>
+				<th ng-if="isForeignLanguage() && data.giaExamType == 1">{{language.Generic.EGE.kOralPartPrimaryScore}}</th>
+				<th ng-if="isForeignLanguage() && data.giaExamType == 1">{{language.Generic.EGE.kWrittenPartPrimaryScore}}</th>
+				<th>{{language.Generic.EGE.kPrimaryScore}}</th>
+				<th ng-if="!state.staffMode || (data.giaSubject == '-1' || !isForeignLanguage()) && data.giaExamType != 0">{{language.Generic.EGE.kScore}}</th>
+				<th ng-if="!state.staffMode || (data.giaSubject == '-1' || isForeignLanguage()) && data.giaExamType != 0">{{language.Generic.EGE.kTestScore}}</th>
+				<th ng-if="data.giaSubject == '-1' || !isForeignLanguage() || data.giaExamType == 0">{{language.Generic.Common.kMark}}</th>
+			</tr>
+			<tr ng-repeat="result in data.giaResults">
+				<td>{{$index+1}}</td>
+				<td>{{result.auditory}}</td>
+				<td>{{result.className}}</td>
+				<td>{{result.subjectName}}</td>
+				<td>{{result.fio}}</td>
+				<td>{{result.docSerial}}</td>
+				<td>{{result.docNumber}}</td>
+				<td class="monos">{{result.maskA}}</td>
+				<td class="monos">{{result.maskB}}</td>
+				<td ng-if="data.giaSubject == '-1' || isForeignLanguage()" class="monos">{{result.maskC}}</td>
+				<td ng-if="data.giaSubject == '-1' || (isForeignLanguage() && data.giaExamType == 0)">{{result.writtenScore}}</td>
+				<td ng-if="data.giaSubject == '-1' || (isForeignLanguage() && data.giaExamType == 0)">{{result.oralScore}}</td>
+				<td ng-if="isForeignLanguage() && data.giaExamType == 1">{{result.oralScore}}</td>
+				<td ng-if="isForeignLanguage() && data.giaExamType == 1">{{result.writtenScore}}</td>
+				<td>{{result.primaryScore}}</td>
+				<td ng-if="!state.staffMode || (data.giaSubject == '-1' || !isForeignLanguage()) && data.giaExamType != 0">{{result.totalScoreStr}}</td>
+				<td ng-if="!state.staffMode || (data.giaSubject == '-1' || isForeignLanguage()) && data.giaExamType != 0">{{result.testScore}}</td>
+				<td ng-if="data.giaSubject == '-1' || !isForeignLanguage() || data.giaExamType == 0">{{result.totalMark}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

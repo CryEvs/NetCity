@@ -1,0 +1,63 @@
+<div>
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+
+			<form role="form" name="portfolioForm" class="form form-xs">
+				<!--Поля формы-->
+
+				<div class="form-group">
+					<label for="curator-org" class="control-label">{{language.Generic.Common.kEO}}</label>
+					<div class="">
+
+						<ui-select id="curator-org" ng-model="data.curator.schoolId" theme="bootstrap">
+							<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+							<ui-select-choices repeat="school.id as school in searchCtx.schools.items"
+											   ui-disable-choice="school.name === 'Совпадений не найдено' || school.name === 'Поиск...'"
+											   refresh="searchCtx.schools.search($select.search)"
+											   on-select>
+								<div ng-bind-html="school.name | highlight: $select.search"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</div>
+				</div>
+				
+				<div class="form-group" ng-if="data.curator.schoolId">
+					<label for="curator-user" class="control-label">{{language.Generic.Common.kStaff}}</label>
+					<div class="">
+
+						<ui-select id="curator-user" ng-model="data.curator.userId" theme="bootstrap">
+							<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+							<ui-select-choices repeat="user.id as user in searchCtx.staffs.items"
+											   ui-disable-choice="user.name === 'Совпадений не найдено' || user.name === 'Поиск...'"
+											   refresh="searchCtx.staffs.search($select.search)">
+								<div ng-bind-html="user.name | highlight: $select.search"></div>
+							</ui-select-choices>
+						</ui-select>
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="save()">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

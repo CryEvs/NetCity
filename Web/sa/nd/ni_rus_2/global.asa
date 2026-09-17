@@ -1,0 +1,33 @@
+<OBJECT ID=lacc RUNAT=Server SCOPE=Application CLASSID="clsid:6509099F-AF65-11D2-9E6F-00104B6A6365"></OBJECT>
+<OBJECT ID=Storage RUNAT=Server SCOPE=Application CLASSID="clsid:46A329B1-AAAE-11D2-9E6C-00104B6A6365"></OBJECT>
+
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+
+Sub Application_OnStart
+	Storage.Timeout = 3600000
+	
+	Application.Lock
+
+	'Product name
+	Application("PRODUCT_NAME") = "Русский язык. 2 класс"
+
+	'Sections in xsl
+	Application("SECTION") = "no"
+
+	'Learning Activity ID
+	Application("LAID") = "ni_rus_2"
+
+	'Copyright information
+	Application("COPYRIGHT") = "&copy; 2013-17 Новый Диск"
+	
+	'Version information
+	Application("LA_VERSION") = "версия 1.0"
+	
+	'Displaying information
+	Application("HTML_TITLE") = "Задание по русскому языку"
+	Application("BODY_PARAMS") = "link=""#0000FF"" vlink=""#0000FF"""
+
+	Application.Unlock
+End Sub
+
+</SCRIPT>

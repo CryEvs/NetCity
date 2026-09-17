@@ -1,0 +1,26 @@
+﻿<OBJECT ID=obConfig RUNAT="Server" SCOPE=Application CLASSID="clsid:A34F71A3-5BFB-4283-B84A-A218145B00D3"></OBJECT>
+<OBJECT ID=obComponentMgr RUNAT="Server" SCOPE=Application CLASSID="clsid:337235D2-92CE-4c5b-8DA4-B62BB6946D95"></OBJECT>
+<OBJECT ID=obTokenMgr RUNAT="Server" SCOPE=Application CLASSID="clsid:53494DAC-E3FF-49fa-A3F5-AC82EF5FAAAC"></OBJECT>
+<OBJECT ID=obSecurityHelper RUNAT="Server" SCOPE=Application CLASSID="clsid:7B04E8C2-6B7A-3A81-BB51-669C1058D364"></OBJECT>
+
+<script LANGUAGE="VBScript" RUNAT="Server">
+Const strMSSQLProvider="Provider=SQLOLEDB;"
+
+Sub Application_OnStart
+	Call obConfig.StaticInstance.Init(Server.MapPath("\"), True)
+
+	Dim strDbProvider
+	strDbProvider = strMSSQLProvider
+	
+	Application("DB_STRING") = strDbProvider & obConfig.StaticInstance.DbConfiguration.WorkConnection
+	Application("CONNECTION_STRING") = Application("DB_STRING")
+
+	Call obComponentMgr.RunInstaller("NetCity.Components.Infrastructure.RedisConnectionInstaller")
+	
+	Call obComponentMgr.RunInstaller("NetCity.Common.Legacy.LegacyInfrastructureInstaller")
+	Call obComponentMgr.RunInstaller("NetCity.Components.Infrastructure.WebSession.WebInfrastructureInstaller")
+	
+	Call obComponentMgr.RegisterInstance("NetCity.Common.Components.Abstraction.ITokenManagerComponent", obTokenMgr)
+End Sub
+
+</script>

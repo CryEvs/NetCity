@@ -1,0 +1,101 @@
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="apploader">
+			<div class="placeholder">
+				<span class="arrows"></span>
+				<span class="title">{{language.Generic.Movement.kPleaseWait}}</span>
+			</div>
+		</div>
+
+		<div class="alert alert-danger" role="alert" ng-if="canIUP && !data.iupComponents.length">
+			{{language.Generic.Common.kUnexpErr}}
+		</div>
+
+		<form class="form-horizontal" name="List" ng-if="!canIUP || data.iupComponents.length">
+			<div class="row">
+				<div class="col-md-8 col-lg-6">
+					<div class="panel panel-warning">
+						<div class="panel-heading" role="tab" id="headingcomponents">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#" class="collapsed" data-target="#components" aria-expanded="true" aria-controls="components">
+									{{language.Generic.SetupSchoolCalendar.kComponents}}
+								</a>
+							</h4>
+						</div>
+						<div id="components" class="panel-collapse collapse in" aria-labelledby="headingcomponents" role="tabpanel">
+							<div class="panel-body">
+								<div class="row" ng-if="!state.readOnly">
+									<div class="col-md-12">
+										<div class="buttons-panel">
+											<div class="buttons-panel-left">
+												<button title="{{language.Generic.SetupSchoolCalendar.kCreateNewComponent}}" type="button" class="btn btn-info" ng-click="lazyCreate()">
+													<span class="glyphicon glyphicon-plus-sign"></span> <span>{{language.Generic.Buttons.kAdd}}</span>
+												</button>
+												<button title="{{language.Generic.SetupSchoolCalendar.kDeleteComponent}}" type="button" class="btn btn-danger" ng-click="lazyRemove()">
+													<span class="glyphicon glyphicon-minus-sign"></span> <span>{{language.Generic.Buttons.kRemove}}</span>
+												</button>
+											</div>
+											<div class="buttons-panel-right"></div>
+											<div class="buttons-panel-adaptive btn-group" style="float: right; display: none; margin-right: 0px; right: 0px;">
+												<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+													<span class="glyphicon glyphicon-menu-hamburger"></span> <span id="action">{{language.Generic.Buttons.kActions}}</span> <span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu buttons-panel-right buttons-panel-adaptive-wrapper pull-right" role="menu"></ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="alert alert-info" role="alert" ng-if="!data.components.length">
+									{{language.Generic.SetupSchoolCalendar.kEmptyComponentsList}}
+								</div>
+
+								<table class="col-md-4 table table-bordered table-md" ng-if="data.components.length">
+									<tbody>
+									<tr>
+										<th>{{language.Generic.SetupSchoolCalendar.kComponent}}</th>
+										<th ng-bind-html="language.Generic.Common.kDeletingMark"></th>
+									</tr>
+									<tr ng-repeat="component in data.components">
+										<td>{{component.name}}</td>
+										<td class="text-center" ng-if="component.used">
+											{{language.Generic.Common.kEmploy}}
+										</td>
+										<td class="text-center" ng-if="!component.used">
+											<input type="checkbox" name="COMPONENTS" ng-model="component.removable" ng-disabled="state.readOnly">
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" ng-if="canIUP">
+				<div class="col-md-8 col-lg-6">
+					<div class="panel panel-success">
+						<div class="panel-heading" role="tab" id="headingiup_components">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#" class="collapsed" data-target="#iup_components" aria-expanded="true" aria-controls="iup_components">
+									{{language.Generic.SetupSchoolCalendar.kIUPComponents}}
+								</a>
+							</h4>
+						</div>
+						<div id="iup_components" class="panel-collapse collapse in" aria-labelledby="headingiup_components" role="tabpanel">
+							<div class="panel-body">
+								<div class="list-group list-group-sm">
+									<label ng-repeat="iupComponent in data.iupComponents" class="list-group-item">
+										{{$index + 1}}. {{iupComponent.name}}
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

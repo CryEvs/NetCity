@@ -1,0 +1,44 @@
+<div class="row">
+	<div class="col-md-10">
+
+		<div class="alert alert-info" role="alert" ng-show="$ctrl.state.dataReady && $ctrl.state.emptyData">
+			Нет информации о других членах семьи
+		</div>
+
+		<div class="alert alert-info" role="alert" ng-show="!$ctrl.state.dataReady">
+			{{$ctrl.language.Generic.Movement.kPleaseWait}}
+		</div>
+
+		<div class="alert alert-danger" role="alert" ng-show="$ctrl.error">
+			{{$ctrl.error}}
+		</div>
+
+		<table class="table table-xs table-hover table-selectable" ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData">
+			<tr>
+				<th>Тип родства</th>
+				<th>ФИО</th>
+				<th>Дата рождения</th>
+			</tr>
+			<tr ng-repeat="member in $ctrl.familyMembers" ng-class="{'selected': $ctrl.selection.isSelected(member)}" ng-click="$ctrl.selection.select(member)">
+				<td>{{$ctrl.getRelName(member)}}</td>
+				<td>{{member.lastName}} {{member.firstName}} {{member.middleName}}</td>
+				<td>{{member.birthDate | nsDate}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-2">
+		<div class="btn-group" ng-if="$ctrl.canEdit()">
+			<button class="btn btn-default btn-sm" ng-click="$ctrl.add()" type="button" title="Добавить информацию о члене семьи">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			</button>
+
+			<button class="btn btn-warning btn-sm" ng-click="$ctrl.edit()" type="button" ng-disabled="!$ctrl.selection.selected" ng-hide="$ctrl.state.emptyData" title="Редактировать информацию о члене семьи">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-pencil"></span>
+			</button>
+
+			<button class="btn btn-warning btn-sm" ng-click="$ctrl.remove()" type="button" ng-disabled="!$ctrl.selection.selected" ng-hide="$ctrl.state.emptyData" title="Удалить информацию о члене семьи">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-minus-sign"></span>
+			</button>
+		</div>
+	</div>
+</div>

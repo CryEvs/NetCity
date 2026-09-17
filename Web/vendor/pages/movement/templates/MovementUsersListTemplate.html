@@ -1,0 +1,36 @@
+﻿<table class="table table-bordered table-bright-hover table-bright-striped table-xs print-block">
+	{{{moveStudentsList.titles}}}
+	{{#each moveStudentsList.commonData}}
+	<tr class="{{#unless possible}}impossible{{/unless}}">
+		<td>
+			<input type="CHECKBOX" name="Students" value="{{id}}" id="movement-{{id}}" data-internalid="{{studentData.internalId}}" {{GetDisabled movementPossibility}} {{setChecked selected}}>
+		</td>
+		<td>
+			{{#each @root}}
+				{{Inc @../index pageResponseData.currentPage pageResponseData.rowsByPage}}
+			{{/each}}
+		</td>
+		<td>
+			<label for="movement-{{id}}" class="fio-label" data-original-title="{{GetTitle movementPossibility}}">{{FIO studentData.person}}</label>
+		</td>
+		<td>
+			{{DateOnly2str studentData.birthDate}}
+		</td>
+		{{#each @root}}
+			{{#each additionalData.infoData}}
+				{{#each ../additionalData.movementsAdditionalData}}
+					{{#ifEqual movementId ../../../id }}
+						{{#each data}}
+							{{#ifEqual itemId ../../../id }}
+								<td>
+									{{value}}
+								</td>
+							{{/ifEqual}}
+						{{/each}}
+					{{/ifEqual}}
+				{{/each}}
+			{{/each}}
+		{{/each}}
+	</tr>
+	{{/each}}
+</table>

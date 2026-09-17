@@ -1,0 +1,126 @@
+<form class="form-horizontal form-sm" ng-show="$ctrl.state.viewReady">
+	<div class="row">
+		<div class="col-md-7">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Период проведения</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select save-state class="form-control" ng-options="eventStatus.id as eventStatus.name for eventStatus in $ctrl.data.refs.eventStatuses" ng-change="$ctrl.filterEventListByFilter()" ng-model="$ctrl.data.eventStatus"></select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-7">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Events.kEventType}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select save-state class="form-control" ng-options="awardEventType.id as awardEventType.name for awardEventType in $ctrl.data.refs.awardEventTypes" ng-change="$ctrl.filterEventListByFilter()" ng-model="$ctrl.data.awardEventType">
+						<option value="" selected>Все</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+<div class="row" ng-if="$ctrl.data.viewEvents.length || $ctrl.canAddEvent">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+
+			<button type="button" class="btn btn-info" ng-click="$ctrl.add()" ng-if="$ctrl.canAddEvent">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span>Запись на мероприятия</span>
+			</button>
+
+			<button type="button" class="btn btn-info" ng-click="$ctrl.edit()" ng-if="$ctrl.canEditEventResult" ng-disabled="!$ctrl.data.selection.selected">
+				<span class="glyphicon glyphicon-pencil"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+			</button>
+			
+			
+			<button type="button" class="btn btn-danger" ng-click="$ctrl.remove()" ng-if="$ctrl.canAddEvent && $ctrl.canEditEventResult" ng-disabled="!$ctrl.data.selection.selected">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+			</button>
+
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="$ctrl.state.dataReady && $ctrl.state.emptyData">
+		<div class="alert alert-info" role="alert">Нет мероприятий в личном плане</div>
+	</div>
+	<div class="col-md-10" ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData && !$ctrl.data.viewEvents.length">
+		<div class="alert alert-info" role="alert">Нет мероприятий в личном плане по выбранным значениям в фильтре</div>
+	</div>
+</div>
+ 
+<div class="row" ng-show="$ctrl.state.dataReady && $ctrl.data.viewEvents.length && $ctrl.data.eventStatus == 'Future'" >
+	<div class="col-md-10">
+		<div class="alert alert-warning" role="alert" style="margin-bottom: 10px">
+			<span class="glyphicon glyphicon-flag"></span>
+			<span ng-if="$ctrl.data.viewEvents.length == 1">Запланировано участие в {{$ctrl.data.viewEvents.length}} предстоящем мероприятии</span>
+			<span ng-if="$ctrl.data.viewEvents.length > 1">Запланировано участие в {{$ctrl.data.viewEvents.length}} предстоящих мероприятиях</span>
+		</div>
+	</div>
+</div>
+
+<div class="row" ng-show="$ctrl.state.dataReady && $ctrl.data.viewEvents.length">
+	<div class="col-md-12">
+		<table class="table table-xs table-bright table-bright-hover table-selectable">
+			<tr>
+				<th rowspan="2">{{$ctrl.language.Generic.Events.kDateOfEvent}}</th>
+				<th colspan="6">Информация о мероприятии</th>
+				<th rowspan="2" ng-if="$ctrl.moduleTalentStudents">Куратор</th>
+				<th rowspan="2">Результаты участия</th>
+			</tr>
+			<tr>
+				<th>Наименование</th>
+				<th>{{$ctrl.language.Generic.Events.kEventType}}</th>
+				<th>{{$ctrl.language.Generic.Events.kEventLevel}}</th>
+				<th>{{$ctrl.language.Generic.Events.kEventStatus}}</th>
+				<th>{{$ctrl.language.Generic.Events.kEventFounder}}</th>
+				<th>{{$ctrl.language.Generic.Events.kEventPlace}}</th>
+			</tr>
+			<tr ng-repeat="event in $ctrl.data.viewEvents" ng-class="{'selected': $ctrl.data.selection.isSelected(event), 'event-personal': event.personalEvent}" ng-click="$ctrl.data.selection.select(event)">
+				<td>
+					<span class="big">{{ event.eventInfo.date }}</span>
+				</td>
+				<td>
+					<span class="big">{{ event.eventInfo.name }}</span>
+				</td>
+				<td>{{ event.eventInfo.awardEventType.name }}</td>
+				<td>{{ event.eventInfo.level }}</td>
+				<td>{{ event.eventInfo.status.name }}</td>
+				<td>{{ event.eventInfo.founder.name }}</td>
+				<td>{{ event.eventInfo.place.name }}</td>
+				<td ng-if="$ctrl.moduleTalentStudents">
+					<p ng-repeat="info in event.curator.info" class="data">
+						<span class="title fggray">{{info.title}}</span>: <span class="text">{{info.text}}</span>
+					</p>
+				</td>
+				<td>
+					<p ng-repeat="result in event.participationInfo.results" class="data">
+						<span class="title fggray">{{result.type}}</span>: <span class="text">{{result.item}}</span>
+					</p>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<style>
+	.table-selectable tr.already-member td {
+		cursor: not-allowed;
+		background-color: #ffe074;
+	}
+	.table-selectable tr.cancelled td {
+		text-decoration: line-through;
+	}
+	.table-selectable tr.unavailable td {
+		cursor: not-allowed;
+		background-color: #bfbfbf;
+	}
+</style>

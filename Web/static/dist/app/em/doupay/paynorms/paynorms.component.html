@@ -1,0 +1,70 @@
+<div class="col-md-12" ng-form ng-if="$ctrl.ready">
+	<div ng-if="!$ctrl.readonly">
+		<div class="buttons-panel">
+			<button title="{{$ctrl.language.Generic.EM.kAddNormTable}}"  type="button" class="btn btn-primary" ng-click="$ctrl.add()">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				{{$ctrl.language.Generic.Buttons.kAdd}}
+			</button>
+
+			<button ng-if="$ctrl.selectedPayNormDecree.decree.id == $ctrl.lastPayNormDecreeId && $ctrl.payNormDecreeList.length != 0" title="{{$ctrl.language.Generic.EM.kEditLastNormTable}}" type="button" class="btn btn-warning" ng-click="$ctrl.edit()">
+				<span class="glyphicon glyphicon-pencil"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+			</button>
+		</div>
+	</div>
+
+	<div ng-if="$ctrl.payNormDecreeList.length == 0">
+		<div class="alert alert-info ng-binding" role="alert">
+			{{$ctrl.language.Generic.EM.kNoNormTables}}
+		</div>
+	</div>
+
+	<div ng-if="$ctrl.payNormDecreeList.length != 0">
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.EM.kStartNorms}}</label>
+			<div class="col-md-10 col-lg-10">
+				<select class="form-control" name="payNormDecree" ng-model="$ctrl.selectedPayNormDecree" ng-options="item as $ctrl.dateUtils.date2str(item.startDate) for item in $ctrl.payNormDecreeList" ng-change="$ctrl.loadPayNorms()"></select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.EM.kRuleResolution}}</label>
+			<div class="col-md-10 col-lg-10">
+				<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.selectedPayNormDecree.decree.name">
+			</div>
+		</div>
+	</div>
+
+	<div ng-if="$ctrl.payNormDecreeList.length != 0 && $ctrl.payNormList.length == 0">
+		<div class="alert alert-info ng-binding" role="alert">
+			{{$ctrl.language.Generic.EM.kNoNormsInTable}}
+		</div>
+	</div>
+
+	<div ng-if="$ctrl.payNormList.length != 0">
+		<form name="$ctrl.normForm">
+			<table class="table table-bordered table-xs table-hover table-middle-cells">
+				<tbody>
+					<tr>
+						<th colspan="5">{{$ctrl.language.Generic.EM.kNormsTable}}</th>
+					</tr>
+					<tr class="text-center">
+						<th>{{$ctrl.language.Generic.EM.kNorm}}</th>
+						<th>{{$ctrl.language.Generic.EM.kNormSumm}}</th>
+						<th>{{$ctrl.language.Generic.EM.kNormAver}}</th>
+						<th>{{$ctrl.language.Generic.EM.kDouPayKind}}</th>
+						<th>{{$ctrl.language.Generic.EM.kNormComment}}</th>
+					</tr>
+
+					<tr class="text-center" ng-repeat="payNorm in $ctrl.payNormList">
+						<td>{{payNorm.abbrev}}</td>
+						<td>{{payNorm.normValue}}</td>
+						<td>{{payNorm.avgValue}}</td>
+						<td>{{payNorm.noAttendance == true ? $ctrl.language.Generic.EM.kForNoAttendance : "&nbsp;"}}</td>
+						<td>{{payNorm.comment}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,96 @@
+﻿{{#unless rooms.length}}
+	<div class=\"row\">
+		<div class=\"col-md-10 col-lg-7\">
+			<div class=\"alert alert-info\" role=\"alert\">
+				{{language.Common.kNoRooms}}
+			</div>
+		</div>
+	</div>
+{{else}}
+	<table class="table table-bordered table-condensed table-thin" id="rooms-table">
+		<tr>
+			<th>{{language.Generic.Calendar.kRoomNumber}}</th>
+			<th>{{language.Generic.Calendar.kFloor}}</th>
+			<th>{{language.Generic.Common.kCorp}}</th>
+			<th>{{language.Generic.Calendar.kLen}}</th>
+			<th>{{language.Generic.Calendar.kWidth}}</th>
+			<th>{{language.Generic.Calendar.kArea}}</th>
+			<th>{{language.Generic.Calendar.kResponsible}}</th>
+			<th>{{language.Generic.Calendar.kStudy}}</th>
+			<th>{{language.Calendar.kSeats}}</th>
+			<th>{{kClasses}}</th>
+			{{#unless readonly}}
+			<th>{{language.Generic.Common.kRemove}}</th>
+			{{/unless}}
+		</tr>
+		{{#if readonly}}
+		{{#each rooms}}
+		<tr align="middle" valign="center">
+			<td align="left">{{roomname}}</td>
+			<td>{{floor}}</td>
+			<td>{{corpus}}</td>
+			<td>{{length}}</td>
+			<td>{{width}}</td>
+			<td>{{area}}</td>
+			<td>{{nickname}}</td>
+			<td>
+				{{#if study}}
+				{{@root.language.Generic.Common.kYes}}
+				{{else}}
+				{{@root.language.Generic.Common.kNo}}
+				{{/if}}
+			</td>
+			<td>{{seats}}</td>
+			<td>{{classesnames}}</td>
+		</tr>
+		{{/each}}
+		{{else}}
+		{{#each rooms}}
+		<tr id="room-{{id}}">
+			<td>
+				<input type="hidden" name="RoomID" value="{{id}}">
+				<input type="text" name="RoomName" class="form-control" size="27" maxlength="50" value="{{roomname}}" data-storedstate="{{roomname}}">
+			</td>
+			<td>
+				<select class="form-control" name="Floor" onchange="dataChanged();">
+					{{#each @root.floors}}
+					<option value="{{this}}" {{#ifCond this "===" ../floor}} selected {{/ifCond}}>{{this}}</option>
+					{{/each}}
+				</select>
+			</td>
+			<td>
+				<input type="text" class="form-control" name="Corpus" size="27" maxlength="100" value="{{corpus}}" onchange="dataChanged();">
+			</td>
+			<td>
+				<input type="text" class="form-control" name="Length" size="3" maxlength="50" value="{{length}}">
+			</td>
+			<td>
+				<input type="text" class="form-control" name="Width" size="3" maxlength="50" value="{{width}}">
+			</td>
+			<td>
+				<input type="text" class="form-control" name="Area" size="3" maxlength="50" value="{{area}}">
+			</td>
+			<td>
+				<select class="form-control" name="RESPONSIBLEID" onchange="dataChanged();">
+					<option value="-1" selected=""></option>
+					{{#each @root.staffs}}
+					<option value="{{userid}}" {{#if ../responsible}} {{#ifCond ../userid "===" ../../responsible.id}} selected {{/ifCond}} {{/if}}>{{nickname}}</option>
+					{{/each}}
+					
+				</select>
+			</td>
+			<td style="text-align: center;">
+				<input type="checkbox" name="Study" value="{{id}}" {{#if study}} checked {{/if}} {{#if used}} disabled="" {{/if}} />
+			</td>
+			<td>
+				<input type="text" class="form-control" name="Seats" size="3" maxlength="3" value="{{seats}}" onchange="dataChanged();">
+			</td>
+			<td>{{classesnames}}</td>
+			<td style="text-align: center;">
+				<input type="checkbox" name="DeleteID" value="{{id}}">
+			</td>
+		</tr>
+		{{/each}}
+		{{/if}}
+	</table>
+{{/unless}}

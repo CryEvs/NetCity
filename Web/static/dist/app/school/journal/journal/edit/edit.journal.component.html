@@ -1,0 +1,82 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/journal/journal/edit/../css/edit-journal.min.css">
+
+<div class="buttons-filters-panel form-horizontal">
+	<div class="row ns-cloak">
+		<div class="col-md-12">
+			<div class="buttons-panel">	
+				<div class="buttons-panel-left">
+					<button title="Сохранить" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>Сохранить</span>
+					</button>
+					<button title="Сохранить и вернуться" type="button" class="btn btn-default save-journal-with-return-btn" ng-click="$ctrl.saveAndBack()">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>Сохранить и вернуться</span>
+					</button>
+					<button title="Добавить задание" type="button" class="btn btn-info hide add-assign-btn">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>Добавить задание</span>
+					</button>
+					
+					<button title="Добавить домашнее задание" type="button" class="btn btn-info hide add-homeAssign-btn">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>Добавить домашнее задание на текущий урок</span>
+					</button>
+				</div>
+				
+				<div class="buttons-panel-right">
+					<button title="Домашнее задание на следующее занятие" type="button" class="btn btn-info" ng-click="$ctrl.editCtrl.addNextHomeAssign()">
+						<span class="glyphicon glyphicon-share-alt"></span>
+						<span>Домашнее задание на следующее занятие</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row ns-cloak">
+		<div class="filters-panel col-md-6" ng-if="$ctrl.editCtrl && $ctrl.editCtrl.classMeetings">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Filter.kCourseGB}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<span class="form-control form-control-title">
+						<span class="text">{{$ctrl.ctx.subjectGroupName}}</span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Common.kPeriod}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<span class="form-control form-control-title">
+						<span class="text">{{$ctrl.ctx.termName}}</span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Grade.kLessonDate}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<div class="input-group">
+						<select class="form-control" name="CM" ng-model="$ctrl.cmId" ng-options="cm.id as cm.name for cm in $ctrl.editCtrl.classMeetings" ng-change="$ctrl.onChangeCm()"></select>
+						<span class="input-group-btn">
+							<button title="{{$ctrl.language.Generic.Grade.kGoPrevCM}}" type="button" class="btn btn-default" ng-click="$ctrl.changeCm(-1)">
+								<span class="glyphicon glyphicon-circle-arrow-left"></span>
+							</button>
+							<button title="{{$ctrl.language.Generic.Grade.kGoNextCM}}" type="button" class="btn btn-default" ng-click="$ctrl.changeCm(1)">
+								<span class="glyphicon glyphicon-circle-arrow-right"></span>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.editCtrl.subjectPlan">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Curriculum.kLesTheme}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<lesson-theme sg-id="$ctrl.ctx.subjectGroupId" subject-plan="$ctrl.editCtrl.subjectPlan" edit-ctrl="$ctrl.editCtrl"></lesson-theme>
+				</div>
+			</div>
+
+			<distance-meeting ng-if="$ctrl.displayDistanceMeeting()" cm-info="$ctrl.cmInfo" cm-id="$ctrl.cmId"></distance-meeting>
+		</div>
+	</div>
+</div>
+<edit-journal ng-if="$ctrl.ctx" cm-id="$ctrl.cmId" ctx="$ctrl.ctx" ctrl="$ctrl.editCtrl"></edit-journal>	

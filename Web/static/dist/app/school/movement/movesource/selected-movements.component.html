@@ -1,0 +1,28 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<div class="table-responsive" style="max-height: 600px">
+		<table class="table table-bordered table-bright-hover table-bright-striped table-xs print-block">
+			<tr>
+				<th class="NotPrintable min"> <input type="checkbox" ng-click="$ctrl.selectAll()"></th>
+				<th ng-bind-html="$ctrl.language.Generic.Filter.kN_PP"></th>
+				<th> {{$ctrl.language.Generic.Filter.kFIO}} </th>
+				<th> {{$ctrl.language.Generic.Common.kBDate}} </th>
+			</tr>
+			<tr ng-repeat="movement in $ctrl.movements">
+				<td class="text-center">
+					<input type="checkbox" id="movement-sel-{{movement.movementId}}" ng-checked="$ctrl.selection.isSelected(movement)" ng-click="$ctrl.selection.select(movement)">
+				</td>
+				<td>
+					{{ $index + 1}}
+				</td>
+				<td>
+					<label style="font-weight: normal;" for="movement-sel-{{id}}" class="fio-label" ng-click="$ctrl.selection.select(movement)">
+						{{ movement.student.fio }}
+					</label>
+				</td>
+				<td>
+					{{ movement.student.birthDate | nsDate }}
+				</td>
+			</tr>
+		</table>
+	</div>
+</ns-modal>

@@ -1,0 +1,186 @@
+<script language="javascript" src="/vendor/select2/js/select2.full.min.js"></script>
+<script language="javascript" src="/vendor/select2/js/i18n/ru.js"></script>
+
+<style>
+	input[type="search"]::-webkit-search-cancel-button {
+		-webkit-appearance: searchfield-cancel-button;
+	}
+</style>
+
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="buttons-filters-panel form-horizontal single-row">
+			<div class="row">
+				<div class="buttons-panel">
+					<div class="buttons-panel-right">
+						<button ng-repeat="btn in registry.linkButtons" title="{{btn.title}}" ng-if="!btn.hide" type="button" class="btn btn-default" ng-click="btn.action()">
+							<span ng-if="btn.icon" class="{{btn.icon}}"></span>
+							<span>{{btn.title}}</span>
+						</button>
+						<!-- Кнопка Экспорта -->
+						<button title="{{btnExport.title}}" type="button" class="btn btn-default" ng-click="btnExport.action()" ng-hide="btnExport.hide" ng-disabled="state.loading || state.initing || state.exporting">
+							<span class="{{btnExport.icon}}"></span>
+							<span>{{btnExport.title}}</span>
+						</button>
+					</div>
+				</div>
+				<div class="filters-panel col-md-12" ng-class="{'filters-panel-compact': registry.compactFilters}"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="filters-panel form-sm form-horizontal col-md-6 filters-panel-compact" style="margin-top: 0">
+		<div class="form-group" ng-if="data.search.fields && data.search.fields.length">
+			<label class="control-label col-md-4 col-lg-5 col-sm-4">{{language.Generic.Buttons.kSearch}}</label>
+			<div class="col-md-8 col-lg-6 col-sm-8">
+				<div class="input-group">
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-default btn-sm" ng-class="{'dropdown-toggle': data.search.fields.length > 1}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{data.search.fieldTitle}} <span class="caret" ng-if="data.search.fields.length > 1"></span></button>
+
+						<ul class="dropdown-menu" ng-if="data.search.fields.length > 1">
+							<li ng-repeat="field in data.search.fields"><a href="#" ng-click="setSearchField(field)">{{field.title}}</a></li>
+						</ul>
+					</div>
+					<input type="search" class="form-control" aria-label="..." ng-model="data.search.text" >
+				</div>
+
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<label class="control-label col-md-4 col-lg-5 col-sm-4">{{language.Generic.FilterUsers.kNumOfRecords}}</label>
+			<div class="col-md-8 col-lg-6 col-sm-8">
+				<input type="number" class="form-control" name="pagesize" size="4" ng-model="paging.currentPageSize">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 buttons-panel extra">
+		
+		<div class="btn-group">
+			<button id="load-btn" type="button" class="btn btn-primary btn-sm" ng-click="clearLoad()">
+				<span class="glyphicon glyphicon-search"></span>
+				<span>{{language.Generic.Buttons.kLoad}}</span>
+			</button>
+			<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="caret"></span> 
+				<!--<span class="sr-only">Toggle Dropdown</span>-->
+			</button> 
+			<ul class="dropdown-menu">
+				<li><a href="#" ng-click="settings()">{{language.Generic.SchoolSettings.kTitleSettings}}</a></li> 
+			</ul>
+		</div>
+
+		<!--<button id="load-btn" title={{language.Generic.Buttons.kLoad}} type="button" class="btn btn-primary btn-sm" ng-click="load()">
+			<span class="glyphicon glyphicon-search"></span>
+			<span>{{language.Generic.Buttons.kLoad}}</span>
+		</button>-->
+
+		<div style="display: inline-block; float:none" class="buttons-panel-left">
+			<!--<div class="alert alert-info alert-xs"  ng-show="data.search && data.search.text" role="alert">
+				<button type="button" class="close" ng-click="clearSearch()">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				{{data.search.fieldTitle}} = {{data.search.text}}
+			</div>-->
+
+			<button ng-repeat="btn in registry.buttons" title="{{btn.title}}" ng-if="!btn.hide" type="button" class="btn btn-default btn-sm" ng-click="btn.action()" ng-disabled="!btn.isEnabled()">
+				<span ng-if="btn.icon" class="{{btn.icon}}"></span>
+				<span>{{btn.title}}</span>
+			</button>
+
+			<div class="btn-group" ng-repeat="btnGroup in registry.buttonGroups" ng-if="!btnGroup.hide"> 
+				<button type="button" class="btn btn-sm btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<span ng-class="btnGroup.icon"></span> {{btnGroup.title}} <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li ng-repeat="btnG in btnGroup.buttons" ng-if="!btnG.hide">
+						<a href="javascript:void(0)" ng-click="btnG.action()" title="{{btnG.title}}">{{btnG.title}}</a>
+					</li>
+				</ul>
+			</div>
+
+			<button ng-repeat="cmd in data.registry.commands" title="{{cmd.title}}" type="button" class="btn btn-sm" ng-if="!cmd.hide"
+					ng-class="cmd.id === 'del' ? 'btn-danger' : 'btn-default'" ng-click="execCmd(cmd)" ng-disabled="!cmd.isEnabled()">
+				<span ng-if="cmd.id === 'del'" class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{cmd.title}}</span>
+			</button>
+
+		</div>
+
+
+
+	</div>
+</div>
+
+<div class="row" ng-if="registry.extensions.postButtonsTpl">
+	<div class="col-md-12">
+		<div ng-include="registry.extensions.postButtonsTpl"></div>
+	</div>
+</div>
+
+
+<div class="content-preloader" ng-show="state.loading">
+	<span class="arrows"></span>
+	<span class="title">{{language.Generic.Curriculum.kPleaseWait}}</span>
+</div>
+
+<!--<div class="row" ng-if="!data.error && state.dataReady && !state.emptyData && data.registry.commands.length">
+	<div class="col-md-12">
+		<hr />
+		<div class="buttons-panel">
+
+			<button ng-repeat="cmd in data.registry.commands" title="{{cmd.title}}" type="button" class="btn btn-default" ng-click="execCmd(cmd)" ng-disabled="!cmd.isEnabled()">
+				<span>{{cmd.title}}</span>
+			</button>
+
+		</div>
+	</div>
+</div>-->
+
+<ul ng-show="state.dataReady && !state.emptyData && paging.totalRows > paging.pageSize" uib-pagination total-items="paging.totalRows" ng-model="paging.page" items-per-page="paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="pageChange()"></ul>
+
+<div class="row">
+	<div class="col-md-10">
+		<div class="alert alert-danger" ng-show="data.error && !state.loading" role="alert">{{data.error}}</div>
+		<div class="alert alert-info" ng-show="!data.error && !state.dataReady && !state.loading" role="alert">Нажмите кнопку "Загрузить" для загрузки данных</div>
+		<div class="alert alert-info" ng-show="!data.error && state.dataReady && state.emptyData" role="alert">{{language.Generic.Common.kNoDataForFilter}}</div>
+	</div>
+</div>
+
+<div class="row" ng-if="!data.error && state.dataReady && !state.emptyData">
+	<div class="col-md-12">
+		<div class="alert alert-warning" ng-repeat="message in data.registryData.messages" role="alert">{{message}}</div>
+
+		<table class="table table-thin table-xs table-xs table-bright table-bright-hover table" ng-class="{'table-selectable': state.selectable}">
+			<tr>
+				<th>
+					№
+					п/п
+				</th>
+				<th ng-repeat="field in data.displayFields">
+					<span ng-if="field.search" class="glyphicon glyphicon-search" style="cursor: pointer; font-size: 10px; float: left; top: 5px; padding-right: 5px;" ng-click="setSearch(field)" title="Выполнить поиск"></span>
+					<a ng-if="field.sortable" ng-click="setSortOrder(field)" href="javascript:void(0)" title="{{language.Generic.Common.kChangeSortOrder}}">
+						<span>{{field.title}}</span>
+						<span class="glyphicon" ng-class="{'glyphicon-arrow-up': field.sortOrder == 'asc', 'glyphicon-arrow-down': field.sortOrder == 'desc'}" style="font-size: 10px"></span>
+					</a>
+					<span ng-if="!field.sortable">{{field.title}}</span>
+				</th>
+			</tr>
+			<tr ng-repeat="row in data.registryData.rows" ng-class="{'selected': selection.isSelected(row)}" ng-click="clickRow($event, row)">
+				<td>{{row.rownum}}</td>
+				<td ng-repeat="field in data.displayFields">
+					<registry-field row="row" filter-info="filterInfo.filterPanel" field="field"></registry-field>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<ul ng-show="state.dataReady && !state.emptyData && paging.totalRows > paging.pageSize" uib-pagination total-items="paging.totalRows" ng-model="paging.page" items-per-page="paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="pageChange()"></ul>

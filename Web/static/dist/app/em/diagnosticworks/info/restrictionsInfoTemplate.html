@@ -1,0 +1,26 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+<div class="bootstrap-dialog type-danger">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div style="max-height: 500px; overflow: auto;" class="modal-body">
+		<div class="form-group">
+			<label for="linkedOrgs" class="control-label" ng-bind-html="ctrl.data.comment"></label>
+			<div>
+				<textarea style="resize: none;" rows="10" id="linkedOrgs" class="form-control" ng-model="ctrl.data.info" readonly=""></textarea>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-default ng-binding" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			{{ctrl.language.Generic.Buttons.kCancel}}
+		</button>
+	</div>
+</div>

@@ -1,0 +1,85 @@
+<div class="col-md-12">
+
+	<div  class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div ng-show="isNotReadonly" class="buttons-panel-left">
+					<button ng-click="save()" title="{{language.Generic.Common.kSave}}" type="button" class="btn btn-primary">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{language.Generic.Buttons.kSave}}</span>
+					</button>
+					<button ng-click="(revertChanges())" title="{{language.Generic.Common.kReset}}" type="button" class="btn btn-warning">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>{{language.Generic.Buttons.kReset}}</span>
+					</button>
+					<button ng-click="addNewProfile()" title="{{language.Generic.Common.kAdd}}" type="button" class="btn btn-info">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>{{language.Generic.Buttons.kAdd}}</span>
+					</button>
+					<button ng-click="deleteProfile()" title="{{language.Generic.Common.kRemove}}" type="button" class="btn btn-danger">
+						<span class="glyphicon glyphicon-minus-sign"></span>
+						<span>{{language.Generic.Buttons.kRemove}}</span>
+					</button>
+				</div>
+				<div class="buttons-panel-right">
+					<button ng-show="hasUserRight_editSchoolTerm" ng-click="goTermTypes()" title="{{language.Generic.SetupSchoolCalendar.kTermTypes}}" type="button" class="btn btn-default">
+						<span>{{language.Generic.SetupSchoolCalendar.kTermTypes}}</span>
+					</button>
+				</div>
+				<div class="buttons-panel-adaptive btn-group" style="float: right; display: none; margin-right: 0px; right: 0px;">
+					
+					<ul class="dropdown-menu buttons-panel-right buttons-panel-adaptive-wrapper pull-right" role="menu" style="display: block;">
+						<li>
+							<button title="{{language.Generic.SetupSchoolCalendar.kTermTypes}}" type="button" class="btn btn-default">
+								<span>{{language.Generic.SetupSchoolCalendar.kTermTypes}}</span>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-show="isNotAllGradesHasTerms && hasUserRight_editSchoolTerm" class="alert alert-warning" role="alert">{{language.Generic.Common.kNoTermsInYear}}
+	<br>{{language.Generic.Common.kDefineTermsTypes_1}}
+		<a style="cursor: pointer;" ng-click="goTermTypes()">{{language.Generic.SetupSchoolCalendar.kTermTypes}}</a> {{language.Generic.Common.kDefineTermsTypes_2}}</div>
+
+	<table class="table table-bordered table-striped table-hover">
+		<tbody>
+
+			<!-- ШАПКА ТАБЛИЦЫ -->
+			<tr>
+			<th rowspan="2" class="col-md-2">{{language.Common.kProfile}}</th>
+				<th colspan="{{maxGrade}}">{{language.SetupSchoolCalendar.kGradeset}}</th>
+				<th ng-bind-html="language.Generic.Common.kDeletingMark" ng-show="isNotReadonly" rowspan="2">
+				</th>
+			</tr>
+			<tr>
+				<th ng-repeat="grade in grades">{{grade.name}}</th>
+			</tr>
+
+			<!-- ТЕЛО ТАБЛИЦЫ -->
+			<tr ng-repeat="profile in profileViews">
+
+				<!-- название профиля -->
+				<td>
+					<input track-changes type="text" ng-model=profile.name ng-disabled="!isNotReadonly" size="35" maxlength="50">
+				</td>
+
+				<!-- грейды профиля -->
+				<td ng-repeat="gradeView in profile.gradesView" class="text-center">
+					<b ng-show="gradeView.isUsing">X</b>
+
+					<input track-changes ng-model="gradeView.checked" ng-change="profile.changeGrades(gradeView)" ng-show="gradeView.checked && !gradeView.isUsing && isNotReadonly" type="checkbox" checked="checked">
+					<input track-changes ng-model="gradeView.checked" ng-change="profile.changeGrades(gradeView)" ng-show="!gradeView.checked && !gradeView.isUsing && isNotReadonly" type="checkbox">
+				</td>
+
+				<td ng-show="isNotReadonly" class="text-center">
+					<span ng-show="profile.isUsing">{{language.Generic.SetupSchoolCalendar.kProfileUse}}</span>
+					<input track-changes ng-model="profile.isDelete" ng-show="!profile.isUsing" type="checkbox">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

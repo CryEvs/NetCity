@@ -1,0 +1,160 @@
+.sferum_banner {
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(9, 35, 72, 0.07);
+  padding: 20px 50px 20px 24px;
+  border: 1px solid rgba(198, 210, 221, 0.8);
+  box-sizing: border-box;
+  border-radius: 8px;
+  min-width: 250px;
+  text-align: left;
+  position: relative;
+  display: inline-flex;
+  gap: 32px;
+  flex-direction: row;
+}
+
+.sferum_banner_logo {
+  flex-shrink: 0;
+  width: 87px;
+  height: 69px;
+  margin-top: 8px;
+  margin-left: 0px;
+  background: url("img/sferum_banner_logo.png") center no-repeat;
+}
+
+.sferum_banner_right {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.sferum_banner_header {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sferum_banner:hover,
+.sferum_banner:focus,
+.sferum_banner:active {
+  box-shadow: 0 6px 14px rgba(9, 35, 72, 0.1);
+  border: 1px solid rgba(198, 210, 221, 0.4);
+}
+
+.sferum_banner_text {
+  font-size: 16px;
+  line-height: 20px;
+  color: #6D859B;
+}
+
+.sferum_banner_button {
+  background: #0177ff;
+  position: relative;
+  margin-top: 8px;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 24px;
+  display: inline-block;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sferum_banner_button:hover,
+.sferum_banner_button:focus,
+.sferum_banner_button:active {
+  background: rgb(0, 107, 230);
+}
+
+.sferum_banner_closelink {
+  position: absolute;
+  bottom: -8px;
+  right: -32px;
+  width: auto;
+  display: inline-block;
+  color: #0177ff !important;
+  cursor: pointer;
+}
+
+.sferum_banner_closelink:hover,
+.sferum_banner_closelink:focus,
+.sferum_banner_closelink:active {
+  color: #006be6 !important;
+  text-decoration: underline;
+}
+
+.sferum_banner_close {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  display: block;
+  right: 8px;
+  top: 8px;
+  background: url("img/sferum_close.png") center no-repeat;
+}
+
+@media screen and (max-width: 520px) {
+  .sferum_banner {
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+}
+.block-content {
+  position: relative;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  flex: 1;
+}
+
+.global-wrapper {
+  padding-bottom: 0;
+}
+
+.global-wrapper > .footer,
+app-component > .footer {
+  transform: none;
+}
+
+app-component {
+  min-height: 100vh !important;
+}
+
+.sferum_banner {
+  z-index: 1;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(9, 35, 72, 0.3);
+  border: 1px solid rgba(160, 174, 187, 0.9);
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.sferum_banner-container.sferum_banner-float {
+  display: flex;
+  flex-flow: row-reverse;
+  right: 20px;
+  bottom: 20px;
+  position: absolute;
+  order: 100;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 520px) {
+  .sferum_banner_text,
+  .sferum_banner_logo {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .sferum_banner_closelink {
+    position: relative;
+    margin-top: 8px;
+    right: auto;
+  }
+}

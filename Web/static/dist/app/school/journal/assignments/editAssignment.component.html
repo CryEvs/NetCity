@@ -1,0 +1,159 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="Сохранить изменения" type="button" class="btn btn-primary"
+						ng-disabled="$ctrl.recordInJournal != 0 && !$ctrl.assignment.cmId || $ctrl.withWeight && (!$ctrl.isLearningApps || $ctrl.recordInJournal == 1) && ($ctrl.form.Weight.$invalid || $ctrl.assignment.weight == null)"
+						ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>Сохранить</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-10 col-md-12" ng-if="$ctrl.ready">
+		<form class="form form-xs form-horizontal" name="$ctrl.form">
+		<ns-form>
+			<ns-form-group title="Класс" ng-if="!$ctrl.extraActivity">
+				<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.className">
+			</ns-form-group>
+
+			<ns-form-group title="Предмет">
+				<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.sgName">
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Curriculum.kRecordInJournal}}" ng-if="$ctrl.isLearningApps">
+				<select track-changes class="form-control" ng-model="$ctrl.recordInJournal" ng-options="type.id as type.name for type in $ctrl.recordInJournalTypes" ng-change="$ctrl.changeRecordInJournal()"></select>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Grade.kAssignmentIssueClassMeeting}}" ng-if="$ctrl.homeWork" ng-class="{'has-error': $ctrl.isCorrectClassmeetingsDays && !$ctrl.isCorrectClassmeetingsDays() && (!$ctrl.form.assignmentIssueClassMeetingSelect.$pristine || $ctrl.form.$displayErrors)}">
+				<div class="input-group">
+					<select track-changes name="assignmentIssueClassMeetingSelect" class="form-control" ng-model="$ctrl.assignment.issueCmId" ng-options="cm.id as cm.name for cm in $ctrl.issueClassMeetings" ng-disabled="$ctrl.isDisabled && $ctrl.isDisabledCm()"></select>
+					<span class="input-group-btn">
+						<button class="btn btn-default" ng-click="$ctrl.viewLessonDetails($ctrl.assignment.issueCmId);" type="button">
+							{{'language.Curriculum.kLessonDetails' | language}}
+						</button>
+					</span>
+				</div>
+				<p ng-show="$ctrl.isCorrectClassmeetingsDays && !$ctrl.isCorrectClassmeetingsDays() && (!$ctrl.form.assignmentIssueClassMeetingSelect.$pristine || $ctrl.form.$displayErrors)" class="help-block">Дата занятия, на котором было выдано задание, не может быть больше даты занятия</p>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Curriculum.kClassMeeting}}" ng-if="!$ctrl.isLearningApps || $ctrl.recordInJournal == 1" ng-class="{'has-error': $ctrl.isCorrectClassmeetingsDays && !$ctrl.isCorrectClassmeetingsDays() && (!$ctrl.form.classMeetingSelect.$pristine || $ctrl.form.$displayErrors) || !$ctrl.assignment.cmId}">
+				<div class="input-group">
+					<select track-changes name="classMeetingSelect" class="form-control" ng-model="$ctrl.assignment.cmId" ng-options="cm.id as cm.name for cm in $ctrl.classMeetings" ng-change="$ctrl.changeCm()" ng-disabled="$ctrl.isDisabled && $ctrl.isDisabledCm()"></select>
+					<span class="input-group-btn">
+						<button class="btn btn-default" ng-disabled="!$ctrl.assignment.cmId" ng-click="$ctrl.viewLessonDetails($ctrl.assignment.cmId);" type="button">
+							{{'language.Curriculum.kLessonDetails' | language}}
+						</button>
+					</span>
+				</div>
+				<p ng-show="$ctrl.isCorrectClassmeetingsDays && !$ctrl.isCorrectClassmeetingsDays() && (!$ctrl.form.classMeetingSelect.$pristine || $ctrl.form.$displayErrors)" class="help-block">Дата занятия не может быть меньше даты занятия, на котором было выдано задание</p>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Assignment.kATAssignment}}" ng-if="$ctrl.isLearningApps">
+				<select ng-if="$ctrl.isNew && !$ctrl.readonly" track-changes size="10" style="height: 150px;" class="form-control" ng-model="$ctrl.problem" ng-options="problem as problem.name for problem in $ctrl.problemList"></select>
+				<a ng-if="!$ctrl.isNew && !$ctrl.readonly" href="javaScript:void(0);" ng-click="$ctrl.openProblem();">{{$ctrl.activityProblemName}}</a>
+				<input ng-if="!$ctrl.isNew && $ctrl.readonly" class="form-control" type="text" disabled="disabled" ng-value="$ctrl.activityProblemName">
+			</ns-form-group>
+		
+			<ns-form-group title="Тип задания">
+				<select class="form-control" track-changes ng-disabled="!$ctrl.canChangeAssignmentType" ng-model="$ctrl.assignment.assignmentType" ng-options="type.id as type.name for type in $ctrl.assignTypes" ng-change="$ctrl.changeType()"></select>
+			</ns-form-group>
+
+			<ns-form-group title="Диагностическая работа" ng-if="$ctrl.isDkr">
+				<select track-changes class="form-control" ng-model="$ctrl.assignment.diagnosticAssignInfo.variant" ng-if="$ctrl.dwVariants && $ctrl.dwVariants.length" ng-options="dw as dw.name + ' (' +dw.diagnosticWork.name  + ')' for dw in $ctrl.dwVariants track by dw.id"></select>
+				<div class="alert alert-info" ng-if="$ctrl.dwVariants && !$ctrl.dwVariants.length">
+					На данную дату не обнаружено опубликованных диагностических работ
+				</div>
+			</ns-form-group>
+
+			<ns-form-group title="" ng-if="$ctrl.isDkr">
+				<div class="checkbox"> 
+					<label><input type="checkbox" track-changes ng-model="$ctrl.assignment.diagnosticAssignInfo.considerResults"> {{$ctrl.language.Generic.Curriculum.kConsiderDKR}}</label> 
+				</div>
+			</ns-form-group>
+		
+			<ns-form-group title="Оценка" ng-if="!$ctrl.extraActivity">
+				<select class="form-control" track-changes ng-model="$ctrl.classAssign" ng-options="type.id as type.name for type in $ctrl.dutyTypes" ng-change="$ctrl.changeClassAsign()"></select>
+			</ns-form-group>
+		
+			<ns-form-group title="Вес" ng-if="$ctrl.withWeight && (!$ctrl.isLearningApps || $ctrl.recordInJournal == 1)" ng-class="{ 'has-error': $ctrl.form.Weight.$invalid && ($ctrl.form.Weight.$dirty || $ctrl.form.$displayErrors || !$ctrl.assignment.weight)}">
+				<input type="text" only-digits required track-changes class="form-control" name="Weight" float-input="$ctrl.decimalInputSettings" strictly-max-value min="0" max="100" value="10" ng-model="$ctrl.assignment.weight">
+				<p class="help-block" ng-if="$ctrl.form.Weight.$invalid && !$ctrl.assignment.weight">{{"language.Generic.Messages.kRequiredField" | language}}</p>
+			</ns-form-group>
+		
+			<ns-form-group title="Назначено учащимся" ng-if="!$ctrl.extraActivity">
+				<button class="btn btn-default btn-sm" type="button" ng-click="$ctrl.chooseStudents()">Выбрать учеников</button>
+				<div style="font-size: 13px; font-weight: bold;">
+					<span ng-if="$ctrl.assignment.studentsAssignInfo.classAssign">Всем</span>
+					<p ng-if="!$ctrl.assignment.studentsAssignInfo.classAssign" class="mini" ng-repeat="student in $ctrl.students">{{student.fullName}}</p>
+				</div>
+			</ns-form-group>
+		
+			<ns-form-group title="{{$ctrl.assignmentThemeTitle}}" ng-class="{ 'has-error': $ctrl.form.AN.$invalid && ($ctrl.form.AN.$dirty || $ctrl.form.$displayErrors)}">
+				<input type="text" required ng-if="!$ctrl.homeWork" class="form-control" name="AN" size="50" maxlength="400" ng-model="$ctrl.assignment.assignmentName" />
+				<div class="input-group" ng-if="$ctrl.homeWork">
+					<input type="text" required class="form-control" track-changes name="AN" size="50" maxlength="400" ng-model="$ctrl.assignment.assignmentName" />
+					<span class="input-group-btn">
+						<button class="btn btn-default" ng-disabled="!$ctrl.assignment.cmId" ng-click="$ctrl.getHomeWorkFromSubjectPlan();" type="button">
+							{{'language.Generic.Assignment.kFromKTP' | language}}
+						</button>
+					</span>
+				</div>
+				<p ng-if="$ctrl.form.AN.$invalid && ($ctrl.form.AN.$dirty || $ctrl.form.$displayErrors)" class="help-block">
+					{{"language.Generic.Messages.kRequiredField" | language}}
+				</p>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kStartDate}}" ng-if="$ctrl.isLearningApps" ng-class="{ 'has-error': $ctrl.form.ADT.$invalid && ($ctrl.form.ADT.$dirty || $ctrl.form.$displayErrors)}">
+				<date-input-component 
+					readonly="$ctrl.readonly || $ctrl.recordInJournal == 1"
+					date-model="$ctrl.assignment.activityDetails.startdate"
+					min-date="$ctrl.yearInfo.startDate"
+					max-date="$ctrl.yearInfo.endDate"
+					name="ADT"
+					required="true"
+					date-change="$ctrl.runStartEndValidator()">
+				</date-input-component>
+				<div ng-if="$ctrl.form.ADT.$invalid && ($ctrl.form.ADT.$dirty || $ctrl.form.$displayErrors)" ng-messages="$ctrl.form.ADT.$error">
+					<span class="help-block" ng-message="required">{{"language.Generic.Messages.kRequiredField" | language}}</span>
+					<span class="help-block" ng-message="datePeriod">Указано недопустимое значение</span>
+				</div>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Assignment.kATDueDate}}" ng-if="$ctrl.isLearningApps" ng-class="{ 'has-error': $ctrl.form.DDT.$invalid && ($ctrl.form.DDT.$dirty || $ctrl.form.$displayErrors)}">
+				<date-input-component 
+					readonly="$ctrl.readonly || $ctrl.recordInJournal == 1"
+					date-model="$ctrl.assignment.activityDetails.duedate"
+					min-date="$ctrl.yearInfo.startDate"
+					max-date="$ctrl.yearInfo.endDate"
+					name="DDT"
+					required="true"
+					date-change="$ctrl.runStartEndValidator()">
+				</date-input-component>
+				<div ng-if="$ctrl.form.DDT.$invalid && ($ctrl.form.DDT.$dirty || $ctrl.form.$displayErrors)" ng-messages="$ctrl.form.DDT.$error">
+					<span class="help-block" ng-message="required">{{"language.Generic.Messages.kRequiredField" | language}}</span>
+					<span class="help-block" ng-message="datePeriod">Указано недопустимое значение</span>
+				</div>
+			</ns-form-group>
+		
+			<ns-form-group title="{{$ctrl.getDescriptionTitle()}}">
+				<textarea name="AD" class="form-control" rows="10" cols="12" wrap="soft" maxlength="2000" track-changes ng-model="$ctrl.assignment.description"></textarea>
+				<span class="help-block">Внесите примечания, которые ученики получат вместе с заданиями. Эти примечания могут содержать проверочные вопросы, разъяснения, дополнения к уроку, указания и т.п.</span>
+			</ns-form-group>
+
+			<ns-form-group title="Прикреплённые файлы">
+				<file-attachments settings="$ctrl.fa"></file-attachments>
+			</ns-form-group>
+		</ns-form>
+		</form>
+	</div>
+</div>
+
+
+

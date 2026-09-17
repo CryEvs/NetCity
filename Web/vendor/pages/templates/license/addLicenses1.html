@@ -1,0 +1,311 @@
+﻿<form class="form-horizontal form-xs form-edit" name="add-license">
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-xs-4 col-lg-4 ">{{language.Generic.SchoolInfo.kDocumentType}}</label>
+		<div class="col-lg-8 col-md-8 col-xs-8">
+			<select class="form-control addLicenseSelectLicenseType" name="licenseType"></select>
+		</div>
+	</div>
+	<hr />
+
+	<!--блок с для лицензий-->
+	<div class="licenseBlock">
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kSeriesAndNumberOfForm}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group">
+					<input type="text" class="form-control" size="40" maxlength="50" name="seriaOfForm" value="" onchange="dataChanged()">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">№</span>
+					<input type="text" class="form-control" size="40" maxlength="50" name="numberOfForm" value="" onchange="dataChanged()">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kRegistrationNumber}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<input type="text" class="form-control" size="40" maxlength="250" name="regNumber" value="" onchange="dataChanged()">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDateOfIssue}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group date">
+					<input type="text" class="form-control date-input" name="dateOfIssue" size="11" maxlength="10" value="" onchange="dataChanged()">
+					<span class="input-group-btn">
+						<button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kExpiryDate}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div style="display: table;">
+					<span class="input-group-addon" style="padding: 0 6px; display: table-cell; border-bottom-right-radius: 0; border-top-right-radius: 0;">
+						<label style="padding-left: 20px; margin-bottom: 0; font-weight: normal; cursor: pointer;">
+							<input type="checkbox" style="position: absolute; margin-left: -20px;" onchange="dataChanged()" name="without-life" {{#ifCond licenseDto.expiryDate "===" language.Generic.SchoolInfo.kWithoutLife}} checked {{/ifCond}}> {{language.Generic.SchoolInfo.kWithoutLife}}
+						</label>
+					</span>
+					<div class="input-group date" style="width: 100%;">
+						<input type="text" class="form-control date-input" onchange="dataChanged()" name="expiryDate" size="11" maxlength="10" {{#ifCond licenseDto.expiryDate "===" language.Generic.SchoolInfo.kWithoutLife}} disabled {{else}} value="{{licenseDto.expiryDate}}" {{/ifCond}}
+							   style="border-bottom-left-radius: 0; border-top-left-radius: 0;">
+						<span class="input-group-btn">
+							<button title="" type="button" class="btn btn-primary" {{#ifCond licenseDto.expiryDate "===" language.Generic.SchoolInfo.kWithoutLife}} disabled {{/ifCond}}><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!---лицензионный орган--->
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kLicenseOrgan}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<input type="text" class="form-control" size="40" maxlength="250" name="licenseOrganName" value="" onchange="dataChanged()">
+			</div>
+		</div>
+
+
+
+		<!--решение о лицензировании-->
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDecisionOnLicense}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.SchoolInfo.kOrder}}</span>
+					<input type="text" class="form-control" size="40" maxlength="50" name="decisionOrderNumber" value="" onchange="dataChanged()">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.Common.kDate}}</span>
+					<div class="input-group date">
+						<input type="text" class="form-control date-input" size="11" maxlength="10" name="decisionOrderDate" value="">
+						<span class="input-group-btn">
+							<button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--ссылка на скан-копию-->
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kLinkToScanCopy}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<!-- <input type="text" class="form-control" size="40" maxlength="250" name="linkToScanCopy" > -->
+				<div class="print-block" id="scanCopy"></div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<!--блок для аккредитации-->
+	<div class="accreDitationBlock" style="display:none">
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kSeriesAndNumberOfForm}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group">
+					<input type="text" class="form-control" size="40" maxlength="50" name="accreditationSeriesBlank" value="" onchange="dataChanged()">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">№</span>
+					<input type="text" class="form-control" size="40" maxlength="50" name="accreditationNumberBlank" value="" onchange="dataChanged()">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kRegistrationNumber}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<input type="text" class="form-control" size="40" maxlength="250" name="accreditationRegNumber" value="" onchange="dataChanged()">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDateOfIssue}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group date">
+					<input type="text" class="form-control date-input" name="accreditationIssuedDate" size="11" maxlength="10" value="" onchange="dataChanged()">
+					<span class="input-group-btn">
+						<button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></button>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kExpiryDate}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div style="display: table;">
+					<span class="input-group-addon" style="padding: 0 6px; display: table-cell; border-bottom-right-radius: 0; border-top-right-radius: 0;">
+						<label style="padding-left: 20px; margin-bottom: 0; font-weight: normal; cursor: pointer;">
+							<input type="checkbox" style="position: absolute; margin-left: -20px;" onchange="dataChanged()" name="accreditationWithout-life" {{#ifCond licenseDto.expiryDate "===" language.Generic.SchoolInfo.kWithoutLife}} checked {{/ifCond}}> {{language.Generic.SchoolInfo.kWithoutLife}}
+						</label>
+					</span>
+					<div class="input-group date" style="width: 100%;">
+						<input type="text" class="form-control date-input" onchange="dataChanged()" name="accreditationExpiredDate" size="11" maxlength="10" {{#ifCond licenseDto.expiryDate "===" language.Generic.SchoolInfo.kWithoutLife}} disabled {{else}} value="{{licenseDto.expiryDate}}" {{/ifCond}}
+							   style="border-bottom-left-radius: 0; border-top-left-radius: 0;">
+						<span class="input-group-btn">
+							<button title="" type="button" class="btn btn-primary" {{#ifCond licenseDto.expiryDate "===" language.Generic.SchoolInfo.kWithoutLife}} disabled {{/ifCond}}><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kAccreditationOrgan}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<input type="text" class="form-control" size="40" maxlength="250" name="accreditationLicenseOrganName" value="" onchange="dataChanged()">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kStatus}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<input type="text" class="form-control" size="40" maxlength="250" name="accreditationStatus" value="" onchange="dataChanged()">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-lg-4">{{language.Generic.SchoolInfo.kRenewCertificate}}</label>
+			<div class="col-md-8 col-lg-8 col-xs-8">
+				<select class="form-control" id="isRenewId" onchange="dataChanged();">
+					<option value="" selected=""> </option>
+					<option value="2">Нет</option>
+					<option value="1">Да</option>
+				</select>
+			</div>
+		</div>
+
+		<!--решение об аккредитации-->
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDecisionAccreditation}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.SchoolInfo.kOrder}}</span>
+					<input type="text" class="form-control" size="40" maxlength="50" name="accreditationDecisionOrderNumber" value="" onchange="dataChanged()">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.Common.kDate}}</span>
+					<div class="input-group date">
+						<input type="text" class="form-control date-input" size="11" maxlength="10" name="accreditationDecisionDate" value="">
+						<span class="input-group-btn">
+							<button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--переоформление свидетельства-->
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.ReIssuanceCertificates}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.SchoolInfo.kOrder}}</span>
+					<input type="text" class="form-control" size="23" maxlength="50" name="accreditationRenewOrderNumber" value="" onchange="dataChanged()">
+
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">рег. №</span>
+					<input type="text" class="form-control" size="18" maxlength="50" name="accreditationRenewRegNumber" value="" onchange="dataChanged()">
+
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.Common.kDate}}</span>
+					<div class="input-group date" size="16">
+						<input type="text" class="form-control date-input" maxlength="10" onchange="dataChanged()" name="accreditationRenewDate" value="{{accreditation.renewDate}}">
+						<span class="input-group-btn">
+							<button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--приостановка действия-->
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kSuspension}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.SchoolInfo.kOrder}}</span>
+					<input type="text" class="form-control" size="40" maxlength="50" name="accreditationSuspensionOrderNumber" value="" onchange="dataChanged()">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.Common.kDate}}</span>
+					<div class="input-group date">
+						<input type="text" class="form-control date-input" size="11" maxlength="10" name="accreditationSuspensionDate" value="">
+						<span class="input-group-btn">
+							<button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--возобновление действия-->
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kSuspension}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.SchoolInfo.kOrder}}</span>
+					<input type="text" class="form-control" size="40" maxlength="50" name="accreditationRenewalOrderNumber" value="" onchange="dataChanged()">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.Common.kDate}}</span>
+					<div class="input-group date">
+						<input type="text" class="form-control date-input" size="11" maxlength="10" name="accreditationRenewalDate" value="">
+						<span class="input-group-btn">
+							<button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--лишение аккредитации-->
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDeprivation}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.SchoolInfo.kOrder}}</span>
+					<input type="text" class="form-control" size="40" maxlength="50" name="accreditationDeprivationOrderNumber" value="" onchange="dataChanged()">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.Common.kDate}}</span>
+					<div class="input-group date">
+						<input type="text" class="form-control date-input" size="11" maxlength="10" name="accreditationDeprivationOrderDate" value="">
+						<span class="input-group-btn">
+							<button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--прекращение действия-->
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kStopAction}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<div class="input-group">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.SchoolInfo.kOrder}}</span>
+					<input type="text" class="form-control" size="40" maxlength="50" name="accreditationStopActionOrderNumber" value="" onchange="dataChanged()">
+					<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{language.Generic.Common.kDate}}</span>
+					<div class="input-group date">
+						<input type="text" class="form-control date-input" size="11" maxlength="10" name="accreditationStopActionDate" value="">
+						<span class="input-group-btn">
+							<button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--ссылка на скан-копию-->
+		<!--<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kLinkToScanCopy}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<input type="text" class="form-control" size="40" maxlength="250" name="linkToScanCopy">
+			</div>
+		</div>-->
+
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kLinkToScanCopy}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<!-- <input type="text" class="form-control" size="40" maxlength="250" name="linkToScanCopyAccred" value="" onchange="dataChanged()"> -->
+				<div class="print-block" id="scanCopyAccred"></div>
+			</div>
+		</div>
+
+	</div>
+</form>

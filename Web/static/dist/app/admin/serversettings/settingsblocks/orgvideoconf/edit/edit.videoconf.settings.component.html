@@ -1,0 +1,31 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form name="$ctrl.form" class="form-horizontal form-xs">
+		<ns-form control-size="col-md-8 col-lg-8 col-sm-8" label-size="col-md-4 col-lg-4 col-sm-4">
+			<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.dataReady">
+				<span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+			</span>
+
+			<div class="row" ng-if="$ctrl.filterPanelSettings">
+				<filter-panel class="filters-panel col-md-12 filters-panel-compact" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<ns-form-group title="{{$ctrl.language.Generic.Common.kOrganization}}" ng-if="$ctrl.editMode">
+						<input type="text" class="form-control" ng-value="$ctrl.setting.school.name" readonly/>
+					</ns-form-group>
+
+					<ns-form-group title="{{$ctrl.language.Generic.Curriculum.kLinkURL}}" ng-if="$ctrl.dataReady" ng-class="{'has-error': $ctrl.form.vcGateUrl.$invalid && ($ctrl.form.vcGateUrl.$dirty || $ctrl.form.$displayErrors)}">
+						<input type="text" class="form-control" name="vcGateUrl" ng-model="$ctrl.setting.vcGateUrl" required ng-disabled="false"/>
+						<p ng-if="$ctrl.form.vcGateUrl.$invalid && ($ctrl.form.vcGateUrl.$dirty || $ctrl.form.$displayErrors)" class="help-block">
+							{{$ctrl.language.Generic.Messages.kRequiredField}}
+						</p>
+					</ns-form-group>
+
+				</div>
+			</div>
+	
+		</ns-form>
+	</form>
+</ns-modal>

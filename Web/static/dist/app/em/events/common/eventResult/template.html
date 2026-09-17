@@ -1,0 +1,52 @@
+	<legend>Результаты участия</legend>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="member-title" class="control-label">Итог</label>
+				<div>
+					<select track-changes class="form-control" id="member-title" ng-options="eventMemberTitle.name for eventMemberTitle in ctrl.data.refs.eventMemberTitles track by eventMemberTitle.id" ng-model="ctrl.data.participiationInfo.title">
+						<option value=""></option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="member-rank" class="control-label">Место/рейтинг</label>
+				<div>
+					<input track-changes type="text" id="member-rank" class="form-control" ng-model="ctrl.data.participiationInfo.rank" required maxlength="200">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row" ng-show="ctrl.data.event.awardEventType.id=='SportEvent'">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="member-sportTitle" class="control-label">Спортивное звание</label>
+				<div>
+					<select track-changes class="form-control" id="member-sportTitle" ng-options="sportTitle.name for sportTitle in ctrl.data.refs.sportTitles track by sportTitle.id" ng-model="ctrl.data.participiationInfo.sportTitle">
+						<option value=""></option>
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="col-md-6">
+				<label for="member-sportCategory" class="control-label">Спортивный разряд</label>
+				<div>
+					<select track-changes class="form-control" id="member-sportCategory" ng-options="sportCategory.name for sportCategory in ctrl.data.refs.sportCategories track by sportCategory.id" ng-model="ctrl.data.participiationInfo.sportCategory">
+						<option value=""></option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="member-specialNotes" class="control-label">Особые отметки</label>
+		<div>
+			<input track-changes type="text" id="member-specialNotes" class="form-control" ng-model="ctrl.data.participiationInfo.specialNotes" required maxlength="200">
+		</div>
+	</div>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <settings>
+    <!--Determines if the bundle file should be automatically optimized after creation/update.-->
+    <minify>true</minify>
+    <!--Determine whether to generate/re-generate this bundle on building the solution.-->
+    <runOnBuild>true</runOnBuild>
+    <!--Specifies a custom subfolder to save files to. By default, compiled output will be placed in the same folder and nested under the original file.-->
+    <outputDirectory />
+  </settings>
+  <!--The order of the <file> elements determines the order of the files in the bundle.-->
+  <files>
+    <file>/js/deferredLoadRes.js</file>
+    <file>/js/preloader.js</file>
+    <file>/js/uikit.controls.js</file>
+    <file>/js/extensionDeferred.js</file>
+    <file>/js/handlebarsHelpers.js</file>
+    <file>/js/restoreDefault.js</file>
+    <file>/js/common.utils.js</file>
+    <file>/js/dateUtils.js</file>
+    <file>/js/common.navigation.js</file>
+    <file>/js/screen1.js</file>
+    <file>/js/shower.js</file>
+    <file>/js/formEdit.js</file>
+    <file>/vendor/custom/js/buttons-panel.js</file>
+    <file>/js/libs/jquery.cookie.js</file>
+    <file>/js/libs/jquery.bootpag.js</file>
+    <file>/js/dateUtils.js</file>
+  </files>
+</bundle>

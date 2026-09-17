@@ -1,0 +1,60 @@
+<div class="overdue_tasks">
+	<div class="overdue_head">
+		<span class="text">Просроченные задания</span>
+		<span class="num_tasks">
+			<div class="num_tasks_data">{{$ctrl.pastMandatory.length}}</div>
+		</span>
+		<i class="mdi slidearrow mdi-menu-down"></i>
+		<i class="mdi mdi-flag-variant"></i>
+	</div>
+	<div class="overdue_content">
+
+		<table class="visible-mobile joint_tr">
+			<tr ng-if="$ctrl.pastMandatory === undefined || $ctrl.pastMandatory.length === 0">
+				<td class="date_data">
+					<div class="three_dots"><span>Нет просроченных заданий</span>
+					</div>
+					<div title="показать/свернуть все содержимое таблицы" class="icon_dots"></div>
+				</td>
+			</tr>
+			<tr ng-repeat-start="mandatoryGroup in $ctrl.pastMandatory.grouped">
+				<td colspan="3" class="date_data">
+					<a href="#">{{mandatoryGroup.dueDate}}</a>
+				</td>
+			</tr>
+			<tr ng-repeat-end ng-repeat="mandatory in mandatoryGroup.list">
+				<td>
+					<a href="#" class="subject_name">{{mandatory.subjectName}}</a>
+					<div class="type_n_theme">
+						<div class="type">{{mandatory.typeAbbr}}:</div>
+						<a href="#" class="theme" ng-click="$ctrl.showAssign({assign: mandatory})">{{mandatory.assignmentName}}</a>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<table class="hidden-mobile">
+			<tr>
+				<td class="date">Срок сдачи</td>
+				<td class="subject">Предмет</td>
+				<td class="type">Тип задания</td>
+				<td class="theme">Тема задания</td>
+			</tr>
+			<tr ng-if="$ctrl.pastMandatory === undefined || $ctrl.pastMandatory.length === 0">
+				<td colspan="4" class="date_data">
+					<div class="three_dots"><span>Нет просроченных заданий</span>
+					</div>
+					<div title="показать/свернуть все содержимое таблицы" class="icon_dots"></div>
+				</td>
+			</tr>
+			<tr ng-repeat="mandatory in $ctrl.pastMandatory">
+				<td class="date_data"><a>{{mandatory.dueDate}}</a></td>
+				<td class="subject_data"><a>{{mandatory.subjectName}}</a></td>
+				<td class="type_data">{{mandatory.typeAbbr}}</td>
+				<td class="theme_data">
+					<a href="#" ng-click="$ctrl.showAssign({assign: mandatory})">{{mandatory.assignmentName}}</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

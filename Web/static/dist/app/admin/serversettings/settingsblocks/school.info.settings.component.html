@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="buttons-panel">
+            <button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+                <span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+            </button>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div class="form-horizontal">
+    
+    <div class="form-group">
+        <label class="control-label col-md-4 col-lg-3 col-sm-4">
+            {{$ctrl.language.Generic.ServAdmin.kReasonForChangeSchoolCard}}
+        </label>
+        <div class="col-md-8 col-lg-5 col-sm-8">
+            <div class="checkbox">
+                <label><input type="checkbox" ng-model="$ctrl.data.schoolInfoSettings.requireReasonChangeSchoolCard"></label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-4 col-lg-3 col-sm-4">
+            {{$ctrl.language.Generic.ServAdmin.kEM_MayEditExtraSchoolInfos}}
+        </label>
+        <div class="col-md-8 col-lg-5 col-sm-8">
+            <div class="checkbox">
+                <label><input type="checkbox" ng-model="$ctrl.data.schoolInfoSettings.eM_MayEditExtraSchoolInfo"></label>
+            </div>
+        </div>
+    </div>
+
+</div>

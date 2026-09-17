@@ -1,0 +1,18 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form class="form-horizontal form-sm">
+		<ns-form>
+			<ns-form-group title="Категория">
+				<select class="form-control" name="category" ng-model="$ctrl.category" ng-options="item.id as item.name for item in $ctrl.categories"></select>
+			</ns-form-group>
+
+			<ns-form-group title="Учебный год выбытия" ng-show="!$ctrl.category">
+				<select class="form-control" name="year" ng-model="$ctrl.year" ng-options="item.id as item.name for item in $ctrl.years">
+				</select>
+			</ns-form-group>
+		</ns-form>
+	</form>
+
+	<div class="alert alert-warning" role="alert"> 
+		В случае продолжения все неиспользуемые на текущий момент записи будут переведены в архивный пул.
+	</div>
+</ns-modal>

@@ -1,0 +1,169 @@
+<style>
+table.table-sm td.input-cell > input{
+	border: 0px solid #c5c5c5 !important;
+}
+.table.table-sm td.has-error > input{
+	border: 1px solid #a94442 !important;
+}
+</style>
+
+<!-- Классические -->
+<div class="panel panel-danger">
+	<div class="panel-heading" role="tab" id="headingtitle_UPLimits">
+		<h4 class="panel-title">
+			<a data-toggle="collapse" class="collapsed" data-target="#title_UPLimits" aria-expanded="true" aria-controls="title_UPLimits">{{language.Generic.SetupSchoolCalendar.kTitleUPLimits}}</a>
+		</h4>
+	</div>
+	<div id="title_UPLimits" class="panel-collapse collapse in" aria-labelledby="headingtitle_UPLimits" role="tabpanel">
+		<div class="panel-body">
+			<form name="MainForm">
+				
+				<div class="row" ng-if="!state.readOnly">
+					<div class="col-md-12">
+						<div class="buttons-panel">
+							<div class="buttons-panel-left">
+								<button title="{{language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="lazySave(MainForm.$valid)">
+									<span class="glyphicon glyphicon-floppy-save"></span> <span>{{language.Generic.Buttons.kSave}}</span>
+								</button>
+								<button title="{{language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="lazyReset()">
+									<span class="glyphicon glyphicon-repeat"></span> <span>{{language.Generic.Buttons.kReset}}</span>
+								</button>
+								<button title="{{language.Generic.Common.kAdd}}" type="button" class="btn btn-info" ng-click="lazyAddLimits()">
+									<span class="glyphicon glyphicon-plus-sign"></span> <span>{{language.Generic.Buttons.kAdd}}</span>
+								</button>
+							</div>
+							<div class="buttons-panel-right"></div>
+							<div class="buttons-panel-adaptive btn-group" style="float: right; display: none; margin-right: 0px; right: 0px;">
+								<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									<span class="glyphicon glyphicon-menu-hamburger"></span> <span id="action">{{language.Generic.Buttons.kActions}}</span> <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu buttons-panel-right buttons-panel-adaptive-wrapper pull-right" role="menu"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-if="!(prepared.viewComponents && prepared.viewComponents.length)">
+					<div class="col-md-12">
+						<div class="alert alert-info" role="alert">
+							{{language.Generic.SetupSchoolCalendar.kNoLimits}}
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-if="prepared.viewComponents && prepared.viewComponents.length">
+					<div class="col-md-12">
+						<table class="table table-bordered table-sm table-condensed">
+							<tbody>
+							<tr>
+								<th rowspan="2">{{language.Generic.SetupSchoolCalendar.kComponent}}</th>
+								<th colspan="{{data.grades.length}}">
+									{{language.SetupSchoolCalendar.kGradesHours}}
+								</th>
+							</tr>
+							<tr>
+								<th ng-repeat="grade in data.grades">
+									{{grade.name}}
+								</th>
+							</tr>
+							<tr ng-repeat="component in prepared.viewComponents">
+								<td>{{component.name}}</td>
+								<td ng-repeat="grade in data.grades" ng-if="state.readOnly">
+									{{prepared.limits[component.id][grade.id].hours}}
+								</td>
+								<td ng-repeat="grade in data.grades" class="input-cell" ng-class="{ 'has-error': hoursForm.Hours.$error.minmax || prepared.limits[component.id][grade.id].hasErrorFlag }" ng-if="!state.readOnly" ng-form name="hoursForm">
+									<input track-changes numeric-input="{negative: false, fractional: true, allownull: true}" name="Hours" ng-model="prepared.limits[component.id][grade.id].hours" maxlength="5" size="2" min="0.02" max="99.99" step="0.01" ng-blur="changeLimit(prepared.limits[component.id][grade.id])">
+								</td>
+							</tr>
+							<tr class="text-center warning">
+								<td>{{language.Generic.SetupSchoolCalendar.kTotalHours}}</td>
+								<td ng-repeat="totals in prepared.totalGradeHours track by $index" class="sum-col text-data" ng-style="totals.overflow && {'background-color': '#ff7f7f'}">
+									<div ng-show="totals.hours > 0">{{totals.hours}}</div>
+								</td>
+							</tr>
+							
+							</tbody>
+						</table>
+						<div class="alert alert-danger" ng-show="MainForm.$invalid">
+							Введите число от 0.02 до 99.99
+						</div>
+						<div class="alert alert-danger" ng-show="state.overflow">
+							{{language.Generic.SetupSchoolCalendar.kUndefinedLimit}} {{language.SetupSchoolCalendar.kForLimit}}
+						</div>
+						<div class="alert alert-danger" ng-show="state.overflowLimitTotal && !state.overflow">
+							{{language.Generic.SetupSchoolCalendar.kSumLimit1}} {{language.SetupSchoolCalendar.kSumLimit2}}
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- ИУП -->
+<div class="panel panel-success" ng-if="isSchool">
+	<div class="panel-heading" role="tab" id="headingtitle_IUPLimits">
+		<h4 class="panel-title">
+			<a data-toggle="collapse" class="collapsed" data-target="#title_IUPLimits" aria-expanded="true" aria-controls="title_IUPLimits">{{language.Generic.SetupSchoolCalendar.kTitleIUPLimits}}</a>
+		</h4>
+	</div>
+	<div id="title_IUPLimits" class="panel-collapse collapse in" aria-labelledby="headingtitle_IUPLimits" role="tabpanel">
+		<div class="panel-body">
+			<form name="IUPForm">
+
+				<div class="row" ng-if="!state.readOnly">
+					<div class="col-md-12">
+						<div class="buttons-panel">
+							<button title="{{language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="lazySave(IUPForm.$valid, true)">
+								<span class="glyphicon glyphicon-floppy-save"></span> <span>{{language.Generic.Buttons.kSave}}</span>
+							</button>
+							<button title="{{language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="lazyReset(true)">
+								<span class="glyphicon glyphicon-repeat"></span> <span>{{language.Generic.Buttons.kReset}}</span>
+							</button>
+							<button title="{{language.Generic.Common.kAdd}}" type="button" class="btn btn-info" ng-click="lazyAddLimits(true)">
+								<span class="glyphicon glyphicon-plus-sign"></span> <span>{{language.Generic.Buttons.kAdd}}</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-if="!(prepared.viewIupComponents && prepared.viewIupComponents.length)">
+					<div class="col-md-12">
+						<div class="alert alert-info" role="alert">
+							{{language.Generic.SetupSchoolCalendar.kNoLimits}}
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-if="prepared.viewIupComponents && prepared.viewIupComponents.length">
+					<div class="col-md-12">
+						<table class="table table-bordered table-sm table-condensed">
+							<tbody>
+								<tr>
+									<th rowspan="2">{{language.Generic.SetupSchoolCalendar.kComponent}}</th>
+									<th colspan="{{data.grades.length}}">
+										{{language.SetupSchoolCalendar.kGradesHours}}
+									</th>
+								</tr>
+								<tr>
+									<th ng-repeat="grade in data.grades">
+										{{grade.name}}
+									</th>
+								</tr>
+								<tr ng-repeat="component in prepared.viewIupComponents">
+									<td>{{component.name}}</td>
+									
+									<td ng-repeat="grade in data.grades" ng-if="state.readOnly">
+										{{prepared.iupLimits[component.id][grade.id].hours}}
+									</td>
+									<td ng-repeat="grade in data.grades" class="input-cell" ng-class="{ 'has-error': iupHoursForm.Hours.$error.minmax }" ng-if="!state.readOnly" ng-form name="iupHoursForm">
+										<input track-changes numeric-input="{negative: false, fractional: true, allownull: true}" name="Hours" type="text" ng-model="prepared.iupLimits[component.id][grade.id].hours" maxlength="5" size="2" min="0" max="99.99" step="0.01" ng-blur="changeLimit(prepared.iupLimits[component.id][grade.id], true)">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="alert alert-danger" ng-show="IUPForm.$invalid">
+							Введите число от 0 до 99.99
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

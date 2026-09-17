@@ -1,0 +1,93 @@
+<ns-modal controller="ctrl" header="{{ctrl.header}}" buttons="ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="ctrl.ready"><span>{{ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<ns-form label-size=" " control-size=" ">
+	<form role="form" ng-if="ctrl.ready" name="ctrl.eventForm" class="form form-sm">
+		<!--Поля формы-->
+
+		<fieldset>
+			<legend>Мероприятие</legend>
+			
+			<ns-form-group title="Наименование" ng-if="ctrl.mode.edit || (ctrl.mode.create && !ctrl.mode.selectEvent)">
+				<span class="form-control form-control-title">{{ctrl.data.event.name}}</span>
+			</ns-form-group>
+
+			<ns-form-group title="Год проведения" ng-if="ctrl.mode.selectEvent && ctrl.mode.create">
+				<select track-changes class="form-control" id="event-yearId" ng-options="year.id as year.name for year in ctrl.data.years" ng-init="ctrl.data.yearId" ng-model="ctrl.data.yearId"></select>
+			</ns-form-group>
+
+			<ns-form-group title="Мероприятие" ng-show="ctrl.mode.selectEvent && ctrl.data.yearId && !ctrl.state.loadEvents">
+				<span ng-show="ctrl.state.noEvents">
+					Список мероприятий пуст
+				</span>
+
+				<ui-select track-changes id="event-event" ng-if="ctrl.mode.create && !ctrl.state.noEvents" ng-model="ctrl.data.event" theme="bootstrap"  ng-change="ctrl.changeEvent()">
+					<ui-select-match placeholder="Выберите мероприятие">{{$select.selected.name + ' ('+ $select.selected.date + ')'}}</ui-select-match>
+					<ui-select-choices repeat="event as event in ctrl.data.events | filter: $select.search" group-by="ctrl.getEventGroup">
+						<div ng-bind-html="event.name + ' ('+ event.date + ')' | highlight: $select.search" title="{{event.name + ' ('+ event.date + ')'}}"></div>
+					</ui-select-choices>
+				</ui-select>
+			</ns-form-group>
+
+			<ns-form-group title="Куратор" ng-if="ctrl.settings.isTalent && ctrl.data.event">
+				<select track-changes class="form-control" id="event-curator" ng-options="curator.id as curator.name for curator in ctrl.data.curators" ng-init="ctrl.data.curatorId" ng-model="ctrl.data.curatorId"></select>
+			</ns-form-group>
+
+		</fieldset>
+		<edit-event-files ng-if="ctrl.data.documents && ctrl.data.documents.length" event-id="ctrl.data.event.id" documents="ctrl.data.documents" readonly="true"></edit-event-files>
+	</form>
+
+	<form role="form" ng-if="ctrl.ready" name="ctrl.memberForm" class="form form-sm">
+		<fieldset>
+			<legend ng-if="ctrl.mode.selectUser">Участник</legend>
+
+			<ns-form-group title="Организация" ng-if="ctrl.mode.selectSchool">
+				<span ng-if="ctrl.mode.edit">{{ctrl.data.member.organization.name}}</span>
+				<span ng-if="!ctrl.mode.selectSchool">{{ctrl.data.school.name}}</span>
+
+				<ui-select track-changes id="member-org"
+							ng-if="ctrl.mode.create && ctrl.mode.selectSchool"
+							ng-model="ctrl.data.schoolId" theme="bootstrap">
+					<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+					<ui-select-choices repeat="school.id as school in ctrl.data.search.schools.items"
+										ui-disable-choice="school.name === 'Совпадений не найдено' || school.name === 'Поиск...'"
+										refresh="ctrl.data.search.schools.search($select.search)"
+										on-select>
+						<div ng-bind-html="school.name | highlight: $select.search"></div>
+					</ui-select-choices>
+				</ui-select>
+			</ns-form-group>
+
+			<ns-form-group title="Ф.И.О. участника" ng-if="ctrl.ready && ctrl.mode.selectUser && (ctrl.data.schoolId || ctrl.mode.edit)">
+				<span ng-if="ctrl.mode.edit">{{ctrl.data.member.user.name}}</span>
+
+				<ui-select track-changes id="member-user"
+							ng-if="!ctrl.data.users && ctrl.mode.create && ctrl.mode.selectUser"
+							ng-model="ctrl.data.user" theme="bootstrap">
+
+					<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+					<ui-select-choices repeat="user as user in ctrl.data.search.users.items"
+										ui-disable-choice="user.name === 'Совпадений не найдено' || user.name === 'Поиск...'"
+										refresh="ctrl.data.search.users.search($select.search)">
+						<div ng-bind-html="user.name | highlight: $select.search"></div>
+					</ui-select-choices>
+					
+				</ui-select>
+
+				<ui-select track-changes id="member-user"
+							ng-if="ctrl.data.users && ctrl.mode.create && ctrl.mode.selectUser"
+							ng-model="ctrl.data.user" theme="bootstrap">
+
+					<ui-select-match placeholder="Выберите пользователя">{{$select.selected.name}}</ui-select-match>
+
+					<ui-select-choices repeat="user as user in ctrl.data.users | filter: $select.search">
+						<div ng-bind-html="user.name | highlight: $select.search"></div>
+					</ui-select-choices>
+
+				</ui-select>
+			</ns-form-group>
+
+			<event-participation-info ng-if="ctrl.data.event.id > 0 && ctrl.data.user.id > 0 && ctrl.mode.edit" event="ctrl.data.event" event-member-id="ctrl.data.eventMemberId" participation-info="ctrl.data.participationInfo"></event-participation-info>
+		</fieldset>
+	</form>
+	</ns-form>
+</ns-modal>

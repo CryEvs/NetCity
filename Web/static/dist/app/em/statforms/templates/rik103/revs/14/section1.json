@@ -1,0 +1,80 @@
+{
+	"sumCols": [],
+	"sumRows": [
+		{
+			"row": 6,
+			"subRows": [1,2],
+			"type": "sum"
+		},
+		{
+			"row": 2,
+			"subRows": [3,4,5],
+			"type": "ofthem"
+		},
+		{
+			"row": 2,
+			"subRows": [50,51,52,53,54,55,56,57,58],
+			"type": "ofthem"
+		},
+		{
+			"row": 6,
+			"subRows": [7,8,9,10,11,12,20,26,27,28,29,30,41,44,47],
+			"type": "ofthem"
+		},
+		{
+			"row": 12,
+			"subRows": [13, 14, 15, 16, 19],
+			"type": "ofthem"
+		},
+		{
+			"row": 16,
+			"subRows": [17, 18],
+			"type": "ofthem"
+		},
+		{
+			"row": 20,
+			"subRows": [21, 22],
+			"type": "ofthem"
+		},
+		{
+			"row": 22,
+			"subRows": [23, 24, 25],
+			"type": "ofthem"
+		},
+		{
+			"row": 29,
+			"subRows": [59],
+			"type": "ofthem"
+		},
+		{
+			"row": 31,
+			"subRows": [32],
+			"type": "ofthem"
+		},
+		{
+			"row": 35,
+			"subRows": [33, 34],
+			"type": "suminclude"
+		},
+		{
+			"row": 37,
+			"subRows": [38],
+			"type": "ofthem"
+		},
+		{
+			"row": 41,
+			"subRows": [42, 43],
+			"type": "ofthem"
+		},
+		{
+			"row": 44,
+			"subRows": [45, 46],
+			"type": "ofthem"
+		},
+		{
+			"row": 47,
+			"subRows": [48, 49],
+			"type": "ofthem"
+		}
+	]
+}

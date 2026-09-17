@@ -1,0 +1,129 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+	<div class="modal-body">
+
+		<form class="form-horizontal form-xs" name="$ctrl.form">
+			<div class="form-group">
+				<label class="control-label col-md-5">Тип члена семьи</label>
+				<div class="col-md-7">
+					<label class="radio-inline" ng-repeat="type in $ctrl.familyMetaTypes">
+						<input type="radio" name="MemberMetaTypeRadio" ng-model="$ctrl.familyMember.memberType" ng-value="type.memberType" ng-change="$ctrl.memberTypeWasChanged()"> <span>{{type.name}}</span>
+					</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-5">Способ ввода</label>
+				<div class="col-md-7">
+					<div ng-repeat="type in $ctrl.memberInputTypes">
+						<label class="radio-inline">
+							<input type="radio" name="MemberInputTypeRadio" ng-model="$ctrl.memberInputType" ng-value="type" ng-change="$ctrl.memberInputTypeWasChanged()"> <span>{{type.name}}</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row" ng-show="$ctrl.memberInputType.id == 1">
+				<label class="control-label col-md-5">
+					Пользователь текущей организации
+				</label>
+				<div class="col-md-7">
+					<fieldset ng-disabled="$ctrl.editmode && $ctrl.initialUserId">
+						<ui-select track-changes ng-model="$ctrl.userInfo" theme="bootstrap" ng-if="!$ctrl.editMode" on-select="$ctrl.userWasChanged($item)">
+							<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+							<ui-select-choices repeat="searchUser as searchUser in $ctrl.search.familyMembers.items"
+											   ui-disable-choice="searchUser.name === 'Совпадений не найдено' || searchUser.name === 'Поиск...' "
+											   refresh="$ctrl.search.familyMembers.search($select.search)">
+								<div ng-bind-html="$ctrl.displaySearchUser(searchUser) | highlight: $select.search"></div>
+							</ui-select-choices>
+						</ui-select>
+					</fieldset>
+					<input type="text" class="form-control" ng-model="$ctrl.familyMember.lastName" ng-if="$ctrl.editMode" disabled />
+				</div>
+			</div>
+			<div class="form-group" ng-show="$ctrl.memberInputType.id == 2" ng-class="{'has-error': $ctrl.form.LastName.$touched && $ctrl.form.LastName.$invalid}">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.Common.kLastName}}</label>
+				<div class="col-md-7">
+					<input type="text" class="form-control" name="LastName" size="50" maxlength="100" ng-model="$ctrl.familyMember.lastName" ng-required="!$ctrl.familyMember.userId" ng-disabled="$ctrl.familyMember.userId">
+					<p ng-show="$ctrl.form.LastName.$touched && $ctrl.form.LastName.$error.required" class="help-block">
+						Обязательное поле не заполнено
+					</p>
+				</div>
+			</div>
+			<div class="form-group" ng-show="$ctrl.memberInputType.id == 2" ng-class="{'has-error': $ctrl.form.FirstName.$touched && $ctrl.form.FirstName.$invalid}">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.Common.kFirstName}}</label>
+				<div class="col-md-7">
+					<input type="text" class="form-control" name="FirstName" size="50" maxlength="100" ng-model="$ctrl.familyMember.firstName" ng-required="!$ctrl.familyMember.userId" ng-disabled="$ctrl.familyMember.userId">
+					<p ng-show="$ctrl.form.FirstName.$touched && $ctrl.form.FirstName.$error.required" class="help-block">
+						Обязательное поле не заполнено
+					</p>
+				</div>
+			</div>
+			<div class="form-group" ng-show="$ctrl.memberInputType.id == 2" ng-class="{'has-error': $ctrl.form.MiddleName.$touched && $ctrl.form.MiddleName.$invalid}">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.Common.kMiddleName}}</label>
+				<div class="col-md-7">
+					<input type="text" class="form-control" name="MiddleName" size="50" maxlength="100" ng-model="$ctrl.familyMember.middleName" ng-required="!$ctrl.familyMember.userId" ng-disabled="$ctrl.familyMember.userId">
+					<p ng-show="$ctrl.form.MiddleName.$touched && $ctrl.form.MiddleName.$error.required" class="help-block">
+						Обязательное поле не заполнено
+					</p>
+				</div>
+			</div>
+			<div class="form-group" ng-show="$ctrl.memberInputType.id == 2">
+				<fieldset ng-disabled="$ctrl.familyMember.userId">
+					<label class="control-label col-md-5">{{$ctrl.language.Generic.Reports.kBirthdate}}</label>
+					<div class="col-md-7">
+						<edit-date-input date="$ctrl.familyMember.birthDate" track-changes></edit-date-input>
+					</div>
+				</fieldset>
+			</div>
+			<div class="form-group" ng-show="$ctrl.memberInputType.id == 2">
+				<fieldset ng-disabled="$ctrl.familyMember.userId">
+					<label class="control-label col-md-5">{{$ctrl.language.Generic.Common.kGender}}</label>
+					<div class="col-md-7">
+						<label class="radio-inline">
+							<input type="radio" name="GenderRadio" ng-model="$ctrl.familyMember.gender" ng-value="'Male'"> <span>{{$ctrl.language.Generic.Common.kMale}}</span>
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="GenderRadio" ng-model="$ctrl.familyMember.gender" ng-value="'Female'"> <span>{{$ctrl.language.Generic.Common.kFemale}}</span>
+						</label>
+					</div>
+				</fieldset>
+			</div>
+
+		</form>
+	</div>
+
+	<div class="modal-footer">
+
+
+		<!-- Поиск похожих -->
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.checkSimilars()" ng-show="$ctrl.memberInputType.id == 2 && !$ctrl.familyMember.userId">
+			<span class="glyphicon glyphicon-arrow-right"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kContinue}}</span>
+		</button>
+
+		<!-- СОХРАНИТЬ -->
+		<button class="btn btn-primary btn-sm" ng-click="$ctrl.save()" ng-disabled="($ctrl.editmode && $ctrl.initialUserId) || $ctrl.initialUserId == $ctrl.familyMember.userId" ng-show="$ctrl.memberInputType.id == 1 || $ctrl.familyMember.userId">
+			<span class="glyphicon glyphicon-arrow-right"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kContinue}}</span>
+		</button>
+
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.reset()">
+			<span class="glyphicon glyphicon-repeat"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+		</button>
+
+		<!-- ОТМЕНИТЬ -->
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+
+	</div>
+</div>

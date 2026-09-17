@@ -1,0 +1,23 @@
+<main class="main">
+	<div class="form secondary-input-form-in h636" ng-if="$ctrl.ready" ng-enter="$ctrl.enter()">
+
+		<div class="form__headertext">Администратор сервера</div>
+	
+		<div class="logpass">
+			<div class="logpass__pass" id="password" ng-class="{ 'openeye': $ctrl.showPassword, 'active': $ctrl.editPassword || $ctrl.password }">
+				<div class="logpass__pass-placeholder">
+					Пароль
+				</div>
+				<input class="logpass__input" ng-attr-type="{{ $ctrl.showPassword ? 'text' : 'password' }}" ng-model="$ctrl.password" ng-click="$ctrl.editPassword = true" ng-blur="$ctrl.editPassword = false">
+				<div class="logpass__pass-icon" ng-click="$ctrl.togglePasswordIcon()">
+					<img class="eyeon" src="/static/dist/app/login/img/eye.png">
+					<img class="eyeoff" src="/static/dist/app/login/img/eyeoff.png">
+					<img class="eyeon-blue" src="/static/dist/app/login/img/blue_eye.png">
+					<img class="eyeoff-blue" src="/static/dist/app/login/img/blue_eyeoff.png">
+				</div>
+			</div>
+		</div>
+
+		<div class="primary-button top32" ng-click="$ctrl.login()">Войти</div>
+	</div>
+</main>

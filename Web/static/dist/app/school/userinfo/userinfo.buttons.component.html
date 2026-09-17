@@ -1,0 +1,76 @@
+<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<div ng-if="!$ctrl.readonly" style="display: inline">
+						<button type="button" title="{{$ctrl.language.Generic.Buttons.kSave}}" class="btn btn-primary btn-md" ng-click="$ctrl.save()">
+							<span class="glyphicon glyphicon-floppy-save"></span>
+							<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+						</button>
+						<button type="button" title="{{$ctrl.language.Generic.Buttons.kReset}}" class="btn btn-warning" ng-click="$ctrl.reset()">
+							<span class="glyphicon glyphicon-repeat"></span>
+							<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+						</button>
+	
+						<button ng-if="$ctrl.userInfoCtrl.isParent && $ctrl.hasUserDelRight" title="{{$ctrl.language.Generic.Common.kRemove}}" type="button" class="btn btn-danger" ng-click="$ctrl.deleteUser()">
+							<span class="glyphicon glyphicon-minus-sign"></span> 
+							<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+						</button>
+					</div>
+
+					<div ng-if="$ctrl.userInfoCtrl.isStaff && $ctrl.hasUserDelRight" style="display: inline">
+						<button title="{{$ctrl.language.Generic.Common.kRemove}}" ng-if="$ctrl.mayMoveStaff" type="button" class="btn btn-danger" ng-click="$ctrl.deleteUser()">
+							<span class="glyphicon glyphicon-minus-sign"></span> 
+							<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+						</button>
+
+						<button title="{{$ctrl.language.Generic.Buttons.kDismiss}}" type="button" ng-if="$ctrl.mayMoveStaff && $ctrl.staffWorking && !$ctrl.isWizard" class="btn btn-danger" ng-click="$ctrl.dismissStaff()">
+							<span class="glyphicon glyphicon-minus-sign"></span> 
+							<span>{{$ctrl.language.Generic.Buttons.kDismiss}}</span>
+						</button>
+
+						<button title="{{$ctrl.language.Generic.Buttons.kRecruit}}" ng-if="$ctrl.mayMoveStaff && $ctrl.staffDismissed" type="button" class="btn btn-default" ng-click="$ctrl.recruitStaff()">
+							<span class="glyphicon glyphicon-plus-sign"></span> 
+							<span>{{$ctrl.language.Generic.Buttons.kRecruit}}</span>
+						</button>
+					</div>
+
+					<div ng-if="$ctrl.userInfoCtrl.isStaff && $ctrl.identityDocumentsAccess" style="display: inline">
+
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" ng-if="!$ctrl.isWizard" data-toggle="dropdown" aria-expanded="false">
+								<span class="glyphicon glyphicon-print"></span> {{$ctrl.language.Generic.SetupSchoolUI.kStaffCard}} <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a ng-click="$ctrl.browseStaffFormT2(1)" title="стр.1">{{$ctrl.language.Generic.SetupSchoolUI.kPage_}}1</a></li>
+								<li><a ng-click="$ctrl.browseStaffFormT2(2)" title="стр.2">{{$ctrl.language.Generic.SetupSchoolUI.kPage_}}2</a></li>
+								<li><a ng-click="$ctrl.browseStaffFormT2(3)" title="стр.3">{{$ctrl.language.Generic.SetupSchoolUI.kPage_}}3</a></li>
+								<li><a ng-click="$ctrl.browseStaffFormT2(4)" title="стр.4">{{$ctrl.language.Generic.SetupSchoolUI.kPage_}}4</a></li>
+							</ul>
+						</div>
+
+						<button title="{{$ctrl.language.Generic.Common.kPedagogicalPortfolio}}" type="button" class="btn btn-default" ng-if="!$ctrl.isWizard" ng-click="$ctrl.viewPortfolio()">
+							<span class="glyphicon glyphicon-briefcase"></span>
+							<span>{{$ctrl.language.Generic.Common.kPedagogicalPortfolio}}</span>
+						</button>
+					</div>
+
+					<div class="btn-group" ng-if="$ctrl.showStudentPrintCard">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+							<span class="glyphicon glyphicon-print"></span>
+							{{$ctrl.language.Generic.SetupSchoolUI.kStudentCard}} <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a ng-click="$ctrl.openPrintUserCard(1)">{{$ctrl.language.Generic.SetupSchoolUI.kPage_}} 1</a></li>
+							<li><a ng-click="$ctrl.openPrintUserCard(2);">{{$ctrl.language.Generic.SetupSchoolUI.kPage_}} 2</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="buttons-panel-right">
+					<button ng-if="$ctrl.showAccessJournal" title="{{$ctrl.language.Generic.Common.kChangeHistory}}" type="button" class="btn btn-default" ng-click="$ctrl.browseAccessJournal()">
+						<span>{{$ctrl.language.Generic.Common.kChangeHistory}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>

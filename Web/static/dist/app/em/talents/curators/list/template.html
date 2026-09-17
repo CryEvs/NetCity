@@ -1,0 +1,67 @@
+<div class="row">
+	<div class="col-md-12">
+		<form class="form-horizontal  form-sm">
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">{{language.Generic.Common.kEO}}</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<ui-select id="school" ng-model="filter.selected.school" storage theme="bootstrap" on-select="filterViewCurators()">
+						<ui-select-match>{{$select.selected.name}}</ui-select-match>
+						<ui-select-choices repeat="school as school in filter.items.schools | filter: $select.search">
+							<div ng-bind-html="school.name | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<hr/>
+		<div class="buttons-panel">
+
+			<button type="button" class="btn btn-info" ng-click="add()">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span>{{language.Generic.Buttons.kAdd}}</span>
+			</button>
+
+			<button type="button" class="btn btn-danger" ng-click="delete()" ng-disabled="!data.selection.selected">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{language.Generic.Buttons.kRemove}}</span>
+			</button>
+
+
+			<button type="button" class="btn btn-info" ng-click="viewStudents()" ng-disabled="!data.selection.selected">
+				<span class="icon-group"></span>
+				<span>{{language.Generic.TalentStudents.kCuratorTalentStudents}}</span>
+			</button>
+
+		</div>
+	</div>
+</div>
+
+
+<div class="alert alert-info" role="alert" ng-if="data.curators.length == 0">{{language.Generic.TalentStudents.kNoCurators}}</div>
+<div class="alert alert-info" role="alert" ng-if="data.curators.length > 0 && data.viewCurators.length == 0">{{language.Generic.TalentStudents.kNoCuratorsByFilter}}</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-thin table-bright table-bright-hover table-selectable" ng-show="data.viewCurators.length > 0">
+			<tr>
+				<th>{{language.Generic.Reports.kFIOstud}}</th>
+				<th>{{language.Generic.Common.kEO}}</th>
+				<th>{{language.Generic.Reports.kPosition}}</th>
+				<th>{{language.Generic.Common.kContactInfo}}</th>
+			</tr>
+			<tr ng-repeat="curator in data.viewCurators"  ng-class="{'selected': data.selection.isSelected(curator)}" ng-click="data.selection.select(curator)">
+				<td>{{curator.fio}}</td>
+				<td>{{curator.school.name}}</td>
+				<td>{{curator.position}}</td>
+				<td>{{curator.contacts}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

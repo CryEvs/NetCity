@@ -1,0 +1,12 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label class="control-label col-md-3">{{$ctrl.language.Generic.SetupSchoolCalendar.kComponent}}</label>
+				<div class="col-md-9">
+					<select class="form-control" name="COMPID" ng-options="component as component.name for component in $ctrl.addedComponents track by component.id" ng-model="$ctrl.addedComponent" track-changes></select>
+				</div>
+			</div>
+		</div>
+	</div>
+</ns-modal>

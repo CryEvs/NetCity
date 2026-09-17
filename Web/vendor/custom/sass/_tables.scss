@@ -1,0 +1,298 @@
+@import "var";
+
+$table-default-cell-v-padding: 4px;
+$table-default-cell-h-padding: 5px;
+
+@mixin ctx-btns-icons-correction($cell-padding-top, $cell-padding-right, $cell-padding-bottom, $cell-padding-left){
+	// убираются отступы для контекстных кнопок-пиктограмм
+	.ctx-btns-icons {
+		margin-top: -$cell-padding-top;
+		margin-bottom: -$cell-padding-bottom;
+		margin-left: -$cell-padding-left;
+	}
+	.ctx-btns-icons-right {
+		margin-right: -$cell-padding-right;
+		margin-left: 0;
+	}
+	.ctx-btns-icons-center {
+		margin-right: -$cell-padding-right;
+	}
+}
+
+@mixin table-size($font-size, $cell-padding-v-correction, $cell-padding-h-correction){
+	& > thead, & > tbody {
+		& > tr{
+			& > th {
+				font-size: $font-size;
+				padding: ($table-default-cell-v-padding + $cell-padding-v-correction) ($table-default-cell-h-padding + $cell-padding-h-correction) ($table-default-cell-v-padding + $cell-padding-v-correction) ($table-default-cell-h-padding + $cell-padding-h-correction);
+			}
+		}
+	}
+
+	& > tbody {
+		& > tr {
+			& > td {
+				padding: ($table-default-cell-v-padding + $cell-padding-v-correction) ($table-default-cell-h-padding + $cell-padding-h-correction) ($table-default-cell-v-padding + $cell-padding-v-correction) ($table-default-cell-h-padding + $cell-padding-h-correction);
+				font-size: $font-size;
+				@include ctx-btns-icons-correction(($table-default-cell-v-padding + $cell-padding-v-correction), ($table-default-cell-h-padding + $cell-padding-h-correction), ($table-default-cell-v-padding + $cell-padding-v-correction), ($table-default-cell-h-padding + $cell-padding-h-correction));
+			}
+		}
+	}
+}
+
+td.input-cell {
+
+	table.table-sm &, table.table-xs & {
+		vertical-align: middle;
+		padding: 0 !important;
+
+		> select {
+			height: $custom-input-height-base;
+			width: 100%;
+			padding: 0 2px;
+			text-shadow: 0 0 0 rgba(255, 255, 255, 0.7);
+			background: #fff;
+		}
+
+		> .form-control {
+			height: $custom-input-height-base;
+		}
+
+		> input {
+			text-align: center;
+			padding: 0;
+			border: none;
+			width: 100%;
+			height: 100%;
+			min-height: $custom-input-height-base;
+		}
+	}
+}
+
+//разметка ячеек-выпадающих списков в таблицах
+.table {
+	@include table-size(inherit, 0, 0);
+
+	//компактная таблица
+	&.table-md {
+		@include table-size(inherit, 0, 0);
+	}
+
+	&.table-sm {
+		@include table-size(inherit, -1px, 0);
+	}
+
+	&.table-xs {
+		@include table-size(13px, -2px, 0px);
+		td.input-cell-xs {
+			> input {
+				min-height: 0;
+			}
+		}
+	}
+
+	tr.readonly-row{
+		background-color: $input-bg-disabled
+	}
+
+	td.cell-select {
+		select {
+			height: 23px;
+			width: 100%;
+			padding: 0 2px;
+			text-shadow: 0 0 0 rgba(255, 255, 255, 0.7);
+			background: #fff;
+		}
+	}
+
+	&.table-left-header {
+		> tbody {
+			> tr {
+				> th {
+					text-align: left;
+				}
+			}
+		}
+	}
+
+	&.table-middle-cells {
+		> tbody {
+			> tr {
+				> td {
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+
+	th.vertical {
+		vertical-align: bottom;
+	}
+
+	&.table {
+		th {
+			text-align: center;
+			background-color: rgb(244, 244, 244);
+		}
+	}
+
+	//узкая таблица. ширина определяется по требованию
+	&.table-thin, &.table-thin-md {
+		width: auto;
+		min-width: 40%;
+	}
+
+	&.table-thin-sm {
+		width: auto;
+		min-width: 20%;
+	}
+
+	&.table-thin-xs {
+		width: auto;
+	}
+
+	&.table-nobordered {
+		td {
+			border-width: 0 !important;
+		}
+	}
+
+	&.table-legend {
+		td {
+			white-space: nowrap;
+		}
+		font-size: 11px;
+	}
+
+	& > tbody {
+		& > tr {
+			& > th {
+				&.min {
+					width: 1%
+				}
+			}
+			& > td {
+				&.min {
+					width: 1%
+				}
+				& > ul {
+					margin: 0;
+				}
+			}
+		}
+	}
+	
+}
+/*задача #12816 Ошибка в IE9*/
+.NullTable .NullTable{
+	width: 100%;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+	  background-color: #F0F0F0;
+}
+
+.table-bordered {
+	> tbody, > thead, > tfoot {
+		> tr {
+			> th, > td {
+				border: 1px solid #C7C7C7;
+			}
+		}
+	} 
+}
+
+/*устранение ошибки с тенью для странницы "просмотр почтовых сообщений"*/
+div.jtable-main-container table.jtable tbody>tr>td > a{
+	text-shadow: 0 0 0 rgba(51, 51, 51, 0.00);
+
+}
+div.jtable-main-container table.jtable tbody>tr.jtable-row-selected>td > a{
+	color: #FFF;
+}
+
+.table-bright {
+	> tbody {
+		> tr {
+			background-color: #cce4f9;
+			> td {
+				border: 1px solid #fff;
+			}
+			> th {
+				background-color: #3c85ca !important;
+				border: 1px solid #fff;
+				color: #fff;
+				vertical-align: middle;
+				a {
+					color: #fff;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+.table > tbody > tr > td > p.data {
+	margin: 0;
+	span.title {
+
+	}
+	span.text {
+
+	}
+}
+
+.table-selectable {
+	tr td {
+		cursor: pointer;
+
+		span.check-mark {
+			position: relative;
+			top: 1px;
+			font-family: 'Glyphicons Halflings';
+			font-style: normal;
+			font-weight: 400;
+			line-height: 1;
+			-webkit-font-smoothing: antialiased;
+			left: 5px;
+			color: black;
+			display: inline-block;
+			-ms-opacity: 0;
+			opacity: 0;
+		}
+
+		span.check-mark:before {
+			content: "\e013";
+		}
+	}
+
+	tr.selected td {
+		background-color: #99CCFF !important;
+
+		span.check-mark {
+			-ms-opacity: 1;
+			opacity: 1;
+		}
+	}
+
+	tr.selected:hover td {
+		background-color: #c0e0ff !important;
+	}
+
+	tr.disabled td {
+		background-color: #dfdfdf !important;
+	}
+
+	&.with-checks {
+
+		.checkmark {
+			display:inline-block;
+			width: 22px;
+			height:22px;
+			-ms-transform: rotate(45deg); /* IE 9 */
+			-webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+			transform: rotate(45deg);
+		}
+
+	}
+}

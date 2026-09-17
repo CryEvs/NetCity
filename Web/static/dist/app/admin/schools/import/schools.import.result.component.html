@@ -1,0 +1,20 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+
+	<b ng-if="$ctrl.model.alreadyCreated">{{$ctrl.language.Generic.Import.kSchoolsAlreadyCreated}}</b>
+
+	<div style="overflow-y: auto; max-height: 400px">
+		<div ng-if="$ctrl.model.importedSchools.length">
+			{{$ctrl.language.Generic.Import.kSuccessImportSchools}}
+			<ul>
+				<li ng-repeat="school in $ctrl.model.importedSchools">{{school.schoolName}}</li>
+			</ul>
+		</div>
+		<div ng-if="$ctrl.model.notImportedSchools.length">
+			{{$ctrl.language.Generic.Import.kFailImportSchools}}
+			<ul>
+				<li ng-repeat="school in $ctrl.model.notImportedSchools">{{school.schoolName}}</li>
+			</ul>
+		</div>
+	</div>
+
+</ns-modal>

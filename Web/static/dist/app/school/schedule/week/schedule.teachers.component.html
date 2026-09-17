@@ -1,0 +1,54 @@
+
+<div class="legend print-block" ng-if="$ctrl.state.showLegend">
+	<div ng-repeat="relayInfo in $ctrl.legendRelays">
+		<p>
+			<span class="legend-label {{relayInfo.relayClass}}"></span>
+			<span class="legend-description"> — {{relayInfo.name}}</span>
+		</p>
+	</div>
+</div>
+
+<table class="schedule-table table table-bordered table-thin table-xs print-block" ng-if="!$ctrl.state.noTeachers">
+	<tr>
+		<th class="leftheader" rowspan="2">{{$ctrl.language.Filter.kTeacherGB}}</th>
+		<th class="leftheader" rowspan="2">{{$ctrl.language.Generic.Filter.kCourseGB}}</th>
+
+		<th class="schedule-table-header" ng-repeat-start="wd in $ctrl.daysScheduleTimes" colspan="{{wd.colspan}}">
+			<a href="javascript:void(0)" title="Расписание на день" ng-click="$ctrl.goToDaySchedule(wd.dayDate)">{{wd.dayTitle}}</a>
+		</th>
+		<th class="leftheader" ng-if="!wd.lastDay" ng-repeat-end></th>
+	</tr>
+
+	<tr class="xtcb">
+		<td ng-repeat="st in $ctrl.allScheduleTimes" align="center" ng-class="{'relay{{st.relay}}': true, 'leftheader': st.number == -1}">
+			<span ng-if="st.number != -1">&nbsp;{{st.number}}&nbsp;</span>
+		</td>
+	</tr>
+
+	<tr ng-repeat-start="teacherSchedule in $ctrl.teachersSchedule">
+		<td class="leftheader" rowspan="{{teacherSchedule.rowSpan}}">{{teacherSchedule.teacher.name}}</td>
+		<td class="leftheader">{{teacherSchedule.mainRow.subject.name}}</td>
+
+		<td ng-repeat="stClasses in teacherSchedule.mainRow.subjectClasses" 
+			ng-class="{'filled-cell': stClasses.length > 0 && stClasses[0] !== null, 'leftheader': stClasses.length > 0 && stClasses[0] === null}">
+				<a ng-if="classInfo !== null" ng-repeat="classInfo in stClasses" href="javascript:void(0)" 
+					ng-click="$ctrl.editClassMeetings(classInfo)" ng-class="{'extraActivity': classInfo.extraActivity}">{{classInfo.name}}</a>
+		</td>
+	</tr>
+	<tr ng-repeat="line in teacherSchedule.secondaryRows">
+		<td class="leftheader">{{line.subject.name}}</td>
+
+		<td ng-repeat="stClasses in line.subjectClasses" 
+			ng-class="{'filled-cell': stClasses.length > 0 && stClasses[0] !== null, 'leftheader': stClasses.length > 0 && stClasses[0] === null}">
+				<a ng-if="classInfo !== null" ng-repeat="classInfo in stClasses" href="javascript:void(0)" 
+					ng-click="$ctrl.editClassMeetings(classInfo)" ng-class="{'extraActivity': classInfo.extraActivity}">{{classInfo.name}}</a>
+		</td>
+	</tr>
+	<tr ng-repeat-end>
+		<th class="leftheader"></th>
+		<th class="leftheader"></th>
+		<th ng-repeat="st in $ctrl.allScheduleTimes" class="leftheader"></th>
+	</tr>
+</table>
+
+<div class="alert alert-info" role="alert" ng-if="$ctrl.state.noTeachers">Нет преподавателей для выбранных условий</div>

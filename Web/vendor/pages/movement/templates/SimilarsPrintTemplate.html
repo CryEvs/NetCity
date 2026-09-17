@@ -1,0 +1,23 @@
+﻿<table class="table table-bordered table-xs print-block">
+	<tr>
+		<th rowspan="2">{{{language.Generic.Filter.kN_PP}}}</th>
+		<th rowspan="2">{{{language.Generic.Reports.kFIOstud}}}</th>
+		<th rowspan="2">{{{language.Generic.Common.kRole}}}</th>
+		<th colspan="2">{{{language.Generic.Movement.kFindedSimilars}}}</th>
+		<th rowspan="2">{{{language.Generic.Movement.kSimilarsOptions}}}</th>
+	</tr>
+	<tr>
+		<th>ФИО</th>
+		<th>Образовательная организация</th>
+	</tr>
+	{{#each similarsResolveDataView}}
+	<tr>
+		{{> similarsPrintUserTmpl language=../language}}
+		{{#if parentsResolveData}}
+			{{#each parentsResolveData}}
+				{{> similarsPrintUserTmpl language=../../../language}}
+			{{/each}}
+		{{/if}}
+	</tr>
+	{{/each}}
+</table>

@@ -1,0 +1,84 @@
+<html>
+<head>
+   <title>Движение учащихся по школе</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Отчёты, движение учащихся по школе">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?reportstudentsmoving.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Движение учащихся по школе
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="ОтчетДвижениеучащихсяпошк"></a>Отчет "Движение учащихся по школе"</b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Этот отчет предоставляет данные о прибывших/выбывших учащихся за каждый учебный период. В таблице указано общее число прибывших/выбывших по классам/параллелям, ступеням и по школе в целом. Данный отчёт ориентируется на даты соответствующих приказов о движении в "Книге движения учащихся".
+<br>
+Для удобства анализа данных можно вывести в этом отчете фамилии учащихся.
+<br>
+
+<br>
+В отчете "Движение учащихся по школе" отображаются следующие типы движения учеников:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="19"></td><td width="12"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">перевод из класса в класс;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="19"></td><td width="12"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">зачисление в школу;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="19"></td><td width="12"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">выбытие из школы.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="19"></td><td width="12"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+<b><u>Замечание 1.</u></b> Данный отчет выводит информацию за учебные периоды, ЦЕЛИКОМ попадающие в заданный интервал.
+<br>
+Например, пусть вторая четверть в "Сетевом Городе" начинается с 10 ноября. Тогда при задании интервала от 12 ноября до 30 марта, информация будет выведена только за третью четверть, т.к. учебный период второй четверти не попал целиком в заданный интервал.
+<br>
+
+<br>
+<b><u>Замечание 2.</u></b> Для корректного расчёта графы <b>"На начало года"</b> необходимо, чтобы не было "циклического" движения учащихся в течение летнего периода, т.е. выбытия и последующего зачисления одного и того же ученика до 20 сентября.
+<br>
+В таких случаях, чтобы избежать "циклического" движения, в <a href=javaScript:parent.reDisplay('2.3.1',1,0)>Книге движения</a> вместо создания приказа о зачислении выбывшего ученика, следует удалить сам приказ о выбытии.
+<br>
+
+<br>
+<b><u>Пример отчета</u></b><b><u>:</u></b>
+<br>
+<img src="ReportStudentsMoving.png" width="802" height="612" border="0" alt="ReportStudentsMoving">
+<br>
+</span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('7.1.1.2',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('7.1.1.4',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

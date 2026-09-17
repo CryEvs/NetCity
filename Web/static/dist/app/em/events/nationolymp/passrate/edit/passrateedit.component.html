@@ -1,0 +1,65 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">		
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<form role="form" name="$ctrl.passRateForm" ng-show="$ctrl.ready" class="form-horizontal form-sm">
+		<ns-form control-size="col-md-8 col-lg-9 col-sm-8" label-size="col-md-4 col-lg-3 col-sm-4"> 
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kYear}}" ng-class="{'has-error': $ctrl.passRateForm.year.$invalid && (!$ctrl.passRateForm.year.$pristine || $ctrl.passRateForm.$displayErrors)}">
+				<select ng-disabled="!$ctrl.state.createMode" track-changes class="form-control" name="year" id="passrate-yearId" required ng-options="year.id as year.name for year in $ctrl.data.years" ng-init="$ctrl.data.yearId" ng-model="$ctrl.data.yearId"></select>
+				<p ng-show="$ctrl.passRateForm.year.$invalid && (!$ctrl.passRateForm.year.$pristine || $ctrl.passRateForm.$displayErrors)" class="help-block">
+					{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+				</p>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Lessonmap.kStage}}" ng-class="{'has-error': $ctrl.passRateForm.level.$invalid && (!$ctrl.passRateForm.level.$pristine || $ctrl.passRateForm.$displayErrors)}">
+				<select ng-disabled="!$ctrl.state.createMode" track-changes class="form-control" name="level" id="passrate-level" required ng-options="level.key as level.name for level in $ctrl.data.levels" ng-init="$ctrl.data.level" ng-model="$ctrl.data.level"></select>
+				<p ng-show="$ctrl.passRateForm.level.$invalid && (!$ctrl.passRateForm.level.$pristine || $ctrl.passRateForm.$displayErrors)" class="help-block">
+					{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+				</p>
+			</ns-form-group>		
+			
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kSubject}}" ng-class="{'has-error': $ctrl.passRateForm.subject.$invalid && (!$ctrl.passRateForm.subject.$pristine || $ctrl.passRateForm.$displayErrors)}">
+				<select ng-disabled="!$ctrl.state.createMode" track-changes class="form-control" name="subject" id="passrate-subjectId" required ng-options="subject.id as subject.name for subject in $ctrl.data.subjects" ng-init="$ctrl.data.subjectId" ng-model="$ctrl.data.subjectId"></select>
+				<p ng-show="$ctrl.passRateForm.subject.$invalid && (!$ctrl.passRateForm.subject.$pristine || $ctrl.passRateForm.$displayErrors)" class="help-block">
+					{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+				</p>
+			</ns-form-group>
+			
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kMunicipalityDistrictShort}}" ng-show="$ctrl.showMunicipality()" ng-class="{'has-error': $ctrl.passRateForm.municipality.$invalid && (!$ctrl.passRateForm.municipality.$pristine || $ctrl.passRateForm.$displayErrors)}">
+				<select ng-disabled="!$ctrl.state.createMode" track-changes class="form-control" name="municipality" ng-options="municipality.id as municipality.name for municipality in $ctrl.data.municipalities" ng-model="$ctrl.data.municipalityId"></select>
+				<p ng-show="$ctrl.passRateForm.municipality.$invalid && (!$ctrl.passRateForm.municipality.$pristine || $ctrl.passRateForm.$displayErrors)" class="help-block">
+					{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+				</p>
+			</ns-form-group>				
+
+			<ns-form-group title="{{$ctrl.language.Generic.EM.kCounty}}" ng-show="$ctrl.showEducManagements()" ng-class="{'has-error': $ctrl.passRateForm.em.$invalid && (!$ctrl.passRateForm.em.$pristine || $ctrl.passRateForm.$displayErrors)}">
+				<select ng-disabled="!$ctrl.state.createMode" track-changes class="form-control" name="em" ng-options="em.id as em.name for em in $ctrl.data.ems" ng-model="$ctrl.data.emId"></select>
+				<p ng-show="$ctrl.passRateForm.em.$invalid && (!$ctrl.passRateForm.em.$pristine || $ctrl.passRateForm.$displayErrors)" class="help-block">
+					{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+				</p>
+			</ns-form-group>	
+
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kPassRate}}" ng-class="{'has-error': $ctrl.passRateForm.rate.$invalid && (!$ctrl.passRateForm.rate.$pristine || $ctrl.passRateForm.$displayErrors)}">
+				<input type="number" track-changes class="form-control" id="passrate-rate" name="rate" size="4" required maxlength="4" ng-model="$ctrl.data.rate" ng-min="1" ng-max="9999" ng-pattern="/^\d+$/">
+				<div ng-show="$ctrl.passRateForm.rate.$invalid && (!$ctrl.passRateForm.rate.$pristine || $ctrl.passRateForm.$displayErrors)" class="help-block">
+					<div ng-messages="$ctrl.passRateForm.rate.$error">
+						<span class="help-block" ng-message="number">{{$ctrl.digitsError()}}</span>
+						<span class="help-block" ng-message="pattern">{{$ctrl.digitsError()}}</span>
+						<span class="help-block" ng-message="min">{{$ctrl.minError()}}</span>
+						<span class="help-block" ng-message="max">{{$ctrl.maxError()}}</span>
+						<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Calendar.kFieldCannotBeEmpty}}</span>
+					</div>
+				</div>
+			</ns-form-group>		
+			
+			<ns-form-group title="{{$ctrl.language.Generic.Calendar.kClasses}}" ng-class="{'has-error': !$ctrl.anyGrade() && (!$ctrl.passRateForm.grades.$pristine || $ctrl.passRateForm.$displayErrors)}">
+				<div class="checkbox" ng-repeat="grade in $ctrl.data.gradesAll track by $index">
+					<label>
+						<input type="checkbox" name="grades" ng-click="$ctrl.checkGrade($index)" ng-checked="$ctrl.isGradeChecked(grade)" track-changes>{{$ctrl.getGradeByIndex($index)}}
+					</label>
+				</div>
+				<p ng-show="!$ctrl.anyGrade() && (!$ctrl.passRateForm.grades.$pristine || $ctrl.passRateForm.$displayErrors)" class="help-block">
+					Отметьте хотя бы один класс
+				</p>
+			</ns-form-group>	
+		</ns-form>
+	</form>
+</ns-modal>

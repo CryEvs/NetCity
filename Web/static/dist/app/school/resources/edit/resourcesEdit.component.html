@@ -1,0 +1,102 @@
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headinggroups">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-target="#groups" aria-expanded="true" aria-controls="groups">
+						{{"language.Generic.SetupSchoolResources.kGroups" | language}}
+					</a>
+				</h4>
+			</div>
+			<div id="groups" class="panel-collapse collapse in" aria-labelledby="headinggroups" role="tabpanel" aria-expanded="true">
+				<div class="panel-body">
+					<form class="form-horizontal">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="buttons-panel">
+									<button title="{{'language.Generic.ResourceGroups.kCreateGroup' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.addGroup()">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+										<span>{{"language.Generic.Buttons.kAdd" | language}}</span>
+									</button>
+									<button title="{{'language.Generic.ResourceGroups.kEditGroup' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.editGroup()"
+										ng-if="$ctrl.data.groups.length > 0">
+										<span class="glyphicon glyphicon-pencil"></span>
+										<span>{{"language.Generic.Buttons.kChange" | language}}</span>
+									</button>
+									<button title="{{'language.Generic.ResourceGroups.kDelGroup' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.removeGroup()"
+										ng-if="$ctrl.data.groups.length > 0">
+										<span class="glyphicon glyphicon-minus-sign"></span>
+										<span>{{"language.Generic.Buttons.kRemove" | language}}</span>
+									</button>
+								</div>
+							</div>
+						</div>
+	
+						<div class="form-group" ng-if="$ctrl.data.groups.length > 0">
+							<label class="control-label col-md-4 col-lg-3 col-sm-4">
+								{{"language.Generic.ResourceGroups.kSelectGroup" | language}}
+							</label>
+							<div class="col-md-8 col-lg-5 col-sm-8">
+								<select class="form-control" ng-model="$ctrl.data.selectedGroup" ng-options="group as group.treeItemName for group in $ctrl.data.treeGroups"
+									ng-change="$ctrl.changeGroup()">
+								</select>
+							</div>
+						</div>
+
+						<div class="alert alert-info ng-binding" role="alert" ng-if="$ctrl.data.groups.length == 0">
+							{{"language.Generic.SetupSchoolResources.kNoGroupsInCatalog" | language}}
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default" ng-if="$ctrl.data.groups.length > 0">
+			<div class="panel-heading" role="tab" id="headingresources">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-target="#resources" aria-expanded="true" aria-controls="resources">
+						{{"language.Generic.SetupSchoolPortfolio.kLinks" | language}}
+					</a>
+				</h4>
+			</div>
+			<div id="resources" class="panel-collapse collapse in" aria-labelledby="headingresources" role="tabpanel" aria-expanded="true">
+				<div class="panel-body">
+					<form class="form-horizontal">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="buttons-panel">
+									<button title="{{'language.Generic.ResourceGroups.kCreateLink' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.addResource()">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+										<span>{{"language.Generic.Buttons.kAdd" | language}}</span>
+									</button>
+									<button title="{{'language.Generic.ResourceGroups.kEditLink' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.editResource()"
+										ng-if="$ctrl.data.resources.length > 0">
+										<span class="glyphicon glyphicon-pencil"></span>
+										<span>{{"language.Generic.Buttons.kChange" | language}}</span>
+									</button>
+									<button title="{{'language.Generic.ResourceGroups.kDelLink' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.removeResource()"
+										ng-if="$ctrl.data.resources.length > 0">
+										<span class="glyphicon glyphicon-minus-sign"></span>
+										<span>{{"language.Generic.Buttons.kRemove" | language}}</span>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div ng-if="$ctrl.data.resources.length > 0" class="form-group">
+							<div class="col-md-12">
+								<label>{{"language.Generic.ResourceGroups.kSelectLinkFromGroup" | language}}:</label>
+								<select class="form-control" style="overflow-y: auto;" size="7" ng-model="$ctrl.data.selectedResource" ng-options="resource as resource.url for resource in $ctrl.data.resources">
+								</select>
+							</div>
+						</div>
+
+						<div ng-if="$ctrl.data.resources.length == 0" class="alert alert-info ng-binding" role="alert">
+							{{"language.Generic.ResourceGroups.kNoLinksInGroup" | language}}
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

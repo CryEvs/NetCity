@@ -1,0 +1,61 @@
+<div ng-model="EditStaffTrainingCtrl">
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<form role="form" name="editForm" class="form form-xs">
+				<fieldset>
+					<!--Поля формы-->
+					<legend class="edit-block-legend">{{language.Generic.Common.kGeneralInformation}}</legend>
+					<div ng-include="'/static/dist/app/school/attestation/portfolio/staffCommonTrainingTemplate.html'" onload="initCalendar();"></div>
+
+					<div class="form-group" ng-class="{'has-error': editForm.trainingTheme.$invalid && (!editForm.trainingTheme.$pristine || editForm.$displayErrors)}">
+						<label for="training-theme" class="control-label">{{language.Generic.Common.kTrainingTheme}}</label>
+						<div>
+							<input type="text" id="training-theme" name="trainingTheme" class="form-control" required ng-model="data.item.theme" maxlength="400" onchange="dataChanged()">
+							<p ng-show="editForm.trainingTheme.$invalid && (!editForm.trainingTheme.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="training-level" class="control-label">{{language.Generic.Common.kTrainingLevel}}</label>
+								<div>
+									<select id="training-level" class="form-control" ng-model="data.item.level" ng-options="level.key as level.name for level in refs.levels" onchange="dataChanged()"></select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="training-form" class="control-label">{{language.Generic.Common.kParticipationForm}}</label>
+								<div>
+									<select id="training-form" class="form-control" ng-model="data.item.form" ng-options="form.key as form.name for form in refs.visitForms" onchange="dataChanged()"></select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-include="'/static/dist/app/school/attestation/portfolio/completionTrainingDocumentTemplate.html'" onload="initCalendar();"></div>
+				</fieldset>
+			</form>
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="editForm.$displayErrors=true; save(editForm.$valid);">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

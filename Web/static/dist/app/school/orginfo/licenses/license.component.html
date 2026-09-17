@@ -1,0 +1,183 @@
+<ng-form name="$ctrl.form">
+	<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kSeriesAndNumberOfForm}}" ng-class="{'has-error': $ctrl.form.seriaOfForm.$invalid || $ctrl.form.numberOfForm.$invalid}">
+		<div class="input-group">
+			<input type="text" class="form-control" size="40" maxlength="50" name="seriaOfForm" ng-model="$ctrl.license.seriesBlank" track-changes ng-disabled="$ctrl.readonly" ng-pattern="$ctrl.seriesPattern">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">№</span>
+			<input type="text" class="form-control" size="40" maxlength="50" name="numberOfForm" ng-model="$ctrl.license.numberBlank" track-changes ng-disabled="$ctrl.readonly" ng-pattern="$ctrl.numberPattern">
+		</div>
+		<p ng-show="$ctrl.form.seriaOfForm.$invalid && (!$ctrl.form.seriaOfForm.$pristine || $ctrl.form.$$parentForm.$displayErrors)" class="help-block">
+			{{$ctrl.language.Generic.SchoolInfo.kEnterCorrectSeria}}
+		</p>
+		<p ng-show="$ctrl.form.numberOfForm.$invalid && (!$ctrl.form.numberOfForm.$pristine || $ctrl.form.$$parentForm.$displayErrors)" class="help-block">
+			{{$ctrl.language.Generic.SchoolInfo.kEnterCorrectNumber}}
+		</p>
+	</ns-form-group>
+
+	<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kRegistrationNumber}}" ng-class="{'has-error': $ctrl.form.regNumber.$invalid && (!$ctrl.form.regNumber.$pristine || $ctrl.form.$$parentForm.$displayErrors)}">
+		<input type="text" class="form-control" size="40" maxlength="250" name="regNumber" ng-model="$ctrl.license.regNumber" required track-changes ng-disabled="$ctrl.readonly" ng-pattern="$ctrl.regNumberPattern">
+		<p ng-show="$ctrl.form.regNumber.$invalid && (!$ctrl.form.regNumber.$pristine || $ctrl.form.$$parentForm.$displayErrors)" class="help-block">
+			{{$ctrl.language.Generic.SchoolInfo.kEnterRegNumber}}
+		</p>
+	</ns-form-group>
+
+	<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kDateOfIssue}}" ng-class="{'has-error': $ctrl.form.dateOfIssue.$invalid && (!$ctrl.form.dateOfIssue.$pristine || $ctrl.form.$$parentForm.$displayErrors)}">
+		<date-input-component track-changes
+			name="dateOfIssue"
+			date-model="$ctrl.license.issuedDate"
+			readonly="$ctrl.readonly"
+			required="true"
+			max-date="$ctrl.today">
+		</date-input-component>
+		<div ng-messages="$ctrl.form.dateOfIssue.$error" ng-show="!$ctrl.form.dateOfIssue.$pristine || $ctrl.form.$$parentForm.$displayErrors">
+			<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Common.kEnterDate}}</span>
+			<span class="help-block" ng-message="dateFormat">Неверная дата</span>
+			<span class="help-block" ng-message="datePeriod">Дата выдачи после сегодняшней даты</span>
+		</div>
+	</ns-form-group>
+
+	<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kExpiryDate}}" ng-class="{'has-error': $ctrl.form.expiredDate.$invalid}">
+		<input type="text" class="form-control date-input" size="11" maxlength="10" ng-value="$ctrl.expireDateStr" disabled ng-if="$ctrl.readonly">
+		<div style="display: table;" ng-if="!$ctrl.readonly">
+			<span class="input-group-addon" style="padding: 0 6px; display: table-cell; border-bottom-right-radius: 0; border-top-right-radius: 0;">
+				<label style="padding-left: 20px; margin-bottom: 0; font-weight: normal; cursor: pointer;">
+					<input type="checkbox" style="position: absolute; margin-left: -20px;" name="without-life" ng-disabled="$ctrl.readonly" ng-checked="$ctrl.nonExpire" ng-click="$ctrl.toggleNonExpire()"> {{$ctrl.language.Generic.SchoolInfo.kWithoutLife}}
+				</label>
+			</span>
+			<date-input-component track-changes
+				name="expiredDate"
+				date-model="$ctrl.license.expiredDate"
+				min-date="$ctrl.license.issuedDate"
+				readonly="$ctrl.nonExpire">
+			</date-input-component>
+		</div>
+		<div ng-messages="$ctrl.form.expiredDate.$error">
+			<span class="help-block" ng-message="dateFormat">Неверная дата</span>
+			<span class="help-block" ng-message="datePeriod">Дата окончания ранее даты выдачи</span>
+		</div>
+	</ns-form-group>
+
+	<ns-form-group title="{{$ctrl.licenseOrganNameTitle}}">
+		<input track-changes type="text" class="form-control" size="40" maxlength="250" name="licenseOrgan" ng-model="$ctrl.license.licenseOrganName" ng-disabled="$ctrl.readonly">
+	</ns-form-group>
+
+	<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kStatus}}" ng-if="$ctrl.isAccreditation">
+		<input track-changes type="text" class="form-control" size="40" maxlength="250" name="accreditationStatus" ng-model="$ctrl.license.status" ng-disabled="$ctrl.readonly">
+	</ns-form-group>
+
+	<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kRenewCertificate}}" ng-if="$ctrl.isAccreditation">
+		<select track-changes class="form-control" name="isRenewId" ng-model="$ctrl.license.isRenewCertificate" ng-options="t.id as t.name for t in $ctrl.yesNoOptions" ng-disabled="$ctrl.readonly"></select>
+	</ns-form-group>
+
+	<ns-form-group title="{{$ctrl.decisionOnLicenseTitle}}" ng-class="{'has-error': $ctrl.form.decisionDate.$invalid}">
+		<div class="input-group">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.SchoolInfo.kOrder}}</span>
+			<input track-changes type="text" class="form-control" size="40" maxlength="50" name="decisionOrderNumber" ng-model="$ctrl.license.decisionOrderNumber" ng-disabled="$ctrl.readonly">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.Common.kDate}}</span>
+			<date-input-component track-changes
+				name="decisionDate"
+				date-model="$ctrl.license.decisionDate"
+				readonly="$ctrl.readonly">
+			</date-input-component>
+		</div>
+		<div ng-messages="$ctrl.form.decisionDate.$error">
+			<span class="help-block" ng-message="dateFormat">Неверная дата</span>
+		</div>
+	</ns-form-group>
+
+
+	<!--Переоформление свидетельства-->
+	<ns-form-group ng-if="$ctrl.isAccreditation" title="{{$ctrl.language.Generic.SchoolInfo.ReIssuanceCertificates}}" ng-class="{'has-error': $ctrl.form.accreditationRenewDate.$invalid}">
+		<div class="input-group">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.SchoolInfo.kOrder}}</span>
+			<input type="text" class="form-control" size="15" maxlength="50" name="accreditationRenewOrderNumber" ng-model="$ctrl.license.renewOrderNumber" track-changes ng-disabled="$ctrl.readonly">
+			
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">рег. №</span>
+			<input type="text" class="form-control" size="9" maxlength="50" name="accreditationRenewRegNumber" ng-model="$ctrl.license.renewRegNumber" track-changes ng-disabled="$ctrl.readonly">
+
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.Common.kDate}}</span>
+
+			<date-input-component track-changes
+				name="accreditationRenewDate"
+				date-model="$ctrl.license.renewDate"
+				readonly="$ctrl.readonly">
+			</date-input-component>
+		</div>
+		<div ng-messages="$ctrl.form.accreditationRenewDate.$error">
+			<span class="help-block" ng-message="dateFormat">Неверная дата</span>
+		</div>
+	</ns-form-group>
+
+	<!--приостановка действия-->
+	<ns-form-group ng-if="$ctrl.isAccreditation" title="{{$ctrl.language.Generic.SchoolInfo.kSuspension}}" ng-class="{'has-error': $ctrl.form.accreditationSuspensionDate.$invalid}">
+		<div class="input-group">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.SchoolInfo.kOrder}}</span>
+			<input type="text" class="form-control" size="40" maxlength="50" name="accreditationSuspensionOrderNumber" ng-model="$ctrl.license.suspensionOrderNumber" track-changes ng-disabled="$ctrl.readonly">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.Common.kDate}}</span>
+			<date-input-component track-changes
+				name="accreditationSuspensionDate"
+				date-model="$ctrl.license.suspensionDate"
+				readonly="$ctrl.readonly">
+			</date-input-component>
+		</div>
+		<div ng-messages="$ctrl.form.accreditationSuspensionDate.$error">
+			<span class="help-block" ng-message="dateFormat">Неверная дата</span>
+		</div>
+	</ns-form-group>
+
+	<!--возобновление действия-->
+	<ns-form-group ng-if="$ctrl.isAccreditation" title="{{$ctrl.language.Generic.SchoolInfo.kRenewal}}" ng-class="{'has-error': $ctrl.form.accreditationRenewalDate.$invalid}">
+		<div class="input-group">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.SchoolInfo.kOrder}}</span>
+			<input type="text" class="form-control" size="40" maxlength="50" name="accreditationRenewalOrderNumber" ng-model="$ctrl.license.renewalOrderNumber" track-changes ng-disabled="$ctrl.readonly">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.Common.kDate}}</span>
+			<date-input-component track-changes
+				name="accreditationRenewalDate"
+				date-model="$ctrl.license.renewalDate"
+				readonly="$ctrl.readonly">
+			</date-input-component>
+		</div>
+		<div ng-messages="$ctrl.form.accreditationRenewalDate.$error">
+			<span class="help-block" ng-message="dateFormat">Неверная дата</span>
+		</div>
+	</ns-form-group>
+
+	<!--Лишение аккредитации-->
+	<ns-form-group ng-if="$ctrl.isAccreditation" title="{{$ctrl.language.Generic.SchoolInfo.kDeprivation}}" ng-class="{'has-error': $ctrl.form.accreditationDeprivationOrderDate.$invalid}">
+		<div class="input-group">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.SchoolInfo.kOrder}}</span>
+			<input type="text" class="form-control" size="40" maxlength="50" name="accreditationDeprivationOrderNumber" ng-model="$ctrl.license.deprivationOrderNumber" track-changes ng-disabled="$ctrl.readonly">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.Common.kDate}}</span>
+			<date-input-component track-changes
+				name="accreditationDeprivationOrderDate"
+				date-model="$ctrl.license.deprivationOrderDate"
+				readonly="$ctrl.readonly">
+			</date-input-component>
+		</div>
+		<div ng-messages="$ctrl.form.accreditationDeprivationOrderDate.$error">
+			<span class="help-block" ng-message="dateFormat">Неверная дата</span>
+		</div>
+	</ns-form-group>
+
+	<!--Прекращение действия-->
+	<ns-form-group ng-if="$ctrl.isAccreditation" title="{{$ctrl.language.Generic.SchoolInfo.kStopAction}}" ng-class="{'has-error': $ctrl.form.accreditationStopActionDate.$invalid}">
+		<div class="input-group">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.SchoolInfo.kOrder}}</span>
+			<input type="text" class="form-control" size="40" maxlength="50" name="accreditationStopActionOrderNumber" ng-model="$ctrl.license.stopActionOrderNumber" track-changes ng-disabled="$ctrl.readonly">
+			<span class="input-group-addon" style="display: table-cell; padding-top: 5px;">{{$ctrl.language.Generic.Common.kDate}}</span>
+			<date-input-component track-changes
+				name="accreditationStopActionDate"
+				date-model="$ctrl.license.stopActionDate"
+				readonly="$ctrl.readonly">
+			</date-input-component>
+		</div>
+		<div ng-messages="$ctrl.form.accreditationStopActionDate.$error">
+			<span class="help-block" ng-message="dateFormat">Неверная дата</span>
+		</div>
+	</ns-form-group>
+
+	<!--ссылка на скан-копию-->
+	<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kLinkToScanCopy}}">
+		<file-attachments settings="$ctrl.fa"></file-attachments>
+	</ns-form-group>
+
+</ng-form>	

@@ -1,0 +1,48 @@
+﻿<table class="table table-bordered table-condensed">
+	<tr>
+		<th>{{language.Generic.Calendar.kRoomNumber}}</th>
+		<th>{{language.Generic.Calendar.kFloor}}</th>
+		<th>{{language.Generic.Calendar.kSeats}}</th>
+		<th>{{kClasses}}</th>
+		{{#unless readonly}}
+		<th>{{language.Generic.Common.kRemove}}</th>
+		{{/unless}}
+	</tr>
+	{{#if readonly}}
+	{{#each rooms}}
+	<tr align="middle" valign="center">
+		<td align="left">{{roomname}}</td>
+		<td>{{floor}}</td>
+		<td>{{seats}}</td>
+		<td>{{classesnames}}</td>
+	</tr>
+	{{/each}}
+	{{else}}
+	{{#each rooms}}
+	<tr>
+		<td>
+			<input type="hidden" name="RoomID" value="{{id}}">
+			<input type="text" name="RoomName" class="form-control" size="27" maxlength="50" value="{{roomname}}" onchange="data2change(this);">
+		</td>
+		<td>
+			<select name="Floor" class="form-control">
+				{{#forLoop 1 7 1}}
+				<option value="{{this}}" {{#ifCond this "===" ../floor}} selected {{/ifCond}}>{{this}}</option>
+				{{/forLoop}}
+			</select>
+		</td>
+		<td>
+			<input type="text" class="form-control" name="Seats" size="3" maxlength="3" value="{{seats}}" onchange="dataChanged();">
+		</td>
+		<td>{{classesnames}}</td>
+		<td style="text-align: center;">
+			{{#if used}}
+			{{@root.language.Generic.Common.kEmploy}}
+			{{else}}
+			<input type="checkbox" name="DeleteID" value="{{id}}">
+			{{/if}}
+		</td>
+	</tr>
+	{{/each}}
+	{{/if}}
+</table>

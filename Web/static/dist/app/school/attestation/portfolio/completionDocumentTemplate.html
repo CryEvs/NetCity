@@ -1,0 +1,39 @@
+<legend class="edit-block-legend">{{language.Generic.Common.kCompletionDocument}}</legend>
+<div class="form-group" ng-class="{'has-error': editForm.educationDocName.$invalid && (!editForm.educationDocName.$pristine || editForm.$displayErrors)}">
+	<label for="education-doc-name" class="control-label">{{language.Generic.SetupSchoolPortfolio.kDocName}}</label>
+	<div>
+		<input type="text" id="education-doc-name" name="educationDocName" class="form-control" ng-model="data.item.completionDocument.docName" required maxlength="400" onchange="dataChanged()">
+		<p ng-show="editForm.educationDocName.$invalid && (!editForm.educationDocName.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6 form-group" ng-class="{'has-error': editForm.docSerie.$invalid && (!editForm.docSerie.$pristine || editForm.$displayErrors)}">
+		<label for="education-doc-serie" class="control-label">{{language.Generic.Common.kSerial}}</label>
+		<div>
+			<input type="text" id="education-doc-serie" name="docSerie" class="form-control" ng-model="data.item.completionDocument.series" required="" maxlength="400" onchange="dataChanged()">
+			<p ng-show="editForm.docSerie.$invalid && (!editForm.docSerie.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+		</div>
+	</div>
+	<div class="col-md-6 form-group" ng-class="{'has-error': editForm.docnumber.$invalid && (!editForm.docnumber.$pristine || editForm.$displayErrors)}">
+		<label for="education-doc-number" class="control-label">{{language.Generic.UsersExport_1C.kNumberDocument}}</label>
+		<div>
+			<input type="text" name="docnumber" id="education-doc-number" class="form-control" ng-model="data.item.completionDocument.number" required maxlength="400" onchange="dataChanged()">
+			<p ng-show="editForm.docnumber.$invalid && (!editForm.docnumber.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6 form-group">
+		<label for="education-doc-issuedate" class="control-label">{{language.Generic.UsersExport_1C.kIssueDate}}</label>
+		<div class="input-group date" id="education-doc-issuedate">
+			<input type="text" class="form-control date-input" name="ISSUEDATE" size="11" maxlength="10" ns-date-model="data.item.completionDocument.issueDate" onchange="dataChanged()">
+			<span class="input-group-btn"><button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span> </button></span>
+		</div>
+	</div>
+	<div class="col-md-6 form-group">
+		<label for="education-doc-regnumber" class="control-label">{{language.Generic.SchoolInfo.kRegistrationNumber}}</label>
+		<div>
+			<input type="text" id="education-doc-regnumber" class="form-control" ng-model="data.item.completionDocument.regNumber" maxlength="400" onchange="dataChanged()">
+		</div>
+	</div>
+</div>

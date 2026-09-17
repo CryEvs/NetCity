@@ -1,0 +1,35 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<div>
+		<div>
+			<h3>{{$ctrl.language.Common.kStudentInfo}}</h3>
+			<div class="radio">
+				<label>
+					<input type="radio" name="optionsRadios1" id="shortStudentInfo" value="option1" checked>
+					Краткий список полей
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="optionsRadios1" id="fullStudentInfo" value="option2">
+					Полный список полей
+				</label>
+			</div>
+		</div>
+		<hr />
+		<div>
+			<h3>Сведения о родителях:</h3>
+			<div class="radio">
+				<label>
+					<input type="radio" name="optionsRadios2" id="shortParentInfo" value="option1" checked>
+					Краткий список полей
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="optionsRadios2" id="fullParentInfo" value="option2">
+					Полный список полей
+				</label>
+			</div>
+		</div>
+	</div>
+</ns-modal>

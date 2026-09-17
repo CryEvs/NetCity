@@ -1,0 +1,22 @@
+<div class="row generateNewPassword" ng-show="generatePass.opened">
+	<div class="col-md-12">
+		<div class="alert alert-danger" role="alert">
+			<p style="padding-bottom: 5px;">
+				<span>{{language.Generic.Common.kSelectUsersAndPushContinue}}</span>
+			</p>
+			<button title="{{language.Generic.Common.kSelectAll}}" type="button" class="btn btn-sm" ng-click="generatePass.selectAll()"><span>{{language.Generic.Common.kSelectAll}}</span></button>
+			<button title="{{language.Generic.Buttons.kContinue}}" type="button" class="btn btn-sm" ng-click="generatePass.go()"><span>{{language.Generic.Buttons.kContinue}}</span></button>
+			<button title="{{language.Generic.Buttons.kCancel}}" type="button" class="btn btn-sm" ng-click="generatePass.cancel()"><span>{{language.Generic.Buttons.kCancel}}</span></button>
+		</div>
+	</div>
+</div>
+<div class="row" ng-show="showPersonEditWarn">
+	<div class="col-md-10">
+		<div class="alert alert-warning alert-dismissible" role="alert">
+			{{language.Generic.Common.kPersonDataEditInfo}}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+		</div>
+	</div>
+</div>

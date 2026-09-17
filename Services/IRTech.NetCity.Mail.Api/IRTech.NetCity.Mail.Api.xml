@@ -1,0 +1,564 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IRTech.NetCity.Mail.Api</name>
+    </assembly>
+    <members>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.AddressBookController.GetAddressBook(System.Int32,System.Int32)">
+            <summary>
+            Получение адресной книги организации
+            </summary>
+            <param name="userId">ид пользователя</param>
+            <param name="orgId">ид организации</param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.AddressBookController.GetOrganizations(IRTech.NetCity.Mail.Integration.Contracts.GetOrganizationsQuery)">
+            <summary>
+            Получение постраничного списка организаций
+            </summary>
+            <param name="query">запрос</param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.GetMessages(IRTech.NetCity.Mail.Integration.Contracts.GetMessagesQuery)">
+            <summary>
+            Получение сообщений
+            </summary>
+            <param name="query"></param>
+            <returns>Постраничный список сообщений</returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.SendMessage(IRTech.NetCity.Mail.Integration.Contracts.RequestMessageDto)">
+            <summary>
+            Отправка сообщения
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.SendEmailMessage(IRTech.NetCity.Mail.Integration.Contracts.SimpleRequestEmailDto)">
+            <summary>
+            Отправка Email
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.ReadMessage(System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Прочитать сообщение
+            </summary>
+            <param name="messageId"></param>
+            <param name="userId"></param>
+            <param name="schoolId">Идентификатор школы. Необходим для отправки уведомления из текущей школы</param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.EditMessage(System.Int32,System.Int32,System.Nullable{IRTech.NetCity.Mail.Integration.Contracts.SendAction})">
+            <summary>
+            Получить информацию для редактирования/создания сообщения
+            </summary>
+            <param name="messageId">ид сообщения</param>
+            <param name="userId">ид пользователя</param>
+            <param name="action">тип действия: ответить/переслать</param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.DeleteMessages(System.Int32[],System.Int32)">
+            <summary>
+            Удалить сообщение
+            </summary>
+            <param name="messageId">ид сообщений</param>
+            <param name="userId">ид пользователя</param>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.MoveMessages(System.Int32[],System.Int32,IRTech.NetCity.Mail.Integration.Contracts.MailBox,IRTech.NetCity.Mail.Integration.Contracts.MailBox)">
+            <summary>
+            Переместить сообщения
+            </summary>
+            <param name="messageId">ид сообщений</param>
+            <param name="userId"></param>
+            <param name="mailBoxFrom">из почтового ящика</param>
+            <param name="mailBoxTo">в почтовый ящик</param>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.MoveMessages(System.Int32[],System.Int32)">
+            <summary>
+            Переместить сообщения из входящих в удалённые
+            </summary>
+            <param name="messageId">ид сообщений</param>
+            <param name="userId"></param>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.RestoreMessages(System.Int32[],System.Int32)">
+            <summary>
+            Восстановить сообщения из удалённых во входящие
+            </summary>
+            <param name="messageId">ид сообщений</param>
+            <param name="userId"></param>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.MarkMessages(System.Int32[],System.Int32,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Пометить сообщения
+            </summary>
+            <param name="messageId">ид сообщений</param>
+            <param name="userId">ид пользователя</param>
+            <param name="read">признак - прочтеные</param>
+            <param name="schoolId">Идентификатор школы. Необходим для отправки уведомления из текущей школы.</param>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.GetIdsUnreadMessages(System.Int32)">
+            <summary>
+            Получить ид непрочитанных сообщений
+            </summary>
+            <param name="userId">ид пользователя</param>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.GetUnreadMessagesCount(System.Int32)">
+            <summary>
+            Получить количество непрочитанных сообщений
+            </summary>
+            <param name="userId">ид пользователя</param>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailController.GetOrganizations(System.Int32,IRTech.NetCity.Mail.Integration.Contracts.MailBox)">
+            <summary>
+            Получение организций отправителей
+            </summary>
+            <param name="userId"></param>
+            <param name="mailBox"></param>
+            <returns>Список организаций отправителей</returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailRecipientsController.GetAddressBookItems(System.Int32[])">
+            <summary>
+            Получение получателей адресной книги по идентификаторам
+            </summary>
+            <param name="userIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Controllers.MailRecipientsController.BrowseRecipients(IRTech.NetCity.Mail.Integration.Contracts.BrowseRecipientsQuery)">
+            <summary>
+            Получение списка получателей
+            </summary>
+            <param name="query">запрос</param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Dao.MailDao.GetMailBoxMessages(System.Int32[],System.Int32,System.Boolean)">
+            <summary>
+            Получение сообщений с учётом отправленного уведомления
+            </summary>
+            <param name="messageIds"></param>
+            <param name="userId"></param>
+            <param name="notifycationFlag"></param>
+            <returns>notifycationFlag = true - метод вернёт сообщения с отправленным уведомлением<br/>
+            notifycationFlag = false метод вернёт сообщения с неотправленным уведомлением</returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientGroupHelper.GetDisplayName(IRTech.NetCity.Mail.Api.Model.RecipientInfo[])">
+            <summary>
+            получение человекочитаемого отображения адресата
+            </summary>
+            <param name="recipients"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientGroupHelper.IsSatisfiedForServer(System.Collections.Generic.IEnumerable{IRTech.NetCity.Mail.Api.Model.RecipientInfo})">
+            <summary>
+            проверка, относится ли сообщение к текущему серверу
+            </summary>
+            <param name="recipients"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientGroupHelper.GetMailUsersFilter(System.Collections.Generic.IEnumerable{IRTech.NetCity.Mail.Api.Model.RecipientInfo})">
+            <summary>
+            построение выражений для фильтра пользователей получателей рассылки
+            </summary>
+            <param name="recipients"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientGroupHelper.PersonsExpression(IRTech.NetCity.Mail.Api.Model.Structs.RecipientPerson)">
+            <summary>
+            построение выражения для фильтра пользователей по ФИО и возрасту
+            </summary>
+            <param name="person"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientGroupHelper.RolesExpression(IRTech.NetCity.Mail.Api.Model.Enums.UserGroup,NetCity.Common.Specs.ISpecification{NetCity.Common.ObjectModel.Nhibernate.Organizations.School})">
+            <summary>
+            построение выражения для фильтра пользователей по ролям
+            </summary>
+            <param name="group"></param>
+            <param name="schoolFilterExp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientGroupHelper.OrgExpression(IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator)">
+            <summary>
+            построение выражения для фильтра по орагнизациям
+            </summary>
+            <param name="orgSpec"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientGroupHelper.AddressSchoolFilterExp(IRTech.NetCity.Mail.Api.Model.Specificators.AddressRecipientSpecificator)">
+            <summary>
+            построение выражения для фильтра пользователей адресам организаций
+            </summary>
+            <param name="addrSpec"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientPresenters.AddressRecipientSpecPresenter.GetDisplayName(IRTech.NetCity.Mail.Api.Model.Specificators.AddressRecipientSpecificator)">
+            <summary>
+            метод получения текста отображения
+            </summary>
+            <param name="specifator"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Delivery.RecipientPresenters.IRecipientSpecPresenter`1">
+            <summary>
+            класс отвечающий за отображение адресата сообщения на экране 
+            </summary>
+            <typeparam name="TRecipientGroup"></typeparam>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientPresenters.IRecipientSpecPresenter`1.GetDisplayName(`0)">
+            <summary>
+            метод получения текста отображения
+            </summary>
+            <param name="specifator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientPresenters.OrganizationRecipientSpecPresenter.GetDisplayName(IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator)">
+            <summary>
+            метод получения текста отображения
+            </summary>
+            <param name="specifator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientPresenters.ServerRecipientSpecPresenter.GetDisplayName(IRTech.NetCity.Mail.Api.Model.Specificators.ServerRecipientSpecificator)">
+            <summary>
+            метод получения текста отображения
+            </summary>
+            <param name="specifator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientGroupBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientsMapper.SetOrgName(IRTech.NetCity.Mail.Integration.Contracts.AddressBook.AddressBookItem[],System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>
+            Проставить наименование организации
+            </summary>
+            <param name="addressBookItems"></param>
+            <param name="orgId"></param>
+            <param name="emId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientsMapper.ParseRecipients(System.String)">
+            <summary>
+            Парсинг строки получаетелей. Из текстового представления в объектное
+            </summary>
+            <param name="recipientString">
+            строка получателей. либо старый формат либо json
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientsMapper.ParseRecipients(System.String[])">
+            <summary>
+            Парсинг строки получаетелей. Из текстового представления в объектное
+            </summary>
+            <param name="recipients">
+            строка получателей. либо старый формат либо base54
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Delivery.RecipientsMapper.ParseRecipients(System.String,System.Boolean)">
+            <summary>
+            Парсинг строки получаетелей. Из текстового представления в объектное
+            </summary>
+            <param name="recipientString">
+            строка получателей. либо старый формат либо json
+            </param>
+            <param name="jsonFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.Base.IRecipientSpecificator">
+            <summary>
+            Интерфейс-маркер спецификатора группы получаетелей рассылки
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.ClassDto.Grade">
+            <summary>
+            Параллель
+            </summary>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.Enums.OrganizationType">
+            <summary>
+            Типы организаций - получаетелей
+            </summary>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.Enums.UserGroup">
+            <summary>
+            Группы пользователей - получаетелей
+            </summary>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.RecipientGroup">
+            <summary>
+            Класс описывающий группу получателей почтовой рассылки
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.RecipientInfo.Recipient">
+            <summary>
+            Получатель - конкретный пользователь или группа пользователей в рамках одной организации
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.RecipientInfo.MassRecipient">
+            <summary>
+            Получатель - группа пользователей 
+            </summary>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.Specificators.AddressRecipientSpecificator">
+            <summary>
+            Спецификатор группы получаетелей рассылки по адресу
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.AddressRecipientSpecificator.CityIds">
+            <summary>
+            Идентификаторы нас. пунктов
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.AddressRecipientSpecificator.MunicipalityIds">
+            <summary>
+            Идентификаторы муниципалитетов
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.AddressRecipientSpecificator.CityNames">
+            <summary>
+            Наименование нас. пунктов
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.AddressRecipientSpecificator.MunicipalityNames">
+            <summary>
+            Наименование муниципалитетов
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.AddressRecipientSpecificator.KladrCodes">
+            <summary>
+            КЛАДР получаетелей
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.EnrollmentSpecification.Class">
+            <summary>
+            Класс
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.EnrollmentSpecification.Literal">
+            <summary>
+            Литера
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.EnrollmentSpecification.Grade">
+            <summary>
+            Параллель
+            </summary>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator">
+            <summary>
+            Спецификатор группы получаетелей рассылки по организации
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator.Id">
+            <summary>
+            Идентификатор ОО
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator.EmId">
+            <summary>
+            Идентификатор УО
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator.OwnedOrgs">
+            <summary>
+            Признак - организации прямого подчинения (УО)
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator.Name">
+            <summary>
+            Наименование ОО
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator.Type">
+            <summary>
+            Тип ОО
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator.City">
+            <summary>
+            Нас. пункт
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator.Province">
+            <summary>
+            Мун. район
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.OrganizationRecipientSpecificator.MunicipalityId">
+            <summary>
+            Идентификатор мениципалитета
+            </summary>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.Specificators.ServerRecipientSpecificator">
+            <summary>
+            Спецификатор группы получаетелей рассылки по серверу СГО
+            </summary>
+            <remarks>
+            Используется в рег. почте
+            </remarks>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.ServerRecipientSpecificator.SyncClientId">
+            <summary>
+            Идентификатор клиента синхронизации
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.ServerRecipientSpecificator.ServerId">
+            <summary>
+            Идентификатор сервера
+            </summary>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.Specificators.UsersRecipientSpecification">
+            <summary>
+            Спецификатор группы получаетелей рассылки по свойствам пользователей в системе
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.UsersRecipientSpecification.Id">
+            <summary>
+            Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.UsersRecipientSpecification.Group">
+            <summary>
+            Роль/группа пользователя
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Specificators.UsersRecipientSpecification.Person">
+            <summary>
+            Свойство персоны
+            </summary>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.Structs.AgeRange">
+            <summary>
+            Описание диапазона возрастов
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Structs.AgeRange.Min">
+            <summary>
+            Возраст
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Structs.AgeRange.Max">
+            <summary>
+            Возраст
+            </summary>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.Structs.Class">
+            <summary>
+            Описание классов
+            </summary>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Model.Structs.RecipientPerson">
+            <summary>
+            Описание персоны
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Structs.RecipientPerson.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Structs.RecipientPerson.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Structs.RecipientPerson.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.Model.Structs.RecipientPerson.Age">
+            <summary>
+            Возраст
+            </summary>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Services.EmailService.SendEmailMessageAsync(IRTech.NetCity.Mail.Api.Model.EmailRequestDto)">
+            <summary>
+            Асинхронный метод отправки писем
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.Services.MailComponent">
+            <summary>
+            Внутренняя почта
+            </summary>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Services.MailComponent.SendMessage(System.Data.Common.DbTransaction,IRTech.NetCity.Mail.Api.Model.Message,System.Boolean,System.Boolean)">
+            <summary>
+            Отправка сообщения
+            </summary>
+            <param name="transEx">внешняя транзакция. опционально</param>
+            <param name="toDraft">признак сохранения черновика. иначе отправка сообщения</param>
+            <param name="message">объект-сообщение</param>
+            <param name="forceSendEmails">отправлять сообщение в любом случае, если заполнен e-mail</param>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Services.MailComponent.SendLocalMails(System.Data.Common.DbTransaction,IRTech.NetCity.Mail.Api.Model.Message,System.Boolean)">
+            <summary>
+            Отправка EMail локальным пользователям
+            </summary>
+            <param name="trans"></param>
+            <param name="message"></param>
+            <param name="result"></param>
+            <param name="mustSendEmails">Отправлять сообщение на электронную почту в любом случае, если заполнен e-mail</param>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.Services.MailComponent.RegionSendMessage(IRTech.NetCity.Mail.Api.Model.Message)">
+            <summary>
+            Отправка региональным получателям
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.SystemMail.Recipient">
+            <summary>
+            Описание адресата во внутренней почте 
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.SystemMail.Recipient.Id">
+            <summary>
+            Текстовый идентификатор адресата
+            </summary>
+        </member>
+        <member name="P:IRTech.NetCity.Mail.Api.SystemMail.Recipient.Type">
+            <summary>
+            Тип адресата
+            </summary>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.SystemMail.Recipient.IsRegionRecipient">
+            <summary>
+            признак - региональный адресат
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.SystemMail.Recipient.GetRecipientServerId">
+            <summary>
+            извлечение из идентификатора адресата - идентификатор клиента синхронизации
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IRTech.NetCity.Mail.Api.SystemMail.Recipient.GetRegionRecipientUserId">
+            <summary>
+            извлечение из идентификатора адресата - идентификатор пользователя
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:IRTech.NetCity.Mail.Api.SystemMail.RecipientType">
+            <summary>
+            Тип адресата
+            </summary>
+        </member>
+        <member name="F:IRTech.NetCity.Mail.Api.SystemMail.RecipientType.User">
+            <summary>
+            конкретный пользователь
+            </summary>
+        </member>
+        <member name="F:IRTech.NetCity.Mail.Api.SystemMail.RecipientType.Group">
+            <summary>
+            группа пользователей
+            </summary>
+        </member>
+    </members>
+</doc>

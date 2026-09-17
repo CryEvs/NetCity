@@ -1,0 +1,23 @@
+﻿<form class="form-horizontal">
+	<div class="form-group">
+		<label class="control-label col-md-4">{{language.Common.kRoom}}</label>
+		<div class="col-md-8">
+			<select class="form-control" name="MERGEROOMID" onchange="dataChanged();">
+				{{#each @root.rooms}}
+				<option value="{{id}}">{{roomname}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+	<div>Заменить на</div>
+	<div class="form-group">
+		<label class="control-label col-md-4">{{language.Common.kRoom}}</label>
+		<div class="col-md-8">
+			<select class="form-control" name="ROOMID" onchange="dataChanged();">
+				{{#each @root.rooms}}
+				<option value="{{id}}">{{roomname}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+</form>

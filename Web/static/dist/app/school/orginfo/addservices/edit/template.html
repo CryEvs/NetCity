@@ -1,0 +1,75 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-close-button" style="display: block;">
+				<button class="close" ng-click="ctrl.cancel()">×</button>
+			</div>
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<span class="content-page-preloader" id="preloader" ng-hide="ctrl.state.viewReady"><span>{{ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+		<form role="form" name="ctrl.addServiceForm" class="form form-xs ng-scope">
+			<!--Поля формы-->
+
+			<fieldset>
+				<div class="row form-group" ng-class="{'has-error': ctrl.addServiceForm.name.$invalid && (!ctrl.addServiceForm.name.$pristine || ctrl.addServiceForm.$displayErrors)}">
+					<label for="addService-name" class="control-label col-md-4 col-lg-3 col-sm-4">Наименование</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input track-changes class="form-control" id="addService-name" name="name" ng-model="ctrl.data.addService.item.name" maxlength="255" ng-change="onChange()" required="required" type="text">
+						<p ng-show="ctrl.addServiceForm.name.$invalid && (!ctrl.addServiceForm.name.$pristine || ctrl.addServiceForm.$displayErrors)" class="help-block">Это поле требуется заполнить (не более 255 символов).</p>
+					</div>
+				</div>
+				<div class="row form-group" ng-class="{'has-error': ctrl.addServiceForm.type.$invalid && (!ctrl.addServiceForm.type.$pristine || ctrl.addServiceForm.$displayErrors)}">
+					<label for="user" class="control-label col-md-4 col-lg-3 col-sm-4">Вид услуги</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<select track-changes class="form-control" id="addService-type" name="type" ng-options="addServiceType.name for addServiceType in ctrl.data.addServiceTypes track by addServiceType.id" required ng-model="ctrl.data.addService.item.serviceType" ng-change="onChange();"></select>
+						<p ng-show="ctrl.addServiceForm.type.$invalid && (!ctrl.addServiceForm.type.$pristine || ctrl.addServiceForm.$displayErrors)" class="help-block">Вид услуги должен быть выбран</p>
+					</div>
+				</div>
+				<div class="row form-group" ng-class="{'has-error': ctrl.addServiceForm.specialist.$invalid && (!ctrl.addServiceForm.specialist.$pristine || ctrl.addServiceForm.$displayErrors)}">
+					<label for="addService-specialist" class="control-label col-md-4 col-lg-3 col-sm-4">Специалист, оказывающий услугу</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input track-changes class="form-control" id="addService-specialist" name="specialist" ng-model="ctrl.data.addService.item.specialist" maxlength="255" ng-change="onChange()" required="required" type="text">
+						<p ng-show="ctrl.addServiceForm.specialist.$invalid && (!ctrl.addServiceForm.specialist.$pristine || ctrl.addServiceForm.$displayErrors)" class="help-block">Это поле требуется заполнить (не более 255 символов).</p>
+					</div>
+				</div>
+				<div class="row form-group" ng-class="{'has-error': ctrl.addServiceForm.user.$invalid && (!ctrl.addServiceForm.user.$pristine || ctrl.addServiceForm.$displayErrors)}">
+					<label for="user" class="control-label col-md-4 col-lg-3 col-sm-4">Сотрудник</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<select track-changes class="form-control" id="user" name="user" ng-options="user.name for user in ctrl.data.users track by user.id" required ng-model="ctrl.data.addService.item.user" ng-change="onChange();"></select>
+						<p ng-show="ctrl.addServiceForm.user.$invalid && (!ctrl.addServiceForm.user.$pristine || ctrl.addServiceForm.$displayErrors)" class="help-block">Сотрудник должен быть выбран</p>
+					</div>
+				</div>
+				<div class="row form-group" ng-class="{'has-error': ctrl.addServiceForm.description.$invalid && (!ctrl.addServiceForm.description.$pristine || ctrl.addServiceForm.$displayErrors)}">
+					<label for="description-text" class="control-label col-md-4 col-lg-3 col-sm-4">Краткая информация</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<textarea track-changes class="form-control" id="description-text" name="description" ng-model="ctrl.data.addService.item.description" maxlength="2000" required ng-change="onChange()" style="resize:none"></textarea>
+						<p ng-show="ctrl.addServiceForm.description.$invalid && (!ctrl.addServiceForm.description.$pristine || ctrl.addServiceForm.$displayErrors)" class="help-block">Это поле требуется заполнить.</p>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+
+
+
+	</div>
+	<div class="modal-footer" ng-show="ctrl.state.viewReady">
+		<button class="btn btn-primary ng-binding" ng-if="ctrl.mode.edit" ng-click="ctrl.addServiceForm.$displayErrors=true; ctrl.save(ctrl.addServiceForm.$valid, ctrl.data.addService.item)" >
+			Сохранить
+		</button>
+
+		<button class="btn btn-primary ng-binding" ng-if="ctrl.mode.create" ng-click="ctrl.addServiceForm.$displayErrors=true; ctrl.save(ctrl.addServiceForm.$valid)">
+			Добавить
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			Закрыть
+		</button>
+	</div>
+</div>

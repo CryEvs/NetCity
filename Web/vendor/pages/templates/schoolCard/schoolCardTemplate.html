@@ -1,0 +1,158 @@
+﻿<div class="print-block">
+	<form class="form-horizontal form-xs" style="max-height: 500px; overflow-y: auto; padding-right: 15px;">
+		{{> formGroup labelName=language.Generic.SchoolInfo.kEOLegalForm value=schoolCard.commonInfo.legalFormName}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kEOLegalForm83 value=schoolCard.commonInfo.legalFormName83}}
+		{{> formGroup labelName=language.Generic.Common.kEOType value=schoolCard.commonInfo.typeName}}
+
+		{{#if schoolCard.commonInfo.showFormName}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kEOForm value=schoolCard.commonInfo.formName}}
+		{{/if}}
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kSmallOrganization      value=schoolCard.commonInfo.smallOrganization}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kEOName value=schoolCard.commonInfo.schoolName}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kEOFullName value=schoolCard.commonInfo.fullSchoolName}}
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kAdditionalName value=schoolCard.commonInfo.additionalName}}
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kEONumber value=schoolCard.commonInfo.schoolNumber}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kEOFoundingDate value=schoolCard.commonInfo.foundingDate}}
+
+		{{#unless functionalities.isOrphanageSchool}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kIndepend value=schoolCard.commonInfo.independ}}
+		{{/unless}}
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kMainSchool value=schoolCard.commonInfo.mainSchool}}
+
+		<div class="form-group">
+			<label class="control-label col-md-5">{{language.Generic.ServAdmin.kFounders}}</label>
+			<div class="col-md-7">
+				<textarea disabled te class="form-control " rows="4" cols="40" wrap="soft" maxlength="2000" style="resize: none;">{{#each schoolCard.commonInfo.founders}}{{this}};&#13;&#10{{/each}}</textarea>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-5">{{language.Generic.ServAdmin.kManagements}}</label>
+			<div class="col-md-7">
+				<textarea disabled te class="form-control " rows="4" cols="40" wrap="soft" maxlength="2000" style="resize: none;">{{#each schoolCard.commonInfo.ownEducManagements}}{{this}};&#13;&#10{{/each}}</textarea>
+			</div>
+		</div>
+
+
+
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kStatus value=schoolCard.commonInfo.status}}
+
+		{{#if functionalities.isSchool}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kAreaType value=schoolCard.commonInfo.locationInfo.locationType.name}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kProvinceCenterSchool value=schoolCard.commonInfo.locationInfo.inProvinceCenter}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kProvinceSchoolInCity value=schoolCard.commonInfo.locationInfo.isProvinceSchoolInCity}}
+		{{/if}}
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kAbout value=schoolCard.commonInfo.about}}
+
+
+		{{#if functionalities.isPreSchool}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kFIODirectorPreSchool value=schoolCard.managementInfo.director}}
+		{{else}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kFIODirector value=schoolCard.managementInfo.director}}
+		{{/if}}
+
+		{{#if functionalities.isPreSchool}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kFIOPrincipalUVR_PreSchool value=schoolCard.managementInfo.principalUVR}}
+		{{else}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kFIOPrincipalUVR value=schoolCard.managementInfo.principalUVR}}
+		{{/if}}
+
+		{{#if functionalities.isPreSchool}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kFIOPrincipalAHR_PreSchool value=schoolCard.managementInfo.principalAHC}}
+		{{else}}
+		{{#if functionalities.isAddSchool}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kFIOPrincipalAHR_Add value=schoolCard.managementInfo.principalAHC}}
+		{{else}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kFIOPrincipalAHC value=schoolCard.managementInfo.principalAHC}}
+		{{/if}}
+		{{/if}}
+
+		{{#unless functionalities.isPreSchool}}
+		{{#unless functionalities.isAddSchool}}
+		{{#if functionalities.isOrphanageSchool}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kFIOPrincipalBZh value=schoolCard.managementInfo.principalIT}}
+		{{else}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kFIOPrincipalIT value=schoolCard.managementInfo.principalIT}}
+		{{/if}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kCollegiateManagement   value=schoolCard.managementInfo.collegiateManagement}}
+		{{/unless}}
+		{{/unless}}
+
+		{{> formGroup labelName=language.Generic.Common.kRegion value=schoolCard.contactInfo.stateProvinceName}}
+		{{> formGroup labelName=language.Generic.Common.kCity value=schoolCard.contactInfo.cityName}}
+
+		{{#if schoolCard.contactInfo.districtName}}
+		{{> formGroup labelName=language.Generic.Common.kDistrict value=schoolCard.contactInfo.districtName}}
+		{{/if}}
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kPostAddress value=schoolCard.contactInfo.postAddress}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kJuridicalAddress value=schoolCard.contactInfo.juridicalAddress}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kPhones value=schoolCard.contactInfo.phones}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kFax value=schoolCard.contactInfo.fax}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kEMailAddress value=schoolCard.contactInfo.email}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kWeb value=schoolCard.contactInfo.web}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kAddressesAdditionalBuildings value=schoolCard.contactInfo.addressesAdditionalBuildings}}
+
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kINN value=schoolCard.otherInfo.inn}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kKPP value=schoolCard.otherInfo.kpp}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kOGRN value=schoolCard.otherInfo.ogrn}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kIDOKPO value=schoolCard.otherInfo.okpo}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kIDOKATO value=schoolCard.otherInfo.okato}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kIDOKOGU value=schoolCard.otherInfo.okogu}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kOKOPF value=schoolCard.otherInfo.okopf}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kOKFS value=schoolCard.otherInfo.okfs}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kOKVED value=schoolCard.otherInfo.okved}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.maxOccupancy value=schoolCard.otherInfo.maxOccupancy}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.maxOccupancyOnShift value=schoolCard.otherInfo.maxOccupancyOnShift}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kNumberShifts value=schoolCard.otherInfo.numberShifts}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kSpecialization value=schoolCard.otherInfo.specialization}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kReferenceToCharter     value=schoolCard.otherInfo.referenceToCharter}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kPresenceOfPool         value=schoolCard.otherInfo.presenceOfPool}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kBarrierFreeEnvironment value=schoolCard.otherInfo.barrierFreeEnvironment}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kVideoSurveillance      value=schoolCard.otherInfo.videoSurveillance}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kSocialPartnership value=schoolCard.otherInfo.socialPartnerShip}}
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kTimetable   value=schoolCard.otherInfo.timetable}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kConditionsEducation   value=schoolCard.otherInfo.conditionsEducation}}
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kProjectTypeForSchool value=schoolCard.otherInfo.projectTypeForSchool}}
+
+
+
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kBankName value=schoolCard.bankDetails.bankName}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kBankScore value=schoolCard.bankDetails.bankScore}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kCorrScore value=schoolCard.bankDetails.corrScore}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kPersonalAccount value=schoolCard.bankDetails.personalAccount}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kBIK value=schoolCard.bankDetails.bik}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kBankKpp value=schoolCard.bankDetails.bankKpp}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kNote value=schoolCard.bankDetails.note}}
+
+
+
+		{{> formGroup labelName=language.Generic.SchoolInfo.kComputersCount value=schoolCard.internetConnectionInfo.computersCount}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kContentFilteringName value=schoolCard.internetConnectionInfo.contentFilteringName}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kInternetSpeedUnderContract value=schoolCard.internetConnectionInfo.internetSpeedUnderContract}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kInternetSpeedInFact value=schoolCard.internetConnectionInfo.internetSpeedInFact}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kInternetProviderName value=schoolCard.internetConnectionInfo.internetProviderName}}
+		{{> formGroup labelName=language.Generic.SchoolInfo.kInternetAccessTechnology value=schoolCard.internetConnectionInfo.internetAccessTechnology}}
+
+
+
+
+
+
+
+
+
+
+
+	</form>
+</div>

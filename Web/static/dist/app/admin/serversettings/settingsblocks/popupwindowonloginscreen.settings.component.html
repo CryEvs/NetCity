@@ -1,0 +1,75 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="buttons-panel">
+					<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<hr>
+
+<form class="form-horizontal" name="$ctrl.form">
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kEnableNoticePopUpWindow}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="$ctrl.data.popUpWindowOnLoginScreenSettings.enablePopUp" track-changes>
+				</label>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{'has-error': $ctrl.form.PopupDisplayText.$invalid}">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kNoticeDisplayText}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<textarea name="PopupDisplayText" ng-model="$ctrl.data.popUpWindowOnLoginScreenSettings.popUpDisplayText" class="form-control" rows="3" wrap="soft" track-changes ng-disabled="!$ctrl.data.popUpWindowOnLoginScreenSettings.enablePopUp" ng-required="$ctrl.data.popUpWindowOnLoginScreenSettings.enablePopUp"></textarea>
+			<div ng-messages="$ctrl.form.PopupDisplayText.$error">
+				<span class="help-block" ng-message="required">{{$ctrl.popupNoticeError()}}</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{'has-error': $ctrl.form.PopupButtonText.$invalid}">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kNoticeButtonText}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<input type="text" class="form-control" name="PopupButtonText" ng-model="$ctrl.data.popUpWindowOnLoginScreenSettings.popUpButtonText" size="100" maxlength="100" track-changes ng-disabled="!$ctrl.data.popUpWindowOnLoginScreenSettings.enablePopUp" ng-required="$ctrl.data.popUpWindowOnLoginScreenSettings.enablePopUp">
+			<div ng-messages="$ctrl.form.PopupButtonText.$error">
+				<span class="help-block" ng-message="required">{{$ctrl.popupNoticeError()}}</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kPopUpDateInterval}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<edit-date-range-component ng-if="$ctrl.data.popUpWindowOnLoginScreenSettings.enablePopUp"
+				start-date="$ctrl.data.popUpWindowOnLoginScreenSettings.popUpStartDate"
+				end-date="$ctrl.data.popUpWindowOnLoginScreenSettings.popUpEndDate"
+				options="$ctrl.dateRangeOptions"
+				date-range="true">
+			</edit-date-range-component>
+
+			<div class="input-daterange input-group date" ng-if="!$ctrl.data.popUpWindowOnLoginScreenSettings.enablePopUp">
+				<input type="text" class="input-md form-control" ng-value="$ctrl.data.popUpWindowOnLoginScreenSettings.popUpStartDate | date: 'dd.MM.yyyy'" disabled>
+				<span class="input-group-addon">{{$ctrl.language.Generic.ServAdmin.kTimeTo}}</span>
+				<input type="text" class="input-md form-control" ng-value="$ctrl.data.popUpWindowOnLoginScreenSettings.popUpEndDate | date: 'dd.MM.yyyy'" disabled>
+			</div>
+		</div>
+	</div>
+
+</form>

@@ -1,0 +1,121 @@
+﻿@import "print.less";
+
+.table-print(@align:center, @format:"\@") {	
+	font-size:10.0pt;
+	font-family:Arial;
+	th {
+		font-size: 10.0pt;
+		border: .5pt solid black;
+		mso-style-parent: style0;
+		mso-number-format:"\@";
+	}
+
+	td {
+		border: .5pt solid black;
+		padding: 2px 4px 2px 4px;
+		mso-style-parent: style0;
+		mso-number-format: @format;
+	}
+
+	br {
+		mso-data-placement:same-cell;
+	}
+
+	.style0 {
+		mso-number-format:general;
+		text-align:general;
+		vertical-align:middle;
+		white-space:nowrap;
+		mso-rotate:0;
+		mso-background-source:auto;
+		mso-pattern:auto;
+		color:windowtext;
+		font-size:10.0pt;
+		font-weight:400;
+		font-style:normal;
+		text-decoration:none;
+		font-family:Arial;
+		mso-generic-font-family:auto;
+		mso-font-charset:204;
+		border:none;
+		mso-protection:locked visible;
+		mso-style-name:Normal;
+		mso-style-id:0;
+	}
+	
+	.cell {
+		mso-style-parent:style0;
+		mso-number-format:general;
+		mso-width-source:auto;
+	}
+
+	.cell-num {
+		mso-style-parent:style0;
+		mso-number-format:0;
+		mso-width-source:auto;
+	}
+
+	.cell-num-center {
+		mso-style-parent:style0;
+		mso-number-format:0;
+		mso-width-source:auto;
+	}
+
+	.cell-date {
+		mso-number-format:"Short Date";
+	}
+
+	.cell-date-time {
+		mso-number-format:"dd\.mm\.yyyy hh\:mm";
+	}
+
+	.cell-text {
+		mso-style-parent:style0;
+		mso-number-format:"\@";
+	}
+
+	.cell-text-center {
+		mso-style-parent:style0;
+		mso-number-format:"\@";
+	}
+
+	.cell-text-right {
+		mso-style-parent:style0;
+		mso-number-format:"\@";
+	}
+
+	.cell-date-short {
+		mso-number-format:"d\.mm\.yy";
+	}
+
+	.cell-num-1 {
+		mso-style-parent:style0;
+		mso-number-format:"0.0";
+		mso-width-source:auto;
+	}
+
+	.cell-num-2 {
+		mso-style-parent:style0;
+		mso-number-format:"0.00";
+		mso-width-source:auto;
+	}
+
+	.cell-percent {
+		mso-style-parent:style0;
+		mso-number-format:"Percent";
+	}
+
+	.totals() {
+		font-size: 10.0pt;
+	}
+
+	.subtotals() {
+		font-size: 10.0pt;
+		mso-style-parent: style0;
+		mso-number-format:"\@";
+	}
+
+	.subtotals2() {
+		font-size: 10.0pt;
+	}
+}

@@ -1,0 +1,27 @@
+<div ui-tree-handle class="tree-node tree-node-content" ng-class="{indicatorGroup: node.isGroup, linkWithPredefined: node.preDefinedIndicatorId && node.preDefinedIndicatorId > 0}">
+	<div>
+		<button type="button" data-nodrag ng-click="toggle(node)" ng-show="node.isGroup && node.subIndicators.length > 0" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Свернуть/развернуть">
+			<span class="glyphicon" ng-class="{'glyphicon-chevron-up': !collapsed, 'glyphicon-chevron-down': collapsed}"></span>
+		</button>
+		<span ng-bind="node.getFullNumber() + ': ' + node.name"></span>
+	</div>
+	<div class="tree-node-button-panel" data-nodrag>
+		<div class="tree-node-button-panel btn-group">
+			<button type="button" ng-click="add(node)" ng-show="node.isGroup" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="{{language.Generic.StatReports.kAddSubIndicator}}">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+			<button type="button" ng-click="addGroup(node)" ng-show="node.isGroup" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="{{language.Generic.StatReports.kAddSubIndicatorGroup}}">
+				<span class="glyphicon glyphicon-book"></span>
+			</button>
+			<button type="button" ng-click="edit(node)" ng-hide="node.linkedWithPredefined()" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="{{language.Generic.Common.kEdit}}">
+				<span class="glyphicon glyphicon-pencil"></span>
+			</button>
+			<button type="button" ng-click="del($nodeScope)" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="{{language.Generic.Common.kRemove}}">
+				<span class="glyphicon glyphicon-trash"></span>
+			</button>
+		</div>
+	</div>
+</div>
+<ol ui-tree-nodes ng-model="node.subIndicators" ng-hide="collapsed || (typeof(collapsed) == 'undefined')">
+	<li ng-repeat="node in node.subIndicators" ui-tree-node ng-include="'/static/dist/app/em/statReports/common/templates/nestedTreeNode.html'"></li>
+</ol>

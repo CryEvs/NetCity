@@ -1,0 +1,14 @@
+﻿{{#each similarGroups}}
+	<div class="row">
+		<div class="col-md-12">
+			<p class="similar-type-caption">
+				{{title}}
+			</p>
+			<ul class="similar-user-list">
+				{{#each similarUsers}}
+					{{> similarsExistingTmpl mainPersonId=../../mainPersonId}}
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+{{/each}}

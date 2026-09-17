@@ -1,0 +1,49 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+
+	<div class="modal-body">
+			<h4>{{$ctrl.roleName}}: <b>{{$ctrl.displayName}}</b></h4>
+			<h4>{{$ctrl.language.Generic.SetupSchoolUI.kDuplicateFIO_1}}</h4>
+			<p ng-repeat="similar in $ctrl.inSchoolSimilars">{{similar.fullName}} {{similar.birthDate | nsDate}}</p>
+
+			<div ng-if="$ctrl.otherSchoolsSimilars.length">
+				<h4>{{$ctrl.language.Generic.SetupSchoolUI.kDuplicateFIOInOtherSchools_1}}</h4>
+				<div style="max-height: 400px; overflow-y: scroll; margin-bottom: 15px">
+					<div ng-repeat="similar in $ctrl.similarUsers">
+						{{similar.fullName}} {{similar.birthDate | nsDate}} <i>({{$ctrl.language.Generic.Reports.kNameEducInst}}: {{similar.organization.name}})</i>
+						<span ng-if="$ctrl.roleType === $ctrl.UserInfoRoleType.Students && similar.class">
+							{{similar.class.name}}
+						</span>
+						<span ng-if="$ctrl.roleType === $ctrl.UserInfoRoleType.Students && !similar.class">
+							{{$ctrl.language.SetupSchoolUI.kClassNotAssigned}}
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="well well-lg">{{$ctrl.language.Generic.SetupSchoolUI.kDuplicateFIO_2}}</div>
+		
+	</div>
+
+	<div class="modal-footer">
+
+		<button class="btn btn-primary btn-sm" ng-click="$ctrl.continue()">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kContinue}}</span>
+		</button>
+
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+
+	</div>
+</div>

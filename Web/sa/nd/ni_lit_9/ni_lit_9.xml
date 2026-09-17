@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Литература. 9 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Литература. 9 класс" ID="1" Filename="ni_lit_9/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Литературный процесс. Эпохи развития литературы" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Литературный процесс. Эпохи развития литературы" 
+				Filename="sgo/ni_lit_9/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Классицизм в русской литературе" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Классицизм в русской литературе" 
+				Filename="sgo/ni_lit_9/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Периодизация литературы XIX века" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Периодизация литературы XIX века" 
+				Filename="sgo/ni_lit_9/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="А. С. Грибоедов «Горе от ума». Особенности конфликта пьесы" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="А. С. Грибоедов «Горе от ума». Особенности конфликта пьесы" 
+				Filename="sgo/ni_lit_9/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="А. С. Грибоедов «Горе от ума». Черты классицизма и реализма в комедии" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="А. С. Грибоедов «Горе от ума». Черты классицизма и реализма в комедии" 
+				Filename="sgo/ni_lit_9/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Реализм как литературное направление" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Реализм как литературное направление" 
+				Filename="sgo/ni_lit_9/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Основные мотивы лирики А. С. Пушкина" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Основные мотивы лирики А. С. Пушкина" 
+				Filename="sgo/ni_lit_9/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="А. С. Пушкин «Евгений Онегин». Система образов" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="А. С. Пушкин «Евгений Онегин». Система образов" 
+				Filename="sgo/ni_lit_9/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Основные мотивы лирики М. Ю. Лермонтова" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Основные мотивы лирики М. Ю. Лермонтова" 
+				Filename="sgo/ni_lit_9/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="М. Ю. Лермонтов «Герой нашего времени». Особенности композиции романа" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="М. Ю. Лермонтов «Герой нашего времени». Особенности композиции романа" 
+				Filename="sgo/ni_lit_9/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Н. В. Гоголь «Мёртвые души». Система образов поэмы" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Н. В. Гоголь «Мёртвые души». Система образов поэмы" 
+				Filename="sgo/ni_lit_9/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Н. В. Гоголь «Мёртвые души». Лирические отступления в поэме">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Н. В. Гоголь «Мёртвые души». Лирические отступления в поэме" 
+				Filename="sgo/ni_lit_9/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+
+</Project>

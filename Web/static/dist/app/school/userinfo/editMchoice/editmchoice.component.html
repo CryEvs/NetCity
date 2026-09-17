@@ -1,0 +1,35 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+
+	<div class="modal-body">
+		<div style="max-height: 500px; overflow-y: auto;">
+			<div class="checkbox" ng-repeat="item in $ctrl.checkedParamItems">
+				<label><input track-changes type="checkbox" name="MCHOICEITEMS" ng-model="item.checked">{{item.name}}</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+
+		<!-- СОХРАНИТЬ -->
+		<button class="btn btn-primary btn-sm" ng-click="$ctrl.save()">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<!-- ОТМЕНИТЬ -->
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+
+	</div>
+</div>

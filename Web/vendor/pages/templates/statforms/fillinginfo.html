@@ -1,0 +1,43 @@
+﻿<table class="table table-bordered table-xs table-bright-striped table-bright-hover table-thin print-block">
+	<tr>
+		<th>{{language.Generic.EM.kManagement}}</th>
+		<th>{{language.Generic.Common.kProvince}}</th>
+		<th>{{language.Generic.Common.kCity}}</th>
+		<th>{{language.Generic.Common.kEO}}</th>
+		<th>{{language.Generic.Curriculum.kStatus}}</th>
+		{{#if forEditing}}
+		<th class="NotPrintable"></th>
+		{{/if}}
+	</tr>
+	{{#each statFormInfo}}
+	<tr>
+		<td>
+			{{emName}}
+		</td>
+		<td>
+			{{provinceName}}
+		</td>
+		<td>
+			{{cityName}}
+		</td>
+		<td>
+			{{eoName}}
+		</td>
+		<td>
+			{{#if status}}
+			{{@root.language.Generic.Common.kClosed}}
+			{{/if}}
+			{{#unless status}}
+			{{@root.language.Generic.Common.kOpened}}
+			{{/unless}}
+		</td>
+		{{#if @root.forEditing}}
+		<td>
+			{{#if status}}
+			<input type="checkbox" value="{{schoolId}}">
+			{{/if}}
+		</td>
+		{{/if}}
+	</tr>
+	{{/each}}
+</table>

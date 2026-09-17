@@ -1,0 +1,42 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-close-button" style="display: block;">
+				<button class="close" ng-click="ctrl.cancel()">×</button>
+			</div>
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<form role="form" name="editGiaPersonForm" class="form-horizontal form-sm">
+			<!--Поля формы-->
+			
+			<div class="form-group ">
+				<label for="itemName" class="col-sm-4 control-label">{{ctrl.language.Generic.SetupSchool.kFullName}}</label>
+				<div class="col-sm-6">
+					<input track-changes id="itemName" name="itemName" type="text" ng-model="ctrl.data.refItem.name" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group ">
+				<label for="itemShortName" class="col-sm-4 control-label  ">{{ctrl.language.Generic.SetupSchool.kAbbr_Name}}</label>
+				<div class="col-sm-6">
+					<input track-changes id="itemShortName" name="itemShortName" type="text" ng-model="ctrl.data.refItem.shortName" class="form-control">
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary ng-binding" ng-click="ctrl.save()">
+			{{ctrl.language.Generic.Buttons.kAdd}}
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="ctrl.cancel()">
+			{{ctrl.language.Generic.Buttons.kCancel}}
+		</button>
+	</div>
+</div>

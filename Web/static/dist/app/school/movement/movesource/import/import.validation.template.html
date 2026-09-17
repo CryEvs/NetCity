@@ -1,0 +1,46 @@
+<style>
+	/*!!!!*/
+	div.similar-user-resolve-dialog {
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: 500px;
+		padding: 0 5px 0 5px;
+	}
+
+
+	.hideBtn {
+		display: none;
+	}
+
+
+	tr.validation-error>td {
+		background-color: rgb(255, 147, 147) !important;
+	}
+
+	.red {
+		color: red;
+	}
+</style>
+
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<import-validation-table errors-wraps="$ctrl.errorsWraps" show-column-enabled-values="$ctrl.showColumnEnabledValues"></import-validation-table>
+
+	<div class="alert alert-info" role="alert" ng-if="$ctrl.hasSkipInvalidData == null">
+		Необходимо выбрать один из вариантов обработки ошибок
+	</div>
+
+	<div class="radioImportOption">
+		<div class="radio">
+			<label>
+				<input type="radio" ng-value="false" ng-model="$ctrl.hasSkipInvalidData" name="skipData">
+				Импортировать полностью корректные строки
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" ng-value="true" ng-model="$ctrl.hasSkipInvalidData" name="skipData">
+				Импортировать полностью корректные строки и строки с некритичными ошибками
+			</label>
+		</div>
+	</div>
+</ns-modal>

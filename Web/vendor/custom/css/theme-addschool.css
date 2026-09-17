@@ -1,0 +1,357 @@
+﻿/************************кнопки справа на уровне хлебных крошек************************/
+/************************* Цвета для таблиц *********************/
+/*==============================Частные случаи:====================================*/
+/******************************** Цвета для "классного журнала"********************/
+/****************Цвета для календаря*********************/
+/****************Цвета скролла*********************/
+/*==========================путь картинки силуета=======================*/
+.addschool {
+  /***********кнопки************/
+}
+.addschool .header {
+  background-color: #6d4dae;
+}
+.addschool .header .title_product {
+  color: #ede7f9;
+}
+.addschool .header .navbar {
+  border: 1px solid #502e93;
+  background: #502e93;
+  /**************************************************************/
+  /*переключатель "текущего" и "будущего" года*/
+}
+.addschool .header .navbar .navbar-nav > .open > a {
+  background: #5d38a9;
+}
+.addschool .header .navbar .navbar-nav .dropdown a,
+.addschool .header .navbar .navbar-nav li a {
+  color: #fff;
+}
+.addschool .header .navbar .navbar-nav .dropdown a:hover,
+.addschool .header .navbar .navbar-nav li a:hover,
+.addschool .header .navbar .navbar-nav .dropdown a:focus,
+.addschool .header .navbar .navbar-nav li a:focus,
+.addschool .header .navbar .navbar-nav .dropdown a:active,
+.addschool .header .navbar .navbar-nav li a:active,
+.addschool .header .navbar .navbar-nav .dropdown a:visited,
+.addschool .header .navbar .navbar-nav li a:visited {
+  background: #eeebf5;
+}
+.addschool .header .navbar .navbar-nav .dropdown > a:hover,
+.addschool .header .navbar .navbar-nav li > a:hover,
+.addschool .header .navbar .navbar-nav .dropdown > a:focus,
+.addschool .header .navbar .navbar-nav li > a:focus,
+.addschool .header .navbar .navbar-nav .dropdown > a:active,
+.addschool .header .navbar .navbar-nav li > a:active,
+.addschool .header .navbar .navbar-nav .dropdown > a:visited,
+.addschool .header .navbar .navbar-nav li > a:visited {
+  background: #5d38a9;
+  color: #fff;
+}
+.addschool .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded] {
+  background-color: #5d38a9;
+}
+.addschool .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:hover,
+.addschool .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:focus,
+.addschool .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:active,
+.addschool .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:visited {
+  background-color: #5d38a9;
+}
+.addschool .header .navbar .navbar-nav .active a {
+  background: #5d38a9;
+}
+.addschool .header .navbar .navbar-nav .dropdown-menu .dropdown-header {
+  background-color: #5e3abb;
+  color: #fff;
+}
+.addschool .header .navbar .navbar-nav .dropdown-menu li {
+  color: #fff;
+}
+.addschool .header .navbar .navbar-nav .dropdown-menu li a {
+  background: #d3cde0;
+  color: #333;
+}
+.addschool .header .navbar .navbar-nav .dropdown-menu li + li.divider {
+  background-color: #D0D0D0;
+}
+.addschool .header .navbar .navbar-nav .dropdown-menu > .active > a {
+  background: #bfb4da;
+  color: #222;
+}
+.addschool .header .navbar .navbar-nav .dropdown-menu > .active > a:hover {
+  background: #bfb4da;
+}
+.addschool .header .navbar .navbar-nav .dropdown-menu > .active > a,
+.addschool .header .navbar .navbar-nav .dropdown-menu > .active > a:hover,
+.addschool .header .navbar .navbar-nav .dropdown-menu > .active > a:focus,
+.addschool .header .navbar .navbar-nav .bg-primary {
+  background-color: #bfb4da;
+}
+.addschool .header .navbar .navbar-nav .open .dropdown-menu li:first-child.dropdown-header,
+.addschool .header .navbar .navbar-nav .open-menu .dropdown-menu li:first-child.dropdown-header,
+.addschool .header .navbar .navbar-nav .dropdown .dropdown-menu li:first-child.dropdown-header {
+  border-top: 1px solid #74A1C6;
+}
+.addschool .header .navbar .switch-year .switch-year-btn {
+  background: #7047bd;
+}
+.addschool .header .navbar .switch-year .switch-year-btn .lever-switch span {
+  background: #c1abe8;
+}
+.addschool .header .navbar .switch-year .switch-year-btn.go_left {
+  background: #B20186;
+}
+.addschool .header .navbar .switch-year .switch-year-btn.go_left .lever-switch span {
+  background: #ff99e6;
+}
+.addschool .block-personal-cabinet .number-employees-in-system {
+  color: #e8defd;
+}
+.addschool .block-personal-cabinet .number-employees-in-system p a span + span {
+  color: #502e93;
+}
+.addschool .block-personal-cabinet ul li.separator button {
+  background: #7047bd;
+}
+.addschool .block-personal-cabinet ul li.separator button > div#flip_container {
+  color: #e8defd;
+}
+.addschool .block-personal-cabinet ul li.separator button > div#flip_container div.lever-switch span {
+  background: #c1abe8;
+}
+.addschool .block-personal-cabinet ul li.separator button[class*="go_left"] #flip_container .lever-switch span {
+  background: #6696b8;
+}
+.addschool span.content-page-preloader:before {
+  color: #5e3aa7;
+}
+.addschool a {
+  color: #46218d;
+  outline: 0 none;
+}
+.addschool .year-calendar > li > a {
+  background: #5922ba;
+  color: #fff;
+}
+.addschool .year-calendar > li > a:hover {
+  background: #4f21d9;
+}
+.addschool .year-calendar > li > div.weekday div {
+  background: #c8acf1;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+  border-bottom: 0px solid #fff;
+}
+.addschool .year-calendar > li > div.weekday div:first-child {
+  border-left: 1px solid #bdbdbd;
+}
+.addschool .year-calendar > li > div > div > div:hover {
+  background: #9376ea;
+}
+.addschool .year-calendar > li a:hover,
+.addschool .year-calendar > li span:hover,
+.addschool .year-calendar > li a:focus,
+.addschool .year-calendar > li span:focus {
+  background: #9376ea;
+}
+.addschool .block-content a.active {
+  color: #e8defd;
+}
+.addschool .block-content h1 {
+  color: #381976;
+  background: #d2c4e9;
+}
+.addschool .block-content .top-right-menu a {
+  color: #6d4dae;
+}
+.addschool .block-content .top-right-menu a:hover {
+  color: #957cc5;
+}
+.addschool input:hover,
+.addschool textarea:hover,
+.addschool input:active,
+.addschool textarea:active,
+.addschool input:focus,
+.addschool textarea:focus,
+.addschool input.form-control:hover,
+.addschool textarea.form-control:hover,
+.addschool input.form-control:active,
+.addschool textarea.form-control:active,
+.addschool input.form-control:focus,
+.addschool textarea.form-control:focus {
+  color: #492d81;
+  border: 1px solid #5e3aa7;
+  /*стили для обсуждения*/
+  -webkit-box-shadow: inset 0 0 7px 0 #8a6de5;
+  -moz-box-shadow: inset 0 0 7px 0 #8a6de5;
+  box-shadow: inset 0 0 7px 0 #8a6de5;
+}
+.addschool input.form-control[disabled],
+.addschool textarea.form-control[disabled],
+.addschool input[disabled]:hover,
+.addschool textarea[disabled]:hover,
+.addschool input[disabled]:focus,
+.addschool textarea[disabled]:focus,
+.addschool input[disabled]:active,
+.addschool textarea[disabled]:active,
+.addschool input.form-control[disabled]:hover,
+.addschool textarea.form-control[disabled]:hover,
+.addschool input.form-control[disabled]:focus,
+.addschool textarea.form-control[disabled]:focus,
+.addschool input.form-control[disabled]:active,
+.addschool textarea.form-control[disabled]:active {
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  color: #666;
+  border-radius: 3px;
+}
+.addschool input[disabled]:hover,
+.addschool textarea[disabled]:hover,
+.addschool input[disabled]:focus,
+.addschool textarea[disabled]:focus,
+.addschool input[disabled]:active,
+.addschool textarea[disabled]:active,
+.addschool input.form-control[disabled]:hover,
+.addschool textarea.form-control[disabled]:hover,
+.addschool input.form-control[disabled]:focus,
+.addschool textarea.form-control[disabled]:focus,
+.addschool input.form-control[disabled]:active,
+.addschool textarea.form-control[disabled]:active,
+.addschool input[disabled],
+.addschool textarea[disabled],
+.addschool input.form-control[disabled],
+.addschool textarea.form-control[disabled],
+.addschool input.form-control[disabled],
+.addschool textarea.form-control[disabled] {
+  border: 1px solid #eee;
+}
+.addschool select[multiple],
+.addschool select[size] {
+  background-color: #fff;
+}
+.addschool .panel-collapse select[size] {
+  background-image: none;
+  padding-right: 8px;
+}
+.addschool .alert-info {
+  background-color: #ded3f3;
+  border-color: #c9b7ec;
+  color: #4f3682;
+}
+.addschool .bg-info {
+  background-color: #ded3f3;
+}
+.addschool .buttons-panel-right button.btn:hover,
+.addschool .form-edit .buttons-panel .buttons-panel-right button.btn:hover,
+.addschool .buttons-panel-right button.btn:hover span,
+.addschool .form-edit .buttons-panel .buttons-panel-right button.btn:hover span {
+  color: #46248a;
+}
+.addschool .head {
+  background-color: #d2c4e9;
+}
+.addschool .editjournal .head {
+  background-color: #7752b8;
+}
+.addschool .editjournal .new-assignment-container {
+  /*.assignments-header {
+
+		}*/
+}
+.addschool .editjournal .new-assignment-container .new-challenge-text {
+  background-color: #604dae;
+}
+.addschool .editjournal .assignment-title .assignment-name,
+.addschool .editjournal .assignment-title .assignment-activity span {
+  color: #d2c4e9;
+}
+.addschool .table th {
+  background-color: #d2c4e9;
+  /* закоментированые стили - нужно добавить их впоследствии, 
+			в случае если шапка таблицы будет тёмной.*/
+  /*color: #fff;
+		border-top: 1px solid #fff;
+		border-right: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+		&:first-child {
+			border-left: 1px solid #fff;
+		}*/
+}
+.addschool .journal-total th,
+.addschool .journal-student th,
+.addschool .journal-marks th {
+  background-color: #d2c4e9;
+}
+.addschool .table-bright-striped th {
+  /*стили для обсуждения*/
+  background-color: #6f43b7;
+  border: 1px solid #fff;
+  color: #fff;
+  vertical-align: middle;
+}
+.addschool .table-bright-striped th a {
+  color: #fff;
+  text-decoration: underline;
+}
+.addschool .table-bright-striped td {
+  border: 1px solid #fff;
+}
+.addschool .table-bright-striped tr:nth-child(even) td {
+  background-color: #ccb9ef;
+}
+.addschool .table-bright-striped tr:nth-child(odd) td {
+  background-color: #d8c8f5;
+}
+.addschool .table-bright-hover tr:hover td {
+  background-color: #eee6fa;
+}
+.addschool span.form-control {
+  background-color: #d3c7eb;
+  /**убираем тени**/
+  -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+}
+.addschool .btn-primary {
+  color: #fff;
+  background-color: #5d38a9;
+  border-color: #502e93;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+}
+.addschool .btn-primary:hover {
+  background-color: #957cc5;
+}
+.addschool .btn-menu {
+  background-color: #502e93;
+  border: 1px solid #502e93;
+}
+.addschool .bootstrap-dialog .bootstrap-dialog-title {
+  font-size: 1.3em;
+  color: #fff;
+}
+.addschool .bootstrap-dialog.type-primary .modal-header {
+  background-color: #5e3aa7;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-top-left-radius: 4px;
+  -ms-border-top-left-radius: 4px;
+  -o-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-top-right-radius: 4px;
+  -ms-border-top-right-radius: 4px;
+  -o-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.addschool .bootstrap-dialog.type-primary .modal-body .progress-bar {
+  background-color: #5e3aa7;
+}
+.addschool .mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.addschool .mCS-3d.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.addschool .mCS-3d.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background: #5e3aa7;
+  /*решено убрать @scroll-bg*/
+}
+/*# sourceMappingURL=theme-addschool.css.map */

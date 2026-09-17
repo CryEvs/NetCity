@@ -1,0 +1,35 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<!--Поля формы-->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label class="control-label col-md-3">{{language.Generic.SetupSchoolCalendar.kComponent}}</label>
+					<div class="col-md-9">
+						<select class="form-control" name="COMPID" ng-options="component as component.name for component in data.addedComponents track by component.id" ng-model="data.addedComponent" ng-change="dataChanged()"></select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary ng-binding" ng-click="create()">
+			{{language.Generic.Buttons.kAdd}}
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			{{language.Generic.Buttons.kClose}}
+		</button>
+	</div>
+
+</div>

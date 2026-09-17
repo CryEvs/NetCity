@@ -1,0 +1,34 @@
+<OBJECT ID=lacc RUNAT=Server SCOPE=Application CLASSID="clsid:6509099F-AF65-11D2-9E6F-00104B6A6365"></OBJECT>
+<OBJECT ID=Storage RUNAT=Server SCOPE=Application CLASSID="clsid:46A329B1-AAAE-11D2-9E6C-00104B6A6365"></OBJECT>
+
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+
+Sub Application_OnStart
+	Storage.Timeout = 3600000
+	
+	'Self-Paced mode name
+	Application("SELF_PACED") = ""
+
+	'Auto-progression feature
+	Application("AUTO_PROGRESSION") = True
+
+	'Additional information feature
+	Application("SHOW_LEXILE")	     = True
+	Application("SHOW_ARTICLE_TYPE") = True
+
+	'Help pages
+	Application("TEACHER_HELP_LINK")  = "/WHelp/Learning_Applications_Teacher_Help.htm"
+	Application("STUDENT_HELP_LINK")  = "/WHelp/Learning_Applications_Student_Help.htm"
+	Application("TEACHER_GUIDE_LINK") = Empty
+	
+	'Copyright information
+	Application("COPYRIGHT") = "&copy; 2007-2008 ИРТех"
+	
+	'Version information
+	Application("LA_VERSION") = "версия 1.0"
+
+	'Database connection string
+  Application("CONNECTION_STRING") = "Provider=LCPI.IBProvider;Data Source=localhost:C:\Program Files\NetCity2\DB\la4.gdb;ctype=win1251;auto_commit=true;auto_commit_level=0x1000;User ID=nschool;Password=rapdlDJw;;"
+End Sub
+
+</SCRIPT>

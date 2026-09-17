@@ -1,0 +1,316 @@
+<div id="wrapper_inner">
+	<!--[if lt IE 8]><div class="parent-ie6"><![endif]-->
+	<div class="centered">
+		<div class="entry-form loginbox appear">
+	
+		{{{extras.header}}}
+
+		<div class="sectiontable">
+			{{#if severalForms}}
+			<ul class="tabs-form">
+				<li id="School" {{#if currentForm.school}} class="current" {{/if}}>{{language.Generic.Common.kEO}}</li>
+				<li id="EM" {{#if currentForm.em}} class="current" {{/if}}>{{language.Generic.Common.kManagementOrgan}}</li>
+			</ul>
+			{{/if}}
+
+			{{#if schoolLogin}}
+			<div class="box-form {{#if currentForm.school}}visible{{/if}}">
+				<div id="message" class="message-form">
+					<input type="hidden" name="LoginType" value="1"/>
+					<div class="info">
+						<div class="row">
+							<div class="row form-horizontal">
+								<span class="control-label col-md-4">{{language.Generic.Common.kCountry}}</span>
+								<div class="col-md-6 select-main">
+									<select id="countries" name="cid"></select>
+								</div>
+							</div>
+							<div class="row form-horizontal">
+								<span class="control-label col-md-4">{{language.Generic.Login.kLoginRegion}}</span>
+								<div class="col-md-6 select-main">
+									<select id="states" name="sid"></select>
+								</div>
+							</div>
+							<div class="row form-horizontal">
+								<span class="control-label col-md-4">{{language.Generic.Login.kLoginMunicipality}}</span>
+								<div class="col-md-6 select-main">
+									<select id="provinces" name="pid"></select>
+								</div>
+							</div>
+							<div class="row form-horizontal">
+								<span class="control-label col-md-4">{{language.Generic.Login.kLoginCity}}</span>
+								<div class="col-md-6 select-main">
+									<select id="cities" name="cn"></select>
+								</div>
+							</div>
+							<div class="row form-horizontal">
+								<span class="control-label col-md-4">{{language.Generic.Common.kEOType}}</span>
+								<div class="col-md-6 select-main">
+									<select id="funcs" name="sft"></select>
+								</div>
+							</div>
+							<div class="row form-horizontal">
+								<span class="control-label col-md-4">{{language.Generic.Common.kEO}}</span>
+								<div class="col-md-6 select-main">
+									<select id="schools" name="scid"></select>
+								</div>
+							</div>
+
+							<div class="two-lines-decoration"></div>
+
+							{{#if loginState}}
+							<input type="hidden" name="loginState" value="{{loginState}}" />
+							<div style="white-space: normal; color: antiquewhite;">
+								{{bindIdpAccountMessage}}
+							</div>
+							{{/if}}
+
+							<div class="row form-horizontal row-center-inset">
+								<input name="UN" placeholder="{{language.Generic.Common.kLogin}}" type="text" class="control-input col-md-6">
+							</div>
+							<div class="row form-horizontal row-center-inset">
+								<input name="PW" placeholder="{{language.Generic.Common.kPassword}}" type="password" class="control-input col-md-6">
+							</div>
+
+							<div class="row form-horizontal row-center-a">
+								<a title="{{language.Generic.Login.kPasswordRecovery}}" id="recovery" href="JavaScript:void(0);">{{language.Generic.Login.kPasswordRecovery}}</a>
+							</div>
+							
+							{{#if windowsAuth}}
+							<div class="row form-horizontal row-center-a">
+								<a title="{{language.Generic.Common.kLoginWithWindowsAccount}}" onclick="winlogin();return false;" href="JavaScript:winlogin();">{{language.Generic.Common.kLoginWithWindowsAccount}}</a>
+							</div>
+							{{/if}}
+
+							{{#if esia}}
+							{{#if esia.linkMode}}
+							<div class="row form-horizontal row-center-a">
+								<a title="{{esia.linkText}}" href="{{esia.loginPage}}">{{esia.linkText}}</a>
+							</div>
+							{{/if}}
+							{{/if}}
+
+							<div class="row-center row-submit">
+								<a class="button-login button-login-marker" style="display: inline;" href="javascript:void(0)">
+									<span class="button-login-title">Войти </span>
+								</a>
+							</div>
+
+							{{#if esa}}
+							<div class="row-center row-submit">
+								<a class="button-login button-login-esa" style="display: inline;" href="{{esa.loginPage}}">
+									<div class="button-login-title button-login-title-esa">
+										<span class="text-title">{{esa.buttonText}}</span>
+									</div>
+								</a>
+							</div>
+							{{/if}}
+
+							{{#unless esa}}
+							{{#if esia}}
+							{{#if esia.buttonMode}}
+							<div class="row-center row-submit">
+								<a class="button-login button-login-esia" style="display: inline;" href="{{esia.loginPage}}">
+									<div class="button-login-title button-login-title-esia">
+										<span class="text-title">Войти через</span>
+										<span class="logo-title"></span>
+									</div>
+								</a>
+							</div>
+							{{/if}}
+							{{/if}}
+							{{/unless}}
+						</div>
+					</div>
+				</div>
+			</div>
+			{{/if}}
+
+			{{#if emLogin}}
+			<div class="box-form box-form-departament {{#if currentForm.em}}visible{{/if}}">
+				<div id="message-em" class="message-form">
+					<input type="hidden" name="LoginType" value="2"/>
+					<div class="info">
+						<div class="row form-horizontal">
+							<div class="row form-horizontal">
+								<span class="control-label col-md-4">{{language.Generic.Common.kCountry}}</span>
+								<div class="col-md-6 select-main">
+									<select id="countries" name="em_cid"></select>
+								</div>
+							</div>
+							<div class="row form-horizontal">
+								<span class="control-label col-md-4">{{language.Generic.Login.kLoginRegion}}</span>
+								<div class="col-md-6 select-main">
+									<select id="states" name="em_sid"></select>
+								</div>
+							</div>
+							<div class="row form-horizontal">
+								<span class="control-label col-md-4">{{language.Generic.ServAdmin.kHierarchyLevel}}</span>
+								<div class="col-md-6 select-main">
+									<select id="hlevels" name="hlevel"></select>
+								</div>
+							</div>
+							<div class="row form-horizontal">
+								<span class="control-label col-md-4">{{language.Generic.Common.kManagementOrgan}}</span>
+								<div class="col-md-6 select-main">
+									<select id="ems" name="emId"></select>
+								</div>
+							</div>
+
+							<div class="two-lines-decoration"></div>
+
+							{{#if loginState}}
+							<input type="hidden" name="loginState" value="{{loginState}}" />
+							<div style="white-space: normal; color: antiquewhite;">
+								{{bindIdpAccountMessage}}
+							</div>
+							{{/if}}
+
+							<div class="row form-horizontal row-center-inset">
+								<input name="UN" placeholder="{{language.Generic.Common.kLogin}}" type="text" class="control-input col-md-6">
+							</div>
+							<div class="row form-horizontal row-center-inset">
+								<input name="PW" placeholder="{{language.Generic.Common.kPassword}}" type="password" class="control-input col-md-6">
+							</div>
+
+							{{#if esia}}
+							{{#if esia.linkMode}}
+							<div class="row form-horizontal row-center-a">
+								<a title="{{esia.linkText}}" href="JavaScript:window.location.href='{{esia.loginPage}}'">{{esia.linkText}}</a>
+							</div>
+							{{/if}}
+							{{/if}}
+
+							<div class="row-center row-submit">
+								<a class="button-login button-login-marker" style="display: inline;" href="javascript:void(0)">
+									<span class="button-login-title">Войти </span>
+								</a>
+							</div>
+
+							{{#if esia}}
+							{{#if esia.buttonMode}}
+							<div class="row-center row-submit">
+								<a class="button-login button-login-esia" style="display: inline;" href="{{esia.loginPage}}">
+									<div class="button-login-title button-login-title-esia">
+										<span class="text-title">Войти через</span>
+										<span class="logo-title"></span>
+									</div>
+								</a>
+							</div>
+							{{/if}}
+							{{/if}}
+
+						</div>
+					</div>
+				</div>
+			</div>
+			{{/if}}
+
+			{{#if esia.mainAuth}}
+				{{#unless bindIdpAccount}}
+			<div class="box-form-auth">
+				<div class="message-form">
+					<div class="info">
+						<input type="hidden" name="LoginType" value="1">
+						<div class="row">
+							<div class="row-center row-submit">
+								{{#unless esa}}
+								<a class="button-login button-login-esia" style="display: inline;" href="{{esia.loginPage}}">
+									<div class="button-login-title button-login-title-esia">
+										<span class="text-title">Войти через</span>
+										<span class="logo-title"></span>
+									</div>
+								</a>
+								{{/unless}}
+								{{#if esa}}
+								<a class="button-login button-login-esa" style="display: inline;" href="{{esa.loginPage}}"">
+									<div class="button-login-title button-login-title-esa">
+										<span class="text-title">{{esa.buttonText}}</span>
+									</div>
+								</a>
+								{{/if}}
+							</div>
+							<div style="margin-top: 10px">
+								<div class="row form-horizontal row-center-a">
+									<a href="JavaScript:void(0)" title="{{language.Generic.Common.kLogInWithLoginAndPassword}}" id="showLoginForm">{{language.Generic.Common.kLogInWithLoginAndPassword}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				{{/unless}}
+			{{/if}}
+		</div>
+		{{{extras.footer}}}
+		</div>
+	</div>
+</div>
+
+<div id="message-password-recovery" class="message" style="display: none">
+	<div class="close">
+		<a id="cexit_recovery" style="display: block"><img src="/vendor/custom/img/login_close.gif"></a>
+	</div>
+	<div class="head">
+		<span class="text-restore-password">{{language.Generic.Messages.kPasswordRecovery}}</span>
+	</div>
+	<div class="text">
+		{{#if enableSms}}
+		{{{language.Generic.Login.kBriefInstructions1}}} {{productName}} {{{language.Generic.Login.kBriefInstructions2}}} {{productName}}
+		{{else}}
+		{{{language.Generic.Login.kBriefInstructions_1_1}}} {{productName}} {{{language.Generic.Login.kBriefInstructions_2_2}}} {{productName}}
+		{{/if}}
+	</div>
+	<div class="info">
+
+		{{#if enableSms}}
+
+		<div class="radio">
+			<label style="color: white;font-size: 14px;">
+				<input type="radio" name="recoveryType" value="1" checked="">{{language.Generic.UsersExport_1C.kEMail}}
+			</label>
+		</div>
+
+		{{else}}
+
+		<div class="radio" hidden="hidden">
+			<label style="color: white;font-size: 14px;"  hidden="hidden">
+				<input type="radio" name="recoveryType" value="1" checked="">{{language.Generic.UsersExport_1C.kEMail}}
+			</label>
+		</div>
+
+		<label style="color: white;font-size: 14px;" >
+			{{language.Generic.UsersExport_1C.kEMail}}
+		</label>
+
+		{{/if}}
+
+
+		{{#if enableSms}}
+		<div class="radio">
+			<label style="color: white;font-size: 14px;">
+				<input type="radio" name="recoveryType" value="2"> {{language.Generic.Common.kMobilePhone}}
+			</label>
+		</div>
+		{{/if}}
+		<div>
+			<div class="row form-horizontal row-center-inset">
+				<input name="recoveryValue" placeholder="" type="text" class="control-input col-md-6">
+			</div>
+		</div>
+		<div class="row-recovery">
+			<a class="button-login" href="JavaScript:void(0);">
+				<span class="button-login-title">{{language.Generic.Common.kApplyData}}</span>
+			</a>
+		</div>
+	</div>
+	<div class="text">
+		{{#if enableSms}}
+		{{language.Generic.Login.kBriefInstructions3}}
+		{{else}}
+		{{language.Generic.Login.kBriefInstructions_3_3}}
+		{{/if}}
+	</div>
+</div>
+
+<div id="overlay" style="display: none"></div>

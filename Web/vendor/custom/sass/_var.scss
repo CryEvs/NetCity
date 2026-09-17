@@ -1,0 +1,54 @@
+@import '../../bootstrap/sass/variables';
+//== Colors
+$brand-primary-light: lighten($brand-primary, 20.7%); 
+
+// background colors
+$base-green-bg-color: rgba(169, 228, 162, 1);
+$base-red-bg-color: rgba(255, 187, 187, 1);
+$base-blue-bg-color: rgba(151, 217, 247, 1);
+$maize-base: #faebcc;
+
+$dark-green-color: darken($base-green-bg-color, 40%);
+$dark-red-color: darken($base-red-bg-color, 50%);
+$dark-blue-color: darken($base-blue-bg-color, 48%);
+$distance: 180;
+$complementary-bg-color: adjust-hue($base-green-bg-color, $distance);
+$server-administrator-bg: #336699;
+$server-administrator-bg-light: #5588BB;
+
+// Æåñòêî ïðèñâàèâàåì öâåò äëÿ êàæäîé ñõåìû (âåðñèÿ 1)
+
+// Íà÷àëüíûé áàçîâûé öâåò
+$default-cyan-color: #307FBD; // #469dd4; // #18a2eb; 
+// Äîøêîëüíûé ìîäóëü - preschool
+$default-green-color:adjust-hue(desaturate(darken(#39af78, 9%), 3%), 3); // #307fbd // HSB 162,72,72; RGB 52,184,145
+//adjust-hue(desaturate(darken(#469dd4, 9%), 3%), 3); // #307fbd
+// Øêîëüíûé ìîäóëü - school
+$default-magenta-color: #6785CD; // #6785CD; HSB 222,50,80; RGB 103,133,205
+// Ìîäóëü äîï. îáðàçîâàíèÿ - addschool
+$default-purple-color: #9e77ed; // #7f62b9; HSB 260,47,73; RGB 127,98,185
+// Ìîäóëü ÍÏÎ - profschool
+$default-aquamarine-color: #4da8bb; // #2495ad; HSB 191,79,68; RGB 36,149,173
+// Èíòåðôåéñ óïðàâëåíèÿ îáðàçîâàíèÿ - em
+$default-orange-color: #f19543; // #efa847; HSB 35,70,94; RGB 239,168,71
+// Èíòåðôåéñ àäìèíèñòðàòîðà ñåðâåðà - servadmin
+$default-blue-discreet-color: #689ab5; // lighten(desaturate($default-cyan-color, 50%), 5%);
+$default-gray-color: #999; // #999; HSB 0,0,60; RGB 153,153,153
+
+//== Margins
+$margin-bottom: 15px;
+$margin-small-bottom: 12px; 
+
+// Ïåðåîïðåäåëåííûå áàçîâûå âûñîòû ñ ó÷åòîì èçìåíåíííîãî øðèôòà
+$custom-input-height-base: $input-height-base - 2;
+
+// == URL
+$img-folder: "/vendor/custom/img/";
+$img-folder-absolute: "/vendor/custom/img/";
+
+// == image
+$img-select-content-arrow: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAGCAYAAAAYLBS/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALBJREFUeNpiCA4OnsnAwPCRmZn5ERA/AdFA/gdPT88F////Z8CGGVavXm0jKSn5AajwPwyLiop+nTNnjhMuTUxSUlLHUlJSJjAggdjY2MlAgw4x4ABMvLy8/+zs7Bbo6upeAQmoq6vftrKyms3Hx/cHpyZOTk4GHR2dB6mpqVNBAvHx8dP19PTu8vDwMODUxM7OzsDExMRgaWm5u7m5udbc3HwHCwsLAwcHB05NAAEGAHh3Tf8aoY+FAAAAAElFTkSuQmCC';
+
+// == menu
+$menu-height: 36px;
+

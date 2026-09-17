@@ -1,0 +1,82 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form class="form-horizontal form-sm" name="$ctrl.form">
+		<ns-form control-size="col-md-8" label-size="col-md-4">
+			<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kIdentifier}}" ng-class="{'has-error': $ctrl.form.clientId.$touched && $ctrl.form.clientId.$invalid}">
+				<input class="form-control" type="text" required maxlength="50" ng-model="$ctrl.authClient.clientId" name="clientId" ng-disabled="$ctrl.isLaccAuthClient" track-changes />
+				<p class="help-block" ng-show="$ctrl.form.clientId.$touched && $ctrl.form.clientId.$error.unique">{{$ctrl.language.Generic.ServAdmin.kErrIdentifierRepeat}}</p>
+				<p class="help-block" ng-show="$ctrl.form.clientId.$touched && $ctrl.form.clientId.$error.required">{{$ctrl.language.Generic.ServAdmin.kErrEmptyIdentifier}}</p>
+			</ns-form-group>
+
+			<ns-form-group title={{$ctrl.language.Generic.ServAdmin.kClientName}} ng-class="{'has-error': $ctrl.form.clientName.$touched && $ctrl.form.clientName.$invalid}">
+				<input class="form-control" type="text" required maxlength="200" ng-model="$ctrl.authClient.clientName" name="clientName" ng-disabled="$ctrl.isLaccAuthClient" track-changes />
+				<p class="help-block" ng-show="$ctrl.form.clientName.$touched && $ctrl.form.clientName.$error.unique">{{$ctrl.language.Generic.ServAdmin.kErrClientNameRepeat}}</p>
+				<p class="help-block" ng-show="$ctrl.form.clientName.$touched && $ctrl.form.clientName.$error.required">{{$ctrl.language.Generic.ServAdmin.kErrEmptyClientName}}</p>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kPassword}}" ng-class="{'has-error': $ctrl.form.clientSecret.$touched && $ctrl.form.clientSecret.$invalid}">
+				<input class="form-control" type="text" required maxlength="50" ng-model="$ctrl.authClient.clientSecret" name="clientSecret" ng-disabled="$ctrl.isLaccAuthClient" track-changes />
+				<p class="help-block" ng-show="$ctrl.form.clientSecret.$touched && $ctrl.form.clientSecret.$error.required">{{$ctrl.language.Generic.ServAdmin.kErrEmptyClientSecret}}</p>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kAllowedAuthTypes}}"
+			ng-class="{'has-error': $ctrl.anyCheckboxTouched() && !$ctrl.anyCheckboxEnabled()}">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="authorizationCodeCheckbox" ng-model="$ctrl.authClient.authCodeFlow" ng-disabled="$ctrl.isLaccAuthClient" track-changes />
+						{{$ctrl.language.Generic.ServAdmin.kAuthCodeFlow}}
+					</label>
+				</div>
+
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="refreshToken" name="refreshToken" ng-model="$ctrl.authClient.refreshTokenFlow" ng-disabled="$ctrl.isLaccAuthClient" track-changes />
+						{{$ctrl.language.Generic.ServAdmin.kRefreshTokenFlow}}
+					</label>
+				</div>
+
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="сlientCredentials" name="сlientCredentials" ng-model="$ctrl.authClient.clientCredFlow" ng-disabled="$ctrl.isLaccAuthClient" track-changes />
+						{{$ctrl.language.Generic.ServAdmin.kClientCredentialsFlow}}
+					</label>
+				</div>
+
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="resourceOwnerPasswordCredentials" name="resourceOwnerPasswordCredentials" ng-model="$ctrl.authClient.resourceOwnerCredFlow" ng-disabled="$ctrl.isLaccAuthClient" track-changes />
+						{{$ctrl.language.Generic.ServAdmin.kResourceOwnerPasswordCredentialsFlow}}
+					</label>
+				</div>
+				<p class="help-block" ng-show="$ctrl.anyCheckboxTouched() && !$ctrl.anyCheckboxEnabled()">{{$ctrl.language.Generic.ServAdmin.kErrEmtpyAllowedAuthType}}</p>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kAuthClientScopes}}">
+				<div class="checkbox" ng-repeat="scope in $ctrl.scopes">
+					<label>
+						<input type="checkbox" id="{{scope.id}}" name="{{scope.name}}" ng-checked="$ctrl.hasScope(scope)" ng-click="$ctrl.toggleScope(scope)" ng-disabled="$ctrl.isLaccAuthClient" track-changes />
+						{{scope.name}}
+					</label>
+				</div>
+
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kRedirectUrl}}" ng-class="{'has-error': $ctrl.form.redirectUrl.$touched && $ctrl.form.redirectUrl.$invalid}">
+				<input class="form-control" type="text" maxlength="400" ng-required="$ctrl.authClient.authCodeFlow" name="redirectUrl"
+				ng-model="$ctrl.authClient.redirectUri" ng-disabled="$ctrl.isLaccAuthClient" track-changes />
+				<p class="help-block" ng-show="$ctrl.form.redirectUrl.$touched && $ctrl.form.redirectUrl.$error.required">{{$ctrl.language.Generic.ServAdmin.kErrEmtptyRedirectUrl}}</p>
+			</ns-form-group>
+
+			<ns-form-group id="selectedOrganizationsView" title="{{$ctrl.language.Generic.ServAdmin.kOrganizations}}" name="organizationNames" >
+				<button class="btn btn-default btn-sm" 
+						type="button"
+						style="margin-bottom: 15px;"
+						title="{{$ctrl.language.Generic.Buttons.kChoose}}"
+						ng-click="$ctrl.openChooseDialogForSchools()"
+						ng-disabled="$ctrl.isLaccAuthClient">
+					<span>{{$ctrl.language.Generic.Buttons.kChoose}}</span>
+				</button>
+				<selected-organizations-view selected="$ctrl.selected" settings="$ctrl.settings"></selected-organizations-view> 
+			</ns-form-group>
+		</ns-form>
+	</form>
+</ns-modal>

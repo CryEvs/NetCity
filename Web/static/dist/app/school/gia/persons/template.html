@@ -1,0 +1,65 @@
+<form class="form-horizontal form-sm">
+	<div class="row">
+		<div class="col-md-7">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Тип экзамена</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control"
+							ng-options="examType.id as examType.name for examType in refs.examTypes"
+							ng-change="load()"
+							ng-model="data.examType">
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-7">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Вид</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control"
+							ng-options="viewType.id as viewType.name for viewType in refs.viewTypes"
+							ng-change="load()"
+							ng-model="data.viewType">
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<div class="row">
+	<div class="col-md-10" ng-show="state.dataReady && state.emptyData">
+		<div class="alert alert-info" role="alert">{{language.Generic.Common.kNoDataForFilter}}</div>
+	</div>
+</div>
+
+<div class="row" ng-show="state.dataReady && !state.emptyData">
+	<div class="col-md-12">
+		<table class="table table-thin table-bordered table-xs table-hover table-striped">
+			<tr>
+				<th rowspan="2">№</th>
+				<th colspan="2">Данные ГИА</th>
+				<th colspan="2">Данные в системе</th>
+			</tr>
+			<tr>
+				<th>{{language.Common.kStudent}}</th>
+				<th>{{language.Common.kClass}}</th>
+				<th>{{language.Common.kStudent}}</th>
+				<th>{{language.Common.kClass}}</th>
+			</tr>
+			<tr ng-repeat="rel in data.relations">
+				<td class="text-center">{{$index + 1}}</td>
+				<td>{{rel.giaPerson.name}}</td>
+				<td>{{rel.giaClass.name}}</td>
+				<td>
+					<a href="#" ng-click="edit(rel)">{{rel.student.name}}</a>
+				</td>
+				<td>
+					<a href="#" ng-click="edit(rel)">{{rel.class.name}}</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,471 @@
+@import (reference) "var.less";
+@import (reference) "mixins.less";
+@import (reference) "controls.less";
+//== Styles custom forms
+
+//== Tunes form-control
+.form-control {
+	height: @input-height-base - 1px; // for vertical align middle to font-size 14px
+	padding: @padding-base-vertical - 1px @padding-base-horizontal - 4px;
+	/* font-size: @font-size-base - 1px; // for 13px */
+
+	span&{
+		background-color: @base-blue-bg-color;
+	}
+
+	&-inline {
+		width: auto;
+		display: inline-block;
+	}
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+	cursor: default;
+}
+
+.input-group-inline {
+	.form-control {
+		width:auto;
+	}
+
+	.input-group-btn {
+		width:auto;
+	}
+}
+
+form {
+	margin-bottom: @margin-bottom;
+	h3{
+		font-weight: bold;
+		padding: 0px;
+		font-size: 13px;
+		margin: 0 0 7px 0;
+	}
+	h2{
+		font-weight: bold;
+		padding: 0;
+		font-size: 15px;
+		margin: 0 0 7px 0;
+	}
+	.normal {
+		font-weight: normal;
+	}
+
+	&.hidden {
+		margin: 0px;
+	}
+}
+
+input, textarea {
+	.input-default;
+	&.form-control, &[disabled]:hover, &[disabled]:focus, &[disabled]:active, &.form-control[disabled]:hover, &.form-control[disabled]:focus, &.form-control[disabled]:active {
+		.input-default;
+	}
+	&:hover, &:active, &:focus, &.form-control:hover, &.form-control:active, &.form-control:focus {
+		.control-hover;	
+	}
+}
+input[type="radio"] {
+	.box-shadow-inset (@width: 0px, @rgba: rgba(0, 0, 0, 0));
+}
+
+
+//form-line-mixed
+.form-line-mixed {
+	padding-left: 15px;
+	width: 725px;
+	.form-group {
+		margin-bottom: 0px;
+	}
+	.buttons-panel {
+		border-top: 1px dotted #ccc;
+
+		.btn, .btn-group, button {
+			margin-top: 35px;
+		}
+	}
+
+	.col-sm-6:nth-child(2) {
+		padding-left: 0px;
+	}
+
+	.col-sm-12 {
+		> .form-inline {
+			overflow: hidden;
+
+			h3 + div {
+				padding-left: 0px;
+			}
+
+			.col-sm-4 {
+				&:last-child {
+					padding-right: 0px;
+				}
+
+				&:nth-child(3) {
+					padding-left: 30px;
+				}
+
+				&:nth-child(4) {
+					padding-left: 50px;
+				}
+			}
+		}
+	}
+
+	select.form-control {
+		display: inline-block;
+		width: auto;
+	}
+
+	input {
+		width: 100%;
+
+		.form-control {
+			margin: 0px;
+		}
+	}
+
+	>.col-sm-4 {
+
+		.col-sm-4 {
+			@media (min-width: 340px) {
+				margin-left: 67.7px; padding-right: 0px; width: auto;
+			}
+
+			@media (min-width: 768px) {
+				margin-left: 69.5px; padding-right: 0px; width: auto;
+			}
+
+			&:nth-child(2) {
+				margin-left: 0px;
+			}
+
+			>div {
+				width: 100%;
+				overflow: hidden;
+			}
+		}
+	}
+
+	.next-line {
+		padding-bottom: 12px;
+		border-top: 1px dotted #ccc;
+		padding-top: 9px;
+		overflow: hidden;
+
+		>label, .row > label {
+			padding-top: 8px;
+		}
+
+		&:hover {
+			background: #f8f8f8;
+		}
+
+		.col-sm-7 {
+			width: 58.3333%;
+
+			& + select {
+				width: 38.7%;
+			}
+			& + .flip_switch, & + .flip_switch_stop,  & + .flip_switch + .flip_switch_stop,
+			& + .flip_switch_on, & + .flip_switch_off,  & + .flip_switch_on + .flip_switch_off {
+			 	width: 160px;
+
+			}
+		}
+	}
+
+	.col-sm-2 {
+		width: 287px;
+		display: inline-block;
+	}
+
+	.form-inline .form-group {
+		display: inline-block;
+	}
+
+	.stages {
+		> span {
+			color: #666;
+		}
+	}
+} // end form-line-mixed
+
+// flipswith styles
+.flip_switch {
+	background: @base-green-bg-color;
+	border: 1px solid @dark-green-color;
+	.box-shadow-inset (@width: 8px, @rgba: rgba(53, 44, 42, .4));
+	.border-radius (@radius: @border-radius-base + 12px);
+	color: darken(@dark-green-color, 10%);
+	position: relative;
+	cursor: pointer;
+	text-align: left;
+	font-size: @font-size-base - 1px;
+	.glyphicon-ok {
+	float: left;
+	margin-right: 3px;
+	}
+	&:before {
+		content: 'Разрешен';
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		left: auto;
+		top: -1px;
+		right: -1px;
+		display: block;
+		width: 60px;
+		height: 34px;
+		background: url('@{img-folder}flip_switch.png') center center no-repeat;
+
+	}
+}
+.flip_switch_stop {
+	position: relative;
+	background: @base-red-bg-color;
+	border: 1px solid @dark-red-color;
+	.box-shadow-inset (@width: 8px, @rgba: rgba(162, 0, 0, .5));
+	.border-radius (@radius: @border-radius-base + 12px);
+	color: @dark-red-color;
+	position: relative;
+	cursor: pointer;
+	text-align: right;
+	font-size: @font-size-base - 1px;
+	.glyphicon-remove {
+	float: right;
+	top: 4px;
+	left: 1px;
+	margin-left: 2px;
+	}
+	&:before {
+		content: 'Запрещен';
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		right: auto;
+		top: -1px;
+		left: -1px;
+		display: block;
+		width: 60px;
+		height: 34px;
+		background: url('@{img-folder}flip_switch.png') center center no-repeat;
+	}
+}
+.flip_switch_off {
+	position: relative;
+	background: lighten(@gray-light, 53%);
+	border: 1px solid lighten(@gray-light, 27%);
+	.box-shadow-inset (@width: 8px, @rgba: rgba(0, 0, 0, .2));
+	.border-radius (@radius: @border-radius-base + 12px);
+	color:lighten(@gray-light, 20%);
+	position: relative;
+	cursor: pointer;
+	text-align: right;
+	font-size: @font-size-base - 1px;
+	.glyphicon-remove {
+	float: right;
+	top: 4px;
+	left: 1px;
+	margin-left: 2px;
+	}
+	&:before {
+		content: 'Отключена';
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		right: auto;
+		top: -1px;
+		left: -1px;
+		display: block;
+		width: 60px;
+		height: 34px;
+		background: url('@{img-folder}flip_switch.png') center center no-repeat;
+	}
+}
+.flip_switch_on {
+	background: lighten(@base-blue-bg-color, 3%);
+	border: 1px solid lighten(@dark-blue-color, 10%);
+	.box-shadow-inset (@width: 8px, @rgba: rgba(0, 107, 155, .6));
+	.border-radius (@radius: @border-radius-base + 12px);
+	color: @dark-blue-color;
+	position: relative;
+	cursor: pointer;
+	text-align: left;
+	font-size: @font-size-base - 1px;
+	.glyphicon-ok {
+	float: left;
+	margin-right: 3px;
+	}
+	&:before {
+		content: 'Включена';
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		left: auto;
+		top: -1px;
+		right: -1px;
+		display: block;
+		width: 60px;
+		height: 34px;
+		background: url('@{img-folder}flip_switch.png') center center no-repeat;
+
+	}
+}
+
+
+
+//компактная форма
+.form-xs {
+	//уменьшаем отступы
+	.form-group{
+		margin-bottom: 5px;
+		label {
+			font-size: 13px;
+		}
+		.input-group {
+			button {
+				span.glyphicon{
+					top: 0;
+				}
+				line-height: 100%;
+				height: @input-height-base - 7px;
+			}
+			span.input-group-addon{
+				line-height: 50%;
+				height: @input-height-base - 7px;
+			}
+		}
+		div.checkbox {
+			padding-top: 5px;
+			margin: 0;
+		}
+
+		.form-control{
+			font-size: 13px;
+		}
+		//уменьшаем поля для ввода
+		.form-control:not(textarea){
+			padding: @padding-base-vertical - 3px @padding-base-horizontal - 4px;
+			height: @input-height-base - 7px;
+		}
+
+		span.select2 .select2-selection {
+			height: @input-height-base - 7px;
+		}
+
+		.ui-select-bootstrap .ui-select-choices-row > span {
+			padding: 0px 20px;
+		}
+
+		.help-block {
+			font-size: 13px;
+			margin-top: 0;
+		}
+	}
+}
+
+.form-sm {
+	//уменьшаем отступы
+	.form-group{
+		margin-bottom: 10px;
+		label {
+			font-size: 13px;
+		}
+		.input-group {
+			button{
+				span.glyphicon{
+					top: 0;
+				}
+				line-height: 100%;
+				height: @input-height-base - 5px;
+			}
+			span.input-group-addon{
+				line-height: 100%;
+				height: @input-height-base - 5px;
+			}
+		}
+		div.checkbox{
+			padding-top: 5px;
+		}
+
+		.form-control{
+			font-size: 13px;
+		}
+		//уменьшаем поля для ввода
+		.form-control:not(textarea){
+			padding: @padding-base-vertical - 1px @padding-base-horizontal - 4px;
+			height: @input-height-base - 5px;
+		}
+
+		span.select2 .select2-selection {
+			height: @input-height-base - 5px;
+		}
+	}
+}
+
+
+.form-horizontal{
+	.form-group{
+		.control-label{
+			text-align: left;
+		}
+		.control-span{
+			display: block;
+			font-size: 12px;
+			font-weight: 400;
+			font-style: italic;
+			color: lighten(@text-color, 25%)
+		}
+	}
+}
+
+//форма редактирования
+.form-edit{
+	overflow: hidden; 
+
+	//кнопки в форме редактирования более крупные
+	.buttons-panel {
+		button, .btn {
+			line-height: @line-height-base - 0.1; // for rough equate to 33px if font-size:14px
+			height: @input-height-base - 1px; // for straight equate height form-controls & buttons // 33px
+			font-size: @font-size-base; // font-size:14px
+		}
+	}
+
+	//лейблы прижаты к полям для ввода
+	.form-group {
+		.control-label {
+			text-align: right !important;
+		}
+		.control-span{
+			display: block;
+			font-size: 12px;
+			font-weight: 400;
+			font-style: italic;
+			color: lighten(@text-color, 25%)
+		}
+	}
+
+	.row:first-child .form-group { // убираем лишний отступ у панели кнопок
+		margin-bottom: 0;
+	}
+}
+
+/*==================================================*/
+/*хак для ff*/
+/*устраниние ошибки, когда происходило "заезжание" одного элемента формы за другой*/
+@-moz-document url-prefix() {
+	.form-inline {
+		.input-group  {
+			span.input-group-btn {
+				float: left;
+			}
+		}
+	}
+}

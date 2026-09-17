@@ -1,0 +1,36 @@
+<ul class="year-calendar">
+	<li ng-repeat="month in $ctrl.months">
+		<a style="cursor: pointer" ng-if="month.monthInYear" title="{{$ctrl.language.Generic.SetupSchoolCalendar.kMonthView}}" class="month" ng-click="$ctrl.goToMonth(month)">{{month.monthName}}</a>
+		<p ng-if="!month.monthInYear">{{month.monthName}}</p>
+
+		<div class="weekday">
+			<div ng-repeat="weekDay in $ctrl.weekDays">{{weekDay.name}}</div>
+			<div>№</div>
+		</div>
+
+		<div ng-repeat="week in month.weekDays">
+			<div ng-repeat="weekDay in week" class="{{weekDay.style}}">
+				<span ng-if="!weekDay.linkNeeded">{{ weekDay.dayNum > 0 ? weekDay.dayNum : "&nbsp;" }}</span>
+				<a ng-if="weekDay.linkNeeded" title="{{weekDay.isWeekNum ? $ctrl.language.Generic.SetupSchoolCalendar.kWeekView : $ctrl.language.Generic.SetupSchoolCalendar.kDayView}}" ng-click="$ctrl.go(weekDay)">{{weekDay.dayNum}}</a>
+			</div>
+		</div>
+	</li>
+</ul>
+
+<div class="summary-information" style="float: none;">
+	<div>{{$ctrl.language.Generic.SetupSchoolCalendar.kSchoolYearDays}}: <span>{{$ctrl.yearDaysCount}}</span></div>
+	<div>{{$ctrl.language.Generic.SetupSchoolCalendar.kSchoolYearWeeks}}: <span>{{$ctrl.yearWeeksCount}}</span></div>
+	<div>{{$ctrl.language.Generic.SetupSchoolCalendar.kYearVacations}}: <span>{{$ctrl.vacationDaysCount}}</span></div>
+	<div>{{$ctrl.language.Generic.SetupSchoolCalendar.kYearHoliDays}}: <span>{{$ctrl.holidayDaysCount}}</span></div>
+	<div>
+		{{$ctrl.language.Generic.Common.kLegend}}:
+		<div class="legend print-block">
+			<div>
+				<p><span class="legend-label" style="background-color: #e0f3ba"></span><span class="legend-description"> — {{$ctrl.language.Generic.SetupSchoolCalendar.kVacations}}</span></p>
+				<p><span class="legend-label" style="font-weight: 600;">17</span><span class="legend-description"> — {{$ctrl.language.Generic.SetupSchoolCalendar.kNotYearDays}}</span></p>
+				<p><span class="legend-label" style="color:red; font-weight: 600;">17</span><span class="legend-description"> — {{$ctrl.language.Generic.SetupSchoolCalendar.kHolidaysAndRestdays}}</span></p>
+				<p><span class="legend-label" style="color:#2280bb; font-weight: 600;">17</span><span class="legend-description"> — {{$ctrl.language.Generic.SetupSchoolCalendar.kWorkdays}}</span></p>
+			</div>
+		</div>
+	</div>
+</div>

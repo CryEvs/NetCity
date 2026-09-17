@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+<ns-panel panel-id="appeal" class="info" ng-if="$ctrl.hasAppeal" title="Просмотр работы" expanded="false">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<ng-form name="appealForm">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="appeal-status" class="control-label">{{$ctrl.language.Generic.SchoolInfo.kStatus}}</label>
+					<div>
+						<select ng-disabled="!$ctrl.state.createMode" track-changes class="form-control" name="status" id="appeal-status" required ng-options="status.key as status.name for status in $ctrl.statuses" ng-init="$ctrl.appeal.status" ng-model="$ctrl.appeal.status"></select>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="initial-score" class="control-label">{{$ctrl.language.Generic.EGE.kPrimaryScore}}</label>
+					<div>
+						<input disabled type="number" track-changes class="form-control" id="appeal-initialscore" name="initialscore" size="4" required maxlength="4" ng-model="$ctrl.appeal.initialScore" ng-min="1" ng-max="9999" ng-pattern="/^\d+$/">
+					</div>
+				</div>	
+			</div>
+		</div>
+		<ns-form-group title="Дата подачи заявления на просмотр">
+			<div class="date_data">{{ $ctrl.appeal.reviewRequestTime | nsDateTime}}</div>
+		</ns-form-group>
+		<ns-form-group title="Работа ученика">
+			<file-attachments settings="$ctrl.workFileSettings"></file-attachments>
+		</ns-form-group>
+		<ns-form-group title="Протокол жюри">
+			<file-attachments settings="$ctrl.juriFileSettings"></file-attachments>
+		</ns-form-group>
+		<ns-panel ng-if="$ctrl.isShowAppealInfo" panel-id="appeal-info" class="default" title="Апелляция" expanded="false">
+			<ns-form-group ng-if="$ctrl.showFinalScore" title="Итоговый балл">
+				<input type="number" disabled track-changes class="form-control" name="finalscore" size="4" maxlength="4" ng-model="$ctrl.appeal.finalScore" ng-min="1" ng-max="9999" ng-pattern="/^\d+$/">
+			</ns-form-group>	
+			<ns-form-group ng-if="($ctrl.isAppeal || $ctrl.isAppealReview || $ctrl.isCompleted) && $ctrl.appeal.appealRequest" title="Аргументы о несогласии к указанным номерам заданий">
+				<textarea readonly class="form-control" rows="3" cols="50" wrap="soft" ng-model="$ctrl.appeal.appealRequest"></textarea>
+			</ns-form-group>
+			<ns-form-group ng-if="$ctrl.appeal && $ctrl.appeal.taskNumbers" title="Номера заданий">
+				<input readonly type="text" id="task-numbers" name="taskNumbers" class="form-control" ng-model="$ctrl.appeal.taskNumbers" maxlength="100">
+			</ns-form-group>		
+			<ns-form-group ng-if="$ctrl.appeal && $ctrl.appeal.appealResponse" title="Информация о рассмотрении">
+				<textarea readonly class="form-control" rows="3" cols="50" wrap="soft" ng-model="$ctrl.appeal.appealResponse"></textarea>
+			</ns-form-group>
+		</ns-panel>
+		<ns-form-group ng-if="$ctrl.isWorkViewed && $ctrl.isStudent && !$ctrl.notValidDate(-6, $ctrl.eventEndTime)">
+			<button class="btn btn-primary" ng-click="$ctrl.applyAppealText()">
+				<span>Подать апелляцию</span>
+			</button>
+		</ns-form-group>	
+		<div class="col-md-12" ng-if="$ctrl.isWorkViewed && $ctrl.isStudent && $ctrl.notValidDate(-6, $ctrl.eventEndTime)">
+			<div class="alert alert-warning" role="alert">
+				Истёк срок подачи апелляции (6 дней)
+			</div>
+		</div>	
+	</ng-form>
+</ns-panel>

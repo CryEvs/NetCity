@@ -1,0 +1,66 @@
+<div ng-model="EditStaffPortfolioFileCtrl">
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<form role="form" name="editForm" class="form form-xs ng-pristine ng-valid ng-scope">
+				<fieldset>
+					<!--Поля формы-->
+					<div class="form-group" ng-class="{'has-error': editForm.fileName.$invalid && (!editForm.fileName.$pristine || editForm.$displayErrors)}">
+						<label for="file-name" class="control-label">{{language.Generic.Common.kName}}</label>
+						<div>
+							<input type="text" id="file-name" name="fileName" class="form-control" ng-model="data.item.name" required maxlength="400" onchange="dataChanged()">
+							<p ng-show="editForm.fileName.$invalid && (!editForm.fileName.$pristine || editForm.$displayErrors)" class="help-block">Название файла - обязательный параметр</p>
+						</div>
+					</div>
+					
+					<div class="form-group" ng-class="{'has-error': editForm.file.$invalid && (!editForm.file.$pristine || editForm.$displayErrors)}">
+						<label for="doc-file" class="control-label">{{language.Generic.Common.kFile}}</label>
+						<div>
+							<div class="input-group">
+								<span class="btn btn-primary btn-file input-group-addon">
+									{{language.Generic.Common.kChooseFile}}
+									<input type="file" id="doc-file" ngf-select ng-model="data.item.content" name="file" class="form-control file-input-filename" required>
+								</span>
+								<input type="text" class="form-control file-original-name" id="original-file-name" name="originalFileName" ng-model="data.item.content.name" readonly>
+							</div>
+							<p ng-show="editForm.file.$invalid && (!editForm.file.$pristine || editForm.$displayErrors)" class="help-block">Файл должен быть загружен</p>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="file-category" class="control-label">Категория файла</label>
+						<div>
+							<select id="file-category" class="form-control" name="fileCategory" ng-model="data.item.fileCategory" ng-options="fileCategory.key as fileCategory.name for fileCategory in refs.fileCategories" onchange="dataChanged()"></select>
+						</div>
+					</div>					
+
+					<div class="form-group">
+						<label for="file-description" class="control-label">{{language.Generic.Curriculum.kDescription}}</label>
+						<div>
+							<textarea id="file-description" class="form-control" ng-model="data.item.description" maxlength="400" onchange="dataChanged()"></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="editForm.$displayErrors=true; save(editForm.$valid);">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

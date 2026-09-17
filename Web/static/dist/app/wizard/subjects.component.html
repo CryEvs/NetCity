@@ -1,0 +1,32 @@
+<wizard-steps step="3"></wizard-steps>
+
+<div class="row ns-cloak">
+	<div class="col-md-9" ng-class="{'col-md-push-3': $ctrl.displaySubjectGroups}">
+		<ns-panel panel-id="subjects" class="info" title="{{$ctrl.language.Generic.Common.kSubjects}}" expanded="true">
+			<subject-list ctrl="$ctrl" ng-if="$ctrl.state.dataReady" readonly="$ctrl.state.readOnly" subjects="$ctrl.data.subjects" show-groups="false" show-subject-fields="true" with-sorting="false" subject-fields="$ctrl.data.subjectFields"></subject-list>
+		</ns-panel>
+	</div>
+
+	<div class="col-md-3 col-md-pull-9" ng-if="$ctrl.displaySubjectGroups">
+		<ns-panel panel-id="subject_groups" class="danger" title="{{$ctrl.language.Generic.SetupSchoolCurPlan.kSubjectGroups}}" expanded="true">
+		
+			<div class="row">
+				<div class="col-md-12">
+					<div class="buttons-panel">
+						<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kEditSubjectGroups}}" type="button" class="btn btn-warning" ng-click="$ctrl.editParentSubjects()">
+							<span class="{{$ctrl.getParentSubjectGlyphicon()}}"></span>
+							<span>{{$ctrl.getParentSubjectButtonText()}}</span>
+						</button>
+
+					</div>
+				</div>
+			</div>
+			<table class="table table-bordered table-sm">
+				<tr ng-repeat="parentSubject in $ctrl.data.parentSubjects">
+					<td>{{parentSubject.name}}</td>
+				</tr>
+			</table>
+
+		</ns-panel>
+	</div>
+</div>

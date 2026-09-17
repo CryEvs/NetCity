@@ -1,0 +1,46 @@
+<div ng-model="EditPortfolioLinkCtrl">
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+
+			<form role="form" name="linkForm" class="form form-xs ng-pristine ng-valid ng-scope">
+				<!--Поля формы-->
+
+					<div class="form-group" ng-class="{'has-error': linkForm.url.$invalid && (!linkForm.url.$pristine || linkForm.$displayErrors)}">
+						<label for="link-url" class="control-label">Url</label>
+						<div>
+							<input type="url" name="url" id="link-url" class="form-control" ng-model="data.link.url" required maxlength="200">
+							<p ng-show="linkForm.url.$invalid && (!linkForm.url.$pristine || linkForm.$displayErrors)" class="help-block">Необходимо указать корректный url</p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="link-description" class="control-label">Описание</label>
+						<div>
+							<textarea id="link-description" class="form-control" ng-model="data.link.description"></textarea>
+						</div>
+					</div>
+			</form>
+
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="save()">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

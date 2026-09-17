@@ -1,0 +1,48 @@
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel extra" ng-if="$ctrl.subjects && $ctrl.subjects.length > 0">
+			<button type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+			</button>
+
+			<button type="button" class="btn btn-info" ng-click="$ctrl.$onInit()">
+				<span class="glyphicon glyphicon-repeat"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="alert alert-danger" role="alert" ng-if="$ctrl.subjects && $ctrl.subjects.length == 0">
+	{{$ctrl.language.Generic.SetupSchoolCalendar.kSubjectsNotDefined}}
+</div>
+
+<div class="alert alert-warning" role="alert" ng-if="$ctrl.subjects && $ctrl.subjects.length > 0">
+	Необходимо задать преподавание только по обязательной части учебного плана!
+</div>
+
+<div class="row ns-cloak" >
+	<div class="col-md-12" ng-if="$ctrl.subjects && $ctrl.subjects.length > 0">
+		<table class="table table-bordered table-xs table-hover">
+			<tr>
+				<th rowspan="2">Предмет</th>
+				<th colspan="{{profile.grades.length}}" ng-repeat="profile in $ctrl.profiles">{{profile.name}}</th>
+			</tr>
+			<tr>
+				<th class="text-center" ng-repeat="profileGrade in $ctrl.profilesGrades">
+					{{profileGrade.grade.name}}
+				</th>
+			</tr>
+			<tr ng-repeat="subject in $ctrl.subjects">
+				<td class="text-left">{{subject.name}}</td>
+				<td ng-repeat="profileGrade in $ctrl.subjectsProfileGrades[subject.id]">
+
+					<input ng-if="$ctrl.profilesGrades[$index].existsLimits" track-changes type="checkbox" name="hours" ng-checked="profileGrade.selected" ng-click="profileGrade.selected = !profileGrade.selected">
+
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+

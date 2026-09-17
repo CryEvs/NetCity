@@ -1,0 +1,71 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subCols": { "start": 4, "end": 47 },
+			"type": "sum"
+		},
+		{
+			"col": 3,
+			"subCols": [48,51,52,53],
+			"type": "ofthem"
+		},
+		{
+			"col": 48,
+			"subCols": [49,50],
+			"type": "include"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 23,
+			"subRows": [1,3,5,8,11,13,15,17,19,21],
+			"type": "sum"
+		},
+		{
+			"row": 24,
+			"subRows": [2,4,6,7,9,10,12,14,16,18,20,22],
+			"type": "sum"
+		},
+		{
+			"row": 24,
+			"subRows": [28,29,30],
+			"type": "ofthem"
+		},
+		{
+			"row": 30,
+			"subRows": [31,32],
+			"type": "include"
+		},
+		{
+			"row": 24,
+			"subRows": [30, 33, 34],
+			"type": "include"
+		},
+		{
+			"row": 24,
+			"subRows": [35],
+			"type": "ofthem"
+		},
+		{
+			"row": 24,
+			"subRows": [25, 26, 27],
+			"type": "eq"
+		},
+		{
+			"row": 35,
+			"subRows": [36],
+			"type": "ofthem"
+		},
+		{
+			"row": 24,
+			"subRows": [37,39],
+			"type": "ofthem"
+		},
+		{
+			"row": 37,
+			"subRows": [38],
+			"type": "ofthem"
+		}
+	]
+}

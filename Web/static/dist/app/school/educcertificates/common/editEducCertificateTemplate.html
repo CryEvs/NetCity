@@ -1,0 +1,82 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{editCtrl.title}}</h4>
+		</div>
+	</div>
+	<div class="modal-body">
+		<form role="form" name="editCtrl.educCertifForm" class="form form-xs">
+			<div class="form-group">
+				<label for="certif-user" class="control-label">ФИО учащегося</label>
+				<div ng-if="editCtrl.searchStudentMode">
+					<ui-select id="certif-user" ng-model="editCtrl.student" theme="bootstrap" on-select="editCtrl.studentSelect($item)">
+						<ui-select-match placeholder="Пожалуйста, введите 1 или более символов">{{$select.selected.name}}</ui-select-match>
+						<ui-select-choices repeat="user as user in editCtrl.searchCtx.students.items"
+										   ui-disable-choice="user.name === 'Совпадений не найдено' || user.name === 'Поиск...'"
+										   refresh="editCtrl.searchCtx.students.search($select.search)">
+							<div ng-bind-html="user.searchName || user.name | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+				<div ng-if="!editCtrl.searchStudentMode">
+					<input type="text" id="student" name="student" class="form-control" ng-model="editCtrl.certif.studentFio" disabled>
+				</div>
+			</div>
+			<div class="form-group" ng-if="editCtrl.editMode">
+				<label for="number" class="control-label">Номер</label>
+				<input type="text" id="number" name="number" class="form-control" ng-model="editCtrl.certif.number" required maxlength="10" disabled>
+			</div>
+			<div class="form-group" ng-class="{'has-error': !editCtrl.certif.startDate}">
+				<label for="start-date" class="control-label">Дата начала действия</label>
+				<div class="input-group date" id="start-date">
+					<input type="text" class="form-control date-input" ng-disabled="editCtrl.editState.editOnlyStatus" name="startdate" ns-date-model="editCtrl.certif.startDate" onchange="dataChanged()">
+					<span class="input-group-btn">
+						<button title="" type="button" class="btn btn-primary" ng-disabled="editCtrl.editState.editOnlyStatus">
+							<span class="glyphicon glyphicon-calendar"></span>
+						</button>
+					</span>
+				</div>
+				<p ng-show="!editCtrl.certif.startDate" class="help-block">Обязательное поле</p>
+			</div>
+			<div class="form-group" ng-class="{'has-error': !editCtrl.endDateStr}">
+				<label for="end-date" class="control-label">Дата окончания действия</label>
+				<div class="input-group date" id="end-date">
+					<input type="text" class="form-control date-input" disabled="disabled" readonly="readonly" name="startdate" ng-model="editCtrl.endDateStr" onchange="dataChanged()">
+					<span class="input-group-btn">
+						<button title="" type="button" class="btn btn-primary" disabled="disabled">
+							<span class="glyphicon glyphicon-calendar"></span>
+						</button>
+					</span>
+				</div>
+				<p ng-show="!editCtrl.endDateStr" class="help-block">Обязательное поле</p>
+			</div>
+			<div class="form-group">
+				<label for="status" class="control-label">Статус</label>
+				<select track-changes id="status" class="form-control" name="status" style="display: inline-block;" ng-change="editCtrl.changeStatusHandler()"
+				 ng-model="editCtrl.certif.status.id" ng-disabled="editCtrl.funcType != 0" ng-options="status.id as status.name for status in editCtrl.addCertifStatuses">
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="category" class="control-label">Категория сертификата</label>
+				<select track-changes ng-options="category.name for category in editCtrl.addCertifCategories track by category.id" id="category" class="form-control" name="status" style="display: inline-block;" ng-change="editCtrl.changeCategoryHandler()" ng-model="editCtrl.selectedCategory"></select>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-if="editCtrl.createMode" ng-click="editCtrl.set(editCtrl.educCertifForm)" ng-disabled="!editCtrl.educCertifForm.$valid || !editCtrl.certif.startDate || !editCtrl.endDateStr || !editCtrl.certif.studentId">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			<span>Создать</span>
+		</button>
+
+		<button ng-if="editCtrl.editMode" class="btn btn-primary" ng-click="editCtrl.set(editCtrl.educCertifForm)" ng-disabled="!editCtrl.educCertifForm.$valid || !editCtrl.certif.startDate || !editCtrl.endDateStr">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-floppy-save"></span>
+			<span>Сохранить</span>
+		</button>
+
+		<button class="btn btn-default" ng-click="editCtrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			Отмена
+		</button>
+	</div>
+</div>

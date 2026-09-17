@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col-md-12">
+		<p class="similar-type-caption">
+			{{$ctrl.group.title}}
+		</p>
+		<ul class="similar-user-list">
+			<li ng-repeat="similar in $ctrl.group.similarUsers">
+				<existing-similar similar="similar" choice="$ctrl.choice" person-id="$ctrl.personId" role-group="$ctrl.roleGroup"></existing-similar>
+			</li>
+		</ul>
+	</div>
+</div>

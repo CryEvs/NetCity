@@ -1,0 +1,54 @@
+﻿// Container that the modal scrolls within
+.modal {
+	//перекрытие штатного (1040) для решения проблемы с перекрытиями при совместном использовании angular-ui диалогов с shower.js
+	z-index: 1050;
+	.modal-dialog {
+		margin: 100px auto;
+		.modal-content{
+			border: 1px solid rgba(20,20,20,.1);
+		}
+		&.modal-full-screen{
+			min-width: 80%;
+		}
+	}
+
+	.modal-body {
+		padding: 8px 15px;
+		.bootstrap-dialog-message .wrap-pre {
+			white-space: pre-wrap;
+		}
+	}
+
+	&.fade .modal-dialog {
+		visibility: visible !important;
+		-moz-transform: scale(0.7,0.7);
+		-ms-transform: scale(0.7,0.7);
+		-o-transform: scale(0.7,0.7);
+		-webkit-transform: scale(0.7,0.7);
+		transform: scale(0.7,0.7);
+	}
+
+	&.in .modal-dialog {
+		opacity: 1;
+		-moz-transform: scale(1,1);
+		-ms-transform: scale(1,1);
+		-o-transform: scale(1,1);
+		-webkit-transform: scale(1,1);
+		transform: scale(1,1);
+	}
+
+	fieldset {
+		legend {
+			color: #06a;
+			letter-spacing: -.04em;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+// Modal background
+.modal-backdrop {
+	height: 100%;
+	background-color: white;
+}
+

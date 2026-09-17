@@ -1,0 +1,46 @@
+<div>
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<form role="form" class="form form-xs">
+
+				<div class="form-group">
+					<label for="curator" class="control-label">Куратор</label>
+					<div>
+						<span ng-show="data.curators.length == 0">
+							Список кураторов пуст
+						</span>
+
+						<ui-select id="curator" ng-if="data.curators.length" ng-model="data.curator" theme="bootstrap">
+							<ui-select-match placeholder="Выберите куратора">{{$select.selected.fio}}</ui-select-match>
+							<ui-select-choices repeat="curator as curator in data.curators | filter: $select.search">
+								<div ng-bind-html="curator.fio | highlight: $select.search"></div>
+							</ui-select-choices>
+						</ui-select>
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary" ng-click="save()" ng-disabled="!data.curator">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-floppy-save"></span>
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

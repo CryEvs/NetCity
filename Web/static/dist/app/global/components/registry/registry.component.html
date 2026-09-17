@@ -1,0 +1,179 @@
+<script language="javascript" src="/vendor/select2/js/select2.full.min.js"></script>
+<script language="javascript" src="/vendor/select2/js/i18n/ru.js"></script>
+
+<style>
+	input[type="search"]::-webkit-search-cancel-button {
+		-webkit-appearance: searchfield-cancel-button;
+	}
+</style>
+
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="buttons-filters-panel form-horizontal single-row" ng-class="ctrl.registry.registryStyles.filtersForm">
+			<div class="row">
+				<div class="buttons-panel" ng-if="ctrl.registry.export || ctrl.registry.linkButtons.length">
+					<div class="buttons-panel-right">
+						<button ng-repeat="btn in ctrl.registry.linkButtons" title="{{btn.title}}" ng-if="!btn.hide && !btn.isHide()" type="button" class="btn btn-default" ng-click="btn.action()" ng-disabled="ctrl.state.loading || ctrl.state.exporting || ctrl.state.initing">
+							<span ng-if="btn.icon" class="{{btn.icon}}"></span>
+							<span>{{btn.title}}</span>
+						</button>
+						<!-- Кнопка Экспорта -->
+						<button title="{{ctrl.btnExport.title}}" type="button" class="btn btn-default" ng-click="ctrl.btnExport.action()" ng-hide="ctrl.btnExport.hide || ctrl.btnExport.hide()" ng-disabled="ctrl.state.loading || ctrl.state.exporting || ctrl.state.initing || ctrl.state.emptyFilter">
+							<span class="{{ctrl.btnExport.icon}}"></span>
+							<span>{{ctrl.btnExport.title}}</span>
+						</button>
+					</div>
+				</div>
+				<filter-panel class="filters-panel col-md-12" ng-if="ctrl.filterInfo.filterPanelSettings" fp="ctrl.filterInfo.filterPanel" fp-settings="ctrl.filterInfo.filterPanelSettings"></filter-panel>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="filters-panel form-horizontal col-md-12 filters-panel-compact" ng-class="ctrl.registry.registryStyles.filtersForm" style="margin-top: 0">
+		<div class="form-group" ng-if="ctrl.data.search.fields && ctrl.data.search.fields.length">
+			<label class="control-label" ng-class="ctrl.registry.filterPanelStyles.label">{{ctrl.language.Generic.Buttons.kSearch}}</label>
+			<div ng-class="ctrl.registry.filterPanelStyles.control">
+				<div class="input-group">
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-default btn-sm" ng-class="{'dropdown-toggle': ctrl.data.search.fields.length > 1}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ctrl.data.search.fieldTitle}} <span class="caret" ng-if="ctrl.data.search.fields.length > 1"></span></button>
+
+						<ul class="dropdown-menu" ng-if="ctrl.data.search.fields.length > 1">
+							<li ng-repeat="field in ctrl.data.search.fields"><a href="#" ng-click="ctrl.setSearchField(field)">{{field.title}}</a></li>
+						</ul>
+					</div>
+					<input type="search" class="form-control" aria-label="..." ng-model="ctrl.data.search.text" >
+				</div>
+
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<label class="control-label" ng-class="ctrl.registry.filterPanelStyles.label">{{ctrl.language.Generic.FilterUsers.kNumOfRecords}}</label>
+			<div ng-class="ctrl.registry.filterPanelStyles.control">
+				<input type="number" class="form-control" name="pagesize" size="4" ng-model="ctrl.paging.currentPageSize">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 buttons-panel extra">
+		
+		<div class="btn-group">
+			<button id="load-btn" type="button" class="btn btn-primary btn-sm" ng-click="ctrl.clearLoad()" ng-disabled="ctrl.state.loading || ctrl.state.exporting || ctrl.state.initing || ctrl.state.emptyFilter">
+				<span class="glyphicon glyphicon-search"></span>
+				<span>{{ctrl.language.Generic.Buttons.kLoad}}</span>
+			</button>
+			<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-disabled="ctrl.state.loading || ctrl.state.exporting || ctrl.state.initing || ctrl.state.emptyFilter">
+				<span class="caret"></span> 
+			</button> 
+			<ul class="dropdown-menu">
+				<li><a href="#" ng-click="ctrl.settings()">{{ctrl.language.Generic.SchoolSettings.kTitleSettings}}</a></li> 
+			</ul>
+		</div>
+
+		<div style="display: inline-block; float:none" class="buttons-panel-left">
+
+			<button ng-repeat="btn in ctrl.registry.buttons" title="{{btn.title}}" ng-if="!btn.hide && !btn.isHide()" type="button" class="btn {{btn.style}} btn-sm" ng-click="btn.action()" ng-disabled="!btn.isEnabled()">
+				<span ng-if="btn.icon" class="{{btn.icon}}"></span>
+				<span>{{btn.title}}</span>
+			</button>
+
+			<div class="btn-group" ng-repeat="btnGroup in ctrl.registry.buttonGroups" ng-if="!btnGroup.hide"> 
+				<button type="button" class="btn btn-sm btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<span ng-class="btnGroup.icon"></span> {{btnGroup.title}} <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li ng-repeat="btnG in btnGroup.buttons" ng-if="!btnG.hide && !btnG.isHide()">
+						<a href="javascript:void(0)" ng-click="btnG.action()" title="{{btnG.title}}">{{btnG.title}}</a>
+					</li>
+				</ul>
+			</div>
+
+			<button ng-repeat="cmd in ctrl.data.registry.commands" title="{{cmd.title}}" type="button" class="btn btn-sm" ng-if="!cmd.hide"
+					ng-class="cmd.id === 'del' ? 'btn-danger' : 'btn-default'" ng-click="ctrl.execCmd(cmd)" ng-disabled="!cmd.isEnabled()">
+				<span ng-if="cmd.id === 'del'" class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{cmd.title}}</span>
+			</button>
+
+		</div>
+	</div>
+</div>
+
+<div class="row" ng-if="ctrl.registry.extensions.postButtonsTpl">
+	<div class="col-md-12">
+		<div ng-include="ctrl.registry.extensions.postButtonsTpl"></div>
+	</div>
+</div>
+
+<content-pre-loader ng-show="ctrl.state.loading"></content-pre-loader>
+
+<div class="row" ng-if="!ctrl.data.error && ctrl.state.dataReady && !ctrl.state.emptyData && ctrl.state.withMultiSelection && ctrl.registry.showSelectAll">
+	<div class="col-md-10" style="width: 100%;">
+		<div class="alert alert-info" role="alert" style="width: 100%; padding: 8px;">
+			<a href="#" ng-click="ctrl.showSelectedItems()"><span ng-bind="ctrl.registry.selectedRecordsTitle"></span> <span>(</span><span ng-bind="ctrl.selection.items.length"></span><span>)</span></a>
+			<a href="#" ng-click="ctrl.selectAllRecords()" style="text-align: right;float: right;">
+				<span ng-bind="ctrl.selectAllRecordsTitles()"></span>
+				<span>(</span>
+				<span ng-if="ctrl.paging" ng-bind="ctrl.paging.totalRows"></span>
+				<span>)</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+<ul ng-show="ctrl.state.dataReady && !ctrl.state.emptyData && ctrl.paging.totalRows > ctrl.paging.pageSize" uib-pagination total-items="ctrl.paging.totalRows" ng-model="ctrl.paging.page" items-per-page="ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="ctrl.pageChange()"></ul>
+
+<div class="row">
+	<div class="col-md-10">
+		<div class="alert alert-danger" ng-show="ctrl.data.error && !state.loading" role="alert">{{ctrl.data.error}}</div>
+		<div class="alert alert-info" ng-show="!ctrl.data.error && !ctrl.state.dataReady && !ctrl.state.loading && !ctrl.state.emptyFilter" role="alert">{{ctrl.language.Generic.Common.kPressLoadButtonMessage}}</div>
+		<div class="alert alert-info" ng-show="!ctrl.data.error && ctrl.state.dataReady && ctrl.state.emptyData && !ctrl.state.emptyFilter" role="alert"><span ng-if="!ctrl.registry.emptyDataMessage">{{ctrl.language.Generic.Common.kNoDataForFilter}}</span><span ng-if="ctrl.registry.emptyDataMessage">{{ctrl.registry.emptyDataMessage}}</span></div>
+		<div class="alert alert-danger" ng-show="ctrl.state.emptyFilter" role="alert">{{ctrl.language.Generic.Movement.kMsgNoChoice}}</div>
+	</div>
+</div>
+
+<div class="row" ng-if="!ctrl.data.error && ctrl.state.dataReady && !ctrl.state.emptyData">
+	<div class="col-md-12">
+		<div class="alert alert-warning" ng-repeat="message in ctrl.data.registryData.messages" role="alert">{{message}}</div>
+		<table class="table" ng-class="[{'table-selectable': ctrl.state.selectable}, ctrl.registry.registryStyles.table]">
+			<tr>
+				<th ng-if="ctrl.state.withMultiSelection && ctrl.registry.showSelectAll">
+					<input type="checkbox" ng-click="ctrl.selectAll($event)">
+				</th>
+				<th>
+					№
+					п/п
+				</th>
+				<th ng-repeat="field in ctrl.data.displayFields">
+					<span ng-if="field.search" class="glyphicon glyphicon-search" style="cursor: pointer; font-size: 10px; float: left; top: 5px; padding-right: 5px;" ng-click="ctrl.setSearch(field)" title="Выполнить поиск"></span>
+					<a ng-if="field.sortable" ng-click="ctrl.setSortOrder(field)" href="javascript:void(0)" title="{{ctrl.language.Generic.Common.kChangeSortOrder}}">
+						<span>{{field.title}}</span>
+						<span class="glyphicon" ng-class="{'glyphicon-arrow-up': field.sortOrder == 'asc', 'glyphicon-arrow-down': field.sortOrder == 'desc'}" style="font-size: 10px"></span>
+					</a>
+					<span ng-if="!field.sortable">{{field.title}}</span>
+				</th>
+			</tr>
+			<tr ng-repeat-start="row in ctrl.data.registryData.rows" ng-class="ctrl.initRowClasses(row)" ng-click="ctrl.clickRow($event, row)">
+				<td rowspan="{{ctrl.getRowArrayLength(row)}}" style="text-align: center;" ng-if="ctrl.state.withMultiSelection && ctrl.registry.showSelectAll">
+					<input type="checkbox" ng-checked="ctrl.selection.isSelected(row)" ng-click="ctrl.clickCheckbox($event, row)">
+				</td>
+				<td rowspan="{{ctrl.getRowArrayLength(row)}}">{{row.rownum}}</td>
+				<td rowspan="{{ctrl.getRowArrayLength(row, field)}}" ng-repeat="field in ctrl.data.displayFields">
+					<registry-field row="row" filter-info="filterInfo.filterPanel" field="field"></registry-field>
+				</td>
+			</tr>
+			<tr ng-repeat-end="" ng-if="ctrl.getRowArrayLength(row) > 1" ng-repeat="arr in ctrl.getRowArray(row)">
+				<td ng-repeat="field in ctrl.getGroupedFields()">
+					<registry-field row="arr" filter-info="filterInfo.filterPanel" field="field"></registry-field>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<ul ng-show="ctrl.state.dataReady && !ctrl.state.emptyData && ctrl.paging.totalRows > ctrl.paging.pageSize" uib-pagination total-items="ctrl.paging.totalRows" ng-model="ctrl.paging.page" items-per-page="ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="ctrl.pageChange()"></ul>

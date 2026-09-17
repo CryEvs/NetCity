@@ -1,0 +1,38 @@
+<div ng-if="!ready" class="alert alert-info" role="alert">{{data.language.Generic.Curriculum.kPleaseWait}}</div>
+<div ng-if="state.emptyData" class="alert alert-info" role="alert">Нет информации по аттестации</div>
+
+<table ng-if="ready && !state.emptyData" class="table table-thin table-bright-striped">
+	<tr>
+		<th rowspan="2">{{data.language.Generic.Common.AttestRequestNumber}}</th>
+		<th rowspan="2">{{data.language.Generic.Common.AttestRequestRegNumber}}</th>
+		<th rowspan="2">{{data.language.Generic.Common.AttestRequestDate}}</th>
+		<th rowspan="2">{{data.language.Generic.Common.AttestRequestApplicantPost}}</th>
+		<th rowspan="2">{{data.language.Generic.Common.CommissionDate}}</th>
+		<th colspan="2">Дата действия квалификационной категории</th>
+		<th rowspan="2">{{data.language.Generic.Common.AttestRequestStatus}}</th>
+		<th rowspan="2">{{data.language.Generic.Common.AttestRequestDecision}}</th>
+	</tr>
+	
+	<tr>
+		<th>Дата начала</th>
+		<th>Дата окончания</th>
+	</tr>
+
+	<tr ng-repeat="attest in data.attestations">
+		<td> <a href="" ng-click="openStaffAttestModuleEditRequest(attest.attestId);">{{attest.attestId}}</a></td>
+		<td>{{attest.number}}</td>
+		<td>{{dateOnly2strF(attest.requestDate)}}</td>
+		<td>{{attest.position}}</td>
+		<td>{{dateOnly2strF(attest.commissionDate)}}</td>
+		<td>{{dateOnly2strF(attest.startDate)}}</td>
+		<td>{{dateOnly2strF(attest.endDate)}}</td>
+		<td>{{attest.status}}</td>
+		<td>{{attest.decision}}</td>
+	</tr>
+</table>
+
+
+<button ng-if="ready" class="btn btn-add btn-info" ng-click="openStaffAttestModuleNewRequest();">
+	<span class="glyphicon glyphicon-list-alt"></span>
+	{{data.language.Generic.Buttons.kAttestApply}}
+</button>

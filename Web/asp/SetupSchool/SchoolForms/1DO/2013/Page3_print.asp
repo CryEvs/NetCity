@@ -1,0 +1,20 @@
+<!-- #INCLUDE VIRTUAL=/asp/headerprint.asp -->
+<!-- #INCLUDE VIRTUAL=/asp/scripts/populate.asp -->
+
+<% ' © 2007-2012 IRTech. All rights reserved.
+Dim print
+const kFormPageNum = 3
+Sub ReadState()
+	readonly = TRUE
+End Sub
+%>
+<!-- #INCLUDE VIRTUAL=/asp/Setupschool/SchoolForms/SchoolInfo_inc.asp -->
+<%
+Sub onDrawPage()
+	print = TRUE
+	Call LoadShoolInfoEx( 121, kFormPageNum, -1)
+%>
+<!-- #INCLUDE FILE="Sections/Section2_inc.asp" -->
+<%
+End Sub
+%>

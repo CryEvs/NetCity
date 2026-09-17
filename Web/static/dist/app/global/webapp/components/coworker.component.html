@@ -1,0 +1,34 @@
+<ns-modal controller = "$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready">
+		<span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+	</span>
+
+	<div ng-if="$ctrl.ready">
+		<div class="alert alert-warning" role="alert" ng-bind-html="$ctrl.getWarningMessage()"></div>
+
+		<table class="table table-bordered">
+			<tr>
+				<td class="text-left">
+					<b>{{$ctrl.language.Generic.Login.kLoginTimeInto}} <i>{{$ctrl.context.productName}}</i>:</b>
+				</td>
+				<td class="text-left">{{$ctrl.coWorker.loginTimeInto}}</td>
+			</tr>
+			<tr ng-if="$ctrl.coWorker.LogoutTimeFrom">
+				<td class="text-left">
+					<b>{{$ctrl.language.Generic.Login.kLogoutTimeFrom}} <i>{{$ctrl.context.productName}}</i>:</b>
+				</td>
+				<td class="text-left">{{$ctrl.coWorker.logoutTimeFrom}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">
+					<b>{{$ctrl.language.Generic.Login.kIPAddress}}:</b>
+				</td>
+				<td class="text-left">{{$ctrl.coWorker.ipAddress}}</td>
+			</tr>
+		</table>
+
+		<div class="alert alert-warning" role="alert">
+			{{$ctrl.language.Generic.Login.kUsersCantUseOneLogin1}} <i>{{$ctrl.context.productName}}</i> {{$ctrl.language.Generic.Login.kUsersCantUseOneLogin2}}<br/><br/> {{$ctrl.language.Generic.Login.kSomeoneUsedYourLogin}}
+		</div>
+	</div>
+</ns-modal>

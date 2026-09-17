@@ -1,0 +1,268 @@
+<html>
+<head>
+   <title>Отчёт по ведению электронных журналов</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Отчёты, отчёт по ведению электронных журналов,Электронный классный журнал, контроль заполнения по школе,Классный журнал, контроль заполнения по школе">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?rp_journalfilling.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Отчёт по ведению электронных журналов
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Этот отчёт позволяет контролировать заполненность электронного журнала (включая текущие и итоговые отметки, посещаемость, темы уроков, домашние задания), а также активность родителей, учащихся и сотрудников в данной образовательной организации.
+<br>
+
+<br>
+Отчёт позволяет вывести информацию за произвольный интервал времени.
+<br>
+
+<br>
+Чтобы выяснить, в каких классах и по каким предметам существуют пробелы в заполнении электронного журнала, используйте "<a href=javaScript:parent.reDisplay('7.1.23',1,0)>Сводный отчёт по заполняемости электронных журналов</a>".
+<br>
+
+<br>
+<img src="ej_01.png" width="787" height="332" border="0" alt="ej_01">
+<br>
+<img src="ej_02.png" width="650" height="195" border="0" alt="ej_02">
+<br>
+
+<br>
+Отчёт выводит суммарную информацию по школе по следующим правилам:
+<br>
+
+<br>
+<table border="1" cellpadding="1" cellspacing="0"><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>Номер графы
+&nbsp;<br>
+</b></span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>Название графы</b>
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>Содержимое графы или формула для расчёта</b>
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 1
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">№ п/п
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Порядковый номер ОО 
+<br>
+(в отчёте для Управления образования)
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 2
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">ОО
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Краткое название ОО
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 3
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кол-во учителей
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество сотрудников школы, имеющих роль "Учитель" и статус "Работающие" в момент получения отчёта (т.е. <a href=javaScript:parent.reDisplay('2.2.6',1,0)>уволенные учителя</a> не учитываются)
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 4
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кол-во учащихся
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество учащихся, зачисленных в классы на "Дату начала", указанную для отчёта, плюс количество учащихся, зачисленных в промежутке между "Датой начала" и "Датой окончания". 
+<br>
+Выбывшие не вычитаются из общего количества, т.к. предназначение данной графы - вывести <u>количество учащихся, имеющих сведения в графах данного отчёта</u> (итоговые и текущие оценки, пропуски и др.). <a href=javaScript:parent.reDisplay('2.2.15',1,0)>Прикреплённые учащиеся</a> не учитываются
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 5
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кол-во классов
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество классов в текущем учебном году
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 6
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кол-во родителей
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество родителей, которые связаны с учащимися из п.4
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 7
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">% учащихся, у которых введён хотя бы один родитель
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество учащихся из п.4, к которым прикреплён хотя бы один родитель, разделённое на общее количество учащихся из п.4 и умноженное на 100
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 8
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кол-во КТП
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество корневых элементов тематического планирования в текущем учебном году, имеющих хотя бы один урок
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 9
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кол-во уроков в недельном расписании
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество занятий в расписании за неделю. Неделя для подсчёта выбирается самая поздняя из интервала между "Датой начала" и "Датой окончания", для которой составлено расписание <span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>*</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+</span></span></span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 10
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">% выставленных итоговых оценок
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Суммарное количество итоговых оценок, выставленных за все учебные периоды, которое разделено на суммарное количество "потенциальных" итоговых оценок за все учебные периоды  и умножено на 100. <span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>**</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+В подсчёт входят те учебные периоды, окончания которых находятся в интервале между "Датой начала" и "Датой окончания", заданными в параметрах отчёта.
+<br>
+Если дата окончания <u>последнего</u> учебного периода также входит в интервал между "Датой начала" и "Датой окончания", то в подсчёт включаются и годовые оценки (реально выставленные и "потенциальные").
+<br>
+В этой графе учитываются только оценки за учебные периоды и из графы "Год", а оценки из граф "Экзамен" и "Итог" не учитываются.
+<br>
+</span></span></span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 11
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество оценок
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Суммарное количество текущих оценок, выставленных с "Даты начала периода" по "Дату окончания периода" (в качестве даты оценки используется дата соответствующего занятия в расписании). "Точки", т.е. признак обязательности оценки, - не входят в подсчёт <span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>**</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+</span></span></span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 12
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество пропусков
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Суммарное количество пропусков, выставленных с "Даты начала периода" по "Дату окончания периода". Учитываются все виды пропусков, кроме опозданий, т.е. УП, НП, ОТ
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 13
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">% заполненных тем уроков за проведённый период
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">% занятий в расписании между "Датой начала периода" и "Датой окончания периода", которые в классном журнале связаны с уроками из КТП
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 14
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">% заполненного домашнего задания
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">% занятий в расписании между "Датой начала периода" и "Датой окончания периода", для которых в классном журнале задано домашнее задание <span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>**</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+</span></span></span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 15
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кол-во внешних обращений к системе родителей
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество входов родителей с "Даты начала периода" по "Дату окончания периода"
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> 16
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кол-во внешних обращений к системе учащихся
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество входов учащихся с "Даты начала периода" по "Дату окончания периода"
+<br>
+</span></td></tr><tr><td align="left" valign="top" width="48">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">17
+<br>
+</span></td><td align="left" valign="top" width="202">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кол-во внешних обращений к системе сотрудников
+<br>
+</span></td><td align="left" valign="top" width="547">
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Количество входов сотрудников с "Даты начала периода" по "Дату окончания периода"
+<br>
+</span></td></tr></table>
+<br>
+<span style="font-family:Helvetica,Arial; font-size:8pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:8pt; color:#FF0000"><b>
+<br>
+</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>*</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">  - в данном случае считается, что для недели составлено расписание, если есть занятия в понедельник и субботу. Для этой найденной недели считается количество  уроков в расписании с понедельника по воскресенье. Найденная неделя указывается в скобках в соответствующей графе заголовка таблицы.
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>**</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> - игнорируются первые классы (т.к. в первых классах не ставятся оценки и не назначаются домашние задания).
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Почему графа "% выставленных итоговых оценок" показывает меньше 100%, хотя абсолютно все ученики имеют итоговые оценки?
+<br>
+</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Это может произойти в случае, если есть ученики, выбывшие из школы до "Даты окончания периода" и, соответственно, не имеющие итоговой отметки.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Подсчёт графы "% выставленных итоговых оценок" при системе "не оценивается"
+<br>
+</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Ученики, которым выставлена отметка <a href=javaScript:parent.reDisplay('6.4.3',1,0)>"не оценивается"</a>, не игнорируются в этой графе, а учитываются как имеющие итоговую оценку, т.е. включаются и в числитель, и в знаменатель формулы.
+<br>
+
+<br>
+</span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('7.1.21',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('7.1.23',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

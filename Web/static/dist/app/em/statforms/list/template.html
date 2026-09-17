@@ -1,0 +1,60 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-filters-panel form-horizontal single-row">
+			<div class="row">
+				<div class="buttons-panel">
+					<div class="buttons-panel-right">
+						<button title="{{language.Generic.EMReportNames.kReportExportStatForms}}" type="button" class="btn btn-default" ng-click="goExportStatForms()">
+							<span>{{language.Generic.EMReportNames.kReportExportStatForms}}</span>
+						</button>
+						<button title="{{language.Generic.EMReportNames.kFillingControl}}" type="button" class="btn btn-default" ng-click="goFillingControl()">
+							<span>{{language.Generic.EMReportNames.kFillingControl}}</span>
+						</button>
+					</div>
+				</div>
+				<div class="filters-panel col-md-12 filters-panel-compact"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<table class="NullTable" style="width:100%;">
+			<tr>
+				<td valign="top">	
+					<div class="form-group">
+						<label class="control-label col-md-4 col-lg-3 col-sm-4">Учебный год</label>
+						<div class="col-md-8 col-lg-5 col-sm-8">
+							<select name="year" class="form-control" ng-model="data.year.id" ng-options="year.id as year.name for year in data.years" ng-change="onYearChange()"></select>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table cellpadding="1">
+						<tr ng-repeat="form in data.forms">
+							<td nowrap="" style="padding: 1px;">
+								<a href="javascript:void(0)" ng-click="goToLink(form.link)">{{ form.displayName }}</a>
+							</td>
+						</tr>
+
+						<!-- ссылки на формы 1-ГУ и 1-МУ -->
+						<tr>
+							<td nowrap="" style="padding: 1px;">
+								<a href="/asp/EDUC_MANAGER/Reports/StatForms/1-GU.xls" target="_blank">{{ language.Generic.EMReportNames.kForm1GU }}</a>
+							</td>
+						</tr>
+						<tr>
+							<td nowrap="" style="padding: 1px;">
+								<a href="/asp/EDUC_MANAGER/Reports/StatForms/1-MU.xls" target="_blank">{{ language.Generic.EMReportNames.kForm1MU }}</a>
+							</td>
+						</tr>
+
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

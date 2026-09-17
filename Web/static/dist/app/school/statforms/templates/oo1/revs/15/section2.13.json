@@ -1,0 +1,41 @@
+{
+	"sumCols": [
+		{
+			"col": 4,
+			"subCols": { "start": 5, "end": 10 },
+			"type": "sum"
+		},
+		{
+			"col": 4,
+			"subCols": [11],
+			"type": "include"
+		},
+		{
+			"col": 4,
+			"subCols": [12],
+			"type": "include"
+		},
+		{
+			"col": 4,
+			"subCols": [13, 16, 17],
+			"type": "include"
+		},
+		{
+			"col": 13,
+			"subCols": [14, 15],
+			"type": "include"
+		},
+		{
+			"col": 4,
+			"subCols": [18,19,20],
+			"type": "eq"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 1,
+			"subRows": {"start": 2, "end": 60},
+			"type": "sum"
+		}
+	]
+}

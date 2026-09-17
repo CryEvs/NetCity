@@ -1,0 +1,5 @@
+2025-02-27T13:18:26.6845324+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2025-02-27T13:18:26.9375468+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2025-02-27T13:18:26.9385469+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2025-02-27T13:18:26.9385469+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Program Files\NetCity2\Services\IRTech.NetCity.Mail.Api\
+2025-02-27T13:19:30.9130460+09:00 [Microsoft.Hosting.Lifetime] [INF] Application is shutting down...

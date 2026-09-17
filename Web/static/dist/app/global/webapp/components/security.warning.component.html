@@ -1,0 +1,52 @@
+<div class="row">
+	<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+		<div class="row">
+			<div class="col-md-12">		
+				<div class="alert alert-warning" role="alert">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">		
+				<table class="table table-bordered">
+					<tr>
+						<th class="text-left"><b>№</b></th>
+						<th class="text-left">
+							<b>{{$ctrl.language.Generic.Login.kLoginTimeInto}} <i>Сетевой город. Образование</i></b>
+						</th>
+						<th class="text-left">
+							<b>{{$ctrl.language.Generic.Login.kIPAddress}}</b>
+						</th>
+					</tr>
+					<tr ng-repeat="coWorker in $ctrl.coWorkers">
+						<td>{{$index + 1}}</td>
+						<td>{{coWorker.loginTime}}</td>
+						<td>{{coWorker.userAddr}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">		
+				<div class="alert alert-warning" role="alert">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 text-center">	
+				<div class="row">
+					<div class="col-md-12">
+						<div class="buttons-panel">
+							<button title="Продолжить" type="button" class="btn btn-default" ng-click="$ctrl.doContinue()">
+								<span class="glyphicon glyphicon-new-window"></span> <span>Продолжить</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

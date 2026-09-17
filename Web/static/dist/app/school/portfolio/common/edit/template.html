@@ -1,0 +1,94 @@
+	   
+<div class="col-md-12 ns-cloak">
+	<form class="form-horizontal">
+		
+		<div class="form-group" ng-if="project">
+			<label class="control-label col-md-4 col-lg-2 col-sm-4">Портфолио</label>
+			<div class="col-md-8 col-lg-3 col-sm-8">
+				<input type="text" class="form-control" value="{{data.portfolio.name}}" disabled="disabled"/>
+			</div>
+			<div class="col-md-3 col-lg-4 col-sm-3" ng-show="state.fullAccess">
+				<button ng-click="rename()">Переименовать</button>
+				<button ng-click="leaders()">Руководители</button>
+				<button ng-click="members()">Участники</button>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-lg-2 col-sm-3">Раздел</label>
+			<div class="col-md-5 col-lg-3 col-sm-6">
+				<select name="group" class="form-control" ng-model="data.group" ng-options="group as group.treeItemName for group in data.groups"></select>
+			</div>
+			<div class="col-md-3 col-lg-4 col-sm-3" ng-show="state.fullAccess">
+				<button type="button" title="Добавить" class="round icon-plus" ng-click="addGroup()"></button>
+				<button ng-show="data.group" type="button" title="Редактировать" class="round icon-pencil" ng-click="editGroup(data.group)"></button>
+				<button ng-show="data.group" type="button" title="Удалить" class="round icon-trash" ng-click="removeGroup(data.group)"></button>
+				<button type="button" title="Права на просмотр" class="round icon-user pull-right" ng-click="editRights()" ng-if="personal"></button>
+			</div>
+		</div>
+	</form>
+
+</div>
+
+<div class="col-md-9 ns-cloak" ng-hide="data.portfolio.groups.length">
+	<div class="alert alert-info" role="alert">В портфолио не создано ни одного раздела</div>
+</div>
+
+<div class="col-md-6 ns-cloak" ng-show="data.group">		
+	<div class="block-heading">
+		<h4>Разделы</h4>
+		<button type="button" title="Добавить" class="round icon-plus" ng-click="addGroup(data.group)" ng-hide="state.groupDataReadonly"></button>
+	</div>
+	<div class="block-data">
+		<p class="fggray" ng-show="!data.group.groups.length">Нет вложенных разделов</p>
+
+		<div class="block-item" ng-repeat="group in data.group.groups">
+			{{group.name}}
+			<div class="ops" ng-hide="state.groupDataReadonly">
+				<button class="icon-pencil" ng-click="editGroup(group)"></button>
+				<button class="icon-trash" ng-click="removeGroup(group)"></button>
+			</div>
+		</div>
+	</div>
+
+	<div class="block-heading">
+		<h4>Ссылки</h4>
+		<button type="button" title="Добавить" class="round icon-plus" ng-click="addLink()" ng-hide="state.groupDataReadonly"></button>
+	</div> 		
+	<div class="block-data">
+		<p class="fggray" ng-show="!data.group.links.length">Данные не заполнены</p>
+
+		<div class="block-item" ng-repeat="link in data.group.links">
+			<a href="{{link.url}}" target="_blank">{{link.url}}</a>
+			<div class="ops" ng-hide="state.groupDataReadonly">
+				<button class="icon-pencil" ng-click="editLink(link)"></button>
+				<button class="icon-trash" ng-click="removeLink(link)"></button>
+			</div>
+			<span class="item-descr">{{link.description}}</span>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-6 ns-cloak" ng-show="data.group">
+	<div class="block-heading">
+		<h4>Документы</h4>
+		<button type="button" title="Добавить" class="round icon-plus" ng-click="addDoc()" ng-hide="state.groupDataReadonly"></button>
+	</div>	  
+	<div class="block-data">
+		<p class="fggray" ng-show="!data.group.docs.length">Данные не заполнены</p>
+
+		<div class="block-item" ng-repeat="doc in data.group.docs">
+			<a class="mdi mdi-file" href="#" ng-click="openDoc(doc.downloadUrl, doc.name)">
+				<span>
+					<div class="name_file">{{doc.name}}</div>
+				</span>
+			</a>
+			<div class="ops" ng-hide="state.groupDataReadonly">
+				<button class="icon-pencil" ng-click="editDoc(doc)"></button>
+				<button class="icon-trash" ng-click="removeDoc(doc)"></button>
+			</div>
+			<span class="item-descr">{{doc.description}}</span>
+		</div>
+	</div>
+</div>
+

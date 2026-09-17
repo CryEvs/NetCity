@@ -1,0 +1,4 @@
+22/06/2018 07-00-14 The process cannot access the file 'C:\Program Files\NetCity2\ns.config' because it is being used by another process.
+22/06/2018 07-00-17 The connection was not closed. The connection's current state is connecting.
+22/06/2018 07-29-06 The process cannot access the file 'C:\Program Files\NetCity2\ns.config' because it is being used by another process.
+22/06/2018 07-29-08 The connection was not closed. The connection's current state is connecting.

@@ -1,0 +1,47 @@
+{{#each identityDocuments}}
+<div class="form-group">
+	<div class="visible-xs-block visible-sm-block text-center">
+		<label class="control-label col-md-3 col-lg-3">
+			{{docTypeInfo}}
+		</label>
+		{{#unless ../readOnlyAll}}
+		<div>
+			<button title="{{../../language.Generic.Buttons.kEdit}}" type="button" name="edit-button" class="btn btn-sm btn-warning" data-docId="{{id}}">
+				<span class="glyphicon glyphicon-pencil"></span>
+			</button>
+			<button title="{{../../language.Generic.Buttons.kRemove}}" type="button" name="remove-button" class="btn btn-sm btn-danger" data-docId="{{id}}">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+			</button>
+		</div>
+		{{/unless}}
+	</div>
+	<div class="control-label hidden-xs hidden-sm col-md-3 col-lg-3">
+		<label>{{docTypeInfo}}</label>
+		{{#unless ../readOnlyAll}}
+		<div>
+			<button title="{{../../language.Generic.Buttons.kEdit}}" type="button" name="edit-button" class="btn btn-sm btn-warning" data-docId="{{id}}">
+				<span class="glyphicon glyphicon-pencil"></span>
+			</button>
+			<button title="{{../../language.Generic.Buttons.kRemove}}" type="button" name="remove-button" class="btn btn-sm btn-danger" data-docId="{{id}}">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+			</button>
+		</div>
+		{{/unless}}
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<div class="row">
+			<div id="identity-document-{{id}}">
+				{{> identityDocumentInfoTmpl language=../language readonly=../readonly readOnlyAll=../readOnlyAll}}
+			</div>
+		</div>
+	</div>
+</div>
+{{/each}}
+{{#unless readOnlyAll}}
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<button title="{{../language.Generic.Buttons.kAdd}}" name="add-button" type="button" class="btn btn-sm btn-info">
+		<span class="glyphicon glyphicon-plus-sign"></span>
+		<span> {{{../language.Generic.Buttons.kAdd}}}</span>
+	</button>
+</div>
+{{/unless}}

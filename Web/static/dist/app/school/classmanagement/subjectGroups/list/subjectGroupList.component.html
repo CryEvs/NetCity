@@ -1,0 +1,178 @@
+<style>
+	.without-students {
+		background-color: lightgray !important;
+	}
+
+	.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{
+		margin-right: 0px;
+		transform: translateX(-5px);
+	}
+	span.select2 .select2-selection .select2-selection__rendered{
+		margin: 13px 0;
+		margin: 10px 0;
+		position: relative;
+		z-index: 1;
+	}
+	span.select2 .select2-selection.select2-selection--multiple {
+		position: relative;
+	}
+	.select2-container--default .select2-search--inline .select2-search__field{
+		width: 100% !important;
+		height: 100% !important;
+		margin-top: 0 !important;
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: transparent;
+	}
+
+
+
+
+</style>
+
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+		<div class="buttons-panel">
+			<div class="buttons-panel-right">
+				<button title="Для печати" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+					<span class="glyphicon glyphicon-print"></span>
+					<span>На печать</span>
+				</button>
+				<button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="$ctrl.export()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>Экспорт в Excel</span>
+				</button>
+			</div>
+		</div>
+		<filter-panel class="filters-panel filters-panel-compact" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings">
+		</filter-panel>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel extra">
+			<div class="buttons-panel-left" ng-if="!$ctrl.readOnly">
+				<button title="Сохранить изменения" type="button" class="btn btn-primary" ng-click="$ctrl.save()" ng-if="!$ctrl.noSubjectGroups">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+
+				<button title="Восстановить значения" type="button" class="btn btn-warning" ng-click="$ctrl.reset()" ng-if="!$ctrl.noSubjectGroups">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+
+				<button title="Добавить класс" type="button" class="btn btn-info" ng-if="$ctrl.classView || $ctrl.extraCurricular" ng-click="$ctrl.add()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button title="{{$ctrl.language.Generic.Buttons.kAdd}} {{$ctrl.language.Generic.ClassManagement.kModularSubjectGroup.toLowerCase()}}" type="button" class="btn btn-info" ng-if="$ctrl.withModular()" ng-click="$ctrl.addModular()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}} {{$ctrl.language.Generic.ClassManagement.kModularSubjectGroup.toLowerCase()}}</span>
+				</button>
+
+				<button title="Удалить класс" type="button" class="btn btn-danger" ng-click="$ctrl.delete()" ng-if="!$ctrl.noSubjectGroups">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+
+				<button ng-attr-title="{{$ctrl.language.Generic.ClassManagement.kMergeSubjects}}"
+				        type="button" class="btn btn-default" ng-click="$ctrl.merge()" ng-if="$ctrl.canMerge()">
+					<span>{{$ctrl.language.Generic.ClassManagement.kMergeSubjects}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div ng-if="$ctrl.noSubjectGroups && !$ctrl.extraCurricular && $ctrl.classView" class="alert alert-info">
+			{{$ctrl.language.ClassManagement.kNoSubjects1}}
+		</div>
+
+		<div ng-if="$ctrl.noSubjectGroups && !$ctrl.extraCurricular && !$ctrl.classView" class="alert alert-info">
+			{{$ctrl.language.ClassManagement.kNoSubjects2}}
+		</div>
+
+		<div ng-if="$ctrl.noSubjectGroups && $ctrl.extraCurricular" class="alert alert-info">
+			Нет созданных групп внеурочной деятельности по данному фильтру
+		</div>
+
+		<div ng-show="$ctrl.state.dataReady">
+			<form name="$ctrl.form" class="ns-cloak">
+			<table class="table table-middle-cells table-bright table-xs table-thin print-block" ng-if="!$ctrl.noSubjectGroups">
+				<tr>
+					<th>Название</th>
+					<th ng-if="$ctrl.classView">{{$ctrl.language.Common.kTeacher}}</th>
+					<th ng-if="$ctrl.iupGrade">{{$ctrl.language.Generic.ClassManagement.kLevelName}}</th>
+					<th ng-if="$ctrl.viewType == 0">Класс\Параллель </th>
+					<th ng-if="!$ctrl.extraCurricular">Часы в неделю</th>
+					<th>Система<br/>оценивания</th>
+					<th ng-if="!$ctrl.readOnly" class="NotPrintable">Отметка для<br/>удаления</th>
+				</tr>
+				<tr ng-repeat="sg in $ctrl.subjectGroups" ng-form name="sgForm" ng-class="{'without-students': !sg.useInfo.hasStudents}">
+					<td>
+						<a ng-if="!$ctrl.readOnly" href="#" ng-click="$ctrl.edit(sg)" title="Изменить">{{sg.name}}</a>
+						<span ng-if="$ctrl.readOnly">{{sg.name}}</span>
+					</td>
+					<td ng-if="$ctrl.classView" class="text-center" ng-class="{ 'has-error': sgForm.teacher.$invalid && (!sgForm.teacher.$pristine || $ctrl.form.$displayErrors) }">
+						<select name="teacher" track-changes ng-if="!$ctrl.readOnly && !$ctrl.multipleTeachers" class="form-control" required ng-model="sg.teacher" ng-options="teacher as teacher.name for teacher in $ctrl.getSubjectGroupTeachers(sg) track by teacher.id"></select>
+						<select2 name="teacher" width="400px" ng-if="!$ctrl.readOnly && $ctrl.multipleTeachers && $ctrl.subjectTeachers" multiple required class="form-control" s2-options="teacher as teacher.name for teacher in $ctrl.getSubjectGroupTeachers(sg) track by teacher.id" ng-model="sg.teachers" track-changes></select2>
+						<span ng-if="$ctrl.readOnly && !$ctrl.multipleTeachers">{{sg.teacher.name}}</span>
+						<span ng-if="$ctrl.readOnly && $ctrl.multipleTeachers">
+							<ul class="list-unstyled">
+								<li ng-repeat="teacher in sg.teachers">
+									{{teacher.name}}
+								</li>
+							</ul>
+						</span>
+						<p ng-show="sgForm.teacher.$invalid && (!sgForm.teacher.$pristine || $ctrl.form.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Messages.kRequiredField}}</p>
+					</td>
+					<td ng-if="$ctrl.iupGrade" class="text-center">{{sg.iupLevel.name}}</td>
+					<td ng-if="$ctrl.viewType == 0" class="text-center">
+						<a ng-if="sg.class" href="javaScript:void(0)" ng-click="$ctrl.setClassFilter(sg);" title="Предметы">{{sg.class.name}}</a>
+						<a ng-if="!sg.class" href="javaScript:void(0)" ng-click="$ctrl.setClassFilter(sg);" title="Предметы">{{sg.grades[0]}}</a>
+					</td>
+					<td class="text-center" ng-if="!$ctrl.extraCurricular">
+						<ul class="list-unstyled">
+							<li ng-repeat="ta in $ctrl.getSgTerms(sg.id)">
+								{{ta.termName}}
+								<span class="badge">{{ta.hours}}</span>
+							</li>
+						</ul>
+					</td>
+					<td class="text-center">
+						<select track-changes ng-if="$ctrl.canEditGradingSys(sg)" class="form-control" ng-model="sg.gradingSys" ng-options="gradingSys.key as gradingSys.name for gradingSys in $ctrl.gradingSystems"></select>
+						<span ng-if="!$ctrl.canEditGradingSys(sg)">{{$ctrl.getGradingSysName(sg.gradingSys)}}</span>
+					</td>
+					<td ng-if="!$ctrl.readOnly" class="text-center">
+						<input type="checkbox" name="delClass" ng-model="sg.deleted" ng-if="$ctrl.canDelete(sg)">
+						<span ng-if="!$ctrl.canDelete(sg)">{{$ctrl.language.Generic.Common.kEmploy}}</span>
+					</td>
+				</tr>
+			</table>
+			</form>
+
+			<div ng-if="!$ctrl.noSubjectGroups">
+				<div class="smalltext print-block" ng-if="!$ctrl.extraCurricular">
+					<p ng-repeat="termHours in $ctrl.sgTermsWithTotalHours">
+						{{termHours.termName}}. Итого <span class="badge">{{termHours.hours}}</span> часов в неделю
+					</p>
+				</div>
+
+				<div class="legend print-block" ng-if="$ctrl.hasSGsWithoutStudents">
+					<div>
+						<p>
+							<span class="legend-label without-students"></span>
+							<span class="legend-description"> — В предмето-группе нет учеников</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

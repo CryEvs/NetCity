@@ -1,0 +1,30 @@
+<h4>
+	{{ctrl.data.event.name}}
+</h4>
+
+<p>
+	<span data-prefix="Дата проведения: ">{{ctrl.data.event.date}}</span>
+	<span data-prefix="Тип: ">{{ctrl.data.event.awardEventType.name}}</span>
+	<span ng-show="ctrl.data.event.subject" data-prefix="Тема / Предмет / Вид спорта: ">{{ctrl.data.event.subject}}</span>
+	<span data-prefix="Уровень: ">{{ctrl.data.event.level}}</span>
+</p>
+
+<p>
+	<span data-prefix="Организатор: ">{{ctrl.data.event.founder.name}}</span>
+	<span data-prefix="Место проведения: ">{{ctrl.data.event.place.name}}</span>
+</p>
+
+<p>
+	<span ng-show="ctrl.data.event.partForm" data-prefix="Форма участия: ">{{ctrl.data.event.partForm.name}}</span>
+	<span ng-show="data.event.visitForm" data-prefix="Вид посещения: ">{{data.event.visitForm.name}}</span>
+</p>
+
+<p>
+	<span ng-show="ctrl.data.event.documents.length" data-prefix="Документы: ">
+		<span class="block-item" ng-repeat="doc in ctrl.data.event.documents">
+			<a href="/webapi/events/file/download/{{doc.id}}" download target="_blank">{{doc.name}}</a>
+			<span class="item-descr">{{doc.description}}<span style="white-space: pre-wrap" ng-show="!$last">;  </span></span>
+		</span>
+	</span>
+	
+</p>

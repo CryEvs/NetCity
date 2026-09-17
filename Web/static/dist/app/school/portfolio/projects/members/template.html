@@ -1,0 +1,80 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+
+			<button title="Редактировать участников" type="button" class="btn btn-info" ng-click="edit()">
+				<span class="glyphicon glyphicon-pencil"></span>
+				<span>Добавить/Редактировать</span>
+			</button>
+			
+			<button title="Удалить участников" type="button" class="btn btn-danger" ng-click="delete()" ng-disabled="data.selected.length === 0">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>Удалить</span>
+			</button>
+
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<form class="form-horizontal">
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-3">Раздел</label>
+				<div class="col-md-5 col-lg-3 col-sm-6">
+					<select name="group" class="form-control" ng-model="filter.selected.groupId" ng-options="group.id as group.treeItemName for group in filter.items.groups" ng-change="load()"></select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">Группа пользователей</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<select name="userGroup" class="form-control" ng-model="filter.selected.userType" ng-options="userType.id as userType.name for userType in filter.items.userTypes" ng-change="filterViewMembers()"></select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">Образовательная организация</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<select name="school" class="form-control" ng-model="filter.selected.schoolId" ng-options="school.id as school.name for school in filter.items.schools" ng-change="filterViewMembers()"></select>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<div class="alert alert-info" role="alert" ng-if="data.members.length == 0">Нет участников портфолио</div>
+<div class="alert alert-info" role="alert" ng-if="data.members.length && data.viewMembers.length == 0">Нет участников портфолио по данному фильтру</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-thin table-bright table-bright-hover table-selectable" ng-show="data.viewMembers.length > 0" ng-class="{'loading': !state.ready}">
+			<tr>
+				<th>Имя на экране</th>
+				<th>{{language.Generic.Common.kEO}}</th>
+				<th>Доступ</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="member in data.viewMembers" ng-class="{'selected': selected(member), 'inherited': isInherited(member)}" ng-click="toggle(member)">
+				<td>{{member.nickName}}</td>
+				<td>{{member.orgname}}</td>
+				<td>{{member.accessType.name}}</td>
+				<td><span class="check-mark"></span></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<style>
+	table.loading {
+		opacity: 0.5;
+	}
+	table.loading > tbody > tr > td {
+		cursor: wait !important;
+	}
+	tr.inherited td {
+		background-color: #ffc99b;
+	}
+</style>

@@ -1,0 +1,10 @@
+<div class="similar-user-choice radio">
+	<label>
+		<input type="radio" ng-model="$ctrl.choice.existingUserId" ng-disabled="!$ctrl.similar.canUse" ng-value="$ctrl.similar.userId" ng-click="$ctrl.setChoice()" name="similarUserChoice_{{$ctrl.personId}}_{{$ctrl.similar.userId}}"/></input>
+		<span ng-if="$ctrl.getSimilarQuestionHint($ctrl.similar) && !$ctrl.similar.canUse" class="glyphicon similar-question-icon" title="{{$ctrl.getSimilarQuestionHint($ctrl.similar)}}" ng-click="$ctrl.$dialogs.message($ctrl.getSimilarQuestionHint($ctrl.similar))"></span>
+		<span ng-if="$ctrl.getSimilarInfoHint($ctrl.similar)" class="glyphicon similar-info-icon" title="{{$ctrl.getSimilarInfoHint($ctrl.similar)}}"></span>
+		<span class="similar-user-name">{{$ctrl.getSimilarTitle($ctrl.similar)}}</span>
+		<span ng-if="$ctrl.similar.auxComment" class="similar-user-name">{{$ctrl.similar.auxComment}} </span>
+		<span ng-if="$ctrl.similar.birthDate" class="similar-user-name">{{$ctrl.similar.birthDate | nsDate}} </span>
+	</label>
+</div>

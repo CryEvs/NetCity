@@ -1,0 +1,51 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+	<div class="modal-body">
+
+		<form class="form-horizontal form-sm">
+			<div class="form-group row" ng-if="$ctrl.ready">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.Common.kSchoolPeriod}}</label>
+				<div class="col-md-8">
+					<select track-changes class="form-control" ng-options="term.termName for term in $ctrl.copiedTerms" ng-model="$ctrl.copiedTerm" required></select>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.SetupSchoolCurPlan.kClearCurriculumPlanBtn}}</label>
+				<div class="col-md-8">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="$ctrl.clearCurriculumPlan">
+						</label>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<div class="alert alert-info" role="alert">
+			Выберите учебный период, из которого необходимо скопировать часы.
+			Используйте опцию "Очистить учебный план" если необходимо предварительно очистить часы из текущего плана перед копированием. 
+		</div>
+			
+
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary btn-sm" ng-click="$ctrl.ok()">
+			<span>{{$ctrl.language.Generic.Common.kOk}}</span>
+		</button>
+
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kClose}}</span>
+		</button>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+<div class="buttons-panel">
+	<div class="buttons-panel-left">
+		<button title="Добавить класс" type="button" class="btn btn-info" onclick="if (isButtonsLock()) { return; }showAddClass();return false;"><span class="glyphicon glyphicon-plus-sign"></span> <span>Добавить</span></button><button title="Удалить класс" type="button" class="btn btn-danger" onclick="if (isButtonsLock()) { return; }DeleteClass();return false;"><span class="glyphicon glyphicon-minus-sign"></span> <span>Удалить</span></button>
+	</div>
+	<div class="buttons-panel-right">
+		<button title="Типы учебных периодов" type="button" class="btn btn-default">
+			<span>Типы учебных периодов</span>
+		</button>
+		<button title="Смены" type="button" class="btn btn-default">
+			<span>Смены</span>
+		</button>
+		<button title="Для печати" type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-print"></span> 
+			<span>На печать</span>
+		</button>
+		<button title="Экспорт в Excel" type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-export"></span>
+			<span>Экспорт в Excel</span>
+		</button>
+	</div>
+</div>
+
+<table>
+	<tr>
+		<th rowspan="2">Класс</th>
+		<th rowspan="2">Профиль</th>
+		<th rowspan="2">Тип класса</th>
+		<th rowspan="2">Учебный план</th>
+		<th colspan="3">Кабинет</th>
+		<th rowspan="2">Кол-во учеников на 20.09.2015</th>
+		<th rowspan="2">Классный руководитель</th>
+		<th class="NotPrintable" rowspan="2">Отметка для<br>удаления</th>
+	</tr>
+	<tr>
+		<th>Название</th>
+		<th>
+			<span class="glyphicon glyphicon-user visible-sm visible-xs" title="Максимальная наполняемость"></span>
+			<span class="hidden-sm hidden-xs">Максимальная наполняемость</span>
+		</th>
+		<th>Корпус</th>
+	</tr>
+	<tr ng-repeat="class in data.classes">
+		<td><a href="#" ng-click="editClassSubjects(class);" title="Предметы">{{class.name}}</a></td>
+		<td><a href="#" ng-click="editClassProfile(class);" title="Изменить">Общеобразовательный</a></td>
+		<td>Общеобразовательный</td>
+		<td>Классический</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>
+			<a href="#" ng-click="editClassProfile(class);" title="Изменить">Зайцева О. Ф.</a>
+		</td>
+		<td class="text-center">
+			<span style="cursor: help;" onclick="alert(language.Generic.ClassManagement.kNotAvailableToDelete);">
+				<b>X</b>
+			</span>
+		</td>
+	</tr>
+</table>

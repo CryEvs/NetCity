@@ -1,0 +1,55 @@
+<div class="row ns-cloak">
+	<div class="col-md-11 col-lg-9">
+		<hgroup>
+			<h3>Информация о портфолио</h3>
+			<aside ng-hide="state.readonly">
+				<a ng-href="{{data.portfolio.id}}/edit">Редактировать</a>
+				<a href="javascript:void(0)" ng-if="state.isLeader" ng-click="delete()" style="margin-left: 5px">Удалить</a>
+			</aside>
+		</hgroup>
+
+		<form class="form-horizontal" style="padding-left: 15px">
+			<div class="form-group active">
+				<label class="control-label col-md-4">Название портфолио</label>
+				<div class="col-md-8">
+					<div>
+						<input type="text" class="form-control" disabled="disabled" value="{{data.portfolio.name}}" />
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group active">
+				<label class="control-label col-md-4">Руководители проекта</label>
+				<div class="col-md-8">
+					<div>
+						<p class="mini" ng-repeat="leader in data.portfolio.leaders">{{leader.nickName}}</p>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+		
+<hr/>
+
+<div class="row ns-cloak">
+	<div class="col-md-11 col-lg-9">
+		<hgroup>
+			<h3>Разделы портфолио</h3>
+		</hgroup>
+
+		<div class="alert alert-info" role="alert" ng-show="data.portfolio.groups.length == 0">
+			В портфолио не создано ни одного раздела
+		</div>
+
+		<ul class="tree" ng-show="data.portfolio.groups.length > 0">
+			<li portfolio-group group="group" editurl="editurl" collapsed="data.portfolio.groups.length > 4" readonly="state.readonly" opendoc="openDoc" ng-repeat="group in data.portfolio.groups"></li>
+		</ul>
+
+	</div>
+</div>	
+
+
+
+
+

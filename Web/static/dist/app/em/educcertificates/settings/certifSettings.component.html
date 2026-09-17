@@ -1,0 +1,78 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+    <form class="form form-xs" name="$ctrl.form">
+        <ns-form control-size="col-md-4" label-size="col-md-4">
+            <fieldset>
+                <legend>Возраст для получения сертификата</legend>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" ng-class="{'has-error': $ctrl.form.minCertifiateStudentAge.$touched && $ctrl.form.minCertifiateStudentAge.$invalid}">
+                            <label for="minStudentAge" class="control-label">{{$ctrl.language.Generic.EM.kMinCertificateStudentAge}}</label>
+                            <input type="number" class="form-control" name="minCertifiateStudentAge" required track-changes
+                            ng-model="$ctrl.certifSettings.minCertifiateStudentAge" min="4" max="18" maxlength="2">
+                            <p class="help-block" ng-show="$ctrl.form.minCertifiateStudentAge.$touched && $ctrl.form.minCertifiateStudentAge.$invalid">
+                                {{$ctrl.language.Generic.EM.kMinCertificateStudentAgeError}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Шаблоны заявлений на выдачу сертификата</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{$ctrl.language.Generic.EM.kParentApplicationTemplate}}</label>
+                            <div class="input-group">
+                                <button type="button" class="btn btn-danger btn-sm" ng-click="$ctrl.getParentCertificateBlank()">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <span>{{$ctrl.language.Generic.Buttons.kView}}</span>
+                                </button>
+                                    
+                                <button track-changes type="file" id="parent-file"
+                                ngf-select accept=".doc, .docx, .pdf" name="parent-file" class="btn btn-danger btn-sm"
+                                ngf-change="$ctrl.saveParentCertificateBlank($file)">
+                                    <span class="glyphicon glyphicon-link"></span>
+                                    <span>{{$ctrl.language.Generic.Buttons.kAttachFile}}</span>
+                                </button>
+
+                                <button title="{{language.Generic.Buttons.kRemove}}" type="button" class="btn btn-danger btn-sm"
+                                ng-if="$ctrl.certifSettings.hasParentApplicationBlank" ng-click="$ctrl.deleteParentCertificateBlank()">
+                                    <span class="glyphicon glyphicon-minus-sign"></span>
+                                    <span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{$ctrl.language.Generic.EM.kStudentApplicationTemplate}}</label>
+                            <div class="input-group">
+                                <button type="button" class="btn btn-danger btn-sm" ng-click="$ctrl.getStudentCertificateBlank()">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <span>{{$ctrl.language.Generic.Buttons.kView}}</span>
+                                </button>
+
+                                <button track-changes type="file" id="student-file" 
+                                ngf-select accept=".doc, .docx, .pdf" name="student-file" class="btn btn-danger btn-sm"
+                                ngf-change="$ctrl.saveStudentCertificateBlank($file)">
+                                    <span class="glyphicon glyphicon-link"></span>
+                                    <span>{{$ctrl.language.Generic.Buttons.kAttachFile}}</span>
+                                </button>
+
+                                <button title="{{language.Generic.Buttons.kRemove}}" type="button" class="btn btn-danger btn-sm"
+                                ng-if="$ctrl.certifSettings.hasStudentApplicationBlank" ng-click="$ctrl.deleteStudentCertificateBlank()">
+                                    <span class="glyphicon glyphicon-minus-sign"></span>
+                                    <span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </ns-form>
+    </form>
+</ns-modal>

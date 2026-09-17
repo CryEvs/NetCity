@@ -1,0 +1,126 @@
+<style>
+	.uib-timepicker .btn {
+		background-color: transparent;
+		border-color: transparent;
+	}
+
+	.uib-timepicker .btn-default {
+		background-color: transparent;
+		border-color: transparent;
+	}
+
+	.uib-timepicker .btn-link {
+		background-color: transparent;
+		border-color: transparent;
+	}
+</style>
+
+<div class="row ns-cloak" ng-if="!$ctrl.readonly">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="Сохранить изменения" type="button" class="btn btn-primary" ng-click="$ctrl.save()" ng-if="$ctrl.scheduleTimes.length != 0 || $ctrl.changeTracker.isDataChanged()">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+				<button title="Восстановить значения" type="button" class="btn btn-warning" ng-click="$ctrl.reset()" ng-if="$ctrl.scheduleTimes.length != 0 || $ctrl.changeTracker.isDataChanged()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+				<button title="Добавить вариант" type="button" class="btn btn-info" ng-click="$ctrl.add()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+				<button title="Удалить варианты" type="button" class="btn btn-danger" ng-click="$ctrl.delete()" ng-if="$ctrl.scheduleTimes.length != 0">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right" ng-if="$ctrl.scheduleTimes.length != 0">
+				<button title="{{$ctrl.language.Generic.Calendar.kApplyToAllDays}}" type="button" class="btn btn-default" ng-click="$ctrl.applyToAllDays()">
+					<span class="glyphicon glyphicon-indent-left"></span>
+					<span>{{$ctrl.language.Generic.Calendar.kApplyToAllDays}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+		<filter-panel class="filters-panel filters-panel-compact" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+
+		<div ng-if="$ctrl.scheduleTimes.length == 0">
+			<div class="alert alert-info ng-binding" role="alert">
+				{{$ctrl.language.Calendar.kNoTimes}}
+			</div>
+		</div>
+
+		<form name="$ctrl.form">
+			<table ng-if="$ctrl.scheduleTimes.length > 0" class="table table-bordered table-condensed table-thin-sm">
+				<tr>
+					<th ng-if="!$ctrl.isPreSchool">{{$ctrl.language.Generic.Calendar.kRelay}}</th>
+					<th>{{$ctrl.language.Calendar.kNLesson}}</th>
+					<th>{{$ctrl.language.Generic.Common.kStartTime}}</th>
+					<th>{{$ctrl.language.Generic.Common.kEndTime}}</th>
+					<th ng-if="!$ctrl.readonly">Отметка для<br>удаления</th>
+				</tr>
+				<tr ng-if="!$ctrl.readonly" ng-repeat="time in $ctrl.scheduleTimes | orderBy: ['relay', 'number', 'startTime']" ng-form="form">
+					<td ng-if="!$ctrl.isPreSchool">
+						<div ng-class="{'has-error': form.relay.$error.required}">
+							<select name="relay" track-changes ng-change="$ctrl.validate()" class="form-control" required lesson-num-relay-unique ng-model="time.relay" ng-options="relay as relay for relay in $ctrl.relays"></select>
+							<p class="help-block" ng-show="form.relay.$error.required">{{$ctrl.language.Generic.Messages.kRequiredField}}</p>
+						</div>
+					</td>
+					<td>
+						<div ng-class="{'has-error': form.number.$invalid || form.relay.$error.unique}">
+							<select name="number" track-changes ng-change="$ctrl.validate()" class="form-control" required lesson-num-unique ng-model="time.number" ng-options="lesson as lesson for lesson in $ctrl.lessonNums"></select>
+							<p class="help-block" ng-show="form.number.$error.required">{{$ctrl.language.Generic.Messages.kRequiredField}}</p>
+							<p class="help-block" ng-show="form.$error.unique">{{$ctrl.language.Calendar.kWarningLessonNumExists}}</p>
+						</div>
+					</td>
+					<td style="width:150px">
+						<div ng-class="{'has-error': form.startTime.$error.timeInRelayCross, 'has-warning': form.startTime.$error.timeInOtherRelayCross }">
+							<time-input-component ng-model="time.startTime" ng-change="$ctrl.validate()" name="startTime" options="$ctrl.options" style="width:150px" time-period-start time-in-relay-cross time-in-other-relay-cross ng-model-options="{ allowInvalid: true }"></time-input-component>
+						</div>
+					</td>
+					<td style="width:150px">
+						<div ng-class="{'has-error': form.endTime.$error.timePeriod || form.endTime.$error.timeInRelayCross, 'has-warning': form.endTime.$error.timeInOtherRelayCross }">
+							<time-input-component ng-model="time.endTime" ng-change="$ctrl.validate()" name="endTime" options="$ctrl.options" style="width:150px" time-period-end time-in-relay-cross time-in-other-relay-cross ng-model-options="{ allowInvalid: true }"></time-input-component>
+							<p class="help-block" ng-show="form.endTime.$error.timePeriod">{{$ctrl.language.Calendar.kWarningStartTimeMustBeLessThanEndTime}}</p>
+						</div>
+					</td>
+					<td class="text-center" ng-if="!$ctrl.readOnly">
+						<span style="cursor: help;" ng-if="time.used">
+							<b>X</b>
+						</span>
+						<input type="checkbox" ng-if="!time.used" ng-click="$ctrl.toggleClass(time)" />
+					</td>
+				</tr>
+				<tr ng-if="$ctrl.readonly" ng-repeat="time in $ctrl.scheduleTimes">
+					<td ng-if="!$ctrl.isPreSchool">{{time.relay}}</td>
+					<td>{{time.number}}</td>
+					<td>{{$ctrl.dateUtils.time2str(time.startTime)}}</td>
+					<td>{{$ctrl.dateUtils.time2str(time.endTime)}}</td>
+				</tr>
+			</table>
+		</form>
+
+		<div ng-if="$ctrl.form.$error.timeInRelayCross">
+			<div class="alert alert-danger ng-binding" role="alert">
+				{{$ctrl.language.Calendar.kWarningTimeCrossInRelay}}
+			</div>
+		</div>
+
+		<div ng-if="$ctrl.form.$error.timeInOtherRelayCross">
+			<div class="alert alert-warning ng-binding" role="alert">
+				{{$ctrl.language.Calendar.kWarningTimeCrossInOtherRelay}}
+			</div>
+		</div>
+	</div>
+</div>

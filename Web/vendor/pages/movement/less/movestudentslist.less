@@ -1,0 +1,29 @@
+﻿label.fio-label {
+	font-weight: normal;
+	margin-bottom: 0;
+	white-space: nowrap;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+div.moveStudentsListCtrl {
+	table {
+		tr.impossible {
+			td {
+				color: gray;
+				label.fio-label {
+					&:hover {
+						cursor: not-allowed;
+					}
+				}
+			}
+		}
+	}
+
+	.popover {
+		.popover-title {
+			color: #222
+		}
+	}
+}

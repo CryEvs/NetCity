@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Биология 6 класс. Растения. Грибы. Бактерии">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Биология 6 класс. Растения. Грибы. Бактерии" ID="1" Filename="ni_bio_6_rgb/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Цветок. Соцветия" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Цветок. Соцветия" 
+				Filename="sgo/ni_bio_6_rgb/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Семя" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Семя" 
+				Filename="sgo/ni_bio_6_rgb/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Плод" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Плод" 
+				Filename="sgo/ni_bio_6_rgb/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Корень" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Корень" 
+				Filename="sgo/ni_bio_6_rgb/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Побег и почка. Стебель" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Побег и почка. Стебель" 
+				Filename="sgo/ni_bio_6_rgb/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Лист" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Лист" 
+				Filename="sgo/ni_bio_6_rgb/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Вегетативное размножение растений" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Вегетативное размножение растений" 
+				Filename="sgo/ni_bio_6_rgb/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Бактерии, грибы" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Бактерии, грибы" 
+				Filename="sgo/ni_bio_6_rgb/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Водоросли. Лишайники" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Водоросли. Лишайники" 
+				Filename="sgo/ni_bio_6_rgb/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Мхи. Плауны. Хвощи. Папоротники" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Мхи. Плауны. Хвощи. Папоротники" 
+				Filename="sgo/ni_bio_6_rgb/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Голосеменные" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Голосеменные" 
+				Filename="sgo/ni_bio_6_rgb/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Покрытосеменные. Двудольные" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Покрытосеменные. Двудольные" 
+				Filename="sgo/ni_bio_6_rgb/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Покрытосеменные. Двудольные" ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name=" Покрытосеменные. Двудольные" 
+				Filename="sgo/ni_bio_6_rgb/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Покрытосеменные. Однодольные" ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Покрытосеменные. Однодольные" 
+				Filename="sgo/ni_bio_6_rgb/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

@@ -1,0 +1,331 @@
+﻿body
+{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+h2
+{
+	font-weight: bold;
+	font-size: 12pt;
+	font-family: Verdana, Arial, Helvetica;
+}
+h3
+{
+	font-weight: bold;
+	font-size: 10pt;
+	font-family: Verdana, Arial, Helvetica;
+}
+h4
+{
+	font-weight: bold;
+	font-size: 12pt;
+	font-family: Verdana, Arial, Helvetica;
+}
+input
+{
+	font-size: 9pt;
+	font-family: Verdana, Arial;
+}
+div.alert
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #ff0000;
+	font-family: arial, helvetica, sans-serif
+}
+div.subhead
+{
+	font-weight: bold;
+	font-size: 10pt;
+	color: #ffffff;
+	font-family: Verdana, Arial, Helvetica;
+}
+B
+{
+	font-family: Verdana, Arial, Helvetica;
+}
+P
+{
+	font-size: 8pt;
+	font-family: Verdana, Arial, Helvetica;
+}
+td
+{
+	font-size: 8pt;
+	font-family: Verdana, Arial, Helvetica;
+	padding: 2px 3px 1px;
+}
+th
+{
+	font-weight: bold;
+	font-size: 8pt;
+	font-family: Verdana, Arial, Helvetica;
+	padding: 2px 3px 1px;
+}
+div.bullet
+{
+	font-size: 10pt;
+	font-family: Verdana, Arial, Helvetica;
+}
+div.footer
+{
+	font-size: 8pt;
+	font-family: Verdana, Arial, Helvetica;
+}
+div.ltfooter
+{
+	font-size: 8pt;
+	color: #cccccc;
+	font-family: Verdana, Arial, Helvetica;
+}
+div.PageTitle
+{
+	font-weight: bold;
+	font-size: 10pt;
+	font-family: Verdana, Arial, Helvetica;
+}
+textarea
+{
+	font-size: 9pt;
+	font-family: Verdana, Arial;
+}
+A.PLUNIT
+{
+	font-size: 10pt;
+	color: green;
+	font-family: Verdana, Arial, Helvetica;
+	text-decoration: none;
+}
+A.PLLESSON
+{
+	font-size: 10pt;
+	color: darkred;
+	font-family: Verdana, Arial, Helvetica;
+	text-decoration: none;
+}
+.SmallHeader
+{
+	font-weight: bold;
+	font-size: 10pt;
+	font-family: Arial, Verdana, Helvetica;
+}
+.normaltext
+{
+	font-size: 10pt;
+	font-family: Arial, Verdana, Helvetica;
+}
+.smalltext
+{
+	font-size: 8pt;
+	font-family: Arial, Verdana, Helvetica;
+}
+table.PlanTable
+{
+	empty-cells: show;
+	border:thin groove darkgray;
+	border-collapse:collapse;
+	white-space:normal;
+	margin: 0;
+	float:none;
+	padding: 0px;
+}
+table.PlanTable td
+{
+	border:thin groove darkgray;
+	text-align: center;
+	white-space:normal;
+	padding: 0px;
+}
+table.PlanTable th
+{
+	border:thin groove darkgray;
+	background-color: #e7eff7;
+	text-align: center;
+	padding: 0px;
+}
+
+table.NullTable
+{
+	border: 0 white none;
+	padding: 0;
+	border-collapse: collapse;
+}
+table.NullTable TD
+{
+	padding: 0px 5px;
+	vertical-align: top;
+}
+table.NullTable TH
+{
+	text-align:left;
+	background-color: transparent;
+	padding: 0;
+}
+
+table.ThickTable
+{
+	border:thin gray;
+	border-collapse:collapse;
+	empty-cells: show;
+	padding: 1px;
+}
+table.ThickTable TD
+{
+	border-color:gray;
+	padding: 1px;
+}
+table.ThickTable TH
+{
+	border-color:gray;
+	background-color: #eaeaea;
+	padding: 1px;
+}
+.body
+{
+	font-weight: bold;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica;
+}
+.select
+{
+	font-size: 10pt;
+	font-family: Verdana, Arial, Helvetica;
+}
+select
+{
+	font-size: 9pt;
+	font-family: Verdana, Arial;
+}
+button.button
+{
+	vertical-align: top;
+	margin: 2px;
+	width: 110px;
+}
+button.iconButton
+{
+	margin: 2px;
+	height: 24px;
+}
+span.button
+{
+	display: inline-block;
+	font-family: Arial;
+	font-size: 8pt;
+	white-space: normal;
+}
+
+table.xlTable
+{
+	empty-cells: show;
+	border:thin solid gray;
+	border-collapse:collapse;
+	white-space:normal;
+	margin: 0;
+	float:none;
+}
+table.xlTable td.nowraptxt 
+{
+	text-align: left;
+	white-space: nowrap;
+}
+table.xlTable td
+{
+	text-align: right;
+	border:thin solid gray;
+	mso-style-parent: style0;
+	mso-number-format: Fixed;
+
+}
+table.xlTable th
+{
+	background-color: #EAEAEA;
+	border:thin solid gray;
+}
+
+
+table.ThinTable
+{
+	border:thin gray;
+	border-collapse:collapse;
+	padding: 1px;
+}
+table.ThinTable TD
+{
+	border-color:gray;
+	padding: 1px;
+}
+table.ThinTable TH
+{
+	border-color:gray;
+	background-color: #eaeaea;
+	padding: 1px;
+}
+table.ThinTable td.leftheader
+{
+	background-color: #eaeaea;
+}
+table.ThinTable th.leftheader
+{
+	background-color: #eaeaea;
+}
+table.ThinTable td.filled
+{
+	background-color: white;
+}
+table.ThinTable td.relay1
+{
+	background-color: white;
+}
+table.ThinTable td.relay2
+{
+	background-color: #e7e7e7;
+}
+table.ThinTable td.relay3
+{
+	background-color: #e9e9e9;
+}
+table.thintable td.event
+{
+	background-color: #e7e7e7;
+}
+.onScrHelp
+{
+	font-size: 8pt;
+	color: #5679cb;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.onScrHelp P
+{
+	font-size: 8pt;
+	color: #5679cb;
+	font-family: Arial, Helvetica, sans-serif;
+}
+A.PLPLAN
+{
+	font-size: 10pt;
+	color: blue;
+	font-family: Verdana, Arial, Helvetica;
+	text-decoration: none;
+}
+#importControls a img
+{
+	margin-bottom: -7px;
+}
+
+.legendTable td{
+	font-size:7pt;
+}
+
+tr.min-width_th th
+{
+	min-width:16px;
+	text-align:center;
+}
+/*\*/
+* tr.min-width_th th div {
+	margin: 0px 0px 0px 0px;
+	_width:16px;
+	text-align:center;
+}
+/**/

@@ -1,0 +1,773 @@
+
+---------------------------------------------
+20-02-2018 21:03:50 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ApiPool
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/MobileGateAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+20-02-2018 21:09:31 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+20-02-2018 22:03:32 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+20-02-2018 22:05:27 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+20-02-2018 22:14:25 ╬ёЄрэютър яєыют
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения STOP для сервера:W3SVC/AppPools/NetCityAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения STOP для сервера:W3SVC/AppPools/ApiPool
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения STOP для сервера:W3SVC/AppPools/CoursesAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения STOP для сервера:W3SVC/AppPools/MobileGateAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения STOP для сервера:W3SVC/AppPools/WebApi
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения STOP для сервера:W3SVC/AppPools/WebServicesAppPool
+
+---------------------------------------------
+20-02-2018 22:21:54 ╟ряєёъ яєыют
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения START для сервера:W3SVC/AppPools/NetCityAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения START для сервера:W3SVC/AppPools/ApiPool
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения START для сервера:W3SVC/AppPools/CoursesAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения START для сервера:W3SVC/AppPools/MobileGateAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения START для сервера:W3SVC/AppPools/WebApi
+Разрешение отклонено
+ErrNumber: 70 (0x46)
+Ошибка при попытке выполнения START для сервера:W3SVC/AppPools/WebServicesAppPool
+
+---------------------------------------------
+07-03-2018 18:09:09 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/QaReportsAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+07-03-2018 18:15:58 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/QaReportsAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+21-03-2018 18:56:52 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/QaReportsAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+21-03-2018 19:01:13 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/QaReportsAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+23-08-2018 16:47:46 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/QaReportsAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+23-08-2018 16:51:05 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/QaReportsAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+18-09-2018 22:31:49 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+18-09-2018 22:38:00 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+26-09-2018 23:22:24 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+26-09-2018 23:25:26 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+09-10-2018 20:18:43 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+09-10-2018 20:22:31 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+06-06-2019 17:05:25 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+06-06-2019 18:13:57 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+05-09-2019 21:41:02 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ApiPoolv2
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+05-09-2019 21:45:26 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+01-11-2019 19:46:41 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+01-11-2019 19:52:40 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/ExtAppPool
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+01-04-2020 21:36:38 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+01-04-2020 21:47:11 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+15-04-2020 20:27:43 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+15-04-2020 20:31:26 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+27-03-2021 03:12:06 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+27-03-2021 03:17:42 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+21-03-2022 23:22:03 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+21-03-2022 23:29:58 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+17-03-2023 17:24:16 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+17-03-2023 17:32:00 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+17-03-2023 17:36:52 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН
+
+---------------------------------------------
+11-04-2023 23:38:37 ╬ёЄрэютър яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ОСТАНОВЛЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ОСТАНОВЛЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ОСТАНОВЛЕН
+
+---------------------------------------------
+12-04-2023 00:19:58 ╟ряєёъ яєыют
+СерверW3SVC/AppPools/NetCityAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/NetCityAppPoolTrunc
+СерверW3SVC/AppPools/ApiPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/ApiPoolv2 Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/CoursesAppPool Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/MobileGateAppPool Успешно ЗАПУЩЕН
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/QaReportsAppPool
+Не удалось найти запрошенный путь.
+ErrNumber: -2147024893 (0x80070003)
+Ошибка при попытке открытия объекта:W3SVC/AppPools/AsterAppPool
+СерверW3SVC/AppPools/WebApi Успешно ЗАПУЩЕН
+СерверW3SVC/AppPools/WebServicesAppPool Успешно ЗАПУЩЕН

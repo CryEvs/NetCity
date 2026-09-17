@@ -1,0 +1,42 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-close-button" ng-click="$ctrl.cancel()" ng-if="$ctrl.taskInitialized()"><button class="close">×</button></div>
+			<div class="bootstrap-dialog-title"><span class="glyphicon glyphicon-time"></span>&nbsp;{{$ctrl.header}}</div>
+		</div>
+	</div>
+	<div class="modal-body">
+		<div class="bootstrap-dialog-body">
+			<div class="bootstrap-dialog-message">
+				<span class="dialog-message">{{$ctrl.message}}</span>
+
+				<ul style="max-height: 247px; overflow-y: scroll; list-style: none;	padding-left: 10px;" ng-if="$ctrl.logoutputMode">
+					<li ng-repeat="log in $ctrl.logoutput" style="font-size:12px">
+						{{log.time | nsTime}}: {{log.message}}
+					</li>
+				</ul>
+
+				<infinite-progress-bar ng-if="$ctrl.inProgress"></infinite-progress-bar>
+
+				<div class='alert alert-danger' role='alert' ng-if="$ctrl.hint && $ctrl.taskInitialized()">
+					<strong>{{$ctrl.language.Generic.Common.kAttention}}</strong>
+					{{$ctrl.hint}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="bootstrap-dialog-footer">
+			<div class="bootstrap-dialog-footer-buttons" ng-if="$ctrl.taskInitialized()">
+				<button type="button" class="btn btn-primary" ng-click="$ctrl.close()" ng-if="!$ctrl.activeConnectionExec || !$ctrl.inProgress">
+					<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ok-sign"></span>
+					{{$ctrl.language.Generic.Buttons.kClose}}
+				</button>
+				<button type="button" class="btn btn-default" ng-click="$ctrl.cancel()" ng-if="$ctrl.cancellable && $ctrl.inProgress">
+					<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+					{{$ctrl.language.Generic.Buttons.kCancel}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

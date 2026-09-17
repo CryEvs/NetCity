@@ -1,0 +1,29 @@
+{{#CheckField docTypeFields docTypeFieldCode}}
+
+{{#if ../editMode}}
+	<div class="form-group field-row-{{../../id}}">
+		<label class="control-label col-md-4 col-xs-4 col-lg-4">{{{../../title}}}</label>
+		<div class="col-lg-8 col-md-8 col-xs-8">
+			<div class="input-group date">
+				<input class="form-control date-input field-input-{{../../id}}" name="{{../../id}}" size="{{../../size}}" maxlength="{{../../maxLength}}" value="{{DateOnly2strF ../../fieldValue}}" type="text">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button">
+						<span class="glyphicon glyphicon-calendar">
+						</span>
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+{{else}}
+
+	<div class="col-md-4">
+		<label>{{{../../title}}}</label>
+		<input class="form-control field-input-{{../../id}}" name="{{../../id}}" size="{{../../size}}" maxlength="{{../../maxLength}}" value="{{DateOnly2strF ../../fieldValue}}" disabled type="text">
+	</div>
+
+{{/if}}
+
+
+{{/CheckField}}

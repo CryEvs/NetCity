@@ -1,0 +1,46 @@
+<div class="form-group" ng-class="{'has-error': editForm.trainingOrganization.$invalid && (!editForm.trainingOrganization.$pristine || editForm.$displayErrors)}">
+	<label for="training-organization" class="control-label">{{language.Generic.Common.kOrganization}}</label>
+	<div>
+		<input track-changes type="text" id="training-organization" name="trainingOrganization" class="form-control" ng-model="data.item.organization" required maxlength="400">
+		<p ng-show="editForm.trainingOrganization.$invalid && (!editForm.trainingOrganization.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+	</div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': (data.item.period.start == null || data.item.period.end == null) && (editForm.$displayErrors)}">
+	<label for="training-period" class="control-label">{{language.Generic.Common.kPeriod}}</label>
+	<div class="input-daterange input-group" id="training-period">
+		<span class="input-group-addon">С </span>
+		<date-input-component date-model="data.item.period.start" name="trainingStartDate" required="true"></date-input-component>
+		<span class="input-group-addon"> по </span>
+		<date-input-component date-model="data.item.period.end" name="trainingEndDate" required="true"></date-input-component>
+	</div>
+</div>
+
+<p ng-show="editForm.trainingStartDate.$invalid && editForm.$displayErrors" class="help-block bg-danger">Начало периода является обязательным полем</p>
+<p ng-show="editForm.trainingEndDate.$invalid && editForm.$displayErrors" class="help-block bg-danger">Конец периода является обязательным полем</p>
+
+
+<div class="row">
+	<div class="col-md-9 form-group" ng-class="{'has-error': editForm.place.$invalid && (!editForm.place.$pristine || editForm.$displayErrors)}">
+		<label for="training-place" class="control-label">{{language.Generic.Common.kTrainingPlace}}</label>
+		<div>
+			<input track-changes type="text" id="training-place" name="place" class="form-control" ng-model="data.item.place" required maxlength="400">
+		</div>
+	</div>
+
+	<div class="col-md-3 form-group" ng-class="{'has-error': editForm.hours.$invalid && (!editForm.hours.$pristine || editForm.$displayErrors)}">
+		<label for="training-hours" class="control-label">{{language.Generic.Common.kHoursAmount}}</label>
+		<div>
+			<input track-changes type="number" id="training-hours" name="hours" class="form-control" ng-model="data.item.hours" required float-input="hoursInputSettings" size="6" maxlength="6" ng-min="0" ng-max="999999">
+		</div>
+	</div>
+</div>
+
+<p ng-show="editForm.place.$invalid && (!editForm.place.$pristine || editForm.$displayErrors)" class="help-block bg-danger">Необходимо заполнить место прохождения</p>
+<div ng-show="editForm.hours.$invalid && (!editForm.hours.$pristine || editForm.$displayErrors)" ng-messages="editForm.hours.$error">
+	<p class="help-block bg-danger" ng-message="required">Необходимо заполнить кол-во часов</p>
+	<p class="help-block bg-danger" ng-message="number">Пожалуйста, в поле для кол-ва часов, вводите только цифры</p>
+	<p class="help-block bg-danger" ng-message="pattern">Пожалуйста, в поле для кол-ва часов, вводите только цифры</p>
+	<p class="help-block bg-danger" ng-message="min">Пожалуйста, в поле для кол-ва часов, введите число, большее или равное 0</p>
+	<p class="help-block bg-danger" ng-message="max">Пожалуйста, в поле для кол-ва часов, введите число, меньшее или равное 999999</p>
+</div>

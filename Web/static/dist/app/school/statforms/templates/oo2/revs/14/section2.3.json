@@ -1,0 +1,10 @@
+{
+	"sumRows": [
+		{
+			"row": 1,
+			"subRows": [ 2, 3, 4 ],
+			"cols": [ 3 ],
+			"type": "eqmax"
+		}
+	]
+}

@@ -1,0 +1,216 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">	
+			<div class="buttons-panel-left" ng-if="!$ctrl.readonly">
+				<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span> 
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kCancel}}" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+				<button ng-if="$ctrl.isAddSchool && $ctrl.pfdoIntegrationType == 'IRTechEes'" title="Опубликовать в Навигаторе" type="button" class="btn btn-default" ng-click="$ctrl.pfdoPublish()">
+					<span class="glyphicon glyphicon-transfer"></span>
+					<span>Опубликовать в Навигаторе</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right">
+				<button title="{{$ctrl.language.Generic.SchoolInfo.kLicences}}" type="button" class="btn btn-default" ng-click="$ctrl.gotoLicences()">
+					<span class="glyphicon glyphicon-lock"></span>
+					<span>{{$ctrl.language.Generic.SchoolInfo.kLicences}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kChangeHistory}}" type="button" class="btn btn-default" ng-click="$ctrl.browseAccessJournal()">
+					<span>{{$ctrl.language.Generic.Common.kChangeHistory}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Buttons.kBtnPrint}}" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+					<span class="glyphicon glyphicon-print"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kPrint}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default" ng-click="$ctrl.export()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>{{$ctrl.language.Generic.Common.kBtnExcel}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<form name="$ctrl.form" class="form-horizontal form-edit form-xs" ng-if="$ctrl.ready">
+			<div class="panel-group row col-md-12 col-lg-9">
+				<ns-parameters-form service="$ctrl.orginfoParametersService">
+					<ns-panel panel-id="common-info" class="info print-block" title="{{$ctrl.language.Generic.Common.kCommonInfo}}" expanded="true">
+
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kEOLegalForm}}">
+							<input ng-if="!$ctrl.canEditExtraSchoolInfo" class="form-control" type="text" disabled="disabled" ng-value="$ctrl.legalForm">
+							<select ng-if="$ctrl.canEditExtraSchoolInfo" track-changes class="form-control" ng-options="item.id as item.name for item in $ctrl.references.legalForms" required ng-model="$ctrl.schoolInfo.educOrganization.eoLegalFormId"></select>
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kEOLegalForm83}}">
+							<input ng-if="!$ctrl.canEditExtraSchoolInfo" class="form-control" type="text" disabled="disabled" ng-value="$ctrl.legalForm83">
+							<select ng-if="$ctrl.canEditExtraSchoolInfo" track-changes class="form-control" ng-options="item.id as item.name for item in $ctrl.references.legalForms83" ng-model="$ctrl.schoolInfo.educOrganization.eoLegalFormId83">
+								<option ng-value="null"></option>
+							</select>
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.Common.kEOType}}">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.eoType.name">
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kEOForm}}" ng-if="$ctrl.eoType.id == 5 || $ctrl.eoType.id == 6">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.eoForm">
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kSmallOrganization}}">
+							<form-parameter parameter="$ctrl.commonParameters.smallOrg"></form-parameter>
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kEOName}}"  ng-class="{'has-error': $ctrl.form.shortname.$invalid}">
+							<input class="form-control" name="shortname" type="text" track-changes ng-disabled="!$ctrl.canEditExtraSchoolInfo" maxlength="200" required ng-model="$ctrl.schoolInfo.educOrganization.name">
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kEOFullName}}" ng-class="{'has-error': $ctrl.form.fullname.$invalid}">
+							<input class="form-control" name="fullname" type="text" track-changes ng-disabled="!$ctrl.canEditExtraSchoolInfo && !$ctrl.simpleSchool" maxlength="400" required ng-model="$ctrl.schoolInfo.name">
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kAdditionalName}}" ng-class="{'has-error': $ctrl.form[$ctrl.commonParameters.additionalName.name].$invalid}">
+							<form-parameter parameter="$ctrl.commonParameters.additionalName"></form-parameter>
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kEONumber}}">
+							<input class="form-control" track-changes type="text" disabled="disabled" ng-disabled="!$ctrl.canEditExtraSchoolInfo" ng-model="$ctrl.schoolInfo.number">
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kEOFoundingDate}}" ng-class="{'has-error': $ctrl.form.foundingDate.$invalid}">
+							<date-input-component track-changes name="foundingDate" readonly="!$ctrl.canEditExtraSchoolInfo && !$ctrl.simpleSchool" date-model="$ctrl.schoolInfo.schoolInformation.foundingDate"></date-input-component>
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kIndepend}}">
+							<form-parameter parameter="$ctrl.commonParameters.independ"></form-parameter>
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kMainSchool}}">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.mainSchool.name">
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kFounders}}">
+							<textarea class="form-control" rows="4" cols="40" wrap="soft" disabled>{{$ctrl.foundersText}}</textarea>
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kManagements}}">
+							<textarea class="form-control" rows="4" cols="40" wrap="soft" disabled>{{$ctrl.emsText}}</textarea>
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kAuthority}}">
+							<input ng-if="!$ctrl.canEditExtraSchoolInfo" class="form-control" type="text" disabled="disabled" ng-value="($ctrl.authority && $ctrl.authority.name) || '-'">
+							<select ng-if="$ctrl.canEditExtraSchoolInfo" class="form-control" track-changes ng-options="item.id as item.name | tabToNbsp for item in $ctrl.authorities" ng-model="$ctrl.schoolInfo.emId">
+								<option ng-value="null"></option>
+							</select>
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kStatus}}">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.status">
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kAreaType}}" ng-if="$ctrl.isSchool">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolInfo.locationInfo.locationType.name">
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kProvinceCenterSchool}}" ng-if="$ctrl.isSchool">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolInfo.locationInfo.inProvinceCenter ? 'Да' : 'Нет'">
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kProvinceSchoolInCity}}" ng-if="$ctrl.isSchool">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolInfo.locationInfo.isProvinceSchoolInCity ? 'Да' : 'Нет'">
+						</ns-form-group>
+	
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kAbout}}">
+							<form-parameter parameter="$ctrl.commonParameters.about"></form-parameter>
+						</ns-form-group>
+					</ns-panel>
+
+					<ns-panel panel-id="pfdo-publish" class="success print-block" title="Публикация в Навигаторе" ng-if="$ctrl.isAddSchool && $ctrl.pfdoIntegrationType == 'IRTechEes'">
+						<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kStatus}}">
+							<input type="text" class="form-control" disabled ng-value="$ctrl.pfdoPublishState.status"/>
+						</ns-form-group>
+						<ns-form-group title="Дата публикации">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.pfdoPublishState.statusDate | nsDateTime">
+						</ns-form-group>
+						<ns-form-group title="Доп. информация">
+							<textarea disabled class="form-control" rows="3" cols="50" wrap="soft" ng-value="$ctrl.pfdoPublishState.extendStatus"></textarea>
+						</ns-form-group>
+					</ns-panel>
+
+					<ns-panel panel-id="admin-parameters" class="warning print-block" title="{{$ctrl.language.Generic.SchoolInfo.kAdministration}}">
+						<ns-form-group title="{{parameter.title}}" ng-repeat="parameter in $ctrl.adminParameters" ng-show="parameter.show" ng-class="{'has-error': $ctrl.form[parameter.name].$invalid}">
+							<form-parameter parameter="parameter"></form-parameter>
+						</ns-form-group>
+					</ns-panel>
+
+					<ns-panel panel-id="contact-parameters" class="default print-block" title="{{$ctrl.language.Generic.Common.kContactInfo}}">
+						<ns-form-group title="{{$ctrl.language.Generic.Common.kState}}">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolInfo.stateName">
+						</ns-form-group>
+						<ns-form-group title="{{$ctrl.language.Generic.Common.kCity}}">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolInfo.cityName">
+						</ns-form-group>
+						<ns-form-group title="{{$ctrl.language.Generic.Common.kDistrict}}">
+							<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolInfo.districtName">
+						</ns-form-group>
+						<ns-form-group title="{{parameter.title}}" ng-repeat="parameter in $ctrl.contactparameters" ng-show="parameter.show" ng-class="{'has-error': $ctrl.form[parameter.name].$invalid}">
+							<form-parameter
+								ng-if="parameter.title != $ctrl.language.Generic.SchoolInfo.kPostAddress && parameter.title != $ctrl.language.Generic.SchoolInfo.kJuridicalAddress"
+								parameter="parameter">
+							</form-parameter>
+							<address-form-parameter
+								ng-if="parameter.title == $ctrl.language.Generic.SchoolInfo.kPostAddress || parameter.title == $ctrl.language.Generic.SchoolInfo.kJuridicalAddress"
+								parameter="parameter"
+								service="$ctrl.orginfoParametersService">
+							</address-form-parameter>
+						</ns-form-group>
+					</ns-panel>
+
+					<ns-panel panel-id="other-parameters" class="default print-block" title="{{$ctrl.language.Generic.Common.kOtherInfo}}">
+						<ns-form-group title="{{parameter.title}}" ng-repeat="parameter in $ctrl.otherParameters" ng-show="parameter.show" ng-class="{'has-error': $ctrl.form[parameter.name].$invalid}">
+							<form-parameter parameter="parameter"></form-parameter>
+						</ns-form-group>
+					</ns-panel>
+
+					<ns-panel panel-id="bank-parameters" class="default print-block" title="{{$ctrl.language.Generic.SchoolInfo.kBankDetails}}">
+						<ns-form-group title="{{parameter.title}}" ng-repeat="parameter in $ctrl.bankParameters" ng-show="parameter.show" ng-class="{'has-error': $ctrl.form[parameter.name].$invalid}">
+							<form-parameter parameter="parameter"></form-parameter>
+						</ns-form-group>
+					</ns-panel>
+
+					<ns-panel panel-id="food-parameters" class="default print-block" title="{{$ctrl.language.Generic.SchoolInfo.kFoodPayDetails}}" ng-if="$ctrl.moduleFoodPay">
+						<ns-form-group title="{{parameter.title}}" ng-repeat="parameter in $ctrl.foodParameters" ng-show="parameter.show" ng-class="{'has-error': $ctrl.form[parameter.name].$invalid}">
+							<form-parameter parameter="parameter"></form-parameter>
+						</ns-form-group>
+					</ns-panel>					
+
+					<ns-panel panel-id="internet-parameters" class="default print-block" title="{{$ctrl.language.Generic.SchoolInfo.kInternetConnectionInfo}}">
+						<ns-form-group title="{{parameter.title}}" ng-repeat="parameter in $ctrl.internetParameters" ng-show="parameter.show" ng-class="{'has-error': $ctrl.form[parameter.name].$invalid}">
+							<form-parameter parameter="parameter"></form-parameter>
+						</ns-form-group>
+					</ns-panel>
+
+					<ns-panel panel-id="photo-files" class="default" title="{{$ctrl.language.Generic.SchoolInfo.kPhotos}}">
+						<file-attachments settings="$ctrl.photofilesSettings"></file-attachments>
+					</ns-panel>
+				</ns-parameters-form>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<style>
+	.panel-group ns-panel+ns-panel {
+		margin-top: 5px;
+		display: block;
+	}
+</style>

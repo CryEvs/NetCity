@@ -1,0 +1,41 @@
+<div class="filters-panel col-md-12 filters-panel-compact ready">
+    <div class="form-group active">
+        <div id="filters" class="filters-panel" style="display: inline;"></div>
+    </div>
+
+
+</div>
+
+
+<div class="filters-panel col-md-12 filters-panel-compact">
+    <button title="Импорт" type="button" class="btn btn-default" ng-click="ctrl.doImport()"><span
+            class="glyphicon glyphicon-import"></span>
+        <span>Импорт</span></button>
+</div>
+
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <form name="MainForm" action="doImportStaff_Easy.asp" method="POST">
+                    <div class="buttons-filters-panel form-horizontal">
+
+						<div> <label> <input type="checkbox" id="All" ng-model="ctrl.isAllSelected">&nbsp;&nbsp;Все </label> </div>
+
+                        <div ng-repeat="item in ctrl.staffs" class="checkbox">
+							<label title="{{ctrl.getItemTitle(item)}}">
+								<input type="checkbox" ng-checked="ctrl.isItemChecked(item)"
+									name="StaffID" ng-disabled="{{item.isAdminName}}"
+									title="{{ctrl.getItemTitle(item)}}"
+									value="{{item.userId}}">{{item.nickName}}
+							</label>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

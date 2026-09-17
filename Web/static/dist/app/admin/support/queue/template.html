@@ -1,0 +1,100 @@
+<style>
+	tr.stalled {
+		background-color: #d2d2d2 !important;
+	}
+</style>
+
+<form class="form-horizontal form-sm">
+	<div class="row">
+		<div class="col-md-7">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Тип задач</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select storage class="form-control" ng-options="taskType.id as taskType.name for taskType in data.refs.taskTypes" ng-change="load()" ng-model="data.taskType">
+						<option value="" selected>Все</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-7">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Статус задач</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control" ng-options="taskStatus.id as taskStatus.name for taskStatus in data.refs.taskStatuses" ng-change="load()" ng-model="data.taskStatus"></select>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="Обновить" type="button" class="btn btn-info" ng-click="load()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>Обновить</span>
+				</button>
+				<button title="Повторить" type="button" class="btn btn-default" ng-click="selectAll()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>Выбрать все</span>
+				</button>
+				<button title="Повторить" type="button" class="btn btn-warning" ng-click="retry(data.selection.selected)" ng-disabled="!data.selection.selected || !data.selection.selected.length">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>Повторить</span>
+				</button>
+				<button title="Удалить класс" type="button" class="btn btn-danger" ng-click="delete(data.selection.selected)" ng-disabled="!data.selection.selected || !data.selection.selected.length">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>Удалить</span>
+				</button>
+
+				<button title="Очистить очередь отчетов" type="button" class="btn btn-warning" ng-click="clearReportQueue()">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>Очистить очередь отчетов</span>
+				</button>
+				
+				<button title="Проверка SignalR" type="button" class="btn btn-warning" ng-click="testSignalR()">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>Проверка SignalR</span>
+				</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="state.dataReady && state.emptyData">
+		<div class="alert alert-info" role="alert">Очередь задач по указанным фильтрам пуста</div>
+	</div>
+</div>
+
+<div class="row" ng-show="state.dataReady && !state.emptyData">
+	<div class="col-md-12">
+
+		<ul ng-show="paging.show" uib-pagination total-items="paging.totalcount" ng-model="paging.page" items-per-page="paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="load()"></ul>
+		<table class="table table-xs table-bright table-bright-hover table-selectable table-thin">
+			<tr>
+				<th>Id</th>
+				<th>Тип</th>
+				<th>Статус</th>
+				<th>Время создания</th>
+				<th>Время запуска</th>
+				<th>Время окончания</th>
+			</tr>
+			<tr ng-repeat="task in data.queueTasks" ng-class="{'selected': data.selection.isSelected(task), 'stalled': task.stalled}" ng-click="data.selection.select(task)">
+				<td><a href="#" ng-click="viewDetails(task);" title="Просмотр">{{task.id}}</a></td>
+				<td><a href="#" ng-click="viewDetails(task);" title="Просмотр">{{task.taskType}}</a></td>
+				<td>{{task.status}}</td>
+				<td>{{task.enqueueDate}}</td>
+				<td>{{task.startDate}}</td>
+				<td>{{task.endDate}}</td>
+			</tr>
+		</table>
+
+	</div>
+</div>

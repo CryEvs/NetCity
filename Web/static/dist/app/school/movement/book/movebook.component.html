@@ -1,0 +1,120 @@
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row ">
+
+		<div class="buttons-panel">
+			<div class="buttons-panel-right">
+				<button title="{{$ctrl.language.Generic.Buttons.kPrint}}" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+					<span class="glyphicon glyphicon-print"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kPrint}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default"  ng-click="$ctrl.export()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>{{$ctrl.language.Generic.Common.kBtnExcel}}</span>
+				</button>
+			</div>
+		</div>
+
+		<filter-panel class="filters-panel filters-panel-compact" ng-if="$ctrl.data.filterPanelSettings" fp="$ctrl.data.filterPanel" fp-settings="$ctrl.data.filterPanelSettings"> 
+			<div class="form-group active">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Common.kSchoolYear}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control" name="year" ng-change="$ctrl.changeYear()" ng-model="$ctrl.data.year" ng-options="year as year.name for year in $ctrl.data.years track by year.id"></select>
+				</div>
+			</div>
+		</filter-panel>
+	</div>
+</div>
+
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel extra">
+			<div class="buttons-panel-left">
+				<button type="button" class="btn btn-info" ng-click="$ctrl.add()" ng-if="$ctrl.needDrawEditButtons()" ng-disabled="$ctrl.data.noActiveMovePeriods">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="$ctrl.edit($ctrl.selection.item)" ng-disabled="!$ctrl.selection.selected">
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span ng-if="!$ctrl.state.readOnly">{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+					<span ng-if="$ctrl.state.readOnly">{{$ctrl.language.Generic.Buttons.kView}}</span>
+				</button>
+
+				<button type="button" class="btn btn-danger" ng-click="$ctrl.delete($ctrl.selection.item)" ng-disabled="!$ctrl.selection.selected" ng-if="$ctrl.needDrawEditButtons()">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="$ctrl.loadInlearno()" ng-disabled="" ng-if="$ctrl.isInlearnoNavigator()">
+					<span class="glyphicon glyphicon-import"></span>
+					<span>Зачислить из Навигатора-47</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-lg-8" ng-show="$ctrl.state.dataReady && $ctrl.state.emptyData">
+		<div class="alert alert-info" role="alert">{{$ctrl.language.Movement.kDocsEmpty}}</div>
+	</div>
+</div>
+
+<div class="row" ng-if="$ctrl.data.noActiveMovePeriods">
+	<div class="col-md-10 col-lg-8">
+		<div class="alert alert-info" role="alert">{{$ctrl.language.Generic.Movement.kMovementForbidden}}</div>
+	</div>
+</div>
+
+<div class="row" ng-if="$ctrl.data.state && $ctrl.data.state.futureYearMovementNotAllowed && $ctrl.onlySummerDoc() && $ctrl.state.currentYearState == 'Open'">
+	<div class="col-md-10 col-lg-8">
+		<div class="alert alert-info" role="alert">{{$ctrl.language.Generic.Movement.kSummerMovementForbidden}}</div>
+	</div>
+</div>
+
+<div class="row" ng-if="$ctrl.data.state && !$ctrl.data.state.yearMovementAllowed && $ctrl.onlySummerDoc() && $ctrl.state.currentYearState == 'Open'" >
+	<div class="col-md-10 col-lg-8">
+		<div class="alert alert-info" role="alert">
+			<span style="white-space: pre-line">{{$ctrl.language.Generic.Movement.kHintYearMoveDocs.replace('{0}', $ctrl.language.Generic.MenuFolders.kPlanning).replace('{1}', $ctrl.language.Generic.MenuFolders.kFNSchoolYearAndTerms).replace('{2}', $ctrl.language.Generic.Buttons.kEditFutureYear)}}</span>
+		</div>
+	</div>
+</div>
+
+<div class="row" ng-if="$ctrl.state.dataReady && !$ctrl.state.emptyData">
+	<div class="col-md-12">
+		<table class="table table-xs table-print table-bordered table-thin table-striped table-hover print-block table-selectable">
+			<tr>
+				<th ng-bind-html="$ctrl.language.Generic.Movement.kDocNumberBR"></th>
+				<th ng-bind-html="$ctrl.language.Generic.Movement.kDocDateBR"></th>
+				<th>{{$ctrl.language.Generic.Movement.kDocType}}</th>
+				<th ng-bind-html="$ctrl.language.Movement.kClassOutEnrollBR"></th>
+				<th>
+					{{$ctrl.language.Generic.Common.kLastName}}
+					<span ng-if="$ctrl.data.docType === 2"><br />{{$ctrl.language.Generic.Common.kArriveFrom}}</span>
+					<span ng-if="$ctrl.data.docType === 1"><br />{{$ctrl.language.Generic.Movement.kDepartTo}}</span>
+				</th>
+			</tr>
+			<tr ng-repeat="moveDoc in $ctrl.data.documents" ng-click="$ctrl.selection.select(moveDoc)" ng-class="{'selected': $ctrl.selection.isSelected(moveDoc)}">
+				<td class="text-center">
+					<a ng-click="$ctrl.edit(moveDoc)">{{moveDoc.docNumber}}</a>
+				</td>
+				<td class="text-center">
+					{{moveDoc.docDate | date: 'dd.MM.yyyy'}}
+				</td>
+				<td>
+					{{$ctrl.getDocTypeInfo(moveDoc.docType).name}}
+				</td>
+				<td class="text-center">
+					<p ng-repeat="subDoc in moveDoc.subDocs" class="mini">
+						<span ng-if="subDoc.educGroupFrom">{{subDoc.educGroupFrom.name}}</span> <span ng-if="subDoc.educGroupFrom && subDoc.educGroupTo">=></span> <span ng-if="subDoc.educGroupTo">{{subDoc.educGroupTo.name}}</span>
+					</p>
+				</td>
+				<td>
+					{{moveDoc.students}}
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+

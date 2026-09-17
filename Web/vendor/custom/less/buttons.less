@@ -1,0 +1,288 @@
+@import (reference) "var.less";
+@import (reference) "mixins.less";
+@import (reference) "controls.less";
+@import (reference) "responsive.less";
+
+@input-height-xs : @font-size-base * @line-height-base; // 14px;
+
+//задаем высоту для кнопок. глобально
+.btn {
+	line-height: @line-height-base - 0.1; //for rough equate to 33px if font-size:14px
+	height: @input-height-base - 1px; // for straight equate height form-controls & buttons // 33px
+
+	&:active {
+		text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+		box-shadow: inset 0 0 0.143em rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.1);	
+		outline: none !important;
+	}
+
+	&:hover, &:focus {
+		outline: none !important;
+	}
+
+	&-lg{
+		height: @input-height-large - 1px;
+	}
+
+	&-sm {
+		height: @input-height-small - 1px;
+	}
+
+	&-xs {
+		height: @input-height-xs;
+	}
+
+	//смещение иконки под определенную высоту кнопок
+	.glyphicon {
+		top: 2px;
+		left: -1px;
+	}
+
+	@media only screen and (max-width: @sm-screen-width){
+		.input-group-btn > & {
+			> span + span {
+				display: none;
+			}
+		}
+	}
+}
+
+//стили для фильтр-кнопочной панели
+.buttons-filters-panel {
+	.btn {
+		height: @input-height-base - 2px; // for straight equate height form-controls & buttons // 32px
+		font-size: @font-size-base - 1px; // 13px  (- 1px)
+	}
+
+	.btn-lg {
+		height: @input-height-large - 1px;
+		font-size: @font-size-large;
+	}
+
+	.btn-sm {
+		height: @input-height-small - 1px;
+		font-size: @font-size-small;
+	}
+
+	.btn-xs {
+		height: @input-height-xs;
+		font-size: @font-size-small;
+	}
+	//задаем отступы между фильтрами
+	.form-group {
+		margin-bottom: @margin-small-bottom; // 12px
+		//задаем высоту для полей ввода в фильтрах
+		.form-control {
+			height: @input-height-base - 2px; // for vertical align middle to font-size 13px
+			font-size: @font-size-base - 1px; // for 13px
+
+			// многоточие в конце, если невместился текст
+			-ms-text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+			text-overflow: ellipsis;
+		}
+
+		.input-group-addon {
+			height: @input-height-base - 2px; // for vertical align middle to font-size 13px
+			font-size: @font-size-base - 1px; // for 13px
+		}
+
+		select.form-control[size] {
+			.select-multi;
+
+			option {
+				.full-empty-shadow;
+				padding: @padding-base-vertical - 3px @padding-base-horizontal - 2px;
+				height: auto;
+			}
+		}
+	}
+}
+
+//стили кнопок для кнопочной панели
+.buttons-panel {
+	.btn, button {
+		height: @input-height-base - 2px; // for vertical align middle to font-size 13px
+		font-size: @font-size-base - 1px ; // for 13px (- 1px)
+		margin-right: 5px;
+
+		@media only screen and (max-width: @sm-screen-width){
+			height: @input-height-base - 6px;
+			font-size: @font-size-base - 3px;
+		}
+	}
+
+	.btn-lg {
+		height: @input-height-large - 1px;
+		font-size: @font-size-large;
+	}
+
+	.btn-sm {
+		height: @input-height-small - 1px;
+		font-size: @font-size-small;
+	}
+
+	.btn-xs {
+		height: @input-height-xs;
+		font-size: @font-size-small;
+	}
+
+	/****************************************************/
+	// на вверх (кнопка)
+	.buttons-up {
+		float: left !important;
+		//margin-left: 10px;
+		span {
+			left: -5px;
+		}
+	}
+
+}
+
+.default-hover {
+	color: #191c20;
+	text-decoration: none;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 1px rgba(0, 0, 0, 0.15);
+	outline: none;
+}
+
+//базовый стиль обычных кнопок
+.btn, .btn-default {
+	text-align: center;
+	white-space: nowrap;
+	border: 1px solid transparent;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+	-moz-background-origin: border-box;
+	-webkit-background-origin: border-box;
+	background-origin: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 2px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: #222;
+	background-color: #bdc1c7;
+	border-color: rgba(108, 118, 128, 0.3);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	.transition;
+}
+
+//базовый стиль для главных кнопок
+.btn-primary {
+	color: #004466;
+	background-color: #2F95F0;
+	border-color: rgba(40, 137, 199, 0.68);
+
+	&:hover, &:focus{
+		color: #004466;
+		background-color:#4FAAFA;// #69C9F4;
+		border-color: rgba(17, 87, 122, 0.7);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 1px rgba(0, 0, 0, 0.25);
+		outline: none;
+	}
+}
+
+//----------------специфичные классы для контекстных кнопок. не используются в системе ---------------------
+.btn-default {
+	&:hover, &:focus{
+		.default-hover;
+		background-color: #c8cdd1;
+		border-color: #9ca4ac;
+		border-color: rgba(94, 103, 112, 0.4);
+	}
+}
+.btn-info, .btn-danger, .btn-warning {
+	&:hover, &:focus {
+		.default-hover;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 1px rgba(0, 0, 0, 0.25);
+		color: white;
+		text-shadow: 0 1px 2px rgba(0,0,0,.7);
+	}
+}
+
+//кнопки сохранения и применения - имеют стиль главных кнопок
+.btn-save, .btn-apply{
+	.btn-primary
+}
+
+//для иконок используем шрифт FontAwesome
+.btn-change, .btn-copy, .btn-edit {
+	padding: 0 0.7em 0 0.65em;
+	&:before {
+		font-family: 'FontAwesome';
+		color: inherit;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+.btn-change:before, .btn-edit:before {
+	content: "\f040";
+}
+
+.btn-copy:before {
+	content: "\f0c5";
+}
+
+.btn-file {
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 100px;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	outline: none;
+	background: white;
+	cursor: inherit;
+	display: block;
+	
+}
+
+.btn-clear {
+	font-size: 13px;
+	float:right;
+	margin-left:10px;
+	font-weight: 100;
+	text-shadow: none;
+}
+
+
+aside {
+	button{
+		padding: 0 .7em;
+		line-height: 190%;
+		border: 1px solid #b8bdc3;
+		background-origin: border-box;
+		transition: all .2s ease;
+		box-sizing: border-box;
+		border-radius: .143em;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		background-image: none;
+		text-shadow: 0 1px 0 rgba(255,255,255,.3);
+		box-shadow: inset 0 0 0.143em rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,.1);
+		background-image: linear-gradient(to bottom,rgba(255,255,255,.4),rgba(255,255,255,0));
+		color: #001d2b;
+		background-color: #8ce;
+		border-color: #09f;
+	}
+}

@@ -1,0 +1,92 @@
+@mixin btn-color-custtom($color, $background, $border){
+  color: $color;
+  background-color: darken($background, 10%);
+  border-color: darken($border, 12%);
+}
+@mixin image-none(){
+  background-image: none;
+}
+
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+/////////////////////////////////////////////////////////////////////////////
+// ==========================================================================
+// Комментарий от Льва Милова, 06.02.2019
+// ==========================================================================
+// из-за того что используется  путь ".open > .dropdown-toggle", при переносе 
+// из less в sass символ & не поддерживеается если между ним и классом не
+// будет пробела. Например:
+//  .open > .dropdown-toggle&  
+// компилятор выдаст ошибку. Если пробел поставить, то всё хорошо.
+// Я зделал альтернативу
+// @at-root .open > .dropdown-toggle#{&}
+// Но и в ней есть минус. Нельзя вызывать миксин следующим образом 
+// 
+//     .class_1, .class_2 {            
+//        @include button-variant(#fff, #fff, #fff);
+//     }
+// 
+// Вызывать только так
+//
+//     .class_1 {            
+//        @include button-variant(#fff, #fff, #fff);
+//     }
+//     .class_2 {            
+//        @include button-variant(#fff, #fff, #fff);
+//     }
+//////////////////////////////////////////////////////////////////////////////
+
+@mixin button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active {
+    @include btn-color-custtom($color, $background, $border);
+  }
+  @at-root .open > .dropdown-toggle#{&}   {
+    @include btn-color-custtom($color, $background, $border);
+  }
+
+  &:active,
+  &.active{
+    @include image-none();
+  }
+  @at-root .open > .dropdown-toggle#{&}   {
+    @include image-none();
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+
+// Button sizes
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}

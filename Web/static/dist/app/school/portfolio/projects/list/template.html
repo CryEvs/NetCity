@@ -1,0 +1,46 @@
+<div class="buttons-panel">
+	<button title="Созать портфолио" type="button" class="btn btn-info" ng-click="create()">
+		<span class="glyphicon glyphicon-plus-sign"></span>
+		<span>Создать</span>
+	</button>
+</div>
+<fieldset>
+	<legend>Список портфолио</legend>
+	<div style="max-width: 60%;">
+		<div class="alert alert-info" role="alert" ng-if="data.self.portfolios.length == 0">Нет доступных портфолио</div>
+		<div class="list-group">
+			<a ng-href="projects/{{portfolio.id}}" class="list-group-item clearfix portfolio-item" ng-repeat="portfolio in data.self.portfolios">
+				<h4 class="list-group-item-heading">
+					{{portfolio.name}}
+				</h4>
+				<span class="portfolio-descr">
+					<span class="fggray">Руководители:</span>
+					<i ng-repeat="leader in portfolio.leaders">{{leader.name}}<span ng-if="!$last">, </span></i>
+				</span>
+			</a>
+		</div>
+	</div>
+	<legend ng-if="data.others.portfolios.length > 0">Портфолио других пользователей</legend>
+	<div style="max-width: 60%;" ng-if="data.others.portfolios.length > 0">
+		<div class="list-group">
+			<a ng-href="projects/{{portfolio.id}}" class="list-group-item clearfix portfolio-item" ng-repeat="portfolio in data.others.portfolios">
+				<h4 class="list-group-item-heading">
+					{{portfolio.name}}
+				</h4>
+				<span class="portfolio-descr">
+					<span class="fggray">Руководители:</span>
+					<i ng-repeat="leader in portfolio.leaders">{{leader.name}}<span ng-if="!$last">, </span></i>
+				</span>
+			</a>
+		</div>
+	</div>
+</fieldset>
+
+<style>
+	a.list-group-item:hover div.cmd-buttons {
+		display: inline-block !important;
+	}
+	a.portfolio-list-item {
+		padding: 5px 10px;
+	}
+</style>

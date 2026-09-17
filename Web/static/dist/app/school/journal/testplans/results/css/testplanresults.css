@@ -1,0 +1,29 @@
+.individual-educ {
+  background-color: #FFE094;
+}
+.individual-educ > td {
+  background-color: #FFE094;
+}
+.individual-educ > td > input {
+  background-color: #FFE094;
+}
+.individual-educ > input {
+  background-color: #FFE094;
+}
+.individual-educ > select {
+  background-color: #FFE094;
+}
+.individual-educ.student-name span:after, .individual-educ .student-name span:after {
+  font-family: "Glyphicons Halflings";
+  content: "\e021";
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+tr.selected > td {
+  background-color: #faebd7;
+}
+
+tr.selected > td > input {
+  background-color: #faebd7;
+}

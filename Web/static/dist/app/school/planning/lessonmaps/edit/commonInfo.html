@@ -1,0 +1,117 @@
+<div class="bootstrap-dialog type-primary">
+
+	<!-- ЗАГОЛОВОК МОДАЛЬНОГО ОКНА -->
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-close-button">
+				<button class="close" ng-click="ctrl.close()">&times;</button>
+			</div>
+			<div class="bootstrap-dialog-title">{{ctrl.header}}</div>
+		</div>
+	</div>
+	
+
+	<!-- ТЕЛО МОДАЛЬНОГО ОКНА -->
+	<div class="modal-body">
+		<form class="form-xs" name="ctrl.form">
+
+			<!-- ФИЛЬТР-ПАНЕЛЬ -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="buttons-filters-panel form-horizontal single-row">
+						<div class="row">
+							<div class="filters-panel col-md-12 filters-panel-compact common-panel"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ЗАПОЛНЯЕТСЯ ИЗ МОДЕЛИ -->
+			<div ng-if="ctrl.state.ready && ctrl.checkLesson()">
+				<div class="form-group row" ng-class="{'has-error': ctrl.form.AUTHOR.$invalid}">
+					<label class="control-label col-md-4 col-lg-4 col-sm-4">
+						{{ctrl.language.Generic.Curriculum.kUMKAuthor}}
+					</label>
+					<div class="col-md-8 col-lg-8 col-sm-8">
+						<input track-changes type="text" required name="AUTHOR" class="form-control" ng-value="ctrl.data.author.name" readonly>
+						<div ng-messages="ctrl.form.AUTHOR.$error">
+							<span class="help-block" ng-message="required">{{ctrl.lessonMapAuthorError()}}</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group row" ng-class="{'has-error': ctrl.form.LESSONMAPSUBJECT.$invalid}">
+					<label class="control-label col-md-4 col-lg-4 col-sm-4">
+						{{ctrl.language.Generic.Lessonmap.kLessonMapSubject}}
+					</label>
+					<div class="col-md-8 col-lg-8 col-sm-8">
+						<select track-changes class="form-control" required name="LESSONMAPSUBJECT" ng-options="lessonMapSubject.name for lessonMapSubject in ctrl.data.refs.lessonMapSubjects track by lessonMapSubject.id" ng-model="ctrl.data.subject"></select>
+						<div ng-messages="ctrl.form.LESSONMAPSUBJECT.$error">
+							<span class="help-block" ng-message="required">{{ctrl.lessonMapSubjectError()}}</span>
+						</div>
+					</div>
+				</div>
+	
+				<div class="form-group row" ng-class="{'has-error': ctrl.form.LESSONMAPTYPE.$invalid}">
+					<label class="control-label col-md-4 col-lg-4 col-sm-4">
+						{{ctrl.language.Generic.Lessonmap.kLessonMapType}}
+					</label>
+					<div class="col-md-8 col-lg-8 col-sm-8">
+						<select track-changes class="form-control" required name="LESSONMAPTYPE" ng-options="lessonType.name for lessonType in ctrl.data.refs.lessonTypes track by lessonType.id" ng-model="ctrl.data.lessonType"></select>
+						<div ng-messages="ctrl.form.LESSONMAPTYPE.$error">
+							<span class="help-block" ng-message="required">{{ctrl.lessonMapTypeError()}}</span>
+						</div>
+					</div>
+				</div>
+	
+				<div class="form-group row" ng-class="{'has-error': ctrl.form.LESSONMAPMODEL.$invalid}">
+					<label class="control-label col-md-4 col-lg-4 col-sm-4">
+						{{ctrl.language.Generic.Lessonmap.kLessonMapModel}}
+					</label>
+					<div class="col-md-8 col-lg-8 col-sm-8">
+						<select track-changes class="form-control" required name="LESSONMAPMODEL" ng-options="model.name for model in ctrl.data.models track by model.id" ng-model="ctrl.data.lessonModel"></select>
+						<div ng-messages="ctrl.form.LESSONMAPMODEL.$error">
+							<span class="help-block" ng-message="required">{{ctrl.lessonMapModelError()}}</span>
+						</div>
+					</div>
+				</div>
+	
+				<div class="row">
+					<div class="col-md-4 col-lg-4 col-sm-4"></div>
+					<div class="col-md-8 col-lg-8 col-sm-8">
+						<small>
+							<div ng-repeat="stage in ctrl.data.lessonModel.stages">
+								<span ng-if="stage.parentStageNumber">Этап {{stage.parentStageNumber}}.{{stage.number}}. {{stage.name}}</span>
+								<span ng-if="!stage.parentStageNumber">Этап {{stage.number}}. {{stage.name}}</span>
+							</div>
+						</small>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+		<div ng-if="ctrl.state.ready">
+			<!-- ДОБАВИТЬ -->
+			<!-- СОХРАНИТЬ -->
+			<button class="btn btn-primary btn-sm" ng-click="ctrl.save()">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span ng-if="!ctrl.edit">{{ctrl.language.Generic.Buttons.kAdd}}</span>
+				<span ng-if="ctrl.edit">{{ctrl.language.Generic.Buttons.kSave}}</span>
+			</button>
+
+			<!-- ВОССТАНОВИТЬ -->
+			<button class="btn btn-default btn-sm" ng-click="ctrl.reset()" ng-if="ctrl.edit">
+				<span class="glyphicon glyphicon-repeat"></span>
+				<span>{{ctrl.language.Generic.Buttons.kReset}}</span>
+			</button>
+
+			<!-- ОТМЕНА -->
+			<button class="btn btn-default btn-sm" ng-click="ctrl.cancel()">
+				<span class="glyphicon glyphicon-ban-circle"></span>
+				<span>{{ctrl.language.Generic.Buttons.kCancel}}</span>
+			</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,64 @@
+<div>
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="$ctrl.header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<form role="form" name="$ctrl.docForm" class="form">
+				<!--Поля формы-->
+
+				<div class="form-group" ng-class="{'has-error': $ctrl.docForm.name.$invalid && (!$ctrl.docForm.name.$pristine || $ctrl.docForm.$displayErrors)}">
+					<label for="doc-name" class="control-label">{{$ctrl.language.Generic.Common.kName}}</label>
+					<div>
+						<input track-changes type="text" id="doc-name" name="name" class="form-control" ng-model="$ctrl.data.doc.name" required maxlength="200">
+						<p ng-show="$ctrl.docForm.name.$invalid && (!$ctrl.docForm.name.$pristine || $ctrl.docForm.$displayErrors)" class="help-block">
+							{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+					</div>
+				</div>
+
+				<div class="form-group" ng-class="{'has-error': ($ctrl.docForm.fileName.$invalid || $ctrl.fileSize > 10) && (!$ctrl.docForm.fileName.$pristine || $ctrl.docForm.$displayErrors)}">
+					<label for="doc-file" class="control-label">{{$ctrl.language.Generic.Common.kFile}}</label>
+					<div>
+						<div class="input-group">
+							<span class="btn btn-primary btn-file input-group-addon">
+								{{$ctrl.language.Generic.Common.kChooseFile}}
+								<input track-changes type="file" id="doc-file" ngf-select ng-model="$ctrl.data.doc.file" name="file" class="form-control file-input-filename">
+							</span>
+							<input type="text" class="form-control file-input-filename" id="fileName" name="fileName" ng-model="$ctrl.data.doc.fileName"
+							 ng-required="!editMode" readonly>
+						</div>
+						<p ng-show="$ctrl.docForm.fileName.$invalid && (!$ctrl.docForm.fileName.$pristine || $ctrl.docForm.$displayErrors)" class="help-block">
+							{{language.Generic.Common.kChooseFile}}</p>
+						<p ng-show="$ctrl.fileSize > $ctrl.fileSizeLimit && (!$ctrl.docForm.fileName.$pristine || $ctrl.docForm.$displayErrors)" class="help-block">
+							{{$ctrl.language.Generic.SetupSchoolPortfolio.kFileSizeCantBeGreaterThan}} {{$ctrl.fileSizeLimit / 1024}} МБ</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="doc-description" class="control-label">{{$ctrl.language.Generic.Common.kAttachmentDescription}}</label>
+					<div>
+						<textarea track-changes id="doc-description" class="form-control" ng-model="$ctrl.data.doc.description"></textarea>
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="$ctrl.save()">
+				{{$ctrl.lazy ? $ctrl.language.Generic.Buttons.kAttachFile : $ctrl.language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="$ctrl.cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{$ctrl.language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

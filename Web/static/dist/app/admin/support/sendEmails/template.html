@@ -1,0 +1,39 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<form role="form" name="editSubjectFieldForm" class="form form-sm">
+			<!--Поля формы-->
+
+			<div class="form-group ">
+				<label class="control-label">Тема</label>
+				<div>
+					<input name="subject" type="text" ng-model="email.subject" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group ">
+				<label class="control-label">Сообщение</label>
+				<div>
+					<textarea name="message" class="form-control" rows="5" ng-model="email.message"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="send()">
+			<span>Отправить</span>
+		</button>
+
+		<button class="btn btn-default" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{language.Generic.Buttons.kCancel}}</span>
+		</button>
+	</div>
+</div>

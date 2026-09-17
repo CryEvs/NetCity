@@ -1,0 +1,46 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subCols": [ 4, 6 ],
+			"type": "include"
+		},
+		{
+			"col": 3,
+			"subCols": [ 8, 9, 10, 11 ],
+			"type": "ofthem"
+		},
+		{
+			"col": 4,
+			"subCols": [ 5 ],
+			"type": "ofthem"
+		},
+		{
+			"col": 6,
+			"subCols": [ 7 ],
+			"type": "ofthem"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 34,
+			"subRows": [ 35, 39, 41, 42 ],
+			"type": "sum"
+		},
+		{
+			"row": 35,
+			"subRows": [ 36, 37, 38 ],
+			"type": "include"
+		},
+		{
+			"row": 39,
+			"subRows": [ 40 ],
+			"type": "include"
+		},
+		{
+			"row": 39,
+			"subRows": [ 43 ],
+			"type": "include"
+		}
+    ]
+}

@@ -1,0 +1,16 @@
+{
+  "sumCols": [
+    {
+      "col": 3,
+      "subCols": [4],
+      "type": "ofthem"
+    }
+  ],
+  "sumRows": [
+    {
+      "row": 1,
+      "subRows": [2, 3, 4],
+      "type": "ofthem"
+    }
+  ]
+}

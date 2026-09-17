@@ -1,0 +1,18 @@
+<table class="table table-xs table-hover table-selectable" ng-if="$ctrl.addEducations && $ctrl.addEducations.length">
+	<tr>
+		<th>Программа</th>
+		<th>Объединение</th>
+		<th>Способ оплаты</th>
+		<th>Дата зачисления</th>
+	</tr>
+	<tr ng-repeat="addEducation in $ctrl.addEducations">
+		<td>{{addEducation.program.name}}<span ng-if="addEducation.depart"> (выбыл)</span></td>
+		<td>{{addEducation.class.name}}</td>
+		<td>
+			<select ng-if="!$ctrl.readonly && !addEducation.depart" class="form-control" ng-model="addEducation.cost" ng-change="$ctrl.changeCost(addEducation)" ng-options="cost.key as cost.name for cost in $ctrl.programCosts"></select>
+			<input class="form-control" ng-if="$ctrl.readonly || addEducation.depart" type="text" disabled ng-value="$ctrl.getCostName(addEducation.cost)" maxlength="255"/>
+			<p ng-if="$ctrl.isbyCertif(addEducation.cost) && addEducation.enrollReason">Основание: {{addEducation.enrollReason}}</p>
+		</td>
+		<td>{{addEducation.enrollDate | nsDate}}</td>
+	</tr>
+</table>

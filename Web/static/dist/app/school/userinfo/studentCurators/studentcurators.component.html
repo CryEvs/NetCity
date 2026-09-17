@@ -1,0 +1,38 @@
+<div class="row">
+	<div class="col-md-10">
+		<div class="alert alert-info" role="alert" ng-show="$ctrl.state.dataReady && $ctrl.state.emptyData">
+			Нет назначенных кураторов
+		</div>
+		
+		<div class="alert alert-info" role="alert" ng-show="!$ctrl.state.dataReady">
+			{{$ctrl.language.Generic.Movement.kPleaseWait}}
+		</div>
+
+		<div class="alert alert-danger" role="alert" ng-show="error">
+			{{$ctrl.error}}
+		</div>
+
+		<table class="table table-xs table-hover table-selectable" ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData">
+			<tr>
+				<th>{{$ctrl.language.Generic.Reports.kFIOstud}}</th>
+				<th>{{$ctrl.language.Generic.Reports.kPosition}}</th>
+				<th>{{$ctrl.language.Generic.Common.kContactInfo}}</th>
+			</tr>
+			<tr ng-repeat="curator in $ctrl.data.curators" ng-class="{'selected': $ctrl.data.selection.isSelected(curator)}" ng-click="$ctrl.data.selection.select(curator)">
+				<td>{{curator.fio}}</td>
+				<td>{{curator.position || "-"}}</td>
+				<td>{{curator.contacts || "-"}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-2">
+		<div class="btn-group" ng-show="$ctrl.state.dataReady && !$ctrl.state.readOnly">
+			<button class="btn btn-default btn-sm" ng-click="$ctrl.add()" type="button" title="Добавить куратора">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			</button>
+			<button class="btn btn-warning btn-sm" ng-click="$ctrl.remove()" type="button" ng-disabled="!$ctrl.data.selection.selected" ng-hide="$ctrl.state.emptyData" title="Удалить куратора">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-minus-sign"></span>
+			</button>
+		</div>
+	</div>
+</div>

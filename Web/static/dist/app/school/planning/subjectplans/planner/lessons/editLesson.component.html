@@ -1,0 +1,121 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+
+<div class="row ns-cloak">
+	<div class="col-md-12">	
+		<div class="buttons-panel">	
+			<div class="buttons-panel-left" ng-if="$ctrl.state.dataReady && !$ctrl.state.readOnly">
+				<button class="btn btn-primary" type="button" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+
+				<button	title="$ctrl.language.Generic.Buttons.kReset" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12 col-lg-8">
+		<form class="form-horizontal form-sm" name="$ctrl.form" ng-if="$ctrl.state.dataReady">
+			<ns-form control-size="col-md-8" label-size="col-md-4">
+
+				<ns-form-group title="{{ 'language.Curriculum.kLesTheme' | language }}" ng-class="{'has-error': $ctrl.form.Lessonname.$invalid}">
+					<input type="text" class="form-control" lessonname-input name="Lessonname" size="60" maxlength="400" ng-model="$ctrl.lesson.lessonName" required track-changes ng-readonly="$ctrl.state.readOnly">
+					<div ng-messages="$ctrl.form.Lessonname.$error">
+						<span class="help-block" ng-message="required">Обязательное поле</span>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group title="{{ 'language.Generic.Curriculum.kUnit' | language }}">
+					<input ng-if="$ctrl.state.readOnly" type="text" class="form-control" name="Unitname" size="60" maxlength="200" ng-model="$ctrl.lesson.unit.name" ng-readonly="true">
+					<select ng-if="!$ctrl.state.readOnly" class="form-control" name="Unit" ng-model="$ctrl.unit" ng-options="unit.name for unit in $ctrl.units track by unit.id" track-changes ng-change="$ctrl.changeUnit()">
+					</select>
+				</ns-form-group>
+
+				<ns-form-group title="{{ 'language.Curriculum.kNumLessonInUnit' | language }}">
+					<span ng-if="$ctrl.state.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.lesson.lessonNum}}</span></span>
+					<select ng-if="!$ctrl.state.readOnly" class="form-control" name="LessonNumber" ng-model="$ctrl.lesson.lessonNum" ng-options="lessonNumber for lessonNumber in $ctrl.lessonNumbers track by lessonNumber" track-changes>
+					</select>
+				</ns-form-group>
+
+				<ns-form-group title="{{ 'language.Generic.Curriculum.kHoursNumber' | language }}" ng-class="{'has-error': $ctrl.form.HoursNumber.$invalid}">
+					<input type="text" class="form-control" hoursnumber-input name="HoursNumber" numeric-input="{negative: false, fractional: false}" ng-min="1" min="1" ng-max="100" max="100" ng-model="$ctrl.lesson.hours" required track-changes ng-readonly="$ctrl.state.readOnly">
+					<div ng-messages="$ctrl.form.HoursNumber.$error">
+						<span class="help-block" ng-if="$ctrl.form.HoursNumber.$invalid">Введите целое число от 1 до 100</span>
+					</div>
+				</ns-form-group>
+
+
+				<ns-form-group title="{{$ctrl.language.Curriculum.kLesMatter}}" ng-if="!$ctrl.state.enableLessonMaps">
+					<textarea class="form-control" ng-model="$ctrl.lesson.description" rows="5" cols="60" wrap="soft" maxlength="2000" ng-disabled="$ctrl.state.readOnly" track-changes></textarea>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.language.Generic.Curriculum.kBookRef}}">
+					<textarea class="form-control" ng-model="$ctrl.lesson.bookref" rows="5" cols="60" wrap="soft" maxlength="2000" ng-disabled="$ctrl.state.readOnly" track-changes></textarea>
+					<span class="help-block">{{$ctrl.language.Generic.Curriculum.kBookRefNote}}</span>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.language.Generic.Curriculum.kLessonHomework}}">
+					<textarea class="form-control" ng-model="$ctrl.lesson.homeAssign" rows="3" cols="60" wrap="soft" maxlength="400" ng-disabled="$ctrl.state.readOnly" track-changes></textarea>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.language.Curriculum.kLessonDetails}}" ng-if="!$ctrl.state.enableLessonMaps">
+					<textarea class="form-control" ng-model="$ctrl.lesson.details" rows="5" cols="60" wrap="soft" maxlength="2000" ng-disabled="$ctrl.state.readOnly" track-changes></textarea>
+				</ns-form-group>
+
+
+				<ns-form-group title="{{$ctrl.language.Generic.Common.kAttachedFiles}}">
+					<file-attachments settings="$ctrl.fa"></file-attachments>
+				</ns-form-group>
+	
+				<div class="form-group" ng-if="$ctrl.displayContentElements">
+					<label class="control-label col-md-4">
+						{{$ctrl.language.Generic.Common.kContentElementCodes}}
+						<span class="control-span">{{$ctrl.language.Generic.QualityAssessment.kContentElementHelp}}</span>
+					</label>
+					
+					<div class="col-md-8">
+						<tree model="$ctrl.contentElements" settings="$ctrl.treeSettings" on-update="$ctrl.onChangeContentElements(selected)"></tree>
+					</div>
+				</div>
+		
+				<ns-form-group ng-if="$ctrl.state.moduleQA && $ctrl.state.editMode && !$ctrl.displayContentElements" title="{{$ctrl.language.Generic.Common.kContentElementCodes}}">
+					<span class="help-block">{{$ctrl.language.Generic.Curriculum.kSubjectNotHaveContentElementsInCurrYear}}</span>
+				</ns-form-group>
+				
+				<ns-form-group  ng-if="$ctrl.state.moduleQA" title="{{$ctrl.language.Generic.QualityAssessment.kCheckedContentElements}}">
+					<ul>
+						<li ng-repeat="item in $ctrl.lesson.contentElements">{{item.name}}</li>
+					</ul>
+				</ns-form-group>
+				
+
+				<!-- Extras - bDefaultLangRus And Not EnableLessonMaps -->
+				<ns-form-group title="{{$ctrl.language.Generic.Curriculum.kDetailInfComponent}}" ng-if="$ctrl.state.isDefaultLangRus && !$ctrl.state.enableLessonMaps">
+					<textarea class="form-control" ng-model="$ctrl.lesson.detailInfComponent" rows="5" cols="60" wrap="soft" maxlength="2000" ng-disabled="$ctrl.state.readOnly" track-changes></textarea>
+					<span class="help-block">{{$ctrl.language.Generic.Curriculum.kDetailInfComponentNote}}</span>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.language.Generic.Curriculum.kTotalLearningAndSubjectSkills}}" ng-if="$ctrl.state.isDefaultLangRus && !$ctrl.state.enableLessonMaps">
+					<textarea class="form-control" ng-model="$ctrl.lesson.totalLearningAndSubjectSkills" rows="5" cols="60" wrap="soft" maxlength="2000" ng-disabled="$ctrl.state.readOnly" track-changes></textarea>
+					<span class="help-block">{{$ctrl.language.Generic.Curriculum.kTotalLearningAndSubjectSkillsNote}}</span>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.language.Generic.Curriculum.kValuablyFocusedComponent}}" ng-if="$ctrl.state.isDefaultLangRus && !$ctrl.state.enableLessonMaps">
+					<textarea class="form-control" ng-model="$ctrl.lesson.valuablyFocusedComponent" rows="5" cols="60" wrap="soft" maxlength="2000" ng-disabled="$ctrl.state.readOnly" track-changes></textarea>
+					<span class="help-block">{{$ctrl.language.Generic.Curriculum.kValuablyFocusedComponentNote}}</span>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.language.Generic.Curriculum.kTeachConditionAndImplementer}}" ng-if="$ctrl.state.isDefaultLangRus && !$ctrl.state.enableLessonMaps">
+					<textarea class="form-control" ng-model="$ctrl.lesson.teachConditionAndImplementer" rows="5" cols="60" wrap="soft" maxlength="2000" ng-disabled="$ctrl.state.readOnly" track-changes></textarea>
+					<span class="help-block">{{$ctrl.language.Generic.Curriculum.kTeachConditionAndImplementerNote}}</span>
+				</ns-form-group>
+
+			</ns-form>
+		</form>
+	</div>
+</div>

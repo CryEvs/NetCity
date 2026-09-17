@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/mail/addressbook/addressbook.component.min.css">
+
+<form class="form form-xs form-horizontal">
+	<div class="horizontal-container">
+		<div class="horizontal-block">
+			<div class="wrapper-block">
+				<filter-panel class="filters-panel" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+				<h3 class="header-center">Выберите получателей из списка</h3>
+			</div>
+			<li ng-repeat="item in $ctrl.addressBookItems">
+				<a href="javascript:void(0)" ng-click="$ctrl.select(item)" title="Добавить к получателям">{{item.name}}</a>
+			</li>
+		</div>
+		<div class="horizontal-block">
+			<div class="wrapper-block">
+				<h3 class="header-center">Выбранные получатели</h3>
+			</div>
+			<li ng-repeat="select in $ctrl.selected">
+				<a href="javascript:void(0)" ng-click="$ctrl.remove(select)" title="Убрать из получателей">{{select.displayName}}</a>
+			</li>
+		</div>
+	</div>
+
+	<div class="block-fixed-bottom-centr">
+		<div class="btn-group">
+			<button title="Выбрать" type="button" class="btn btn-sm btn-default" ng-click="$ctrl.complete()">
+				<span class="disk"></span>
+				<span>Выбрать</span>
+			</button>
+			<button title="Отмена" type="button" class="btn btn-sm btn-default" ng-click="$ctrl.cancel()">
+				<span class="glyphicon glyphicon-arrow-left"></span>
+				<span>Отмена</span>
+			</button>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,56 @@
+<div ng-model="EditAcademicAwardCtrl">
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<form role="form" name="editForm" class="form form-xs ng-pristine ng-valid ng-scope">
+				<fieldset>
+					<!--Поля формы-->
+					<legend class="edit-block-legend">{{language.Generic.Common.kGeneralInformation}}</legend>
+					<div class="form-group" ng-class="{'has-error': editForm.academicDegree.$invalid && (!editForm.academicDegree.$pristine || editForm.$displayErrors)}">
+						<label for="academic-degree" class="control-label">{{language.Generic.Common.kAcademicDegree}}</label>
+						<div>
+							<input type="text" id="academic-degree" name="academicDegree" class="form-control" ng-model="data.item.academicDegree" ng-required="!data.item.academicTitle" maxlength="400" onchange="dataChanged()">
+							<p ng-show="editForm.academicDegree.$invalid && (!editForm.academicDegree.$pristine || editForm.academicDegree.$displayErrors)" class="help-block">Звание либо степень должны быть заполнены</p>
+						</div>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error': editForm.academicTitle.$invalid && (!editForm.academicTitle.$pristine || editForm.$displayErrors)}">
+						<label for="academic-title" class="control-label">{{language.Generic.Common.kAcademicTitle}}</label>
+						<div>
+							<input type="text" id="academic-title" name="academicTitle" class="form-control" ng-model="data.item.academicTitle" ng-required="!data.item.academicDegree" maxlength="400" onchange="dataChanged()">
+							<p ng-show="editForm.academicTitle.$invalid && (!editForm.academicTitle.$pristine || editForm.academicTitle.$displayErrors)" class="help-block">Звание либо степень должны быть заполнены</p>
+						</div>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error': editForm.academicSpeciality.$invalid && (!editForm.academicSpeciality.$pristine || editForm.$displayErrors)}">
+						<label for="academic-speciality" class="control-label">{{language.Generic.Common.kSpecialityCode}}</label>
+						<div>
+							<input type="text" id="academic-speciality" name="academicSpeciality" class="form-control" ng-model="data.item.speciality" required maxlength="400" onchange="dataChanged()">
+							<p ng-show="editForm.academicSpeciality.$invalid && (!editForm.academicSpeciality.$pristine || editForm.academicSpeciality.$displayErrors)" class="help-block">Обязательное поле</p>
+						</div>
+					</div>
+					<div ng-include="'/static/dist/app/school/attestation/portfolio/awardDocumentTemplate.html'" onload="initCalendar();"></div>
+				</fieldset>
+			</form>
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="editForm.$displayErrors=true; save(editForm.$valid && data.item.awardDocument.awardDate);">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

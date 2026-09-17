@@ -1,0 +1,49 @@
+<div composit-table="$ctrl.compositTableCtrl" class="composit-table-wrap"> 
+<table class="curiculum-plan table-xs table-export table-print" id="plan-table-header" ng-class="{'readonly': $ctrl.readonly}">
+
+	<tr class="header-row">
+		<th style="width: 340px" rowspan="3" colspan="2">{{$ctrl.language.Generic.Common.kSubject}}</th>
+	</tr>
+	<tr class="grade-row">
+		<th class="text-center" colspan="{{gc.levels.length}}" ng-repeat="gc in $ctrl.model.gradesRow" title="{{gc.grade.name}}">{{gc.grade.name}}</th>
+	</tr>
+	<tr class="class-row">
+		<th nowrap class="vertical" ng-class="{ 'no-iup-classes': $ctrl.noClasses(object.grade) }" ng-repeat="object in $ctrl.model.objectsRow">
+			<small class="text-vertical text-compact"><i>{{object.name}}</i></small>
+		</th>
+	</tr>
+	<tr composit-table-row class="hidden-row">
+		<td colspan="2"><div style="width: 340px"></div></td>
+		<td ng-repeat="class in $ctrl.model.objectsRow"><div></div></td>
+	</tr>
+</table>
+<div class="plan-table">
+<table class="curiculum-plan table-xs text-compact table-export table-print" id="plan-table" input-table="$ctrl.inputSettings">
+	<tr composit-table-row class="hidden-row">
+		<td colspan="2"><div style="width: 340px"></div></td>
+		<td ng-repeat="class in $ctrl.model.objectsRow"><div></div></td>
+	</tr>
+	<tr class="component-row" ng-repeat-start="componentData in $ctrl.model.planRows">
+		<td class="text-compact" rowspan="2">
+			<b>{{componentData.component.name}}</b>
+		</td>
+		<td class="text-compact"><b> плановая:</b></td>
+		<td ng-repeat="limit in componentData.limits" colspan="{{limit.objects}}">{{limit.hours}}</td>
+	</tr>
+	<tr class="component-fact-load-row">
+		<td class="text-compact"><b>фактическая:</b></td>
+		<td ng-repeat="total in componentData.totals" ng-class="{'overflow': total.overflow}">{{total.hours > 0 ? total.hours : ""}}</td>
+	</tr>
+	<tr class="subject-field-row" ng-repeat-start="subjectFieldData in componentData.subjectFieldsData" >
+		<td colspan="{{$ctrl.model.objectsRow.length + 2}}"><b>{{subjectFieldData.subjectField.name}}</b></td>
+	</tr>
+	<tr class="subject-row text-center" ng-repeat="subjectData in subjectFieldData.subjectsData" ng-repeat-end>
+		<td class="text-left text-break text-compact" colspan="2" style="width: 340px">
+			<span class="subject-name">{{subjectData.subject.name}}</span>
+		</td>
+		<td class="input-cell" ng-class="{'no-input': hour.noLimits}" input-table-cell model="hour.hours" ng-repeat="hour in subjectData.hours"><span>{{hour.hours | float2str:'onlyPositive'}}</span></td>
+	</tr>
+	<tr ng-repeat-end></tr>
+</table>
+</div>
+</div>

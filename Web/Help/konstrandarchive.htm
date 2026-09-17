@@ -1,0 +1,66 @@
+<html>
+<head>
+   <title>Работа с Конструктором отчетов при наличии заархивированных учебных годов</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?konstrandarchive.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Работа с Конструктором отчетов при наличии заархивированных учебных годов
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Работа с Конструктором отчетов при наличии заархивированных учебных годов
+<br>
+</b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">(только вариант "NetSchool" для Firebird)
+<br>
+
+<br>
+В варианте "NetSchool" для Firebird предусмотрена <b>архивация данных</b>. При этом определённые данные переносятся из <b>рабочего файла</b> в <b>архивный файл</b>, что приводит к значительной «разгрузке» рабочей базы. Соответственно, в системе данные распределяются по этим двум файлам.
+<br>
+
+<br>
+Созданный с помощью «Конструктора» отчёт при своём выполнении может использовать только одну из этих баз: либо <b>архивную</b>, либо <b>рабочую</b>. Какую именно, определяется следующим образом. 
+<br>
+Если для данной рабочей среды пользователя (для обычного пользователя системы &#150; это его учебное заведение) не делалось <b>архивации</b> ни одного учебного года, то используется <b>рабочая база</b>. Иначе «Конструктор» смотрит &#150; есть ли в отчёте фильтр по учебному году для пользователей. Если нет, то используется <b>архивная база</b>. Если есть, то «Конструктор» смотрит &#150; был ли заархивирован учебный год, выбранный в этом фильтре. Если был, то используется <b>архивная база</b>, если нет, то &#150; <b>рабочая</b>.
+<br>
+
+<br>
+</span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('7.3.11',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('7.4',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

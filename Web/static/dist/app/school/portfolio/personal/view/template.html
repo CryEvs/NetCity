@@ -1,0 +1,67 @@
+<div class="row ns-cloak">
+	<div class="col-md-11 col-lg-9" ng-show="state.emptyData">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="buttons-panel">
+					<button title="Создать личный портфолио" type="button" class="btn btn-info" ng-click="create()">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>Создать</span>
+					</button>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<aside style="text-align: end" ng-show="showViewLink"><a ng-href="personal/see">Портфолио других пользователей</a></aside>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-info" role="alert">
+					Портфолио не создан
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-11 col-lg-9" ng-hide="state.emptyData">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm12">
+				<div class="form-group" ng-show="viewMode">
+					<label for="userSelect" class="control-label col-md-4 col-lg-3 col-sm-4">
+						{{language.Generic.Common.kUser}}
+					</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<select id="userSelect" ng-model="portfolio" ng-options="option.name for option in portfolios track by option.id" class="form-control"></select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr ng-show="viewMode"/>
+
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm12">
+				<hgroup>
+					<h3 class="print-block">Разделы</h3>
+					<aside ng-show="!viewMode && showViewLink"><a ng-href="personal/see">Портфолио других пользователей</a></aside>
+					<aside><a href="JavaScript:void(0)" ng-click="unloadToFile()">Выгрузить в файл</a></aside>
+					<aside ng-hide="viewMode">
+						<div class="ctx-btns-icons ctx-btns-icons-left ctx-btns-icons-lg">
+							<a ng-href="{{editurl}}">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+						</div>
+					</aside>
+				</hgroup>
+
+				<div class="alert alert-info" role="alert" ng-show="data.portfolio.groups.length == 0">
+					В портфолио не создано ни одного раздела
+				</div>
+
+				<ul class="tree print-block" ng-show="data.portfolio.groups.length > 0">
+					<li portfolio-group group="group" editurl="editurl" readonly="state.readonly" opendoc="openDoc" ng-repeat="group in data.portfolio.groups"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

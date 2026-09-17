@@ -1,0 +1,36 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subCols": [ 4 ],
+			"type": "include"
+		},
+		{
+			"col": 4,
+			"subCols": [ 5 ],
+			"type": "include"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 81,
+			"subRows": [ 82, 83 ],
+			"type": "include"
+		},
+		{
+			"row": 81,
+			"subRows": [ 85, 86, 87, 88 ],
+			"type": "ofthem"
+		},
+		{
+			"row": 83,
+			"subRows": [ 84 ],
+			"type": "include"
+		},
+		{
+			"row": 89,
+			"subRows": [ 90 ],
+			"type": "include"
+		}
+    ]
+}

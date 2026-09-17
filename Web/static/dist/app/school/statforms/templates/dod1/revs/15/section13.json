@@ -1,0 +1,9 @@
+{
+	"sumRows": [
+		{
+			"row": 100,
+			"subRows": [ 99 ],
+			"type": "bool1any"
+		}
+    ]
+}

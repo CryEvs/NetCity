@@ -1,0 +1,299 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<form role="form" name="$ctrl.schoolForm" ng-show="$ctrl.ready" class="form form-xs">
+
+		<ns-accordion class="panel-group" accordion-id="edit-school-accordion">
+
+			<ns-panel panel-id="common-info" class="default" title="Основная информация" expanded="true">
+				<div class="form-group">
+					<label for="school-name">Полное наименование (*)</label>
+					<input track-changes type="text" class="form-control" id="school-name" name="name" ng-model="$ctrl.school.name" required maxlength="400">
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="eoname">Краткое наименование (*)</label>
+							<input track-changes type="text" class="form-control" id="eoname" ng-model="$ctrl.school.educOrganization.name" required maxlength="200">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="schoolnumber">Номер (*)</label>
+							<input track-changes type="text" class="form-control" ng-model="$ctrl.school.number" id="schoolnumber" required maxlength="200" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="cityName">Населенный пункт</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="cityName" disabled="disabled" ng-value="$ctrl.city.name" />
+								<span class="input-group-btn">
+									<button title="Выбрать населенный пункт" type="button" class="btn btn-default" ng-click="$ctrl.changeCity()">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6" ng-show="$ctrl.references.cityDistricts.length">
+						<div class="form-group">
+							<label for="cityDistrict">Район города</label>
+							<select track-changes class="form-control" id="cityDistrict" ng-model="$ctrl.school.districtId" ng-options="district.id as district.name for district in $ctrl.references.cityDistricts">
+								<option value="">не выбран</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="eotype">Тип ОО (*)</label>
+							<select track-changes class="form-control" id="eotype" ng-model="$ctrl.school.educOrganization.eoTypeId" ng-options="type.id as type.name for type in $ctrl.references.eoTypes" ng-change="$ctrl.changeType()"></select>
+							<input track-changes type="hidden" id="eoform" ng-value="$ctrl.school.educOrganization.eoFormId" ng-if="$ctrl.school.educOrganization.eoTypeId != 5 && $ctrl.school.educOrganization.eoTypeId != 6" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row" ng-if="$ctrl.school.educOrganization.eoTypeId == 5 || $ctrl.school.educOrganization.eoTypeId == 6">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="eoform">Вид общеобразовательной организации (*)</label>
+							<select class="form-control" id="eoform" ng-model="$ctrl.school.educOrganization.eoFormId" ng-options="form.id as form.name for form in $ctrl.references.eoForms()"></select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="legalForm">Правовая форма (*)</label>
+							<select track-changes class="form-control" id="legalForm" ng-model="$ctrl.school.educOrganization.eoLegalFormId" ng-options="form.id as form.name for form in $ctrl.references.eoLegalForms"></select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="legalForm83">Правовой статус согласно ФЗ № 83</label>
+							<select track-changes class="form-control" id="legalForm83" ng-model="$ctrl.school.educOrganization.eoLegalFormId83" ng-options="form.id as form.name for form in $ctrl.references.eoLegalForms83">
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="statusOrganization">Статус организации</label>
+							<select track-changes class="form-control" id="statusOrganization" ng-model="$ctrl.school.schoolInformation.statusOrganization" ng-options="status.id as status.name for status in $ctrl.references.statusOrganizations"></select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group" ng-class="{ 'has-error': $ctrl.schoolForm.FOUNDINGDATE.$invalid && ($ctrl.schoolForm.FOUNDINGDATE.$dirty || $ctrl.schoolForm.$displayErrors)}">
+							<label for="foundingDate">Дата основания</label>
+							<date-input-component track-changes
+								name="FOUNDINGDATE"
+								id="diFOUNDINGDATE"
+								date-model="$ctrl.school.schoolInformation.foundingDate">
+							</date-input-component>	
+							<div ng-if="$ctrl.schoolForm.FOUNDINGDATE.$invalid && ($ctrl.schoolForm.FOUNDINGDATE.$dirty || $ctrl.schoolForm.$displayErrors)" ng-messages="$ctrl.schoolForm.FOUNDINGDATE.$error">
+								<span class="help-block">Некорректная дата основания</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row" ng-if="$ctrl.school.id && $ctrl.school.educOrganization.eoTypeId == 5">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="areaType">{{$ctrl.language.Generic.SchoolInfo.kAreaType}}</label>
+							<input type="text" class="form-control" id="areaType" disabled="disabled" ng-value="$ctrl.school.locationInfo.locationType.name" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="provCenterSchool">{{$ctrl.language.Generic.SchoolInfo.kProvinceCenterSchool}}</label>
+							<input type="text" class="form-control" id="provCenterSchool" disabled="disabled" ng-value="$ctrl.school.locationInfo.inProvinceCenter ? $ctrl.language.Generic.Common.kYes : $ctrl.language.Generic.Common.kNo" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="row" ng-if="$ctrl.school.id && $ctrl.school.educOrganization.eoTypeId == 5">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="provSchoolInCity">{{$ctrl.language.Generic.SchoolInfo.kProvinceSchoolInCity}}</label>
+							<input type="text" class="form-control" id="provSchoolInCity" disabled="disabled" ng-value="$ctrl.school.locationInfo.isProvinceSchoolInCity ? $ctrl.language.Generic.Common.kYes : $ctrl.language.Generic.Common.kNo" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row" ng-show="$ctrl.school.educOrganization.eoTypeId == 3">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="otrasl">Отрасль</label>
+							<select track-changes class="form-control" id="otrasl" ng-model="$ctrl.school.educOrganization.otraslId" ng-options="otrasl.id as otrasl.name for otrasl in $ctrl.references.otrasls"></select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input track-changes type="checkbox" ng-model="$ctrl.school.schoolInformation.noContingent"> Не выгружать данные по организации в АИС "Учет контингента"
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" ng-show="$ctrl.settings.editing">
+					<div class="col-md-12">
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input track-changes type="checkbox" ng-click="$ctrl.school.hidden = !$ctrl.school.hidden" ng-checked="$ctrl.school.hidden"> Скрыть ОО на экране входа в систему
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input track-changes type="checkbox" ng-click="$ctrl.toggleDepartment()" ng-checked="$ctrl.school.department"> Является структурным подразделением другой образовательной организации
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" ng-show="$ctrl.school.department">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="mainSchool">Основная образовательная организация</label>
+							<ui-select track-changes ng-model="$ctrl.school.department.mainSchoolId" theme="bootstrap" id="mainSchool">
+								<ui-select-match placeholder="Пожалуйста, введите 1 или более символов">{{$select.selected.name}}</ui-select-match>
+								<ui-select-choices repeat="mainSchool.id as mainSchool in $ctrl.references.mainSchools"
+													ui-disable-choice="$ctrl.references.mainSchools[0].name === 'Совпадений не найдено' || $ctrl.references.mainSchools[0].name === 'Поиск...'"
+													refresh="$ctrl.refreshMainSchools($select.search)">
+									<div ng-bind-html="mainSchool.name | highlight: $select.search"></div>
+								</ui-select-choices>
+							</ui-select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" ng-show="$ctrl.school.department">
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input track-changes type="checkbox" ng-model="$ctrl.school.department.isBranch"> Филиал / обособленное структурное подразделение
+								</label>
+							</div>
+							<span id="helpBlock" class="help-block">Такие подразделения в формах статистической отчетности учитываются как отдельные организации</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" ng-show="$ctrl.settings.soloIntegration && $ctrl.school.funcType == 2">
+					<div class="col-md-12">
+						<div class="form-group">
+							<div class="checkbox">
+								<label>
+									<input track-changes type="checkbox" ng-click="$ctrl.school.schoolInformation.allowAllMovementSources = !$ctrl.school.schoolInformation.allowAllMovementSources" ng-checked="$ctrl.school.schoolInformation.allowAllMovementSources"> Разрешать все источники зачисления учащихся
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" ng-show="$ctrl.settings.gisRuoIntegration">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="gisRuoId">Идентификатор организации в реестре Рособрнадзора</label>
+							<div class="input-group">
+								<input track-changes type="text" class="form-control" id="gisRuoId" disabled="disabled" ng-model="$ctrl.gisRuoId" />
+								<span class="input-group-btn">
+									<button title="Поиск организации в реестре Рособранадзора" type="button" class="btn btn-default" ng-click="$ctrl.gisRuoScan()">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</button>
+								</span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</ns-panel>
+
+			<ns-panel ng-show="!$ctrl.settings.editing" panel-id="security" class="default" title="Логин и пароль администратора" expanded="false">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="adminLogin">Логин</label>
+							<input track-changes type="text" class="form-control" id="adminLogin" ng-model="$ctrl.school.admin.login" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="adminPass">Пароль</label>
+							<input track-changes type="password" class="form-control" id="adminPass" ng-model="$ctrl.school.admin.pass" />
+						</div>
+					</div>
+				</div>
+			</ns-panel>
+
+			<ns-panel panel-id="founders" class="default" title="{{$ctrl.language.Generic.ServAdmin.kFounders}}" expanded="false">
+				<div style="overflow-y: auto; max-height: 400px">
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="founder in $ctrl.references.founders" style="padding: 3px 7px; font-size: 12px;">
+							<div class="checkbox" style="margin: 0">
+								<label>
+									<input track-changes type="checkbox" ng-checked="$ctrl.isFounderSelected(founder)" class="pull-right" ng-click="$ctrl.toggleFounder(founder)" /> {{founder.name}}
+								</label>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</ns-panel>
+
+			<ns-panel panel-id="managements" class="default" title="{{$ctrl.language.Generic.ServAdmin.kManagements}}" expanded="false">
+				<div style="overflow-y: auto; max-height: 400px">
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="educmanagement in $ctrl.references.educmanagements" style="padding: 3px 7px; font-size: 12px;">
+							<div class="radio" style="margin: 0">
+								<span style="white-space: pre" ng-bind-html="educmanagement.tabs"></span>
+								<label>
+									<input track-changes type="radio" ng-checked="$ctrl.isEducmanagementSelected(educmanagement)" class="pull-right" ng-click="$ctrl.toggleEducmanagement(educmanagement)" name="{{educmanagement.elementName}}" /> {{educmanagement.founderName}}
+								</label>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</ns-panel>
+
+			<ns-panel panel-id="authority" class="default" title="{{$ctrl.language.Generic.ServAdmin.kAuthorityAffilation}}" expanded="false">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="authority">{{$ctrl.language.Generic.SchoolInfo.kAuthority}}</label>
+							<select track-changes class="form-control" id="authority" ng-model="$ctrl.school.emId" ng-options="authority.id as authority.name | tabToNbsp for authority in $ctrl.authorities">
+								<option value="">{{$ctrl.language.Generic.Common.kNo}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</ns-panel>
+
+		</ns-accordion>
+	</form>
+</ns-modal>

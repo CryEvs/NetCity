@@ -1,0 +1,39 @@
+<div ng-model="Em.Indicators.EditIndicator.EnterParamValues">
+	<form name="fillParameterValues">
+		<div class="bootstrap-dialog type-primary">
+			<div class="modal-header">
+				<div class="bootstrap-dialog-header">
+					<div class="bootstrap-dialog-title">
+						<h4 class="modal-title">{{language.Generic.StatReports.kEnterParamValue}}</h4>
+					</div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-condensed">
+					<tr>
+						<th>{{language.Generic.Common.kName}}</th>
+						<th style="width: 100px;">{{language.Generic.StatReports.kValue}}</th>
+					</tr>
+					<tr ng-repeat="parameter in parameters">
+						<td>
+							{{parameter.description}}
+						</td>
+						<td>
+							<parameter-value parameter="parameter"></parameter-value>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" x-ng-click="ok()">
+					<span class="glyphicon glyphicon-save"></span>
+					{{language.Generic.Buttons.kApply}}
+				</button>
+				<button class="btn btn-default" x-ng-click="cancel()">
+					<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+					{{language.Generic.Curriculum.kBtnCancel}}
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

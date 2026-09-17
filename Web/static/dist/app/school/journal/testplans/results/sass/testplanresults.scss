@@ -1,0 +1,9 @@
+@import "../../../../../../pages/common/sass/include/individual-educ.scss";
+
+tr.selected > td {
+	background-color: #faebd7;
+}
+
+tr.selected > td > input {
+	background-color: #faebd7;
+}

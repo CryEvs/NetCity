@@ -1,0 +1,110 @@
+<html>
+<head>
+   <title>Данные для ЕГЭ</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="ЕГЭ,ЕГЭ, экспорт в формат ЕГЭ">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?schoolege.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Данные для ЕГЭ
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Данные для ЕГЭ</b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+Этот экран системы "Сетевой Город" позволяет автоматически получить списки учащихся, сдающих ЕГЭ, в формате программы RCMCSVConsole, чтобы отправить эту информацию в Региональный Центр обработки информации (РЦОИ) и далее в Федеральный центр тестирования.
+<br>
+Формат экспорта соответствует формату программы RCMCSVConsole от 2009 г.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Порядокдействийдляэкспорта"></a>Порядок действий для экспорта данных в формат ЕГЭ</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+1. Установить программу RCMCSVConsole, скопировать в ее рабочую папку 4 файла, которые присланы из РЦОИ:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="38"></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>NN_***_Areas.cs</b><b>_</b><b>
+&nbsp;<br>
+</b></span></b></span></span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="38"></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>NN_***_Governments.cs</b><b>_</b><b>
+&nbsp;<br>
+</b></span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="38"></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>NN_***_Participants.cs</b><b>_
+&nbsp;<br>
+</b></span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="38"></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><b>NN_***_Schools.cs</b><b>_</b>,
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="38"></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">где NN &#150; это двузначный код региона, *** &#150; это код вашего ОУ.
+<br>
+При этом файл <b>NN</b><b>_***_</b><b>Participants</b><b>.</b><b>cs</b><b>_</b> (данные об участниках ЕГЭ) &#150; должен быть пустым, он предназначен для заполнения при помощи программы RCMCSVConsole. "Сетевой Город" сможет заполнить этот файл автоматически.
+<br>
+
+<br>
+2. Если требуется отредактировать информацию об ОУ (наименование, вид, тип, адрес, Ф.И.О. руководителя и др.), то можно сделать это при помощи программы RCMCSVConsole.
+<br>
+
+<br>
+3. В "Сетевом Городе" выполнить следующие действия:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">у всех учащихся, сдающих ЕГЭ, должен быть указан класс, и нужно заполнить поля:
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="51"></td><td width="19"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></b></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>Предметы для ЕГЭ</b> (выбранные предметы для сдачи экзамена);
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="51"></td><td width="19"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>Тип документа для ЕГЭ</b> (паспорт, или свидетельство о рождении, или другой документ). Если для учащегося указан тип документа, отличный от паспорта или свидетельства о рождении, то надо ввести номер документа в поле «Номер паспорта»;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="51"></td><td width="19"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>Тип ограничения возможностей здоровья</b>;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="51"></td><td width="19"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>Предметы для ЕГЭ по сокр.программе</b>.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="51"></td><td width="19"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">на экране <b>Данные для ЕГЭ </b>заполнить поле <b>Код образовательного учреждения</b> (требуется ввести 6-значное число);
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">в поле <b>Файл с информацией об ОУ</b> указать местонахождение файла <b>NN</b><b>_***_</b><b>Schools</b><b>.</b><b>cs</b><b>_</b> , который получен из РЦОИ;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">нажать кнопку <b>Экспорт в формат ЕГЭ</b>, после чего "Сетевой Город" сохранит файл <b>NN</b><b>_***_</b><b>Participants</b><b>.</b><b>cs</b><b>_</b> , причем для его сохранения нужно указать ту же папку, где находится файл <b>NN</b><b>_***_</b><b>Schools</b><b>.</b><b>cs</b><b>_</b>.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="25"></td><td width="25"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Важно отметить, что система "Сетевой Город" автоматически включит в файл всех учащихся, у которых заполнено поле <b>Предметы для ЕГЭ</b>. Это могут быть учащиеся не только выпускного класса, но и других классов. Будет выведена статистика о количестве экспортированных записей.
+<br>
+
+<br>
+4. Полученные 4 файла (<b>.cs_</b>) отправить в РЦОИ.
+<br>
+
+<br>
+</span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('2.1.1.2',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('2.1.1.4',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

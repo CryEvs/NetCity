@@ -1,0 +1,30 @@
+<form name="$ctrl.userInfo" class="form-horizontal form-xs form-edit">
+	<div class="row">
+		<ns-add-user controller="$ctrl" ng-if="$ctrl.ready">
+			<common-user-info current-user="$ctrl.currentUser" user-info="$ctrl.userInfo" male-letter="$ctrl.maleLetter" female-letter="$ctrl.femaleLetter" middle-name-not-required="true"></common-user-info>
+			<div class="form-group" ng-class="{'has-error': (!$ctrl.currentUser.staffRoles.length || $ctrl.minorStaffAndOtherChecked()) && $ctrl.userInfo.$displayErrors}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">
+					{{$ctrl.language.Generic.Common.kUserRights}}
+				</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<div id="roles">
+						<div class="checkbox" ng-repeat="staffRole in $ctrl.staffRoles">
+							<label>
+								<input ng-model="z" ng-required="!$ctrl.currentUser.staffRoles.length || $ctrl.minorStaffAndOtherChecked()" type="checkbox" id="{{staffRole.id}}" name="role-{{staffRole.key}}" ng-checked="$ctrl.hasStaffRole(staffRole)" ng-click="$ctrl.toggleStaffRole(staffRole)" track-changes />
+								{{staffRole.name}}
+							</label>
+						</div>
+					</div>
+					<p class="help-block" ng-show="!$ctrl.currentUser.staffRoles.length && $ctrl.userInfo.$displayErrors">{{$ctrl.language.Generic.SetupSchoolUI.kErrorURightCannotBeEmpty}}</p>
+					<p class="help-block" ng-show="$ctrl.minorStaffAndOtherChecked() && $ctrl.userInfo.$displayErrors">{{$ctrl.language.Generic.SetupSchoolUI.kErrorURightCannotBeChecked}}</p>
+				</div>
+			</div>
+		</ns-add-user>
+		<userslist-qadd
+			title = "$ctrl.language.Generic.SetupSchoolUI.kListStaffQAdd"
+			users = "$ctrl.users",
+			mode = "$ctrl.mode",
+			edit = "$ctrl.edit(arg)">
+		</userslist-qadd>
+	</div>
+</form>

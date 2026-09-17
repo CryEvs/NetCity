@@ -1,0 +1,17 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<form class="form-horizontal form-sm" name="$ctrl.form" ng-if="$ctrl.ready">
+		<ns-form>
+
+            <ns-form-group title="Муниципальный район" ng-class="{'has-error': $ctrl.form.name.$invalid}">
+                <p>{{$ctrl.currentProvince.name}}</p>
+			</ns-form-group>
+
+			<ns-form-group title="Заменить на">
+				<select class="form-control" name="province" required ng-model="$ctrl.replacerProvinceId" ng-options="x.id as x.name for x in $ctrl.provinces" track-changes></select>
+				<p ng-show="$ctrl.form.province.$error.required && ($ctrl.form.province.$dirty || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+			</ns-form-group>
+			
+		</ns-form>
+	</form>
+</ns-modal>

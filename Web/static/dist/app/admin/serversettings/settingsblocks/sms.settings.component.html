@@ -1,0 +1,28 @@
+<div class="form-horizontal" ng-if="$ctrl.state.ready">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" ng-model="$ctrl.data.smsSettings.enableSms" track-changes>{{$ctrl.language.Generic.ServAdmin.kEnableSMS}}
+		</label>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<button title="{{$ctrl.language.Generic.ServAdmin.kSMSRegistry}}" type="button" class="btn" ng-click="$ctrl.smsRegistry()" ng-disabled="!$ctrl.data.smsSettings.enableSms">
+					<span>{{$ctrl.language.Generic.ServAdmin.kSMSRegistry}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.ServAdmin.kSMSParams}}" type="button" class="btn" ng-click="$ctrl.openPrint()" ng-disabled="!$ctrl.data.smsSettings.enableSms">
+					<span>{{$ctrl.language.Generic.ServAdmin.kSMSParams}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form class="form-horizontal" id="addNewVariant" name="$ctrl.form">
+		<ns-form control-size="col-md-8" label-size="col-md-4">
+			<ns-form-group title="Вариант" ng-class="{'has-error': $ctrl.form.VAR_NEW.$invalid && (!$ctrl.form.VAR_NEW.$pristine || $ctrl.form.$displayErrors)}">
+				<input required type="text" class="form-control FilterWhiteSpace" name="VAR_NEW" size="35" maxlength="100" ng-model="$ctrl.variantName" track-changes>
+				<span class="help-block" ng-show="$ctrl.form.VAR_NEW.$invalid && (!$ctrl.form.VAR_NEW.$pristine || $ctrl.form.$displayErrors)">Обязательное поле</span>
+			</ns-form-group>
+		</ns-form>
+	</form>
+</ns-modal>

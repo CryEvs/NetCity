@@ -1,0 +1,151 @@
+<style>
+	.move {
+		background-color: white;
+		border: 1px solid #ddd;
+		height: 29px;
+	}
+
+	table.subjects {
+		margin-bottom: 0;
+		cursor: move;
+	}
+
+	.glyphicon-resize-vertical {
+		opacity: 0.5;
+	}
+
+	.highlight {
+		background-color: #fff5c0;
+		height: 29px;
+	}
+
+	.highlight > td:nth-child(-n+3) {
+		border-right: 0 !important;
+	}
+</style>
+
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="apploader">
+			<div class="placeholder">
+				<span class="arrows"></span>
+				<span class="title">{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+			</div>
+		</div>
+
+		<div class="alert alert-danger" role="alert" ng-if="$ctrl.canIUP && !$ctrl.data.iupComponents.length">
+			{{$ctrl.language.Generic.Common.kUnexpErr}}
+		</div>
+
+		<form class="form-horizontal" name="List" ng-if="!$ctrl.canIUP || $ctrl.data.iupComponents.length">
+			<div class="row">
+				<div class="col-md-8 col-lg-6">
+					<div class="panel panel-warning">
+						<div class="panel-heading" role="tab" id="headingcomponents">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" class="collapsed" data-target="#components" aria-expanded="true" aria-controls="components">
+									{{$ctrl.language.Generic.SetupSchoolCalendar.kComponents}}
+								</a>
+							</h4>
+						</div>
+						<div id="components" class="panel-collapse collapse in" aria-labelledby="headingcomponents" role="tabpanel">
+							<div class="panel-body">
+								<div class="row" ng-if="!$ctrl.state.readOnly">
+									<div class="col-md-12">
+										<div class="buttons-panel">
+											<div class="buttons-panel-left">
+												<button title="{{language.Generic.SetupSchoolCalendar.kCreateNewComponent}}" type="button" class="btn btn-info" ng-click="$ctrl.lazyCreate()">
+													<span class="glyphicon glyphicon-plus-sign"></span> <span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+												</button>
+												<button title="Заменить" type="button" class="btn btn-warning" ng-click="$ctrl.replace()" ng-disabled="!$ctrl.selection.selected || $ctrl.state.sortMode">
+													<span class="glyphicon glyphicon-retweet"></span> <span>Заменить</span>
+												</button>
+												<button title="{{language.Generic.SetupSchoolCalendar.kDeleteComponent}}" type="button" class="btn btn-danger" ng-click="$ctrl.lazyRemove()" ng-disabled="!$ctrl.selection.selected || $ctrl.state.sortMode">
+													<span class="glyphicon glyphicon-minus-sign"></span> <span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+												</button>
+												<button title="Изменить порядок" type="button" class="btn btn-warning" ng-click="$ctrl.toggleSortMode()" data-toggle="button" aria-pressed="{{$ctrl.state.sortMode}}" autocomplete="off">
+													<span class="glyphicon glyphicon-sort"></span> 
+													<span>Изменить порядок</span>
+												</button>
+											</div>
+											<div class="buttons-panel-right"></div>
+											<div class="buttons-panel-adaptive btn-group" style="float: right; display: none; margin-right: 0px; right: 0px;">
+												<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+													<span class="glyphicon glyphicon-menu-hamburger"></span> <span id="action">{{$ctrl.language.Generic.Buttons.kActions}}</span> <span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu buttons-panel-right buttons-panel-adaptive-wrapper pull-right" role="menu"></ul>
+											</div>
+										</div>
+									</div>
+								</div> 
+								
+								<div class="alert alert-info" role="alert" ng-if="!$ctrl.data.components.length">
+									{{$ctrl.language.Generic.SetupSchoolCalendar.kEmptyComponentsList}}
+								</div>
+
+								<table class="col-md-4 table table-bordered table-md table-selectable" ng-if="$ctrl.data.components.length && !$ctrl.state.sortMode">
+									<tbody>
+										<tr>
+											<th>{{$ctrl.language.Generic.SetupSchoolCalendar.kComponent}}</th>
+											<th>Используется</th>
+										</tr>
+										<tr ng-repeat="component in $ctrl.data.components" ng-class="{'selected': $ctrl.selection.isSelected(component)}" ng-click="$ctrl.selection.select(component)">
+											<td>
+												<span>{{component.name}}</span>
+											</td>
+											<td class="text-center">
+												<span ng-if="component.used">Да</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<table class="col-md-4 table table-bordered table-md" ng-if="$ctrl.data.components.length && $ctrl.state.sortMode">
+									<tbody ui-sortable="$ctrl.sortableOptions" ng-model="$ctrl.data.components">
+										<tr>
+											<th>{{$ctrl.language.Generic.SetupSchoolCalendar.kComponent}}</th>
+											<th>Используется</th>
+										</tr>
+										<tr ng-repeat="component in $ctrl.data.components" style="cursor: pointer;">
+											<td>
+												<span class="glyphicon glyphicon-resize-vertical"></span>
+												<span>{{$index + 1}}. {{component.name}}</span>
+											</td>
+											<td class="text-center">
+												<span ng-if="component.used">Да</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" ng-if="$ctrl.canIUP">
+				<div class="col-md-8 col-lg-6">
+					<div class="panel panel-success">
+						<div class="panel-heading" role="tab" id="headingiup_components">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" class="collapsed" data-target="#iup_components" aria-expanded="true" aria-controls="iup_components">
+									{{$ctrl.language.Generic.SetupSchoolCalendar.kIUPComponents}}
+								</a>
+							</h4>
+						</div>
+						<div id="iup_components" class="panel-collapse collapse in" aria-labelledby="headingiup_components" role="tabpanel">
+							<div class="panel-body">
+								<div class="list-group list-group-sm">
+									<label ng-repeat="iupComponent in $ctrl.data.iupComponents" class="list-group-item">
+										{{$index + 1}}. {{iupComponent.name}}
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

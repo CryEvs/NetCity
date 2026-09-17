@@ -1,0 +1,110 @@
+﻿.form-group.inactive {
+  display: none !important;
+}
+.content .row > a {
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  position: absolute;
+  top: 30px;
+}
+.content .row > a[aria-expanded='true']:before {
+  content: '';
+  height: 18px;
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  top: 25px;
+  bottom: 0;
+  margin: auto;
+  color: #bbb;
+  /* You may have to set 'display: block' */
+  width: 21px;
+  height: 15px;
+  background: url('../img/sprite-template.png') -1px -615px;
+}
+.content .row > a[aria-expanded='false']:before {
+  content: '';
+  height: 18px;
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  top: 25px;
+  bottom: 0;
+  margin: auto;
+  z-index: 555;
+  color: #bbb;
+  /* You may have to set 'display: block' */
+  width: 21px;
+  height: 15px;
+  background: url('../img/sprite-template.png') -1px -599px;
+}
+.content .row > a[aria-expanded='true'] + .filters-panel {
+  display: none;
+}
+.content .row .select2-container {
+  width: 100% !important;
+}
+.content .filters-panel-compact,
+.content .filters-panel-collapsable {
+  float: none;
+}
+.content .filters-panel-collapsable {
+  margin-top: 10px;
+}
+@media screen and (max-width: 750px) {
+  .content .filters-panel-compact,
+  .content .filters-panel-collapsable {
+    display: block;
+    visibility: visible;
+    height: auto !important;
+  }
+  .content .filters-panel-collapsable {
+    margin-top: 0;
+  }
+}
+@media screen and (min-width: 750px) {
+  .content .filters-panel-compact {
+    width: 100%;
+    border-radius: 4px;
+    padding-top: 5px;
+  }
+  .content .filters-panel-compact .form-group {
+    margin: 0;
+    display: inline-block;
+    padding-right: 8px;
+    margin-bottom: 8px;
+    vertical-align: bottom;
+  }
+  .content .filters-panel-compact .form-group label,
+  .content .filters-panel-compact .form-group div {
+    display: block;
+    float: none;
+    width: 100%;
+    padding: 0;
+    text-align: left;
+    font-weight: 400;
+    font-size: 13px;
+  }
+  .content .filters-panel-compact .form-group label {
+    padding-bottom: 5px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .content .filters-panel-compact .form-group .form-control {
+    width: 200px;
+    letter-spacing: -0.04em;
+  }
+  .content .filters-panel-compact .form-group .form-control-inline {
+    width: auto;
+  }
+  .content .filters-panel-compact .form-group .input-group .form-control {
+    width: auto;
+  }
+  .content .filters-panel-compact .form-group .input-group .input-group-addon {
+    float: left;
+    padding: 8px 12px;
+  }
+}
+/*# sourceMappingURL=filters-panel.css.map */

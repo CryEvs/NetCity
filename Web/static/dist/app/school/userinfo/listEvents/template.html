@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col-md-10">
+		
+		<div class="alert alert-info" role="alert" ng-show="state.dataReady && state.emptyData">
+			Нет данных об участии в мероприятиях.
+		</div>
+		
+		<div class="alert alert-info" role="alert" ng-show="!state.dataReady">
+			Пожалуйста подождите...
+		</div>
+		
+		<div class="alert alert-danger" role="alert" ng-show="error">
+			{{error}}
+		</div>
+
+		<table class="table table-xs table-hover table-selectable" ng-show="state.dataReady && !state.emptyData">
+			<tr>
+				<th>Мероприятие</th>
+				<th>Дата проведения</th>
+				<th>Результат</th>
+			</tr>
+			<tr ng-repeat="event in data.events" ng-class="{'selected': data.selection.isSelected(event)}" ng-click="data.selection.select(event)">
+				<td>{{event.eventInfo.name}}</td>
+				<td>{{event.eventInfo.date}}</td>
+				<td>
+					<div ng-repeat="result in event.participiationInfo.results">
+						<span class="result-type">{{result.type}}</span>: <span class="result-item">{{result.item}}</span>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-2">
+		<div class="btn-group" ng-show="state.dataReady && !state.readOnly">
+			<button class="btn btn-default btn-sm" ng-click="add()" type="button" title="Добавить информацию об участии в мероприятии">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			</button>
+
+			<button class="btn btn-warning btn-sm" ng-click="edit()" type="button" ng-disabled="!data.selection.selected" ng-hide="state.emptyData" title="Редактировать информацию об участии в мероприятии">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-pencil"></span>
+			</button>
+			
+			<button class="btn btn-warning btn-sm" ng-click="remove()" type="button" ng-disabled="!data.selection.selected" ng-hide="state.emptyData" title="Удалить информацию об участии в мероприятии">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-minus-sign"></span>
+			</button>
+		</div>
+	</div>
+</div>

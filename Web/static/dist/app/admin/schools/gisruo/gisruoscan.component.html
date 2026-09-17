@@ -1,0 +1,63 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<div class="alert alert-danger" role="alert" ng-if="$ctrl.ready && !$ctrl.isInnKppExist()">
+		Внимание! Для выполнения поиска организации в реестре Рособранадзора необходимо заполнить ИНН и КПП.
+	</div>
+	<form role="form" name="$ctrl.form" ng-show="$ctrl.ready && $ctrl.isInnKppExist()" class="form form-xs">
+		<legend class="edit-block-legend">Запрос</legend>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group" ng-if="$ctrl.isRequestExists()">
+					<label for="requestdate" class="control-label">
+						{{$ctrl.language.Generic.Common.kDate}}
+					</label>
+					<div>
+						<input type="text" class="form-control" name="requestdate" disabled ng-value="$ctrl.requestDate | nsDateTimeSs">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inn" class="control-label">{{$ctrl.language.Generic.SchoolInfo.kINN}}</label>
+					<div>
+						<input type="text" class="form-control" name="inn" size="60" maxlength="13" ng-model="$ctrl.inn" disabled track-changes>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="kpp" class="control-label">{{$ctrl.language.Generic.SchoolInfo.kKPP}}</label>
+					<div>
+						<input type="text" class="form-control" name="kpp" size="60" maxlength="9" ng-model="$ctrl.kpp" disabled track-changes>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<legend class="edit-block-legend">Результат поиска</legend>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-info" role="alert" ng-if="$ctrl.ready && !$ctrl.responseDate">
+					Ожидается ответ ГИС РУО
+				</div>
+				<div class="alert alert-warning" role="alert" ng-if="$ctrl.ready && $ctrl.responseDate && !$ctrl.gisRuoId">
+					Организация не найдена в ГИС РУО
+				</div>
+				<div class="form-group" ng-if="$ctrl.ready && $ctrl.responseDate && $ctrl.gisRuoId">
+					<label for="gisRuoId" class="control-label">Идентификатор Рособранадзора</label>
+					<div>
+						<input type="text" class="form-control" name="gisRuoId" ng-model="$ctrl.gisRuoId" disabled track-changes>
+					</div>
+				</div>
+				<div class="form-group" ng-if="$ctrl.ready && $ctrl.responseDate && $ctrl.gisRuoId">
+					<label for="orgName" class="control-label">{{$ctrl.language.Generic.SchoolInfo.kOrgName}}</label>
+					<div>
+						<textarea rows="4" class="form-control" style="resize: none;" name="orgName" ng-model="$ctrl.orgName" readonly> </textarea>
+					</div>
+				</div>
+				<div class="form-group" ng-if="$ctrl.ready && $ctrl.responseDate && $ctrl.gisRuoId">
+					<label for="orgAddress" class="control-label">{{$ctrl.language.Generic.UsersExport_1C.kAddress}}</label>
+					<div>
+						<textarea rows="4" class="form-control" style="resize: none;" name="orgAddress" ng-model="$ctrl.orgAddress" readonly> </textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</ns-modal>

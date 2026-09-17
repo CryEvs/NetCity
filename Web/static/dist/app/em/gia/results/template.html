@@ -1,0 +1,96 @@
+<script language="javascript" src="/vendor/select2/js/select2.full.min.js"></script>
+<div class="buttons-filters-panel form-horizontal single-row">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-right">
+					<button title="{{language.Generic.EM.kImportEGE}}" type="button" class="btn btn-default" ng-click="importGiaResults();"><span class="glyphicon glyphicon-import"></span> <span>{{language.Generic.Buttons.kImport}}</span></button>	
+					<button title="{{language.Generic.EM.kDelEGE}}" type="button" class="btn btn-danger" ng-click="delGia();"><span class="glyphicon glyphicon-minus-sign"></span> <span>{{language.Generic.EM.kDelEGE}}</span></button>
+					<button title="{{language.Generic.EM.kEOsCodes}}" type="button" class="btn btn-default" ng-click="goEOsCodes();"><span>{{language.Generic.EM.kEOsCodes}}</span></button>
+				</div>
+			</div>
+			<div class="filters-panel filters-panel-compact" style="display: inline;"></div>
+			<div class="filters-panel-compact" style="display: inline;">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row load-button-panel">
+	<div class="col-md-12 form-group">
+		<button id="load-assignments-btn" title={{language.Generic.Buttons.kLoad}} type="button" class="btn btn-primary btn-sm" ng-click="getGiaResults()">
+			<span class="glyphicon glyphicon-search"></span>
+			<span>{{language.Generic.Buttons.kLoad}}</span>
+		</button>
+		<button id="load-assignments-btn" title={{language.Generic.Buttons.kExport}} type="button" class="btn btn-primary btn-sm" ng-click="exportGiaExcel() ">
+			<span class="glyphicon glyphicon-import"></span>
+			<span>{{language.Generic.Common.kBtnExcel}}</span>
+		</button>
+	</div>
+</div>
+<div class="row" ng-if="state.dataReady && state.filterChanged">
+	<div class="col-md-12 col-lg-12">
+		<div class="alert alert-info" role="alert">
+			Нажмите кнопку "Загрузить" для показа результатов ГИА
+		</div>
+	</div>
+</div>
+<div class="row" ng-if="state.showEmptyMessage">
+	<div class="col-md-12 col-lg-12">
+		<div class="alert alert-info" role="alert">
+			Список результатов ГИА пуст
+		</div>
+	</div>
+</div>
+<div class="row" ng-if="state.emptyData && !state.dataReady">
+	<div class="col-md-12 col-lg-12">
+		<div class="alert alert-danger" role="alert">
+			Не у всех фильтров есть значения
+		</div>		
+	</div>
+</div>
+<table class="table table-bordered table-xs table-hover table-striped" ng-if="state.dataReady && !state.emptyData">
+	<tbody>
+		<tr>
+			<th>№</th>
+			<th>{{language.Generic.EGE.kAuditory}}</th>
+			<th>{{language.Common.kClass}}</th>
+			<th>{{language.Generic.Common.kSubject}}</th>
+			<th>{{language.Generic.Reports.kFIOstud}}</th>
+			<th>{{language.Generic.UsersExport_1C.kSeriesDocument}}</th>
+			<th>{{language.Generic.UsersExport_1C.kNumberDocument}}</th>
+			<th ng-if="isForeignLanguage()">{{language.Generic.EGE.kShortAnswerPart}}</th>
+			<th ng-if="settings.subjectId == '-1' || !isForeignLanguage()">{{language.Generic.EGE.kAssignmentsWithShortAnswer}}</th>
+			<th ng-if="isForeignLanguage()">{{language.Generic.EGE.kAssignmentsWithDetailedAnswer}}</th>
+			<th ng-if="settings.subjectId == '-1' || !isForeignLanguage()">{{language.Generic.EGE.kAssignmentsWithDetailedAnswer}}</th>
+			<th ng-if="settings.subjectId == '-1' || isForeignLanguage()">{{language.Generic.EGE.kOralPart}}</th>
+			<th ng-if="settings.subjectId == '-1' || (isForeignLanguage() && settings.giaType == 0)">{{language.Generic.EGE.kWrittenPartPrimaryScore}}</th>
+			<th ng-if="settings.subjectId == '-1' || (isForeignLanguage() && settings.giaType == 0)">{{language.Generic.EGE.kOralPartPrimaryScore}}</th>
+			<th ng-if="isForeignLanguage() && settings.giaType == 1">{{language.Generic.EGE.kOralPartPrimaryScore}}</th>
+			<th ng-if="isForeignLanguage() && settings.giaType == 1">{{language.Generic.EGE.kWrittenPartPrimaryScore}}</th>
+			<th>{{language.Generic.EGE.kPrimaryScore}}</th>
+			<th ng-if="(settings.subjectId == '-1' || !isForeignLanguage()) && settings.giaType != 0">{{language.Generic.EGE.kScore}}</th>
+			<th ng-if="(settings.subjectId == '-1' || isForeignLanguage()) && settings.giaType != 0">{{language.Generic.EGE.kTestScore}}</th>
+			<th ng-if="settings.subjectId == '-1' || !isForeignLanguage() || settings.giaType == 0">{{language.Generic.Common.kMark}}</th>
+		</tr>
+		<tr ng-repeat="gia in data.giaRows">
+			<td>{{$index+1}}</td>
+			<td>{{gia.auditory}}</td>
+			<td>{{gia.className}}</td>
+			<td>{{gia.subjectName}}</td>
+			<td>{{gia.fio}}</td>
+			<td>{{gia.docSerial}}</td>
+			<td>{{gia.docNumber}}</td>
+			<td class="monos">{{gia.maskA}}</td>
+			<td class="monos">{{gia.maskB}}</td>
+			<td ng-if="settings.subjectId == '-1' || isForeignLanguage()" class="monos">{{gia.maskC}}</td>
+			<td ng-if="settings.subjectId == '-1' || (isForeignLanguage() && settings.giaType == 0)">{{gia.writtenScore}}</td>
+			<td ng-if="settings.subjectId == '-1' || (isForeignLanguage() && settings.giaType == 0)">{{gia.oralScore}}</td>
+			<td ng-if="isForeignLanguage() && settings.giaType == 1">{{gia.oralScore}}</td>
+			<td ng-if="isForeignLanguage() && settings.giaType == 1">{{gia.writtenScore}}</td>
+			<td>{{gia.primaryScore}}</td>
+			<td ng-if="(settings.subjectId == '-1' || !isForeignLanguage()) && settings.giaType != 0">{{gia.totalScoreStr}}</td>
+			<td ng-if="(settings.subjectId == '-1' || isForeignLanguage()) && settings.giaType != 0">{{gia.testScore}}</td>
+			<td ng-if="settings.subjectId == '-1' || !isForeignLanguage() || settings.giaType == 0">{{gia.totalMark}}</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+        <div class="buttons-panel">
+            <div class="buttons-panel-right">	
+                <button ng-if="$ctrl.data.editAllowed" title="{{$ctrl.language.Generic.Curriculum.kEditLinks}}" type="button"
+                        class="btn btn-warning" ng-click="$ctrl.editResources()">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+                </button>
+            </div>
+        </div>
+        <div ng-if="$ctrl.data.groups.length != 0" class="filters-panel col-md-6 col-lg-6 col-sm-12">
+            <form name="filterForm">
+                <div class="form-group">
+                    <label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.SetupSchoolResources.kDocGroup}}</label>
+                    <div class="col-md-8 col-lg-5 col-sm-8">
+                        <select name="group" class="form-control" ng-model="$ctrl.data.selectedGroup"
+                                ng-options="group as group.treeItemName for group in $ctrl.data.selectorGroups" ng-change="$ctrl.changeGroup()">
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="content-preloader" ng-show="!$ctrl.dataReady && ($ctrl.data.groups.length != 0)">
+            <span class="arrows"></span>
+            <span class="title">{{$ctrl.language.Generic.Curriculum.kPleaseWait}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+		<div class="alert alert-info ng-binding" ng-if="$ctrl.data.groups.length == 0" role="alert">
+            {{$ctrl.language.Generic.Curriculum.kNoGroupsInCatalog}}
+        </div>
+        
+		<!--TODO: сворачивание по количеству групп в data.groups(управление сворачиваем прям из changeGroup ??),
+			 сделать сворачивание только child элементов (доработать portfolioDir.js)-->
+		<ul class="tree col-xs-12 col-md-8 col-lg-6" ng-show="$ctrl.data.groups.length > 0 && $ctrl.dataReady">
+			<li portfolio-group group="group" editurl="$ctrl.editUrl" collapsed="$ctrl.data.selectorGroups.length > 4" readonly="!$ctrl.data.editAllowed" opendoc="openDoc" ng-repeat="group in $ctrl.data.treeGroups"></li>
+		</ul>
+    </div>
+</div>

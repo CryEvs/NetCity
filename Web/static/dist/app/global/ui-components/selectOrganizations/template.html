@@ -1,0 +1,28 @@
+<div class="row"> 
+    <div class="col-md-12" ng-show="!readMode || hasSelected" >
+        <div class="form-group">
+            <label for="filter" class="control-label">
+                {{language.Generic.FilterUsers.kSearch}}
+            </label>
+            <div>
+                <input id="filter" ng-model="filter" class="form-control"/> 
+            </div>    
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12" ng-show="(!readMode || hasSelected) && organizations.length != 0">
+        <tree model="organizations" settings="$ctrl.settings" on-update="onUpdate(selected)"></tree>
+    </div>
+    <div class="col-md-12" ng-show="readMode && !hasSelected">
+        <div class="alert alert-info">
+            {{language.Generic.Common.kOrganizationsNotSelected}}
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="(!readMode || hasSelected) && organizations.length == 0">
+        <div class="alert alert-info">
+            {{language.Generic.Common.kNoMatchesFound}}
+        </div>
+    </div>
+</div>

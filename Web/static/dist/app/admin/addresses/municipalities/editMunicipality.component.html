@@ -1,0 +1,37 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+	<form class="form-horizontal form-sm" name="$ctrl.form" ng-if="$ctrl.ready">
+		<ns-form>
+			<ns-form-group title="Регион">
+				<input type="text" class="form-control" name="state" size="60" maxlength="200" ng-value="$ctrl.state.name" disabled>
+			</ns-form-group>
+
+			<ns-form-group title="Название" ng-class="{'has-error': $ctrl.form.name.$invalid}">
+				<input type="text" class="form-control" name="name" size="60" maxlength="200" ng-model="$ctrl.name" required track-changes>
+				<div ng-messages="$ctrl.form.name.$error">
+					<span class="help-block" ng-message="required">Обязательное поле</span>
+				</div>
+			</ns-form-group>
+
+			<ns-form-group title="Тип муниципалитета">
+				<select class="form-control" name="municipalityType" ng-model="$ctrl.municipalityType" ng-options="x.id as x.name for x in $ctrl.municipalityTypes" track-changes></select>
+			</ns-form-group>
+
+			<ns-form-group title="Тип населенного пункта" ng-if="$ctrl.isCityMunicipality">
+				<select class="form-control" name="atoType" ng-model="$ctrl.atoTypeId" ng-options="x.id as x.name for x in $ctrl.atoTypes" track-changes></select>
+			</ns-form-group>
+
+			<ns-form-group title="Обобщённый тип нас.пункта" ng-if="$ctrl.isCityMunicipality" ng-class="{'has-error': $ctrl.form.settlementType.$invalid}">
+				<select class="form-control" name="settlementType" ng-model="$ctrl.settlementTypeId" required ng-options="x.id as x.name for x in $ctrl.settlementTypes" track-changes></select>
+				<div ng-messages="$ctrl.form.settlementType.$error">
+					<span class="help-block" ng-message="required">Обязательное поле</span>
+				</div>
+			</ns-form-group>
+
+			<ns-form-group title="Наличие улиц" ng-if="$ctrl.isCityMunicipality">
+				<select class="form-control" name="availabilityOfStreet" ng-model="$ctrl.availabilityOfStreet" ng-options="x.id as x.name for x in $ctrl.booleans" track-changes></select>
+			</ns-form-group>
+		</ns-form>
+	</form>
+</ns-modal>

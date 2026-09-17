@@ -1,0 +1,69 @@
+<div>
+	<div>
+		<form name="fillIndicators">
+			<div class="buttons-filters-panel form-horizontal">
+				<div class="row" ng-show="indicator != null && !indicator.isApproved && state.hasFillAccess">
+					<div class="col-md-12">
+						<div class="buttons-panel">
+							<div class="buttons-panel-left">
+								<button type="button" class="btn btn-primary btn-sm" ng-click="save()"
+										ng-show="indicator != null && existsIndicatorGroups() && !indicator.isApproved"
+										ng-disabled="!bDataWasChanged">
+									<span class="glyphicon glyphicon-save"></span>
+									{{language.Generic.Buttons.kSave}}
+								</button>
+								<button type="button" class="btn btn-primary btn-sm"
+										ng-click="approveIndicatorGroup(indicatorGroup.id)"
+										ng-show="indicator != null && !indicator.isApproved">
+									<span class="glyphicon glyphicon-saved"></span>
+									{{language.Generic.StatReports.kApprove}}
+								</button>
+								<button type="button"
+										class="btn btn-primary btn-sm"
+										ng-show="indicator != null && indicator.isCalculated && !indicator.isApproved"
+										ng-click="calculate(indicatorGroup.id)">
+									{{language.Generic.SchoolInfo.kbtnCalculate_}}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="filters-panel col-md-6 col-lg-6">
+						<div ng-show="existsIndicatorGroups()">
+							<div class="form-group">
+								<label for="indicatorGroup" class="control-label col-lg-3 col-md-4">{{language.Generic.StatReports.kReport}}</label>
+								<div class="col-md-8">
+									<select ng-model="indicatorGroup"
+											ng-options="indicator.name for indicator in indicatorGroupsList"
+											class="form-control"
+											ng-change="indicatorGroupChange()"
+											id="indicatorGroup"></select>
+								</div>
+							</div>
+							<div class="explanation" ng-if="indicatorGroup.explanation != ''">
+								<p>{{indicatorGroup.explanation}}</p>
+							</div>
+						</div>
+						<div class="alert alert-info" ng-show="!existsIndicatorGroups()">
+							{{language.Generic.StatReports.kIndicatorListIsEmpty}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" ng-show="existsIndicatorGroups()">
+				<div class="col-lg-7 col-md-10">
+					<h2 ng-show="indicator != null" ng-bind-template="{{indicator.fullNumber}}. {{indicator.name}}"></h2>
+					<table class="table table-bordered indicators-table">
+						<tr>
+							<th>{{language.Generic.StatReports.kIndicator}}</th>
+							<th style="width: 150px;">{{language.Generic.StatReports.kValue}}</th>
+						</tr>
+						<tr ng-repeat="indicator in indicator.subIndicators" indicator-nodes></tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,110 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/report.min.css"/>
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/print-tables.min.css"/>
+
+<form name="COMPOSE" method="post" class="form-horizontal form-xs ns-cloak">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<button title="Отправить" type="button" class="btn btn-primary" ng-click="$ctrl.send()">
+						<span class="glyphicon glyphicon-envelope"></span>
+						<span>Отправить</span>
+					</button>
+					<button title="Сохранить" type="button" class="btn btn-info" ng-click="$ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>Сохранить</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group"><label class="control-label col-md-4 col-lg-3 col-sm-4">Кому</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<div class="input-group">
+						<input class="form-control" type="text" name="ABC" size="65" maxlength="4000" readonly ng-value="$ctrl.getRecipientsText($ctrl.message.to)">
+						<span class="input-group-btn">
+							<button title="Выбрать из адресной книги" type="button" class="btn btn-default" ng-click="$ctrl.chooseRecipients('to')">
+								<span class="glyphicon glyphicon-list-alt"></span>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group"><label class="control-label col-md-4 col-lg-3 col-sm-4">Копия</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<div class="input-group">
+						<input class="form-control" type="text" name="ABC" size="65" maxlength="4000" readonly ng-value="$ctrl.getRecipientsText($ctrl.message.cc)">
+						<span class="input-group-btn">
+							<button title="Выбрать из адресной книги" type="button" class="btn btn-default" ng-click="$ctrl.chooseRecipients('cc')">
+								<span class="glyphicon glyphicon-list-alt"></span>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group"><label class="control-label col-md-4 col-lg-3 col-sm-4">Скрытая копия</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<div class="input-group">
+						<input class="form-control" type="text" name="ABC" size="65" maxlength="4000" readonly="" ng-value="$ctrl.getRecipientsText($ctrl.message.bcc)">
+						<span class="input-group-btn">
+							<button title="Выбрать из адресной книги" type="button" class="btn btn-default" ng-click="$ctrl.chooseRecipients('bcc')">
+								<span class="glyphicon glyphicon-list-alt"></span>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group"><label class="control-label col-md-4 col-lg-3 col-sm-4">Тема</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<input type="text" class="form-control FilterWhiteSpace" name="SU" size="70" maxlength="150" ng-model="$ctrl.message.subject">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Уведомить о	прочтении</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<div class="checkbox">
+						<label><input type="checkbox" name="NEEDNOTIFY" ng-model="$ctrl.message.notify"></label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<textarea name="BO" class="form-control" rows="15" cols="74" wrap="soft" ng-model="$ctrl.message.text"></textarea>
+		</div>
+	</div>
+	<br>
+
+	<file-attachments ng-if="$ctrl.fa" settings="$ctrl.fa"></file-attachments>
+
+	<br />
+
+	<ns-panel panel-id="mail-report" class="default" title="Вложенный отчет" ng-if="$ctrl.message.attachedReport.attachment">
+		<div class="buttons-panel">
+			<button class="btn btn-default" ng-click="$ctrl.downloadReport()">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kDownloadReport}}</span>
+			</button>
+			<button class="btn btn-default" ng-click="$ctrl.printReport()">
+				<span class="glyphicon glyphicon-print"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kPrintReport}}</span>
+			</button>
+			<button class="btn btn-default" ng-click="$ctrl.popupReport()">
+				<span class="glyphicon glyphicon-fullscreen"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kOpenPopupReport}}</span>
+			</button>
+		</div>
+		<div class="alert alert-warning" 
+				style="white-space: pre-line;" role="alert" 
+				ng-if="$ctrl.isBigReport()">
+				<span>Отчёт слишком велик для отображения.</span>
+				<span>Вы можете скачать его в формате Excel, вывести на печать, либо открыть в отдельном окне.</span>
+		</div>
+		<div id="report" ng-if="!$ctrl.isBigReport()" ng-bind-html="$ctrl.message.attachedReport.attachment"></div>
+	</ns-panel>
+
+</form>

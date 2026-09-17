@@ -1,0 +1,32 @@
+	
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+
+		<span class="content-page-preloader" id="preloader" ng-hide="ctrl.ready"><span>{{ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+		<label>{{ctrl.school.name || ctrl.school.educOrganization.name}}</label>
+		<table class="table table-hover table-striped table-sm" ng-show="ctrl.ready">
+			<tr>
+				<th>Пользователь</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="admin in ctrl.admins track by admin.id">
+				<td>{{admin.name}}</td>
+				<td><button class="btn btn-sm pull-right" ng-click="ctrl.changePassword(admin.id)">Сменить пароль</button></td>
+			</tr>
+		</table>
+	</div>
+	<div class="modal-footer" ng-show="ctrl.ready">
+		<button class="btn btn-default" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			Закрыть
+		</button>
+	</div>
+</div>

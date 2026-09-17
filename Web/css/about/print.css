@@ -1,0 +1,178 @@
+body
+{
+     margin:0;
+    padding:0;
+    
+}
+
+
+#wrapper
+{
+	
+    width:924px;
+   
+    border: none;
+    
+    min-height: 300px;
+    height:100%;
+    font-family:Trebuchet MS;
+    margin: 0 auto;
+    text-align: left;
+	line-height:1.4;
+	font-size:13px;
+	z-index:1;
+	position:relative;
+}
+
+#left
+{
+	width:500px;
+
+	float:left;
+	margin-left:15px;
+	padding-top:12px;
+	line-height:1.5;
+
+}	
+*html #left
+{
+	width:700px;
+
+
+
+}
+#site
+{
+	overflow:hidden;
+	margin-top:-7px;
+
+}
+
+
+
+
+.inp_left2
+ {
+
+	height:24px;
+	background:url(../images/inp_left2.png) no-repeat;
+
+	padding-left:10px;
+	float:left;
+	
+ }
+ 
+
+ .inp_right2
+{
+	height:24px;
+	background:url(../images/inp_right2.png) no-repeat right top;
+
+}
+.ll
+{
+margin-top:30px;margin-left:-20px;margin-bottom:10px;
+}
+
+*html .ll
+{
+	margin-left:0px;
+}
+.inp2
+{
+	height:24px;
+	background:url(../images/inp_bg2.png) repeat-x;
+	margin-right:10px;
+	
+
+}
+.inp2  input
+{
+	border:none;
+	color: #000;
+	font-size:11px;
+	width:100%;
+	background:none;
+	height:14px;
+	line-height:14px;
+	margin-top:4px;
+}
+
+
+#anketa
+{
+	margin-left:-10px;
+	margin-top:30px;
+	position:relative;
+	clear:both;
+}
+
+#anketa .item
+{
+	margin-top:30px;
+	clear:both;
+	position:relative;
+	overflow:hidden;
+}
+#anketa .item .fio
+{
+	float:left;
+	width:325px;
+	font-size:11px;
+	color:#8cadd4;
+}
+#anketa .item  .pad
+{
+	margin-left:10px;
+	color:#959595;
+}
+#anketa .item .date
+{
+	
+	width:165px;
+	font-size:11px;
+	color:#8cadd4;
+	margin-left:335px;
+}
+*html #anketa .item .date
+{
+	
+	width:255px;
+
+}
+#anketa .item .date .line
+{
+	width:10px;
+	height:24px;
+	float:left;
+	background:url(../images/line.png) center center no-repeat;
+}
+
+#anketa .item .phone
+{
+	float:left;
+	width:160px;
+	font-size:11px;
+	color:#8cadd4;
+
+}
+
+#anketa .item .address
+{
+	
+	width:331px;
+	font-size:11px;
+	color:#8cadd4;
+	margin-left:170px;
+}
+*html #anketa .item .address
+{
+	
+
+	margin-left:205px;
+}
+.small_text
+{
+	color:#8cadd4;
+	font-size:11px;
+}

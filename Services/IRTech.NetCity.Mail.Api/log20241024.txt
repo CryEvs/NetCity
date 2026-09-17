@@ -1,0 +1,2 @@
+2024-10-24T03:01:05.9932881+09:00 [Microsoft.AspNetCore.Server.Kestrel] [WRN] As of ""2024-10-23T18:00:40.6448382+00:00"", the heartbeat has been running for ""00:00:03.4181955"" which is longer than ""00:00:01"". This could be caused by thread pool starvation.
+2024-10-24T03:10:46.2164749+09:00 [Microsoft.AspNetCore.Server.Kestrel] [WRN] As of ""2024-10-23T18:10:44.9934050+00:00"", the heartbeat has been running for ""00:00:01.2230699"" which is longer than ""00:00:01"". This could be caused by thread pool starvation.

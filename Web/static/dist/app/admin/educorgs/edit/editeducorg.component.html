@@ -1,0 +1,146 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<form role="form" name="$ctrl.educorgForm" ng-show="$ctrl.ready" class="form form-xs">
+
+		<ns-accordion class="panel-group" accordion-id="edit-educorg-accordion">
+
+			<ns-panel panel-id="common-info" class="default" title="{{$ctrl.language.Generic.Common.kCommonInfo}}" expanded="true">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="eoname">Краткое наименование (*)</label>
+							<input track-changes type="text" class="form-control" id="eoname" ng-model="$ctrl.educorg.name" required maxlength="200">
+						</div>
+					</div>
+				</div>
+
+				<div class="row" ng-if="$ctrl.educorg.schoolId">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="schoolname">{{$ctrl.language.Generic.SchoolInfo.kEOFullName}}</label>
+							<input track-changes type="text" class="form-control" id="schoolname" ng-model="$ctrl.school.name" required maxlength="400">
+						</div>
+					</div>
+				</div>
+
+				<div class="row" ng-if="$ctrl.educorg.schoolId">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="schoolnumber">{{$ctrl.language.Generic.SchoolInfo.kEONumber}}</label>
+							<input track-changes type="text" class="form-control" id="schoolnumber" ng-model="$ctrl.school.schoolNumber" required maxlength="200">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="cityName">{{$ctrl.language.Generic.Common.kCity}}</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="cityName" disabled="disabled" ng-value="$ctrl.city.name" />
+								<span class="input-group-btn">
+									<button title="Выбрать населенный пункт" type="button" class="btn btn-default" ng-click="$ctrl.changeCity()">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" ng-if="$ctrl.educorg.schoolId">
+					<div class="col-md-12" ng-show="$ctrl.references.cityDistricts.length">
+						<div class="form-group">
+							<label for="cityDistrict">{{$ctrl.language.Generic.EMReports.kDistrictCity}}</label>
+							<select track-changes class="form-control" id="cityDistrict" ng-model="$ctrl.school.districtId" ng-options="district.id as district.name for district in $ctrl.references.cityDistricts">
+								<option value="">не выбран</option>
+							</select>
+						</div>
+					</div>
+				</div>	
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="eotype">{{$ctrl.language.Generic.Common.kEOType}} (*)</label>
+							<select track-changes class="form-control" id="eotype" ng-model="$ctrl.educorg.eoTypeId" ng-options="type.id as type.name for type in $ctrl.references.eoTypes" ng-change="$ctrl.changeType()"></select>
+							<input track-changes type="hidden" id="eoform" ng-value="$ctrl.educorg.eoFormId" ng-if="$ctrl.educorg.eoTypeId != 5 && $ctrl.educorg.eoTypeId != 6" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="eoform">{{$ctrl.language.Generic.ServAdmin.kEOForm}} (*)</label>
+							<select class="form-control" id="eoform" ng-model="$ctrl.educorg.eoFormId" ng-options="form.id as form.name for form in $ctrl.references.eoForms()"></select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="legalForm">{{$ctrl.language.Generic.ServAdmin.kLegalForm}} (*)</label>
+							<select track-changes class="form-control" id="legalForm" ng-model="$ctrl.educorg.eoLegalFormId" ng-options="form.id as form.name for form in $ctrl.references.eoLegalForms"></select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="legalForm83">{{$ctrl.language.Generic.ServAdmin.kLegalForm83}}</label>
+							<select track-changes class="form-control" id="legalForm83" ng-model="$ctrl.educorg.eoLegalFormId83" ng-options="form.id as form.name for form in $ctrl.references.eoLegalForms83">
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-if="$ctrl.educorg.eoTypeId && $ctrl.educorg.eoTypeId != 3 && $ctrl.creativeTypesInfo">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="creatives">{{$ctrl.language.Generic.ServAdmin.kCreatives}}</label>
+							<div class="ctx-btns-icons ctx-btns-icons-right ctx-btns-icons-lg">
+								<a href="#" ng-click="$ctrl.editCreatives()" class="primary" title="Определить творческие объединения">
+									<span class="glyphicon glyphicon-pencil">
+									</span>
+								</a>
+							</div>
+							<ul ng-if="$ctrl.educorg.creatives && $ctrl.educorg.creatives.length" id="creatives">
+								<li ng-repeat="creative in $ctrl.educorg.creatives">{{$ctrl.getCreativeTypeName(creative.type)}}</li>
+							</ul>
+							<div ng-if="!$ctrl.educorg.creatives || !$ctrl.educorg.creatives.length" style="margin-top: 10px;" class="alert alert-info" role="alert">
+								{{$ctrl.language.Generic.ServAdmin.kNoCreatives}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-show="$ctrl.educorg.eoTypeId == 3">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="otrasl">{{$ctrl.language.Generic.ServAdmin.kOtrasl}}</label>
+							<select track-changes class="form-control" id="otrasl" ng-model="$ctrl.educorg.otraslId" ng-options="otrasl.id as otrasl.name for otrasl in $ctrl.references.otrasls">
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+
+
+			</ns-panel>
+
+			<ns-panel panel-id="founders" class="default" title="{{$ctrl.language.Generic.ServAdmin.kFounders}}" expanded="false">
+				<div style="overflow-y: auto; max-height: 400px">
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="founder in $ctrl.references.founders" style="padding: 3px 7px; font-size: 12px;">
+							<div class="checkbox" style="margin: 0">
+								<label>
+									<input track-changes type="checkbox" ng-checked="$ctrl.isFounderSelected(founder)" class="pull-right" ng-click="$ctrl.toggleFounder(founder)" /> {{founder.name}}
+								</label>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</ns-panel>
+		</ns-accordion>
+	</form>
+</ns-modal>

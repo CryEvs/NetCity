@@ -1,0 +1,110 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+<style>
+	ul.dynatree-container {
+		border: none;
+	}
+</style>
+<div class="buttons-filters-panel form-horizontal single-row ns-cloak">
+	<div class="row">
+		<div class="buttons-panel">
+			<div class="buttons-panel-right">
+				<button id="export-btn" ng-click="ctrl.exportKTP()" title="{{ctrl.language.Generic.Curriculum.kExportVariant}}" type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>{{ctrl.language.Generic.Buttons.kExport}}</span>
+				</button>
+
+				<button id="import-btn" ng-if="!ctrl.options.readOnly" ng-click="ctrl.importKTP()" title="{{ctrl.language.Generic.Curriculum.kImportVariant}}" type="button" class="btn btn-default btn-write-access">
+					<span class="glyphicon glyphicon-import"></span>
+					<span>{{ctrl.language.Generic.Buttons.kImport}}</span>
+				</button>
+			</div>
+		</div>
+
+		<filter-panel class="filters-panel col-md-12 filters-panel-compact form-inline" ng-if="ctrl.filterPanelSettings" fp="ctrl.fp" fp-settings="ctrl.filterPanelSettings"> 
+			<div class="form-group active aux" id="plan-note-row" ng-show="ctrl.ctx.elementType == 'plan' && (ctrl.ctx.plan.attach || !ctrl.ctx.readOnly)">
+				<label class="control-label">{{ctrl.langauge.Generic.ResourceGroups.kExplanatoryNote}}</label>
+				<div ng-if="ctrl.fa">
+					<file-attachments settings="ctrl.fa" style="max-width: 500px"></file-attachments>
+				</div>
+			</div>
+		</filter-panel>
+	</div>
+</div>
+<div class="row ns-cloak">
+	<div class="col-md-12 col-lg-12">
+		<div class="form-horizontal">
+			<div class="form-group">
+				<div class="col-md-12">
+					<div class="action-panel" style="display: inline;">
+						<button id="view-btn" ng-click="ctrl.editItem()" ng-if="!ctrl.hasWriteAccess()" title="{{ctrl.language.Generic.Curriculum.kBtnViewUnitLesson}}" type="button" class="btn btn-sm btn-info btn-readonly-access">
+							<span>{{ctrl.language.Generic.Buttons.kView}}</span>
+						</button>
+
+						<button id="create-btn" ng-click="ctrl.createItem()" ng-if="ctrl.hasWriteAccess()" title="{{ctrl.language.Generic.Curriculum.kBtnCreateUnitLesson}}" type="button" class="btn btn-sm btn-write-access">
+							<span class="glyphicon glyphicon-plus-sign"></span>
+							<span>{{ctrl.language.Generic.Buttons.kAdd}}</span>
+						</button>
+
+						<button id="edit-btn" ng-click="ctrl.editItem()" ng-if="ctrl.hasWriteAccess()" title="{{ctrl.language.Generic.Curriculum.kBtnEditUnitLesson}}" type="button" class="btn btn-sm btn-warning btn-write-access">
+							<span class="glyphicon glyphicon-pencil"></span>
+							<span>{{ctrl.language.Generic.Buttons.kEdit}}</span>
+						</button>
+
+						<button id="copy-btn" ng-click="ctrl.copyItem()" ng-if="ctrl.hasWriteAccess()" title="{{ctrl.language.Generic.Curriculum.kBtnCopyUnitLesson}}" type="button" class="btn btn-sm btn-write-access">
+							<span class="glyphicon glyphicon-duplicate"></span>
+							<span>{{ctrl.language.Generic.Buttons.kCopy}}</span>
+						</button>
+
+						<button id="del-btn" ng-click="ctrl.deleteItem()" ng-if="ctrl.hasWriteAccess()" title="{{ctrl.language.Generic.Curriculum.kBtnDeleteUnitLesson}}" type="button" class="btn btn-sm btn-danger btn-write-access">
+							<span class="glyphicon glyphicon-minus-sign"></span>
+							<span>{{ctrl.language.Generic.Buttons.kRemove}}</span>
+						</button>
+
+						<button id="variants-btn" ng-click="ctrl.goVariants()" ng-if="ctrl.hasWriteAccess()" title="{{ctrl.language.Generic.Curriculum.kBtnSPVariants}}" type="button" class="btn btn-sm">
+							<span>{{ctrl.language.Generic.Curriculum.kBtnSPVariants}}</span>
+						</button>
+
+						<!--todo. условия показа-->
+						<button id="variants-btn" ng-click="ctrl.openReport()" title="{{ctrl.language.Generic.Curriculum.kViewReport}}" type="button" class="btn btn-sm">
+							<span>Отчет</span>
+						</button>
+
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-if="ctrl.state.yearTransitionState">
+    <div class="col-md-12">
+        <div class="alert alert-warning" role="alert" ng-bind="ctrl.language.Generic.Curriculum.kCurriculumNotTransferedToFutureYear" style="white-space: pre-line;"></div>
+    </div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12 col-lg-12">
+		<div class="content-preloader hide" id="process-message-journal">
+			<span class="arrows"></span>
+			<span class="title">
+				{{ctrl.language.Generic.Movement.kPleaseWait}}
+			</span>
+		</div>
+
+		<div id="empty-plan-panel" class="alert alert-info" role="alert" ng-if="ctrl.state.noVariants">
+			{{ctrl.language.Generic.Assignment.kNoKTPVariants}}
+		</div>
+
+		<div id="plan-container" ng-show="!ctrl.state.noVariants">
+
+			<button id="expand-btn" ng-click="ctrl.expandAll()" title="{{ctrl.language.Generic.Curriculum.kBtnExpandAll}}" type="button" class="btn btn-sm btn-default">
+				<span class="glyphicon glyphicon-folder-open"></span>
+			</button>
+			<button id="collapse-btn" ng-click="ctrl.collapseAll()" title="{{ctrl.language.Generic.Curriculum.kBtnCollapseAll}}" type="button" class="btn btn-sm btn-default">
+				<span class="glyphicon glyphicon-folder-close"></span>
+			</button>
+
+			<div id="tree" class="cast-a-shadow" style="margin-top: 10px;"></div>
+		</div>
+	</div>
+</div>

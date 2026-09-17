@@ -1,0 +1,47 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready">
+		<span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+	</span>
+
+	<form class="form-xs form-horizontal" name="$ctrl.form">
+		<!-- <ns-form control-size="col-md-8" label-size="col-md-4"> -->
+			<address-edit form="$ctrl.form" ready="$ctrl.ready" error="$ctrl.error" fias-mode="$ctrl.fiasMode" address="$ctrl.address" ng-show="$ctrl.ready" save-model="$ctrl.saveModel"></address-edit>
+			
+			<div ng-show="$ctrl.ready" ng-if="$ctrl.isRegAddress && !$ctrl.error">
+
+				<ns-form-group title="">
+					<div class="checkbox">
+						<label for="isTmpAddres">
+							<input id="isTmpAddres" name="isTmpAddres" type="checkbox" ng-model="$ctrl.address.isTempAddress">
+							{{"language.Generic.Common.kRegistrationAddressIsLocalRegistrationAddress" | language}}
+						</label>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group title="Дата регистрации" ng-show="$ctrl.address.isTempAddress" ng-class="{ 'has-error': $ctrl.form.regDateTempAddress.$invalid && ($ctrl.form.regDateTempAddress.$dirty || $ctrl.form.$displayErrors)}">
+					<date-input-component track-changes required="$ctrl.address.isTempAddress && $ctrl.isRegDateTempAddressRequired" name="regDateTempAddress" date-model="$ctrl.address.regDateTempAddress" options="{ getterSetter: true }"></date-input-component>
+					
+					<div ng-if="$ctrl.form.regDateTempAddress.$invalid && ($ctrl.form.regDateTempAddress.$dirty || $ctrl.form.$displayErrors)" ng-messages="$ctrl.form.regDateTempAddress.$error">
+						<span class="help-block" ng-message="required">{{"language.Generic.Messages.kRequiredField" | language}}</span>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group title="Срок окончания временной регистрации" ng-show="$ctrl.address.isTempAddress"  ng-class="{ 'has-error': $ctrl.form.expireDateTempAddress.$invalid && ($ctrl.form.expireDateTempAddress.$dirty || $ctrl.form.$displayErrors)}">
+					<date-input-component min-date="$ctrl.address.regDateTempAddress" track-changes required="$ctrl.address.isTempAddress && $ctrl.isExpireDateTempAddressRequired" name="expireDateTempAddress" date-model="$ctrl.address.expireDateTempAddress" options="{ getterSetter: true }"></date-input-component>
+					<div ng-if="$ctrl.form.expireDateTempAddress.$invalid && ($ctrl.form.expireDateTempAddress.$dirty || $ctrl.form.$displayErrors)" ng-messages="$ctrl.form.expireDateTempAddress.$error">
+						<span class="help-block" ng-message="required">{{"language.Generic.Messages.kRequiredField" | language}}</span>
+						<span class="help-block" ng-message="datePeriod">Дата должна быть позже даты регистрации</span>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group title="№ документа" ng-show="$ctrl.address.isTempAddress">
+					<input type="text" class="form-control" name="docNumberTempAddress" size="5" maxlength="20" ng-model="$ctrl.address.regNumberTempAddress" track-changes>
+				</ns-form-group>
+			</div>
+
+		<!-- </ns-form> -->
+		</form>
+
+		<div class="alert alert-warning" role="alert" ng-if="$ctrl.neighboursMessage" ng-bind-html="$ctrl.neighboursMessage"></div>
+	
+</ns-modal>

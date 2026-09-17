@@ -1,0 +1,63 @@
+<div class="row form-group">
+	<label class="control-label col-md-4 col-lg-3 col-sm-4">Учебный год</label>
+	<div class="col-md-8 col-lg-5 col-sm-8">
+		<select name="year" class="form-control" ng-model="$ctrl.data.yearId" ng-options="year.id as year.name for year in $ctrl.data.years" ng-change="$ctrl.onYearChange()"></select>
+	</div>
+</div>
+
+<div>
+	<hgroup>
+		<h3>Отчетные формы</h3>
+	</hgroup>
+
+	<table cellpadding="1">
+		<tr ng-repeat="form in $ctrl.data.forms">
+			<td nowrap="" style="padding: 1px;">
+				<a href="javascript:void(0)" ng-click="$ctrl.goToForm(form.link)">{{ form.displayName }}</a>
+			</td>
+		</tr>
+
+		<!-- ссылки на формы 1-ГУ и 1-МУ -->
+		<tr>
+			<td nowrap="" style="padding: 1px;">
+				<a href="/asp/EDUC_MANAGER/Reports/StatForms/1-GU.xls" target="_blank">{{ $ctrl.language.Generic.EMReportNames.kForm1GU }}</a>
+			</td>
+		</tr>
+		<tr>
+			<td nowrap="" style="padding: 1px;">
+				<a href="/asp/EDUC_MANAGER/Reports/StatForms/1-MU.xls" target="_blank">{{ $ctrl.language.Generic.EMReportNames.kForm1MU }}</a>
+			</td>
+		</tr>
+
+	</table>
+
+</div>
+
+<hr />
+
+<div>
+	<hgroup>
+		<h3>Формы подотчетных организаций</h3>
+	</hgroup>
+
+	<table cellpadding="1">
+		<tr>
+			<td nowrap style="padding: 1px;">
+				<a href="javascript:void(0)" ng-click="$ctrl.goExportStatForms()">{{$ctrl.language.Generic.EMReportNames.kReportExportStatForms}}</a>
+			</td>
+		</tr>
+
+		<tr>
+			<td nowrap style="padding: 1px;">
+				<a href="javascript:void(0)" ng-click="$ctrl.goStatusStatForms()">Статус заполнения форм</a>
+			</td>
+		</tr>
+
+		<tr>
+			<td nowrap style="padding: 1px;">
+				<a href="javascript:void(0)" ng-click="$ctrl.goControlStatFormsFilling()">Контроль заполнения форм
+				</a>
+			</td>
+		</tr>
+	</table>
+</div>

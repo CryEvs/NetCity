@@ -1,0 +1,10 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready">
+		<span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+	</span>
+
+    <form class="form-xs form-horizontal" name="$ctrl.form">
+        <address-edit form="$ctrl.form" ready="$ctrl.ready" error="$ctrl.error" fias-mode="true" address="$ctrl.address" ng-show="$ctrl.ready" is-school-address="true" edit-address="$ctrl.editAddress" save-model="$ctrl.saveModel"></address-edit>
+    </form>
+
+</ns-modal>

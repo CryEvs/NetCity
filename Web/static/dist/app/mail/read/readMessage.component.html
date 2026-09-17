@@ -1,0 +1,148 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/report.min.css"/>
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/print-tables.min.css"/>
+
+<form class="form-horizontal form-xs ns-cloak">
+
+	<div class="buttons-panel">
+		<div class="buttons-panel-left">
+			<button title="{{$ctrl.language.Generic.Messages.kEditMsg}}" type="button" class="btn btn-default" ng-click="$ctrl.edit()" ng-if="$ctrl.message.canEdit">
+				<span class="icon-pencil"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+			</button>
+			<button title="{{$ctrl.language.Generic.Messages.kReply}}" type="button" class="btn btn-default" ng-click="$ctrl.reply()" ng-if="!$ctrl.message.noReply">
+				<span class="icon-reply"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kReply}}</span>
+			</button>
+			<button title="{{$ctrl.language.Generic.Messages.kReplyAll}}" type="button" class="btn btn-default" ng-click="$ctrl.replyAll()" ng-if="$ctrl.message.canReplyAll">
+				<span class="icon-reply-all"></span>
+				<span>{{$ctrl.language.Generic.Messages.kReplyAll}}</span>
+			</button>
+			<button title="{{$ctrl.language.Generic.Messages.kForward}}" type="button" class="btn btn-default" ng-click="$ctrl.forward()" ng-if="$ctrl.message.canForward">
+				<span class="icon-forward"></span>
+				<span>{{$ctrl.language.Generic.Messages.kForward}}</span>
+			</button>
+			<button title="{{$ctrl.language.Generic.Messages.kRestoreMsg}}" type="button" class="btn btn-default" ng-click="$ctrl.restore()" ng-if="$ctrl.canRestore">
+				<span class="icon-move"></span>
+				<span>{{$ctrl.language.Generic.Messages.kRestoreMsg}}</span>
+			</button>
+			<button title="{{$ctrl.language.Generic.Buttons.kRemove}}" type="button" class="btn btn-danger" ng-click="$ctrl.delete()">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+			</button>
+		</div>
+		<div class="buttons-panel-right">
+			<button title="На печать" type="button" class="btn btn-default"  ng-click="$ctrl.printMessage()">
+				<span class="glyphicon glyphicon-print"></span>
+				 <span>На печать</span>
+			</button>
+		</div>
+	</div>
+
+	<ns-panel panel-id="headers" class="default" title="Заголовки письма">
+		<ns-form-group title="{{$ctrl.language.Generic.Messages.kFromWhom}}">
+			<input class="form-control" type="text" ng-model="$ctrl.message.author.name" name="author" disabled />
+		</ns-form-group>
+		<ns-form-group title="{{$ctrl.language.Generic.Messages.kWhom}}">
+			<input class="form-control" type="text" ng-value="$ctrl.message.toNames" name="toNames" disabled />
+		</ns-form-group>
+		<ns-form-group title="{{$ctrl.language.Generic.Messages.kCopy}}">
+			<input class="form-control" type="text" ng-value="$ctrl.message.ccNames" name="ccNames" disabled />
+		</ns-form-group>
+		<ns-form-group title="{{$ctrl.language.Generic.Messages.kPosted}}">
+			<input class="form-control" type="text" value="{{$ctrl.message.sent | nsDateTimeSs}}" name="sent" disabled />
+		</ns-form-group>
+	</ns-panel>
+
+	<ns-panel panel-id="body" class="default" title="Тело письма" expanded="true">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label class="control-label">Тема</label>
+				<div>
+					<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.message.subject">
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label ">Текст</label>
+				<div ng-bind="$ctrl.message.text" style="white-space: pre-line;"></div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.message.fileAttachments && $ctrl.message.fileAttachments.length">
+				<label class="control-label ">{{$ctrl.language.Generic.Common.kAttachedFiles}}</label>
+				<div>
+					<file-attachments settings="$ctrl.fa"></file-attachments>
+				</div>
+			</div>
+
+			
+		</div>
+	</ns-panel>
+
+	<ns-panel panel-id="mail-report" class="default" title="Вложенный отчет" ng-if="$ctrl.message.attachedReport.attachment">
+		<div class="buttons-panel">
+			<button class="btn btn-default" ng-click="$ctrl.downloadReport()">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kDownloadReport}}</span>
+			</button>
+			<button class="btn btn-default" ng-click="$ctrl.printReport()">
+				<span class="glyphicon glyphicon-print"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kPrintReport}}</span>
+			</button>
+			<button class="btn btn-default" ng-click="$ctrl.popupReport()">
+				<span class="glyphicon glyphicon-fullscreen"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kOpenPopupReport}}</span>
+			</button>
+		</div>
+		<div class="alert alert-warning" 
+				style="white-space: pre-line;" role="alert" 
+				ng-if="$ctrl.isBigReport()">
+				<span>Отчёт слишком велик для отображения.</span>
+				<span>Вы можете скачать его в формате Excel, вывести на печать, либо открыть в отдельном окне.</span>
+		</div>
+		<div id="report" ng-if="!$ctrl.isBigReport()" ng-bind-html="$ctrl.message.attachedReport.attachment"></div>
+	</ns-panel>
+
+</form>
+
+<div class="print-block" ng-show="false">
+	<table class="table-print">
+		<tr>
+			<th>{{$ctrl.language.Generic.Messages.kFromWhom}}:</th>
+			<td>{{$ctrl.message.author.name}}</td>
+		</tr>
+		<tr>
+			<th>{{$ctrl.language.Generic.Messages.kWhom}}:</th>
+			<td>{{$ctrl.message.toNames}}</td>
+		</tr>
+		<tr ng-if="$ctrl.message.ccNames">
+			<th>{{$ctrl.language.Generic.Messages.kCopy}}:</th>
+			<td>{{$ctrl.message.ccNames}}</td>
+		</tr>
+		<tr>
+			<th>{{$ctrl.language.Generic.Messages.kPosted}}:</th>
+			<td>{{$ctrl.message.sent | nsDateTimeSs}}</td>
+		</tr>
+		<tr>
+			<th>{{$ctrl.language.Generic.Messages.kMsgSubject}}:</th>
+			<td>{{$ctrl.message.subject}}</td>
+		</tr>
+		<tr ng-if="$ctrl.message.fileAttachments && $ctrl.message.fileAttachments.length">
+			<th>{{$ctrl.language.Generic.Common.kAttachedFiles}}:</th>
+			<td>
+				<div>
+					<file-attachments settings="$ctrl.fa"></file-attachments>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<hr ng-if="$ctrl.message.text">
+	<table class="table-print">
+		<tr ng-if="$ctrl.message.text">
+			<th>{{$ctrl.language.Generic.Messages.kOriginalMessageText}}:</th>
+			<td>{{$ctrl.message.text}}</td>
+		</tr>
+	</table>
+	<hr>
+	<div ng-bind-html="$ctrl.message.attachedReport.attachment"></div>
+</div>

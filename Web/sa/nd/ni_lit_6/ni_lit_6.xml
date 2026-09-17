@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Литература. 6 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Литература. 6 класс" ID="1" Filename="ni_lit_6/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Жанры древнерусской литературы X–XVII вв." ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Жанры древнерусской литературы X–XVII вв." 
+				Filename="sgo/ni_lit_6/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Особенности древнерусской литературы X–XVII вв." ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Особенности древнерусской литературы X–XVII вв." 
+				Filename="sgo/ni_lit_6/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Литературный герой" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Литературный герой" 
+				Filename="sgo/ni_lit_6/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Способы раскрытия характера героя литературного произведения" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Способы раскрытия характера героя литературного произведения" 
+				Filename="sgo/ni_lit_6/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Роль пейзажа в литературном произведении" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Роль пейзажа в литературном произведении" 
+				Filename="sgo/ni_lit_6/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Баллада как жанр литературы" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Баллада как жанр литературы" 
+				Filename="sgo/ni_lit_6/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Былина как произведение устного народного творчества" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Былина как произведение устного народного творчества" 
+				Filename="sgo/ni_lit_6/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Виды комического" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Виды комического" 
+				Filename="sgo/ni_lit_6/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Басня как жанр литературы" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Басня как жанр литературы" 
+				Filename="sgo/ni_lit_6/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Средства художественной выразительности" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Средства художественной выразительности" 
+				Filename="sgo/ni_lit_6/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Как подготовиться к выразительному чтению стихотворения" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Как подготовиться к выразительному чтению стихотворения" 
+				Filename="sgo/ni_lit_6/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Как подготовиться к пересказу текста" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Как подготовиться к пересказу текста" 
+				Filename="sgo/ni_lit_6/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+
+</Project>

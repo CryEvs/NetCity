@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="buttons-panel">
+            <div class="buttons-panel-left">
+                <button class="btn btn-primary" type="button" title="{{$ctrl.language.Generic.Buttons.kAdd}}"
+                    ng-click="$ctrl.add()">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                    {{$ctrl.language.Generic.Buttons.kAdd}}
+                </button>
+                <button class="btn btn-info" type="button" title="{{$ctrl.language.Generic.Buttons.kEdit}}"
+                    ng-if="$ctrl.selection.selected" ng-click="$ctrl.edit($ctrl.selection.selected)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+                </button>
+                <button class="btn btn-danger" type="button" title="{{$ctrl.language.Generic.Buttons.kRemove}}"
+                    ng-if="$ctrl.selection.selected" type="button" ng-click="$ctrl.delete($ctrl.selection.selected)" ng-disabled="!$ctrl.canDelete($ctrl.selection.selected)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    <span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-if="!$ctrl.data || !$ctrl.data.length">
+    <div class="col-md-10">
+        <div class="alert alert-info" role="alert">{{$ctrl.language.Generic.ServAdmin.kNoAuthClients}}</div>
+    </div>
+</div>
+
+<div class="row" ng-if="$ctrl.data && $ctrl.data.length">
+    <div class="col-md-10">
+        <table class="table table-bordered table-condensed table-striped table-hover table-selectable table-sm ">
+            <thead>
+                <tr>
+                    <th>{{$ctrl.language.Generic.ServAdmin.kIdentifier}}</th>
+                    <th>{{$ctrl.language.Generic.ServAdmin.kClientName}}</th>
+                    <th>{{$ctrl.language.Generic.Common.kPassword}}</th>
+                    <th>{{$ctrl.language.Generic.ServAdmin.kAllowedAuthTypes}}</th>
+                    <th>{{$ctrl.language.Generic.ServAdmin.kAuthClientScopes}}</th>
+                    <th>{{$ctrl.language.Generic.ServAdmin.kRedirectUrl}}</th>
+                    <th>{{$ctrl.language.Generic.ServAdmin.kOrganizations}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in $ctrl.data" ng-class="{'selected': $ctrl.selection.isSelected(item)}"
+                    ng-click="$ctrl.selection.select(item)">
+                    <td>{{item.clientId}}</td>
+                    <td>{{item.clientName}}</td>
+                    <td>{{item.clientSecret}}</td>
+                    <td>{{item.allowedAuthTypes}}</td>
+                    <td>{{$ctrl.getScopeNames(item.scopes)}}</td>
+                    <td>{{item.redirectUri}}</td>
+                    <td>
+                        Тип ОО: {{item.schoolsInfo.funcTypes}}<br>
+                        Список ОО: <a ng-click="$ctrl.showOrgs(item.schoolsInfo.schoolIds)">{{item.schoolsInfo.orgsCount}}</a><br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

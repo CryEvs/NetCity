@@ -1,0 +1,74 @@
+<style>
+	seniority div.changed input.input-md.form-control {
+    	background-color: bisque;
+	}
+	td.changed {
+		background-color: bisque;
+	}
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="buttons-panel">
+            <div class="buttons-panel-left">
+				<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save">
+					</span>
+					<span>
+						{{$ctrl.language.Generic.Buttons.kSave}}
+					</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+					<span class="glyphicon glyphicon-repeat">
+					</span>
+					<span>
+						{{$ctrl.language.Generic.Buttons.kReset}}
+					</span>
+				</button>				
+            </div>
+			<div class="buttons-panel-right">
+				<button title="{{$ctrl.language.Generic.Common.kBtnPrint}}" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+					<span class="glyphicon glyphicon-print">
+					</span>
+					<span>
+						{{$ctrl.language.Generic.Buttons.kPrint}}
+					</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default" ng-click="$ctrl.export()">
+					<span class="glyphicon glyphicon-export">
+					</span>
+					<span>
+						{{$ctrl.language.Generic.Common.kBtnExcel}}
+					</span>
+				</button>
+			</div>
+        </div>
+    </div>
+</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<form name="$ctrl.senioritiesForm">
+				<table class="table table-stripped table-thin print-block">
+					<tbody>
+						<tr>
+							<th>{{$ctrl.language.Generic.SetupSchool.kSenType}}</th>
+							<th>{{$ctrl.language.Generic.SetupSchool.kSenStartDate}}&nbsp;-&nbsp;{{$ctrl.language.Generic.SetupSchool.kSenEndDate}}</th>
+							<th>{{$ctrl.language.Generic.SetupSchool.kSeniorities}}</th>
+						</tr>
+						<tr ng-repeat="seniorityInfo in $ctrl.seniorityInfos">
+							<td>{{seniorityInfo.seniorityType.name}}</td>
+							<td><seniorities-list seniorities="seniorityInfo.seniorities" type-id="seniorityInfo.seniorityType.id" user-id="$ctrl.userId" duration="seniorityInfo.seniorityDuration" changed="seniorityInfo.changed"></seniorities-list></td>
+							<td ng-class="{'changed': seniorityInfo.changed}">
+								<span ng-if="seniorityInfo.seniorityDuration && seniorityInfo.seniorityDuration.duration">
+									<span ng-bind="seniorityInfo.seniorityDuration.duration.year"></span> {{$ctrl.language.Generic.SetupSchool.kYears}}, 
+									<span ng-bind="seniorityInfo.seniorityDuration.duration.month"></span> {{$ctrl.language.Generic.SetupSchool.kMonthsS}}, 
+									<span ng-bind="seniorityInfo.seniorityDuration.duration.day"></span> {{$ctrl.language.Generic.SetupSchool.kDaysS}}
+								</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</ng-form>
+		</div>
+	</div>

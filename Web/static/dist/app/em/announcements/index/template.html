@@ -1,0 +1,76 @@
+
+<style>
+	td{
+		text-align: left;
+	}
+</style>
+
+<!-- кнопки: добавить , редактировать, удалить -->
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel extra">
+			<div class="buttons-panel-left">
+
+				<button type="button" class="btn btn-info" ng-click="ctrl.add()" >
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="ctrl.edit(ctrl.selection.item)" ng-disabled="!ctrl.selection.selected">
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span >{{ctrl.language.Generic.Buttons.kEdit}}</span>
+				</button>
+
+				<button type="button" class="btn btn-danger" ng-click="ctrl.delete(ctrl.selection.item)" ng-disabled="!ctrl.selection.selected" >
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- таблица с объявлениями -->
+<div class="row" ng-if="ctrl.announcements && ctrl.announcements.length">
+	<div class="col-md-12">
+		<table class="table table-xs table-print table-bordered table-thin table-striped table-hover print-block table-selectable">
+			<tr>
+				<th>Дата публикации</th>
+				<th>Автор</th>
+				<th>Тема</th>
+				<th>Получатели</th>
+				<th>Дата удаления</th>
+			</tr>
+
+			<tr ng-repeat="annon in ctrl.announcements" ng-click="ctrl.selection.select(annon)" ng-class="{'selected': ctrl.selection.isSelected(annon)}">
+				<td class="text-center">
+					<a ng-click="ctrl.edit(annon)">{{annon.postDate | nsDateTime}}</a> 
+				</td>
+				<td class="text-center" ng-if="annon.author">
+					{{annon.author.fio}}
+				</td>
+				<td class="text-center" ng-if="!annon.author">
+				</td>
+
+				<td>
+					{{annon.name}}
+				</td>
+				<td class="text-left">
+					Тип ОО: {{annon.recipientInfo.funcTypes}}<br>
+					Список ОО: <a ng-click="ctrl.showOrgs(annon.id)">{{annon.recipientInfo.orgsCount}} образовательные организации</a><br>
+					Группа пользователей: {{annon.recipientInfo.rolesStr}}
+				</td>
+				<td>
+					{{annon.deleteDate | date: 'dd.MM.yyyy'}}
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="row" ng-show="!ctrl.announcements || ctrl.announcements.length == 0">
+	<div class="col-md-12">
+		<div class="alert alert-info">
+			{{ctrl.language.Generic.Announcement.kAnnouncementListIsEmpty}}
+		</div>
+	</div>
+</div>

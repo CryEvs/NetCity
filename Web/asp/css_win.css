@@ -1,0 +1,415 @@
+h2
+{
+	font-weight: bold;
+	font-size: 14px;
+	font-family: verdana, arial, helvetica
+}
+h3
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica
+}
+h4
+{
+	font-weight: bold;
+	font-size: 14px;
+	font-family: verdana, arial, helvetica
+}
+input
+{
+	font-size: 12px;
+	font-family: verdana, arial;
+}
+div.subhead
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #ffffff;
+	font-family: verdana, arial, helvetica
+}
+b
+{
+	font-family: verdana, arial, helvetica
+}
+p
+{
+	font-size: 11px;
+	font-family: verdana, arial, helvetica
+}
+td
+{
+	font-size: 11px;
+	font-family: verdana, arial, helvetica
+}
+th
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica
+}
+div.bullet
+{
+	font-size: 13px;
+	font-family: verdana, arial, helvetica
+}
+div.footer
+{
+	font-size: 11px;
+	font-family: verdana, arial, helvetica;
+}
+div.ltfooter
+{
+	font-size: 11px;
+	color: #cccccc;
+	font-family: verdana, arial, helvetica
+}
+div.pagetitle
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica
+}
+textarea
+{
+	font-size: 12px;
+	font-family: verdana, arial;
+}
+a.plunit
+{
+	font-size: 13px;
+	color: green;
+	font-family: verdana, arial, helvetica;
+	text-decoration: none
+}
+a.pllesson
+{
+	font-size: 13px;
+	color: darkred;
+	font-family: verdana, arial, helvetica;
+	text-decoration: none
+}
+.smallheader
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: arial, verdana, helvetica
+}
+.normaltext
+{
+	font-size: 13px;
+	font-family: arial, verdana, helvetica
+}
+.smalltext
+{
+	font-size: 11px;
+	font-family: arial, verdana, helvetica
+}
+.body
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica
+}
+.select
+{
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+}
+select
+{
+	font-size: 12px;
+	font-family: verdana, arial;
+}
+select.csg
+{
+	width: 300px;
+}
+
+table.nulltable
+{
+	border-right: none;
+	border-top: none;
+	border-left: none;
+	border-bottom: none
+}
+table.nulltable td
+{
+	border-right: none;
+	border-top: none;
+	border-left: none;
+	border-bottom: none
+}
+table.nulltable th
+{
+	background-color: #ffffff;
+	border-right: none;
+	border-top: none;
+	border-left: groove white 1px;
+	border-bottom: none
+}
+table.thicktable
+{
+}
+table.thicktable td
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa
+}
+table.thicktable th
+{
+	background-color: #e7eff7;
+	text-align: left;
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa
+}
+table.plantable
+{
+}
+table.plantable td
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+}
+table.plantable th
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #e7eff7;
+}
+
+table.thintable
+{
+}
+table.thintable td
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	padding: '0px 3px'
+}
+table.thintable th
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #e7eff7;
+	padding: '0px 5px'
+}
+table.thintable td.leftheader
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #ccccff
+}
+table.thintable th.leftheader
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #ccccff
+}
+table.thintable td.filled
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #99ccee
+}
+table.thintable td.relay1
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #f9ebc1
+}
+table.thintable td.relay2
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #e9f8cd
+}
+table.thintable td.relay3
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #cdf0f8
+}
+table.thintable td.event
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #C0FFC0
+}
+.onscrhelp
+{
+	font-size: 11px;
+	color: #5679cb;
+	font-family: arial, helvetica, sans-serif
+}
+.onscrhelp p
+{
+	font-size: 11px;
+	color: #5679cb;
+	font-family: arial, helvetica, sans-serif
+}
+td.alert
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #ff0000;
+	font-family: arial, helvetica, sans-serif
+}
+div.alert
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #ff0000;
+	font-family: arial, helvetica, sans-serif
+}
+a.plplan
+{
+	font-size: 13px;
+	color: blue;
+	font-family: verdana, arial, helvetica;
+	text-decoration: none
+}
+.folderlink
+{
+	font-family: arial, helvetica, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none
+}
+#tooltip
+{
+	background: white;
+	font: menu;
+	border: 1px solid black;
+	margin: 0px 0px;
+	padding: 3px 5px;
+	position: absolute;
+	visibility: hidden;
+}
+table.schedtable{
+}
+table.schedtable th.SchedHeader
+{
+	background-color: #BFDEFD;
+}
+table.schedtable th.SchedHeader2
+{
+	background-color: #E7F3FF;
+}
+table.schedtable td.ViewWeekSched
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+	background-color: #C7E4FE;
+}
+table.schedtable td.SchedEmptyCell
+{
+	background-color: white;
+}
+table.schedtable td
+{
+	background-color: #CFF9FB;
+}
+table.schedtable td.SchedVocationDay
+{
+	background-color: #FDF1F1;
+}
+table.schedtable th.SchedEvents
+{
+	background-color: #D4F5FE;
+}
+table.schedtable td.leftheader
+{
+	background-color: #C7DCFE
+}
+table.schedtable td.filled
+{
+	background-color: #B5EBFD
+}
+table.schedtable td.SchedVocDayBold
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+	background-color: #FDF1F1;
+}
+table.schedtable td.SchedDayBold
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+	background-color: #CFF9FB;
+}
+table.schedtable td.relay1
+{
+	background-color: #f9ebc1
+}
+table.schedtable td.relay2
+{
+	background-color: #e9f8cd
+}
+table.schedtable td.relay3
+{
+	background-color: #cdf0f8
+}
+a.SchedSchoolEvent
+{
+	color: #3F68C2
+}
+a.SchedClassEvent
+{
+	color: #1E86B7
+}
+a.SchedHolidays
+{
+	color: #DD0101
+}
+a.SchedVocations
+{
+	color: #DD0101
+}
+a.SchedDayNumb
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+	color: blue;
+}
+a.SchedVocDayNumb
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+	color: red;
+}

@@ -1,0 +1,357 @@
+﻿/************************кнопки справа на уровне хлебных крошек************************/
+/************************* Цвета для таблиц *********************/
+/*==============================Частные случаи:====================================*/
+/******************************** Цвета для "классного журнала"********************/
+/****************Цвета для календаря*********************/
+/****************Цвета скролла*********************/
+/*==========================путь картинки силуета=======================*/
+.preschool {
+  /***********кнопки************/
+}
+.preschool .header {
+  background-color: #318a65;
+}
+.preschool .header .title_product {
+  color: #c8f2e1;
+}
+.preschool .header .navbar {
+  border: 1px solid #1a6e4c;
+  background: #1a6e4c;
+  /**************************************************************/
+  /*переключатель "текущего" и "будущего" года*/
+}
+.preschool .header .navbar .navbar-nav > .open > a {
+  background: #308b65;
+}
+.preschool .header .navbar .navbar-nav .dropdown a,
+.preschool .header .navbar .navbar-nav li a {
+  color: #fff;
+}
+.preschool .header .navbar .navbar-nav .dropdown a:hover,
+.preschool .header .navbar .navbar-nav li a:hover,
+.preschool .header .navbar .navbar-nav .dropdown a:focus,
+.preschool .header .navbar .navbar-nav li a:focus,
+.preschool .header .navbar .navbar-nav .dropdown a:active,
+.preschool .header .navbar .navbar-nav li a:active,
+.preschool .header .navbar .navbar-nav .dropdown a:visited,
+.preschool .header .navbar .navbar-nav li a:visited {
+  background: #d2e8de;
+}
+.preschool .header .navbar .navbar-nav .dropdown > a:hover,
+.preschool .header .navbar .navbar-nav li > a:hover,
+.preschool .header .navbar .navbar-nav .dropdown > a:focus,
+.preschool .header .navbar .navbar-nav li > a:focus,
+.preschool .header .navbar .navbar-nav .dropdown > a:active,
+.preschool .header .navbar .navbar-nav li > a:active,
+.preschool .header .navbar .navbar-nav .dropdown > a:visited,
+.preschool .header .navbar .navbar-nav li > a:visited {
+  background: #308b65;
+  color: #fff;
+}
+.preschool .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded] {
+  background-color: #308b65;
+}
+.preschool .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:hover,
+.preschool .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:focus,
+.preschool .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:active,
+.preschool .header .navbar .navbar-nav .dropdown.open-menu a[aria-expanded]:visited {
+  background-color: #308b65;
+}
+.preschool .header .navbar .navbar-nav .active a {
+  background: #308b65;
+}
+.preschool .header .navbar .navbar-nav .dropdown-menu .dropdown-header {
+  background-color: #329d6b;
+  color: #fff;
+}
+.preschool .header .navbar .navbar-nav .dropdown-menu li {
+  color: #fff;
+}
+.preschool .header .navbar .navbar-nav .dropdown-menu li a {
+  background: #b6d1c5;
+  color: #333;
+}
+.preschool .header .navbar .navbar-nav .dropdown-menu li + li.divider {
+  background-color: #D0D0D0;
+}
+.preschool .header .navbar .navbar-nav .dropdown-menu > .active > a {
+  background: #9bcdb6;
+  color: #222;
+}
+.preschool .header .navbar .navbar-nav .dropdown-menu > .active > a:hover {
+  background: #9bcdb6;
+}
+.preschool .header .navbar .navbar-nav .dropdown-menu > .active > a,
+.preschool .header .navbar .navbar-nav .dropdown-menu > .active > a:hover,
+.preschool .header .navbar .navbar-nav .dropdown-menu > .active > a:focus,
+.preschool .header .navbar .navbar-nav .bg-primary {
+  background-color: #9bcdb6;
+}
+.preschool .header .navbar .navbar-nav .open .dropdown-menu li:first-child.dropdown-header,
+.preschool .header .navbar .navbar-nav .open-menu .dropdown-menu li:first-child.dropdown-header,
+.preschool .header .navbar .navbar-nav .dropdown .dropdown-menu li:first-child.dropdown-header {
+  border-top: 1px solid #74A1C6;
+}
+.preschool .header .navbar .switch-year .switch-year-btn {
+  background: #3ba37a;
+}
+.preschool .header .navbar .switch-year .switch-year-btn .lever-switch span {
+  background: #8ee0c0;
+}
+.preschool .header .navbar .switch-year .switch-year-btn.go_left {
+  background: #B20186;
+}
+.preschool .header .navbar .switch-year .switch-year-btn.go_left .lever-switch span {
+  background: #ff99e6;
+}
+.preschool .block-personal-cabinet .number-employees-in-system {
+  color: #bafbdf;
+}
+.preschool .block-personal-cabinet .number-employees-in-system p a span + span {
+  color: #1a6e4c;
+}
+.preschool .block-personal-cabinet ul li.separator button {
+  background: #3ba37a;
+}
+.preschool .block-personal-cabinet ul li.separator button > div#flip_container {
+  color: #bafbdf;
+}
+.preschool .block-personal-cabinet ul li.separator button > div#flip_container div.lever-switch span {
+  background: #8ee0c0;
+}
+.preschool .block-personal-cabinet ul li.separator button[class*="go_left"] #flip_container .lever-switch span {
+  background: #6da850;
+}
+.preschool span.content-page-preloader:before {
+  color: #318a65;
+}
+.preschool a {
+  color: #1a6e4c;
+  outline: 0 none;
+}
+.preschool .year-calendar > li > a {
+  background: #1d996a;
+  color: #fff;
+}
+.preschool .year-calendar > li > a:hover {
+  background: #1db76a;
+}
+.preschool .year-calendar > li > div.weekday div {
+  background: #8cebca;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+  border-bottom: 0px solid #fff;
+}
+.preschool .year-calendar > li > div.weekday div:first-child {
+  border-left: 1px solid #bdbdbd;
+}
+.preschool .year-calendar > li > div > div > div:hover {
+  background: #56e49d;
+}
+.preschool .year-calendar > li a:hover,
+.preschool .year-calendar > li span:hover,
+.preschool .year-calendar > li a:focus,
+.preschool .year-calendar > li span:focus {
+  background: #56e49d;
+}
+.preschool .block-content a.active {
+  color: #bafbdf;
+}
+.preschool .block-content h1 {
+  color: #13563a;
+  background: #aaddca;
+}
+.preschool .block-content .top-right-menu a {
+  color: #318a65;
+}
+.preschool .block-content .top-right-menu a:hover {
+  color: #43b084;
+}
+.preschool input:hover,
+.preschool textarea:hover,
+.preschool input:active,
+.preschool textarea:active,
+.preschool input:focus,
+.preschool textarea:focus,
+.preschool input.form-control:hover,
+.preschool textarea.form-control:hover,
+.preschool input.form-control:active,
+.preschool textarea.form-control:active,
+.preschool input.form-control:focus,
+.preschool textarea.form-control:focus {
+  color: #246449;
+  border: 1px solid #318a65;
+  /*стили для обсуждения*/
+  -webkit-box-shadow: inset 0 0 7px 0 #4dde96;
+  -moz-box-shadow: inset 0 0 7px 0 #4dde96;
+  box-shadow: inset 0 0 7px 0 #4dde96;
+}
+.preschool input.form-control[disabled],
+.preschool textarea.form-control[disabled],
+.preschool input[disabled]:hover,
+.preschool textarea[disabled]:hover,
+.preschool input[disabled]:focus,
+.preschool textarea[disabled]:focus,
+.preschool input[disabled]:active,
+.preschool textarea[disabled]:active,
+.preschool input.form-control[disabled]:hover,
+.preschool textarea.form-control[disabled]:hover,
+.preschool input.form-control[disabled]:focus,
+.preschool textarea.form-control[disabled]:focus,
+.preschool input.form-control[disabled]:active,
+.preschool textarea.form-control[disabled]:active {
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  color: #666;
+  border-radius: 3px;
+}
+.preschool input[disabled]:hover,
+.preschool textarea[disabled]:hover,
+.preschool input[disabled]:focus,
+.preschool textarea[disabled]:focus,
+.preschool input[disabled]:active,
+.preschool textarea[disabled]:active,
+.preschool input.form-control[disabled]:hover,
+.preschool textarea.form-control[disabled]:hover,
+.preschool input.form-control[disabled]:focus,
+.preschool textarea.form-control[disabled]:focus,
+.preschool input.form-control[disabled]:active,
+.preschool textarea.form-control[disabled]:active,
+.preschool input[disabled],
+.preschool textarea[disabled],
+.preschool input.form-control[disabled],
+.preschool textarea.form-control[disabled],
+.preschool input.form-control[disabled],
+.preschool textarea.form-control[disabled] {
+  border: 1px solid #eee;
+}
+.preschool select[multiple],
+.preschool select[size] {
+  background-color: #fff;
+}
+.preschool .panel-collapse select[size] {
+  background-image: none;
+  padding-right: 8px;
+}
+.preschool .alert-info {
+  background-color: #b6ebd5;
+  border-color: #9ae3c5;
+  color: #2b674e;
+}
+.preschool .bg-info {
+  background-color: #b6ebd5;
+}
+.preschool .buttons-panel-right button.btn:hover,
+.preschool .form-edit .buttons-panel .buttons-panel-right button.btn:hover,
+.preschool .buttons-panel-right button.btn:hover span,
+.preschool .form-edit .buttons-panel .buttons-panel-right button.btn:hover span {
+  color: #1d6b4b;
+}
+.preschool .head {
+  background-color: #a8dfcb;
+}
+.preschool .editjournal .head {
+  background-color: #44a07d;
+}
+.preschool .editjournal .new-assignment-container {
+  /*.assignments-header {
+
+		}*/
+}
+.preschool .editjournal .new-assignment-container .new-challenge-text {
+  background-color: #318a59;
+}
+.preschool .editjournal .assignment-title .assignment-name,
+.preschool .editjournal .assignment-title .assignment-activity span {
+  color: #a8dfcb;
+}
+.preschool .table th {
+  background-color: #a8dfcb;
+  /* закоментированые стили - нужно добавить их впоследствии, 
+			в случае если шапка таблицы будет тёмной.*/
+  /*color: #fff;
+		border-top: 1px solid #fff;
+		border-right: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+		&:first-child {
+			border-left: 1px solid #fff;
+		}*/
+}
+.preschool .journal-total th,
+.preschool .journal-student th,
+.preschool .journal-marks th {
+  background-color: #a8dfcb;
+}
+.preschool .table-bright-striped th {
+  /*стили для обсуждения*/
+  background-color: #3a9b77;
+  border: 1px solid #fff;
+  color: #fff;
+  vertical-align: middle;
+}
+.preschool .table-bright-striped th a {
+  color: #fff;
+  text-decoration: underline;
+}
+.preschool .table-bright-striped td {
+  border: 1px solid #fff;
+}
+.preschool .table-bright-striped tr:nth-child(even) td {
+  background-color: #bdefdb;
+}
+.preschool .table-bright-striped tr:nth-child(odd) td {
+  background-color: #a8eed3;
+}
+.preschool .table-bright-hover tr:hover td {
+  background-color: #d3f5e8;
+}
+.preschool span.form-control {
+  background-color: #abe1cb;
+  /**убираем тени**/
+  -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+}
+.preschool .btn-primary {
+  color: #fff;
+  background-color: #308b65;
+  border-color: #1a6e4c;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+}
+.preschool .btn-primary:hover {
+  background-color: #43b084;
+}
+.preschool .btn-menu {
+  background-color: #1a6e4c;
+  border: 1px solid #1a6e4c;
+}
+.preschool .bootstrap-dialog .bootstrap-dialog-title {
+  font-size: 1.3em;
+  color: #fff;
+}
+.preschool .bootstrap-dialog.type-primary .modal-header {
+  background-color: #318a65;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-top-left-radius: 4px;
+  -ms-border-top-left-radius: 4px;
+  -o-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-top-right-radius: 4px;
+  -ms-border-top-right-radius: 4px;
+  -o-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.preschool .bootstrap-dialog.type-primary .modal-body .progress-bar {
+  background-color: #318a65;
+}
+.preschool .mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.preschool .mCS-3d.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.preschool .mCS-3d.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background: #318a65;
+  /*решено убрать @scroll-bg*/
+}
+/*# sourceMappingURL=theme-preschool.css.map */

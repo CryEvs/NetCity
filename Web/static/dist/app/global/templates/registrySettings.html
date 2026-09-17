@@ -1,0 +1,24 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">Настройки</h4>
+		</div>		
+	</div>
+	<div class="modal-body">
+		<h4>Выберите поля</h4>
+		<form>
+			
+			<div class="checkbox" ng-repeat="field in fields">
+				<label>
+					<input type="checkbox" ng-model="field.selected" ng-disabled="field.oneCheckedOnly(field.selected)"> {{field.title}}
+				</label>
+			</div>
+
+		</form>
+		
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary ng-binding" ng-click="set()">OK</button>
+	</div>
+</div>

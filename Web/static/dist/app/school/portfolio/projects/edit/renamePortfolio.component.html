@@ -1,0 +1,13 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+    <form class="form" name="$ctrl.portfolioForm">
+        <ns-form control-size="col-xs-9" label-size="col-xs-3" class="form">
+            <div class="form-group" ng-class="{'has-error': $ctrl.portfolioForm.name.$invalid && (!$ctrl.portfolioForm.name.$pristine || $ctrl.portfolioForm.$displayErrors)}">
+                <label for="portfolio-name" class="control-label">Название</label>
+                <div>
+                    <input track-changes type="text" name="name" id="portfolio-name" class="form-control" ng-model="$ctrl.data.portfolio.name" required maxlength="200">
+                    <p ng-show="$ctrl.portfolioForm.name.$invalid && (!$ctrl.portfolioForm.name.$pristine || $ctrl.portfolioForm.$displayErrors)" class="help-block">Заполните название</p>
+                </div>
+            </div>
+        </ns-form>
+    </form>
+</ns-modal>

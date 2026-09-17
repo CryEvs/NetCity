@@ -1,0 +1,96 @@
+<html>
+<head>
+   <title>Выбывшие ученики в журнале</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Выбывшие ученики,Связь ученика с классом">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?movedoutinjournal.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Выбывшие ученики в журнале
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">В <b><a href=javaScript:parent.reDisplay('2.3.1',1,0)>Книге движения учащихся</a></b> может быть создан приказ о выбытии учащегося из школы.
+<br>
+
+<br>
+После создания приказа о выбытии система удаляет <u>связь ученика с классом</u> в учебных периодах, следующих за тем периодом, в котором происходит выбытие. Соответственно, в Классном журнале ученик "исчезает" из списка класса начиная со следующего учебного периода. 
+<br>
+
+<br>
+<u>Пример 1.</u>
+<br>
+Пусть класс учится по четвертям, и дата приказа о выбытии - 15 ноября, которая соответствует 2-й четверти.
+<br>
+До создания приказа о выбытии: ученик присутствует в списке класса во всех четвертях.
+<br>
+После создания приказа о выбытии: ученик присутствует в списке класса только в 1 и 2 четвертях, причём с пометкой "удалён", а в 3 и 4 четвертях он не присутствует в списке класса.
+<br>
+
+<br>
+Если в периоде, в котором происходит выбытие, ученик не имеет:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">итоговых отметок,
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">текущих отметок,
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">сведений о посещаемости,
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">- то удаляется связь ученика с классом также из периода, в котором происходит выбытие. 
+<br>
+
+<br>
+<u>Пример 2.
+<br>
+</u>Пусть в классе двум ученикам делают выбытие в одном приказе, датированном 15 ноября (2-я четверть), при этом у одного ученика есть оценки во 2-й четверти, а у второго нет. В результате первый ученик присутствует в классном журнале во 2-й четверти, а второй ученик - не присутствует. (При этом оба ученика будут отсутствовать в журнале в 3 и 4 четвертях.)
+<br>
+
+<br>
+<u>Пример 3</u>.
+<br>
+Пусть ученик выбыл в начале 1-й четверти и не имеет оценок и посещаемости. В этом случае ученик вообще не появится в классном журнале в классе, из которого произошло выбытие, а его нахождение в этом классе можно обнаружить лишь по отчётам о движении.
+<br>
+
+<br>
+<b>Важно: </b>поскольку выбывшего ученика в классе больше НЕТ, то для него запрещено выставление текущих отметок и посещаемости в том классе, откуда произошло выбытие. Причём это не зависит от даты, за которую редактируется журнал после его выбытия.
+<br>
+
+<br>
+</span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('6.1.10',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('6.1.12',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

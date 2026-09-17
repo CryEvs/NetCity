@@ -1,0 +1,58 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">		
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<form role="form" name="$ctrl.appealForm" ng-show="$ctrl.ready" class="form-horizontal form-sm">
+		<ns-form control-size="col-md-8 col-lg-9 col-sm-8" label-size="col-md-4 col-lg-3 col-sm-4">
+			<ns-form-group title="{{$ctrl.language.Generic.SchoolInfo.kStatus}}" ng-class="{'has-error': $ctrl.appealForm.status.$invalid && (!$ctrl.appealForm.status.$pristine || $ctrl.appealForm.$displayErrors)}">
+				<select ng-disabled="!$ctrl.state.createMode" track-changes class="form-control" name="status" id="appeal-status" required ng-options="status.key as status.name for status in $ctrl.data.statuses" ng-init="$ctrl.data.status" ng-model="$ctrl.data.status"></select>
+				<p ng-show="$ctrl.appealForm.status.$invalid && (!$ctrl.appealForm.status.$pristine || $ctrl.appealForm.$displayErrors)" class="help-block">
+					{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+				</p>
+			</ns-form-group>
+			<ns-form-group title="{{$ctrl.language.Generic.EGE.kPrimaryScore}}">
+				<input disabled type="number" track-changes class="form-control" id="appeal-initialscore" name="initialscore" size="4" ng-model="$ctrl.data.initialScore">
+			</ns-form-group>	
+			<ns-form-group title="Работа ученика" ng-class="{'has-error': !$ctrl.isWorkFileLoaded && $ctrl.appealForm.$displayErrors}">
+				<file-attachments settings="$ctrl.workFileSettings"></file-attachments>
+				<p ng-show="!$ctrl.isWorkFileLoaded && $ctrl.appealForm.$displayErrors" class="help-block">
+					Файл с работой ученика должен быть загружен
+				</p>
+			</ns-form-group>
+			<ns-form-group title="Протокол жюри" ng-class="{'has-error': !$ctrl.isJuriFileLoaded && $ctrl.appealForm.$displayErrors}">
+				<file-attachments settings="$ctrl.juriFileSettings"></file-attachments>
+				<p ng-show="!$ctrl.isJuriFileLoaded && $ctrl.appealForm.$displayErrors" class="help-block">
+					Файл с протоколом жюри должен быть загружен
+				</p>
+			</ns-form-group>
+			<ns-form-group ng-if="$ctrl.isAppeal() || $ctrl.isAppealReview()" title="Номера заданий">
+				<input readonly type="text" id="task-numbers" name="taskNumbers" class="form-control" ng-model="$ctrl.data.taskNumbers" maxlength="100">
+			</ns-form-group>
+			<ns-form-group ng-if="$ctrl.isAppeal() || $ctrl.isAppealReview()" title="Аргументы о несогласии к указанным номерам заданий">
+				<textarea readonly class="form-control" rows="7" cols="50" wrap="soft" ng-model="$ctrl.data.appealRequest"></textarea>
+			</ns-form-group>
+			<ns-form-group ng-if="$ctrl.isAppeal() || $ctrl.isAppealReview()" title="Информация о рассмотрении" ng-class="{'has-error': $ctrl.appealForm.response.$invalid && (!$ctrl.appealForm.response.$pristine || $ctrl.appealForm.$displayErrors)}">
+				<label>Приглашение для учащегося: место и время заседания апелляционной комиссии</label>
+				<textarea maxlength="4000" ng-disabled="$ctrl.isAppealReview()" required track-changes class="form-control" rows="7" cols="50" id="appeal-response" name="response" wrap="soft" ng-model="$ctrl.data.appealResponse"></textarea>
+				<p ng-if="$ctrl.appealForm.response.$invalid && (!$ctrl.appealForm.response.$pristine || $ctrl.appealForm.$displayErrors)" class="help-block">
+					{{$ctrl.language.Generic.Messages.kRequiredField}}
+				</p>
+			</ns-form-group>
+			<ns-form-group title="Итоговый балл" ng-if="$ctrl.isAppeal() || $ctrl.isAppealReview()" ng-class="{'has-error': $ctrl.appealForm.finalscore.$invalid && (!$ctrl.appealForm.finalscore.$pristine || $ctrl.appealForm.$displayErrors)}">
+				<input type="number" track-changes class="form-control" ng-required="$ctrl.isAppealReview()" id="appeal-finalscore" name="finalscore" size="4" maxlength="4" ng-model="$ctrl.data.finalScore" ng-min="1" ng-max="9999" ng-pattern="/^\d+$/">
+				<div ng-show="$ctrl.appealForm.finalscore.$invalid && (!$ctrl.appealForm.finalscore.$pristine || $ctrl.appealForm.$displayErrors)" class="help-block">
+					<div ng-messages="$ctrl.appealForm.finalscore.$error">
+						<span class="help-block" ng-message="number">{{$ctrl.digitsError()}}</span>
+						<span class="help-block" ng-message="pattern">{{$ctrl.digitsError()}}</span>
+						<span class="help-block" ng-message="min">{{$ctrl.minError()}}</span>
+						<span class="help-block" ng-message="max">{{$ctrl.maxError()}}</span>
+						<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Calendar.kFieldCannotBeEmpty}}</span>
+					</div>
+				</div>
+			</ns-form-group>	
+			<div class="alert alert-warning" role="alert" ng-if="$ctrl.isTopEmAndDistrict()">
+				Работа по просмотру работ и апелляциям доступна только организаторам соответствующих мероприятий.
+			</div>
+		</ns-form>
+	</form>
+</ns-modal>

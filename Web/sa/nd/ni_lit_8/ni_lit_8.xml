@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Литература. 8 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Литература. 8 класс" ID="1" Filename="ni_lit_8/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Основные направления русской литературы XVIII века" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Основные направления русской литературы XVIII века" 
+				Filename="sgo/ni_lit_8/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Система образов комедии Д. И. Фонвизина «Недоросль»" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Система образов комедии Д. И. Фонвизина «Недоросль»" 
+				Filename="sgo/ni_lit_8/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Романтизм как художественное направление" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Романтизм как художественное направление" 
+				Filename="sgo/ni_lit_8/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Поэма М. Ю. Лермонтова «Мцыри» как романтическое произведение" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Поэма М. Ю. Лермонтова «Мцыри» как романтическое произведение" 
+				Filename="sgo/ni_lit_8/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="«Маленький человек» в произведениях Н. В. Гоголя" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="«Маленький человек» в произведениях Н. В. Гоголя»" 
+				Filename="sgo/ni_lit_8/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Замысел и историческая основа романа А. С. Пушкина «Капитанская дочка»" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Замысел и историческая основа романа А. С. Пушкина «Капитанская дочка»" 
+				Filename="sgo/ni_lit_8/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Система образов романа А. С. Пушкина «Капитанская дочка»" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Система образов романа А. С. Пушкина «Капитанская дочка»" 
+				Filename="sgo/ni_lit_8/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="А. С. Пушкин «Капитанская дочка». Словарь историзмов и архаизмов" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="А. С. Пушкин «Капитанская дочка». Словарь историзмов и архаизмов" 
+				Filename="sgo/ni_lit_8/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Изображение природы в лирике Ф. И. Тютчева и А. А. Фета" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Изображение природы в лирике Ф. И. Тютчева и А. А. Фета" 
+				Filename="sgo/ni_lit_8/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Основные мотивы лирики Н. А. Некрасова" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Основные мотивы лирики Н. А. Некрасова" 
+				Filename="sgo/ni_lit_8/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Цикл рассказов И. С. Тургенева «Записки охотника»" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Цикл рассказов И. С. Тургенева «Записки охотника»" 
+				Filename="sgo/ni_lit_8/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Характеристика героя литературного произведения (примерный план)" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Характеристика героя литературного произведения (примерный план)" 
+				Filename="sgo/ni_lit_8/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+
+</Project>

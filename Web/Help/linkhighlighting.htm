@@ -1,0 +1,92 @@
+<html>
+<head>
+   <title>Правила подсветки ссылок</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Гиперссылки">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?linkhighlighting.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Правила подсветки ссылок
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">В ряде экранов "Сетевого Города" (таких как доска объявлений, каталог школьных ресурсов, форум, почта и др.), автоматически подсвечиваются ссылки на локальные или сетевые ресурсы. Примеры ссылок:
+<br>
+
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF"><u><span class="weblink"><a href="http://schoolsite.org/~myPage/file.php" target="_blank">http://schoolsite.org/~myPage/file.php</a></span></u></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF"><u><span class="weblink"><a href="https://школьныйсайт.рф" target="_blank">https://школьныйсайт.рф</a></span></u></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF"><u><span class="weblink"><a href="http://192.168.1.255/" target="_blank">http://192.168.1.255/</a></span></u></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF"><u><span class="weblink"><a href="\\SCHOOL-SRV\Users\" target="_blank">\\SCHOOL-SRV\Users\</a></span></u></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF"><u><span class="weblink"><a href="mailto:abcde@corp.mail.ru">abcde@corp.mail.ru</a></span></u></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+Следующие правила работают для выделения (подсветки) ссылок:
+<br>
+
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="28"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">1.</span></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Сетевой путь должен начинаться с IP-адреса либо имени компьютера, которые могут содержать номер порта.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="28"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">2.</span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Запрещённые символы для имени компьютера *|:?\/""&lt;&gt;,[^~!@#$%&amp;()=+_}{\][;.' и пробел
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="28"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">3.</span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Путь разделяется символом \ либо /
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="28"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">4.</span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Имя файла или директории может разделяться точками, запрещённые символы *|:?\/""&lt;&gt;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="28"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">5.</span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Локальный путь начинается с имени диска, затем должно идти двоеточие либо |
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="28"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">6.</span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Перед локальным путём может быть file:///, но оно не будет выведено на экран.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="28"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">7.</span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Если ссылка не начинается с http[s] или ftp, то 'http://' не выводится, если находится в начале строки не интернет-ресурса
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="28"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">8.</span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кавычки до и после пути игнорируются.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="28"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">9.</span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">www, http[s] и ftp ссылки должны содержать путь, разделённый ./:  - в конце могут быть параметры, начинающиеся с ?=&amp;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="28"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">10.</span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Адресом email считается выражение вида: слово@слово.слово или слово@слово.слово.слово
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+</span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('9.1.4',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('9.2',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

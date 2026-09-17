@@ -1,0 +1,104 @@
+<div class="row">
+	<div class="col-lg-6 col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headinggroups">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-target="#groups" aria-expanded="true" aria-controls="groups">
+						{{"language.Generic.SetupSchoolResources.kGroups" | language}}
+					</a>
+				</h4>
+			</div>
+			<div id="groups" class="panel-collapse collapse in" aria-labelledby="headinggroups" role="tabpanel" aria-expanded="true">
+				<div class="panel-body">
+					<form class="form-horizontal">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="buttons-panel">
+									<button title="{{'language.Generic.ResourceGroups.kCreateGroup' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.addGroup()">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+										<span>{{"language.Generic.Buttons.kAdd" | language}}</span>
+									</button>
+									<button title="{{'language.Generic.ResourceGroups.kEditGroup' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.editGroup()"
+										ng-if="$ctrl.groups.length > 0" ng-disabled="$ctrl.selectedGroup.isDeleteDisabled">
+										<span class="glyphicon glyphicon-pencil"></span>
+										<span>{{"language.Generic.Buttons.kChange" | language}}</span>
+									</button>
+									<button title="{{'language.Generic.ResourceGroups.kDelGroup' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.removeGroup()"
+										ng-if="$ctrl.groups.length > 0 && !$ctrl.selectedGroup.isDeleteDisabled">
+										<span class="glyphicon glyphicon-minus-sign"></span>
+										<span>{{"language.Generic.Buttons.kRemove" | language}}</span>
+									</button>
+								</div>
+							</div>
+						</div>
+	
+						<div class="form-group" ng-if="$ctrl.groups.length > 0">
+							<label class="control-label col-md-4 col-lg-3 col-sm-4">
+								{{"language.Generic.ResourceGroups.kSelectGroup" | language}}
+							</label>
+							<div class="col-md-8 col-lg-5 col-sm-8">
+								<select class="form-control" ng-model="$ctrl.selectedGroup" ng-options="group as group.treeItemName for group in $ctrl.treeGroups"
+									ng-change="$ctrl.changeDocGroup()">
+								</select>
+							</div>
+						</div>
+
+						<div class="alert alert-info ng-binding" role="alert" ng-if="$ctrl.groups.length == 0">
+							{{"language.Generic.SetupSchoolResources.kNoGroupsInCatalog" | language}}
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default" ng-if="$ctrl.groups.length > 0">
+			<div class="panel-heading" role="tab" id="headingdocuments">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-target="#documents" aria-expanded="true" aria-controls="documents">
+						{{"language.Generic.SetupSchoolResources.kDocuments" | language}}
+					</a>
+				</h4>
+			</div>
+			<div id="documents" class="panel-collapse collapse in" aria-labelledby="headingdocuments" role="tabpanel" aria-expanded="true">
+				<div class="panel-body">
+					<form class="form-horizontal">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="buttons-panel">
+									<button title="{{'language.Generic.ResourceGroups.kCreateDoc' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.createDoc()">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+										<span>{{"language.Generic.Buttons.kAdd" | language}}</span>
+									</button>
+									<button title="{{'language.Generic.ResourceGroups.kEditDoc' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.editDoc()"
+										ng-if="$ctrl.docs.length > 0">
+										<span class="glyphicon glyphicon-pencil"></span>
+										<span>{{"language.Generic.Buttons.kChange" | language}}</span>
+									</button>
+									<button title="{{'language.Generic.ResourceGroups.kDelDoc' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.removeDoc()"
+										ng-if="$ctrl.docs.length > 0">
+										<span class="glyphicon glyphicon-minus-sign"></span>
+										<span>{{"language.Generic.Buttons.kRemove" | language}}</span>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div ng-if="$ctrl.docs.length > 0" class="form-group">
+							<label class="control-label col-md-4 col-lg-3 col-sm-4">
+								{{"language.Generic.ResourceGroups.kSelectDocFromGroup" | language}}
+							</label>
+							<div class="col-md-8 col-lg-5 col-sm-8">
+								<select class="form-control" size="7" ng-model="$ctrl.selectedDoc" ng-options="doc as doc.name for doc in $ctrl.docs">
+								</select>
+							</div>
+						</div>
+
+						<div ng-if="$ctrl.docs.length == 0" class="alert alert-info ng-binding" role="alert">
+							{{"language.Generic.ResourceGroups.kNoDocsInGroup" | language}}
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

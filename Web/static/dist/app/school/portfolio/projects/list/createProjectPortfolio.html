@@ -1,0 +1,39 @@
+<div ng-model="CreateProjectPortfolioCtrl">
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+
+			<form role="form" name="portfolioForm" class="form form-xs">
+				<!--Поля формы-->
+
+				<div class="form-group" ng-class="{'has-error': portfolioForm.name.$invalid && (!portfolioForm.name.$pristine || portfolioForm.$displayErrors)}">
+					<label for="portfolio-name" class="control-label">Название</label>
+					<div>
+						<input track-changes type="text" name="name" id="portfolio-name" class="form-control" ng-model="data.portfolio.name" required maxlength="200">
+						<p ng-show="portfolioForm.name.$invalid && (!portfolioForm.name.$pristine || portfolioForm.$displayErrors)" class="help-block">Заполните название</p>
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="save()">
+				Сохранить
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				Отмена
+			</button>
+		</div>
+
+	</div>
+</div>

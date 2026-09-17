@@ -1,0 +1,106 @@
+<form class="form-horizontal ns-cloak">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left"></div>
+				<div class="buttons-panel-right" style="display: block;" ng-show="$ctrl.rights.add">
+					<button type="button" class="btn btn-default" ng-click="$ctrl.action(button)" ng-repeat="button in $ctrl.buttons">
+						<span class="glyphicon" ng-class="button.style"></span>
+						<span>{{button.name}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" ng-show="$ctrl.rights.read">
+		<div class="container-fluid">
+			<div class="col-sm-3 course-page" id="subjects-course">
+				<div class="h3">Тематика</div>
+				<ul>
+					<li ng-repeat="option in $ctrl.groups | filter: nameFilter" ng-class="option.class" ng-click="$ctrl.selectGroup(option)">
+						<!--<div ng-click="selectGroup(option)">{{option.name}}</div>-->
+						<div ng-click="option.click">{{option.name}}</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-9 course-page" id="content-course">
+				<div class="h3">
+					Курсы
+
+					<div class="search col-md-6 pull-right">
+						<i class="glyphicon glyphicon-search school"></i>
+						<input class="form-control" type="search" id="search" ng-model="$ctrl.nameFilter">
+					</div>
+				</div>
+				<div class="row">
+					<div class="container-fluid">
+						<div class="my-col-1-5 pull-left" ng-repeat="activity in $ctrl.group.activities | filter: $ctrl.nameFilter | filter: $ctrl.excludeActivities">
+							<img ng-src="{{activity.img}}" ng-show="activity.img">
+							<div class="img" ng-hide="activity.img"></div>
+							<div class="button-field">
+								<button ng-if="!$ctrl.isSkySmart(activity)" class="circle" ng-click="$ctrl.laView(activity)" title="Просмотр материала"><span class="glyphicon glyphicon-eye-open"></span></button>
+								<button class="circle" ng-click="$ctrl.laAssign(activity)" ng-show="$ctrl.rights.journalAssign" title="Назначение задания"><span class="glyphicon glyphicon-check"></span></button>
+								<button class="circle" ng-click="$ctrl.laJournal(activity)" ng-show="$ctrl.rights.journalAssign" title="Журнал результатов"><span class="glyphicon glyphicon-book"></span></button>
+							</div>
+							<p>{{activity.name}}</p>
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-show="$ctrl.emptyGroup">
+					<div class="col-md-12">
+						<div class="alert alert-info" role="alert">
+							По этой тематике нет учебных курсов
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-hide="$ctrl.ready">
+					<span class="content-page-preloader" id="preloader"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<div hidden id="laImportTempl">
+
+	<form id="laImport" name="laImport" method="post" target="_parent" enctype="multipart/form-data" runat="server" class="form-horizontal from-edit">
+		<p>
+			{{$ctrl.ciform.kLAImport1}} <i>{{$ctrl.ciform.productName}}</i> {{$ctrl.ciform.kLAImport2}}:
+			<ol>
+				<li ng-bind-html="$ctrl.ciform.kLAImport3"></li>
+				<li style="padding-top: 16px;">
+					{{$ctrl.ciform.kLAImport4}} <i>{{$ctrl.ciform.productName}}</i>, {{$ctrl.ciform.kLAImport5}}<br>
+					<a href="/sa/import/importer.exe">{{$ctrl.ciform.kLAImportTool}}</a> (472 Кб)<br>
+					<a href="/sa/import/importer.rtf" target="_blank">{{$ctrl.ciform.kLAImportToolManual}}</a> (70 Кб)
+				</li>
+				<li style="padding-top: 16px;">
+					{{$ctrl.ciform.kLAImport6}} <i>{{$ctrl.ciform.productName}}</i> (<b>import.mdb</b>).
+				</li>
+			</ol>
+			<div class="form-group">
+				<label class="control-label col-md-3 col-md-offset-1">{{$ctrl.ciform.kImportIntoLA}}</label>
+				<div class="col-md-7">
+					<select name="LAN" class="form-control" ng-model="LAN">
+						<option value="0">{{$ctrl.ciform.kSelectLA}}</option>
+						<option ng-repeat="activity in $ctrl.ciform.activities" value="{{activity.id}}">{{activity.name}}</option>
+					</select>
+				</div>
+			</div>
+		</p>
+	</form>
+
+</div>
+
+<div class="container" ng-show="$ctrl.yaClass">
+	<div class="row">
+		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+			{{$ctrl.yaClass.title}}
+		</div>
+		<div class="col-md-2 col-xs-2 col-lg-2 col-sm-2" style="color: blue" title='{{$ctrl.language.Generic.LearnApp.kGotoYaClassSite}}'>
+			<a ng-click="$ctrl.gotoYaClass();" ng-href="$ctrl.gotoYaClass();">
+				<img src="/images/Common/yakl_s.gif" />
+			</a>
+		</div>
+	</div>
+</div>

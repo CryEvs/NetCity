@@ -1,0 +1,29 @@
+<div class="bootstrap-style" ng-model="EmIndicators.EditGroup.SelectPredefined">
+	<div class="modal-header">
+		<h4 class="modal-title">{{language.Generic.StatReports.kSelectingPredefinedIndicator}}</h4>
+	</div>
+	<div class="alert alert-info" ng-show="model.predefinedIndicators.length == 0">
+		{{language.Generic.StatReports.kPresetIndicatorsIsEmpty}}
+	</div>
+	<div class="modal-body">
+		<div class="form-group">
+			<label for="predefinedGroup">{{language.Generic.StatReports.kPresetIndicatorGroup}}</label>
+			<select ng-model="model.selected" id="predefinedGroup" class="form-control" ng-options="indicator.name for indicator in model.predefinedIndicators track by indicator.id"></select>
+		</div>
+		<div class="form-group" ng-show="model.selected">
+			<label for="groupSubIndicators">{{language.Generic.StatReports.kNestedIndicators}}</label>
+			<div id="groupSubIndicators"
+				 data-angular-treeview="true"
+				 data-tree-id="tree"
+				 data-tree-model="model.selected.subIndicators"
+				 data-node-id="id"
+				 data-node-label="name"
+				 data-node-children="subIndicators">
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" x-ng-click="ok()">{{language.Generic.Buttons.kSelect}}</button>
+		<button class="btn btn-default" x-ng-click="cancel()">{{language.Generic.Curriculum.kBtnCancel}}</button>
+	</div>
+</div>

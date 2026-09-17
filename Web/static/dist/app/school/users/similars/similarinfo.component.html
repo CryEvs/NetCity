@@ -1,0 +1,28 @@
+<div class="similar-resolve-container">
+	<div class="row">
+		<div class="col-md-10">
+			<p class="similar-resolve-person">
+				{{$ctrl.similar.fullName}}<span ng-if="$ctrl.similar.birthDate"> {{$ctrl.similar.birthDate | nsDate}}<span>
+			</p>
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="similar-user-list" ng-if="$ctrl.similar.options.similarGroups && $ctrl.similar.options.similarGroups.length">
+						<li class="similar-user-list-item" ng-repeat="similarGroup in $ctrl.similar.options.similarGroups">
+							<similar-group group="similarGroup" person-id="$ctrl.similar.personId" choice="$ctrl.similar.choice" role-group="$ctrl.roleGroup"></similar-group>
+						</li>
+						
+					</ul>
+					<ul class="similar-user-option-list" ng-if="$ctrl.similar.options.options && $ctrl.similar.options.options.length">
+						<li class="similar-user-option-item" ng-repeat="option in $ctrl.similar.options.options">
+							<enrollment-option option="option" person-id="$ctrl.similar.personId" choice="$ctrl.similar.choice"></enrollment-option>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<span class="glyphicon similar-resolve-status-icon" ng-class="{resolved: $ctrl.isResolved()}">
+			</span>
+		</div>
+	</div>
+</div>

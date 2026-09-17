@@ -1,0 +1,132 @@
+<div ng-form name="$ctrl.form" ng-if="$ctrl.ready">
+	<div class="col-md-1 text-center" ng-if="$ctrl.ready">
+		<user-info-photo user-id="$ctrl.userId" user-name="$ctrl.userName" exists-photo="$ctrl.commondata.existsPhoto"></user-info-photo>
+	</div>
+	<div class="col-md-11">
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Common.kLastName}}</label>
+			<div class="col-md-8 col-lg-8">
+				<input type="text" class="form-control" required name="LN_ANG" size="25" maxlength="30" ng-model="$ctrl.commondata.lastName" ng-disabled=true>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Common.kFirstName}}</label>
+			<div class="col-md-8 col-lg-8">
+				<input type="text" class="form-control" required name="FN_ANG" size="25" maxlength="30" ng-model="$ctrl.commondata.firstName" ng-disabled=true>
+			</div>
+		</div>
+		<div class="form-group" ng-show="!$ctrl.commondata.noMiddleName">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Common.kMiddleName}}</label>
+			<div class="col-md-8 col-lg-8">
+				<input type="text" class="form-control" name="MN_ANG" size="25" maxlength="30" ng-model="$ctrl.commondata.middleName" ng-disabled=true>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Common.kBDate}}</label>
+
+			<div class="col-md-8 col-lg-8">
+				<date-input-component readonly=true date-model="$ctrl.commondata.birthDate" name="BDT_ANG" required="$ctrl.userInfoCtrl.isStudent"></date-input-component>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Common.kUserName}}</label>
+			<div class="col-md-8 col-lg-8">
+				<input type="text" class="form-control" name="LON_ANG" size="25" maxlength="35" ng-model="$ctrl.commondata.loginName" disabled>
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="$ctrl.windowsAuth">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.SetupSchoolUI.kWinLogon}}</label>
+			<div class="col-md-8 col-lg-8">
+				<div class="input-group">
+					<input type="text" track-changes class="form-control" name="WLN_ANG" size="25" maxlength="50" ng-model="$ctrl.editMySettingsService.userInfoData.windowsAccount">
+					<span class="input-group-btn">
+						<button title="{{$ctrl.language.Generic.Login.kAssociateWithWindowsAccount}}" type="button" class="btn btn-default" ng-click="$ctrl.bindWinAccount()">
+							<span class="glyphicon glyphicon-log-in"></span>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">Выберите контрольный вопрос</label>
+			<div class="col-md-8 col-lg-8">
+				<select track-changes ng-init="$ctrl.initQuestion" class="form-control" name="recoveryQuestion" ng-model="$ctrl.question" ng-options="item.name as item.name for item in $ctrl.controlQuestions"></select>
+			</div>
+		</div>
+
+		<div ng-show="$ctrl.showQuestionInput" class="form-group">
+			<label class="control-label col-md-2 col-lg-2">Контрольный вопрос</label>
+			<div class="col-md-8 col-lg-8">
+				<input track-changes type="text" class="form-control" name="LON_ANG" size="25" maxlength="35" ng-model="$ctrl.commondata.userSettings.recoveryQuestion">
+			</div>
+		</div>
+
+		<div ng-show="$ctrl.showAnswer" class="form-group">
+			<label class="control-label col-md-2 col-lg-2">Ответ на вопрос для восстановления пароля</label>
+			<div class="col-md-8 col-lg-8">
+				<input autocomplete="off" type="password" class="form-control" size="25" maxlength="35" ng-model="$ctrl.commondata.userSettings.recoveryAnswer">
+				<div style="margin-top: 5px;">
+					Рекомендуется ввести одно слово.<br>
+					Это слово, как и ваш пароль, не могут видеть другие пользователи системы
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">Роль в системе</label>
+			<div class="col-md-8 col-lg-8">
+				<div class="row">
+					<div class="col-md-10">
+						<p class="small" ng-repeat="role in $ctrl.userRoles">{{role.name}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.SetupSchoolUI.kMailManner}}</label>
+			<div class="col-md-8 col-lg-8">
+				<div class="radio">
+					<input type="text" ng-value="$ctrl.mailManner" class="form-control" size="25" maxlength="35" disabled>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="!$ctrl.mySettingsCtrl.isEm">
+			<label class="control-label col-md-2 col-lg-2">Рабочий стол</label>
+			<div class="col-md-8 col-lg-8">
+				<select track-changes class="form-control" name="desktopList" ng-model="$ctrl.userSettings.defaultDesktop" ng-options="item.id as item.name for item in $ctrl.desktopList"></select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">Язык интерфейса</label>
+			<div class="col-md-8 col-lg-8">
+				<select track-changes class="form-control" name="languageList" ng-model="$ctrl.userSettings.language" ng-options="item.key as item.name for item in $ctrl.languageList"></select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Common.kMobilePhone}}</label>
+			<div class="col-md-8 col-lg-8">
+				<mobile-input-component mobilephone="$ctrl.mobilephoneValue" form="$ctrl.mobilephoneForm" value="$ctrl.editMySettingsService.userInfoData.mobilePhone" readonly="false"></mobile-input-component>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Import.kEMail}}</label>
+			<div class="col-md-8 col-lg-8">
+				<email-component email="$ctrl.commondata.email" readonly="false">
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="!$ctrl.mySettingsCtrl.isEm">
+			<label class="control-label col-md-2 col-lg-2">Показывать мобильный телефон сотрудникам ОО</label>
+			<div class="col-md-8 col-lg-8">
+				<input track-changes type="checkbox" name="ChangePW_ANG" ng-model="$ctrl.commondata.userSettings.showMobilePhone" ng-true-value="true" ng-false-value="null">
+			</div>
+		</div>
+	</div>
+</div>

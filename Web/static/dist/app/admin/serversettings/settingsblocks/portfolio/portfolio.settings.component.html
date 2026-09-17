@@ -1,0 +1,34 @@
+<div class="form-horizontal" ng-if="$ctrl.state.ready">
+
+    <table class="table table-bordered table-sm table-striped table-middle-cells">
+        <caption>Базовые разделы личных портфолио</caption>
+
+        <colgroup>
+            <col width="25%">
+            <col width="75%">
+        </colgroup>
+        
+        <tbody ui-sortable="$ctrl.sortableOptions" ng-model="$ctrl.data.baseGroups">
+            <tr ng-repeat="group in $ctrl.data.baseGroups" style="cursor: moves;">
+                <td>
+                    <span class="glyphicon glyphicon-resize-vertical"></span>
+                    <span>{{$index + 1}}. {{group.name}}</span>
+                </td>
+                <td>
+                    <div style="display: flex; align-items: center;">
+                        <button type="button" class="btn btn-warning btn-xs" ng-click="$ctrl.edit(group)">
+                            <span class="glyphicon glyphicon-pencil"></span> <span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="$ctrl.remove(group)">
+                            <span class="glyphicon glyphicon-trash"></span> <span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-primary" ng-click="$ctrl.add()">
+        <span class="glyphicon glyphicon-plus"></span> <span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+    </button>
+</div>

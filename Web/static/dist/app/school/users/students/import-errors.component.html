@@ -1,0 +1,43 @@
+<table class="table table-bordered table-bright-striped table-xs print-block">
+	<tr>
+		<th style="min-width:40px; ">{{$ctrl.language.Generic.Filter.kN_PP}}</th>
+
+		<th>Строка №</th>
+		<th>Столбец №</th>
+		<th>Имя столбца</th>
+		<th>Описание ошибки</th>
+		<th>Текущее значение</th>
+		<th ng-if="$ctrl.model.showColumnEnabledValues" width="565px">Возможные значения</th>
+	</tr>
+
+	<tr ng-repeat="errorWrap in $ctrl.model.errorsWraps" ng-class="{'validation-error': errorWrap.error.errorType == 'Critical' }">
+		<td class="text-center">{{ $index + 1 }}</td>
+		<td class="text-center">{{ errorWrap.error.rowNumber }}</td>
+		<td class="text-center">{{ errorWrap.error.colNumber }}</td>
+		<td>{{ errorWrap.error.title }}</td>
+		<td>
+			{{ errorWrap.error.message }}
+		</td>
+		<td style="width:10%">
+			{{ errorWrap.error.currentValue }}
+		</td>
+
+
+		<!--если есть столбец с допустимыми значениями-->
+		<!--если показать допустимые значения сразу (без спойлера )     -->
+		<td ng-if="$ctrl.model.showColumnEnabledValues && errorWrap.showEnabledValues" class="errorDescription">{{errorWrap.error.enabledValues}}</td>
+		
+		<!--если допустимых значений много их показываем в спойлере-->
+		<td class="errorDescription" ng-if="$ctrl.model.showColumnEnabledValues && errorWrap.showSpoilerButtonEnabledValues">
+			<button style="width:90px; margin-left:15px" class="btn btn-info" data-toggle="collapse" 
+				ng-if="errorWrap.error.enabledValues"
+				data-target="#hide-me{{$index}}" 
+				onclick="$(this).text(function (i, text) { return text === 'Скрыть' ? 'Показать' : 'Скрыть'; })">
+				Показать
+			</button>
+			<div id="hide-me{{$index}}" class="collapse" ng-if="errorWrap.error.enabledValues">
+				{{errorWrap.error.enabledValues}}
+			</div>
+		</td>
+	</tr>
+</table>

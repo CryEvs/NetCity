@@ -1,0 +1,30 @@
+<div class="alert alert-info" role="alert" ng-if="$ctrl.members && !$ctrl.members.length">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	Список участников мероприятия пуст. Для того, чтобы добавить необходимо нажать кнопку "Добавить"
+</div>
+
+<div class="alert alert-info" role="alert" ng-if="$ctrl.members && $ctrl.members.length && !$ctrl.viewMembers.length">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	Список участников мероприятия по указанному значению фильтра пуст.
+</div>
+
+<table class="table table-xs table-bright table-bright-hover table-selectable table-thin" ng-if="$ctrl.viewMembers && $ctrl.viewMembers.length">
+	<tr>
+		<th>№ п.п.</th>
+		<th>ФИО участника</th>
+		<th>Дата рождения</th>
+		<th>Образовательная организация</th>
+		<th>Результат участия</th>
+	</tr>
+	<tr ng-repeat="member in $ctrl.viewMembers" ng-class="{'selected': $ctrl.selection.isSelected(member)}" ng-click="$ctrl.selection.select(member)">
+		<td>{{$index + 1}}</td>
+		<td>{{member.user.name}}</td>
+		<td>{{member.user.birthDate}}</td>
+		<td>{{member.organization.name}}</td>
+		<td>
+			<div ng-repeat="result in member.results">
+				<span class="result-type">{{result.type}}</span>: <span class="result-item">{{result.item}}</span>
+			</div>
+		</td>
+	</tr>
+</table>

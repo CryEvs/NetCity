@@ -1,0 +1,227 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(../../images/about/bg.jpg) #4ccef9 repeat-x; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #03425e; PADDING-TOP: 0px; FONT-FAMILY: Arial; TEXT-ALIGN: center
+}
+#topbar {
+	BACKGROUND: url(../../images/about/bg_top.png) repeat-x;HEIGHT: 30px
+}
+
+#topbarStr{
+	color: white;margin-top: 5px;margin-right: 700px;display: -webkit-inline-box;font-family: arial; white-space: nowrap
+}
+
+#topbar img{
+	margin-right: 500px; margin-top: 10px
+}
+
+#topbar_inner {
+	FONT-SIZE: 12px; MARGIN: 0px auto; WIDTH: 920px; COLOR: #92c0f8; LINE-HEIGHT: 40px; HEIGHT: 42px; TEXT-ALIGN: left
+}
+#topbar_inner A {
+	COLOR: #fff
+}
+#topbar_inner A:hover {
+	COLOR: #92c0f8
+}
+#topbar_inner A.current {
+	COLOR: #92c0f8
+}
+#search {
+	MARGIN-TOP: 6px; BACKGROUND: url(../../images/about/bg_search.gif) no-repeat; FLOAT: right; WIDTH: 220px; POSITION: relative; HEIGHT: 25px
+}
+#search INPUT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 11px; BACKGROUND: none transparent scroll repeat 0% 0%; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 10px; WIDTH: 180px; COLOR: #5c97e0; BORDER-TOP-STYLE: none; LINE-HEIGHT: 25px; PADDING-TOP: 0px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: 25px; BORDER-BOTTOM-STYLE: none
+}
+#search .btn {
+	FLOAT: right; WIDTH: 17px; MARGIN-RIGHT: 7px; POSITION: relative; HEIGHT: 16px
+}
+#search .btn A IMG {
+	MARGIN-TOP: 5px; FLOAT: left
+}
+#wrapper {
+	FONT-SIZE: 12px; MIN-HEIGHT: 300px; MARGIN: 0px auto; WIDTH: 1160px; BORDER-TOP-STYLE: none; LINE-HEIGHT: 1.4; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; POSITION: relative; HEIGHT: 100%; TEXT-ALIGN: left; BORDER-BOTTOM-STYLE: none
+}
+#wrapper_inner {
+	MIN-HEIGHT: 300px; BACKGROUND: url(../../images/about/bg_foot.gif) no-repeat right bottom; WIDTH: 1160px; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; POSITION: relative; HEIGHT: 100%; BORDER-BOTTOM-STYLE: none
+}
+#header {
+	MARGIN: 0px auto; WIDTH: 920px; POSITION: relative
+}
+#logo {
+	WIDTH: 600px; POSITION: relative; HEIGHT: 150px
+}
+#logo2 {
+	LEFT: 300px; POSITION: relative; TOP: 20px; HEIGHT: 160px
+}
+#logo2 A {
+	DISPLAY: block; LINE-HEIGHT: 59px;TEXT-DECORATION: none; margin-left: 600px
+}
+#ifs {
+	MARGIN-TOP: 25px; FLOAT: right; WIDTH: 205px; MARGIN-RIGHT: 5px; POSITION: relative
+}
+#ifs UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; LIST-STYLE-IMAGE: url(../../images/about/ul.gif); PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+#ifs UL LI {
+	PADDING-LEFT: 0px; MARGIN-BOTTOM: 5px; MARGIN-LEFT: 0px
+}
+#enter {
+	MARGIN-TOP: 50px; FLOAT: right; POSITION: relative; HEIGHT: 80px
+}
+ HTML #enter {
+	/*WIDTH: 750px*/
+}
+A IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+A {
+	COLOR: #03425e;outline: none; cursor: pointer
+}
+A:hover {
+	COLOR: #45541a
+}
+#content {
+	CLEAR: both; FONT-SIZE: 12px; MIN-HEIGHT: 500px; PADDING-BOTTOM: 50px; COLOR: #313f09
+}
+.clearer {
+	CLEAR: both; OVERFLOW: hidden; HEIGHT: 1px
+}
+#slider {
+	PADDING-LEFT: 5px; BACKGROUND: url(../../images/about/bg_slider.png) no-repeat; MARGIN: 20px auto 0px; WIDTH: 932px; PADDING-TOP: 4px; HEIGHT: 352px
+}
+#slider .sl_btn {
+	MARGIN-TOP: 260px; FLOAT: left; MARGIN-LEFT: 100px; POSITION: relative
+}
+ HTML #slider .sl_btn {
+	MARGIN-LEFT: 50px
+}
+#slider .sl_btn4 {
+	MARGIN-TOP: 260px; FLOAT: left; MARGIN-LEFT: 40px; POSITION: relative
+}
+ HTML #slider .sl_btn4 {
+	MARGIN-LEFT: 20px
+}
+#columns {
+	MARGIN: 35px auto 0px; WIDTH: 920px; POSITION: relative
+}
+#columns .head {
+	MARGIN-BOTTOM: 10px; OVERFLOW: hidden; POSITION: relative
+}
+#columns .text {
+	LINE-HEIGHT: 1.5
+}
+#columns .btn {
+	MARGIN-TOP: 10px
+}
+#columns .date {
+	PADDING-LEFT: 10px; FONT-SIZE: 12px; BACKGROUND: url(../../images/about/bg_date.gif) no-repeat; MARGIN-BOTTOM: 10px; WIDTH: 82px; COLOR: #313f09; LINE-HEIGHT: 23px; HEIGHT: 23px
+}
+#columns .news {
+	PADDING-RIGHT: 20px; FONT-SIZE: 12px; MARGIN-BOTTOM: 23px; COLOR: #03425e; LINE-HEIGHT: 1.6
+}
+#column1 {
+	FONT-SIZE: 14px; FLOAT: left; WIDTH: 280px; POSITION: relative
+}
+#column1 .btn {
+	MARGIN-TOP: 20px; MARGIN-LEFT: -10px
+}
+#column2 {
+	FLOAT: left; MARGIN-LEFT: 40px; OVERFLOW: hidden; WIDTH: 280px; POSITION: relative
+}
+#column3 {
+	MARGIN-TOP: -20px; FLOAT: left; MARGIN-LEFT: 12px; OVERFLOW: hidden; WIDTH: 308px; POSITION: relative
+}
+#column3 .item {
+	PADDING-RIGHT: 30px; PADDING-LEFT: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px
+}
+#column3 .top {
+	BACKGROUND: url(../../images/about/bg_fourm_top.gif) no-repeat; WIDTH: 308px; HEIGHT: 21px
+}
+#column3 .middle {
+	PADDING-LEFT: 30px; BACKGROUND: url(../../images/about/bg_forum.gif) repeat-y; WIDTH: 308px
+}
+#column3 .bottom {
+	BACKGROUND: url(../../images/about/bg_forum_bottom.png) no-repeat; WIDTH: 308px; HEIGHT: 43px
+}
+#footer {
+	BACKGROUND: url(../../images/about/bg_footer.gif) #fff repeat-x; PADDING-TOP: 25px; HEIGHT: 170px
+}
+#footer_inner {
+	FONT-SIZE: 11px; MARGIN: 0px auto; WIDTH: 920px; COLOR: #707070
+}
+#footer_inner .copy {
+	FLOAT: left; LINE-HEIGHT: 1.5; FONT-FAMILY: Arial; TEXT-ALIGN: left
+}
+#footer_inner .logos {
+	FLOAT: right
+}
+#footer_inner .copy A {
+	COLOR: #707070
+}
+#footer_inner .copy A:hover {
+	COLOR: #8d8d8d
+}
+#overlay {
+	Z-INDEX: 901; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 100%; BACKGROUND-COLOR: #000; opacity: 0.7
+}
+#overlay {
+	FILTER: progid:DXImageTransform.Microsoft.Alpha(opacity=70); ZOOM: 1; opacity: 0.7; moz-opacity: 0.7; khtml-opacity: 0.7
+}
+.message {
+	HEIGHT: 650px; WIDTH: 498px; MARGIN-TOP: -262px; Z-INDEX: 902; BACKGROUND: url(../../images/about/bg_login_1.png) no-repeat; LEFT: 50%; MARGIN-LEFT: -249px; LINE-HEIGHT: 1.4; POSITION: absolute; TOP: 50%; TEXT-ALIGN: left
+}
+
+#message_em {
+	BACKGROUND: url(../../images/about/bg_login.png) no-repeat
+}
+
+.message select {
+	WIDTH: 100%
+}
+
+.message .close {
+	RIGHT: 30px; WIDTH: 19px; POSITION: absolute; TOP: 30px; HEIGHT: 19px
+}
+.message .head {
+	MARGIN-TOP: 37px; MARGIN-LEFT: 60px; MARGIN-RIGHT: 60px; POSITION: relative
+}
+.message .text {
+	PADDING-RIGHT: 100px; MARGIN-TOP: 5px; FONT-SIZE: 11px; MARGIN-LEFT: 60px; COLOR: #03425e; FONT-FAMILY: Arial
+}
+.message .info {
+	MARGIN-TOP: 20px; FONT-SIZE: 11px; MARGIN-LEFT: 60px; COLOR: #03425e
+}
+.message .info TABLE TR TD {
+	PADDING-BOTTOM: 11px; PADDING-TOP: 11px; HEIGHT: 27px
+}
+ HTML .message .info TABLE TR TD {
+	PADDING-BOTTOM: 8px; PADDING-TOP: 8px; HEIGHT: 27px
+}
+.message .info TABLE TR TD.first {
+	WIDTH: 90px; TEXT-ALIGN: left
+}
+.message .info TABLE TR TD.secont {
+	WIDTH: 271px;TEXT-ALIGN: left; font-weight: bold
+}
+.lineForm {
+	MARGIN-TOP: -15px
+}
+.text {
+	COLOR: #03425e
+}
+ HTML .ie {
+	MARGIN-TOP: 0px
+}
+.message .info TABLE TR TD.secont .myinput {
+	BACKGROUND: url(../../images/about/login_input_bg.png) no-repeat; WIDTH: 271px; POSITION: relative; HEIGHT: 27px
+}
+.message .info TABLE TR TD.secont .myinput INPUT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 13px; FONT-SIZE: 12px; Z-INDEX: 1; BACKGROUND: none transparent scroll repeat 0% 0%; LEFT: 0px; PADDING-BOTTOM: 0px; COLOR: #464646; BORDER-TOP-STYLE: none; PADDING-TOP: 5px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; POSITION: relative; TOP: 0px; HEIGHT: 14px;BORDER-BOTTOM-STYLE: none;outline: none
+}
+.message .inner {
+	MARGIN-TOP: 30px; FONT-SIZE: 13px; MARGIN-LEFT: 40px; WIDTH: 310px; COLOR: #c2d2e5; FONT-FAMILY: Trebuchet MS; TEXT-ALIGN: left
+}
+
+#emlogin, #clogin {
+	float:left;
+	margin-top: 10px;
+}

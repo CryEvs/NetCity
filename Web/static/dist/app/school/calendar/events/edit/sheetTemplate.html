@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="col-md-12 buttons-panel">
+		<button class="btn btn-primary" ng-click="ok()"  ng-hide="readonly">
+			<span class="bootstrap-dialof-button-icon glyphicon glyphicon-plus-sign"></span>
+			<span>{{language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<button class="btn btn-default" ng-click="cancel()" ng-hide="readonly">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{language.Generic.Buttons.kCancel}}</span>
+		</button>
+
+		<button class="btn btn-danger" ng-click="delete()" ng-hide="!hasValue || readonly">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-minus-sign"></span>
+			<span>{{language.Generic.Buttons.kRemove}}</span>
+		</button>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<form role="form" name="form" class="form form-sm form-horizontal">
+			<div ng-include="'/static/dist/app/school/calendar/events/edit/template.html'"></div>
+		</form>
+	</div>
+</div>

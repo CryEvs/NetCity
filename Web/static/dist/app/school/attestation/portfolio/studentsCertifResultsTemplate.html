@@ -1,0 +1,34 @@
+<table class="table-print">
+	<tbody>
+		<tr>
+			<th rowspan="2">№ п/п</th>
+			<th rowspan="2">Промежуточная аттестация</th>
+			<th rowspan="2">Учебный год</th>
+			<th colspan="4">Результативность образовательной деятельности педагога</th>
+		</tr>
+		<tr>
+			<th>Общее кол-во обучающихся</th>
+			<th>Кол-во обучающихся, имеющих положительные результаты обучения</th>
+			<th>Кол-во обучающихся, имеющих «2»</th>
+			<th>Результаты обучающихся (средние данные по годам в процентном отношении от числа участвующих)</th>
+		</tr>
+		<tr>
+			<td style="vertical-align: middle;" class="cell-text" rowspan="6">1.1</td>
+			<td style="vertical-align: middle;" class="cell-text" rowspan="6">Результаты освоения обучающимися образовательных программ по результатам промежуточной аттестации</td>
+{{#each studentsCertifResults.teacherPerformanceItems}}
+			<td class="cell-text">{{yearName}}</td>
+			<td class="cell-num">{{totalStudentsCount}}</td>
+			<td class="cell-num">{{studentsWithPositiveResultsCount}}</td>
+			<td class="cell-num">{{studentsWithMarkTwoCount}}</td>
+			<td class="cell-num-1">{{percentageStudentsWithPositiveResults}}</td>
+		</tr>
+		<tr>
+{{/each}}
+			<td class="cell-text">среднее</td>
+			<td class="cell-num">{{studentsCertifResults.totalTeacherPerformance.totalStudentsCount}}</td>
+			<td class="cell-num">{{studentsCertifResults.totalTeacherPerformance.studentsWithPositiveResultsCount}}</td>
+			<td class="cell-num">{{studentsCertifResults.totalTeacherPerformance.studentsWithMarkTwoCount}}</td>
+			<td class="cell-num-1">{{studentsCertifResults.totalTeacherPerformance.percentageStudentsWithPositiveResults}}</td>
+		</tr>
+	</tbody>
+</table>

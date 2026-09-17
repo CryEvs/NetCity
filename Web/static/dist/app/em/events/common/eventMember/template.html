@@ -1,0 +1,105 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<span class="content-page-preloader" id="preloader" ng-hide="ctrl.ready"><span>{{ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+		<form role="form" name="ctrl.eventForm" class="form-horizontal form-sm" ng-if="ctrl.mode.selectEvent">
+			<!--Поля формы-->
+
+			<fieldset>
+				<legend>Мероприятие</legend>
+				<span ng-if="mode.edit">{{ctrl.data.eventInfo.name}}</span>
+
+				<div class="form-group" ng-if="ctrl.mode.selectEvent && ctrl.mode.create">
+					<label for="event-yearId" class="control-label col-md-4 col-lg-3 col-sm-4">Год проведения</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<select track-changes class="form-control" id="event-yearId" ng-options="year.id as year.name for year in ctrl.data.refs.years" ng-init="ctrl.data.yearId" ng-model="ctrl.data.yearId"></select>
+					</div>
+				</div>
+
+				<div class="form-group" ng-show="ctrl.mode.selectEvent && ctrl.data.yearId" ng-hide="ctrl.state.loadEvents">
+					<label for="event-event" class="control-label col-md-4 col-lg-3 col-sm-4">Мероприятие</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<span ng-show="ctrl.state.noEvents">
+							Список мероприятий пуст
+						</span>
+
+						<ui-select track-changes id="event-event" ng-if="ctrl.mode.create && !ctrl.state.noEvents" ng-model="ctrl.data.event" theme="bootstrap">
+							<ui-select-match placeholder="Выберите мероприятие">{{$select.selected.name + ' ('+ $select.selected.date + ')'}}</ui-select-match>
+							<ui-select-choices repeat="event as event in ctrl.data.events | filter: $select.search" group-by="ctrl.getEventGroup">
+								<div ng-bind-html="event.name + ' ('+ event.date + ')' | highlight: $select.search"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</div>
+				</div>
+			</fieldset>
+		</form>
+		<form role="form" name="ctrl.memberForm" class="form form-sm">
+			<fieldset>
+				<legend ng-if="ctrl.mode.selectUser">Участник</legend>
+
+				<div class="form-group" ng-if="ctrl.mode.selectUser">
+					<label for="member-org" class="control-label">Организация</label>
+					<div>
+
+						<span ng-if="ctrl.mode.edit">{{ctrl.data.member.organization.name}}</span>
+
+						<ui-select track-changes id="member-org"
+								   ng-if="ctrl.mode.create && ctrl.mode.selectUser"
+								   ng-model="ctrl.data.schoolId" theme="bootstrap">
+							<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+							<ui-select-choices repeat="school.id as school in ctrl.data.search.schools.items"
+											   ui-disable-choice="school.name === 'Совпадений не найдено' || school.name === 'Поиск...'"
+											   refresh="ctrl.data.search.schools.search($select.search)"
+											   on-select>
+								<div ng-bind-html="school.name | highlight: $select.search"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</div>
+				</div>
+
+				<div class="form-group" ng-if="ctrl.mode.selectUser && (ctrl.data.schoolId || ctrl.mode.edit)">
+					<label for="member-user" class="control-label">Ф.И.О. участника</label>
+					<div>
+						<span ng-if="ctrl.mode.edit">{{ctrl.data.member.user.name}}</span>
+
+						<ui-select track-changes id="member-user"
+								   ng-if="ctrl.mode.create && ctrl.mode.selectUser"
+								   ng-model="ctrl.data.user" theme="bootstrap">
+							<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+							<ui-select-choices repeat="user as user in ctrl.data.search.users.items"
+											   ui-disable-choice="user.name === 'Совпадений не найдено' || user.name === 'Поиск...'"
+											   refresh="ctrl.data.search.users.search($select.search)">
+								<div ng-bind-html="user.name | highlight: $select.search"></div>
+							</ui-select-choices>
+						</ui-select>
+					</div>
+				</div>
+
+				<div ng-include="'/static/dist/app/em/events/common/eventResult/template.html'" ng-if="ctrl.data.event.id > 0 && ctrl.data.user.id > 0"></div>
+
+			</fieldset>
+		</form>
+		
+	</div>
+	<div class="modal-footer" ng-show="ctrl.ready">
+		<button class="btn btn-primary btn-sm" ng-click="ctrl.save()" ng-disabled="!ctrl.data.user || !ctrl.data.event">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			Сохранить
+		</button>
+
+		<button class="btn btn-default btn-sm" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			Закрыть
+		</button>
+	</div>
+</div>

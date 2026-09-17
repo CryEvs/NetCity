@@ -1,0 +1,27 @@
+<div class="row" ng-repeat="group in $ctrl.filtredGroups" ng-if="$ctrl.selected && $ctrl.selected.selectedIds.length"	ng-show="$ctrl.filtredGroups.length">
+	<div class="col-md-12">
+		<selected-organizations-view-row model="group" settings="$ctrl.settings"></selected-organizations-view-row>
+	</div>
+</div>
+
+<div class="row" ng-if="$ctrl.selected && $ctrl.selected.selectedIds.length && $ctrl.filtredGroups.length >= $ctrl.selected.count">
+	<div class="col-md-12">
+		<br>
+		<div ng-hide="$ctrl.showAll" ng-click="$ctrl.showAllClick()">
+			<span class="glyphicon glyphicon-chevron-down" title="{{$ctrl.language.Generic.Common.kShowAll}}"></span>
+			<span>{{$ctrl.language.Generic.Common.kShowAll}}</span>
+		</div>
+		<div ng-show="$ctrl.showAll" ng-click="$ctrl.showAllClick()">
+			<span class="glyphicon glyphicon-chevron-up" title="{{$ctrl.language.Generic.Common.kHide}}"></span>
+			<span>{{$ctrl.language.Generic.Common.kHide}}</span>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12" ng-show="!$ctrl.selected || !$ctrl.selected.selectedIds.length">
+		<div class="alert" ng-class="{'alert-danger': $ctrl.isRequired, 'alert-info': !$ctrl.isRequired}">
+			{{$ctrl.language.Generic.Common.kOrganizationsNotSelected}}
+		</div>
+	</div>
+</div>

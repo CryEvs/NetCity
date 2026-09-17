@@ -1,0 +1,26 @@
+@import "var";
+@import "mixins";
+@import "controls";
+@import "fonts";
+@import "page-template";
+@import "filters-panel";
+@import "buttons";
+@import "buttons-panel";
+@import "forms";
+@import "footer";
+@import "typography";
+@import "modals";
+@import "pre-loaders";
+@import "menu";
+@import "tables";
+@import "helper";
+@import "global";
+@import "contextual-buttons-icons";
+@import "responsive";
+
+
+/**************************/
+/*для тестирование*********/
+.test111{
+    color: #989898;
+}

@@ -1,0 +1,216 @@
+<div ng-if="!ready" class="alert alert-info" role="alert">{{language.Generic.Curriculum.kPleaseWait}}</div>
+<h3 ng-if="ready" class="first">{{language.Generic.Common.kGeneralInformation}}</h3>
+<div ng-if ="ready" class="col-md-12">
+	<form class="form-horizontal form-xs">
+
+		<div class="form-group">
+			<label class="control-label col-md-4 col-lg-2 col-sm-4">{{language.Generic.Common.FIO_ERR}}</label>
+			<div class="col-md-8 col-lg-3 col-sm-8">
+				<input type="text" class="form-control" value="{{data.lastName}} {{data.firstName}} {{data.middleName}}" disabled="disabled" />
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="data.mainPosition">
+			<label class="control-label col-md-4 col-lg-2 col-sm-3">{{language.Generic.Filter.kBasePosition}}</label>
+			<div class="col-md-5 col-lg-3 col-sm-6">
+				<input type="text" class="form-control" value="{{data.mainPosition.position}}" disabled/>
+			</div>
+		</div>
+		
+		<div class="form-group" ng-if="data.addPosition">
+			<label class="control-label col-md-4 col-lg-2 col-sm-3">Дополнительная должность</label>
+			<div class="col-md-5 col-lg-3 col-sm-6">
+				<input type="text" class="form-control" value="{{data.addPosition.position}}" disabled />
+			</div>
+		</div>
+	</form>
+
+</div>
+
+<h3 ng-if="ready">{{language.Generic.Common.kPedagogicalPortfolio}}</h3>
+<div ng-if="ready" class="col-md-6">
+	<div class="block-heading">
+		<h4>{{language.Generic.UsersExport_1C.kEducation}}</h4>
+		<button type="button" title="{{language.Generic.Buttons.kAdd}}" class="round icon-plus" ng-click="addEducation()"></button>
+	</div>
+	<div class="block-data">
+		<p ng-if="!data.educationData || data.educationData.length == 0" class="fggray">{{language.Generic.Common.kInformationIsNotFilled}}</p>
+		<div class="block-item" ng-repeat="education in data.educationData">
+			<div class="ops">
+				<button class="icon-pencil" ng-click="editEducation(education)"></button>
+				<button class="icon-trash" ng-click="removeEducation(education.id)"></button>
+			</div>
+			<p>
+				<span ng-if="education.period.start || education.period.end" data-prefix="{{language.Generic.Common.kEduYears}}:">{{education.period.start}} - {{education.period.end}}</span>
+				<span ng-if="education.municipality" data-prefix="{{language.Generic.Common.kMunicipality}}:">{{education.municipality}}</span>
+				<span ng-if="education.organization" data-prefix="{{language.Generic.Common.kEduOrganization}}:">{{education.organization}}</span>
+			</p>
+			<p>
+				<span ng-if="education.speciality" data-prefix="{{language.Generic.UsersExport_1C.kProfession}}:">{{education.speciality}}</span>
+				<span ng-if="education.qualification" data-prefix="{{language.Generic.UsersExport_1C.kQualification}}:">{{education.qualification}}</span>
+				<snap ng-if="education.secondName" data-prefix="{{language.Generic.Common.kDiplomaSecondName}}">{{education.secondName}}</snap>
+			</p>
+			<p>
+				<span ng-if="education.completionDocument.docType" data-prefix="Документ:">{{refs.educDocTypes.index[education.completionDocument.docType].name}}</span>
+				<span ng-if="education.completionDocument.series" data-prefix="{{language.Generic.Common.kSerial}}:">{{education.completionDocument.series}}</span>
+				<span ng-if="education.completionDocument.number" data-prefix="{{language.Generic.UsersExport_1C.kNumberDocument}}:">{{education.completionDocument.number}}</span>
+				<span ng-if="education.completionDocument.issueDate" data-prefix="{{language.Generic.UsersExport_1C.kIssueDate}}:">{{dateOnly2strF(education.completionDocument.issueDate)}}</span>
+				<span ng-if="education.completionDocument.regNumber" data-prefix="{{language.Generic.SchoolInfo.kRegistrationNumber}}:">{{education.completionDocument.regNumber}}</span>
+			</p>
+		</div>
+	</div>
+
+	<div class="block-heading">
+		<h4>{{language.Generic.Common.kAcademicAwardsParticipation}}</h4>
+		<button type="button" title="{{language.Generic.Buttons.kAdd}}" class="round icon-plus" ng-click="addAcademicAward()"></button>
+	</div>
+	<div class="block-data">
+		<p ng-if="!data.academicAwardsData || data.academicAwardsData.length == 0" class="fggray">{{language.Generic.Common.kInformationIsNotFilled}}</p>
+		<div class="block-item" ng-repeat="academicAward in data.academicAwardsData">
+			<div class="ops">
+				<button class="icon-pencil" ng-click="editAcademicAward(academicAward)"></button>
+				<button class="icon-trash" ng-click="removeAcademicAward(academicAward.id)"></button>
+			</div>
+			<p>
+				<span ng-if="academicAward.academicDegree" data-prefix="{{language.Generic.Common.kAcademicDegree}}:">{{academicAward.academicDegree}}</span>
+				<span ng-if="academicAward.academicTitle" data-prefix="{{language.Generic.Common.kAcademicTitle}}:">{{academicAward.academicTitle}}</span>
+				<span ng-if="academicAward.speciality" data-prefix="{{language.Generic.Common.kSpecialityCode}}:">{{academicAward.speciality}}</span>
+			</p>
+			<p>
+				<span ng-if="academicAward.awardDocument.docTypeDescription" data-prefix="{{language.Generic.SetupSchoolPortfolio.kDocName}}:">{{academicAward.awardDocument.docTypeDescription}}</span>
+				<span ng-if="academicAward.awardDocument.organization" data-prefix="{{language.Generic.Common.kOrganization}}:">{{academicAward.awardDocument.organization}}</span>
+				<span ng-if="academicAward.awardDocument.series" data-prefix="{{language.Generic.Common.kSerial}}:">{{academicAward.awardDocument.series}}</span>
+				<span ng-if="academicAward.awardDocument.number" data-prefix="{{language.Generic.UsersExport_1C.kNumberDocument}}:">{{academicAward.awardDocument.number}}</span>
+				<span ng-if="academicAward.awardDocument.awardDate" data-prefix="{{language.Generic.UsersExport_1C.kIssueDate}}:">{{dateOnly2strF(academicAward.awardDocument.awardDate)}}</span>
+			</p>
+		</div>
+	</div>
+	
+	
+	<div class="block-heading">
+		<h4>{{language.Generic.Common.kStaffTrainingParticipation}}</h4>
+		<button type="button" title="{{language.Generic.Buttons.kAdd}}" class="round icon-plus" ng-click="addStaffTraining()"></button>
+	</div>
+	<div class="block-data">
+		<p ng-if="!data.staffTrainingsData || data.staffTrainingsData.length == 0" class="fggray">{{language.Generic.Common.kInformationIsNotFilled}}</p>		
+		<div class="block-item" ng-repeat="staffTraining in data.staffTrainingsData">
+			<div class="ops">
+				<button class="icon-pencil" ng-click="editStaffTraining(staffTraining)"></button>
+				<button class="icon-trash" ng-click="removeStaffTraining(staffTraining.id)"></button>
+			</div>
+			<p>
+				<span ng-if="staffTraining.period.start || staffTraining.period.end" data-prefix="{{language.Generic.Common.kPeriod}}:">{{dateOnly2strF(staffTraining.period.start)}} - {{dateOnly2strF(staffTraining.period.end)}}</span>
+				<span ng-if="staffTraining.organization" data-prefix="{{language.Generic.Common.kOrganization}}:">{{staffTraining.organization}}</span>
+				<span ng-if="staffTraining.hours" data-prefix="{{language.Generic.Common.kHoursAmount}}:">{{staffTraining.hours}}</span>
+				<span ng-if="staffTraining.place" data-prefix="{{language.Generic.Common.kTrainingPlace}}:">{{staffTraining.place}}</span>
+			</p>
+			<p>
+				<span ng-if="staffTraining.theme" data-prefix="{{language.Generic.Common.kTrainingTheme}}:">{{staffTraining.theme}}</span>
+				<span ng-if="staffTraining.levelDescription" data-prefix="{{language.Generic.Common.kTrainingLevel}}:">{{staffTraining.levelDescription}}</span>
+				<span ng-if="staffTraining.participationFormDescription" data-prefix="{{language.Generic.Common.kParticipationForm}}:">{{staffTraining.participationFormDescription}}</span>
+			</p>
+			<p>
+				<span ng-if="staffTraining.completionDocument.docName" data-prefix="{{language.Generic.SetupSchoolPortfolio.kDocName}}:">{{staffTraining.completionDocument.docName}}</span>
+				<span ng-if="staffTraining.completionDocument.series" data-prefix="{{language.Generic.Common.kSerial}}:">{{staffTraining.completionDocument.series}}</span>
+				<span ng-if="staffTraining.completionDocument.number" data-prefix="{{language.Generic.UsersExport_1C.kNumberDocument}}:">{{staffTraining.completionDocument.number}}</span>
+				<span ng-if="staffTraining.completionDocument.issueDate" data-prefix="{{language.Generic.UsersExport_1C.kIssueDate}}:">{{dateOnly2strF(staffTraining.completionDocument.issueDate)}}</span>
+				<span ng-if="staffTraining.completionDocument.regNumber" data-prefix="{{language.Generic.SchoolInfo.kRegistrationNumber}}:">{{staffTraining.completionDocument.regNumber}}</span>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div ng-if="ready" class="col-md-6">
+	<div class="block-heading">
+		<h4>{{language.Generic.Common.kMethodicalActivity}}</h4>
+		<button type="button" title="{{language.Generic.Buttons.kAdd}}" class="round icon-plus" ng-click="addMethodicalActivity()"></button>
+	</div>
+	<div class="block-data">
+		<p ng-if="!data.staffMethodicalActivityData || data.staffMethodicalActivityData.length == 0" class="fggray">{{language.Generic.Common.kInformationIsNotFilled}}</p>			
+		<div class="block-item" ng-repeat="staffMethodicalActivity in data.staffMethodicalActivityData">
+			<div class="ops">
+				<button class="icon-pencil" ng-click="editMethodicalActivity(staffMethodicalActivity)"></button>
+				<button class="icon-trash" ng-click="removeMethodicalActivity(staffMethodicalActivity.id)"></button>
+			</div>
+			<p>
+				<span ng-if="staffMethodicalActivity.period.start || staffMethodicalActivity.period.end" data-prefix="{{language.Generic.Common.kPeriod}}:">{{staffMethodicalActivity.period.start}} - {{staffMethodicalActivity.period.end}}</span>
+				<span ng-if="staffMethodicalActivity.workName" data-prefix="{{language.Generic.Common.kWorkName}}:">{{staffMethodicalActivity.workName}}</span>
+				<span ng-if="staffMethodicalActivity.productName" data-prefix="{{language.Generic.Common.kProductName}}:">{{staffMethodicalActivity.productName}}</span>
+			</p>
+			<p>
+				<span ng-if="staffMethodicalActivity.levelDescription" data-prefix="{{language.Generic.UsersExport_1C.kLevel}}:">{{staffMethodicalActivity.levelDescription}}</span>
+				<span ng-if="staffMethodicalActivity.participationStatusDescription" data-prefix="{{language.Generic.Common.kParticipationStatus}}:">{{staffMethodicalActivity.participationStatusDescription}}</span>
+			</p>
+			<p>
+				<span ng-if="staffMethodicalActivity.implementedIn" data-prefix="{{language.Generic.Common.kImplementedIn}}:">{{staffMethodicalActivity.implementedIn}}</span>
+				<span ng-if="staffMethodicalActivity.hostingAddress" data-prefix="{{language.Generic.Common.kHostingAddress}}:">{{staffMethodicalActivity.hostingAddress}}</span>
+			</p>
+		</div>
+	</div>
+	
+	<div class="block-heading">
+		<h4>{{language.Generic.Common.kStaffRetrainingParticipation}}</h4>
+		<button type="button" title="{{language.Generic.Buttons.kAdd}}" class="round icon-plus" ng-click="addStaffRetraining()"></button>
+	</div>
+	<div class="block-data">
+		<p ng-if="!data.staffRetrainingsData || data.staffRetrainingsData.length == 0" class="fggray">{{language.Generic.Common.kInformationIsNotFilled}}</p>			
+		<div class="block-item" ng-repeat="staffRetraining in data.staffRetrainingsData">
+			<div class="ops">
+				<button class="icon-pencil" ng-click="editStaffRetraining(staffRetraining)"></button>
+				<button class="icon-trash" ng-click="removeStaffRetraining(staffRetraining.id)"></button>
+			</div>
+			<p>
+				<span ng-if="staffRetraining.period.start || staffRetraining.period.end" data-prefix="{{language.Generic.Common.kPeriod}}:">{{dateOnly2strF(staffRetraining.period.start)}} - {{dateOnly2strF(staffRetraining.period.end)}}</span>
+				<span ng-if="staffRetraining.organization" data-prefix="{{language.Generic.Common.kOrganization}}:">{{staffRetraining.organization}}</span>
+				<span ng-if="staffRetraining.hours" data-prefix="{{language.Generic.Common.kHoursAmount}}:">{{staffRetraining.hours}}</span>
+				<span ng-if="staffRetraining.place" data-prefix="{{language.Generic.Common.kTrainingPlace}}:">{{staffRetraining.place}}</span>
+			</p>
+			<p>
+				<span ng-if="staffRetraining.completionDocument.docName" data-prefix="{{language.Generic.SetupSchoolPortfolio.kDocName}}:">{{staffRetraining.completionDocument.docName}}</span>
+				<span ng-if="staffRetraining.completionDocument.series" data-prefix="{{language.Generic.Common.kSerial}}:">{{staffRetraining.completionDocument.series}}</span>
+				<span ng-if="staffRetraining.completionDocument.number" data-prefix="{{language.Generic.UsersExport_1C.kNumberDocument}}:">{{staffRetraining.completionDocument.number}}</span>
+				<span ng-if="staffRetraining.completionDocument.issueDate" data-prefix="{{language.Generic.UsersExport_1C.kIssueDate}}:">{{dateOnly2strF(staffRetraining.completionDocument.issueDate)}}</span>
+				<span ng-if="staffRetraining.completionDocument.regNumber" data-prefix="{{language.Generic.SchoolInfo.kRegistrationNumber}}:">{{staffRetraining.completionDocument.regNumber}}</span>
+			</p>
+			<p>
+				<span ng-if="staffRetraining.speciality" data-prefix="{{language.Generic.UsersExport_1C.kProfession}}:">{{staffRetraining.speciality}}</span>
+				<span ng-if="staffRetraining.qualification" data-prefix="{{language.Generic.UsersExport_1C.kQualification}}:">{{staffRetraining.qualification}}</span>
+				<span ng-if="staffRetraining.note" data-prefix="{{language.Generic.UsersExport_1C.kNote}}:">{{staffRetraining.note}}</span>
+				<snap ng-if="staffRetraining.secondName" data-prefix="{{language.Generic.Common.kDiplomaSecondName}}">{{staffRetraining.secondName}}</snap>
+				<span ng-if="staffRetraining.retrainingTypeDescription" data-prefix="{{language.Generic.Common.kRetrainingType}}:">{{staffRetraining.retrainingTypeDescription}}</span>
+			</p>
+		</div>
+	</div>
+	
+	<div class="block-heading">
+		<h4>{{language.Generic.Common.kStaffPortfolioFiles}}</h4>
+		<button type="button" title="{{language.Generic.Buttons.kAdd}}" class="round icon-plus" ng-click="addStaffPortfolioFile()"></button>
+	</div>
+	<div class="block-data">
+		<p ng-if="!data.staffPortfolioFilesData || data.staffPortfolioFilesData.length == 0" class="fggray">{{language.Generic.Common.kInformationIsNotFilled}}</p>
+		<div class="block-item" ng-repeat="staffPortfolioFile in data.staffPortfolioFilesData">
+			<div class="ops">
+				<button class="icon-pencil" ng-click="editStaffPortfolioFile(staffPortfolioFile)"></button>
+				<button class="icon-trash" ng-click="removeStaffPortfolioFile(staffPortfolioFile.id)"></button>
+			</div>
+			<p><a ng-if="staffPortfolioFile.downloadUrl" target="_blank" href="/webapi/{{staffPortfolioFile.downloadUrl}}" download='{{staffPortfolioFile.originalFileName}}'>{{staffPortfolioFile.name}} ({{staffPortfolioFile.originalFileName}})</a>
+			</p>
+			<span ng-if="staffPortfolioFile.fileCategoryDescription" data-prefix="Категория файла:">{{staffPortfolioFile.fileCategoryDescription}}</span>
+			<p><span ng-if="staffPortfolioFile.description" data-prefix="{{language.Generic.Curriculum.kDescription}}:">{{staffPortfolioFile.description}}</span></p>
+		</div>
+	</div>
+</div>
+
+<div ng-if="ready" class="col-md-6">
+	<div class="block-heading">
+		<h4>{{language.Generic.Common.kEffectivenessTeacherEducActivities}}</h4>
+	</div>
+	<div class="block-data">
+		<div class="block-item">
+			<p><a href="" ng-click="getStudentsCertifResults()">{{language.Generic.Common.kResultsStudentsLearningOfIntermediateCertif}}</a></p>
+		</div>
+		<div class="block-item">
+			<p><a href="" ng-click="getStudentsPartFromTotalOfCertif()">{{language.Generic.Common.kStudentsPartHaveFourOrFiveOfIntermediateCertifFromTotal}}</a></p>
+		</div>
+	</div>
+</div>

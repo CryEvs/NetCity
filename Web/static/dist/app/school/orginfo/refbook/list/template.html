@@ -1,0 +1,63 @@
+<form class="form-horizontal form-sm">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Справочник</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select save-state class="form-control" ng-options="item.name for item in ctrl.data.refTypes track by item.id" ng-model="ctrl.data.refType" ng-change="ctrl.load()"></select>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button type="button" class="btn btn-info" ng-click="ctrl.add()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button type="button" class="btn btn-danger" ng-click="ctrl.delete()" ng-disabled="!ctrl.data.checked.length">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<hr />
+
+<div class="row">
+	<div class="col-md-10" ng-show="ctrl.state.dataReady && ctrl.state.emptyData">
+		<div class="alert alert-info" role="alert">{{ctrl.language.Generic.Common.kNoDataForFilter}}</div>
+	</div>
+</div>
+
+<div class="row" ng-show="ctrl.state.dataReady && !ctrl.state.emptyData">
+	<div class="col-md-12">
+		<table class="table table-bordered table-xs table-hover table-striped table-thin">
+			<tr>
+				<th>№</th>
+				<th>Полное название</th>
+				<th>Сокращ. название</th>
+				<th style="max-width: 80px;">Отметка для удаления</th>
+			</tr>
+			<tr ng-repeat="item in ctrl.data.refItems">
+				<td class="text-center">{{$index + 1}}</td>
+				<td> <a href="#" ng-click="ctrl.edit(item)">{{item.name }}</a></td>
+				<td>{{item.shortName }}</td>
+				<td class="text-center">
+					<span ng-if="item.isUsed">{{language.Generic.Common.kEmploy}}</span>
+					<input ng-if="!item.isUsed" type="checkbox" ng-disbled="item.predefined" ng-checked="ctrl.data.checked.indexOf(item.id) > -1" ng-click="ctrl.toggleChecks(item.id)"/>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+

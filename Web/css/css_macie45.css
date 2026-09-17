@@ -1,0 +1,397 @@
+H2
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+H3
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+H4
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+INPUT
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Verdana, Arial
+}
+DIV.subhead
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #ffffff;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+B
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+P
+{
+    FONT-SIZE: 11px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+TD
+{
+    FONT-SIZE: 11px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+TH
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+BODY
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    MARGIN-TOP: 0px;
+    MARGIN-BOTTOM: 0px;
+   	BACKGROUND-COLOR: #6785cd;
+}
+DIV.bullet
+{
+    FONT-SIZE: 13px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+DIV.footer
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+DIV.ltfooter
+{
+    FONT-SIZE: 12px;
+    COLOR: #cccccc;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+DIV.PageTitle
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+TEXTAREA
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Verdana, Arial
+}
+A.PLUNIT
+{
+    FONT-SIZE: 13px;
+    COLOR: green;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    TEXT-DECORATION: none
+}
+A.PLLESSON
+{
+    FONT-SIZE: 13px;
+    COLOR: darkred;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    TEXT-DECORATION: none
+}
+.SmallHeader
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    FONT-FAMILY: Arial, Verdana, Helvetica
+}
+.NormalText
+{
+    FONT-SIZE: 13px;
+    FONT-FAMILY: Arial, Verdana, Helvetica
+}
+.SmallText
+{
+    FONT-SIZE: 11px;
+    FONT-FAMILY: Arial, Verdana, Helvetica
+}
+.body
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+.select
+{
+    FONT-SIZE: 13px;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+SELECT
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Verdana, Arial
+}
+SELECT.csg
+{
+	WIDTH: 300px;
+}
+table.nulltable
+{
+	border-right: none;
+	border-top: none;
+	border-left: none;
+	border-bottom: none
+}
+table.nulltable td
+{
+	border-right: none;
+	border-top: none;
+	border-left: none;
+	border-bottom: none
+}
+table.nulltable th
+{
+	background-color: #ffffff;
+	border-right: none;
+	border-top: none;
+	border-left: groove white 1px;
+	border-bottom: none
+}
+table.thicktable
+{
+}
+table.thicktable td
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa
+}
+table.thicktable th
+{
+	background-color: #e7eff7;
+	text-align: left;
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa
+}
+table.thintable
+{
+}
+table.thintable td
+{
+	font-family: Bookman Old Style, Book Antiqua, Tahoma, Verdana;
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	padding: '0px 3px'
+}
+table.thintable th
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #e7eff7;
+	padding: '0px 5px'
+}
+table.thintable td.leftheader
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #ccccff
+}
+table.thintable th.leftheader
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #ccccff
+}
+table.thintable td.filled
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #99ccee
+}
+table.thintable td.relay1
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #f9ebc1
+}
+table.thintable td.relay2
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #e9f8cd
+}
+table.thintable td.relay3
+{
+	border-left-color: #D9e3fa;
+	border-bottom-color: #D9e3fa;
+	border-top-color: #D9e3fa;
+	border-right-color: #D9e3fa;
+	background-color: #cdf0f8
+}
+.onScrHelp
+{
+    FONT-SIZE: 11px;
+    COLOR: #5679cb;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.onScrHelp P
+{
+    FONT-SIZE: 11px;
+    COLOR: #5679cb;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+td.alert
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #ff0000;
+	font-family: arial, helvetica, sans-serif
+}
+div.alert
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #ff0000;
+	font-family: arial, helvetica, sans-serif
+}
+A.PLPLAN
+{
+    FONT-SIZE: 13px;
+    COLOR: blue;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    TEXT-DECORATION: none
+}
+.FolderLink
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px; font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none
+}
+#tooltip
+{
+	background: white;
+	font: menu;
+	border: 1px solid black;
+	margin: 0px 0px;
+	padding: 3px 5px;
+	position: absolute;
+	visibility: hidden;
+}
+table.schedtable{
+}
+table.schedtable th.SchedHeader
+{
+	background-color: #BFDEFD;
+}
+table.schedtable th.SchedHeader2
+{
+	background-color: #E7F3FF;
+}
+table.schedtable td.ViewWeekSched
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+	background-color: #C7E4FE;
+}
+table.schedtable td.SchedEmptyCell
+{
+	background-color: white;
+}
+table.schedtable td
+{
+	background-color: #CFF9FB;
+}
+table.schedtable td.SchedVocationDay
+{
+	background-color: #FDF1F1;
+}
+table.schedtable th.SchedEvents
+{
+	background-color: #D4F5FE;
+}
+table.schedtable td.leftheader
+{
+	background-color: #C7DCFE
+}
+table.schedtable td.filled
+{
+	background-color: #B5EBFD
+}
+table.schedtable td.SchedVocDayBold
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+	background-color: #FDF1F1;
+}
+table.schedtable td.SchedDayBold
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+	background-color: #CFF9FB;
+}
+table.schedtable td.relay1
+{
+	background-color: #f9ebc1
+}
+table.schedtable td.relay2
+{
+	background-color: #e9f8cd
+}
+table.schedtable td.relay3
+{
+	background-color: #cdf0f8
+}
+a.SchedSchoolEvent
+{
+	color: #3F68C2
+}
+a.SchedClassEvent
+{
+	color: #1E86B7
+}
+a.SchedHolidays
+{
+	color: #DD0101
+}
+a.SchedVocations
+{
+	color: #DD0101
+}
+a.SchedDayNumb
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+	color: blue;
+}
+a.SchedVocDayNumb
+{
+	font-weight: bold;
+	font-size: 13px;
+	font-family: verdana, arial, helvetica;
+	color: red;
+}

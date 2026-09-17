@@ -1,0 +1,135 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="header"></h4>
+			</div>
+			<div class="bootstrap-dialog-close-button">
+				<button class="close" ng-click="cancel()">&times;</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<span class="content-page-preloader" id="preloader" ng-hide="state.viewReady"><span>Пожалуйста подождите...</span></span>
+
+		<form role="form" name="dishForm" class="form form-xs ng-scope">
+			<!--Поля формы-->
+
+			<fieldset>
+				<legend>Общая информация</legend>
+				<div class="row form-group" ng-class="{'has-error': dishForm.name.$invalid && (!dishForm.name.$pristine || dishForm.$displayErrors)}">
+					<label for="dish-name" class="control-label col-md-4 col-lg-3 col-sm-4">Наименование блюда</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input class="form-control" id="dish-name" name="name" ng-model="data.dish.item.name" maxlength="200" ng-change="onChange()" required="required" type="text">
+						<p ng-show="dishForm.name.$invalid && (!dishForm.name.$pristine || dishForm.$displayErrors)" class="help-block">Это поле требуется заполнить.</p>
+					</div>
+				</div>
+				<div class="row form-group"ng-class="{'has-error': dishForm.caloric.$invalid && (!dishForm.caloric.$pristine || dishForm.$displayErrors)}">
+					<label for="caloric-value" class="control-label col-md-4 col-lg-3 col-sm-4">Калорийность, ккал</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input class="form-control" id="caloric-value" name="caloric" ng-model="data.dish.item.caloricValue" maxlength="200" ng-change="onChange()" ng-min="0" ng-max="10000" type="number">
+						<p ng-show="dishForm.caloric.$invalid && (!dishForm.caloric.$pristine || dishForm.$displayErrors)" class="help-block">Только числовые значения от 0 до 10000</p>
+					</div>
+				</div>
+				<div class="row form-group"ng-class="{'has-error': dishForm.proteins.$invalid && (!dishForm.proteins.$pristine || dishForm.$displayErrors)}">
+					<label for="proteins" class="control-label col-md-4 col-lg-3 col-sm-4">Белки, г.</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input class="form-control" id="proteins" name="proteins" ng-model="data.dish.item.proteins" maxlength="200"  ng-change="onChange()" ng-min="0" ng-max="10000" type="number">
+						<p ng-show="dishForm.proteins.$invalid && (!dishForm.proteins.$pristine || dishForm.$displayErrors)" class="help-block">Только числовые значения от 0 до 10000</p>
+					</div>
+				</div>
+				<div class="row form-group"ng-class="{'has-error': dishForm.fats.$invalid && (!dishForm.fats.$pristine || dishForm.$displayErrors)}">
+					<label for="fats" class="control-label col-md-4 col-lg-3 col-sm-4">Жиры, г.</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input class="form-control" id="fats" name="fats" ng-model="data.dish.item.fats" maxlength="200" ng-change="onChange()" ng-min="0" ng-max="10000" type="number">
+						<p ng-show="dishForm.fats.$invalid && (!dishForm.fats.$pristine || dishForm.$displayErrors)" class="help-block">Только числовые значения от 0 до 10000</p>
+					</div>
+				</div>
+				<div class="row form-group"ng-class="{'has-error': dishForm.carbohydrate.$invalid && (!dishForm.carbohydrate.$pristine || dishForm.$displayErrors)}">
+					<label for="carbohydrate" class="control-label col-md-4 col-lg-3 col-sm-4">Углеводы г.</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input class="form-control" id="carbohydrate" name="carbohydrate" ng-model="data.dish.item.carbohydrate" maxlength="200"  ng-change="onChange()" ng-min="0" ng-max="10000" type="number">
+						<p ng-show="dishForm.carbohydrate.$invalid && (!dishForm.carbohydrate.$pristine || dishForm.$displayErrors)" class="help-block">Только числовые значения от 0 до 10000</p>
+					</div>
+				</div>
+				<div class="row form-group"ng-class="{'has-error': dishForm.vitamin.$invalid && (!dishForm.vitamin.$pristine || dishForm.$displayErrors)}">
+					<label for="vitamin-c" class="control-label col-md-4 col-lg-3 col-sm-4">Витамин C, мг.</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input class="form-control" id="vitamin-c" name="vitamin" ng-model="data.dish.item.vitaminC" maxlength="200"  ng-change="onChange()" ng-min="0" ng-max="10000" type="number">
+						<p ng-show="dishForm.vitamin.$invalid && (!dishForm.vitamin.$pristine || dishForm.$displayErrors)" class="help-block">Только числовые значения от 0 до 10000</p>
+					</div>
+				</div>
+				<div class="row form-group">
+					<label for="dish-number" class="control-label col-md-4 col-lg-3 col-sm-4">Номер рецептуры</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input class="form-control" id="dish-number" ng-model="data.dish.item.recipeNumber" maxlength="200" ng-change="onChange()"  type="text">
+					</div>
+				</div>
+				<div class="row form-group">
+					<label for="recipe-text" class="control-label col-md-4 col-lg-3 col-sm-4">Рецепт</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<textarea class="form-control" id="recipe-text" ng-model="data.dish.item.recipeText" maxlength="4000" ng-change="onChange()" style="resize:none"></textarea>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+
+		<form role="form" name="productsForm" class="form form-sm" ng-if="mode.edit">
+			<fieldset>
+				<legend>Состав блюда</legend>
+				<div class="buttons-panel">
+
+					<button type="button" title="Добавить продукт" class="btn btn-info" ng-click="addProduct()">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>{{language.Generic.Buttons.kAdd}}</span>
+					</button>
+
+					<button type="button" class="btn btn-info" ng-click="editProduct(data.selection.selected)" ng-disabled="!data.selection.selected">
+						<span class="glyphicon glyphicon-pencil"></span>
+						<span>{{language.Generic.Buttons.kEdit}}</span>
+					</button>
+
+					<button type="button" class="btn btn-info" ng-click="removeProduct(data.selection.selected)" ng-disabled="!data.selection.selected">
+						<span class="glyphicon glyphicon-minus-sign"></span>
+						<span>{{language.Generic.Buttons.kRemove}}</span>
+					</button>
+
+				</div>
+
+				<div class="alert alert-info" role="alert" ng-if="!data.dish.item.contents || !data.dish.item.contents.length">
+					Состав блюда пуст
+				</div>
+
+				<table class="table table-bright table-xs table-selectable" ng-if="data.dish.item.contents && data.dish.item.contents.length">
+					<tr>
+						<th>Продукт</th>
+						<th>Вес, г.</th>
+					</tr>
+					<tr ng-repeat="content in data.dish.item.contents" ng-class="{'selected': data.selection.isSelected(content)}" ng-click="data.selection.select(content)">
+						<td>{{content.product.name}}</td>
+						<td>{{content.weight}}</td>
+					</tr>
+				</table>
+
+			</fieldset>
+		</form>
+
+
+	</div>
+	<div class="modal-footer" ng-show="state.viewReady">
+		<button class="btn btn-primary ng-binding" ng-if="mode.edit" ng-click="dishForm.$displayErrors=true; save(dishForm.$valid, data.dish.item)" ng-disabled="!state.contentWasChanged">
+			Сохранить
+		</button>
+
+		<button class="btn btn-primary ng-binding" ng-if="mode.create" ng-click="dishForm.$displayErrors=true; save(dishForm.$valid)">
+			Добавить
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			Закрыть
+		</button>
+	</div>
+</div>

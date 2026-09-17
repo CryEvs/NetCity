@@ -1,0 +1,82 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/stat-forms/css/stat-form.min.css"/>
+
+<div class="buttons-filters-panel form-horizontal">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left"></div>
+				<div class="buttons-panel-right">
+
+					<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()" ng-if="$ctrl.showButtonsInTitle() && !$ctrl.pageInfo.readOnly && !$ctrl.formClosed">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+
+					<button title="{{$ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="$ctrl.reset()" ng-if="$ctrl.showButtonsInTitle() && !$ctrl.pageInfo.readOnly && !$ctrl.formClosed">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+					</button>
+
+					<button title="{{$ctrl.language.Generic.Grade.kClean}}" type="button" class="btn btn-warning" ng-click="$ctrl.clean()" ng-if="$ctrl.showButtonsInTitle() && !$ctrl.pageInfo.readOnly && !$ctrl.formClosed">
+						<span class="glyphicon glyphicon-erase"></span>
+						<span>{{$ctrl.language.Generic.Grade.kClean}}</span>
+					</button>
+
+					<button title="Импорт" type="button" class="btn btn-default" ng-click="$ctrl.import()" ng-if="$ctrl.page.id === 1 && !$ctrl.pageInfo.readOnly && !$ctrl.formClosed">
+						<span class="glyphicon glyphicon-import"></span>
+						<span>Импорт</span>
+					</button>
+					
+					<button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="$ctrl.export()" ng-if="$ctrl.page.id === 1">
+						<span class="glyphicon glyphicon-export"></span> 
+						<span>Экспорт в Excel</span>
+					</button>
+
+					<button title="Для печати" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+						<span class="glyphicon glyphicon-print"></span>
+						<span>На печать</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="filters-panel col-md-offset-3 col-md-6">
+			<div class="form-group" ng-if="$ctrl.page.id === 1">
+				<label class="control-label col-md-4">Управление</label>
+				<div class="col-md-8">
+					<select class="form-control" name="em" ng-if="$ctrl.data.childEms && $ctrl.data.childEms.length > 1" ng-change="$ctrl.changeEm()" ng-model="$ctrl.emId" ng-options="em.id as em.name for em in $ctrl.data.childEms"></select>
+					<input type="text" class="form-control" name="em" ng-if="$ctrl.data.childEms && $ctrl.data.childEms.length === 1" ng-model="$ctrl.data.currentEm.name" disabled="disabled"></select>
+				</div>
+			</div>
+			<div class="form-group" ng-if="$ctrl.page.id === 1">
+				<label class="control-label col-md-4">Учебный год</label>
+				<div class="col-md-8">
+					<select class="form-control" name="year" ng-change="$ctrl.changeYear()" ng-model="$ctrl.globalYearId" ng-options="year.id as year.name for year in $ctrl.data.years"></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">Раздел</label>
+				<div class="col-md-8">
+					<select class="form-control" name="page" ng-change="$ctrl.changePage()" ng-model="$ctrl.page" ng-options="page as page.name for page in $ctrl.pageList"></select>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<hr style="box-shadow: inset 0 0 5px 5px rgba(0,0,0,.1); height: 5px;">
+
+<div class="stat-form-wrapper">
+	<form class="form form-xs">
+		<div ng-repeat="section in $ctrl.sections" class="form-group">
+			<!-- <form-section section="section" school-data="$ctrl.schoolData"></form-section> -->
+			<div ns-form-section section = "section" school-data = "$ctrl.schoolData"></div>
+		</div>
+	</form>
+	
+</div>
+
+<hr style="box-shadow: inset 0 0 5px 5px rgba(0,0,0,.1); height: 5px;">

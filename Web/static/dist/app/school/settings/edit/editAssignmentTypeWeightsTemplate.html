@@ -1,0 +1,45 @@
+
+<div>
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<div class="table-responsive">
+				<div style="max-height: 400px; overflow-y: auto">
+					<form name="weightsForm">
+						<table class="table table-bright-hover table-xs">
+							<tr>
+								<th>{{language.Generic.Assignment.kATAssignmentType}}</th>
+								<th>{{language.Generic.Assignment.kDefaultWeight}}</th>
+							</tr>
+							<tr ng-repeat="type in data.weights">
+								<td><label class="control-label">{{type.name}}</label></td>
+								<td ng-class="{'has-error': weightsForm.weight{{type.id}}.$invalid && (!weightsForm.weight{{type.id}}.$pristine)}">
+									<input track-changes name="{{'weight' + type.id}}" type="number" ng-model="type.weight" ng-min="0" yr-integer ng-max="100" min="0" max="100" required="required" ng-pattern="/^(?!00)[0-9]{1,3}$/">
+									<p ng-show="weightsForm.weight{{type.id}}.$invalid && (!weightsForm.weight{{type.id}}.$pristine)" class="help-block">{{messages.from1Before100}}</p>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="save(weightsForm.$valid)">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

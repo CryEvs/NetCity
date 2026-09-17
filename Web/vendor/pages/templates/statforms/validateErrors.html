@@ -1,0 +1,23 @@
+﻿<div class="alert alert-warning">
+	{{language.Generic.Import.kImportFGSNWarn}}
+</div>
+<div class="table-responsive" style="max-height: 600px;">
+	<table class="table table-bordered table-xs table-thin">
+		<tr>
+			<th>Раздел</th>
+			<th>№ строки</th>
+			<th>№ столбца</th>
+			<th>Текущее значение</th>
+			<th>Ошибка</th>
+		</tr>
+		{{#each errors}}
+		<tr>
+			<td>{{sheetName}}</td>
+			<td>{{rowNumber}}</td>
+			<td>{{colNumber}}</td>
+			<td>{{currentValue}}</td>
+			<td>{{message}}</td>
+		</tr>
+		{{/each}}
+	</table>
+</div>

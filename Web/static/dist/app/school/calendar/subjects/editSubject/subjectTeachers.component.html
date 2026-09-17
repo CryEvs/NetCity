@@ -1,0 +1,16 @@
+<form name="TeacherList" method="post">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kEditSubjTeachers}}" type="button" class="btn btn-warning" ng-click="$ctrl.edit()">
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="alert alert-info" role="alert" ng-if="!$ctrl.subject.teachers || !$ctrl.subject.teachers.length">{{$ctrl.language.Generic.Common.kNo}}</div>
+	<select class="form-control" size="4" name="teacher" ng-if="$ctrl.subject.teachers && $ctrl.subject.teachers.length">
+		<option ng-repeat="teacher in $ctrl.subject.teachers">{{teacher.name}}</option>
+	</select>
+</form>

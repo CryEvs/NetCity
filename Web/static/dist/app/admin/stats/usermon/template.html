@@ -1,0 +1,62 @@
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="Обновить" type="button" class="btn btn-info" ng-click="load()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>Обновить</span>
+				</button>
+				<button title="Удалить" type="button" class="btn btn-danger" ng-click="delete(data.selection.selected)" ng-disabled="!data.selection.selected || !data.selection.selected.length">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>Удалить</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right">
+				<button title="Статистика посещений" type="button" class="btn inlineButton btn-default" ng-click="loginStats()">
+					<span>Статистика посещений</span>
+				</button>
+				<button title="Статистика SMS сообщений" type="button" class="btn inlineButton btn-default" ng-click="smsStats()">
+					<span>Статистика SMS сообщений</span>
+				</button>
+				<button title="Статистика ошибок" type="button" class="btn inlineButton btn-default" ng-click="errorsStats()">
+					<span>Статистика ошибок</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+
+		<table class="table table-xs table-bright table-bright-hover table-selectable table-thin">
+			<tr>
+				<th>№</th>
+				<th>{{language.Generic.Common.kEO}}</th>
+				<th>{{language.Generic.Common.kEMName}}</th>
+				<th>{{language.Generic.Common.kDisplayName}}</th>
+				<th>{{language.Generic.Common.kUserName}}</th>
+				<th>{{language.Generic.ServAdmin.kLoginTime}}</th>
+				<th>Время последней активности</th>
+				<th>Ip</th>
+				<th>{{language.Generic.Common.kRoles}}</th>
+			</tr>
+			<tr ng-if="state.dataReady && state.emptyData">
+				<td colspan="9" style="text-align: center">{{language.Generic.ServAdmin.kNoUsersInSystem}}</td>
+			</tr>
+			<tr ng-repeat="session in data.activeSessions" ng-class="{'selected': data.selection.isSelected(session)}" ng-click="data.selection.select(session)">
+				<td>{{$index + 1}}</td>
+				<td>{{session.eoName}}</td>
+				<td>{{session.eMs}}</td>
+				<td>{{session.nickName}}</td>
+				<td>{{session.loginName}}</td>
+				<td>{{session.loginTime | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+				<td>{{session.lastAccessTime | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+				<td>{{session.ip}}</td>
+				<td>{{session.roles}}</td>
+			</tr>
+		</table>
+
+	</div>
+</div>

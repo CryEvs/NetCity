@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Биология 10-11 классы. Цитология. Генетика. Селекция">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Биология 10-11 классы. Цитология. Генетика. Селекция" ID="1" Filename="ni_bio_10_11_cgs/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Строение клеток" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Строение клеток" 
+				Filename="sgo/ni_bio_10_11_cgs/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Органоиды клетки" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Органоиды клетки" 
+				Filename="sgo/ni_bio_10_11_cgs/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Химический состав клетки" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Химический состав клетки" 
+				Filename="sgo/ni_bio_10_11_cgs/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Биосинтез белка" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Биосинтез белка" 
+				Filename="sgo/ni_bio_10_11_cgs/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Фотосинтез" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Фотосинтез" 
+				Filename="sgo/ni_bio_10_11_cgs/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Формы размножения организмов" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Формы размножения организмов" 
+				Filename="sgo/ni_bio_10_11_cgs/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Образование клеток. Миоз. Мейтоз" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Образование клеток. Миоз. Мейтоз" 
+				Filename="sgo/ni_bio_10_11_cgs/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Генетика. Законы Г. Менделя" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Генетика. Законы Г. Менделя" 
+				Filename="sgo/ni_bio_10_11_cgs/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Генетика пола" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Генетика пола" 
+				Filename="sgo/ni_bio_10_11_cgs/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Изменчивость организмов" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Изменчивость организмов" 
+				Filename="sgo/ni_bio_10_11_cgs/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Происхождение культурных растений и домашних животных" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Происхождение культурных растений и домашних животных" 
+				Filename="sgo/ni_bio_10_11_cgs/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Селекция" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Селекция" 
+				Filename="sgo/ni_bio_10_11_cgs/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+</Project>

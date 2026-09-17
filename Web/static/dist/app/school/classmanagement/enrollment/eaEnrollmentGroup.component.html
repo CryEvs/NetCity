@@ -1,0 +1,42 @@
+
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+
+	<ns-form control-size="col-md-9" label-size="col-md-3" class="form-horizontal">
+
+		<ns-form-group title="{{$ctrl.language.Common.kClass}}">
+
+			<select class="form-control" name="CLASSID"
+				ng-options="class.name for class in $ctrl.sgEnrollmentInfo.classes"
+				ng-change="$ctrl.changeClasses()"
+				ng-model="$ctrl.class"
+				ng-if="!$ctrl.state.emptyClasses">
+			</select>
+			<span ng-if="$ctrl.state.emptyClasses" class="form-control form-control-title">
+				<span class="text">{{$ctrl.language.Filter.kNoClassesForFilter}}</span>
+			</span>
+
+		</ns-form-group>
+
+		<ns-form-group title="{{$ctrl.language.Common.kStudents}}">
+			
+			<div style="max-height: 300px; overflow-y: auto; overflow-x: auto;" ng-if="!$ctrl.state.emptyStudents">
+				<table class="table table-bordered table-xs table-hover table-striped">
+					<tr ng-repeat="student in $ctrl.students">
+						<td style="width: 1%;">
+							<input id="chk_st_{{student.id}}" track-changes type="checkbox" ng-checked="$ctrl.selected.isSelected(student)" ng-click="$ctrl.selected.select(student)" />
+						</td>
+						<td>
+							<label for="chk_st_{{student.id}}" class="light student_name">{{student.name}}</label>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<span ng-if="$ctrl.state.emptyStudents" class="form-control form-control-title">
+				<span class="text">{{$ctrl.language.Movement.kNoUsersForFilter}}</span>
+			</span>
+
+		</ns-form-group>
+
+	</ns-form>
+
+</ns-modal>

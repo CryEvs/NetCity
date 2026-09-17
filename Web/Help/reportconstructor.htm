@@ -1,0 +1,116 @@
+<html>
+<head>
+   <title>Создание нового отчёта</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Отчёты, создание нового отчёта с помощью конструктора,Конструктор отчётов, типы отчётов,Конструктор отчётов, статус отчёта,Конструктор отчётов, примеры отчётов, созданых с помощью конструктора">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?reportconstructor.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Создание нового отчёта
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Ктоможетиспользоватьконстру"></a>Для кого предназначен Конструктор отчетов</b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000">"</span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Конструктор отчетов" - это инструмент для создания запросов пользователей к базе данных. Предназначен для сотрудников школы с ролью <i>администратор системы</i>, а также в системе «<i>Сетевой Город. Образование</i>» - для<i> </i>сотрудников Управления образования, не обязательно близко знакомых с программированием, но имеющих начальные знания в области баз данных. Технология данного "Конструктора" уникальна и позволяет не привлекать сложное профессиональное ПО (которое потребовалось бы приобретать отдельно), а строить запросы и отчёты только из Web-интерфейса системы "Сетевой Город".
+<br>
+Однако следует помнить, что <b>работоспособность и эффективность созданных отчётов зависит от правильной связи объектов между собой</b>. Для этого важно изучить структуру отношений между объектами «Конструктора отчётов», которая изложена в отдельном документе под названием <b>"Руководство по Конструктору отчётов"</b>.
+<br>
+
+<br>
+Чтобы быстро научиться создавать свои отчеты с помощью "Конструктора", можно воспользоваться следующими способами:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="40"></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">а) посмотреть наглядные примеры отчётов, приведенные в отдельном документе "Руководство по Конструктору отчетов";
+&nbsp;<br>
+</span></span></span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="40"></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">         б) взять готовый предустановленный отчет на экране <b><a href=additionalreports.htm#Дополнительныеотчеты>Дополнительные отчеты</a></b>, сделать его копию и разобраться, как он устроен.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Типыотчетов"></a>Типы отчётов</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Отчеты, созданные с помощью конструктора отчетов, делятся на два типа: <b>внутришкольные</b> (или <b>Отчеты ОО</b>) и <b>общесистемные</b>. Внутришкольные отчеты - это отчеты по данным одной школы, а общесистемные - по данным нескольких школ.<b> Внутришкольные </b>отчеты доступны для всех сотрудников школы на экране <b><a href=additionalreports.htm#Дополнительныеотчеты>Дополнительные отчеты</a></b> после их опубликования. <b>Общесистемные </b>и<b> Административные </b>отчеты введены специально для пользователей с ролью «У<i>правление образования»</i> в системе <i>«Сетевой Город» </i>и будут видны только им.
+<br>
+<b>Административные</b> &#150; это отчеты для межведомственных взаимодействий (напр., для доступа социальных служб города, ИДН и др. ведомств).
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Созданиеновогоотчета"></a>Создание нового отчёта</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Чтобы создать новый отчет или отредактировать уже опубликованный, у вас должно быть право доступа <b>Использовать конструктор отчетов</b>. По умолчанию, таким правом обладает пользователь с ролью <i>администратора системы</i>. Процесс создания отчета состоит из 9 шагов, последним из которых является тестирование созданного отчета и его публикация. Чтобы приступить к созданию нового отчета нажмите кнопку <b>Создать</b> и вы окажетесь на <b><a href=reportbuildwizardstep1.htm#Наименованиеитипотчета>Шаге 1 - Наименование отчета</a></b>.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Группы отчётов
+<br>
+</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">В системе отчеты можно разделять по смыслу - группировать их (например, можно создать группы "Отчеты для секретаря", "Отчеты РОНО" и др.). Чтобы добавить новую группу, нужно нажать кнопку <b>Группы отчетов</b>. После добавления группы на <b><a href=reportbuildwizardstep1.htm#Наименованиеитипотчета>Шаге 1 - Наименование отчета</a></b> для вашего отчёта можно выбрать нужную группу.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Статусотчета"></a>Статус отчёта</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Отчеты, созданные с помощью конструктора отчетов, могут иметь один из трех статусов:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></b></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>Незаконченные (Нез.)</b>
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>Редактируемые (Ред.)</b>
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>Опубликованные (Опуб.)</b>
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Если все девять шагов конструктора еще не пройдены, то отчет имеет статус <b>незаконченный</b> и <b>редактируемый</b>. После того, как отчет готов, последний шаг, после прохождения которого он будет доступен для сотрудников на экране <b>Дополнительные отчеты</b>, - это публикация. Такой отчет получает статус <b>опубликованный</b>. Опубликованный отчет может быть впоследствии отредактирован. В этом случае, на время редактирования (до очередной публикации) отчет получает статус <b>редактируемый</b> (но не <b>незаконченный</b>).
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Предустановленные отчёты</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Статус "Предустановленные" имеют отчёты, также созданные при помощи конструктора отчётов, но введённые в систему при её установке. Эти отчёты нельзя редактировать, в отличие от отчётов, созданных пользователями. Однако можно создать копию предустановленного отчёта и изменить эту копию.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Внутренние отчёты</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Статус отчета <b>все внутренние</b> объединяет отчёты всех трёх видов, созданных пользователями, либо импортированных при помощи кнопки <b>Импорт</b>, либо добавленных Управлением образования. Этот статус назван так потому, что эти отчёты находятся <i>внутри</i> своей области видимости. Для пользователя ОО этой областью видимости является его учебное заведение, а для пользователя с ролью <i>Управление образования</i> (в системе «<i>Сетевой Город</i>») &#150; это, соответственно, все школы, подчинённые этому Управлению образования.
+<br>
+
+<br>
+Для обмена отчетами, созданными при помощи Конструктора, с другими школами - на экране <b>Конструктор отчётов</b> предусмотрена кнопка <b>Импорт</b>.
+<br>
+
+<br>
+</span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('7.3',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('7.3.2',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subCols": [ 4, 5, 6, 7 ],
+			"rows": [ 78, 79 ],
+			"type": "sum"
+
+		},
+		{
+			"col": 3,
+			"subCols": [ 8 ],
+			"rows": [ 78, 79 ],
+			"type": "include"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 79,
+			"subRows": [ 80, 81 ],
+			"cols": [ 3, 4, 5, 6, 7, 8 ],
+			"type": "include"
+		},
+		{
+			"row": 78,
+			"subRows": [ 79 ],
+			"cols": [ 3, 4, 5, 6, 7, 8 ],
+			"type": "include"
+		},
+		{
+			"row": 80,
+			"subRows": [ 82 ],
+			"cols": [ 3, 4, 5, 6, 7, 8 ],
+			"type": "include"
+		}
+	]
+}

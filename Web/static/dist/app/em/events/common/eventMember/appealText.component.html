@@ -1,0 +1,24 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">		
+	<form role="form" name="$ctrl.appealForm" class="form form-horizontal form-sm">
+		<fieldset>
+			<div class="col-md-12 col-lg-12 col-sm-12">
+				<div class="form-group" ng-class="{'has-error': $ctrl.appealForm.taskNumbers.$invalid && (!$ctrl.appealForm.taskNumbers.$pristine || $ctrl.appealForm.$displayErrors)}">
+					<label for="task-numbers" class="control-label">Номера заданий</label>
+					<div>
+						<input track-changes type="text" id="task-numbers" name="taskNumbers" class="form-control" ng-model="$ctrl.taskNumbers"
+							required maxlength="100">
+						<p ng-show="$ctrl.appealForm.taskNumbers.$invalid && (!$ctrl.appealForm.taskNumbers.$pristine || $ctrl.appealForm.$displayErrors)"
+							class="help-block">{{$ctrl.language.Generic.Messages.kRequiredField}}</p>
+					</div>
+				</div>
+				<div class="form-group" ng-class="{'has-error': $ctrl.appealForm.appeal.$invalid && (!$ctrl.appealForm.appeal.$pristine || $ctrl.appealForm.$displayErrors)}">
+					<label for="appeal" class="control-label">Аргументы о несогласии к указанным номерам заданий</label>
+					<textarea maxlength="1000" track-changes required class="form-control" rows="7" cols="50" wrap="soft" name="appeal" id="appeal" ng-model="$ctrl.appealText"></textarea>
+					<p ng-if="$ctrl.appealForm.appeal.$invalid && (!$ctrl.appealForm.appeal.$pristine || $ctrl.appealForm.$displayErrors)" class="help-block">
+						{{$ctrl.language.Generic.Messages.kRequiredField}}
+					</p>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</ns-modal>

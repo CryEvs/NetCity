@@ -1,0 +1,40 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+
+	<table class="table table-xs table-bright">
+		<tr>
+			<th>Дата документа</th>
+			<th>Организация</th>
+			<th></th>
+		</tr>
+
+		<th colspan="4" ng-if="$ctrl.commonEducation.length">Основное образование</th>
+
+		<tr ng-repeat="movement in $ctrl.commonEducation">
+			<td>{{movement.docDate | nsDate}}</td>
+			<td>{{movement.eoName}}</td>
+			<td>
+				<span ng-if="movement.classFrom && movement.classTo">перевод</span>
+				<span ng-if="!movement.classFrom && movement.classTo">зачисление в </span>
+				<span ng-if="movement.classFrom && !movement.classTo">выбытие из </span>
+				<span ng-if="movement.classFrom">"{{movement.classFrom.name}}"</span>
+				<span ng-if="movement.classFrom && movement.classTo"> => </span>
+				<span ng-if="movement.classTo">"{{movement.classTo.name}}"</span>
+			</td>
+		</tr>
+
+		<th colspan="4" ng-if="$ctrl.addEducation.length">Дополнительное образование</th>
+
+		<tr ng-repeat="movement in $ctrl.addEducation">
+			<td>{{movement.docDate | nsDate}}</td>
+			<td>{{movement.eoName}}</td>
+			<td>
+				<span ng-if="movement.classFrom && movement.classTo">перевод</span>
+				<span ng-if="!movement.classFrom && movement.classTo">зачисление в </span>
+				<span ng-if="movement.classFrom && !movement.classTo">выбытие из </span>
+				<span ng-if="movement.classFrom">"{{movement.classFrom.name}}"</span>
+				<span ng-if="movement.classFrom && movement.classTo"> => </span>
+				<span ng-if="movement.classTo">"{{movement.classTo.name}}"</span>
+			</td>
+		</tr>
+	</table>
+</ns-modal>

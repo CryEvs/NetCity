@@ -1,0 +1,91 @@
+<style>
+	tr.has-error input {
+		border: 1px solid #a94442 !important;
+	}
+</style>
+
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div ng-show="$ctrl.isNotReadonly" class="buttons-panel-left">
+				<button ng-click="$ctrl.save()" title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+				<button ng-click="($ctrl.revertChanges())" title="{{$ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+				<button ng-click="$ctrl.addNewProfile()" title="{{$ctrl.language.Generic.Common.kAdd}}" type="button" class="btn btn-info">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+				<button ng-click="$ctrl.deleteProfile()" title="{{$ctrl.language.Generic.Common.kRemove}}" type="button" class="btn btn-danger">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right" ng-if="!$ctrl.wizard">
+				<button ng-show="$ctrl.hasUserRight_editSchoolTerm" ng-click="$ctrl.goTermTypes()" title="{{$ctrl.language.Generic.SetupSchoolCalendar.kTermTypes}}" type="button" class="btn btn-default">
+					<span>{{$ctrl.language.Generic.SetupSchoolCalendar.kTermTypes}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+
+		<div ng-if="!$ctrl.wizard" ng-show="$ctrl.withTermTypeNotDefined && $ctrl.hasUserRight_editSchoolTerm" class="alert alert-warning" role="alert">
+			{{$ctrl.language.Generic.Common.kNoTermsInYear}}
+			<br>{{$ctrl.language.Generic.Common.kDefineTermsTypes_1}}
+			<a style="cursor: pointer;" ng-click="$ctrl.goTermTypes()">{{$ctrl.language.Generic.SetupSchoolCalendar.kTermTypes}}</a> {{$ctrl.language.Generic.Common.kDefineTermsTypes_2}}
+		</div>
+
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th rowspan="2" class="col-md-2">{{$ctrl.language.Common.kProfile}}</th>
+					<th colspan="{{$ctrl.maxGrade}}">{{$ctrl.language.SetupSchoolCalendar.kGradeset}}</th>
+					<th ng-bind-html="$ctrl.language.Generic.Common.kDeletingMark" ng-show="$ctrl.isNotReadonly" rowspan="2">
+					</th>
+				</tr>
+				<tr>
+					<th ng-repeat="grade in $ctrl.grades">{{grade.name}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="profile in $ctrl.profileViews" ng-class="{'has-error': profile.isNameEmpty || profile.isNameNonUnique || profile.isGradeListEmpty}">
+					<!-- название профиля -->
+					<td>
+						<input track-changes type="text" ng-change="profile.changeName(gradeView)" ng-model=profile.name ng-value=profile.name ng-disabled="!$ctrl.isNotReadonly" size="35" maxlength="50">
+						<p ng-show="profile.isNameEmpty" class="help-block">
+							{{$ctrl.language.Generic.SetupSchoolCalendar.kProfileNameCantBeEmpty}}
+						</p>
+						<p ng-show="profile.isNameNonUnique" class="help-block">
+							{{$ctrl.language.Generic.SetupSchoolCalendar.kProfileMustHaveUniqueName}}
+						</p>
+						<p ng-show="profile.isGradeListEmpty" class="help-block">
+							{{$ctrl.language.Generic.SetupSchoolCalendar.kProfileMustIncludeGrade}}
+						</p>
+					</td>
+
+					<!-- грейды профиля -->
+					<td ng-repeat="gradeView in profile.gradesView" class="text-center">
+						<b ng-show="gradeView.isUsing">X</b>
+
+						<input track-changes ng-model="gradeView.checked" ng-change="profile.changeGrades(gradeView)" ng-show="!gradeView.isUsing" type="checkbox" ng-disabled="!$ctrl.isNotReadonly" ng-checked="gradeView.checked">
+					</td>
+
+					<td ng-show="$ctrl.isNotReadonly" class="text-center">
+						<span ng-show="profile.isUsing">{{$ctrl.language.Generic.SetupSchoolCalendar.kProfileUse}}</span>
+						<input track-changes ng-model="profile.isDelete" ng-show="!profile.isUsing" type="checkbox">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>

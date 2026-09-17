@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Математика. 5 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Математика. 5 класс" ID="1" Filename="ni_math_5/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Натуральные числа" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Натуральные числа" 
+				Filename="sgo/ni_math_5/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Таблицы разрядов и классов. Сумма разрядных слагаемых" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Таблицы разрядов и классов. Сумма разрядных слагаемых" 
+				Filename="sgo/ni_math_5/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правило сравнения натуральных чисел" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правило сравнения натуральных чисел" 
+				Filename="sgo/ni_math_5/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Таблица квадратов двузначных чисел" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Таблица квадратов двузначных чисел" 
+				Filename="sgo/ni_math_5/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Округление натуральных чисел" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Округление натуральных чисел" 
+				Filename="sgo/ni_math_5/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Арифметические действия" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Арифметические действия" 
+				Filename="sgo/ni_math_5/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Законы арифметических действий" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Законы арифметических действий" 
+				Filename="sgo/ni_math_5/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Шкалы и координаты" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Шкалы и координаты" 
+				Filename="sgo/ni_math_5/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Десятичные дроби. Правило сравнения дробей" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Десятичные дроби. Правило сравнения дробей" 
+				Filename="sgo/ni_math_5/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Сложение, вычитание и умножение десятичных дробей" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Сложение, вычитание и умножение десятичных дробей" 
+				Filename="sgo/ni_math_5/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Деление десятичных дробей" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Деление десятичных дробей" 
+				Filename="sgo/ni_math_5/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правило округления десятичных дробей" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правило округления десятичных дробей" 
+				Filename="sgo/ni_math_5/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Геометрические фигуры: точки, прямые, отрезки, ломаные, многоугольники" ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Геометрические фигуры: точки, прямые, отрезки, ломаные, многоугольники" 
+				Filename="sgo/ni_math_5/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Латинский и греческий алфавит" ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Латинский и греческий алфавит" 
+				Filename="sgo/ni_math_5/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Измерение углов. Виды углов" ID="16">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Измерение углов. Виды углов" 
+				Filename="sgo/ni_math_5/15/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Единицы измерения длины, площади и объема" ID="17">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Единицы измерения длины, площади и объема" 
+				Filename="sgo/ni_math_5/16/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Единицы измерения массы, времени и скорости" ID="18">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Единицы измерения массы, времени и скорости" 
+				Filename="sgo/ni_math_5/17/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Формулы длин, площадей и объемов фигур" ID="19">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Формулы длин, площадей и объемов фигур" 
+				Filename="sgo/ni_math_5/18/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Решение уравнений с натуральными числами" ID="20">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Решение уравнений с натуральными числами" 
+				Filename="sgo/ni_math_5/19/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Решение задач на движение двух объектов" ID="21">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Решение задач на движение двух объектов" 
+				Filename="sgo/ni_math_5/20/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Решение задач на проценты" ID="22">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Решение задач на проценты" 
+				Filename="sgo/ni_math_5/21/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+	 
+</Project>

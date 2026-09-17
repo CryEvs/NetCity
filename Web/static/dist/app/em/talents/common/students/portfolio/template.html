@@ -1,0 +1,17 @@
+<div class="alert alert-info" role="alert" ng-show="state.emptyData">
+	Портфолио не создан
+</div>
+
+<div ng-hide="state.emptyData">
+	<hgroup>
+		<h3>Разделы</h3>
+	</hgroup>
+
+	<div class="alert alert-info" role="alert" ng-show="data.portfolio.groups.length == 0">
+		В портфолио не создано ни одного раздела
+	</div>
+	
+	<ul class="tree" ng-show="data.portfolio.groups.length > 0">
+		<li portfolio-group group="group" editurl="editurl" readonly="state.readonly" opendoc="openDoc" ng-repeat="group in data.portfolio.groups"></li>
+	</ul>
+</div>

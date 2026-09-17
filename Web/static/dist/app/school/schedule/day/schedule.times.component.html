@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="col-md-8">
+		<table class="schedule-table table table-bordered table-condensed print-block">
+			<tr>
+				<th>{{$ctrl.language.Generic.Calendar.kTimeofLesson}}</th>
+				<th>{{$ctrl.language.Calendar.kLessonsEvents}}</th>
+			</tr>
+		
+			<tr ng-repeat="row in $ctrl.scheduleRows">
+				<th class="leftheader">{{row.startTime | nsTimeShort}} - {{row.endTime | nsTimeShort}}</th>
+				<td ng-class="{'extraActivity': row.extraActivity}">
+					<span ng-if="!row.extraActivity">{{$ctrl.language.Calendar.kLesson}}</span><span ng-if="row.extraActivity">{{$ctrl.language.Generic.Curriculum.kClassMeeting}}</span>: <a href="javascript:void(0)" ng-click="$ctrl.editClassMeetings(row)" ng-if="$ctrl.data.canEditCalendar">{{row.subjectName}}, {{row.className}} {{row.roomName}}</a>
+					<span ng-if="!$ctrl.data.canEditCalendar">{{row.subjectName}}, {{row.className}} {{row.roomName}}</span>
+				</td>
+			</tr>
+
+			<tr ng-repeat="event in $ctrl.data.events">
+				<th class="leftheader">{{$ctrl.getEventDateTimes(event)}}</th>
+				<td class="{{$ctrl.eventsService.eventTypeInfos[event.eventType].cssClass}}">
+					{{$ctrl.eventsService.eventTypeInfos[event.eventType].eventTypeName}}: <a href="javascript:void(0)" ng-click="$ctrl.editEvent(event.id)" title="{{event.description}}" class="{{$ctrl.eventsService.eventTypeInfos[event.eventType].cssClass}}">{{event.name}}</a>
+				</td>
+			</tr>
+
+		</table>
+	</div>
+</div>

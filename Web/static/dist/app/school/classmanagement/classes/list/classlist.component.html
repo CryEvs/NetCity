@@ -1,0 +1,229 @@
+<style>
+	.without-students {
+		background-color: lightgray;
+	}
+
+	.table-bright tr.without-students td {
+		background-color: lightgray;
+	}
+
+	.table-bright-hover tr.without-students:hover td {
+		background-color: #f8f8f8;
+	}
+
+	.without-contingent {
+		background-color: #FEE6C5;
+	}
+	.table-bright tr.without-contingent td {
+		background-color: #FEE6C5;
+	}
+	.table-bright-hover tr.without-contingent:hover td {
+		background-color: #eee6fa;
+	}
+</style>
+
+<div ng-if="!$ctrl.wizard || $ctrl.isPreSchool || $ctrl.isAddSchool" ng-show="$ctrl.withTermTypeNotDefined" class="alert alert-warning ns-cloak" role="alert">
+	{{$ctrl.language.Generic.Common.kNoTermsInYear}}
+	<br>{{$ctrl.language.Generic.Common.kDefineTermsTypes_1}}
+	<a style="cursor: pointer;" ng-click="$ctrl.editTermTypes()">{{$ctrl.language.Generic.SetupSchoolCalendar.kTermTypes}}</a> {{$ctrl.language.Generic.Common.kDefineTermsTypes_2}}
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal" ng-class="{'single-row': $ctrl.isAddSchool}">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left" ng-if="!$ctrl.isAddSchool && !$ctrl.hasHanging">
+				<button title="{{$ctrl.language.ClassManagement.kAddClass}}" ng-if="$ctrl.hasComponents && !$ctrl.readOnly" type="button" class="btn btn-info" ng-click="$ctrl.add()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button title="{{$ctrl.language.Generic.ClassManagement.kDelClass}}" ng-if="!$ctrl.readOnly && $ctrl.classes && $ctrl.classes.length" ng-disabled="!($ctrl.selection.selected && !$ctrl.selection.item.using)" type="button" class="btn btn-danger" ng-click="$ctrl.delete()">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+
+				<button title="{{$ctrl.language.Generic.Common.kSubjects}}" ng-if="$ctrl.canView && $ctrl.classes && $ctrl.classes.length" ng-disabled="!($ctrl.selection.selected)" type="button" class="btn btn-default" ng-click="$ctrl.editClassSubjects()">
+					<span>{{$ctrl.language.Generic.Common.kSubjects}}</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right" ng-if="!$ctrl.wizard">
+				<button ng-if="$ctrl.canEditTermTypes" title="Типы учебных периодов" type="button" class="btn btn-default" ng-click="$ctrl.editTermTypes()">
+					<span>Типы учебных периодов</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Buttons.kRelays}}" ng-if="$ctrl.viewRelaysBtn()" type="button" class="btn btn-default" ng-click="$ctrl.setRelays()">
+					<span>{{$ctrl.language.Generic.Buttons.kRelays}}</span>
+				</button>
+				<button title="{{$ctrl.language.Calendar.kTitleRooms}}" ng-if="$ctrl.viewRoomsBtn()" type="button" class="btn btn-default" ng-click="$ctrl.editRooms()">
+					<span>{{$ctrl.language.Calendar.kTitleRooms}}</span>
+				</button>
+				<button title="Для печати" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+					<span class="glyphicon glyphicon-print"></span>
+					<span>На печать</span>
+				</button>
+				<button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="$ctrl.export()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>Экспорт в Excel</span>
+				</button>
+			</div>
+		</div>
+		<filter-panel class="filters-panel filters-panel-compact" ng-if="$ctrl.isAddSchool && $ctrl.filterPanelSettings && !$ctrl.hasHanging" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings">
+		</filter-panel>
+	</div>
+</div>
+
+<div ng-show="$ctrl.hasHanging" class="alert alert-warning ns-cloak" role="alert">
+	<span>{{$ctrl.language.Generic.ClassManagement.kNotAssignedTeachers}}</span>
+
+	<div ng-if="$ctrl.readOnly" ng-repeat="subject in $ctrl.hangingSubjects">
+		<span>{{subject.name}}</span>
+	</div>
+
+	<div ng-if="!$ctrl.readOnly" ng-repeat="subject in $ctrl.hangingSubjects">
+		<a style="cursor: pointer;" ng-click="$ctrl.addTeachers(subject.id)" title="{{$ctrl.language.ClassManagement.kAssignTeacher}}">
+			<span>{{subject.name}}</span>
+		</a>
+	</div>
+	<span ng-if="!$ctrl.readOnly">{{$ctrl.language.Generic.ClassManagement.kToDo}}</span>
+</div>
+
+<div class="row ns-cloak" ng-if="$ctrl.isAddSchool && !$ctrl.hasHanging">
+	<div class="col-md-12">
+		<div class="buttons-panel extra">
+			<div class="buttons-panel-left">
+				<button title="{{$ctrl.language.ClassManagement.kAddClass}}" type="button" ng-if="!$ctrl.notExistsAddPrograms() && !$ctrl.readOnly" class="btn btn-info" ng-click="$ctrl.add()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button title="{{$ctrl.language.Generic.ClassManagement.kDelClass}}" type="button" class="btn btn-danger" ng-click="$ctrl.delete()" ng-if="!$ctrl.readOnly && $ctrl.classes && $ctrl.classes.length" ng-disabled="!($ctrl.selection.selected && !$ctrl.selection.item.using)">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+
+				<button title="{{$ctrl.language.Generic.Common.kSubjects}}" ng-if="$ctrl.canView && $ctrl.classes && $ctrl.classes.length" ng-disabled="!$ctrl.selection.selected" type="button" class="btn btn-default" ng-click="$ctrl.editClassSubjects()">
+					<span>{{$ctrl.language.Generic.Common.kSubjects}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12" ng-if="$ctrl.classes && $ctrl.dataReady && ($ctrl.readOnly || !$ctrl.hasHanging)">
+
+		<div ng-if="$ctrl.hasUnbindedGroups() && !$ctrl.wizard">
+			<ns-panel panel-id="" class="info" title="" expanded="true">
+				<span>Внимание! Для корректной выгрузки данных по контингенту в ФСПЭО необходимо указание для всех групп помещения проведения занятий.</span><br>
+				<span>Список групп с неуказанным помещением:</span><br>
+
+				<div ng-repeat="group in $ctrl.unbindedGroups">
+					<a href="#" ng-click="$ctrl.edit(group)" title="$ctrl.language.Generic.Common.kChange">{{group.name}}</a>
+				</div>
+			</ns-panel>
+		</div>
+
+		<div class="alert alert-warning" style="white-space: pre-line" ng-if="!$ctrl.hasComponents">{{ 'language.ClassManagement.kAddClassesNoComponentError' | language }}</div>
+		<div class="alert alert-warning" style="white-space: pre-line" ng-if="$ctrl.isFuture">{{$ctrl.futureWarning}}</div>
+		<div ng-if="$ctrl.classes && !$ctrl.classes.length" class="alert alert-info">
+			{{ 'language.ClassManagement.kNoClasses' | language }}
+		</div>
+		<div ng-if="$ctrl.notExistsAddPrograms()" class="alert alert-warning" role="alert">
+			{{ 'language.Generic.ClassManagement.kDefineAddSchoolEducProgramsW' | language }}
+		</div>
+		<table class="table table-xs table-bright table-bright-hover print-block table-selectable" ng-class="{'table-thin': $ctrl.wizard}" ng-if="$ctrl.classes && $ctrl.classes.length">
+			<tr>
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}">{{ 'language.Common.kClass' | language }}</th>
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}" ng-if="$ctrl.drawProfiles()">{{ 'language.Common.kProfile' | language }}</th>
+
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}" ng-if="$ctrl.isAddSchool">{{ 'language.Generic.ClassManagement.kProgDirection' | language }}</th>
+
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}" ng-if="$ctrl.isPreSchool">{{ 'language.Generic.ClassManagement.kDOUGroupAgeCategory' | language }}</th>
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}" ng-if="$ctrl.isPreSchool">{{ 'language.Generic.ClassManagement.kDOUGroupAge' | language }}</th>
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}" ng-if="$ctrl.isPreSchool">{{ 'language.Generic.ClassManagement.kEducPrograms' | language }}</th>
+				<th rowspan="2" ng-if="$ctrl.isPreSchool && !$ctrl.wizard">{{ 'language.Generic.ClassManagement.kDOUGroupType' | language }}</th>
+
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}" ng-if="!$ctrl.isAddSchool">{{ 'language.ClassManagement.kClassType' | language }}</th>
+
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}" ng-if="$ctrl.isSchool">Учебный план</th>
+				<th rowspan="2" ng-if="$ctrl.isPreSchool && !$ctrl.wizard">{{ 'language.Generic.ClassManagement.kAddSpecialization' | language }}</th>
+				<th rowspan="2" ng-if="$ctrl.isPreSchool && !$ctrl.wizard">{{ 'language.Generic.ClassManagement.kStayRegime' | language }}</th>
+
+
+				<th colspan="3" ng-if="!$ctrl.isPreSchool || !$ctrl.wizard">{{ 'language.Common.kRoom' | language }}</th>
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}" ng-if="$ctrl.flags.enableStudentsDataQuality && (!$ctrl.isPreSchool || !$ctrl.wizard)">
+					Кол-во {{ 'language.Common.kStudents_r' | language }} на 20.09.{{$ctrl.appContext.currYear.slice(0, 4)}}
+				</th>
+
+				<th rowspan="2" ng-if="$ctrl.isPreSchool && !$ctrl.wizard">{{ 'language.Generic.ClassManagement.kSeatsForTransfer' | language }}</th>
+				<th rowspan="2" ng-if="$ctrl.isPreSchool && !$ctrl.wizard">{{ 'language.Generic.ClassManagement.kSeatsForShort' | language }}</th>
+
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}">{{ 'language.Common.kClassChief' | language }}</th>
+
+				<th ng-attr-rowspan="{{$ctrl.wizard ? 1 : 2}}" ng-if="$ctrl.isPreSchool">{{ 'language.Generic.ClassManagement.kDOUNoInformika' | language }}</th>
+			</tr>
+			<tr ng-if="!$ctrl.wizard">
+				<th>Название</th>
+				<th>
+					<span class="glyphicon glyphicon-user visible-sm visible-xs" title="Наполняемость"></span>
+					<span class="hidden-sm hidden-xs">{{ $ctrl.isPreSchool ? "Нормативная наполняемость" : "Максимальная наполняемость" }}</span>
+				</th>
+				<th>Корпус</th>
+			</tr>
+			<tr ng-repeat="class in $ctrl.classes" ng-class="{'without-students': !class.using, 'without-contingent': $ctrl.isPreSchool && $ctrl.noContingent(class), 'selected': $ctrl.selection.isSelected(class)}" ng-click="$ctrl.selection.select(class)">
+				<td>
+					<a href="javascript:void(0)" ng-if="!$ctrl.wizard && !$ctrl.readOnly" ng-click="$ctrl.edit(class);" title="Изменить">{{class.name}}</a>
+					<span ng-if="$ctrl.wizard || $ctrl.readOnly">{{class.name}}</span>
+				</td>
+				<td ng-if="$ctrl.drawProfiles()">
+					<span>{{$ctrl.classProfiles[class.id].name}}</span>
+				</td>
+
+				<td ng-if="$ctrl.isAddSchool">{{class.addProgram.name}}</td>
+
+				<td ng-if="$ctrl.isPreSchool">
+					<span>{{class.douGroupAgeCategory.name}}</span>
+				</td>
+
+				<td ng-if="$ctrl.isPreSchool">{{class.douGroupAge.name}}</td>
+				<td ng-if="$ctrl.isPreSchool">
+					<div ng-repeat="prog in class.educPrograms">{{prog.name}}</div>
+				</td>
+				<td ng-if="$ctrl.isPreSchool && !$ctrl.wizard">{{class.douGroupType.name}}</td>
+
+				<td ng-if="!$ctrl.isAddSchool">{{class.classType.name}}</td>
+
+				<td ng-if="$ctrl.isSchool"><span ng-if="!class.iup">Классический</span><span ng-if="class.iup">Индивидуальный</span></td>
+				<td ng-if="$ctrl.isPreSchool && !$ctrl.wizard">{{class.addSpecialization && class.addSpecialization.name}}</td>
+				<td ng-if="$ctrl.isPreSchool && !$ctrl.wizard">{{class.stayRegime.name}}</td>
+
+				<td ng-if="!$ctrl.isPreSchool || !$ctrl.wizard">{{class.room.roomname}}</td>
+				<td ng-if="!$ctrl.isPreSchool || !$ctrl.wizard">{{class.room.seats}}</td>
+				<td ng-if="!$ctrl.isPreSchool || !$ctrl.wizard">{{class.room.corpus}}</td>
+				<td ng-if="$ctrl.flags.enableStudentsDataQuality && (!$ctrl.isPreSchool || !$ctrl.wizard)">{{class.plannedOccupancy}}</td>
+
+				<td ng-if="$ctrl.isPreSchool && !$ctrl.wizard">{{class.seatsForTransfer}}</td>
+				<td ng-if="$ctrl.isPreSchool && !$ctrl.wizard">{{class.seatsForShort}}</td>
+
+				<td>
+					<span ng-repeat="chief in class.chiefs">{{chief.name}}<br></span>
+				</td>
+
+				<td ng-if="$ctrl.isPreSchool"><span ng-if="class.noInformika">Да</span></td>
+			</tr>
+		</table>
+		<div class="legend print-block">
+			<div ng-if="$ctrl.isPreSchool && $ctrl.hasNoContingent()">
+				<p>
+					<span class="legend-label without-contingent"></span>
+					<span class="legend-description"> — {{$ctrl.language.Generic.ClassManagement.kGroupNoContingent}}</span>
+				</p>
+			</div>
+			<div ng-if="$ctrl.hasNoStudents()">
+				<p>
+					<span class="legend-label without-students"></span>
+					<span class="legend-description"> — {{$ctrl.language.ClassManagement.kNoStudentsInClass}}</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

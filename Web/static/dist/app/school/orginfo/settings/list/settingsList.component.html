@@ -1,0 +1,175 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="{{ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="ctrl.save(ctrl.settingsForm.$valid)">
+					<span class="glyphicon glyphicon-floppy-save"></span> 
+					<span>{{ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+				<button title="{{ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="ctrl.load()">
+					<span class="glyphicon glyphicon-repeat"></span> 
+					<span>{{ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right"></div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<form name="ctrl.settingsForm">
+		<div class="col-md-6 col-lg-4" ng-show="ctrl.state.dataReady">
+
+			<ns-panel ng-if="ctrl.data.funcType != 1" panel-id="grade_scale" class="danger" title="{{ctrl.language.Generic.SchoolSettings.kMarksScale}}" expanded="true">
+				<div class="form-group" ng-class="{'has-error':ctrl.settingsForm.MaxMark.$invalid && (!ctrl.settingsForm.MaxMark.$pristine)}">
+					<label class="control-label ">
+						{{ctrl.language.Generic.SchoolSettings.kMaxMark}}
+					</label>
+					<div class="">
+						<input track-changes type="number" class="form-control " name="MaxMark" ng-size="5" ng-maxlength="3" ng-min="ctrl.data.schoolSettings.minMark+1" ng-max="100" required="required" ng-model="ctrl.data.schoolSettings.maxMark">
+						<p ng-show="ctrl.settingsForm.MaxMark.$invalid && (!ctrl.settingsForm.MaxMark.$pristine)" class="help-block">{{ctrl.language.Generic.SchoolSettings.kInputIntegerInRange}}: [{{ctrl.enabledMaxMark()}}; 100]</p>
+					</div>
+				</div>
+				<div class="form-group" ng-class="{'has-error':ctrl.settingsForm.MinMark.$invalid && (!ctrl.settingsForm.MinMark.$pristine)}">
+					<label class="control-label ">
+						{{ctrl.language.Generic.SchoolSettings.kMinMark}}
+					</label>
+					<div class="">
+						<input track-changes type="number" class="form-control " name="MinMark" ng-size="5" ng-maxlength="3"  ng-min="1" ng-max="ctrl.data.schoolSettings.maxMark ? ctrl.data.schoolSettings.maxMark-1 : 99" required="required" ng-model="ctrl.data.schoolSettings.minMark">
+						<p ng-show="ctrl.settingsForm.MinMark.$invalid && (!ctrl.settingsForm.MinMark.$pristine)" class="help-block">{{ctrl.language.Generic.SchoolSettings.kInputIntegerInRange}}: [1; {{ctrl.enabledMinMark()}}]</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label ">
+						{{ctrl.language.Generic.SchoolSettings.kMarksAveraging}}
+					</label>
+					<div ng-class="{'input-group': ctrl.data.schoolSettings.markAveraging=='Weight'}">
+						<select track-changes name="MarksAveraging" class="form-control" ng-model="ctrl.data.schoolSettings.markAveraging">
+							<option value="Arithmetical">{{ctrl.language.Generic.SchoolSettings.kMarksAveragingNormal}}</option>
+							<option value="Weight">{{ctrl.language.Generic.SchoolSettings.kMarksAveragingWeight}}</option>
+						</select>
+						<span class="input-group-btn">
+						<button ng-show="ctrl.data.schoolSettings.markAveraging=='Weight'" type="button" class="btn btn-primary" ng-click="ctrl.weights()">
+							<span>{{ctrl.language.Generic.SchoolSettings.kAssignmentTypeWeightsSetup}}</span>
+						</button>
+					</span>
+					</div>
+				</div>
+			</ns-panel>
+
+			<ns-panel ng-if="ctrl.eesPfdoIntegration && ctrl.data.funcType == 3" panel-id="educ-contract-blanks" class="warning" title="Бланк договора на обучение" expanded="true">
+				<educ-contract-blanks school-settings="ctrl.data.schoolSettings"></educ-contract-blanks>
+			</ns-panel>
+
+			<ns-panel  panel-id="sms" class="success" title="{{ctrl.language.Generic.SchoolSettings.kSMSSettings}}" expanded="true">
+				<div class="form-group">
+					<label class="control-label">
+						{{ctrl.language.Generic.SchoolSettings.kSMSGate}}
+					</label>
+					<div class="">
+						<select track-changes name="SMSGate" class="form-control" ng-model="ctrl.data.schoolSettings.smsGate">
+							<option value="EMail">{{ctrl.language.Generic.SchoolSettings.kSMSGateEmail}}</option>
+							<option value="Web">{{ctrl.language.Generic.SchoolSettings.kSMSGateWeb}}</option>
+						</select>
+					</div>
+				</div>
+			</ns-panel>
+
+			<ns-panel  panel-id="communicationEnvironment" class="default" ng-if="ctrl.moduleChats && ctrl.isSchool()" title="{{ctrl.language.Generic.SchoolSettings.kCommunicationEnvironmentSettings}}" expanded="true">
+				<div class="form-group" ng-if="ctrl.state.moduleChatsError">
+					<div class="alert alert-danger" role="alert">
+						{{ctrl.state.moduleChatsError}}
+					</div>
+				</div>
+				<div class="form-group" ng-if="!ctrl.state.moduleChatsError">
+					<label class="control-label ">
+						{{ctrl.language.Generic.SchoolSettings.kCommunityId}}
+					</label>
+					<div class="">
+						<input readonly track-changes type="text" class="form-control" name="CommutityId" ng-model="ctrl.data.vkGroupId">
+					</div>
+				</div>
+				<div class="form-group" ng-if="!ctrl.state.moduleChatsError">
+					<label class="control-label ">
+						{{ctrl.language.Generic.SchoolSettings.kCommunityToken}}
+					</label>
+					<div class="">
+						<input readonly track-changes type="text" class="form-control" name="CommutityToken" ng-model="ctrl.data.vkAccessToken">
+					</div>
+				</div>
+			</ns-panel>
+
+			<ns-panel ng-if="ctrl.data.funcType == 1" panel-id="others" class="default" title="{{ctrl.language.Generic.Reports.kOthers}}" expanded="true">
+				<div class="form-group">
+					<label class="control-label ">{{ctrl.language.Generic.SchoolSettings.kAdminEdit}}</label><div class="">
+						<select track-changes name="AdminEdit" class="form-control" ng-model="ctrl.data.schoolSettings.adminEdit">
+							<option value="AccessYes" selected="">{{ctrl.language.Generic.SchoolSettings.kAccessYes}}</option>
+							<option value="AccessNo">{{ctrl.language.Generic.SchoolSettings.kAccessNo}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group" ng-show="ctrl.data.windowsAuth">
+					<label class="control-label ">{{ctrl.language.Generic.SchoolSettings.kWinAuth}}</label><div class="">
+						<select track-changes name="WinAuth" class="form-control" ng-model="ctrl.data.schoolSettings.windowsAuth">
+							<option value="WinAuthYes">{{ctrl.language.Generic.SchoolSettings.kWinAuthYes}}</option>
+							<option value="WinAuthNo">{{ctrl.language.Generic.SchoolSettings.kWinAuthNo}}</option>
+						</select>
+					</div>
+				</div>
+			</ns-panel>
+		</div>
+
+		<div class="col-md-6 col-lg-4" ng-show="ctrl.state.dataReady">
+
+			<ns-panel ng-if="ctrl.data.funcType != 3" panel-id="grade_bounds" class="info" title="{{ctrl.language.SchoolSettings.kGrade_Bounds}}" expanded="true">
+				<div ng-class="{'has-error': ctrl.isIntersectedGradesRanges() || ctrl.isGradesRangesWrongOrder() || ctrl.emptySpaceBetweenRanges()}">
+
+					<div class="form-group" ng-class="{'has-error': ((ctrl.settingsForm.GradeJunior_Min.$invalid || ctrl.settingsForm.GradeJunior_Max.$invalid) && (!ctrl.settingsForm.GradeJunior_Max.$pristine || !ctrl.settingsForm.GradeJunior_Min.$pristine)) || (ctrl.data.schoolSettings.juniorStepGrade.end < ctrl.data.schoolSettings.juniorStepGrade.start)}">
+						<label class="control-label ">{{ctrl.language.SchoolSettings.kGrade_Junior}}</label>
+						<div>
+							<select track-changes name="GradeJunior_Min" class="form-control form-control-inline" ng-options="grade.id as grade.name for grade in ctrl.data.grades" required="required" ng-model="ctrl.data.schoolSettings.juniorStepGrade.start"></select>&nbsp;-&nbsp;
+							<select track-changes name="GradeJunior_Max" class="form-control form-control-inline" ng-options="grade.id as grade.name for grade in ctrl.data.grades" required="required" ng-model="ctrl.data.schoolSettings.juniorStepGrade.end"></select>&nbsp;{{ctrl.language.SchoolSettings.kClasses}}
+						</div>
+						<p ng-show="((ctrl.settingsForm.GradeJunior_Min.$invalid || ctrl.settingsForm.GradeJunior_Max.$invalid) && (!ctrl.settingsForm.GradeJunior_Max.$pristine || !ctrl.settingsForm.GradeJunior_Min.$pristine)) || (ctrl.data.schoolSettings.juniorStepGrade.end < ctrl.data.schoolSettings.juniorStepGrade.start)" class="help-block">{{ctrl.language.SchoolSettings.kInvalidGradeBounds}}</p>
+					</div>
+					<div class="form-group" ng-class="{'has-error': ((ctrl.settingsForm.GradeMiddle_Min.$invalid || ctrl.settingsForm.GradeMiddle_Max.$invalid) && (!ctrl.settingsForm.GradeMiddle_Max.$pristine || !ctrl.settingsForm.GradeMiddle_Min.$pristine)) || (ctrl.data.schoolSettings.middleStepGrade.end < ctrl.data.schoolSettings.middleStepGrade.start)}">
+						<label class="control-label ">{{ctrl.language.SchoolSettings.kGrade_Middle}}</label>
+						<div>
+							<select track-changes name="GradeMiddle_Min" class="form-control form-control-inline" ng-options="grade.id as grade.name for grade in ctrl.data.grades" ng-model="ctrl.data.schoolSettings.middleStepGrade.start"></select>&nbsp;-&nbsp;
+							<select track-changes name="GradeMiddle_Max" class="form-control form-control-inline" ng-options="grade.id as grade.name for grade in ctrl.data.grades" ng-model="ctrl.data.schoolSettings.middleStepGrade.end"></select>&nbsp;{{ctrl.language.SchoolSettings.kClasses}}
+						</div>
+						<p ng-show="((ctrl.settingsForm.GradeMiddle_Min.$invalid || ctrl.settingsForm.GradeMiddle_Max.$invalid) && (!ctrl.settingsForm.GradeMiddle_Max.$pristine || !ctrl.settingsForm.GradeMiddle_Min.$pristine)) || (ctrl.data.schoolSettings.middleStepGrade.end < ctrl.data.schoolSettings.middleStepGrade.start)" class="help-block">{{ctrl.language.SchoolSettings.kInvalidGradeBounds}}</p>
+					</div><div class="form-group" ng-class="{'has-error': ((ctrl.settingsForm.GradeSenior_Min.$invalid || ctrl.settingsForm.GradeSenior_Max.$invalid) && (!ctrl.settingsForm.GradeSenior_Max.$pristine || !ctrl.settingsForm.GradeSenior_Min.$pristine)) || (ctrl.data.schoolSettings.seniorStepGrade.end < ctrl.data.schoolSettings.seniorStepGrade.start)}">
+						<label class="control-label ">{{ctrl.language.SchoolSettings.kGrade_Senior}}</label>
+						<div>
+							<select track-changes name="GradeSenior_Min" class="form-control form-control-inline" ng-options="grade.id as grade.name for grade in ctrl.data.grades" ng-model="ctrl.data.schoolSettings.seniorStepGrade.start"></select>&nbsp;-&nbsp;
+							<select track-changes name="GradeSenior_Max" class="form-control form-control-inline" ng-options="grade.id as grade.name for grade in ctrl.data.grades" ng-model="ctrl.data.schoolSettings.seniorStepGrade.end"></select>&nbsp;{{ctrl.language.SchoolSettings.kClasses}}
+						</div>
+						<p ng-show="((ctrl.settingsForm.GradeSenior_Min.$invalid || ctrl.settingsForm.GradeSenior_Max.$invalid) && (!ctrl.settingsForm.GradeSenior_Max.$pristine || !ctrl.settingsForm.GradeSenior_Min.$pristine)) || (ctrl.data.schoolSettings.seniorStepGrade.end < ctrl.data.schoolSettings.seniorStepGrade.start)" class="help-block">{{ctrl.language.SchoolSettings.kInvalidGradeBounds}}</p>
+					</div>
+					<p ng-show="ctrl.isIntersectedGradesRanges()" class="help-block">{{ctrl.language.SchoolSettings.kErrGradesIntersect}}</p>
+					<p ng-show="ctrl.isGradesRangesWrongOrder()" class="help-block">{{ctrl.language.SchoolSettings.kErrGradesWrongOrder}}</p>
+					<p ng-show="ctrl.emptySpaceBetweenRanges()" class="help-block">{{ctrl.language.SchoolSettings.kErrGradesEmptySpaceBetweenRanges}}</p>
+				</div>
+			</ns-panel>
+
+			<ns-panel ng-if="ctrl.data.funcType != 1" panel-id="others" class="default" title="{{ctrl.language.Generic.Reports.kOthers}}" expanded="true">
+				<div class="form-group">
+					<label class="control-label ">{{ctrl.language.Generic.SchoolSettings.kAdminEdit}}</label><div class="">
+						<select track-changes name="AdminEdit" class="form-control" ng-model="ctrl.data.schoolSettings.adminEdit">
+							<option value="AccessYes" selected="">{{ctrl.language.Generic.SchoolSettings.kAccessYes}}</option>
+							<option value="AccessNo">{{ctrl.language.Generic.SchoolSettings.kAccessNo}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group" ng-show="ctrl.data.windowsAuth">
+					<label class="control-label ">{{ctrl.language.Generic.SchoolSettings.kWinAuth}}</label><div class="">
+						<select track-changes name="WinAuth" class="form-control" ng-model="ctrl.data.schoolSettings.windowsAuth">
+							<option value="WinAuthYes">{{ctrl.language.Generic.SchoolSettings.kWinAuthYes}}</option>
+							<option value="WinAuthNo">{{ctrl.language.Generic.SchoolSettings.kWinAuthNo}}</option>
+						</select>
+					</div>
+				</div>
+			</ns-panel>
+		</div>
+	</form>
+</div>

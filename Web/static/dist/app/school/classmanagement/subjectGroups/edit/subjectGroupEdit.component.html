@@ -1,0 +1,144 @@
+<div class="row ns-cloak" ng-if="!$ctrl.noSubjects"> 
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button class="btn btn-primary" ng-title="$ctrl.language.Generic.Common.kSave" type="button" ng-click="$ctrl.save()" ng-disabled="$ctrl.readOnly">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+				<button ng-title="$ctrl.language.Generic.Common.kReset" type="button" class="btn btn-warning" ng-click="$ctrl.reset()" ng-disabled="$ctrl.readOnly">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+
+	<div class="col-md-12 col-lg-8">
+		<div ng-if="$ctrl.noSubjects && !$ctrl.extraCurricular && !$ctrl.modular" class="alert alert-info">
+			{{$ctrl.language.Generic.ClassManagement.kAllSubjectsBinded}} <span ng-if="$ctrl.grade">{{$ctrl.grade}}-й параллелью</span><span ng-if="!$ctrl.grade">"{{$ctrl.subjectGroup.class.name}}" {{$ctrl.language.ClassManagement.kWClass}}</span>
+		</div>
+		<div ng-if="$ctrl.noSubjects && $ctrl.modular" class="alert alert-info">
+			Все модульные предметы уже связаны с <span ng-if="$ctrl.grade">{{$ctrl.grade}}-й параллелью</span><span ng-if="!$ctrl.grade">"{{$ctrl.subjectGroup.class.name}}" {{$ctrl.language.ClassManagement.kWClass}}</span>
+		</div>
+		<div ng-if="$ctrl.noSubjects && $ctrl.extraCurricular" class="alert alert-info">
+			Нет предметов с признаком "не включать в учебный план"
+		</div>
+
+		<div ng-form class="form-horizontal form-sm" ng-if="$ctrl.dataReady && !$ctrl.noSubjects" name="$ctrl.form">
+			<ns-form control-size="col-md-8" label-size="col-md-4">
+			<ns-form-group title="{{$ctrl.language.SetupSchoolCalendar.kGrade}}" ng-if="$ctrl.isIupGrade()" ng-class="{'has-error': ($ctrl.form.GRADES.$invalid || !$ctrl.subjectGroup.grades || !$ctrl.subjectGroup.grades.length) && $ctrl.form.displayErrors}">
+				<div class="checkbox checkbox-inline checkbox-row" ng-repeat="grade in $ctrl.grades">
+					<label><input track-changes type="checkbox" name="GRADES" ng-click="$ctrl.toggleGrade(grade)" required="" ng-checked="$ctrl.isCheckedGrade(grade)" ng-disabled="$ctrl.isDisabledGrade(grade)">{{grade.id}}</label>
+				</div>
+				<p ng-show="($ctrl.form.GRADES.$invalid || !$ctrl.subjectGroup.grades || !$ctrl.subjectGroup.grades.length) && $ctrl.form.displayErrors" class="help-block">{{$ctrl.language.Generic.Curriculum.kErrSubjectGroupGradesNotSelected}}</p>				
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Common.kClass}}" ng-if="$ctrl.subjectGroup.class">
+				<span class="form-control form-control-title"><span class="text">{{$ctrl.subjectGroup.class.name}}</span></span>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.SetupSchoolCalendar.kSubjectGroup}}" ng-if="$ctrl.subjectGroup && $ctrl.subjectGroup.subject.parentSubject">
+				<span class="form-control form-control-title"><span class="text">{{$ctrl.subjectGroup.subject.parentSubject.name}}</span></span>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kSubject}}" ng-if="$ctrl.subjectGroup && $ctrl.subjectGroup.modularSubjectGroup">
+				<span class="form-control form-control-title"><span class="text">{{$ctrl.subjectGroup.modularSubjectGroup.name}}</span></span>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.extraCurricular ? $ctrl.language.Generic.Common.kProgram : $ctrl.subjectGroup.modularSubjectGroup ? $ctrl.language.Generic.ClassManagement.kSubjectGroupModule : $ctrl.language.Generic.Common.kSubject}}" ng-class="{'has-error': ($ctrl.form.Subject.$invalid || !$ctrl.subjectGroup.subject) && $ctrl.form.displayErrors}">
+				<span ng-if="$ctrl.readOnly || $ctrl.sgId" class="form-control form-control-title"><span class="text">{{$ctrl.subjectGroup.subject.name}}</span></span>
+				<select ng-if="!$ctrl.readOnly && !$ctrl.sgId" track-changes
+						ng-change="$ctrl.changeSubject()"
+						ng-model="$ctrl.subjectGroup.subject" class="form-control" name="Subject"
+						ng-options="subject as subject.name for subject in $ctrl.subjects track by subject.id">
+				</select>
+				<p ng-show="($ctrl.form.Subject.$invalid || !$ctrl.subjectGroup.subject) && $ctrl.form.displayErrors" class="help-block">{{$ctrl.language.Generic.Messages.kRequiredField}}</p>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Curriculum.kIupLevel}}"  ng-class="{'has-error': ($ctrl.form.Level.$invalid && $ctrl.form.displayErrors)}" ng-if="$ctrl.isIupGrade() && !$ctrl.extraCurricular">
+				<span ng-if="$ctrl.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.subjectGroup.iupLevel.name}}</span></span>
+				<select ng-if="!$ctrl.readOnly" track-changes
+						ng-model="$ctrl.subjectGroup.iupLevel" class="form-control" name="Level"
+						ng-options="level as level.name for level in $ctrl.iupLevels track by level.id">
+				</select>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kName}}" ng-class="{'has-error': ($ctrl.form.Level.$invalid && $ctrl.form.displayErrors)}" ng-if="$ctrl.isIupGrade()">
+				<div class="fixin-input-elem">
+					<span class="form-control form-control-title" id="subjectname" ng-model="$ctrl.subjectGroup.subject.name">
+						<span ng-if="$ctrl.subjectGroup.extraCurricular" class="text">{{$ctrl.getShortSubjectName($ctrl.subjectGroup.subject)}}</span>
+						<span ng-if="!$ctrl.subjectGroup.extraCurricular" class="text">{{$ctrl.subjectGroup.subject.name}}</span>
+					</span>
+					<div>
+						<i>/</i>
+						<input track-changes type="text" maxlength="20" ng-model="$ctrl.extName" name="NAME" class="form-control form-control-inline"/>
+					</div>
+				</div>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kSchoolPeriod}}" ng-class="{'has-error': ($ctrl.form.TERMS.$invalid || !$ctrl.subjectGroup.terms || !$ctrl.subjectGroup.terms.length) && $ctrl.form.displayErrors}">
+				<div class="checkbox" ng-repeat="term in $ctrl.terms" ng-if="!$ctrl.isHiddenTerm(term)">
+					<label><input track-changes type="checkbox" name="TERMS" ng-click="$ctrl.toggleTerm(term)" required="" ng-checked="$ctrl.isCheckedTerm(term)" ng-attr-title="{{$ctrl.disabledTermMessage(term)}}" ng-disabled="$ctrl.disabledTermMessage(term)">{{term.termName}}</label>
+				</div>
+				<p ng-show="$ctrl.existsCheckedTerms() && $ctrl.existsOtherTypesTerms() && !$ctrl.existsNotCanRemoveTerms()" class="help-block">Для того, чтобы увидеть учебные периоды другого типа, снимите все отметки с текущих</p>					
+				<p ng-show="($ctrl.form.TERMS.$invalid || !$ctrl.subjectGroup.terms || !$ctrl.subjectGroup.terms.length) && $ctrl.form.displayErrors" class="help-block">{{$ctrl.language.Generic.Curriculum.kErrTermsNotSelected}}</p>
+			</ns-form-group>
+
+			<ns-form-group title="Форма организации" ng-if="$ctrl.extraCurricular" ng-class="{'has-error': ($ctrl.form.ExtraOrgForm.$invalid || !$ctrl.subjectGroup.extraOrgForm) && $ctrl.form.displayErrors}">
+				<span ng-if="$ctrl.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.subjectGroup.extraOrgForm}}</span></span>
+				<select ng-if="!$ctrl.readOnly" track-changes
+						ng-model="$ctrl.subjectGroup.extraOrgForm" class="form-control" name="ExtraOrgForm"
+						required
+						ng-options="extraOrgForm as extraOrgForm.name for extraOrgForm in $ctrl.extraOrgForms track by extraOrgForm.id">
+				</select>
+				<p ng-show="($ctrl.form.ExtraOrgForm.$invalid || !$ctrl.subjectGroup.extraOrgForm) && $ctrl.form.displayErrors" class="help-block">Выберите форму организации</p>					
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kGroup}}" ng-if="$ctrl.showGroup">
+				<span ng-if="$ctrl.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.subjectGroup.group.name}}</span></span>
+				<select ng-if="!$ctrl.readOnly" track-changes
+						ng-model="$ctrl.subjectGroup.group" class="form-control" name="Group"
+						ng-change="$ctrl.changeGroup()"
+						ng-options="group as group.name for group in $ctrl.groups track by group.id">
+				</select>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Common.kTeacher}}" ng-class="{'has-error': ($ctrl.form.Teacher.$invalid && $ctrl.form.displayErrors)}">
+				<span ng-if="$ctrl.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.subjectGroup.teacher.name}}</span></span>
+				<select ng-if="!$ctrl.readOnly && !$ctrl.multipleTeachers" track-changes
+						ng-model="$ctrl.subjectGroup.teachers[0]" required class="form-control" name="Teacher"
+						ng-options="teacher as teacher.name for teacher in $ctrl.teachers track by teacher.id">
+				</select>
+				<select2 ng-if="!$ctrl.readOnly && $ctrl.multipleTeachers && $ctrl.teachers && $ctrl.teachers.length" multiple required name="Teacher" class="form-control" s2-options="teacher as teacher.name for teacher in $ctrl.teachers track by teacher.id" ng-model="$ctrl.subjectGroup.teachers" track-changes></select2>
+				<p ng-show="($ctrl.form.Teacher.$invalid) && $ctrl.form.displayErrors" class="help-block">{{$ctrl.language.Generic.Messages.kRequiredField}}</p>
+				<p ng-show="!$ctrl.teachers || !$ctrl.teachers.length" class="help-block">{{$ctrl.language.ClassManagement.kListTeachersEmpty}}</p>
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.ClassManagement.kSubjectGroupModules}}" ng-if="$ctrl.modular" ng-class="{'has-error': ($ctrl.modulesInvalid)}">
+				<div style="max-height: 300px; overflow-y: auto; overflow-x: auto;">
+					<div class="checkbox" ng-repeat="sg in $ctrl.subjectGroupModules">  
+						<label>  
+							<input track-changes name="sgmodule" type="checkbox" ng-checked="$ctrl.modules.isSelected(sg)" ng-click="$ctrl.toggleModule(sg)"> {{sg.name}}
+						</label>
+					</div>
+				</div>
+				<div ng-if="!$ctrl.subjectGroupModules.length" class="alert alert-info">
+					Нет подходящих предметов для включения в качестве учебных модулей.
+				</div>
+				
+				<p ng-repeat="msg in $ctrl.modulesInvalidMsgs" class="help-block ng-scope">{{msg}}</p>
+				
+			</ns-form-group>
+
+			<ns-form-group title="{{$ctrl.language.Generic.Common.kComment}}" ng-if="!$ctrl.extraCurricular">
+				<textarea track-changes name="Desc" ng-model="$ctrl.subjectGroup.comments" class="form-control" rows="6" cols="35" wrap="soft" maxlength="2000"></textarea>
+			</ns-form-group>
+
+			</ns-form>
+		</div>
+	</div>
+</div>

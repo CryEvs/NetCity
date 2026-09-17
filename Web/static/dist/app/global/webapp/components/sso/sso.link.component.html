@@ -1,0 +1,22 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<div class="form-horizontal form-xs">
+		<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready">
+			<span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+		</span>
+
+		<div ng-if="$ctrl.ready">
+			<span ng-if="$ctrl.isIdpLogin">
+				{{$ctrl.prepareMessage($ctrl.language.Generic.SetupSchool.kAlreadyLoginWithIdpAccount)}}
+			</span>
+	
+			<div ng-if="!$ctrl.isIdpLogin">
+				<div class="alert alert-warning" role="alert">
+					{{$ctrl.prepareMessage($ctrl.language.Generic.SetupSchool.kLinkToIdpAccount)}}
+				</div>
+				<span ng-if="$ctrl.linked">
+					{{$ctrl.prepareMessage($ctrl.language.Generic.SetupSchool.kAlreadyLinkedWithIdpAccount)}}
+				</span>
+			</div>
+		</div>
+	</div>
+</ns-modal>

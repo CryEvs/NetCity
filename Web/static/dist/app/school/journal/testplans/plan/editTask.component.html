@@ -1,0 +1,50 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form class="form-horizontal" name="$ctrl.editForm">
+	<ns-form control-size="col-md-9" label-size="col-md-3">
+
+		<ns-form-group ng-if="$ctrl.isRusDictation" title="{{ 'language.Generic.QualityAssessment.kTaskMistakeType' | language }}" ng-class="{'has-error': $ctrl.editForm.taskMistakeType.$invalid && (!$ctrl.editForm.taskMistakeType.$pristine || $ctrl.editForm.$displayErrors)}">
+			<select track-changes required ng-model="$ctrl.task.mistakeType" class="form-control" name="taskMistakeType" ng-options="item.key as item.name for item in $ctrl.taskMistakeTypes" ng-change="$ctrl.initContentElements()">
+				<option value="" disabled selected>{{'language.Generic.QualityAssessment.kAlertTaskMistakeType' | language}}</option>
+			</select>
+			<p ng-show="$ctrl.editForm.taskMistakeType.$invalid && (!$ctrl.editForm.taskMistakeType.$pristine || $ctrl.editForm.$displayErrors)" class="help-block">{{'language.Generic.QualityAssessment.kAlertTaskMistakeType' | language}}</p>
+		</ns-form-group>
+
+		<ns-form-group ng-if="!$ctrl.isRusDictation" title="{{ 'language.Generic.QualityAssessment.kTaskDifficult' | language }}" ng-class="{'has-error': $ctrl.editForm.taskDifficults.$invalid && (!$ctrl.editForm.taskDifficults.$pristine || $ctrl.editForm.$displayErrors)}">
+			<select track-changes required ng-model="$ctrl.task.difficult" class="form-control" name="taskDifficults" ng-options="item.key as item.name for item in $ctrl.taskDifficults">
+				<option value="" disabled selected>{{'language.Generic.QualityAssessment.kAlertTaskDifficult' | language}}</option>
+			</select>
+			<p ng-show="$ctrl.editForm.taskDifficults.$invalid && (!$ctrl.editForm.taskDifficults.$pristine || $ctrl.editForm.$displayErrors)" class="help-block">{{'language.Generic.QualityAssessment.kAlertTaskDifficult' | language}}</p>
+		</ns-form-group>
+
+		<ns-form-group ng-if="!$ctrl.isRusDictation" title="{{ 'language.Generic.QualityAssessment.kMaxScore' | language }}" ng-class="{'has-error': $ctrl.editForm.possiblePoints.$invalid && (!$ctrl.editForm.possiblePoints.$pristine || $ctrl.editForm.$displayErrors)}">
+			<input track-changes type="number" required float-input="$ctrl.decimalInputSettings" min="1" max="100" class="form-control" placeholder="{{'language.Generic.QualityAssessment.kEnterMaxScore' | language }}" name="possiblePoints" size="40" maxlength="35" ng-model="$ctrl.task.possiblePoints">
+			<p ng-show="$ctrl.editForm.possiblePoints.$invalid && (!$ctrl.editForm.possiblePoints.$pristine || $ctrl.editForm.$displayErrors)" class="help-block">{{'language.Generic.QualityAssessment.kAlertMaxScore' | language }}</p>
+		</ns-form-group>
+
+		<div class="form-group" ng-if="$ctrl.displayContentElements">
+			<label class="control-label col-md-3">
+				{{'language.Generic.QualityAssessment.kContentElement' | language }}
+				<span class="control-span">{{'language.Generic.QualityAssessment.kContentElementHelp' | language }}</span>
+			</label>
+			
+			<div class="col-md-9">
+				<tree ng-if="!$ctrl.isRusDictation || $ctrl.task.mistakeType" model="$ctrl.activeContentElements" settings="$ctrl.treeSettings" on-update="$ctrl.onChangeContentElements(selected)"></tree>
+				<div class="alert alert-info" role="alert" ng-if="$ctrl.isRusDictation && !$ctrl.task.mistakeType">
+					{{'language.Generic.QualityAssessment.kAlertTaskMistakeType' | language }}
+				</div>
+			</div>
+		</div>
+
+		<ns-form-group title="{{ 'language.Generic.QualityAssessment.kAdditional' | language }}">
+			<input track-changes type="text" class="form-control" name="ADDITIONAL" size="40" maxlength="200" ng-model="$ctrl.task.additional">
+		</ns-form-group>
+
+		<ns-form-group  ng-if="$ctrl.displaySelectedElements" title="{{ 'language.Generic.QualityAssessment.kCheckedContentElements' | language }}">
+			<ul>
+				<li ng-repeat="item in $ctrl.task.contentElements">{{item.name}}</li>
+			</ul>
+		</ns-form-group>
+
+	</ns-form>
+	</form>
+</ns-modal>

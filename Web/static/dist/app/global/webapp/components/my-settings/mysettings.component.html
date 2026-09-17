@@ -1,0 +1,17 @@
+<my-settings-buttons ctrl="mySettingsCtrl"></my-settings-buttons>
+
+<change-schoolyear ng-if="!mySettingsCtrl.isEm"></change-schoolyear>
+
+<form class="form-horizontal form-edit form-xs ns-cloak">
+	<div class="row">
+		<div class="col-lg-9">
+			<ns-panel panel-id="commonInfo" class="info" title="{{mySettingsCtrl.language.Generic.Common.kCommonInfo}}" expanded="true">
+				<my-settings-common-data ctrl="mySettingsCtrl"></my-settings-common-data>
+			</ns-panel>
+
+			<ns-panel ng-if="mySettingsCtrl.certificateExists ||mySettingsCtrl.certificateCanBeShown" panel-id="certificateInfo" class="info" title="Сертификат дополнительного образования" expanded="true">
+				<my-settings-certificate-data></my-settings-certificate-data>
+			</ns-panel>
+		</div>
+	</div>
+</form>

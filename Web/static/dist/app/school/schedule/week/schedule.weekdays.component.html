@@ -1,0 +1,43 @@
+<table class="schedule-table table table-bordered table-thin table-xs print-block">
+	<tr>
+		<th class="leftheader">{{$ctrl.language.Generic.Calendar.kRelay}}</th>
+		<th class="leftheader" ng-bind-html="$ctrl.language.Calendar.kLessonNumber"></th>
+		<th class="leftheader" ng-bind-html="$ctrl.language.Calendar.kLessonTime"></th>
+
+		<th class="schedule-table-header" ng-repeat="wd in $ctrl.data.weekDays">
+			<a href="javascript:void(0)" title="Расписание на день" ng-click="$ctrl.goToDaySchedule(wd.dayDate)" ng-class="{'freeDay': $ctrl.isFreeDay(wd.dayDate)}">{{wd.name}}<br>{{wd.dayDateTitle}}</a>
+		</th>
+	</tr>
+	<tr ng-repeat="stGroup in $ctrl.scheduleTimesGroups">
+		<th class="leftheader">{{stGroup.relay}}</th>
+		<th class="leftheader">{{stGroup.number}}</th>
+		<th class="leftheader">{{stGroup.startTime | nsTimeShort}} - {{stGroup.endTime | nsTimeShort}}</th>
+		<td ng-repeat="cell in stGroup.cells" ng-class="{'filled-cell': cell.meetings.length}" data-st-id="{{cell.schduleTimeId}}">
+
+			<div class="cm-cell" ng-repeat="cm in cell.meetings" ng-class="{'extraActivity': cm.extraActivity}">
+				<a href="javascript:void(0)" ng-if="!$ctrl.editingMode && $ctrl.data.canEditCalendar" ng-click="$ctrl.editClassMeetings(cm)">{{cm.name}}</a>
+				<span ng-class="{'cm-edit': $ctrl.data.canEditCalendar}" data-cm-guid="{{cm.guid}}" data-cm-id="{{cm.id}}" ng-if="$ctrl.editingMode || !$ctrl.data.canEditCalendar">{{cm.name}}</span>
+				<div class="cm-add" ng-show="$ctrl.editingMode" ng-if="$index == 0">
+					<button class="btn btn-xs btn-warning">+</button>
+				</div>
+			</div>
+			
+			<div class="cm-cell" ng-if="!cell.meetings.length"> 
+				<span> - </span>
+				<div class="cm-add" ng-show="$ctrl.editingMode">
+					<button class="btn btn-xs btn-warning">+</button>
+				</div>
+			</div>
+		</td>
+	</tr>
+
+	<tr>
+		<th colspan="3" class="leftheader">Мероприятия</th>
+		<td ng-repeat="dayEvents in $ctrl.weekEvents">
+			<div class="cm-cell" ng-repeat="event in dayEvents">
+				<a href="javascript:void(0)" title="{{event.description}}" ng-click="$ctrl.editEvent(event.id)" class="{{$ctrl.eventsService.eventTypeInfos[event.eventType].cssClass}}">{{event.name}}</a>
+			</div>
+		</td>
+	</tr>
+
+</table>

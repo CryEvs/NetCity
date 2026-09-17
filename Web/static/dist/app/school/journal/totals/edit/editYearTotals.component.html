@@ -1,0 +1,98 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/journal/totals/edit/../css/totals.css">
+
+<div class="buttons-filters-panel form-horizontal ns-cloak">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<button title="{{ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="ctrl.save()" ng-hide="ctrl.isEmptyExam() || ctrl.isEmptyStudentsList()">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+					<button title="{{ctrl.language.Generic.Buttons.kReset}}" type="button" class="btn btn-warning" ng-click="ctrl.load()" ng-hide="ctrl.isEmptyExam() || ctrl.isEmptyStudentsList()">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>{{ctrl.language.Generic.Buttons.kReset}}</span>
+					</button>
+					<button title="{{ctrl.language.Generic.Grade.kSetAllNotRated}}" type="button" class="btn btn-warning" ng-hide="ctrl.data.gradingSys!=ctrl.journalRefs.GradingSys.NotRated || ctrl.isEmptyExam() || ctrl.isEmptyStudentsList()" ng-click="ctrl.setAllNotRated()">
+						<span>{{ctrl.language.Generic.Grade.kSetAllNotRated}}</span>
+					</button>
+					<button title="{{ctrl.language.Generic.Grade.kSetAllPass}}" type="button" class="btn btn-default" ng-click="ctrl.setAllPass()" ng-hide="ctrl.data.gradingSys != ctrl.journalRefs.GradingSys.Pass || ctrl.isEmptyExam() || ctrl.isEmptyStudentsList()">
+						<span>{{ctrl.language.Generic.Grade.kSetAllPass}}</span>
+					</button>			
+				</div>
+				<div class="buttons-panel-right" ng-if="ctrl.isExam() || ctrl.isEmptyExam()">
+					<button title="{{ctrl.language.Generic.Grade.kExamTypes}}" ng-click="ctrl.setExamTypes()" type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-check"></span>
+						<span>{{ctrl.language.Generic.Grade.kExamTypes}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="filters-panel col-md-6 col-lg-6 col-sm-12">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.subjectTitle}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<span class="form-control form-control-title">
+						<span class="text">
+							{{ctrl.data.sgName}}
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="alert alert-info" role="alert" ng-if="ctrl.isTotalMarks()">
+	{{ctrl.language.Generic.Grade.kEmptyYearMarksForTotals}}
+</div>
+<div class="alert alert-info" role="alert" ng-if="ctrl.isEmptyExam()">
+	{{ctrl.language.Grade.kEmptyExamTypesForClassSubject}}
+</div>
+<div class="alert alert-info" role="alert" ng-if="ctrl.isEmptyStudentsList()">
+	{{ctrl.language.Filter.kNoStudentsInClassForPeriod}}
+</div>
+<div class="alert alert-info" role="alert" ng-if="ctrl.totalsPastEditAnyReadonly()">
+	Редактирование итоговых оценок назад на <span>{{ctrl.totalsPastEdit}}</span> дней и более запрещено
+</div>
+<div class="alert alert-info" role="alert" ng-if="ctrl.futureEditAnyReadonly()">
+	Редактирование итоговых оценок вперёд чем на <span>{{ctrl.futureEdit}}<span> дней и более запрещено
+</div>
+<div class="checkbox" ng-if="ctrl.settings.showOffers && !ctrl.isEmptyStudentsList()"><label><input type="checkbox" ng-model="ctrl.data.showOffers" ng-click="ctrl.makeOffers(ctrl.data.showOffers)" name="autoExpose">{{ctrl.language.Generic.Grade.kAutoExpose}}</label></div>
+<div class="legend" ng-if="ctrl.settings.showOffers && !ctrl.isEmptyStudentsList()">
+	<div>
+		<p><span class="legend-label text-center offer">4</span><span class="legend-description"> — {{ctrl.language.Generic.Grade.kOfferedMarks}}</span></p>
+		<p><span class="legend-label text-center">4</span><span class="legend-description"> — {{ctrl.language.Generic.Grade.kFixedMarks}}</span></p>
+	</div>
+</div>
+<div class="row ns-cloak">
+	<div class="col-md-12" ng-hide="ctrl.isEmptyExam() || ctrl.isEmptyStudentsList()">
+		<table ng-if="ctrl.ready" class="table table-bordered table-xs table-middle-cells table-hover table-thin-sm" nav-inputs="ctrl.navigateOptions">
+			<tbody>
+				<tr>
+					<th rowspan="{{ctrl.extraMarks.length ? 2 : 1}}">{{ctrl.language.Common.kStudents}}</th>
+					<th ng-repeat="provider in ctrl.extraMarks" colspan="{{provider.dimensions.length}}" rowspan="{{provider.dimensions[0].name ? 1 : 2}}" >{{provider.title}}</th>
+					<th rowspan="{{ctrl.extraMarks.length ? 2 : 1}}" ng-if="ctrl.extraMarks.length">{{ctrl.language.Generic.Common.kAverageMark}}</th>
+					<th rowspan="{{ctrl.extraMarks.length ? 2 : 1}}">{{ctrl.language.Generic.Common.kMark}}</th>
+				</tr>
+				<tr ng-if="ctrl.extraMarksDimensions.length">
+					<th ng-repeat="extraInfo in ctrl.extraMarksDimensions" ng-if="extraInfo.dimension.name">{{extraInfo.dimension.name}}</th>
+				</tr>
+				<tr ng-repeat="row in ctrl.data.yearTotalsInfo" ng-class="{'individual-educ': row.individualEduc}" class="text-center">
+					<td class="text-nowrap text-left student-name text-nowrap"><span>{{$index + 1}}. {{row.fullName}}</span></td>
+
+					<td ng-repeat="extraInfo in ctrl.extraMarksDimensions">
+						<total-mark service="extraInfo.provider.getGradingService(extraInfo.dimension.id, row.id)" mark="extraInfo.provider.getMark(row.id, extraInfo.dimension.id)" readonly="true" mode="read" hide-mark-type="true"></total-mark>
+					</td>
+					<td ng-if="ctrl.extraMarks.length">
+						{{ctrl.getAverage(ctrl.extraMarks, row.id) | float2str:'fractDigits' }}
+					</td>
+					<td>
+						<total-mark ng-class="{'offer': ctrl.existingOffer(row) && row.markType.id != ctrl.journalRefs.Marks.Mark}" checked="row.checked" choice-exam="ctrl.isChoiceExam()" ng-hide="ctrl.isTotalMarks() && !row.yearMark.mark" service="ctrl.data.gradingService" mark-type="row.markType" mark="row.mark.mark" on-change="ctrl.changeMark(row)" readonly="ctrl.isMarkReadOnly(row)"></total-mark>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

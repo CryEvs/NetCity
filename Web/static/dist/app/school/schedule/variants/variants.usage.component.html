@@ -1,0 +1,61 @@
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="form-group">
+			<label class="control-label col-md-4 col-lg-3 col-sm-4">{{"language.Generic.Curriculum.kIupLevel" | language}}</label>
+			<div class="col-md-8 col-lg-5 col-sm-8">
+				<select class="form-control" ng-options="level as level.name for level in $ctrl.levels track by level.id" ng-model="$ctrl.level" ng-change="$ctrl.changeLevel()"></select>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<hr />
+
+		<div class="buttons-panel" ng-if="!$ctrl.error && !$ctrl.readonly">
+			<div class="buttons-panel-left">
+				<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-disabled="$ctrl.anyItemIsNull()" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Buttons.kReset}}" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="alert alert-danger" role="alert" ng-if="$ctrl.error"> 
+			{{$ctrl.errorMessage}}
+		</div>
+
+		<div class="alert alert-info" role="alert" ng-if="!$ctrl.error && $ctrl.level.id != 0"> 
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			{{"language.Calendar.kAssignmentSTVariantInfo" | language}}
+		</div>
+
+		<form class="form form-sm" ng-if="!$ctrl.error">
+			<table class="table table-thin table-bordered table-xs">
+				<tr>
+					<th ng-if="$ctrl.objectName">{{$ctrl.objectName}}</th>
+					<th>{{"language.Generic.Curriculum.kVariant" | language}}</th>
+				</tr>
+	
+				<tr ng-repeat="item in $ctrl.items">
+					<td ng-if="$ctrl.objectName">{{item.item.name}}</td>
+					<td>
+						<div class="form-group" ng-class="{'has-error': item.variant === null && $ctrl.level.id == 0}">
+							<span ng-if="$ctrl.isReadonly(item)">{{item.variant.name}}</span>
+							<span class="help-block text-center" ng-if="!$ctrl.isReadonly(item)" ng-show="item.variant === null && $ctrl.level.id == 0">Обязательное поле</span>
+							<select ng-if="!$ctrl.isReadonly(item)" class="form-control" track-changes ng-disabled="$ctrl.readonly" ng-options="item as item.name for item in $ctrl.getVariants(item) track by item.id" ng-model="item.variant">
+								<option ng-value="null"></option>
+							</select>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</form>
+		
+	</div>
+</div>

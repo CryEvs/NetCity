@@ -1,0 +1,52 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<div class="alert alert-info" role="alert">
+			<span>Внимание!</span><br>
+			<span>В системе обнаружены существующие пользователи с указанными ФИО и д.р.</span><br>
+			<span>Выберите одного из пользователей или нажмите на кнопку "Добавить 'вручную'"</span>
+		</div>
+		<form class="form-horizontal form-xs">
+			<table class="table table-xs table-hover table-selectable">
+				<tr>
+					<th>ФИО</th>
+					<th>Дата рождения</th>
+					<th>Наименование организации</th>
+				</tr>
+				<tr ng-repeat="similar in $ctrl.similars"  ng-class="{'selected': $ctrl.selection.isSelected(similar)}" ng-click="$ctrl.selection.select(similar)">
+					<td>{{similar.fullName}}</td>
+					<td>{{similar.birthDate | nsDate}}</td>
+					<td>{{similar.organization.name}}</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+
+		<button class="btn btn-primary btn-sm" ng-click="$ctrl.useExisting()" ng-disabled="!$ctrl.selection.selected">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>Использовать существующего пользователя</span>
+		</button>
+
+		<button class="btn btn-primary btn-sm" ng-click="$ctrl.addByHand()" ng-disabled="$ctrl.selection.selected">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>Добавить вручную</span>
+		</button>
+
+		<!-- ОТМЕНИТЬ -->
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+
+	</div>
+</div>

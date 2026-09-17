@@ -1,0 +1,69 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="$ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<form role="form" name="sourceForm" class="form form-sm">
+			<div class="form-group">
+				<label>{{$ctrl.language.Movement.kChooseSourceSelector}}</label>
+				<div class="radio" ng-repeat="sourceOption in $ctrl.sources track by sourceOption.id">
+					<label>
+						<input type="radio" name="movementsource" ng-value="sourceOption" ng-model="$ctrl.source" ng-click="$ctrl.selectSource(sourceOption)" />
+						{{sourceOption.title}}
+					</label>
+					<a href="JavaScript:void(0);" ng-if="$ctrl.getHelpUrl(sourceOption.id)" ng-click="$ctrl.showHelp(sourceOption)" title="{{$ctrl.language.Generic.Common.kCBHelp}}"><span class="icon-question-sign" style="font-size: 1.5em"></span></a>
+				</div>
+			</div>
+
+			<hr ng-if="$ctrl.needSelectGroupFrom || $ctrl.needSelectGroupTo"/>
+			
+			<div class="row">
+				<div class="col-md-6" ng-if="$ctrl.source && $ctrl.needSelectGroupFrom">
+					<div class="form-group">
+						<label>{{$ctrl.language.Movement.kClassOut}}</label>
+						<select ng-if="$ctrl.departEducGroups && $ctrl.departEducGroups.length" ng-hide="$ctrl.initingEducGroups" class="form-control" name="educGroupFrom" ng-model="$ctrl.direction.educGroupFrom" ng-options="group as group.name for group in $ctrl.departEducGroups"></select>
+						<div class="alert alert-danger" role="alert" ng-if="!$ctrl.initingEducGroups && (!$ctrl.departEducGroups || !$ctrl.departEducGroups.length)">
+							{{$ctrl.language.Movement.kNoDepartClassesOrStudents}}
+						</div>
+						<div class="alert alert-info form-control" role="alert" ng-show="$ctrl.initingEducGroups">{{$ctrl.language.Generic.Common.kLoad_2}}</div>
+					</div>
+				</div>
+				<div class="col-md-6" ng-if="$ctrl.source && $ctrl.needSelectGroupTo">
+					<div class="form-group">
+						<label ng-if="!$ctrl.isParallel">{{$ctrl.language.Movement.kClassEnroll}}</label>
+						<label ng-if="$ctrl.isParallel">{{$ctrl.language.Generic.Movement.kGradeEnroll}}</label>
+						<select ng-if="$ctrl.enrollEducGroups && $ctrl.enrollEducGroups.length && !$ctrl.source.directedEnrollMovements" ng-hide="$ctrl.initingEducGroups" class="form-control" name="educGroupTo" ng-model="$ctrl.direction.educGroupTo" ng-options="group as group.name for group in $ctrl.enrollEducGroups"></select>
+						<div class="alert alert-danger" role="alert" ng-if="!$ctrl.initingEducGroups && (!$ctrl.enrollEducGroups || !$ctrl.enrollEducGroups.length)">
+							{{$ctrl.language.Movement.kNoEnrollClasses}}
+						</div>
+						<div class="alert alert-info form-control" role="alert" ng-show="$ctrl.initingEducGroups">{{$ctrl.language.Generic.Common.kLoad_2}}</div>
+					</div>
+				</div>
+				<div class="col-md-6" ng-if="$ctrl.source && !$ctrl.needSelectGroupTo && !$ctrl.needSelectGroupFrom">
+					<div class="alert alert-danger" role="alert" ng-if="!$ctrl.initingEducGroups && !$ctrl.educGroupsExists">
+						{{$ctrl.language.Movement.kNoEnrollClasses}}
+					</div>
+					<div class="alert alert-info form-control" role="alert" ng-show="$ctrl.initingEducGroups">{{$ctrl.language.Generic.Common.kLoad_2}}</div>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="$ctrl.ok()" ng-disabled="$ctrl.isAppendBtnDisabled()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			{{$ctrl.language.Generic.Buttons.kAdd}}
+		</button>
+
+		<button class="btn btn-default" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			{{$ctrl.language.Generic.Buttons.kCancel}}
+		</button>
+	</div>
+</div>

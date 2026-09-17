@@ -1,0 +1,187 @@
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+				<div class="bootstrap-dialog-close-button">
+					<button class="close" ng-click="cancel()">×</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<span class="content-page-preloader" id="preloader" ng-hide="ready"><span>{{language.Generic.Movement.kPleaseWait}}</span></span>
+
+			<form role="form" name="eventForm" class="form-horizontal form-sm ng-pristine ng-valid ng-scope">
+				<!--Поля формы-->
+
+				<fieldset>
+					<legend>{{language.Generic.Common.kGeneralInformation}}</legend>
+
+					<div class="form-group" ng-class="{'has-error': eventForm.eventName.$invalid && (!eventForm.eventName.$pristine || eventForm.$displayErrors)}">
+						<label for="event-name" class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Common.kName2}}</label>
+						<div class="col-md-8 col-lg-9 col-sm-8">
+							<input track-changes type="text" id="event-name" name="eventName" class="form-control" ng-model="data.event.name"
+							 required maxlength="200">
+							<p ng-show="eventForm.eventName.$invalid && (!eventForm.eventName.$pristine || eventForm.$displayErrors)" class="help-block">{{language.Generic.Common.kEnterDataInPlace}}</p>
+						</div>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error': eventForm.eventSubject.$invalid && (!eventForm.eventSubject.$pristine || eventForm.$displayErrors)}">
+						<label for="event-subject" class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Events.kThemeSubjSport}}</label>
+						<div class="col-md-8 col-lg-9 col-sm-8">
+							<input track-changes type="text" id="event-subject" name="eventSubject" class="form-control" ng-model="data.event.subject"
+							 required maxlength="200">
+							<p ng-show="eventForm.eventSubject.$invalid && (!eventForm.eventSubject.$pristine || eventForm.$displayErrors)"
+							 class="help-block">{{language.Generic.Common.kEnterDataInPlace}}</p>
+						</div>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error': eventForm.awardtype.$invalid && (!eventForm.awardtype.$pristine || eventForm.$displayErrors)}">
+						<label for="event-awardtype" class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Events.kEventType}}</label>
+						<div class="col-md-8 col-lg-9 col-sm-8">
+							<select track-changes class="form-control" name="awardtype" id="event-awardtype" ng-options="awardEventType.id as awardEventType.name for awardEventType in data.refs.awardEventTypes"
+							 ng-init="data.event.awardEventType" ng-model="data.event.awardEventType" required></select>
+							<p ng-show="eventForm.awardtype.$invalid && (!eventForm.awardtype.$pristine || eventForm.$displayErrors)" class="help-block">{{language.Generic.Common.kEnterDataInPlace}}</p>
+						</div>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error': eventForm.eventLevel.$invalid && (!eventForm.eventLevel.$pristine || eventForm.$displayErrors)}">
+						<label for="event-level" class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Events.kEventLevel}}</label>
+						<div class="col-md-8 col-lg-9 col-sm-8">
+							<select track-changes class="form-control" name="eventLevel" id="event-level" ng-options="level.id as level.name for level in data.refs.eventLevels"
+							 ng-init="data.event.level" ng-model="data.event.level" required></select>
+							<p ng-show="eventForm.eventLevel.$invalid && (!eventForm.eventLevel.$pristine || eventForm.$displayErrors)"
+							 class="help-block">{{language.Generic.Common.kEnterDataInPlace}}</p>
+						</div>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error': eventForm.partForm.$invalid && (!eventForm.partForm.$pristine || eventForm.$displayErrors)}">
+						<label for="event-partForm" class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Events.kSingleOrTeam}}</label>
+						<div class="col-md-8 col-lg-9 col-sm-8">
+							<select track-changes class="form-control" name="partForm" id="event-partForm" ng-options="participiationForm.id as participiationForm.name for participiationForm in data.refs.participiationForms"
+							 ng-init="data.event.partForm" ng-model="data.event.partForm" required></select>
+							<p ng-show="eventForm.partForm.$invalid && (!eventForm.partForm.$pristine || eventForm.$displayErrors)" class="help-block">{{language.Generic.Common.kEnterDataInPlace}}</p>
+						</div>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error': eventForm.visitForm.$invalid && (!eventForm.visitForm.$pristine || eventForm.$displayErrors)}">
+						<label for="event-visitForm" class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Events.kPresenceType}}</label>
+						<div class="col-md-8 col-lg-9 col-sm-8">
+							<select track-changes class="form-control" name="visitForm" id="event-visitForm" ng-options="visitForm.id as visitForm.name for visitForm in data.refs.visitForms"
+							 ng-init="data.event.visitForm" ng-model="data.event.visitForm" required></select>
+							<p ng-show="eventForm.visitForm.$invalid && (!eventForm.visitForm.$pristine || eventForm.$displayErrors)" class="help-block">{{language.Generic.Common.kEnterDataInPlace}}</p>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label for="event-founder" class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Events.kEventFounder}}</label>
+						<div class="col-md-8 col-lg-9 col-sm-8">
+							<ui-select track-changes id="event-founder" ng-model="data.event.founder" theme="bootstrap">
+								<ui-select-match placeholder="{{language.Generic.Common.kPleaseEnterThreeOrMoreCharacters}}">{{$select.selected.name}}</ui-select-match>
+								<ui-select-choices repeat="org in data.search.founders" ui-disable-choice="org.name === '{{language.Generic.Common.kNoMatchesFound}}' || org.name === '{{language.Generic.Common.kSearch}}'"
+								 refresh="searchFounder($select.search)">
+									<div ng-bind-html="org.name | highlight: $select.search"></div>
+								</ui-select-choices>
+							</ui-select>
+
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="event-place" class="control-label col-md-4 col-lg-3">{{language.Generic.Events.kEventPlace}}</label>
+						<div class="col-md-8 col-lg-9">
+							<ui-select track-changes id="event-place" ng-model="data.event.organization" theme="bootstrap">
+								<ui-select-match placeholder="{{language.Generic.Common.kPleaseEnterThreeOrMoreCharacters}}">{{$select.selected.name}}</ui-select-match>
+								<ui-select-choices repeat="org in data.search.orgs" ui-disable-choice="org.name === '{{language.Generic.Common.kNoMatchesFound}}' || org.name === '{{language.Generic.Common.kSearch}}'"
+								 refresh="searchOrg($select.search)">
+									<div ng-bind-html="org.name | highlight: $select.search"></div>
+								</ui-select-choices>
+							</ui-select>
+
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-4 col-lg-3">{{language.Generic.Common.kSchoolYear}}</label>
+						<div class="col-md-8 col-lg-9">
+							<select track-changes class="form-control" ng-options="year.name for year in data.educYears track by year.id"
+							 ng-change="globalYearChange()" ng-model="data.educYear" ng-init="data.educYear"></select>
+						</div>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error': ((eventForm.$displayErrors || data.editMode) && (!data.event.startTime || eventForm['event-startTime'].$invalid || alerts.isStartBeforeEnd() || alerts.isInEducYear()))}">
+						<label class="control-label col-md-4 col-lg-3">{{language.Generic.Events.kDateOfEvent}}</label>
+						
+						<div class="col-md-4 col-lg-5">
+							<date-input-component track-changes
+								name="event-startTime"
+								id="startTime"
+								date-model="data.event.startTime"
+								min-date="dateOptions.minDate"
+								max-date="dateOptions.maxDate"
+								required="true">
+							</date-input-component>	
+							<div ng-messages="eventForm['event-startTime'].$error">
+								<span class="help-block" ng-message="required">{{language.Generic.Common.kEnterDate}}</span>
+								<span class="help-block" ng-message="dateFormat">{{dateFormatMessage()}}</span>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-lg-4">
+							<date-input-component track-changes
+								name="event-endTime"
+								id="endTime"
+								date-model="data.event.endTime"
+								min-date="dateOptions.minDate"
+								max-date="dateOptions.maxDate">
+							</date-input-component>	
+							<div ng-messages="eventForm['event-endTime'].$error">
+								<span class="help-block" ng-message="dateFormat">{{dateFormatMessage()}}</span>
+							</div>
+						</div>
+						<div class="col-md-4 col-lg-3"></div>
+						<div class="col-md-8 col-lg-9" ng-if="(eventForm.$displayErrors || data.editMode) && (alerts.isStartBeforeEnd() || alerts.isInEducYear())">
+							<span class="help-block" ng-if="alerts.isStartBeforeEnd()">{{getIntervalDateMessage()}}</span>
+							<span class="help-block" ng-if="alerts.isInEducYear()">{{inEducYearMessage()}}</span>							
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<div class="col-12">
+						<div class="block-heading">
+							<h4>{{language.Generic.Common.kDocuments}}</h4>
+							<button type="button" title="{{language.Generic.Buttons.kAdd}}" class="round icon-plus" ng-click="UpdateDocument()" ng-show="data.documents.length < 5"></button>
+						</div>
+						<p class="fggray" ng-hide="data.documents.length < 5">{{language.Generic.Events.kOnlyFiveAttachments}}</p>
+						<div class="block-data">
+							<p class="fggray" ng-show="!data.documents.length">{{language.Generic.Events.kOnlyFiveAttachments}}</p>
+							<div class="block-item" ng-repeat="doc in data.documents">
+								<a ng-hide="doc.isProxy" href="/webapi/events/file/download/{{doc.id}}" download target="_blank">{{doc.name}}</a>
+								<a ng-show="doc.isProxy" ng-click="doc.download()" target="_blank">{{doc.name}}</a>
+								<div class="ops" ng-hide="state.groupDataReadonly">
+									<button class="icon-pencil" ng-click="UpdateDocument(doc)" title="{{language.Generic.Buttons.kEdit}}"></button>
+									<button class="icon-trash" ng-click="removeDocument(doc)" title="{{language.Generic.Buttons.kRemove}}"></button>
+								</div>
+								<span class="item-descr">{{doc.description}}</span>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="modal-footer" ng-show="ready">
+			<button class="btn btn-primary btn-sm" ng-click="save()">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default btn-sm" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kClose}}
+			</button>
+		</div>
+	</div>

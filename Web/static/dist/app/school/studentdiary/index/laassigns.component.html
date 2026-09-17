@@ -1,0 +1,62 @@
+<div class="training_courses_tasks" ng-class="{data_empty: !$ctrl.laAssigns.length}"">
+	<div class="training_courses_head">
+		<span class="text">Задания из электронных курсов</span>
+		<span class="num_tasks">
+			<div class="num_tasks_data">{{$ctrl.laAssigns.length || 0}}</div>
+		</span>
+		<i class="mdi slidearrow mdi-menu-down"></i>
+		<i class="mdi mdi-flag-variant"></i>
+	</div>
+	<div class="training_courses_content">
+		<table class="visible-mobile joint_tr">
+			<tr ng-if="$ctrl.laAssigns === undefined || $ctrl.laAssigns.length === 0">
+				<td class="date_data">
+					<div class="three_dots"><span>Нет просроченных заданий</span>
+					</div>
+					<div title="показать/свернуть все содержимое таблицы" class="icon_dots"></div>
+				</td>
+			</tr>
+			<tr ng-repeat-start="laAssignGroup in $ctrl.laAssigns.grouped">
+				<td colspan="3" class="date_data">
+					<a href="#">{{laAssignGroup.dueDate}}</a>
+				</td>
+			</tr>
+			<tr ng-repeat-end ng-repeat="laAssign in laAssignGroup.list">
+				<td>
+					<a href="#" class="subject_name">{{laAssign.subjectName}}</a>
+					<div class="type_n_theme">
+						<div class="type">{{laAssign.typeAbbr}}:</div>
+						<a href="#" class="theme" ng-click="$ctrl.showAssign({assign: laAssign})">{{laAssign.assignmentName}}</a>
+					</div>
+					<div class="level_data_courses" ng-if="laAssign.mark">{{laAssign.mark.mark}}</div>
+				</td>
+			</tr>
+		</table>
+
+		<table class="hidden-mobile">
+			<tr>
+				<td class="date">Срок сдачи</td>
+				<td class="subject">Предмет</td>
+				<td class="type">Тип задания</td>
+				<td class="theme">Тема задания</td>
+				<td class="level">Оценка</td>
+			</tr>
+			<tr ng-if="$ctrl.laAssigns === undefined || $ctrl.laAssigns.length === 0">
+				<td colspan="5" class="date_data">
+					<div class="three_dots"><span>Нет заданий из электронных курсов</span></div>
+					<div title="показать/свернуть все содержимое таблицы" class="icon_dots"></div>
+				</td>
+			</tr>
+			<tr ng-repeat="laAssign in $ctrl.laAssigns">
+				<td class="date_data"><a>{{laAssign.dueDate}}</a></td>
+				<td class="subject_data"><a>{{laAssign.subjectName}}</a></td>
+				<td class="type_data">{{laAssign.typeAbbr}}</td>
+				<td class="theme_data">
+					<a href="#" ng-click="$ctrl.showAssign({assign: laAssign})">{{laAssign.assignmentName}}</a>
+				</td>
+				<td class="level_data_courses">{{laAssign.mark.mark}}</td>
+			</tr>
+		</table>
+
+	</div>
+</div>

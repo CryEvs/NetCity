@@ -1,0 +1,153 @@
+<style>
+	.expand-link-left {
+		float: left;
+	}
+</style>
+
+<div class="row" ng-if="ctrl.state.ready">
+	<div class="col-md-12">
+		<div class="buttons-filters-panel form-horizontal single-row">
+			<div class="row">
+				<div class="buttons-panel">
+					<div class="buttons-panel-left">
+					</div>
+					<div class="buttons-panel-right">
+						<button title="Для печати" type="button" class="btn btn-default" ng-click="ctrl.print()" ng-if="!ctrl.state.emptyData">
+							<span class="glyphicon glyphicon-print"></span> <span>{{ctrl.language.Generic.Buttons.kPrint}}</span>
+						</button>
+					</div>
+				</div>
+
+				<div class="filters-panel col-md-12 filters-panel-compact ready" >
+					<div class="form-group active">
+						<label class="control-label col-md-4 col-lg-3 col-sm-4">Класс</label>
+						<div class="col-md-8 col-lg-5 col-sm-8">
+							<input class="form-control" type="text" ng-value="ctrl.data.filterInfo.className" readonly disabled/>
+						</div>
+					</div>
+					<div class="form-group active">
+						<label class="control-label col-md-4 col-lg-3 col-sm-4">Предмет</label>
+						<div class="col-md-8 col-lg-5 col-sm-8">
+							<input class="form-control" type="text" ng-value="ctrl.data.filterInfo.subject" readonly disabled/>
+						</div>
+					</div>
+					<div class="form-group active">
+						<label class="control-label col-md-4 col-lg-3 col-sm-4">Раздел рабочей программы</label>
+						<div class="col-md-8 col-lg-5 col-sm-8">
+							<input class="form-control" type="text" ng-value="ctrl.data.filterInfo.unit" readonly disabled/>
+						</div>
+					</div>
+					<div class="form-group active">
+						<label class="control-label col-md-4 col-lg-3 col-sm-4">Тема урока</label>
+						<div class="col-md-8 col-lg-5 col-sm-8">
+							<input class="form-control" type="text" ng-value="ctrl.data.filterInfo.lesson" readonly disabled/>
+						</div>
+					</div>
+					<div class="form-group active">
+						<label class="control-label col-md-4 col-lg-3 col-sm-4">Автор УМК</label>
+						<div class="col-md-8 col-lg-5 col-sm-8">
+							<input class="form-control" type="text" ng-value="ctrl.data.filterInfo.author" readonly disabled/>
+						</div>
+					</div>
+					<div class="form-group active">
+						<label class="control-label col-md-4 col-lg-3 col-sm-4">Тип урока</label>
+						<div class="col-md-8 col-lg-5 col-sm-8">
+							<input class="form-control" type="text" ng-value="ctrl.data.filterInfo.type" readonly disabled/>
+						</div>
+					</div>
+					<div class="form-group active" ng-if="ctrl.canEdit()">
+						<a href="#" ng-click="ctrl.editLessonMap()">{{ctrl.language.Generic.Buttons.kEdit}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div ng-if="ctrl.state.emptyData">
+	<div class="row">
+		<div class="col-md-10 col-lg-7">
+			<div class="alert alert-info" role="alert">
+				{{ctrl.language.Generic.Calendar.kNotFoundMsgDelLesson}}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="buttons-panel" ng-if="ctrl.state.ready">
+	<div class="buttons-panel-left">
+		<button title="" type="button" class="btn btn-default" ng-click="ctrl.add()" ng-if="ctrl.canEdit()">
+			<span class="glyphicon glyphicon-plus-sign"></span> <span>Добавить задание</span>
+		</button>
+
+		<button title="{{ctrl.language.Generic.Secure.kExpandAllPanels}}" type="button" class="btn btn-default" ng-click="ctrl.expandAll()">
+			<span class="glyphicon glyphicon-folder-open"></span>
+		</button>
+
+		<button title="{{ctrl.language.Generic.Secure.kCollapseAllPanels}}" type="button" class="btn btn-default" ng-click="ctrl.collapseAll()">
+			<span class="glyphicon glyphicon-folder-close"></span>
+		</button>
+	</div>
+</div>
+
+<table class="table table-xs table-bordered table-print print-block" ng-if="!ctrl.state.emptyData && ctrl.state.ready">
+	<tr>
+		<th rowspan="3">Номер задания</th>
+		<th rowspan="3">Задание</th>
+		<th rowspan="3">Форма коммуникации</th>
+		<th rowspan="3">Форма контроля</th>
+		<th colspan="8">Деятельность учащихся</th>
+		<th rowspan="3">Деятельность учителя</th>
+	</tr>
+	<tr>
+		<th rowspan="2">Предметные умение</th>
+		<th colspan="2">Познавательная</th>
+		<th colspan="2">Коммуникативная</th>
+		<th colspan="2">Регулятивная</th>
+		<th>Личностная</th>
+	</tr>
+	<tr>
+		<th>Осуществляемые действия</th>
+		<th>Формируемые умения</th>
+		<th>Осуществляемые действия</th>
+		<th>Формируемые умения</th>
+		<th>Осуществляемые действия</th>
+		<th>Формируемые умения</th>
+		<th>Формируемые умения</th>
+	</tr>
+
+	<tr ng-repeat-start="mapTasksGroup in ctrl.data.mapTasksGroups">
+		<th colspan="13">
+			<a class="expand-link-left" href="javascript: void(0)" ng-click="ctrl.setAndRememberExpand(mapTasksGroup)">
+				<span ng-if="mapTasksGroup.expand">{{ctrl.language.Generic.Reports.kHide}}</span>
+				<span ng-if="!mapTasksGroup.expand">{{ctrl.language.Generic.Reports.kShow}}</span>
+			</a>
+
+			<div>{{mapTasksGroup.name}}</div>
+		</th>
+	</tr>
+
+	<tr class="collapse" ng-class="{ 'in': mapTasksGroup.expand }" ng-repeat-end ng-repeat="mapTask in mapTasksGroup.mapTasks">
+		<td>{{mapTask.number}}</td>
+		<td>
+			<a href="#" ng-click="ctrl.edit(mapTask)" title="Редактировать" ng-if="ctrl.canEdit()">
+				<span class="glyphicon glyphicon-pencil"></span>
+				{{mapTask.task}}
+			</a>
+			<span ng-if="!ctrl.canEdit()">{{mapTask.task}}</span>
+		</td>
+		<td>{{mapTask.communicationFormDisplay}}</td>
+		<td>{{mapTask.controlFormDisplay}}</td>
+		<td><small>{{mapTask.skillsInfo}}</small></td>
+		<td><small>{{mapTask.cognitive.activity}}</small></td>
+		<td><small>{{mapTask.cognitive.results}}</small></td>
+		<td><small>{{mapTask.communicative.activity}}</small></td>
+		<td><small>{{mapTask.communicative.results}}</small></td>
+		<td><small>{{mapTask.regulatory.activity}}</small></td>
+		<td><small>{{mapTask.regulatory.results}}</small></td>
+		<td><small>{{mapTask.personal.results}}</small></td>
+		<td>{{mapTask.teacherActivity}}</td>
+	</tr>
+
+</table>

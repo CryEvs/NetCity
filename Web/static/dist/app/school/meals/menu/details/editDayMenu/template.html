@@ -1,0 +1,101 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="header"></h4>
+			</div>
+			<div class="bootstrap-dialog-close-button">
+				<button class="close" ng-click="cancel()">&times;</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<span class="content-page-preloader" id="preloader" ng-hide="state.viewReady"><span>Пожалуйста подождите...</span></span>
+
+		<form role="form" name="eventForm" class="form-horizontal form-sm">
+			<!--Поля формы-->
+
+			<fieldset>
+				<legend>Общая информация</legend>
+
+				<div class="row form-group" ng-class="{'has-error': eventForm.daynum.$invalid && (!eventForm.daynum.$pristine || eventForm.$displayErrors)}">
+					<label for="dayMenu-dayNum" class="control-label col-md-4 col-lg-3 col-sm-4">Номер дня</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<select class="form-control" id="dayMenu-dayNum" name="daynum" required ng-options="daynum as daynum for daynum in data.refs.dayNums" ng-init="data.dayMenu.dayNum" ng-model="data.dayMenu.dayNum" ng-change="onChange()"></select>
+						<p ng-show="eventForm.daynum.$invalid && (!eventForm.daynum.$pristine || eventForm.$displayErrors)" class="help-block">День должен быть заполнен</p>
+					</div>
+				</div>
+
+				<div class="row form-group" ng-class="{'has-error': eventForm.eating.$invalid && (!eventForm.eating.$pristine || eventForm.$displayErrors)}">
+					<label for="dayMenu-eatingTime" class="control-label col-md-4 col-lg-3 col-sm-4">Прием пищи</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<div class="alert alert-info" role="alert" ng-if="!data.refs.eatingTimes.length">
+							Расписание приема пищи не заполнено
+						</div>
+						<select class="form-control" id="dayMenu-eatingTime" name="eating" required ng-if="data.refs.eatingTimes.length" ng-options="eatingTime.type.name for eatingTime in data.refs.eatingTimes track by eatingTime.id" ng-init="data.dayMenu.eatingTime" ng-model="data.dayMenu.eatingTime" ng-change="onChange()"></select>
+						<p ng-show="eventForm.eating.$invalid && (!eventForm.eating.$pristine || eventForm.$displayErrors)" class="help-block">Прием пищи должен быть выбран</p>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+
+		<form role="form" name="memberForm" class="form form-sm" ng-if="mode.edit">
+			<fieldset>
+				<legend>Состав меню</legend>
+				
+				<div class="buttons-panel">
+
+					<button type="button" title="Добавить блюдо" class="btn btn-info" ng-click="addContent()">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>{{language.Generic.Buttons.kAdd}}</span>
+					</button>
+
+					<button type="button" class="btn btn-info" ng-click="editContent(data.selection.selected)" ng-disabled="!data.selection.selected">
+						<span class="glyphicon glyphicon-pencil"></span>
+						<span>{{language.Generic.Buttons.kEdit}}</span>
+					</button>
+
+					<button type="button" class="btn btn-info" ng-click="removeContent(data.selection.selected)" ng-disabled="!data.selection.selected">
+						<span class="glyphicon glyphicon-minus-sign"></span>
+						<span>{{language.Generic.Buttons.kRemove}}</span>
+					</button>
+
+				</div>
+				
+				<div class="alert alert-info" role="alert" ng-if="!data.dayMenu.contents || !data.dayMenu.contents.length">
+					Состав меню пуст
+				</div>
+
+				<table class="table table-xs table-bright table-bright-hover table-selectable" ng-if="data.dayMenu.contents && data.dayMenu.contents.length">
+					<tr>
+						<th>Блюдо</th>
+						<th>Вес, г.</th>
+					</tr>
+					<tr ng-repeat="content in data.dayMenu.contents" ng-class="{'selected': data.selection.isSelected(content)}" ng-click="data.selection.select(content)">
+						<td>{{content.dish.name}}</td>
+						<td>{{content.weight | number : 2}}</td>
+					</tr>
+				</table>
+
+			</fieldset>
+		</form>
+	
+
+	</div>
+	<div class="modal-footer" ng-show="state.viewReady && state.dataReady">
+		<button class="btn btn-primary ng-binding" ng-if="mode.edit" ng-click="eventForm.$displayErrors=true; save(eventForm.$valid)" ng-disabled="!state.wasChanged">
+			Сохранить
+		</button>
+		
+		<button class="btn btn-primary ng-binding" ng-if="mode.create" ng-click="eventForm.$displayErrors=true; create(eventForm.$valid)">
+			Добавить
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			Закрыть
+		</button>
+	</div>
+</div>

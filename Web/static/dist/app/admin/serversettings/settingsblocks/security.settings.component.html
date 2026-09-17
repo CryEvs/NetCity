@@ -1,0 +1,135 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<button title="{{$ctrl.language.Generic.Common.kChangePassword}}" type="button" class="btn btn-default" ng-click="$ctrl.changePassword()">
+				<span>{{$ctrl.language.Generic.Common.kChangePassword}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<ng-form name="$ctrl.form" class="form-horizontal">
+	<table class="table table-bordered table-condensed table-thin table-sm">
+		<tr>
+			<td>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="$ctrl.data.securitySettings.filteringIpAddresses" track-changes> {{$ctrl.language.Generic.ServAdmin.kBlockUsersFromInsecureNetworks}}
+					</label>
+				</div>
+			</td>
+			<td>
+				<button title="{{$ctrl.language.Generic.ServAdmin.kDefineNetworkSecurity}}" type="button" class="btn inlineButton btn-default" ng-click="$ctrl.defineNetwork()" ng-disabled="!$ctrl.data.filteringIpAddresses">
+					<span class="glyphicon glyphicon-wrench"></span>
+				</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="$ctrl.data.securitySettings.restrictNumericPasswords" track-changes> {{$ctrl.language.Generic.ServAdmin.kRestrictNumericPasswords}}
+					</label>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	<div style="padding-bottom:15px;">
+		<label>{{$ctrl.language.Generic.ServAdmin.kBlockTypesLogon}}</label>
+		<div style="padding-left:20px;">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="$ctrl.data.securitySettings.blockByIp" track-changes> {{$ctrl.language.Generic.ServAdmin.kBlockByIPAddress}}
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="$ctrl.data.securitySettings.blockByEducOrgAndLogin" track-changes> {{$ctrl.language.Generic.ServAdmin.kBlockByEducOrgAndLogin}}
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{'has-error': $ctrl.form.MaxSessionIdleTime.$invalid}">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kMaxSessionIdleTime}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="number" name="MaxSessionIdleTime" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.securitySettings.maxSessionIdleTime" ng-min="3" ng-max="999" track-changes>
+				<div ng-messages="$ctrl.form.MaxSessionIdleTime.$error">
+					<span class="help-block" ng-message="min">
+						{{$ctrl.securityErrors.minSessionIdleTimeError()}}
+					</span>
+
+					<span class="help-block" ng-message="max">
+						{{$ctrl.securityErrors.maxSessionIdleTimeError()}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{'has-error': $ctrl.form.MinLoginLength.$invalid}">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kMinLoginLength}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="number" name="MinLoginLength" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.securitySettings.minLoginLength" required ng-min="3" ng-max="20" track-changes>
+				<div ng-messages="$ctrl.form.MinLoginLength.$error">
+					<span class="help-block" ng-message="required">
+						{{$ctrl.securityErrors.minLoginLengthError()}}
+					</span>
+
+					<span class="help-block" ng-message="min">
+						{{$ctrl.securityErrors.minLoginLengthError()}}
+					</span>
+
+					<span class="help-block" ng-message="max">
+						{{$ctrl.securityErrors.minLoginLengthError()}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{'has-error': $ctrl.form.MinPasswordLength.$invalid}">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kMinPasswordLength}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="number" name="MinPasswordLength" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.securitySettings.minPasswordLength" required ng-min="3" ng-max="20" track-changes>
+				<div ng-messages="$ctrl.form.MinPasswordLength.$error">
+					<span class="help-block" ng-message="required">
+						{{$ctrl.securityErrors.minPasswordLengthError()}}
+					</span>
+
+					<span class="help-block" ng-message="min">
+						{{$ctrl.securityErrors.minPasswordLengthError()}}
+					</span>
+
+					<span class="help-block" ng-message="max">
+						{{$ctrl.securityErrors.minPasswordLengthError()}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+
+				<button ng-if="$ctrl.data.useReadOnlyAccess" title="{{$ctrl.language.Generic.ServAdmin.kDefineModeAccess}}" type="button" class="btn btn-default" ng-click="$ctrl.editReadOnlyAccess()">
+					<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.ServAdmin.kDefineModeAccess}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</ng-form>

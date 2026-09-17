@@ -1,0 +1,17 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form class="form-horizontal form-sm" name="$ctrl.form">
+	<ns-form control-size="col-md-8" label-size="col-md-4">
+
+		<ns-form-group title="{{'language.Generic.Curriculum.kVariantName' | language}}"  ng-class="{'has-error': $ctrl.form.Name.$touched && $ctrl.form.Name.$invalid}">
+			<input type="text" required ng-model="$ctrl.name" class="form-control" name="Name" />
+			<p ng-show="$ctrl.form.Name.$touched && $ctrl.form.Name.$invalid && $ctrl.form.Name.$error.unique" class="help-block">{{'language.Generic.Curriculum.kErrVariantNameRepeat' | language}}</p>
+			<p ng-show="$ctrl.form.Name.$touched && $ctrl.form.Name.$invalid && $ctrl.form.Name.$error.required" class="help-block">{{'language.Generic.Curriculum.kErrEmptyVariantName' | language}}</p>
+		</ns-form-group>
+
+		<ns-form-group title="Автор">
+			<select ng-if="$ctrl.canEditAuthor()" ng-model="$ctrl.author" class="form-control" name="Author" ng-options="teacher as teacher.name for teacher in $ctrl.teachers track by teacher.id"></select>
+			<span>{{$ctrl.author.name}}</span>
+		</ns-form-group>	
+	</ns-form>
+	</form>
+</ns-modal>

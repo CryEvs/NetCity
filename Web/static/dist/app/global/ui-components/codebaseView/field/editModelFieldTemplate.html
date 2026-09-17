@@ -1,0 +1,47 @@
+<div ng-init="$ctrl.init()">
+	<div class="form-group" ng-if="$ctrl.model && !$ctrl.model['isHidden'] && !$ctrl.model['isAutoField'] && $ctrl.getType() != 'CheckBox'">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.model['uiName'].replace($ctrl.br, ' ')}}</label>
+		<div class="col-md-8 col-lg-9 col-sm-8">
+			<!-- Добавить обработку разных типов -->
+			<div ng-if="$ctrl.getType() == 'Input'" >
+				<input type="text" class="form-control" name="{{$ctrl.model['systemName']}}" ng-model="$ctrl.model.value"
+					ng-disabled="$ctrl.isDisabled()"/>
+			</div>
+
+			<div ng-if="$ctrl.getType() == 'Select'">
+				<select class="form-control" name="{{$ctrl.model['systemName']}}" ng-model="$ctrl.model.value"
+					ng-init="$ctrl.model.value = $ctrl.getDefaultValue($ctrl.model)"
+					ng-options="$ctrl.mapEnumKey(key) as value.name for (key, value) in $ctrl.model['availableValues']"
+					ng-disabled="$ctrl.isDisabled()" ></select>
+			</div>
+
+			<div ng-if="$ctrl.getType() == 'Date'">
+				<date-input ng-model="$ctrl.model.value" min-date="$ctrl.minDate" max-date="$ctrl.maxDate"></date-input>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.model && !$ctrl.model['isHidden'] && !$ctrl.model['isAutoField'] && $ctrl.getType() == 'CheckBox'">
+		<div class="col-md-10 col-lg-9 col-sm-10">
+			<div class="checkbox">
+				<label class="control-label">
+					<input type="checkbox" name="{{$ctrl.model['systemName']}}" ng-model="$ctrl.model.value"
+						ng-disabled="$ctrl.isDisabled()"/>
+					{{$ctrl.model['uiName'].replace($ctrl.br, ' ')}}
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div ng-if="!$ctrl.isEdit || $ctrl.isEditable() || $ctrl.model.isEditable">
+		<div class="alert alert-info" role="alert"
+			ng-repeat="validator in $ctrl.model.validators"
+			ng-hide="$ctrl.validate(validator)">{{validator.message}}</div>
+	</div>
+
+	<div ng-if="!$ctrl.isEdit || $ctrl.isEditable() || $ctrl.model.isEditable">
+		<div class="alert" ng-class="$ctrl.getInformationClass(info)" role="alert"
+			ng-show="$ctrl.validate(info)"
+			ng-repeat="info in $ctrl.model.information">{{info.message}}</div>
+	</div>
+</div>

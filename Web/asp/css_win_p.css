@@ -1,0 +1,268 @@
+H2
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+H3
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+H4
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+INPUT
+{
+    FONT-SIZE: 9pt;
+    FONT-FAMILY: Verdana, Arial
+}
+DIV.subhead
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10pt;
+    COLOR: #ffffff;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+B
+{
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+P
+{
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+TD
+{
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+TH
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+BODY
+{
+    marginTop: 0;
+    marginBottom: 0;
+}
+DIV.bullet
+{
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+DIV.footer
+{
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+DIV.ltfooter
+{
+    FONT-SIZE: 8pt;
+    COLOR: #cccccc;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+DIV.PageTitle
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+TEXTAREA
+{
+    FONT-SIZE: 9pt;
+    FONT-FAMILY: Verdana, Arial
+}
+A.PLUNIT
+{
+    FONT-SIZE: 10pt;
+    COLOR: green;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    TEXT-DECORATION: none
+}
+A.PLLESSON
+{
+    FONT-SIZE: 10pt;
+    COLOR: darkred;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    TEXT-DECORATION: none
+}
+.SmallHeader
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Arial, Verdana, Helvetica
+}
+.NormalText
+{
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Arial, Verdana, Helvetica
+}
+.SmallText
+{
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Arial, Verdana, Helvetica
+}
+TABLE.NullTable
+{
+    BORDER-RIGHT: white 0pt;
+    BORDER-TOP: white 0pt;
+    BORDER-LEFT: white 0pt;
+    BORDER-BOTTOM: white 0pt
+}
+TABLE.NullTable TD
+{
+    BORDER-RIGHT: white 0pt;
+    BORDER-TOP: white 0pt;
+    BORDER-LEFT: white 0pt;
+    BORDER-BOTTOM: white 0pt
+}
+TABLE.ThickTable
+{
+    BORDER-RIGHT: #6b6b1a ridge;
+    BORDER-TOP: #6b6b1a ridge;
+    BORDER-LEFT: #6b6b1a ridge;
+    BORDER-BOTTOM: #6b6b1a ridge;
+    BORDER-COLLAPSE: collapse
+}
+TABLE.ThickTable TD
+{
+    BORDER-RIGHT: #6b6b1a thin ridge;
+    BORDER-TOP: #6b6b1a thin ridge;
+    BORDER-LEFT: #6b6b1a thin ridge;
+    BORDER-BOTTOM: #6b6b1a thin ridge
+}
+TABLE.ThickTable TH
+{
+    BORDER-RIGHT: #6b6b1a thin ridge;
+    BORDER-TOP: #6b6b1a thin ridge;
+    BORDER-LEFT: #6b6b1a thin ridge;
+    BORDER-BOTTOM: #6b6b1a thin ridge
+}
+.body
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+.select
+{
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Verdana, Arial, Helvetica
+}
+SELECT
+{
+    FONT-SIZE: 9pt;
+    FONT-FAMILY: Verdana, Arial
+}
+TABLE.ThinTable
+{
+    BORDER-LEFT-COLOR: #000000;
+    BORDER-BOTTOM-COLOR: #000000;
+    BORDER-TOP-COLOR: #000000;
+    BORDER-RIGHT-COLOR: #000000
+}
+TABLE.ThinTable TD
+{
+    BORDER-LEFT-COLOR: #000000;
+    BORDER-BOTTOM-COLOR: #000000;
+    BORDER-TOP-COLOR: #000000;
+    BORDER-RIGHT-COLOR: #000000
+}
+TABLE.ThinTable TH
+{
+    BORDER-LEFT-COLOR: #000000;
+    BORDER-BOTTOM-COLOR: #000000;
+    BORDER-TOP-COLOR: #000000;
+    BACKGROUND-COLOR: #eaeaea;
+    BORDER-RIGHT-COLOR: #000000
+}
+TABLE.NullTable TH
+{
+    BORDER-RIGHT: white 0pt;
+    BORDER-TOP: white 0pt;
+    BORDER-LEFT: white 0pt;
+    BORDER-BOTTOM: white 0pt
+}
+table.thintable td.leftheader
+{
+	border-left-color: #000000;
+	border-bottom-color: #000000;
+	border-top-color: #000000;
+	border-right-color: #000000;
+	background-color: #eaeaea
+}
+table.thintable th.leftheader
+{
+	border-left-color: #000000;
+	border-bottom-color: #000000;
+	border-top-color: #000000;
+	border-right-color: #000000;
+	background-color: #eaeaea
+}
+table.thintable td.filled
+{
+	border-left-color: #000000;
+	border-bottom-color: #000000;
+	border-top-color: #000000;
+	border-right-color: #000000;
+	background-color: white
+}
+table.ThinTable td.relay1
+{
+    BORDER-LEFT-COLOR: #000000;
+    BORDER-BOTTOM-COLOR: #000000;
+    BORDER-TOP-COLOR: #000000;
+    BORDER-RIGHT-COLOR: #000000;
+    background-color: white
+}
+table.ThinTable td.relay2
+{
+    BORDER-LEFT-COLOR: #000000;
+    BORDER-BOTTOM-COLOR: #000000;
+    BORDER-TOP-COLOR: #000000;
+    BORDER-RIGHT-COLOR: #000000;
+    background-color: #e7e7e7
+}
+table.ThinTable td.relay3
+{
+    BORDER-LEFT-COLOR: #000000;
+    BORDER-BOTTOM-COLOR: #000000;
+    BORDER-TOP-COLOR: #000000;
+    BORDER-RIGHT-COLOR: #000000;
+	background-color: #e9e9e9
+}
+table.thintable td.event
+{
+    BORDER-LEFT-COLOR: #000000;
+    BORDER-BOTTOM-COLOR: #000000;
+    BORDER-TOP-COLOR: #000000;
+    BORDER-RIGHT-COLOR: #000000;
+    background-color: #e7e7e7
+}
+.onScrHelp
+{
+    FONT-SIZE: 8pt;
+    COLOR: #5679cb;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.onScrHelp P
+{
+    FONT-SIZE: 8pt;
+    COLOR: #5679cb;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.PLPLAN
+{
+    FONT-SIZE: 10pt;
+    COLOR: blue;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    TEXT-DECORATION: none
+}

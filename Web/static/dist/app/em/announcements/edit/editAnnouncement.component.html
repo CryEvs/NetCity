@@ -1,0 +1,125 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+<link rel="stylesheet" href="http://textangular.com/dist/textAngular.css" type="text/css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+<style>
+	div.mce-statusbar {
+		display: none !important;
+	}
+	.mce-container.mce-abs-layout-item.mce-last.mce-formitem {
+		display: none;
+	}
+</style>
+
+<form class="form-horizontal ns-cloak" name="ctrl.announceForm">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<button ng-if="ctrl.state.createMode" title="{{ctr.language.Generic.Announcement.kSendAnnouncement}}" type="button" class="btn btn-primary" ng-click="ctrl.save()">
+						<span class="glyphicon glyphicon-envelope"></span>
+						<span>{{ctrl.language.Generic.Buttons.kSend}}</span>
+					</button>
+
+					<button ng-if="!ctrl.state.createMode" title="{{ctrl.language.Generic.Announcement.kSaveAnnouncement}}" type="button" class="btn btn-primary" ng-click="ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{ctrl.language.Generic.Buttons.kSend}}</span>
+					</button>
+
+					<button title="{{ctrl.language.Generic.Announcement.kClearAll}}" type="button" class="btn btn-warning" ng-click="ctrl.reset()">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>{{ctrl.language.Generic.Buttons.kReset}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group" id="selectedOrganizationsView">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.MenuFolders.kFSASchools}}</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<button class="btn btn-default btn-sm" ng-click="ctrl.openChooseDialogForSchools()" title="{{ctrl.language.Generic.Buttons.kChoose}}" style="margin-bottom: 10px;">
+				<span class="glyphicon glyphicon-pencil"></span>
+				<span>{{ctrl.language.Generic.Common.kChooseOrganizations}}</span>
+			</button>
+			<selected-organizations-view selected="ctrl.selected" settings="ctrl.settings" required></selected-organizations-view> 
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.Announcement.kAnnouncementRecepient}}</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="row">
+				<div class="col-md-6">
+
+						<div class="checkbox ng-scope">
+							<label class="ng-binding">
+								<input type="checkbox" value="1" name="recipientGroup"  ng-model="ctrl.selectAll" ng-click="ctrl.toggleRecipientGroup(-1)" ng-checked="ctrl.data.announcement.recipientGroup.length == ctrl.data.recipientGroups.length" >
+								{{ctrl.language.Generic.Common.kAll}}
+							</label>
+						</div>
+
+					<div class="checkbox" ng-repeat="group in ctrl.data.recipientGroups" ng-if="$index < 5">
+						<label>
+							<input type="checkbox" value="{{group.id}}" name="recipientGroup" ng-click="ctrl.toggleRecipientGroup(group.id)" ng-checked="ctrl.data.announcement.recipientGroup.indexOf(group.id) > -1">
+							{{group.name}}
+						</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="checkbox" ng-repeat="group in ctrl.data.recipientGroups" ng-if="$index >= 5">
+						<label>
+							<input type="checkbox" value="{{ctrl.group.id}}" track-changes name="recipientGroup" ng-click="ctrl.toggleRecipientGroup(group.id)" ng-checked="ctrl.data.announcement.recipientGroup.indexOf(group.id) > -1">
+							{{group.name}}
+						</label>
+					</div>
+				</div>
+			</div>
+			
+
+			<div class="row" ng-show="ctrl.announceForm.$displayErrors && ctrl.data.announcement.recipientGroup.length === 0">
+				<div class="col-md-12">
+					<div class="alert alert-danger">
+						{{ctrl.language.Generic.Announcement.kErrorNotSelectedRecipient}}
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.Announcement.kDeleteAfter}}</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<date-input-component date-model="ctrl.data.announcement.deleteDate" name="DELDATE"></date-input-component>
+		</div>
+	</div>
+	<div class="form-group" ng-class="{'has-error': ctrl.announceForm.title.$invalid && (!ctrl.announceForm.title.$pristine || ctrl.announceForm.$displayErrors)}">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.Announcement.kTopic}}</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<input type="text" required name="title" class="form-control" size="44" maxlength="200" ng-model="ctrl.data.announcement.title" track-changes>
+			<p ng-show="ctrl.announceForm.title.$invalid && (!ctrl.announceForm.title.$pristine || ctrl.announceForm.$displayErrors)" class="help-block">{{ctrl.language.Generic.Announcement.kEnterAnnName}}</p>
+
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.Announcement.kAnnouncement}}</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<textarea ui-tinymce="ctrl.tinymceOptions" ng-model="ctrl.data.announcement.description" placeholder="..."></textarea>
+
+			<p class="help-block">
+				<div class="row" ng-if="ctrl.data.announcement && ctrl.data.announcement.description && ctrl.data.announcement.description.length > 0.9 * ctrl.descriptionMaxSize">
+					<div class="col-md-12">
+						<div class="alert" ng-class="[{'alert-danger': ctrl.data.announcement.description.length > ctrl.descriptionMaxSize}, {'alert-info': ctrl.data.announcement.description.length <= ctrl.descriptionMaxSize}]">
+							{{ctrl.currentSizeMessage}}
+						</div>
+					</div>
+				</div>
+			</p>
+		</div>
+	</div>
+	<div class="form-group" ng-if="ctrl.fa">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.Common.kAttachedFile}}</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<file-attachments settings="ctrl.fa"></file-attachments>
+		</div>
+	</div>
+</form>

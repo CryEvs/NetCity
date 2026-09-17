@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-8">
+		<div class="buttons-filters-panel form-horizontal">
+			<filter-panel class="filters-panel" ng-if="$ctrl.filterPanelSettings" fp-settings="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel"></filter-panel>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+
+	<div class="col-md-12">
+
+		<div class="alert alert-danger" ng-if="$ctrl.state.monthRangeInfoEmpty" role="alert">{{$ctrl.language.Generic.FoodPayModule.kCantEditFoodPayBalance}}</div>
+		<div class="alert alert-info" ng-if="!$ctrl.state.monthRangeInfoEmpty && (!$ctrl.studentBalances || !$ctrl.studentBalances.length)" role="alert">{{$ctrl.language.Filter.kNoStudents}}</div>
+
+		<form class="form-sm" ng-if="$ctrl.studentBalances && $ctrl.studentBalances.length">
+			<table class="table table-bordered table-hover table-striped table-thin table-xs print-block">
+				<tr>
+					<th>{{$ctrl.language.Common.kStudents}}</th>
+
+					<th ng-repeat="month in $ctrl.balanceMonthes">
+						<span ng-if="month.numMonth != $ctrl.editNumMonth">{{month.titleMonth}}</span>
+						<a ng-if="month.numMonth == $ctrl.editNumMonth" href title="{{$ctrl.language.Generic.FoodPayModule.kEditFoodPayBalance}}" ng-click="$ctrl.editBalance(month)">{{month.titleMonth}}</a>
+					</th>
+				</tr>
+
+				<tr ng-repeat="studentBalance in $ctrl.studentBalances">
+					<td align="left">
+						<nobr>{{$index + 1}}. {{studentBalance.fullName}}</nobr>
+					</td>
+					<td ng-repeat="monthBalance in studentBalance.monthBalances">{{monthBalance.balance}}</td>
+				</tr>
+			</table>
+		</form>
+
+	</div>
+</div>				

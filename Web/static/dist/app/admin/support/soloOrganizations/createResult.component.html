@@ -1,0 +1,36 @@
+<div class="bootstrap-dialog type-primary">
+
+		<div class="modal-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title">{{$ctrl.header}}</h4>
+			</div>
+			<div class="bootstrap-dialog-close-button">
+				<button class="close" ng-click="$ctrl.cancel()">×</button>
+			</div>
+		</div>
+	
+	
+		<div class="modal-body">
+			<p> Успешно создано организаций: {{$ctrl.created}}</p>
+			<p ng-if="$ctrl.errors.length"> Ошибок создания организаций: {{$ctrl.errors.length}}</p>
+			
+			<table class="table table-xs table-bright" ng-if="$ctrl.errors.length">
+				<tr>
+					<th>Организация РБОО</th>
+					<th>Ошибка</th>
+				</tr>
+				<tr ng-repeat="error in $ctrl.errors">
+					<td>{{error.name}}</td>
+					<td>{{error.error}}</td>	
+				</tr>
+			</table>
+		</div>
+	
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" ng-click="$ctrl.cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ok-sign"></span>
+				<span>Ок</span>
+			</button>
+		</div>
+	</div>
+	

@@ -1,0 +1,67 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<button title="Сохранить права доступа к портфолио" type="button" class="btn btn-primary" ng-click="save()" ng-disabled="!state.dataChanged">
+				<span class="glyphicon glyphicon-floppy-disk"></span>
+				<span>{{language.Generic.Buttons.kSave}}</span>
+			</button>
+			
+			<button title="Применить" type="button" class="btn" ng-click="load()" ng-disabled="!filter.ready()">
+				<span>Применить</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<form class="form-horizontal">
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-3">Образовательная организация</label>
+				<div class="col-md-5 col-lg-3 col-sm-6">
+
+					<ui-select ng-model="filter.selected.schoolId" theme="bootstrap">
+						<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+						<ui-select-choices repeat="school.id as school in searchCtx.schools.items"
+										   ui-disable-choice="school.name === 'Совпадений не найдено' || school.name === 'Поиск...'"
+										   refresh="searchCtx.schools.search($select.search)"
+										   on-select>
+							<div ng-bind-html="school.name | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">Группа пользователей</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<select name="userType" class="form-control" ng-model="filter.selected.userType" ng-options="userType.id as userType.name for userType in filter.items.userTypes"></select>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="alert alert-info" role="alert" ng-if="!state.dataLoaded ">Выберите в фильтре организацию и нажмите кнопку "Применить"</div>
+<div class="alert alert-info" role="alert" ng-if="data.users.length == 0">Нет информации о пользователях по данному фильтру</div>
+
+<div class="row" ng-show="data.users.length > 0">
+	<div class="col-md-12">
+		<ul ng-show="paging.show" uib-pagination total-items="paging.totalcount" ng-model="paging.page" items-per-page="paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="load()"></ul>
+		<table class="table table-thin table-bright table-bright-hover table-selectable" ng-show="data.users.length > 0" style="width: 40%">
+			<tr>
+				<th >№ п/п</th>
+				<th >Имя на экране</th>
+				<th ></th>
+			</tr>
+			<tr ng-repeat="user in data.users" ng-class="{'selected': selected(user), 'disabled': disabled(user)}"  ng-click="toggle(user)">
+				<td>{{$index + 1 + (paging.page - 1) * paging.pageSize}}</td>
+				<td>{{user.name}}</td>
+				<td><span class="check-mark"></span></td>
+			</tr>
+		</table>
+		<ul ng-show="paging.show" uib-pagination total-items="paging.totalcount" ng-model="paging.page" items-per-page="paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="load()"></ul>
+	</div>
+</div>

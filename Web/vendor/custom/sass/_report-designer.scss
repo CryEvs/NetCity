@@ -1,0 +1,273 @@
+/*======================================================================================================*/
+/*======================================================================================================*/
+/*======================================================================================================*/
+/*========================стили для вёрстки "Конструктор отчетов" версии 1==============================*/
+$default-theme-color: lighten(desaturate($default-cyan-color,50%),5%);
+$default-magenta-color: adjust-hue($default-theme-color, 30);
+
+$step-0-color: lighten($default-magenta-color, 0%);
+
+$step-1-color: $default-theme-color;
+$step-2-color: lighten($default-magenta-color, 5%);
+
+
+
+$step-bg: desaturate(lighten($brand-primary-light, 17%), 19%); // #cfe8f5
+$step-bg-light: lighten($step-bg, 5%);
+$brand-primary-light-hover:  lighten($brand-primary-light, 5%);
+$step-color : saturate(darken($brand-primary-light, 37%), 7%);
+$step-color-hover : lighten($step-color, 10%);
+$dropdown-link-hover-bg-light : lighten($dropdown-link-hover-bg, 1.5%);
+
+
+.steps-all {
+	margin-top: 10px;
+	.active {
+		font-weight: 900 !important;
+		text-decoration: underline !important;
+	}
+	.object-node {
+		.object-wrapper {
+			margin-left: 30px;
+			position: relative;
+			input {
+				position: absolute;
+				top: 8px;
+				left: 8px;
+				opacity: 0;
+				z-index: 4;
+			}
+				
+			label {
+				display: block;
+				position: relative;
+				@include border_radius(5px);
+				line-height: 2.3;
+				padding-left: 65px;
+				a {
+					color: $step-0-color;
+					text-decoration: inherit;
+					&:hover {
+						color:$step-2-color;
+					}
+				}
+				button {
+					background: none;
+					border: 0px solid;
+					border-radius: 0px;
+					text-shadow: none;
+					box-shadow: none;
+					padding: 0px 0px;
+					position: absolute;
+					top: 5px;
+					left: 30px;
+					border-radius: 10px;
+					&:focus {
+						outline: 0px;
+					}
+					.glyphicon {  
+						font-size: 18px;
+						background: #fff;
+						color: $base-blue-bg-color;
+						border-radius: 10px;
+						border: 2px solid #fff;
+						top: 0px;
+						&:focus {
+							outline: 0px;
+						}
+						&:hover {
+							color: #33BEFD;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	& > .object-node {
+		& > .object-wrapper {
+			margin-left: 0px;
+			& > label {
+				background: $brand-primary-light;
+				color: #fff;
+				padding-left: 65px;
+				cursor: pointer;
+				&:hover {
+					background: $brand-primary-light-hover;
+				}
+			
+				&:hover + .object-child > .object-node {
+					.object-wrapper {
+						&:before{
+							background: $brand-primary-light-hover;
+						}
+					}
+				}
+				a {
+					color: #fff;
+					font-weight: 400;
+					&:hover {
+						color:$dropdown-link-hover-bg;
+					}
+				}
+
+			}
+			& > label[for] {
+				&:before {
+					color: #fff;
+				}
+			}
+			.object-child {
+				position: relative;
+				input {
+					position: absolute;
+					top: -40px;
+					left: 8px;
+					opacity: 0;
+					z-index: 4;
+					padding: 25px;
+					width: 20px;
+					height: 25px;
+					cursor: pointer;
+				}
+
+				& > .object-node {
+					& > .object-wrapper {
+						& > label {
+							background: $step-bg;
+							color: #fff;
+							cursor: pointer;
+							a {
+								color: #fff;
+								color: $step-color;
+								font-weight: 400;
+								&:hover {
+									color:$step-color-hover ;
+								}
+							}
+							&:hover {
+								background: $step-bg-light;
+							}
+						}
+					}
+				}
+				.object-child {
+					& > .object-node {
+						& > .object-wrapper {
+							& > label {
+								background-color:$dropdown-link-hover-bg;
+								&:hover {
+									background-color:$dropdown-link-hover-bg-light;
+								}
+							}
+						}
+					}
+				}
+				
+			}
+		}
+	}
+
+	
+	.object-node > .object-wrapper input + .object-node, .object-node > .object-wrapper .object-child input  + .object-node {
+		& > .object-wrapper {
+			display: none;
+		}
+		&:before {
+			position: absolute;
+			color: $step-color;
+			top: -33px;
+			left: 11px;
+			content: "+";
+			z-index: 3;
+		}
+	}
+	.object-node > .object-wrapper input:checked + .object-node, .object-node > .object-wrapper .object-child input:checked + .object-node {
+		& > .object-wrapper {
+			display: block;
+		}
+		&:before {
+			content: "–";
+			z-index: 3;
+		}
+	}
+
+	 .object-node > .object-wrapper .object-child input:checked + .object-node ,  & > .object-node > .object-wrapper > .object-child > input + .object-node  {
+		&:before {
+			
+			 color: #fff;
+		}
+	}
+	.object-node > .object-wrapper .object-child .object-node > .object-wrapper .object-child input:checked + .object-node{
+		&:before {
+			 color: $step-color;
+		}
+	}
+}
+
+
+
+
+/*********************************************************************/
+.all-nodes {
+	color: #8e8e8e;
+	& > span {
+		top: 0px;
+		
+	}
+	 &:active {
+		color: #30363c;
+
+	}
+}
+.step-node {
+	& > div {
+		font-weight: bold;
+		margin-bottom: 7px;
+		color: #8e8e8e;
+
+	}
+	& > ul {
+		border: 1px dashed  #D0D0D0;
+		background: $dropdown-link-hover-bg-light;
+		margin-bottom: 10px;
+		border-radius: 5px;
+		padding-bottom: 7px;
+		padding-top: 7px;
+		& > li {
+			color: #8e8e8e;
+			font-weight: 400;
+			padding-left: 15px;
+			font-size: 13px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			&.nav-header {
+				font-size: 14px;
+				padding-left: 10px;
+				padding-bottom: 3px;
+			}
+		}
+		&.active {
+			border: 1px dashed #5cb85c;
+			background: #fff;
+			li {
+				color: #333;
+				a {
+					color: #5cb85c;
+					font-weight: 400;
+					padding: 0px 0px;
+					&:hover, &:focus{
+						background-color: transparent;
+						color: #68D16B;
+					}
+				}
+			}
+
+		}
+	}
+
+}
+
+
+

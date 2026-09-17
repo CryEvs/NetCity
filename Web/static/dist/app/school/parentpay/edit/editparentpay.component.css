@@ -1,0 +1,19 @@
+div.parentpay-attendance {
+  display: flex;
+}
+div.parentpay-attendance div.attendance-list {
+  flex: 1;
+}
+div.parentpay-attendance div.attendance-list .attendance-block {
+  display: flex;
+}
+div.parentpay-attendance div.attendance-list .attendance-block .paynorm {
+  flex: 1;
+}
+div.parentpay-attendance div.attendance-list .attendance-block + .attendance-block {
+  padding-top: 2px;
+}
+div.parentpay-attendance div.action-panel {
+  margin-left: 7px;
+  margin-top: 7px;
+}

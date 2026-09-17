@@ -1,0 +1,75 @@
+	<div class="journal-total-wrapper-block" style="visibility: hidden; opacity: 0;">
+		<table class="journal journal-student  table-bordered table-responsive table-condensed print-block">
+			<tr>
+				<th class="">{{language.Common.kStudents}}</th>
+			</tr>
+			{{#each students}}
+			<tr class="journal-row{{#if rowClass}}{{rowClass}}{{/if}}">
+				<td class="student-name text-nowrap" data-student-id="{{id}}"><span>{{match @index}}. {{fullName}}</span></td>
+			</tr>
+			{{/each}}
+		</table>
+
+		<div class="journal-total-wrapper">
+			<table id="pupilstab" class="journal journal-total table-bordered table-responsive table-condensed print-block">
+				<tr>
+					{{#each monthsDays}}
+					<th class="month" colspan="{{days.length}}">{{month}}</th>
+					{{/each}}
+				</tr>
+				<tr class="days">
+					{{#each monthsDays}}
+						{{#each days}}
+						<th class="cell-num">{{this}}</th>
+						{{/each}}
+					{{/each}}
+				</tr>
+				<tr class="links">
+					{{#each classMeetings}}
+					<th>
+						<a {{#unless readOnly}}href="#edit-{{id}}"{{/unless}} 
+							data-cm-id="{{id}}" 
+							class="cm-link icon-ok-wraper{{#if active}} active{{/if}}" 
+							data-content="{{#each assignments}}<span>{{match @index}}. {{assignmentName}}</span>{{/each}}" 
+							data-original-title="{{#if active}}<span>{{@root.language.Generic.Grade.kAssignments}}:</span>{{else}}{{#if @root.extraActivity}}{{@root.language.Generic.Grade.kAttendAndAssign}}{{else}}{{@root.language.Generic.Grade.kEditJournal}}{{/if}}{{/if}}">
+							<i class="icon-ok"></i>
+						</a>
+					</th>
+					{{/each}}
+				</tr>
+
+				{{#each studentsMarks}}
+				<tr class="journal-row{{rowClass}}">
+					{{#each cmMarks}}
+					<td {{#if cssClass}}class="{{cssClass}}"{{/if}}>
+						{{#each marks}}<span class="{{spanClass}}" data-assign-id="{{assignmentId}}">{{#if duty}}<b>&#183;</b>{{else}}{{mark}}{{/if}}</span>{{/each}}{{#if attendance}}<span class="att-mark">{{attendance}}</span>{{/if}}
+					</td>
+					{{/each}}
+				</tr>
+				{{/each}}
+			</table>
+		</div>
+
+		<table class="journal journal-marks table-bordered table-responsive table-condensed print-block">
+			<tr>
+				{{#unless @root.extraActivity}}
+				<th>{{{@root.language.Generic.Common.kAverageMarkBR}}}</th>
+				{{/unless}}
+				<th>
+					{{#if editLimit.totalsReadOnly}}
+					{{{@root.language.Generic.Grade.kPeriodMarkWithBR}}}
+					{{else}}
+					<a href="JavaScript:void(0)" class="edit-totals-link" title="{{@root.language.Generic.Grade.kEditTotal}}">{{{@root.language.Generic.Grade.kPeriodMarkWithBR}}}</a>
+					{{/if}}
+				</th>
+			</tr>
+			{{#each studentsAvgWithTotalsMarks}}
+			<tr class="journal-row{{#if rowClass}}{{rowClass}}{{/if}}">
+				{{#unless @root.extraActivity}}
+				<td class="cell-num-2"><span class="{{avgMark.spanClass}}">{{avgMark.mark}}</span></td>
+				{{/unless}}
+				<td><span class="{{totalMark.spanClass}}">{{totalMark.mark}}&nbsp;</span></td>
+			</tr>
+			{{/each}}
+		</table>
+	</div>

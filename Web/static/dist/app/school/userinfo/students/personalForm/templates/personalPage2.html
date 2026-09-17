@@ -1,0 +1,73 @@
+<style type="text/css">
+  td {
+    font-size: 7pt;
+    font-family: Verdana, Arial, Helvetica;
+    padding: 2px 3px 1px;
+  }
+
+  th {
+    font-weight: bold;
+    font-size: 8pt;
+    font-family: Verdana, Arial, Helvetica;
+    padding: 2px 3px 1px;
+  }
+  
+  span.underline {
+    text-decoration: underline;
+  }
+</style>
+<table align="right" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr><td><br><br><div align="center"><b style="font-size:120%">ОБЩИЕ СВЕДЕНИЯ ОБ ОБУЧАЮЩЕМСЯ</b></div></td></tr>
+  <tr><td><br><br>
+      <table align="center" border="0" cellspacing="0" cellpadding="0" width="90%">
+        <tr><td style="border-bottom:1px solid black;"><br>1.<b>{{paramPage.user.lastName}}&nbsp;{{paramPage.user.firstName}}&nbsp;{{paramPage.user.middleName}}</b></td></tr>
+        <tr valign="top"><td><div align="center" style="font-size:80%">(фамилия, имя, отчество)</div></td></tr>
+        <tr><td><br>2. {{language.Generic.Common.kGender}}: <span ng-class="{'underline': paramPage.isMale}">{{language.Generic.Common.kMale | lowercase}}</span>, <span ng-class="{'underline': !paramPage.isMale}">{{language.Generic.Common.kFemale | lowercase}}</span> (подчеркнуть)<br>&nbsp;</td></tr>
+        <tr><td><br>3. Родился в &nbsp;&nbsp;<b>{{paramPage.birthYear}}</b>&nbsp;&nbsp; году в &nbsp;&nbsp;<b>{{paramPage.birthMonth}}</b>&nbsp;&nbsp; месяце &nbsp;&nbsp;<b>{{paramPage.birthDay}}</b>&nbsp;&nbsp; числа<br>&nbsp;</td>
+        </tr>
+        <tr><td><br>4. Основание: свидетельство о рождении <b>{{paramPage.birthCertificate}}</b><br>&nbsp;</td></tr>
+        <tr><td><br>5. Фамилия, имя, отчество родителей<br>&nbsp;</td></tr>
+        <tr ng-repeat="parent in paramPage.parents">
+          <td style="border-bottom:1px solid black;"><br><b>{{parent.lastName}}&nbsp;{{parent.firstName}}&nbsp;{{parent.middleName}}</b></td>
+        </tr>
+        <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+
+        <tr><td><br>6. Где воспитывался (обучался) до поступления в 1 класс<br>&nbsp;</td></tr>
+        <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+        <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+        <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+        <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+
+        <tr><td><br>7. Сведения о переходе обучающегося из одной общеобразовательной организации в другую, выбытии и окончании общеобразовательной организации<br>&nbsp;</td></tr>
+        <tbody ng-if="arriveDocs.length > 0" ng-repeat="doc in arriveDocs">
+          <tr><td style="border-bottom:1px solid black;"><br><b>
+            <span ng-if="$first">Прибытие:&nbsp;</span>
+            <span>{{doc.docDate | date: "dd.MM.y"}} &nbsp;№ приказа: {{doc.docNumber}}</span>
+          </b></td></tr>
+          <tr><td style="border-bottom:1px solid black;"><br><b>откуда: {{doc.schoolName}}</b></td></tr>
+        </tbody>
+        <tbody ng-if="departDocs.length > 0" ng-repeat="doc in departDocs">
+          <tr><td style="border-bottom:1px solid black;"><br><b>
+            <span ng-if="$first">Выбытие:&nbsp;</span>
+            <span>{{doc.docDate | date: "dd.MM.y"}} &nbsp;№ приказа: {{doc.docNumber}}</span>
+          </b></td></tr>
+          <tr><td style="border-bottom:1px solid black;"><br><b>куда: {{doc.schoolName}}</b></td></tr>
+        </tbody>
+        <tbody ng-if="arriveDocs.length == 0">
+          <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+          <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+        </tbody>
+        <tbody ng-if="departDocs.length == 0">
+          <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+          <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+        </tbody>
+
+        <tr><td><br>8. Сведения о переходе на получение образования в семье, в порядке экстерната<br>&nbsp;</td></tr>
+        <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+        <tr><td style="border-bottom:1px solid black;"><br>&nbsp;</td></tr>
+        <tr><td><br>9. Домашний адрес обучающегося<br>&nbsp;</td></tr>
+        <tr><td style="border-bottom:1px solid black;"><b>{{paramPage.homeAddress}}</b></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>

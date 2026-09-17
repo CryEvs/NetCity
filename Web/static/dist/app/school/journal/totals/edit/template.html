@@ -1,0 +1,86 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/journal/totals/edit/../css/totals.css">
+
+<div class="buttons-filters-panel form-horizontal ns-cloak">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<button title="{{ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="ctrl.save()" ng-hide="ctrl.isEmptyStudentsList()">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+					<button title="{{ctrl.language.Generic.Buttons.kReset}}" type="button" class="btn btn-warning" ng-click="ctrl.load()" ng-hide="ctrl.isEmptyStudentsList()">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>{{ctrl.language.Generic.Buttons.kReset}}</span>
+					</button>
+					<button title="{{ctrl.language.Generic.Grade.kSetAllNotRated}}" type="button" class="btn btn-default" ng-click="ctrl.setAllNotRated()" ng-hide="ctrl.data.sgInfo.gradingSys !== ctrl.journalRefs.GradingSys.NotRated || ctrl.isEmptyStudentsList()">
+						<span>{{ctrl.language.Generic.Grade.kSetAllNotRated}}</span>
+					</button>
+					<button title="{{ctrl.language.Generic.Grade.kSetAllPass}}" type="button" class="btn btn-default" ng-click="ctrl.setAllPass()" ng-hide="ctrl.data.sgInfo.gradingSys != ctrl.journalRefs.GradingSys.Pass || ctrl.isEmptyStudentsList()">
+						<span>{{ctrl.language.Generic.Grade.kSetAllPass}}</span>
+					</button>			
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="filters-panel col-md-6 col-lg-6 col-sm-12">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.Common.kSubject}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<span class="form-control form-control-title">
+						<span class="text">
+							{{ctrl.data.sgName}}
+						</span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.Common.kSchoolPeriod}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<span class="form-control form-control-title">
+						<span class="text" ng-bind="ctrl.data.termInfo.termName"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="alert alert-info" role="alert" ng-if="ctrl.isEmptyStudentsList()">
+	{{ctrl.language.Filter.kNoStudentsInClassForPeriod}}
+</div>
+<div class="checkbox" ng-if="ctrl.settings.showOffers && !ctrl.isEmptyStudentsList()"><label><input type="checkbox" ng-model="ctrl.data.showOffers" ng-click="ctrl.makeOffers(ctrl.data.showOffers)" name="autoExpose">{{ctrl.language.Generic.Grade.kAutoExpose}}</label></div>
+<div class="legend" ng-if="ctrl.settings.showOffers && !ctrl.isEmptyStudentsList()">
+	<div>
+		<p><span class="legend-label text-center offer">4</span><span class="legend-description"> - {{ctrl.language.Generic.Grade.kOfferedMarks}}</span></p>
+		<p><span class="legend-label text-center">4</span><span class="legend-description"> - {{ctrl.language.Generic.Grade.kFixedMarks}}</span></p>
+	</div>
+</div>
+<div class="row ns-cloak">
+	<div class="col-md-12" ng-hide="ctrl.isEmptyStudentsList()">
+		<table class="table table-bordered table-xs table-middle-cells table-hover table-thin-sm" nav-inputs="ctrl.navigateOptions">
+			<tbody>
+				<tr>
+					<th>{{ctrl.language.Common.kStudents}}</th>
+					<th class="text-nowrap">{{ctrl.language.Generic.Common.kAverageMark}}</th>
+					<th>{{ctrl.language.Generic.Common.kMark}}</th>
+				</tr>
+				<tr ng-repeat="row in ctrl.data.totalsInfo" ng-class="{'individual-educ': row.individualEduc}">
+					<td class="text-nowrap text-left student-name text-nowrap"><span>{{$index + 1}}. {{row.fullName}}</span></td>
+					<td class="text-center" ng-bind="row.avgMark.avgMark"></td>
+					<td class="text-center">
+						<select track-changes name="MarkType" class="form-control form-control-inline" 
+							ng-options="markType as markType.name for markType in ctrl.data.markTypes track by markType.id"
+							ng-class="{'offer': ctrl.existingOffer(row) && row.markType.id != ctrl.journalRefs.Marks.Mark}" 
+							ng-model="row.markType" 
+							ng-disabled="ctrl.isMarkReadOnly(row)">
+						</select>
+						<input track-changes type="text" ng-class="{'offer': row.mark.mark && row.offer && row.mark.mark == row.offer}" class="form-control text-center form-control-inline" autocomplete="off" name="Mark" size="3" maxlength="4" ng-model="row.mark.mark" ng-hide="row.markType.id != ctrl.journalRefs.Marks.Mark" ng-disabled="ctrl.isMarkReadOnly(row)">
+						<input type="text" class="form-control text-center form-control-inline" autocomplete="off" disabled style="background-color: lightgray;" name="Mark" size="3" maxlength="4" ng-hide="row.markType.id == ctrl.journalRefs.Marks.Mark || ctrl.data.sgInfo.gradingSys == ctrl.journalRefs.GradingSys.Pass" ng-model="row.markType.name">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

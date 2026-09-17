@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetCity.Integration.DistanceLearningModule</name>
+    </assembly>
+    <members>
+        <member name="M:NetCity.Integration.DistanceLearningModule.Controllers.DistanceLearningController.GetVideoMeetingInfo(System.Int32)">
+            <summary>
+            Получить информацию 
+            </summary>
+            <param name="cmId"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:NetCity.Integration.DistanceLearningModule.Controllers.DistanceLearningController.Create(System.Int32)">
+            <summary>
+            Создать дистанционный урок
+            </summary>
+            <param name="cmId"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:NetCity.Integration.DistanceLearningModule.Controllers.DistanceLearningController.Delete(System.Int32)">
+            <summary>
+            Удалить дистанционный урок
+            </summary>
+            <param name="cmId"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:NetCity.Integration.DistanceLearningModule.Controllers.DistanceLearningController.Enter(System.Int32)">
+            <summary>
+            Войти / присоединиться к дистанционному уроку
+            </summary>
+            <param name="cmId"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:NetCity.Integration.DistanceLearningModule.Model.DistanceMeeting">
+            <summary>
+            Дистанционный урок
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.DistanceLearningModule.Model.DistanceMeeting.ConferenceId">
+            <summary>
+            Идентификатор видео конференц-связи
+            </summary>
+        </member>
+    </members>
+</doc>

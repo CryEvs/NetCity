@@ -1,0 +1,19 @@
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-panel">
+		<button class="btn btn-primary" ng-click="$ctrl.save()" ng-hide="$ctrl.editCtrl.readonly">
+			<span class="bootstrap-dialof-button-icon glyphicon glyphicon-plus-sign"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<button class="btn btn-danger" ng-click="$ctrl.delete()" ng-hide="!$ctrl.hasValue || $ctrl.editCtrl.readonly">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-minus-sign"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+		</button>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12" ng-if="$ctrl.ready">
+		<edit-event ctrl="$ctrl.editCtrl" predefined="$ctrl.predefined" event="$ctrl.event" on-ready="$ctrl.onEditReady()"></edit-event>
+	</div>
+</div>

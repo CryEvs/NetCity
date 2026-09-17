@@ -1,0 +1,30 @@
+{
+	"sumCols": [],
+	"sumRows": [
+		{
+			"row": 43,
+			"subRows": [44,45,46],
+			"type": "include"
+		},
+		{
+			"row": 49,
+			"subRows": [50,51,52],
+			"type": "include"
+		},
+		{
+			"row": 53,
+			"subRows": [54,55,56],
+			"type": "include"
+		},
+		{
+			"row": 57,
+			"subRows": [58,59,60],
+			"type": "include"
+		},
+		{
+			"row": 61,
+			"subRows": [62,63,64],
+			"type": "include"
+		}
+	]
+}

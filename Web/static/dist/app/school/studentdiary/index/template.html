@@ -1,0 +1,283 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/studentdiary/index/css/studentdiary.css" />
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/1.9.32/css/materialdesignicons.min.css">
+<link rel="stylesheet" type="text/css" href="/vendor/pages/css/file-attachments.min.css">
+<script language="javascript" src="/vendor/select2/js/select2.full.min.js"></script>
+<script language="javascript" src="/vendor/select2/js/i18n/ru.js"></script>
+
+<style>
+	.container-fluid {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	table.joint_tr {
+		margin-top: 10px !important;
+	}
+	.wrapper {
+		font-family: 'Open Sans',sans-serif;
+		height: 100%;
+		width: 100%;
+		min-width: 328px;
+	}
+	.childs_select {
+		/*position: static;*/
+		white-space: nowrap;
+		/*top: auto;
+		display: table;
+		right: auto;
+		z-index: 1;*/
+	}
+	.level_data {
+		background-color: transparent !important;
+	}
+	.schooljournal_content {
+		padding-left: 0;
+		padding-bottom: 15px;
+	}
+	.other_tasks {
+		padding-left: 0px;
+		padding-top: 0px;
+	}
+	.form-control-area {
+		color: #555;
+		background-color: #fff;
+		background-image: none;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+		-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		overflow: auto;
+		padding: 7px;
+	}
+</style>
+
+<div class="row">
+	<div class="col-md-10" ng-show="ctrl.state.dataReady && ctrl.state.emptyData">
+		<div class="alert alert-info" role="alert">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			{{ctrl.state.emptyMessage}}
+		</div>
+	</div>
+</div>
+
+<!--<div class="content-preloader" ng-hide="ctrl.state.dataReady" style="min-height: 600px">
+	<span class="arrows"></span>
+	<span class="title">{{language.Generic.Curriculum.kPleaseWait}}</span>
+</div>-->
+
+<div class="row" ng-show="!ctrl.state.emptyData" class="ns-cloak">
+	<div class="col-md-12">
+		<div class="wrapper">
+			<!--<div class="childs_select visible-xs">
+				<div>Дети: <select class="ch_select" ng-options="student.nickName for student in context.students" ng-model="context.student"></select></div>
+			</div>-->
+			<div class="other_tasks" ng-class="{data_empty: !ctrl.data.pastMandatory.length}">
+				<div class="overdue_tasks">
+					<div class="overdue_head">
+						<span class="text">Просроченные задания</span>
+						<span class="num_tasks">
+							<div class="num_tasks_data">{{ctrl.data.pastMandatory.length}}</div>
+						</span>
+						<i class="mdi slidearrow mdi-menu-down"></i>
+						<i class="mdi mdi-flag-variant"></i>
+					</div>
+					<div class="overdue_content">
+
+						<table class="visible-mobile joint_tr">
+							<tr ng-if="!ctrl.data.pastMandatory || !ctrl.data.pastMandatory.length">
+								<td class="date_data">
+									<div class="three_dots"><span>Нет просроченных заданий</span>
+									</div>
+									<div title="показать/свернуть все содержимое таблицы" class="icon_dots">...</div>
+								</td>
+							</tr>
+							<tr ng-repeat-start="mandatoryGroup in ctrl.data.pastMandatory.grouped">
+								<td colspan="3" class="date_data">
+									<a href="#">{{mandatoryGroup.dueDate}}</a>
+								</td>
+							</tr>
+							<tr ng-repeat-end ng-repeat="mandatory in mandatoryGroup.list">
+								<td>
+									<a href="#" class="subject_name">{{mandatory.subjectName}}</a>
+									<div class="type_n_theme">
+										<div class="type">{{mandatory.typeAbbr}}:</div>
+										<a href="#" class="theme" ng-click="ctrl.showAssignInfo(mandatory)">{{mandatory.assignmentName}}</a>
+									</div>
+								</td>
+							</tr>
+						</table>
+
+						<table class="hidden-mobile">
+							<tr>
+								<td class="date">Срок сдачи</td>
+								<td class="subject">Предмет</td>
+								<td class="type">Тип задания</td>
+								<td class="theme">Тема задания</td>
+							</tr>
+							<tr ng-if="!ctrl.data.pastMandatory || !ctrl.data.pastMandatory.length">
+								<td colspan="4" class="date_data">
+									<div class="three_dots"><span>Нет просроченных заданий</span>
+									</div>
+									<div title="показать/свернуть все содержимое таблицы" class="icon_dots">...</div>
+								</td>
+							</tr>
+							<tr ng-repeat="mandatory in ctrl.data.pastMandatory">
+								<td class="date_data"><a>{{mandatory.dueDate}}</a></td>
+								<td class="subject_data"><a>{{mandatory.subjectName}}</a></td>
+								<td class="type_data">{{mandatory.typeAbbr}}</td>
+								<td class="theme_data">
+									<a href="#" ng-click="ctrl.showAssignInfo(mandatory)">{{mandatory.assignmentName}}</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="training_courses_tasks" ng-class="{data_empty: !ctrl.data.diary.laAssigns.length}" ng-if="ctrl.data.withLaAssigns">
+					<div class="training_courses_head">
+						<span class="text">Задания из электронных курсов</span>
+						<span class="num_tasks">
+							<div class="num_tasks_data">{{ctrl.data.diary.laAssigns.length || 0}}</div>
+						</span>
+						<i class="mdi slidearrow mdi-menu-down"></i>
+						<i class="mdi mdi-flag-variant"></i>
+					</div>
+					<div class="training_courses_content">
+						<table class="visible-mobile joint_tr">
+							<tr ng-if="!ctrl.data.diary.laAssigns || !ctrl.data.diary.laAssigns.length">
+								<td class="date_data">
+									<div class="three_dots"><span>Нет просроченных заданий</span>
+									</div>
+									<div title="показать/свернуть все содержимое таблицы" class="icon_dots">...</div>
+								</td>
+							</tr>
+							<tr ng-repeat-start="laAssignGroup in ctrl.data.diary.laAssigns.grouped">
+								<td colspan="3" class="date_data">
+									<a href="#">{{laAssignGroup.dueDate}}</a>
+								</td>
+							</tr>
+							<tr ng-repeat-end ng-repeat="laAssign in laAssignGroup.list">
+								<td>
+									<a href="#" class="subject_name">{{laAssign.subjectName}}</a>
+									<div class="type_n_theme">
+										<div class="type">{{laAssign.typeAbbr}}:</div>
+										<a href="#" class="theme" ng-click="ctrl.showAssignInfo(laAssign)">{{laAssign.assignmentName}}</a>
+									</div>
+									<div class="level_data_courses" ng-if="ctrl.laAssign.mark">{{laAssign.mark.mark}}</div>
+								</td>
+							</tr>
+						</table>
+
+						<table class="hidden-mobile">
+							<tr>
+								<td class="date">Срок сдачи</td>
+								<td class="subject">Предмет</td>
+								<td class="type">Тип задания</td>
+								<td class="theme">Тема задания</td>
+								<td class="level">Оценка</td>
+							</tr>
+							<tr ng-if="!ctrl.data.diary.laAssigns || !ctrl.data.diary.laAssigns.length">
+								<td colspan="5" class="date_data">
+									<div class="three_dots"><span>Нет заданий из электронных курсов</span></div>
+									<div title="показать/свернуть все содержимое таблицы" class="icon_dots">...</div>
+								</td>
+							</tr>
+							<tr ng-repeat="laAssign in ctrl.data.diary.laAssigns">
+								<td class="date_data"><a>{{laAssign.dueDate}}</a></td>
+								<td class="subject_data"><a>{{laAssign.subjectName}}</a></td>
+								<td class="type_data">{{laAssign.typeAbbr}}</td>
+								<td class="theme_data">
+									<a href="#" ng-click="ctrl.showAssignInfo(laAssign)">{{laAssign.assignmentName}}</a>
+								</td>
+								<td class="level_data_courses">{{laAssign.mark.mark}}</td>
+							</tr>
+						</table>
+
+					</div>
+				</div>
+				
+				
+				<!-- Кнопка на печать -->
+				<div class="buttons-panel">
+					<div class="buttons-panel-right">
+						<button title="{{ctrl.language.Generic.Buttons.kPrint}}" type="button" class="btn btn-default diary-print-btn">
+							<span class="glyphicon glyphicon-print"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="schooljournal_content" ng-class="{column: ctrl.state.view == 'column', row: ctrl.state.view == 'row', highlight: !ctrl.state.dataReady}">
+				<div class="controls_box">
+					<div class="change_views">
+						<div class="h" ng-class="{hidden: ctrl.state.view == 'column'}" ng-click="ctrl.changeView('column')"></div>
+						<div class="v" ng-class="{hidden: ctrl.state.view == 'row'}" ng-click="ctrl.changeView('row')"></div>
+						<div class="text">порядок дней:</div>
+					</div>
+					<div class="week_switcher">
+						<div class="button_prev">
+							<i class="mdi mdi-arrow-left-bold" ng-click="ctrl.prevWeek()"></i>
+						</div>
+						<div class="thisweek">
+							<div class="week_title">
+								<!-- span - на случай если select не будет использоваться-->
+								<span style="display: none">11.01.2016 — 17.01.2016</span>
+								<select class="week_select" ng-options="week.title for week in ctrl.data.weekList" ng-model="ctrl.data.week" ng-change="ctrl.load()"></select>
+							</div>
+						</div>
+						<!--<div class="thisweek">
+							<select class="week-select" ng-options="week.title for week in ctrl.data.weekList" ng-model="ctrl.data.week" ng-change="load()"></select>
+						</div>-->
+						<div class="button_next">
+							<i class="mdi mdi-arrow-right-bold" ng-click="ctrl.nextWeek()"></i>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="left_col">
+					<div ng-repeat="diaryDay in ctrl.data.diary.weekDays | limitTo: 3"
+						ng-include="'/static/dist/app/school/studentdiary/index/diaryDay.html'">
+					</div>
+				</div>
+
+				<div class="right_col">
+					<div ng-repeat="diaryDay in ctrl.data.diary.weekDays | limitTo: 3:3"
+						ng-include="'/static/dist/app/school/studentdiary/index/diaryDay.html'">
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="ctrl.state.dataReady && !ctrl.state.emptyData">
+		<div class="alert alert-info" role="alert">
+			Нажмите на оценку, чтобы узнать, за что она выставлена, или на домашнее задание, чтобы увидеть его подробности.
+		</div>
+	</div>
+</div>
+
+<table border="0" cellpadding="0" cellspacing="0" ng-show="ctrl.data.yaClassAuthUrl && ctrl.data.yaClassAuthUrl.length > 0">
+	<tbody>
+	<tr>
+		<td>
+			{{ctrl.language.Generic.LearnApp.kYaClassDescription_Parent}}
+			<br />
+			{{ctrl.language.Generic.LearnApp.kYaClassDescription_Student}}
+		</td>
+		<td>
+			<a href="JavaScript:gotoYaClass();" ng-click="ctrl.gotoYaClass();" title="{{ctrl.language.Generic.LearnApp.kGotoYaClassSite}}" style="color: blue">
+				<img src="/images/Common/yakl_s.gif">
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+

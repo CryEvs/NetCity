@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetCity.Components.Mail</name>
+    </assembly>
+    <members>
+        <member name="M:NetCity.Components.Mail.Controllers.MailController.SendMessageAsync(IRTech.NetCity.Mail.Integration.Contracts.RequestMessageDto)">
+            <summary>
+            Отправка сообщения
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Components.Mail.Controllers.MailController.EditMessageAsync(System.Int32,System.Int32,System.Nullable{IRTech.NetCity.Mail.Integration.Contracts.SendAction})">
+            <summary>
+            Получить информацию для редактирования/создания сообщения
+            </summary>
+            <param name="messageId"></param>
+            <param name="userId"></param>
+            <param name="action">тип письма: ответить/переслать</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Components.Mail.Controllers.MailController.ReadMessageAsync(System.Int32,System.Int32)">
+            <summary>
+            Прочитать сообщение
+            </summary>
+            <param name="messageId"></param>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Components.Mail.Controllers.MailController.DeleteMessagesAsync(System.Int32[],System.Int32)">
+            <summary>
+            Удалить сообщение
+            </summary>
+            <param name="messageIds">ид сообщений</param>
+            <param name="userId"></param>
+        </member>
+        <member name="M:NetCity.Components.Mail.Controllers.MailController.MoveMessagesAsync(System.Int32[],System.Int32)">
+            <summary>
+            Переместить сообщения из "Входящих" в "Удалённые"
+            </summary>
+            <param name="messageIds">ид сообщений</param>
+            <param name="userId"></param>
+        </member>
+        <member name="M:NetCity.Components.Mail.Controllers.MailController.RestoreMessagesAsync(System.Int32[],System.Int32)">
+            <summary>
+            Восстановить сообщения из "Удалённых" во "Входящие"
+            </summary>
+            <param name="messageIds">ид сообщений</param>
+            <param name="userId"></param>
+        </member>
+        <member name="M:NetCity.Components.Mail.Controllers.MailController.MarkMessagesAsync(System.Int32[],System.Int32,System.Boolean)">
+            <summary>
+            Пометить сообщения
+            </summary>
+            <param name="messageIds">ид сообщений</param>
+            <param name="userId"></param>
+            <param name="read">признак - прочтеные</param>
+        </member>
+        <member name="M:NetCity.Components.Mail.Controllers.MailController.GetUnreadMessagesAsync(System.Int32)">
+            <summary>
+            Получить ид непрочитанных сообщений
+            </summary>
+        </member>
+        <member name="M:NetCity.Components.Mail.Controllers.MailController.GetUnreadMessagesCount(System.Threading.CancellationToken)">
+            <summary>
+            Получить количество непрочитанных сообщений
+            </summary>
+        </member>
+        <member name="M:NetCity.Components.Mail.Controllers.MailRecipientsController.BrowseRecipientsAsync(IRTech.NetCity.Mail.Integration.Contracts.BrowseRecipientsQuery)">
+            <summary>
+            Получение списка получаетелей
+            </summary>
+            <param name="query">запрос</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Components.Mail.Controllers.MailRegistryController.Fields">
+            <summary>
+            Поля таблицы 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NetCity.Components.Mail.MailComponent">
+            <summary>
+            Внутренняя почта
+            </summary>
+        </member>
+        <member name="M:NetCity.Components.Mail.MailComponent.RecieveIncomingMessageAsync(System.Int32,NetCity.Common.ObjectModel.Mail.Message)">
+            <summary>
+            Прием регионального сообщения
+            </summary>
+            <param name="toClientId">идентификатор клиента получателя сообщения</param>
+            <param name="message">сообщение</param>
+            <returns>результат</returns>
+        </member>
+        <member name="M:NetCity.Components.Mail.MailComponent.SendMessageAsync(System.Boolean,NetCity.Common.ObjectModel.Mail.Message,System.Boolean)">
+            <summary>
+            Отправка сообщения
+            </summary>
+            <param name="toDraft">признак сохранения черновика. иначе отправка сообщения</param>
+            <param name="message">объект-сообщение</param>
+            <param name="mustSendEmails">отправлять сообщение в любом случае, если заполнен e-mail</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

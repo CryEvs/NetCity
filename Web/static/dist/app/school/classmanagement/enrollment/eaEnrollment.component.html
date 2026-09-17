@@ -1,0 +1,50 @@
+
+<div class="row ns-cloak">
+
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row ">
+		<filter-panel ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+	</div>
+
+	<div class="col-md-12" ng-if="!$ctrl.state.readOnly">
+		<div class="buttons-panel extra">
+			<div class="buttons-panel-left">
+				<button title="{{$ctrl.language.Generic.ClassManagement.kAddStudentsToSubjectGroup}}" type="button" class="btn btn-default" 
+					ng-click="$ctrl.addStudents()" ng-disabled="!$ctrl.state.dataReady">
+					<span class="glyphicon glyphicon-check"></span>
+					<span>{{$ctrl.language.Generic.ClassManagement.kAddStudentsToSubjectGroup}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.ClassManagement.kRemoveStudentsFromSubjectGroup}}" type="button" class="btn btn-danger" 
+					ng-click="$ctrl.removeStudents()" ng-disabled="$ctrl.selected.items.length == 0">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-8">
+		<table class="table table-condensed table-bright-striped table-thin table-hover table-xs" ng-if="!$ctrl.state.emptyStudents">
+			<tbody>
+				<tr>
+					<th width="5%" ng-bind-html="$ctrl.language.Generic.Filter.kN_PP"></th>
+					<th>{{$ctrl.language.Common.kStudents}}</th>
+					<th ng-bind-html="$ctrl.language.Generic.Common.kDeletingMark" ng-if="!$ctrl.state.readOnly"></th>
+				</tr>
+				<tr ng-repeat="student in $ctrl.students">
+					<td class="text-right">{{$index + 1}}</td>
+					<td>{{student.name}}</td>
+					<td class="text-center" ng-if="!$ctrl.state.readOnly && !$ctrl.canRemove(student)">X</td>
+					<td class="text-center" ng-if="!$ctrl.state.readOnly && $ctrl.canRemove(student)">
+						<input type="checkbox" name="STUDENT" ng-click="$ctrl.selected.select(student)">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+        <div class="alert alert-info" role="alert" ng-if="$ctrl.state.emptyStudents">
+            {{$ctrl.language.Generic.ClassManagement.kNoStudentsInSubjectGroup}}
+        </div>
+	</div>
+
+</div>
+

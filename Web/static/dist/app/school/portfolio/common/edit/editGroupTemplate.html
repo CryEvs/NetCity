@@ -1,0 +1,52 @@
+<div ng-model="EditPortfolioGroupCtrl">
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+
+			<form role="form" name="groupForm" class="form form-xs" novalidate>
+				<!--Поля формы-->
+
+				<div class="form-group" ng-class="{'has-error': groupForm.name.$invalid && (!groupForm.name.$pristine || groupForm.$displayErrors)}">
+					<label for="group-name" class="control-label">Название</label>
+					<div>
+						<input type="text" name="name" id="group-name" class="form-control" ng-model="data.group.name" required maxlength="200">
+						<p ng-show="groupForm.name.$invalid && (!groupForm.name.$pristine || groupForm.$displayErrors)" class="help-block">Это поле требуется заполнить.</p>
+					</div>
+				</div>
+				<div class="form-group" ng-show="data.portfolio.groups.length">
+					<label for="group-name" class="control-label">Расположение</label>
+					<div>
+						
+						<div id="tree-root" ui-tree="treeOptions">
+							<ol ui-tree-nodes ng-model="data.tree">
+								<li ng-repeat="item in data.tree" ui-tree-node ng-include="'/static/dist/app/school/portfolio/common/edit/groupTreeItem.html'">
+								</li>
+							</ol>
+						</div>
+
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="save()">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,66 @@
+﻿@import (reference) "../../custom/img/sprite-template.png.less";
+
+
+/*======================================================*/
+/*===================стили для подвала==================*/
+.footer {
+	background-color: #CBCBCB;
+	text-align: right;
+	color: #353535;
+	font-size: 12px;
+	padding-top: 5px;
+	padding-bottom: 15px;
+	padding-right: inherit;
+	padding-left: inherit;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+
+	.eservice-receipt-notice{
+		color: red;
+		font-weight: 600;
+		float: left;
+		padding-left: 20px;
+		position: relative;
+		margin-top: 13px;
+		width: 50%;
+		text-align: left;
+	}
+
+	.logo-footer {
+		.sprite-footer-logo;
+		display: block;
+		margin: 6px 12px 6px 8px;
+		float: right;
+	}
+
+	.block-debug-information {
+		margin-top: 13px;
+
+		p {
+			padding: 0 0 3px 0;
+
+			&.debug_information {
+				padding: 0 0 8px 0;
+			}
+
+			&.p-line-height-09 {
+				line-height: 0.9;
+			}
+
+			&.p-font-weight-900 {
+				font-weight: 900;
+				line-height: 1.2;
+			}
+		}
+
+		p + p {
+			-ms-text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	}
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Биология. Общее знакомство с цветковыми растениями">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Биология. Общее знакомство с цветковыми растениями" ID="1" Filename="ni_bio_cvr/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Царства живой природы" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Царства живой природы" 
+				Filename="sgo/ni_bio_cvr/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Дикорастущие и культурные растения" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Дикорастущие и культурные растения" 
+				Filename="sgo/ni_bio_cvr/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Цветковое растение и его органы" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Цветковое растение и его органы" 
+				Filename="sgo/ni_bio_cvr/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Вегетативные органы растений" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Вегетативные органы растений" 
+				Filename="sgo/ni_bio_cvr/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Генеративные органы растений" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Генеративные органы растений" 
+				Filename="sgo/ni_bio_cvr/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Жизненные формы растений" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Жизненные формы растений" 
+				Filename="sgo/ni_bio_cvr/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+	 
+</Project>

@@ -1,0 +1,23 @@
+<div class="bootstrap-dialog type-primary">
+    <div class="modal-header">
+        <div class="bootstrap-dialog-title">
+            <h4 class="modal-title">{{$ctrl.language.Generic.EM.KApplicateionTemplates}}</h4>
+        </div>
+    </div>
+
+    <div class="modal-body">
+        <div>
+            <a href="javascript:void(0)" ng-click="$ctrl.getParentBlank()">{{$ctrl.language.Generic.EM.kParentApplicationTemplate}}</a>
+        </div>
+        <div>
+            <a href="javascript:void(0)" ng-click="$ctrl.getStudentBlank()">{{$ctrl.language.Generic.EM.kStudentApplicationTemplate}}</a>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="$ctrl.cancel()">
+            <span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+            <span>{{$ctrl.language.Generic.Buttons.kClose}}</span>
+        </button>
+    </div>
+</div>

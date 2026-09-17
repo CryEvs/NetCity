@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Биология 10-11 классы. Эволюционное учение">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Биология 10-11 классы. Эволюционное учение" ID="1" Filename="ni_bio_10_11_ev/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Развитие биологии до Ч. Дарвина" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Развитие биологии до Ч. Дарвина" 
+				Filename="sgo/ni_bio_10_11_ev/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Эволюционное учение Ч.Дарвина" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Эволюционное учение Ч.Дарвина" 
+				Filename="sgo/ni_bio_10_11_ev/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Виды. Образование видов" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Виды. Образование видов" 
+				Filename="sgo/ni_bio_10_11_ev/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Изменчивость организмов" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Изменчивость организмов" 
+				Filename="sgo/ni_bio_10_11_ev/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Искусственный отбор" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Искусственный отбор" 
+				Filename="sgo/ni_bio_10_11_ev/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Естественный отбор" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Естественный отбор" 
+				Filename="sgo/ni_bio_10_11_ev/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Доказательства эволюции" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Доказательства эволюции" 
+				Filename="sgo/ni_bio_10_11_ev/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Главные направления эволюции" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Главные направления эволюции" 
+				Filename="sgo/ni_bio_10_11_ev/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Развитие органического мира" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Развитие органического мира" 
+				Filename="sgo/ni_bio_10_11_ev/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Эволюция человека" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Эволюция человека" 
+				Filename="sgo/ni_bio_10_11_ev/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+</Project>

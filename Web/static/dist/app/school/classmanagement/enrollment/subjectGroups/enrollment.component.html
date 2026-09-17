@@ -1,0 +1,113 @@
+
+<div class="buttons-filters-panel form-horizontal single-row ns-cloak">
+	<div class="row">
+		<div class="col-md-12">
+			<filter-panel class="filters-panel filters-panel-compact" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings">
+
+				<div class="form-group aux" id="subject-name-able" ng-show="$ctrl.showAbilities()">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.ClassManagement.kSubjectName}}</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<select class="form-control" ng-options="item.id as item.name for item in $ctrl.subjectNameAbilities" 
+							storage ng-model="$ctrl.subjectNameAbility"></select>
+					</div>
+				</div>
+				<div class="form-group aux" id="teacher-name-able" ng-show="$ctrl.showAbilities()">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.ClassManagement.kTeacherFIO}}</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<select class="form-control" ng-options="item.id as item.name for item in $ctrl.teacherNameAbilities" 
+							storage ng-model="$ctrl.teacherNameAbility"></select>
+					</div>
+				</div>
+
+			</filter-panel>
+		</div>
+	</div>
+</div>
+
+
+<div class="row ns-cloak" ng-show="$ctrl.showButtons()">
+	<div class="col-md-12 form-group">
+		<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary btn-sm" ng-click="$ctrl.save()" ng-show="$ctrl.state.canSave">
+			<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+		<button title="{{$ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning btn-sm" ng-click="$ctrl.reset()" ng-show="$ctrl.state.canSave">
+			<span class="glyphicon glyphicon-repeat"></span> <span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+		</button>
+		<button title="{{$ctrl.language.Generic.ClassManagement.kCopyStudGroupsToNextPeriods}}" type="button" class="btn btn-info btn-sm" ng-click="$ctrl.copy()" ng-show="$ctrl.state.canExpand">
+			<span class="glyphicon glyphicon-duplicate"></span> <span>{{$ctrl.language.Generic.Buttons.kCopy}}</span>
+		</button>
+	</div>
+</div>
+
+
+<div class="row ns-cloak">
+	<div class="col-md-8">
+
+		<div class="alert alert-info" role="alert" ng-if="$ctrl.isEmptyFilter">
+			{{$ctrl.emptyFilterMessage}}
+		</div>
+
+		<div class="alert alert-info" role="alert" ng-if="$ctrl.state.dataReady && $ctrl.offerCopyStudentsGroup">
+			{{$ctrl.offerCopyMessage}}
+		</div>
+
+		<div class="alert alert-info" role="alert" ng-if="$ctrl.state.dataReady && $ctrl.state.emptyData && !$ctrl.noStudentsInClass">
+			{{$ctrl.language.Generic.Filter.kNoStudentsInGroupsForFilter}}
+		</div>
+		
+		<div class="alert alert-info" role="alert" ng-if="$ctrl.state.dataReady && $ctrl.noStudentsInClass">
+			{{$ctrl.language.MenuFolders.kNoStudentsInThisClass}}
+		</div>
+		
+		<div class="alert alert-info" role="alert" ng-if="$ctrl.state.dataReady && $ctrl.showMessageOnIupAllClasses">
+			{{$ctrl.language.Generic.ClassManagement.kSelectClassForEnroll}}
+		</div>
+	
+		<table class="table table-xs table-bright table-striped table-thin" ng-if="$ctrl.state.dataReady && !$ctrl.state.emptyData">
+			<tbody>
+				<tr>
+					<th width="5%" ng-bind-html="$ctrl.language.Generic.Filter.kN_PP"></th>
+					<th>{{$ctrl.language.Generic.Common.kDisplayName}}</th>
+					<th ng-repeat="subjectGroup in $ctrl.groupSelections" ng-if="!$ctrl.state.singleSubjectGroupView">
+						<label style="cursor: pointer" for="checkSubjectGroup_{{subjectGroup.id}}" ng-if="!$ctrl.state.readOnly && !subjectGroup.allCheckedReadOnly"
+							ng-bind-html="$ctrl.getSubjectGroupTitle(subjectGroup)"></label>
+						<span ng-if="$ctrl.state.readOnly || subjectGroup.allCheckedReadOnly"
+							ng-bind-html="$ctrl.getSubjectGroupTitle(subjectGroup)"></span>
+					</th>
+				</tr>
+
+				<tr ng-if="$ctrl.state.canSave">
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th ng-repeat="subjectGroup in $ctrl.groupSelections" class="text-center th-checkbox">
+
+						<div class="container-checkbox" ng-if="!subjectGroup.allCheckedReadOnly">
+							<input track-changes type="checkbox" ng-model="subjectGroup.allChecked" 
+								ng-indeterminate="subjectGroup.allChecked == null" 
+								ng-change="$ctrl.checkAll(subjectGroup)" id="checkSubjectGroup_{{subjectGroup.id}}"
+								title="{{$ctrl.language.Generic.Common.kCheckUncheckAll}}" />
+							<label class="indeterminate" for="checkSubjectGroup_{{subjectGroup.id}}"></label>
+						</div>
+
+					</th>
+				</tr>
+
+				<tr ng-repeat="student in $ctrl.groupEnrollmentInfo.students">
+					<td class="text-right">{{$index + 1}}</td>
+					<td>{{student.name}}</td>
+
+					<td class="text-center" ng-repeat="subjectGroup in $ctrl.groupSelections"  ng-if="!$ctrl.state.singleSubjectGroupView"
+							class="text-center" ng-class="{'danger' : $ctrl.checkCellChange(subjectGroup, student)}">
+						<span ng-if="$ctrl.isStudentUsedInSubjectGroup(subjectGroup, student)">X</span>
+						<input type="checkbox" name="STUDENT" track-changes
+							ng-checked="subjectGroup.editableStudents.isSelected(student.id)"
+							ng-click="subjectGroup.editableStudents.select(student.id)"
+							ng-if="!$ctrl.state.readOnly && (subjectGroup.isModular != true) && !$ctrl.isStudentUsedInSubjectGroup(subjectGroup, student)" />
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>

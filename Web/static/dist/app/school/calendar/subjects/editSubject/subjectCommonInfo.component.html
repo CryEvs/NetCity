@@ -1,0 +1,39 @@
+<form name="main" method="post" class="form-horizontal">
+	<ns-form control-size="col-md-8" label-size="col-md-4">
+	<ns-form-group title="{{$ctrl.language.Generic.SetupSchoolCalendar.kSubjField}}">
+		<select track-changes class="form-control" name="SBJFIELDID" ng-model="$ctrl.subjectInfo.subjectField" 
+				ng-options="field as field.name for field in $ctrl.subjectFields track by field.id" 
+				ng-disabled="$ctrl.subject.parentSubject"
+				title="{{$ctrl.getSubjectFieldTitle(subject.parentSubject)}}">
+		</select>
+	</ns-form-group>
+
+	<ns-form-group title="{{$ctrl.language.Generic.SetupSchoolCalendar.kFullName}}">
+		<input track-changes type="text" class="form-control FilterWhiteSpace" name="SUBJECTNAME" size="50" maxlength="100" ng-model="$ctrl.subject.name">
+	</ns-form-group>
+
+	<ns-form-group title="{{$ctrl.language.Generic.SetupSchoolCalendar.kAbbrName}}">
+		<input track-changes type="text" class="form-control FilterWhiteSpace" name="SUBJECTABBREV" size="50" maxlength="70" ng-model="$ctrl.subject.shortName">
+	</ns-form-group>
+
+	<ns-form-group title="{{$ctrl.language.Generic.Common.kGlobalSubject}}">
+		<ui-select track-changes id="departOrg" ng-model="$ctrl.subject.globalSubject" allow-clear="true" theme="bootstrap" ng-if="$ctrl.state.globalSubjectsVisible">
+			<ui-select-match placeholder="{{$ctrl.language.Generic.Common.kPleaseEnterOneOrMoreCharacters}}">
+				{{$select.selected.name}}
+			</ui-select-match>
+			<ui-select-choices repeat="globalSubj as globalSubj in $ctrl.searchCtx.globalSubjects.items"
+							   ui-disable-choice="globalSubj.name === '{{language.Generic.Common.kNoMatchesFound}}' || globalSubj.name === '{{$ctrl.language.Generic.Common.kSearch}}'"
+							   refresh="searchCtx.globalSubjects.search($select.search)"
+							   on-select>
+				<div ng-bind-html="globalSubj.name | highlight: $select.search"></div>
+			</ui-select-choices>
+		</ui-select>
+		<div class="checkbox">
+			<label>
+				<input track-changes type="checkbox" name="newGlobalSubject" ng-model="$ctrl.createNewGlobalSubj" ng-value="true" ng-click="$ctrl.toggleNewGlobalSubj()"> {{$ctrl.language.Generic.SetupSchoolCalendar.kNewGlobalSubject}}
+			</label>
+		</div>
+	</ns-form-group>
+
+	</ns-form>
+</form>

@@ -1,0 +1,161 @@
+<button title="Движение" type="button" class="btn btn-info" ng-click="$ctrl.diagMovement()">
+	<span class="glyphicon glyphicon-transfer"></span>
+	<span>Движение</span>
+</button>
+
+<button title="Дубли" type="button" class="btn btn-info" ng-click="$ctrl.userClones()">
+	<span class="glyphicon glyphicon-user"></span>
+	<span>Дубли</span>
+</button>
+
+<button title="Документы" type="button" class="btn btn-info" ng-click="$ctrl.userDocuments()">
+	<span class="glyphicon glyphicon-briefcase"></span>
+	<span>Документы</span>
+</button>
+
+<button title="Очередь" type="button" class="btn btn-info" ng-click="$ctrl.queueTasks()">
+	<span class="glyphicon glyphicon-tasks"></span>
+	<span>Очередь задач</span>
+</button>
+
+<button title="Интеграция с обр. порталом" type="button" class="btn btn-info" ng-if="$ctrl.isIntegration()" ng-click="$ctrl.portalUpload()">
+	<span class="glyphicon glyphicon-transfer"></span>
+	<span>Интеграция с обр. порталом</span>
+</button>
+
+<button title="Интеграция с ГИС РУО" type="button" class="btn btn-info" ng-if="$ctrl.gisRuoIntegration" ng-click="$ctrl.gisRuoTransactions()">
+	<span class="glyphicon glyphicon-transfer"></span>
+	<span>Интеграция с ГИС РУО</span>
+</button>
+
+<button title="Выгрузка на рег. витрину" type="button" class="btn btn-info" ng-if="$ctrl.myEducationIntegration" ng-click="$ctrl.datamartRequests()">
+	<span class="glyphicon glyphicon-transfer"></span>
+	<span>Выгрузка на рег. витрину</span>
+</button>
+
+<button title="Интеграция с фед. сегментом ПФДО" type="button" class="btn btn-info" ng-if="$ctrl.inlearnoIntegration" ng-click="$ctrl.inlearnoUpload()">
+	<span class="glyphicon glyphicon-transfer"></span>
+	<span>Интеграция с фед. сегментом ПФДО</span>
+</button>
+
+<button title="Интеграция с навигатором доп. образования Ленинградской области (Навигатор-47)" type="button" class="btn btn-info" ng-if="$ctrl.inlearnoNavigatorIntegration" ng-click="$ctrl.inlearnoNavigatorUpload()">
+	<span class="glyphicon glyphicon-transfer"></span>
+	<span>Интеграция с навигатором доп. образования Ленинградской области (Навигатор-47)</span>
+</button>
+
+<button title="Интеграция с ПФР" type="button" class="btn btn-info" ng-if="$ctrl.pfrIntegration" ng-click="$ctrl.pfrSnilsRequests()">
+	<span class="glyphicon glyphicon-transfer"></span>
+	<span>Интеграция с ПФР</span>
+</button>
+
+<button title="Очередь" type="button" ng-if="$ctrl.isJournalCorrection" class="btn btn-info" ng-click="$ctrl.journalCorrection()">
+	<span class="glyphicon glyphicon-briefcase"></span>
+	<span>Коррекция КЖ</span>
+</button>
+
+<h2>Журнал безопасности</h2>
+
+<button title="{{$ctrl.language.Generic.ServAdmin.kLogins}}" ng-click="$ctrl.loginAttempts()" type="button" class="btn btn-info">
+	<span class="glyphicon glyphicon-arrow-up"></span>
+	<span>{{$ctrl.language.Generic.ServAdmin.kLogins}}</span>
+</button>
+<button title="{{$ctrl.language.Generic.Secure.kPersonalDataAccess}}" ng-click="$ctrl.personalDataAccess()" type="button" class="btn btn-info">
+	<span class="glyphicon glyphicon-eye-open"></span>
+	<span>{{$ctrl.language.Generic.Secure.kPersonalDataAccess}}</span>
+</button>
+
+
+<h2>Наполнение данными</h2>
+
+<button title="Пакетный импорт учащихся" ng-click="$ctrl.importStudents()" type="button" class="btn btn-info">
+	<span class="glyphicon glyphicon-download"></span>
+	<span>Пакетный импорт учащихся</span>
+</button>
+
+<button title="Пакетный импорт сотрудников" ng-click="$ctrl.importStaff()" type="button" class="btn btn-info">
+	<span class="glyphicon glyphicon-download"></span>
+	<span>Пакетный импорт сотрудников</span>
+</button>
+
+<button title="Сменить пароли сотрудников" ng-click="$ctrl.setStaffPasswords()" type="button" ng-show="$ctrl.isLocalHostView()" class="btn btn-info">
+	<span class="glyphicon glyphicon-download"></span>
+	<span>Сменить пароли сотрудников</span>
+</button>
+
+<button title="Отпрвить сообщение" ng-click="$ctrl.sendEmail()" type="button" ng-show="$ctrl.isLocalHostView()" class="btn btn-info">
+	<span class="glyphicon glyphicon-download"></span>
+	<span>Отправить сообщение</span>
+</button>
+
+<div ng-if="$ctrl.integrationPFDO">
+
+	<h2>Интеграция с АИС ПФДО</h2>
+
+	<button title="Выгрузить сертификаты доп.образования в АИС ПФДО" ng-click="$ctrl.uploadPfdoCertificates()" type="button" class="btn btn-info">
+		<span class="glyphicon glyphicon-download"></span>
+		<span>Выгрузить сертификаты доп.образования в АИС ПФДО</span>
+	</button>
+
+	<button title="Получить программы доп.образования из АИС ПФДО" ng-click="$ctrl.getPfdoAddPrograms()" type="button" class="btn btn-info">
+		<span class="glyphicon glyphicon-transfer"></span>
+		<span>Получить программы доп.образования из АИС ПФДО</span>
+	</button>
+
+	<button title="Получить категории сертификатов из АИС ПФДО" ng-click="$ctrl.syncPfdoCertificateGroups()" type="button" class="btn btn-info">
+		<span class="glyphicon glyphicon-download"></span>
+		<span>Получить категории сертификатов из АИС ПФДО</span>
+	</button>
+
+	<button title="Загрузить PDF-файлы сертификатов из АИС ПФДО" ng-click='$ctrl.restorePfdoCertificatesPDF()' type="button" class="btn btn-info">
+		<span class="glyphicon glyphicon-download"></span>
+		<span>Загрузить PDF-файлы сертификатов из АИС ПФДО</span>
+	</button>
+</div>
+
+<div ng-if="$ctrl.portalIntegration">
+	
+	<h2>Интеграция с навигатором доп. образования</h2>
+
+	<button title="{{$ctrl.language.Generic.ServAdmin.kPublishOrganizations}}" ng-click="$ctrl.publishOrgs()" type="button" class="btn btn-info">
+		<span class="glyphicon glyphicon-transfer"></span>
+		<span>{{$ctrl.language.Generic.ServAdmin.kPublishOrganizations}}</span>
+	</button>
+
+	<button title="{{$ctrl.language.Generic.ServAdmin.kPublishAddPrograms}}" ng-click="$ctrl.publishAddPrograms()" type="button" class="btn btn-info">
+		<span class="glyphicon glyphicon-transfer"></span>
+		<span>{{$ctrl.language.Generic.ServAdmin.kPublishAddPrograms}}</span>
+	</button>
+
+	<button title="{{$ctrl.language.Generic.ServAdmin.kPublishCertificates}}" ng-click="$ctrl.publishCertificates()" type="button" class="btn btn-info">
+		<span class="glyphicon glyphicon-transfer"></span>
+		<span>{{$ctrl.language.Generic.ServAdmin.kPublishCertificates}}</span>
+	</button>
+
+	<input class="d-inline-block" ng-if="$ctrl.isTestEnv" id="name-input" class="form-control" type="text" placeholder="Ид школ" style="width: 150px;" ng-model="$ctrl.publishCertificatesSchoolIds">
+</div>
+
+<div>
+
+	<h2>Другие задачи</h2>
+
+	<button title="Удаление пользователей" ng-click="$ctrl.deleteUsersJob()" type="button" class="btn btn-danger">
+		<span class="glyphicon glyphicon-trash"></span>
+		<span>Удаление пользователей</span>
+	</button>
+
+</div>
+
+<div ng-if="$ctrl.soloIntegration">
+
+	<h2>Интеграция с СОЛО</h2>
+
+	<button title="Сопоставление организаций" ng-click="$ctrl.soloOrganizations()" type="button" class="btn btn-info">
+		<span class="glyphicon glyphicon-link"></span>
+		<span>Сопоставление организаций</span>
+	</button>
+
+	<button title="Справочники" ng-click="$ctrl.soloRefs()" type="button" class="btn btn-info">
+		<span class="glyphicon glyphicon-folder-close"></span>
+		<span>Cправочники</span>
+	</button>
+</div>

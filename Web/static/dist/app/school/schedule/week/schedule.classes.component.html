@@ -1,0 +1,54 @@
+<table class="schedule-table table table-bordered table-thin table-xs print-block">
+	<tr>
+		<th class="leftheader">{{$ctrl.language.Generic.Common.kDay}}</th>
+		<th class="leftheader" ng-bind-html="$ctrl.language.Calendar.kLessonNumber"></th>
+		<th class="leftheader" ng-bind-html="$ctrl.language.Calendar.kLessonTime"></th>
+
+		<th class="schedule-table-header" ng-repeat="cls in $ctrl.commonClasses">{{cls.name}}</th>
+	</tr>
+	<tr ng-repeat-start="dayTimes in $ctrl.dayScheduleTimes" data-st-id="{{dayTimes.mainRow.scheduleTime.id}}">
+		<th class="leftheader" rowspan="{{dayTimes.rowSpan || 1}}">
+			<a ng-if="dayTimes.weekday" href="javascript:void(0)" title="Расписание на день" ng-click="$ctrl.goToDaySchedule(dayTimes.weekday.dayDate)">{{dayTimes.weekday.name}}<br>{{dayTimes.weekday.dayDateTitle}}</a>
+		</th>
+		<th class="leftheader">{{dayTimes.mainRow.scheduleTime.number}}</th>
+		<th class="leftheader" style="white-space:nowrap;">{{dayTimes.mainRow.scheduleTime.startTime | nsTimeShort}} - {{dayTimes.mainRow.scheduleTime.endTime | nsTimeShort}}</th>
+		<td ng-repeat="cell in $ctrl.commonClasses" ng-if="!dayTimes.mainRow"> - </td>
+		<td ng-repeat="cell in dayTimes.mainRow.cells" ng-if="dayTimes.mainRow" ng-class="{'filled-cell': cell.meetings.length}" style="white-space:nowrap;" data-class-id="{{cell.class.ToComplexId()}}">
+			<div class="cm-cell" ng-repeat="cm in cell.meetings" ng-class="{'extraActivity': cm.extraActivity}">
+				<a href="javascript:void(0)" ng-if="!$ctrl.editingMode && $ctrl.data.canEditCalendar" ng-click="$ctrl.editClassMeetings(cm)">{{cm.name}}</a>
+				<span ng-class="{'cm-edit': $ctrl.data.canEditCalendar}" data-cm-guid="{{cm.guid}}" data-cm-id="{{cm.id}}" ng-if="$ctrl.editingMode || !$ctrl.data.canEditCalendar">{{cm.name}}</span>
+				<div class="cm-add" ng-show="$ctrl.editingMode" ng-if="$index == 0">
+					<button class="btn btn-xs btn-warning">+</button>
+				</div>
+			</div>
+
+			<div class="cm-cell" ng-if="!cell.meetings.length"> 
+				<span> - </span>
+				<div class="cm-add" ng-show="$ctrl.editingMode">
+					<button class="btn btn-xs btn-warning">+</button>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr ng-repeat="line in dayTimes.secondaryRows" ng-repeat-end data-st-id="{{line.scheduleTime.id}}">
+		<th class="leftheader">{{line.scheduleTime.number}}</th>
+		<th class="leftheader" style="white-space:nowrap;">{{line.scheduleTime.startTime | nsTimeShort}} - {{line.scheduleTime.endTime | nsTimeShort}}</th>
+		<td ng-repeat="cell in line.cells" ng-class="{'filled-cell': cell.meetings.length}" style="white-space:nowrap;" data-class-id="{{cell.class.ToComplexId()}}">
+			<div class="cm-cell" ng-repeat="cm in cell.meetings" ng-class="{'extraActivity': cm.extraActivity}">
+				<a href="javascript:void(0)" ng-if="!$ctrl.editingMode && $ctrl.data.canEditCalendar" ng-click="$ctrl.editClassMeetings(cm)">{{cm.name}}</a>
+				<span ng-class="{'cm-edit': $ctrl.data.canEditCalendar}" data-cm-guid="{{cm.guid}}" data-cm-id="{{cm.id}}" ng-if="$ctrl.editingMode || !$ctrl.data.canEditCalendar">{{cm.name}}</span>
+				<div class="cm-add" ng-show="$ctrl.editingMode" ng-if="$index == 0">
+					<button class="btn btn-xs btn-warning">+</button>
+				</div>
+			</div>
+
+			<div class="cm-cell" ng-if="!cell.meetings.length"> 
+				<span> - </span>
+				<div class="cm-add" ng-show="$ctrl.editingMode">
+					<button class="btn btn-xs btn-warning">+</button>
+				</div>
+			</div>
+		</td>
+	</tr>
+
+</table>

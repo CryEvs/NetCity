@@ -1,0 +1,553 @@
+﻿.header {
+	background-color: @theme-header-color; //#307FBD 
+		
+	.title_product {
+		color: @title-product-color;
+	}
+	.navbar { // верхнее меню
+		border: 1px solid @menu-bg;
+		background: @menu-bg; // #1963a0
+		.navbar-nav {
+			& >.open
+			{
+				& > a {
+					background: @submenu-hover; 
+				}
+			}
+
+			.dropdown, li  {
+				&:hover, &:focus, &:active, &:visited {
+					& > a {
+						background: @submenu-hover;
+					}
+				}
+				a {
+					color: #fff;
+					&:hover, &:focus, &:active, &:visited {
+						background: @menu-items-bg; // #eff5f9
+					}
+				}
+				& > a {
+					&:hover, &:focus, &:active, &:visited {
+						background: @submenu-hover; // #2e7fbf
+						color: #fff;
+					}
+				}
+			}
+			.dropdown.open-menu {
+				a[aria-expanded] {
+					background-color: @submenu-hover;
+					&:hover, &:focus, &:active, &:visited {
+						background-color: @submenu-hover;
+					}
+				}
+			}
+			.active {
+				a {
+					background: @submenu-hover; // #2e7fbf
+				}
+			}
+			.dropdown-menu {
+				.dropdown-header {
+					background-color: @submenu-header-bg;
+					color: #fff;
+				}
+				li {
+					color: #fff;
+					a {
+						background: @submenu-items-bg; // #d0dee8
+						color: #000;
+					}
+				} 
+				li + li.divider {
+					background-color: #D0D0D0;
+				}
+				& > .active {
+					& > a {
+						background: @menu-items-open-bg;
+						color: #000;
+						&:hover {
+							background: @menu-items-open-bg;
+						}
+					}
+				}
+			}
+
+			.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus, .bg-primary {
+				background-color: @submenu-items-active-bg;
+			}
+
+			.open, .open-menu, .dropdown  {
+				.dropdown-menu {
+					li:first-child {
+						&.dropdown-header {
+							border-top: 1px solid #74A1C6;	
+						}
+					}
+				}
+			}
+		}
+
+		/**************************************************************/
+		/*переключатель "текущего" и "будущего" года*/
+		.switch-year {
+			.switch-year-btn {
+				
+				background: @pc-switch-year-bg;
+
+				.lever-switch {
+					span {
+						
+						background: @pc-switch-year-current-ball;
+					}
+				}
+				
+				&.go_left {
+					background: #B20186;
+					.lever-switch {
+						span {
+							background: #ff99e6;
+						}
+					}
+					
+				}
+			}
+		}
+	}
+		
+}
+
+.block-personal-cabinet {
+	.number-employees-in-system {
+		color: @pc-number-employees-color;
+		p {
+			a {
+				span + span {
+					color: @menu-bg; 
+				}
+			}
+		}
+	}
+
+	ul {
+		li {
+			&.separator {
+				button {
+					background: @pc-switch-year-bg; 
+						& > div {
+						&#flip_container {
+							color: @pc-switch-year-color;
+							div {
+
+								&.lever-switch {
+									span {
+										background: @pc-switch-year-current-ball; 
+									}
+								}
+							}
+						}
+					}
+							 
+						&[class*="go_left"] {
+						#flip_container {
+							.lever-switch {
+								span {
+									background: @pc-switch-year-future-ball; // #62c696;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+span.content-page-preloader {
+	&:before {
+		color: @theme-base-color;
+	}
+}
+
+.modal-body {
+	span.content-page-preloader {
+		position: relative;
+	}
+}
+
+div.apploader {
+
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -99999;
+	overflow: auto;
+	position: absolute;
+	text-align: center;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQIHWP4fwYAAs0BzDkUVlwAAAAASUVORK5CYII=);
+	background: rgba(240,240,240,.8);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-perspective: 1000;
+	perspective: 1000;
+
+	background: #FFF;
+	//min-width: 990px;
+
+	opacity: 0;
+
+	-webkit-transition: opacity .15s ease-in-out;
+	-moz-transition: opacity .15s ease-in-out;
+	-ms-transition: opacity .15s ease-in-out;
+	-o-transition: opacity .15s ease-in-out;
+	transition: opacity .15s ease-in-out;
+
+	.placeholder {
+		max-width: 90%;
+		text-align: left;
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	span.title {
+		letter-spacing: .006em;
+		font-weight: 700;
+		display: block;
+	}
+
+	span.arrows {
+		-moz-transition: opacity .25s ease-in-out;
+		-o-transition: opacity .25s ease-in-out;
+		-webkit-transition: opacity .25s ease-in-out;
+		transition: opacity .25s ease-in-out;
+
+		&:before {
+			font-size: 70px;
+			margin-left: 50px;
+			text-align: center;
+			font-family: FontAwesome;
+			font-weight: normal;
+			font-style: normal;
+			text-decoration: inherit;
+			-webkit-font-smoothing: antialiased;
+			content: "";
+			color: @theme-base-color;
+			-moz-animation: spin 1.5s infinite linear;
+			-o-animation: spin 1.5s infinite linear;
+			-webkit-animation: spin 1.5s infinite linear;
+			animation: spin 1.5s infinite linear;
+			display: inline-block;
+		}
+	}
+
+
+	&:before {
+		width: 0;
+		height: 60%;
+		vertical-align: middle;
+		content: '';
+		display: inline-block;
+	}
+}
+
+div.content-preloader { 
+	position: relative;
+    top: 40%;
+    left: 41%;
+	height: 135px;
+    bottom: 0;
+    overflow: hidden;
+    width: 188px;
+
+	span.arrows {
+		-moz-transition: opacity .25s ease-in-out;
+		-o-transition: opacity .25s ease-in-out;
+		-webkit-transition: opacity .25s ease-in-out;
+		transition: opacity .25s ease-in-out;
+
+		&:before {
+			font-size: 70px;
+			margin-left: 50px;
+			text-align: center;
+			font-family: FontAwesome;
+			font-weight: normal;
+			font-style: normal;
+			text-decoration: inherit;
+			-webkit-font-smoothing: antialiased;
+			content: "";
+			color: @theme-base-color;
+			-moz-animation: spin 1.5s infinite linear;
+			-o-animation: spin 1.5s infinite linear;
+			-webkit-animation: spin 1.5s infinite linear;
+			animation: spin 1.5s infinite linear;
+			display: inline-block;
+		}
+	}
+
+	span.title {
+		letter-spacing: .006em;
+		font-weight: 700;
+		display: block;
+	}
+}
+
+
+a {
+	color: @links-color; // #1963a0
+	outline: 0 none;
+}
+
+.year-calendar > li{ // календарь
+	& > a {
+		background: @schedule-header-bg; 
+		color: #fff;
+		&:hover  {
+			background: @bright-header-hover;
+		}
+	}
+	& > div {
+		&.weekday  {
+			div {
+				background: @schedule-add-header-bg;
+				border-left: 1px solid #fff;
+				border-top: 1px solid #fff;	
+				border-bottom: 0px solid #fff;	
+				&:first-child {
+					border-left: 1px solid #bdbdbd;
+				}
+			}
+						
+		}
+		& > div {
+			& > div {
+				&:hover {
+					background: @common-header-hover-bg; // #79c9f3
+				}
+			}
+						
+		}
+					
+	}
+
+	a, span {
+		&:hover, &:focus {
+			background: @common-header-hover-bg; // #79c9f3
+		} 
+	}
+}
+
+.block-content {
+	a.active {
+		color: @pc-number-employees-color;
+	}
+	h1 {
+		color: @page-title-color; 
+		background: @page-title-bg; 
+	}
+
+	.back {
+		//background: url("@{img-folder}content_back.png") no-repeat;
+	}
+	.top-right-menu {
+		a {
+			color:  @theme-header-color;
+			&:hover {
+				color: @breadcrumbs-buttons-color ;
+			}
+		}
+	}
+
+}
+
+input:hover, textarea:hover, input:active, textarea:active, input:focus, textarea:focus, input.form-control:hover, textarea.form-control:hover, input.form-control:active, textarea.form-control:active, input.form-control:focus, textarea.form-control:focus {
+	color: @elements-hover-color;
+	border: 1px solid @theme-base-color;
+	/*стили для обсуждения*/
+	.box-shadow-inset (@width: 5px, @rgba: @elements-hover-shadow); 
+}
+
+input, textarea {
+	&.form-control[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active, &.form-control[disabled]:hover, &.form-control[disabled]:focus, &.form-control[disabled]:active {
+		-webkit-box-shadow: inset 0 0 0 rgba(0,0,0,.2);
+		-moz-box-shadow: inset 0 0 0 rgba(0,0,0,.2);
+		-o-box-shadow: inset 0 0 0 rgba(0,0,0,.2);
+		-ms-box-shadow: inset 0 0 0 rgba(0,0,0,.2);
+		box-shadow: inset 0 0 0 rgba(0,0,0,.2);
+		padding: 4px 8px;
+		//border: 1px solid #eee;
+		color: #000;
+		border-radius: 2px;
+	}
+	&[disabled]:hover, &[disabled]:focus, &[disabled]:active, &.form-control[disabled]:hover, &.form-control[disabled]:focus, &.form-control[disabled]:active,     &[disabled], &.form-control[disabled], &.form-control[disabled]{
+		border: 1px solid #eee;
+	}
+}
+// фон для select
+select[multiple], select[size] {
+	background-color: #fff;
+}
+ // ошибка #12820
+.panel-collapse {
+	select[size]{
+		background-image: none;
+		padding-right: 8px;
+	}
+}
+
+.alert-info {
+	background-color: @highlight-color;
+	border-color: @highlight-border-color;
+	color: @highlight-font-color;
+}
+/*ошибка на страннице ../asp/administration/createArea.asp*/
+.alert-xs {
+	padding: 6px 15px;
+	margin-bottom: 0;
+}
+
+.bg-info {
+	background-color: @highlight-color;
+}
+
+
+
+	
+.buttons-panel-right button.btn:hover, .form-edit .buttons-panel .buttons-panel-right button.btn:hover, .buttons-panel-right button.btn:hover span, .form-edit .buttons-panel .buttons-panel-right button.btn:hover span {
+	color: @buttons-right-color-hover;
+}
+
+.head {
+	background-color: @common-header-bg;
+}
+.editjournal {
+	.head {
+		background-color: @edit-journal-header-bg;
+	}
+	.new-assignment-container {
+		
+		/*.assignments-header {
+
+		}*/
+		.new-challenge-text {
+			background-color: @edit-journal-new-bg; // #3092bd;
+		}
+	}
+
+	.assignment-title {
+		.assignment-name, .assignment-activity span {
+			color: @edit-journal-header-color;
+		}
+	}
+
+}
+
+.table {
+	th {
+		background-color: @common-header-bg;
+		/* закоментированые стили - нужно добавить их впоследствии, 
+			в случае если шапка таблицы будет тёмной.*/
+		/*color: #fff;
+		border-top: 1px solid #fff;
+		border-right: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+		&:first-child {
+			border-left: 1px solid #fff;
+		}*/
+	}
+}
+ .journal-total, .journal-student, .journal-marks  { th {background-color: @common-header-bg;}}
+.table-bright-striped  {
+	th{
+		/*стили для обсуждения*/
+		background-color: @table-striped-header-bg;
+		border: 1px solid #fff;
+		color: #fff;
+		vertical-align: middle;
+		a {
+			color: #fff;
+			text-decoration: underline;
+		}
+	}
+	td {
+		border: 1px solid #fff;
+		
+	}
+	
+	tr:nth-child(even) td {
+		background-color: @common-table-even;
+	}
+	tr:nth-child(odd) td {
+	  background-color: @common-table-odd;
+	}
+	
+}
+.table-bright-hover {
+	tr:hover { 
+		td {
+			background-color: @common-table-hover;
+		}
+		
+	}
+}
+
+span.form-control {
+	background-color: @highlight-light-color;
+	
+	/**убираем тени**/
+	-webkit-box-shadow: inset 0 0 0 rgba(0,0,0,.075);
+	box-shadow: inset 0 0 0 rgba(0,0,0,.075);
+}
+
+/***********кнопки************/
+//кнопка сохранить
+.btn-primary {
+	color: #fff;
+	background-color:  @submenu-hover;
+	border-color: lighten(@menu-bg, 10%);
+	text-shadow: 0 1px 0 rgba(0,0,0,.8);
+	&:hover {
+		background-color: @breadcrumbs-buttons-color;
+	}
+
+} 
+// кнопка для адаптивного меню
+.btn-menu {
+	background-color: @menu-bg;
+	border: 1px solid @menu-bg;
+}
+
+
+.bootstrap-dialog { // Модальное окно
+	.bootstrap-dialog-title {
+		font-size: 1.3em;
+		color: #fff;
+	}
+
+	&.type-primary {
+		.modal-header {
+			background-color: @theme-base-color;
+			.radius_top_left;
+			.radius_top_right;
+		}
+			
+		.modal-body {
+			.progress-bar {
+				background-color: @theme-base-color;
+			}
+		}
+	}
+}
+// /. Модальное окно
+
+
+
+// /*цвет скролла*/
+.mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar, 
+.mCS-3d.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar, 
+.mCS-3d.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+	background: @theme-base-color; /*решено убрать @scroll-bg*/
+}
+// /. цвет скролла

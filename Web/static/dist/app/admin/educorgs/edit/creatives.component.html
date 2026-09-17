@@ -1,0 +1,47 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+	<form class="form-horizontal form-sm" name="$ctrl.form" ng-if="$ctrl.ready">
+		<ns-form>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-bordered table-condensed">
+						<tbody>
+							<tr>
+								<th>
+									{{$ctrl.language.Generic.ServAdmin.kCreativeType}}
+								</th>
+								<th>
+									{{$ctrl.language.Generic.ServAdmin.kCount}}
+								</th>
+								<th>
+									{{$ctrl.language.Generic.ServAdmin.kUsage}}
+								</th>
+							</tr>
+	
+							<tr ng-repeat="type in $ctrl.creativeTypes">
+								<td>
+									{{type.name}}
+								</td>
+								<td>
+									<ng-form name="creativeTypeForm">
+										<div ng-class="{'has-error': creativeTypeForm.$invalid || (type.inUse && !$ctrl.creativesInfo[type.id].teamCount)}">
+											<input type="number" ng-min="1" numeric-input="{negative: false, fractional: false}" ng-max="100" ng-model="$ctrl.creativesInfo[type.id].teamCount" class="form-control" name="TeamCount" size="5" maxlength="3" ng-pattern="/^\d+$/">
+											<p ng-show="creativeTypeForm.$invalid" class="help-block">
+												{{$ctrl.language.Generic.Common.kEnterIntegerFrom1To}} 100 {{$ctrl.language.Generic.ServAdmin.kOrLeaveEmpty}}
+											</p>
+											<p ng-show="type.inUse && !$ctrl.creativesInfo[type.id].teamCount" class="help-block">
+												{{$ctrl.language.Generic.ServAdmin.kThisCreativeIsUsed}}
+											</p>
+										</div>
+									</ng-form>
+								</td>
+								<td><span ng-if="type.inUse">X<span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>			
+		</ns-form>
+	</form>
+</ns-modal>

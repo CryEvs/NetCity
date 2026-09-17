@@ -1,0 +1,50 @@
+<div style="max-height: 500px; overflow: auto;">
+
+	{{#if @root.hasReason}}
+	<table class="table table-bordered">
+		<tr>
+			<th>Основание изменения</th>
+			<th>Документ</th>
+		</tr>
+		<tr>
+			<td>
+				{{reason}}
+			</td>
+			<td>
+				{{#if reasonDocId}}
+				<span onclick='postTo({ path: "/webapi/files/{{reasonDocId}}", method: "GET", formParams: {target: "_blank"} })'><a style="cursor: pointer;">Скачать</a> </span>
+				{{/if}}
+				{{#if reasonDocAttachmentId}}
+				<span onclick='downloadFile("/webapi/attachments/{{reasonDocAttachmentId}}")'><a style="cursor: pointer;">Скачать</a></span>
+				{{/if}}				
+			</td>
+		</tr>
+	</table>
+	{{/if}}
+
+		<table class="table table-bordered">
+			<tr>
+				<th style="width: 45%;">{{language.Generic.Common.kField}}</th>
+				<th>{{language.Generic.Common.kSetValue}}</th>
+
+			</tr>
+			{{#each accessJournalEntryDetails}}
+			<tr>
+				<th colspan="2">
+					{{groupName}}
+				</th>
+
+			</tr>
+			{{#each schoolInfoFieldAccessDtos}}
+			<tr>
+				<td>
+					{{fieldName}}
+				</td>
+				<td>
+					{{fieldValue}}
+				</td>
+			</tr>
+			{{/each}}
+			{{/each}}
+		</table>
+</div>

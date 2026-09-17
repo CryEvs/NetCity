@@ -1,0 +1,66 @@
+<div class="row ns-cloak" ng-if="!state.readOnly">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+
+			<button type="button" class="btn btn-info" ng-click="save()" ng-disabled="!state.dataReady">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span>{{language.Generic.Buttons.kSave}}</span>
+			</button>
+
+			<button type="button" class="btn btn-info" ng-click="load()" ng-disabled="!state.dataReady">
+				<span class="glyphicon glyphicon-repeat"></span>
+				<span>{{language.Generic.Buttons.kReset}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-show="data.emptyIupGroup">
+	<div class="col-md-8">
+		<div class="alert alert-warning" role="alert">
+			{{language.ClassManagement.kNoStudentsInSubjectGroup}} : <a href="javascript:void(0)" ng-click="editGroups()">{{data.emptyIupGroup.grades[0]}} {{language.Generic.SetupSchool.kYearNum_2}}</a>
+			<p>
+				{{language.Generic.ClassManagement.kNoStudentsInSubjectGroup2}}
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="ns-cloak" ng-show="state.dataReady">
+	<table class="table table-bordered table-condensed table-thin">
+		<tr>
+			<th rowspan="2">
+				{{language.Generic.SetupSchoolCalendar.kTermType_}}
+			</th>
+			<th class="text-center" ng-repeat="profile in data.profiles" colspan="{{profile.grades.length}}">
+				{{profile.name}}
+			</th>
+		</tr>
+		<tr>
+			<th class="text-center" ng-repeat="profileGrade in data.profilesGrades">
+				{{profileGrade.gradeName}}
+			</th>
+		</tr>
+
+		<tr ng-repeat="termType in data.termTypes">
+			<td>
+				{{termType.name}}
+			</td>
+			
+			<td ng-repeat="profileGrade in data.profilesGrades" class="text-center bg-warning">
+				<input track-changes type="radio" ng-value="termType.id" ng-model="profileGrade.termTypeId" ng-if="!profileGrade.readOnly">
+				<span ng-if="profileGrade.readOnly && profileGrade.termTypeId == termType.id">X</span>
+			</td>
+		</tr>
+		
+		<tr>
+			<th>
+				{{language.Generic.Common.kNotChoosen}}
+			</th>
+			<th class="text-center" ng-repeat="profileGrade in data.profilesGrades">
+				<input track-changes type="radio" ng-value="-1" ng-model="profileGrade.termTypeId" ng-if="!profileGrade.readOnly" ng-disabled="state.readOnly">
+			</th>
+		</tr>
+	</table>
+
+</div>

@@ -1,0 +1,117 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/journal/attendance/douattendance.component.min.css">
+
+<div class="buttons-filters-panel form-horizontal single-row ns-cloak">
+		<div class="row">
+
+			<div class="buttons-panel">
+				<div class="buttons-panel-right">
+					<button title="{{$ctrl.language.Generic.Buttons.kPrint}}" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+						<span class="glyphicon glyphicon-print"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kPrint}}</span>
+					</button>
+					<button title="{{$ctrl.language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default" ng-click="$ctrl.export()">
+						<span class="glyphicon glyphicon-export"></span>
+						<span>{{$ctrl.language.Generic.Common.kBtnExcel}}</span>
+					</button>
+				</div>
+			</div>
+
+			<div ng-show="$ctrl.editMode" class="filters-panel-compact col-md-12 form-sm">
+
+				<div class="form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">Отметка о посещаемости</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<div class="btn-group" role="group" id="quick-edit-mark-btns">
+							<button title="{{mark.title}}" ng-disabled="!$ctrl.selected.length" ng-if="mark.abbr" ng-repeat="mark in $ctrl.marks" type="button" class="btn btn-sm btn-default" ng-click="$ctrl.setMark(mark)">{{mark.abbr}}</button>
+						</div>
+					</div> 
+				</div>
+	
+			</div>
+	
+			<filter-panel ng-hide="$ctrl.editMode" class="col-md-12 form-sm" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+		</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+
+		<div class="form-horizontal">
+			<div class="form-group">
+
+				<div class="col-md-12" ng-if="!$ctrl.readOnly"> 
+
+					<button type="button" class="btn btn-warning btn-sm" data-toggle="button" ng-click="$ctrl.switchMode()" aria-pressed="{{$ctrl.editMode ? 'true' : 'false'}}">
+						<span>{{$ctrl.language.Generic.Buttons.kQuickEditMode}}</span>
+					</button>
+
+					<div ng-show="$ctrl.editMode" style="display: inline">
+						<button title="{{$ctrl.language.Generic.Buttons.kSave}}" type="button" class="btn btn-primary btn-sm" ng-click="$ctrl.save()" ng-disabled="!$ctrl.changes.length">
+							<span class="glyphicon glyphicon-floppy-save"></span>
+							<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+						</button>
+						<button title="{{$ctrl.language.Generic.Buttons.kCancel}}" type="button" class="btn btn-default btn-sm" ng-click="$ctrl.reset()" ng-disabled="!$ctrl.changes.length && !$ctrl.selected.length">
+							<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+						</button>
+					</div>
+
+				</div> 
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="alert alert-info ns-cloak" ng-if="!$ctrl.studentsAttendance.length" role="alert">{{$ctrl.language.Filter.kNoStudents}}</div>
+
+<table ng-if="$ctrl.studentsAttendance.length" class="table table-bordered table-xs table-hover table-thin-sm attendance-table ns-cloak print-block" drag-select-table="$ctrl.dragTableSettings" ng-class="{'edit-mode': $ctrl.editMode}">
+	<tbody>
+		<tr>
+			<th rowspan="2">{{$ctrl.language.Common.kStudents}}</th>
+			<th rowspan="2">Номер счета</th>
+			<th colspan="{{$ctrl.days.length}}">Дни посещения</th>
+			<th rowspan="2">Пропущено дней</th>
+			<th rowspan="2">Дней посещения</th>
+			<!--
+			<th rowspan="2">Причины непосещения (основание)</th> -->
+		</tr>
+		<tr>
+			<th ng-repeat="day in $ctrl.days" class="head-day-cell" ng-click="$ctrl.selectDay(day.number)" title="Выбрать день">{{::day.number}}<br /> {{::day.dayName}}</th>
+		</tr>
+
+		<tr ng-repeat="studentData in $ctrl.studentsAttendance">
+			<td class="text-nowrap text-left student-name" ng-click="$ctrl.selectStudent(studentData)" title="Выбрать">
+				<span class="ng-binding">{{$index + 1}}. {{::studentData.student.name}}</span>
+			</td>
+			<td class="text-nowrap">
+				{{::studentData.accountNumber}}
+			</td>
+			<td class="at-cell" drag-select-cell model="dayAttendance" ng-repeat="dayAttendance in studentData.attendance" ng-class="dayAttendance.class">
+				{{dayAttendance.mark}}
+			</td>
+			<td>
+				{{studentData.missedCount}}
+			</td>
+			<td>
+				{{studentData.attendanceCount}}
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="legend ns-cloak">
+	<div>
+		<p><span class="legend-label legend-notlearning">В</span><span class="legend-description"> — Выходные и праздничные дни</span></p>
+		<p><span class="legend-label">П</span><span class="legend-description"> — Присутствовал</span></p>
+		<p><span class="legend-label">ОТ</span><span class="legend-description"> — Отсутствовал</span></p>
+	</div>
+	<div>
+		<p><span class="legend-label">Б</span><span class="legend-description"> — Отсутствовал по причине болезни</span></p>
+		<p><span class="legend-label">УП</span><span class="legend-description"> — Отсутствовал по уважительной причине</span></p>
+		<p><span class="legend-label">НП</span><span class="legend-description"> — Отсутствовал по неуважительной причине</span></p>
+	</div>
+	<div>
+		<p><span class="legend-label legend-readonly">x</span><span class="legend-description"> — Дни, в которых воспитанник не зачислен в группу</span></p>
+		<p ng-if="$ctrl.editMode"><span class="legend-label legend-selected"></span><span class="legend-description"> — Выбранные ячейки</span></p>
+		<p ng-if="$ctrl.editMode"><span class="legend-label legend-changes"></span><span class="legend-description"> — Измененные ячейки</span></p>		
+	</div>
+</div>

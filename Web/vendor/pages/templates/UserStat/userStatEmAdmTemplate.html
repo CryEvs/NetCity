@@ -1,0 +1,19 @@
+﻿<table class="table table-bordered table-xs table-bright-striped table-bright-hover print-block table-thin">
+	<tr>
+		<th>{{language.Generic.Common.kDate}}</th>
+		<th>{{{language.Generic.ServAdmin.kAllLoginsCount}}}</th>
+	</tr>
+	{{#each userStatEmInfo.userStats}}
+		<tr>
+			<td class="cell-date-short">{{date2strDayOnly statDate}}</td>
+			<td class="cell-num">{{allEntriesAmount}}</td>
+		</tr>
+	{{/each}}
+</table>
+<div class="row print-block">
+	<div class="col-md-6">
+		<span class="glyphicon glyphicon-user"></span>
+		<small>{{language.Generic.ServAdmin.kTotalLogins}}</small>
+		<strong>{{userStatEmInfo.statsAmount}}</strong>
+	</div>
+</div>

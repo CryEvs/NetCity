@@ -1,0 +1,32 @@
+<div class="row" ng-if="$ctrl.showNoClassesMessage">
+	<div class="col-md-6">
+		<div class="alert alert-info" role="alert">
+			{{$ctrl.noClassesMessage}}
+		</div>
+	</div>
+</div>
+<div class="row" ng-if="$ctrl.show && $ctrl.model.length == 0">
+	<div class="col-md-6">
+		<div class="alert alert-info" role="alert">
+			{{$ctrl.language.Generic.Calendar.kNoBirthdays}}
+		</div>
+	</div>
+</div>
+<div class="col-md-8" ng-if="$ctrl.show && $ctrl.model.length > 0">
+	<table ng-if="$ctrl.model.length > 0" class="table table-bordered table-condensed print-block">
+		<tbody>
+			<tr>
+				<th>{{$ctrl.language.Common.kClass}}</th>
+				<th>{{$ctrl.language.Generic.Calendar.kRole}}</th>
+				<th>{{$ctrl.language.Generic.Common.kBDate}}</th>
+				<th>{{$ctrl.language.Generic.Common.kDisplayName}}</th>
+			</tr>
+			<tr ng-repeat="row in $ctrl.model">
+				<td class="text-center">{{row.class.name}}</td>
+				<td class="text-center">{{$ctrl.getRoleName(row.role)}}</td>
+				<td class="text-center">{{row.birthdate}}</td>
+				<td class="text-left">{{row.fio}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

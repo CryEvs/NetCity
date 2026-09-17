@@ -1,0 +1,42 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<span class="content-page-preloader" id="preloader" ng-hide="ctrl.state.dataReady"><span>{{ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+		<div class="table-responsive" style="max-height: 600px">
+			<table class="table table-bordered table-bright-hover table-bright-striped table-xs print-block">
+				<tr>
+					<th>
+						№
+						п/п
+					</th>
+					<th ng-repeat="field in ctrl.registryController.data.displayFields">
+						<span>{{field.title}}</span>
+					</th>
+				</tr>
+				<tr ng-repeat="row in ctrl.registryController.selection.items">
+					<td>{{$index+1}}</td>
+					<td ng-repeat="field in ctrl.registryController.data.displayFields">
+						<registry-field row="row" field="field"></registry-field>
+					</td>
+				</tr>
+			</table>
+		</div>		
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-default btn-sm" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{ctrl.language.Generic.Buttons.kClose}}</span>
+		</button>
+	</div>
+
+</div>
+

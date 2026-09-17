@@ -1,0 +1,112 @@
+<div class="col-md-12 col-lg-8">
+	
+	<hgroup>
+		<h3>Участие в мероприятиях</h3>
+		<aside ng-hide="$ctrl.state.readOnly"><button ng-click="$ctrl.add()">{{$ctrl.language.Generic.Buttons.kAdd}}</button></aside>
+	</hgroup>
+	
+	
+	<p class="fggray" ng-if="$ctrl.data.competitions.length == 0">Нет информации об участии в мероприятиях</p>
+
+	<dl class="award-item" ng-repeat="yearAwardsInfo in $ctrl.data.competitions">
+		<dt>
+			<h3 class="year">{{yearAwardsInfo.year}}</h3>
+		</dt>
+		<dd>
+			<div class="award-record" ng-repeat="award in yearAwardsInfo.awards">
+				<div class="right-block" ng-hide="$ctrl.state.readOnly">
+					<a class="sm-link" ng-click="$ctrl.edit(award)">{{$ctrl.language.Generic.Buttons.kEdit}}</a>
+					<a class="sm-link" ng-click="$ctrl.remove(award)">{{$ctrl.language.Generic.Buttons.kRemove}}</a>
+				</div>
+
+				<div class="fggray">{{award.eventInfo.date}}</div>
+
+				<h5>
+					<a ng-click="$ctrl.viewEvent(award.eventInfo.id)" href="javascript:void(0)" ng-if="$ctrl.state.accessToMembers">{{award.eventInfo.name}}</a>
+					<span ng-if="!$ctrl.state.accessToMembers">{{award.eventInfo.name}}</span>
+				</h5>
+				<p>
+					<span data-prefix="Тип: ">{{award.eventInfo.awardEventType.name}}</span>
+					<span data-prefix="Уровень: ">{{award.eventInfo.level}}</span>
+					<span data-prefix="Организатор: ">{{award.eventInfo.founder.name}}</span>
+					<span ng-show="award.eventInfo.place" data-prefix="Место проведения: ">{{award.eventInfo.place.name}}</span>
+				</p>
+
+				<p>
+					<span ng-show="award.eventInfo.status" data-prefix="Статус: ">{{award.eventInfo.status.name}}</span>
+					<span ng-show="award.participationInfo.form" data-prefix="Форма участия: ">{{award.participationInfo.form.name}}</span>
+					<span ng-show="award.participationInfo.title" data-prefix="Итог: ">{{award.participationInfo.title.name}}</span>
+					<span ng-show="award.participationInfo.rank" data-prefix="Место/рейтинг: ">{{award.participationInfo.rank}}</span>
+				</p>
+
+				<p>
+					<span ng-show="award.participationInfo.sportTitle" data-prefix="Спортивное звание: ">{{award.participationInfo.sportTitle.name}}</span>
+					<span ng-show="award.participationInfo.sportCategory" data-prefix="Спортивный разряд: ">{{award.participationInfo.sportCategory.name}}</span>
+					<span ng-show="award.participationInfo.specialNotes" data-prefix="Особые отметки: ">{{award.participationInfo.specialNotes}}</span>
+				</p>
+			</div>
+		</dd>
+	</dl>
+</div>
+
+<style>
+	div.right-block {
+		position: relative;
+		float: right;
+		text-align: right
+	}
+	a.sm-link {
+		font-size: 12px;
+		font-size: 1.2rem;
+		cursor: pointer;
+	}
+	dl.award-item {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -moz-box;
+		display: -ms-flex-wrap;
+		display: inline-flex;
+		margin-top: 0.5em;
+		padding-top: 0.5em;
+		border-top: 1px solid #DDD;
+		min-width: 100%;
+		margin-bottom: 0.8em;
+	}
+
+	dl.award-item dt {
+		width: 10%;
+		min-width: 10%;
+		-webkit-flex-shrink: 0;
+		-ms-flex: 0 0;
+		flex-shrink: 0;
+		text-align: right;
+		box-sizing: border-box;
+		border-right: 1px solid #DDD;
+		padding: 0 20px 5px 0;
+	}
+
+	dl.award-item dd {
+		width: 90%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 5px 0 5px 20px;
+	}
+
+	.award-record {
+		position: relative;
+		margin-bottom: 0.5em;
+		padding-bottom: 0.5em;
+		border-bottom: 1px dotted #DDD;
+	}
+
+	.award-record:last-child {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	.award-record p {
+		margin: .1em 0 0;
+	}
+</style>

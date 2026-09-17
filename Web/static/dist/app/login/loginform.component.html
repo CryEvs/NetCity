@@ -1,0 +1,103 @@
+<loader ng-hide="$ctrl.ready"></loader>
+
+<main class="main" ng-if="$ctrl.ready">
+	<div class="form primary-input-form h573" ng-form="$ctrl.form" ng-enter="$ctrl.login()">
+		<a ng-if="$ctrl.back" href class="backbutton" ng-click="$ctrl.goToAccounts()">
+			<img class="backbutton-icon" src="/static/dist/app/login/img/back.png">
+		</a>
+
+		<div class="form__headertext">Вход в систему</div>
+		<div ng-show="!$ctrl.idpBindUser" style="width: 100%">
+			<!-- esa -->
+			<div class="gosbutton" ng-show="$ctrl.canEsa()" ng-click="$ctrl.loginWithEsa()">
+				<div class="gosbutton__textgroup">
+					<div class="gosbutton__textgroup-text">Через</div>
+					<img class="gosbutton__textgroup-logo" src="/static/dist/app/login/img/gos.svg">
+				</div>
+			</div>
+			<!-- esa -->
+			<!-- esia -->
+			<div class="gosbutton" ng-show="!$ctrl.canEsa() && $ctrl.canEsia()" ng-click="$ctrl.loginWithEsia()">
+				<div class="gosbutton__textgroup">
+					<div class="gosbutton__textgroup-text">Через</div>
+					<img class="gosbutton__textgroup-logo" src="/static/dist/app/login/img/gos.svg">
+				</div>
+			</div>
+			<!-- esia -->
+			<div class="wrapper-or" ng-show="$ctrl.canEsa() || $ctrl.canEsia()">
+				<div class="wrapper-or__line"></div>
+				<div class="wrapper-or__text">или</div>
+			</div>
+		</div>
+
+		<div class="logpass">
+			<div class="logpass__headertext">Вход через логин и пароль</div>
+			<div class="changeorg" ng-if="!$ctrl.mobile">
+				<div class="changeorg_item" ng-click="$ctrl.changeMode('EducOrg')" ng-class="{'active': $ctrl.mode == 'EducOrg'}">
+					Организация
+				</div>
+				<div class="changeorg_item" ng-click="$ctrl.changeMode('EducManagement')" ng-class="{'active': $ctrl.mode == 'EducManagement'}">
+					{{$ctrl.language.Generic.Common.kManagementOrgan}}
+				</div>
+			</div>
+			<div class="dropdown-org" ng-if="$ctrl.mode == 'EducOrg'" ng-class="{'has-error': $ctrl.form.org.$invalid && ($ctrl.form.org.$dirty || $ctrl.form.$displayErrors)}">
+				<div class="select2__button">
+					<select2 name="org" ng-if="$ctrl.orgSettings" class="form-control" options="$ctrl.orgSettings" required ng-model="$ctrl.organization"></select2>
+					<span class="help-block" ng-if="$ctrl.form.org.$invalid && ($ctrl.form.org.$dirty || $ctrl.form.$displayErrors)">Обязательное поле</span>
+				</div>
+			</div>
+			<div class="dropdown-org" ng-if="$ctrl.mode == 'EducManagement'" ng-class="{'has-error': $ctrl.form.em.$invalid && ($ctrl.form.em.$dirty || $ctrl.form.$displayErrors)}">
+				<div class="select2__button">
+					<select2 name="em" ng-if="$ctrl.emSettings" class="form-control" options="$ctrl.emSettings" required ng-model="$ctrl.educManagement"></select2>
+					<span class="help-block" ng-if="$ctrl.form.em.$invalid && ($ctrl.form.em.$dirty || $ctrl.form.$displayErrors)">Обязательное поле</span>
+				</div>
+			</div>
+
+			<div class="lc-input lc-input-login" id="login" ng-class="{ 'valid': $ctrl.loginName, 'active': $ctrl.editLoginName || $ctrl.loginName }">
+				<div class="lc-input-placeholder">
+					{{$ctrl.language.Generic.Common.kLogin}}
+				</div>
+				<input name="loginname" class="lc-input-control" type="text" required ng-model="$ctrl.loginName" ng-click="$ctrl.editLoginName = true" ng-blur="$ctrl.editLoginName = false">
+				<div class="lc-input-valid-icon">
+					<img src="/static/dist/app/login/img/check.png">
+				</div>
+			</div>
+			<div ng-if="$ctrl.form.loginname.$invalid && ($ctrl.form.loginname.$dirty || $ctrl.form.$displayErrors)" class="has-error">
+				<span class="help-block">Заполните логин</span>
+			</div>
+
+			<div class="logpass__pass" id="password" ng-class="{ 'openeye': $ctrl.showPassword, 'active': $ctrl.editPassword || $ctrl.password }">
+				<div class="logpass__pass-placeholder">
+					{{$ctrl.language.Generic.Common.kPassword}}
+				</div>
+				<input name="password" class="logpass__input" ng-attr-type="{{ $ctrl.showPassword ? 'text' : 'password' }}" required ng-model="$ctrl.password" ng-click="$ctrl.editPassword = true" ng-blur="$ctrl.editPassword = false">
+				<div class="logpass__pass-icon" ng-click="$ctrl.togglePasswordIcon()">
+					<img class="eyeon" src="/static/dist/app/login/img/eye.png">
+					<img class="eyeoff" src="/static/dist/app/login/img/eyeoff.png">
+					<img class="eyeon-blue" src="/static/dist/app/login/img/blue_eye.png">
+					<img class="eyeoff-blue" src="/static/dist/app/login/img/blue_eyeoff.png">
+				</div>
+			</div>
+			<div ng-if="$ctrl.form.password.$invalid && ($ctrl.form.password.$dirty || $ctrl.form.$displayErrors)" class="has-error">
+				<span class="help-block">Заполните пароль</span>
+			</div>
+
+			<div class="add_features" ng-if="!$ctrl.mobile">
+				<a class="lc-checkbox" href ng-if="$ctrl.mode == 'EducOrg'" ng-class="{ 'active': $ctrl.remember }" ng-click="$ctrl.toggleRemember()">
+					<div class="lc-checkbox-icon">
+						<img class="state01" src="/static/dist/app/login/img/checkbox.png">
+						<img class="state02" src="/static/dist/app/login/img/checkbox_2.png">
+						<img class="state03" src="/static/dist/app/login/img/checkbox_3.png">
+						<img class="state04" src="/static/dist/app/login/img/checkbox_4.png">
+					</div>
+					<div class="lc-checkbox-text">Оставаться в системе</div>
+				</a>
+				<a class="add_features-forgotpass" href ng-if="$ctrl.mode == 'EducOrg'" ng-click="$ctrl.recoveryPassword()">Забыли пароль?</a>
+			</div>
+			<p class="info-text" ng-show="$ctrl.idpBindUser">
+				<small>Войдите в систему "{{$ctrl.productName}}", используя свои логин и пароль. Ваша учётная запись будет автоматически связана с учетной записью портала Госуслуг.</small>
+			</p>
+			<div class="primary-button" ng-click="$ctrl.login()">Войти</div>
+		</div>
+	</div>
+</main>

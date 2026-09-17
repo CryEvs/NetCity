@@ -1,0 +1,57 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="header"></h4>
+			</div>
+			<div class="bootstrap-dialog-close-button">
+				<button class="close" ng-click="cancel()">&times;</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<span class="content-page-preloader" id="preloader" ng-hide="state.viewReady"><span>Пожалуйста подождите...</span></span>
+
+		<form role="form" name="eatingTimeForm" class="form-horizontal form-sm">
+			<!--Поля формы-->
+
+			<div class="form-group">
+				<label for="eatingTime-type" class="control-label col-md-4 col-lg-3 col-sm-4">Тип</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select class="form-control" id="eatingTime-type" ng-options="type.name for type in refs.types track by type.id" ng-init="data.eatingTime.type" ng-model="data.eatingTime.type"></select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="eatingTime-start" class="control-label col-md-4 col-lg-3 col-sm-4">Время начала</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<input type="time" id="eatingTime-start" ng-value="data.eatingTime.formatStart" class="form-control" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="eatingTime-end" class="control-label col-md-4 col-lg-3 col-sm-4">Время окончания</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<input type="time" id="eatingTime-end" ng-value="data.eatingTime.formatEnd" class="form-control" />
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+	<div class="modal-footer" ng-show="state.viewReady">
+		<button class="btn btn-primary ng-binding" ng-if="mode.edit" ng-click="save()">
+			Сохранить
+		</button>
+
+		<button class="btn btn-primary ng-binding" ng-if="mode.create" ng-click="create()">
+			Добавить
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			Закрыть
+		</button>
+	</div>
+</div>

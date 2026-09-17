@@ -1,0 +1,66 @@
+<div class="row ns-cloak" ng-if="!$ctrl.state.readOnly">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+
+			<button type="button" class="btn btn-primary" ng-click="$ctrl.save()" ng-disabled="!$ctrl.state.dataReady">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+			</button>
+
+			<button type="button" class="btn btn-info" ng-click="$ctrl.load()" ng-disabled="!$ctrl.state.dataReady">
+				<span class="glyphicon glyphicon-repeat"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-show="$ctrl.data.emptyIupGroup">
+	<div class="col-md-8">
+		<div class="alert alert-warning" role="alert">
+			{{$ctrl.language.ClassManagement.kNoStudentsInSubjectGroup}} : <a href="javascript:void(0)" ng-click="$ctrl.editGroups()">{{$ctrl.data.emptyIupGroup.grades[0]}} {{$ctrl.language.Generic.SetupSchool.kYearNum_2}}</a>
+			<p>
+				{{$ctrl.language.Generic.ClassManagement.kNoStudentsInSubjectGroup2}}
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="ns-cloak" ng-show="$ctrl.state.dataReady">
+	<table class="table table-bordered table-condensed table-thin">
+		<tr>
+			<th rowspan="2">
+				{{$ctrl.language.Generic.SetupSchoolCalendar.kTermType_}}
+			</th>
+			<th class="text-center" ng-repeat="profile in $ctrl.data.profiles" colspan="{{profile.grades.length}}">
+				{{profile.name}}
+			</th>
+		</tr>
+		<tr>
+			<th class="text-center" ng-repeat="profileGrade in $ctrl.data.profilesGrades">
+				{{profileGrade.gradeName}}
+			</th>
+		</tr>
+
+		<tr ng-repeat="termType in $ctrl.data.termTypes">
+			<td>
+				{{termType.name}}
+			</td>
+			
+			<td ng-repeat="profileGrade in $ctrl.data.profilesGrades" class="text-center bg-warning">
+				<input track-changes type="radio" ng-value="termType.id" ng-model="profileGrade.termTypeId" ng-if="!(profileGrade.readOnly || $ctrl.state.readOnly)">
+				<span ng-if="profileGrade.readOnly && profileGrade.termTypeId == termType.id || $ctrl.state.readOnly && profileGrade.termTypeId == termType.id">X</span>
+			</td>
+		</tr>
+		
+		<tr>
+			<th>
+				{{$ctrl.language.Generic.Common.kNotChoosen}}
+			</th>
+			<th class="text-center" ng-repeat="profileGrade in $ctrl.data.profilesGrades">
+				<input track-changes type="radio" ng-value="-1" ng-model="profileGrade.termTypeId" ng-if="!profileGrade.readOnly" ng-disabled="$ctrl.state.readOnly">
+			</th>
+		</tr>
+	</table>
+
+</div>

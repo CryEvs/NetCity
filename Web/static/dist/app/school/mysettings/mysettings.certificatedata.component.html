@@ -1,0 +1,73 @@
+<div ng-form name="$ctrl.form" ng-if="$ctrl.ready">
+	<div class="col-md-11" ng-if="$ctrl.ready">
+		<div class="form-group" ng-if="$ctrl.isParent">
+			<label class="control-label col-md-3 col-lg-3">Дети</label>
+			<div class="col-md-8 col-lg-8">
+				<select class="form-control" ng-if="$ctrl.children.length > 1" name="child" ng-change="$ctrl.setChild()" ng-model="$ctrl.selectedChild.id" ng-options="item.id as item.name for item in $ctrl.children"></select>
+				<input ng-if="$ctrl.children.length <= 1" type="text" class="form-control" required name="FN_ANG" size="25" maxlength="30" ng-model="$ctrl.selectedChild.name" ng-disabled=true>
+			</div>
+		</div>
+
+		<div ng-if="!$ctrl.isStudentLess18AndOver5Years && $ctrl.isParent">
+			<div class="form-group" style="display: inline">
+				<label class="control-label col-md-3 col-lg-3"></label>
+				<div class="col-md-8 col-lg-8">
+					<p>Сертификат дополнительного образования можно создать только для учащегося в возрасте от 5 до 18 лет.</p>
+				</div>
+			</div>
+		</div>
+
+		<div ng-if="!(!$ctrl.isStudentLess18AndOver5Years && $ctrl.isParent)">
+			<div class="form-group" ng-if="$ctrl.canShowCertificateBlank">
+				<label class="control-label col-md-3 col-lg-3"></label>
+				<div class="col-md-8 col-lg-8">
+					<a href="javascript:void(0)" ng-click="$ctrl.GetCertificateBlank()" title="Шаблон заявления на получение сертификата">Скачать шаблон заявления на получение сертификата</a>
+				</div>
+			</div>
+			<div class="form-group" ng-if="!$ctrl.hasCertificate">
+				<label class="control-label col-md-3 col-lg-3"></label>
+				<div class="col-md-8 col-lg-8">
+					<button ng-if="$ctrl.isStudentOver14Years || $ctrl.isParent" type="button" title="Получить сертификат" class="btn btn-primary btn-md" ng-click="$ctrl.addCertificate()">
+						<span>Получить сертификат</span>
+					</button>
+				</div>
+			</div>
+			<div ng-if="$ctrl.hasCertificate">
+				<div class="form-group" ng-if="$ctrl.isPdfExists" id="certificateWithoutEmail">
+					<label class="control-label col-md-3 col-lg-3"></label>
+					<div class="col-md-8 col-lg-8">
+						<a href="javascript:void(0)" ng-click="$ctrl.getCertificatePdf()" title="Файл с изображением сертификата" id="certificateImg">Файл с изображением сертификата</a>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3 col-lg-3">Номер</label>
+					<div class="col-md-8 col-lg-8">
+						<input type="text" class="form-control" required name="FN_ANG" size="25" maxlength="30" ng-model="$ctrl.educCertificate.number" ng-disabled=true>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3 col-lg-3">Статус</label>
+					<div class="col-md-8 col-lg-8">
+						<input type="text" class="form-control" required name="FN_ANG" size="25" maxlength="30" ng-model="$ctrl.status" ng-disabled=true>
+					</div>
+				</div>
+
+				<div class="form-group" ng-if="$ctrl.canShowDates">
+					<label class="control-label col-md-3 col-lg-3">Дата начала действия</label>
+					<div class="col-md-8 col-lg-8">
+						<input type="text" class="form-control" required name="FN_ANG" size="25" maxlength="30" ng-model="$ctrl.startDate" ng-disabled=true>
+					</div>
+				</div>
+
+				<div class="form-group" ng-if="$ctrl.canShowDates">
+					<label class="control-label col-md-3 col-lg-3">Дата окончания действия</label>
+					<div class="col-md-8 col-lg-8">
+						<input type="text" class="form-control" required name="FN_ANG" size="25" maxlength="30" ng-model="$ctrl.endDate" ng-disabled=true>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

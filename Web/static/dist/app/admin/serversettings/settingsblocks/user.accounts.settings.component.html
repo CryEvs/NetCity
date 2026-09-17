@@ -1,0 +1,336 @@
+<div class="row" ng-if="$ctrl.state.ready">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="buttons-panel">
+					<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<hr>
+<form class="form-horizontal" ng-if="$ctrl.state.ready">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kBlockSimilars}}</label>
+				</div>
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.blockSimilars" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+						<div class="alert alert-warning" role="alert">
+							{{$ctrl.language.Generic.ServAdmin.kBlockSimilarsYesText}}
+						</div>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.blockSimilars" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+						<div class="alert alert-info" role="alert">
+							{{$ctrl.language.Generic.ServAdmin.kBlockSimilarsNoText}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>
+						{{$ctrl.language.Generic.ServAdmin.kMoveInSourceEServiceOnly}}
+					</label>
+				</div>
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.moveInSourceEServiceOnly" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+						<div class="alert alert-warning" role="alert">
+							{{$ctrl.language.Generic.ServAdmin.kEServiceOnlyYesText}}
+						</div>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.moveInSourceEServiceOnly" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+						<div class="alert alert-info" role="alert">
+							{{$ctrl.language.Generic.ServAdmin.kEServiceOnlyNoText}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kBlockFastInput}}</label>
+				</div>
+
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.blockFastInput" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.blockFastInput" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kOnOrderImportMode}}</label>
+				</div>
+
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.queueImportMode" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.queueImportMode" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kRequireIdentityData}}</label>
+				</div>
+
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.requireIdentityData" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+						<div class="alert alert-warning" role="alert">
+							{{$ctrl.language.Generic.ServAdmin.kRequireIdentityDataYes}}
+						</div>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.requireIdentityData" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kRequireSnils}}</label>
+				</div>
+
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.requireSnils" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+						<div class="alert alert-warning" role="alert">
+							{{$ctrl.language.Generic.ServAdmin.kRequireSnilsYes}}
+						</div>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.requireSnils" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kDisableSchoolStudentsSource_AddSchool}}</label>
+				</div>
+
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.disableSchoolStudentsSource_AddSchool" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+						<div class="alert alert-warning" role="alert">
+							{{$ctrl.language.Generic.ServAdmin.kDisableSchoolStudentsSource_AddSchoolYes}}
+						</div>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.disableSchoolStudentsSource_AddSchool" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kDisablePoolStudentsSource_AddSchool}}</label>
+				</div>
+
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.disablePoolStudentsSource_AddSchool" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+						<div class="alert alert-warning" role="alert">
+							{{$ctrl.language.Generic.ServAdmin.kDisablePoolStudentsSource_AddSchoolYes}}
+						</div>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.disablePoolStudentsSource_AddSchool" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kImportStaffFromOtherOrgs}}</label>
+				</div>
+
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.importStaffFromOtherOrgs" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+						<div class="alert alert-warning" role="alert">
+							{{$ctrl.language.Generic.ServAdmin.kImportStaffFromOtherOrgsYes}}
+						</div>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.importStaffFromOtherOrgs" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kEnableUserClonesPageInOrganizations}}</label>
+				</div>
+
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.enableUserClonesPageInOrganizations" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.enableUserClonesPageInOrganizations" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kEnableUserClonesPageInEm}}</label>
+				</div>
+
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.enableUserClonesPageInEm" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.enableUserClonesPageInEm" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="radio-list-block">
+				<div class="radio-list-title">
+					<label>{{$ctrl.language.Generic.ServAdmin.kRequireParentBirthDate}}</label>
+				</div>
+
+				<div class="radio-list-items-block">
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.requireParentBirthDate" ng-value="true" track-changes>{{$ctrl.language.Generic.Common.kYes}}
+						</label>
+						<div class="alert alert-warning" role="alert">
+							{{$ctrl.language.Generic.ServAdmin.kRequireParentBirthDateYes}}
+						</div>
+					</div>
+
+					<div class="radio-list-item">
+						<label class="radio-inline">
+							<input type="radio" ng-model="$ctrl.data.userAccountsSettings.requireParentBirthDate" ng-value="false" track-changes>{{$ctrl.language.Generic.Common.kNo}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>

@@ -1,0 +1,58 @@
+<script language="javascript" src="/vendor/select2/js/select2.full.min.js"></script>
+
+<div class="bootstrap-dialog type-primary">
+
+	<!-- ЗАГОЛОВОК МОДАЛЬНОГО ОКНА -->
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-close-button">
+				<button class="close" ng-click="ctrl.close()">&times;</button>
+			</div>
+			<div class="bootstrap-dialog-title">{{ctrl.header}}</div>
+		</div>
+	</div>
+
+
+	<!-- ТЕЛО МОДАЛЬНОГО ОКНА -->
+	<div class="modal-body">
+		<edit-task-component ng-if="ctrl.state.ready"
+			map-task = "ctrl.mapTask"
+			select2-settings = "ctrl.select2Settings"
+			skills-data = "ctrl.skillsData"
+			service = "ctrl.subjectSkillsPushSelectedTreeItemsUpService"
+			needreset="ctrl.needreset">
+		</edit-task-component>
+	</div>
+
+
+	<div class="modal-footer">
+
+		<div ng-if="ctrl.state.ready">
+			<!-- СОХРАНИТЬ -->
+			<button class="btn btn-primary btn-sm" ng-click="ctrl.save()">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span ng-show="!ctrl.mapTask.id">{{ctrl.language.Generic.Buttons.kAdd}}</span>
+				<span ng-show="ctrl.mapTask.id">{{ctrl.language.Generic.Buttons.kSave}}</span>
+			</button>
+
+			<!-- ВОССТАНОВИТЬ -->
+			<button class="btn btn-default btn-sm" ng-click="ctrl.reset()" ng-show="ctrl.mapTask.id">
+				<span class="glyphicon glyphicon-repeat"></span>
+				<span>{{ctrl.language.Generic.Buttons.kReset}}</span>
+			</button>
+
+			<!-- УДАЛИТЬ -->
+			<button class="btn btn-danger btn-sm" ng-click="ctrl.remove()" ng-show="ctrl.mapTask.id">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{ctrl.language.Generic.Buttons.kRemove}}</span>
+			</button>
+
+			<!-- ОТМЕНИТЬ -->
+			<button class="btn btn-default btn-sm" ng-click="ctrl.cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+				<span>{{ctrl.language.Generic.Buttons.kCancel}}</span>
+			</button>
+		</div>
+
+	</div>
+</div>

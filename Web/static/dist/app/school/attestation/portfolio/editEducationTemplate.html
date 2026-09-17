@@ -1,0 +1,127 @@
+<div ng-model="EditStaffPortfolioEducationCtrl">
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<form role="form" name="editForm" class="form form-xs ng-pristine ng-valid ng-scope">
+				<fieldset>
+					<legend class="edit-block-legend">{{language.Generic.Common.kGeneralInformation}}</legend>
+					<!--Поля формы-->
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group" ng-class="{'has-error': (editForm.educationYearStart.$invalid || editForm.educationYearEnd.$invalid) && (!editForm.educationYearStart.$pristine || !editForm.educationYearEnd.$pristine || editForm.$displayErrors)}">
+								<label for="education-years" class="control-label">{{language.Generic.Common.kEduYears}}</label>
+								<div class="input-group" id="education-years">
+									<span class="input-group-addon">С </span>
+									<input type="number" id="education-year-start" name="educationYearStart" class="form-control" ng-model="data.item.period.start" ng-pattern="/^\d*$/" min="1950" max="2100" required maxlength="4" onchange="dataChanged()">
+									<span class="input-group-addon"> по </span>
+									<input type="number" id="education-year-end" name="educationYearEnd" class="form-control" ng-model="data.item.period.end" ng-pattern="/^\d*$/" min="1950" max="2100" maxlength="4" onchange="dataChanged()">
+								</div>
+							</div>
+							<div>
+								<p ng-show="editForm.educationYearStart.$invalid && (!editForm.educationYearStart.$pristine || editForm.$displayErrors)" class="help-block">Введите корректный год начала образования (4 знака, 1950-2100) - обязательный параметр)</p>
+								<p ng-show="editForm.educationYearEnd.$invalid && (!editForm.educationYearEnd.$pristine || editForm.$displayErrors)" class="help-block">Введите корректный год завершения образования (4 знака, 1950-2100)) - необязательный параметр</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group" ng-class="{'has-error': editForm.educationMunicipality.$invalid && (!editForm.educationMunicipality.$pristine || editForm.$displayErrors)}">
+								<label for="education-municipality" class="control-label">{{language.Generic.Common.kMunicipality}}</label>
+								<div>
+									<input type="text" id="education-municipality" name="educationMunicipality" class="form-control" ng-model="data.item.municipality" required maxlength="400" onchange="dataChanged();">
+									<p ng-show="editForm.educationMunicipality.$invalid && (!editForm.educationMunicipality.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error': editForm.educationOrganization.$invalid && (!editForm.educationOrganization.$pristine || editForm.$displayErrors)}">
+						<label for="education-organization" class="control-label">{{language.Generic.Common.kEduOrganization}}</label>
+						<div>
+							<input type="text" id="education-organization" name="educationOrganization" class="form-control" ng-model="data.item.organization" required maxlength="400" onchange="dataChanged()">
+							<p ng-show="editForm.educationOrganization.$invalid && (!editForm.educationOrganization.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="education-speciality" class="control-label">{{language.Generic.UsersExport_1C.kProfession}}</label>
+						<div>
+							<input type="text" id="education-speciality" class="form-control" ng-model="data.item.speciality"  maxlength="400" onchange="dataChanged()">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="education-qualification" class="control-label">{{language.Generic.UsersExport_1C.kQualification}}</label>
+						<div>
+							<input type="text" id="education-qualification" class="form-control" ng-model="data.item.qualification" maxlength="400" onchange="dataChanged()">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="education-secondName" class="control-label">{{language.Generic.Common.kDiplomaSecondName}}</label>
+						<div>
+							<input track-changes type="text" id="education-secondName" class="form-control" ng-model="data.item.secondName" maxlength="50">
+						</div>
+					</div>
+
+					<legend class="edit-block-legend">{{language.Generic.Common.kCompletionDocument}}</legend>
+					<div class="form-group"  ng-class="{'has-error': editForm.doctype.$invalid && (!editForm.doctype.$pristine || editForm.$displayErrors)}">
+						<label for="education-doc-type" class="control-label">Тип документа</label>
+						<div>
+							<select id="education-doc-type" name="doctype" class="form-control" ng-model="data.item.completionDocument.docType" ng-options="docType.key as docType.name for docType in refs.educDocTypes" required onchange="dataChanged()"></select>
+							<p ng-show="editForm.doctype.$invalid && (!editForm.doctype.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group" ng-class="{'has-error': editForm.docserie.$invalid && (!editForm.docserie.$pristine || editForm.$displayErrors)}">
+							<label for="education-doc-serie" class="control-label">{{language.Generic.Common.kSerial}}</label>
+							<div>
+								<input type="text" name="docserie" id="education-doc-serie" class="form-control" required ng-model="data.item.completionDocument.series" maxlength="400" onchange="dataChanged()">
+								<p ng-show="editForm.docserie.$invalid && (!editForm.docserie.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+							</div>
+						</div>
+						<div class="col-md-6 form-group" ng-class="{'has-error': editForm.docnumber.$invalid && (!editForm.docnumber.$pristine || editForm.$displayErrors)}">
+							<label for="education-doc-number" class="control-label">{{language.Generic.UsersExport_1C.kNumberDocument}}</label>
+							<div>
+								<input type="text" name="docnumber" id="education-doc-number" class="form-control" ng-model="data.item.completionDocument.number" required maxlength="400" onchange="dataChanged()">
+								<p ng-show="editForm.docnumber.$invalid && (!editForm.docnumber.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label for="education-doc-issuedate" class="control-label">{{language.Generic.UsersExport_1C.kIssueDate}}</label>
+							<div class="input-group date" id="education-doc-issuedate">
+								<input type="text" class="form-control date-input" name="ISSUEDATE" size="11" maxlength="10" ns-date-model="data.item.completionDocument.issueDate" onchange="dataChanged()">
+								<span class="input-group-btn"><button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span> </button></span>
+							</div>
+						</div>
+						<div class="col-md-6 form-group">
+							<label for="education-doc-regnumber" class="control-label">{{language.Generic.SchoolInfo.kRegistrationNumber}}</label>
+							<div>
+								<input type="text" id="education-doc-regnumber" class="form-control" ng-model="data.item.completionDocument.regNumber" maxlength="20" onchange="dataChanged()">
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="editForm.$displayErrors=true; save(editForm.$valid);">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

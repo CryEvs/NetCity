@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+        <div class="buttons-panel">
+            <div class="buttons-panel-right">	
+                <button ng-show="$ctrl.enableEdit" title="{{$ctrl.language.Generic.SetupSchoolResources.kEditDocs}}" type="button"
+                        class="btn btn-warning" ng-click="$ctrl.editDocs()">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span>{{$ctrl.language.Generic.Buttons.kChange}}</span>
+                </button>
+            </div>
+        </div>
+        <div class="filters-panel col-md-12 filters-panel-compact">
+            <form name="filterForm">
+                <div class="form-group">
+                    <label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.SetupSchoolResources.kDocType}}</label>
+                    <div class="col-md-8 col-lg-5 col-sm-8">
+                        <select class="form-control" ng-model="$ctrl.selectedDocType"
+                                ng-options="docType as docType.name for docType in $ctrl.docTypes track by docType.id"
+                                ng-change="$ctrl.changeDocType()" ng-disabled="$ctrl.docTypes.length == 1"></select>
+                    </div>
+                </div>
+                <div ng-if="$ctrl.groups.length != 0" class="form-group">
+                    <label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.SetupSchoolResources.kDocGroup}}</label>
+                    <div class="col-md-8 col-lg-5 col-sm-8">
+                        <select name="group" class="form-control" ng-model="$ctrl.selectedGroup"
+                                ng-options="group as group.treeItemName for group in $ctrl.groups" ng-change="$ctrl.changeDocGroup()">
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-info ng-binding" ng-show="$ctrl.sections.length == 0" role="alert">
+            {{$ctrl.language.Generic.SetupSchoolResources.kNoGroupsForDocType}}
+        </div>
+
+        <div class="content-preloader" ng-show="!$ctrl.dataReady">
+            <span class="arrows"></span>
+            <span class="title">{{$ctrl.language.Generic.Curriculum.kPleaseWait}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table ng-if="$ctrl.sections.length > 0 && $ctrl.dataReady" class="table table-condensed table-sm">
+            <tr>
+                <th>{{$ctrl.language.Generic.Common.kName}}</th>
+                <th>{{$ctrl.language.Generic.SetupSchoolResources.kDescr}}</th>
+                <th ng-if="!$ctrl.selectedDocTypeIsPreset">{{$ctrl.language.Generic.SetupSchoolResources.kAuthor}}</th>
+                <th>{{$ctrl.language.Generic.SetupSchoolResources.kPublicationDate}}</th>
+            </tr>
+            <tr ng-repeat="section in $ctrl.sections">
+                <td ng-if="section.isHeader" colspan="{{$ctrl.sectionHeaderColSpan}}">
+                    <h3 style="margin-top: 5px;">
+                        <span class="label label-info" style="display:block;">
+                            {{section.name}}
+                        </span>
+                    </h3>
+                </td>
+                <td ng-if="!section.isHeader">
+                    <a href="#" title="{{$ctrl.language.SetupSchoolResources.kOpenSchoolDoc}}" ng-click="$ctrl.downloadFile(section.id)">
+                        <img ng-src="{{$ctrl.getImgIcon(section.filename)}}" border="0" valign="top" alt="">&nbsp;
+                        {{section.name}}
+                    </a>
+                </td>
+                <td class="text-center" ng-if="!section.isHeader">{{section.description}}</td>
+                <td class="text-center" ng-if="!section.isHeader && !$ctrl.selectedDocTypeIsPreset">{{section.authorNickname}}</td>
+                <td class="text-center" ng-if="!section.isHeader">{{section.creationDate | nsDate}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

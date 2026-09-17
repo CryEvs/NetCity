@@ -1,0 +1,95 @@
+
+
+#menu ul {
+	position: relative;
+	z-index: 597;
+	float:left;
+	
+}
+
+#menu ul li {
+	float: left;
+
+	zoom: 1;
+	
+}
+
+
+#menu ul li.hover,
+#menu ul li:hover {
+	position: relative;
+	z-index: 599;
+	cursor: default;
+	background: url(../../images/about/nav_bg_hover.gif) repeat-x;
+	
+}
+
+.arr:hover
+{
+	
+	width:100%;
+	height:40px;
+    background: url(../../images/about/nav_arr.gif) no-repeat bottom center;
+}
+.arr2
+{
+background: url(../../images/about/nav_arr.gif) no-repeat bottom center;
+}
+
+#menu ul ul {
+
+	visibility: hidden;
+	position: absolute;
+	padding-top: 0px;
+	top: 100%;
+	left: 15px;
+	z-index: 598;
+	width: 100%;
+	padding-top:10px;
+	margin-top:0px;
+	background: #ffffff;
+	border: solid 1px #cccccc;
+	border-top:none;
+	
+
+	
+}
+#menu ul li ul li
+{
+	line-height:20px;
+	height:20px;
+	border-bottom: 1px #cccccc dashed;
+	padding-bottom:10px;
+	margin-top:-10px;
+}
+#menu ul li ul li a
+{
+    color: #636363;
+    display:block;
+    font-size: 12px;
+	line-height:28px;
+    
+}
+*html #menu ul li ul li
+{
+	padding-bottom:0px;
+	margin-top:-13px;
+}
+#menu ul li ul li:hover, #menu ul li ul li.hover
+{
+	background:#d7d7d7;
+}
+
+#menu ul ul li {
+	float: none;
+	margin-bottom: 10px;
+}
+
+
+
+#menu ul li:hover > ul {
+	visibility: visible;
+}
+
+
+

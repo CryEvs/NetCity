@@ -1,0 +1,57 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+	<div class="modal-body">
+
+		<form class="form-horizontal form-xs">
+			<div class="form-group">
+				<label class="control-label col-md-5">Тип постановки на учёт</label>
+				<div class="col-md-7">
+					<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.familyObserve.type.name" ng-if="$ctrl.editmode">
+					<select class="form-control" ng-if="!$ctrl.editmode" name="FamilyObserveType" ng-model="$ctrl.familyObserve.type" ng-options="type as type.name for type in $ctrl.types track by type.id"></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-5">Дата постановки на учёт</label>
+				<div class="col-md-7">
+					<edit-date-input date="$ctrl.familyObserve.startDate" track-changes></edit-date-input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-5">Причина постановки на учёт</label>
+				<div class="col-md-7">
+					<input type="text" class="form-control" name="FamilyObserveReason" ng-model="$ctrl.familyObserve.reason">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+
+		<!-- СОХРАНИТЬ -->
+		<button class="btn btn-primary btn-sm" ng-click="$ctrl.save()">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<!-- СОХРАНИТЬ -->
+		<button class="btn btn-danger btn-sm" ng-click="$ctrl.remove()" ng-if="$ctrl.editmode">
+			<span class="glyphicon glyphicon-minus-sign"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+		</button>
+
+		<!-- ОТМЕНИТЬ -->
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+
+	</div>
+</div>

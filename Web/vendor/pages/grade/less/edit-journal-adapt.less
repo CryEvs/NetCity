@@ -1,0 +1,587 @@
+/*=====================================================================================*/
+/*=====================================================================================*/
+/*==============Стили для адаптивности странницы выставления оценок====================*/
+/*=====================================================================================*/
+/*=====================================================================================*/
+
+/*==========================================================================*/
+/*===============================Верхняя панель=============================*/
+/*==================появляется при маленьком разрешении=====================*/
+/*.task-text {
+	text-align: center;
+	background-color: #4e8ec8;
+	color: #fff;
+	font-size: 17px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	display: none;
+}
+
+.editJournal-panel {
+	background: #ebeec6;
+	height: 42px;
+	overflow: hidden;
+	background-color: #4e8ec8;
+	display: none;
+	border: 1px solid #4E8EC8;
+
+	.task-menu-right {
+		background: #4e8ec8;
+		-webkit-box-shadow: 4px 0 4px rgba(0,0,0,.1);
+		-moz-box-box-shadow: 4px 0 4px rgba(0,0,0,.1);
+		-o-box-shadow: 4px 0 4px rgba(0,0,0,.1);
+		-ms-box-shadow: 4px 0 4px rgba(0,0,0,.1);
+		box-shadow: 4px 0 4px rgba(0,0,0,.1);
+		cursor: pointer;
+		opacity: .8;
+		transition: .5s;
+
+		float: right;
+		width: 25px;
+		height: 40px;
+		position: relative;
+		&:after {
+			left: 9px;
+			top: 50%;
+			content: '';
+			margin-top: -10px;
+			position: absolute;
+			border: 10px solid transparent;
+			border-left-color: #e5f8ff;
+			z-index: 1;
+			transition: .5s;
+		}
+		&:hover {
+			opacity: 1;
+		}
+	}
+	.task-menu-left {
+		background: #4e8ec8;
+		overflow: hidden;
+		-webkit-box-shadow: -4px 0 4px rgba(0,0,0,.1);
+		-moz-box-box-shadow: -4px 0 4px rgba(0,0,0,.1);
+		-o-box-shadow: -4px 0 4px rgba(0,0,0,.1);
+		-ms-box-shadow: -4px 0 4px rgba(0,0,0,.1);
+		box-shadow: -4px 0 4px rgba(0,0,0,.1);
+		cursor: pointer;
+		opacity: .8;
+		transition: .5s;
+
+		float: left;
+		width: 25px;
+		height: 40px;
+		position: relative;
+		&:after {
+			right: 9px;
+			top: 50%;
+			content: '';
+			margin-top: -10px;
+			position: absolute;
+			border: 10px solid transparent;
+			border-right-color: #e5f8ff;
+			z-index: 1;
+			transition: .5s;
+		}
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	& > div {
+		float:left;
+		overflow: hidden;
+		text-align: center;
+		-ms-text-overflow: ellipsis;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		
+		color: #fff;
+
+	}
+
+	.task {
+		font-size: 0;
+		background: #c9ddf0;
+
+		div {
+			font-size: 14px;
+			color: #000;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.task-wraper {
+			background: #fff;
+			.task-menu {
+				display: table;
+				& > div {
+					padding: 10px 10px;
+					max-width: 150px;
+					border-right: 1px solid #649ED5;
+					cursor: pointer;
+					display: table-cell;
+					&:hover {
+						background:#faf3bc;
+					}
+					&.active {
+						background:#f8de09 !important;
+						color:#000 !important;
+						&:hover {
+							background:#f8de09;
+						}
+						
+					}
+				}
+			}
+		}
+		// вкладка "домашнее задание"
+		.task-home {
+			background: #c9ddf0;
+			color: #135588;
+			max-width: 150px;
+			min-width: 150px;
+			padding: 10px 10px;
+			border-right: 1px solid #649ED5;
+			cursor: pointer;
+			float: left;
+			&:hover{
+				background-color:#faf3bc;
+				color: #000;
+			}
+			
+			&.active {
+				background:#f8de09 !important;
+				color:#000 !important;
+				&:hover {
+					background:#f8de09;
+				}
+				
+				& > .hidden + span {
+					padding: 3px 0;
+				}
+			}
+			.task-home-text {
+				display: inline-block;
+			}
+			.glyphicon-plus-sign {
+				display: block;
+			}
+			.hidden + .glyphicon-plus-sign {
+				display: block !important;
+				&:hover {
+					color: #444;
+				}
+			}
+			.task-home-text + .glyphicon-plus-sign  { 
+			
+				display: none;
+			
+			}
+		}
+		
+		.task-home-empty {
+			.task-home-text {
+				display: none;
+			}
+			.glyphicon-plus-sign {
+				display: inline-block;
+				color: #3092bd;
+			}
+			&:hover {
+				background:#F9FF00   !important;
+				.glyphicon-plus-sign {
+					color: #18a2eb;
+				}
+			}
+		}
+
+
+		.task-new {
+			cursor: pointer;
+			background-color: #fff;
+			padding-top: 10px;
+			color: #3092bd;
+			display: block;
+			max-width: 150px;
+			padding: 10px 10px;
+			border-left: 1px solid #649ED5;
+			cursor: pointer;
+			float: right;
+			span {
+				left: 0px;
+				top: 2px;
+			}
+			&:hover {
+				background-color: #3092bd;
+				color: #fff;
+				border-right: 0px solid transparent;
+				border-top: 1px solid #fff;
+				border-bottom: 1px solid #fff;
+				padding-top: 10px;
+				padding-bottom: 7px;
+				border-left: 0px solid #649ed5;
+				span {
+					top: 1px;
+				}
+			}
+			.task-new-text {
+				display: none;
+			}
+		}
+		
+	}
+
+	.task-empty {
+		.task-new {
+			float: none;
+			max-width: none;
+			border-left: 0 solid #fff;
+			&:hover {
+				border-left: 1px solid #fff;
+				border-right: 1px solid #fff;
+			}
+			.task-new-text {
+				display: inline;
+			}
+		}
+	}
+
+	
+
+}
+//==========заголовок задачи===========//
+.task-header {
+	top:  0;
+	left: 0;
+	width: 160px;
+	height: 37px;
+	position: absolute;
+	border-right: 1px solid #fff;
+	display: none;
+	font-size: 15px;
+	text-align: center;
+	color: #fff;
+	padding-top: 8px;
+}
+
+//=======================================//
+//===========временная заглушка==========//
+.editjournal-right-block {
+	border-bottom: 1px solid #d0d0d0;
+}
+
+
+@media only screen and (max-width: 985px) {
+	.editJournal-panel, .task-text {
+		display: block;
+	}
+	.new-assignment-container {
+		display: none;
+	}
+	.task {
+		width: 100%;
+	}
+
+	//======слово "задание" в "шапке" столбца задания======//
+	.task-header {
+		display:block;
+	}
+
+	//======== все ячейки закрываем, кроме активной========//
+	.task-active {
+		display:block !important;
+		width: 100% !important;
+		.task-header {
+			top: -120px;
+			width: 100%;
+		}
+		.assignment-title {
+			top: -83px !important;
+		}
+	}
+	
+	.editjournal-left-block {
+		width: 174px !important;
+		.home-assignment {
+			display: none;
+		}
+	}
+
+	//==== стили для особого раздела "домашнее задание" ====//
+	.editjournal-left-block.task-active {
+		width: auto !important;
+		position: static !important;
+		.home-assignment {
+			position: relative !important;
+			margin-left: 250px;
+			margin-right: 58px;
+			left: 0 !important;
+			width: auto;
+			display: block;
+			border-bottom: 0 solid @border-color !important;
+			.results-block {
+				margin-top: 0; 
+				padding-top: 120px; 
+				background: #4e8ec8; 
+				div {
+					background: #fff;   
+				}
+			}
+			.assignment-title {
+				top: 37px !important; 
+			}
+			.assignments-header {
+				width: 100%;  
+				left: 0; 
+				text-align: center; 
+			}
+			.add-assignments-adaptive {
+				display: block !important;
+				position: absolute;
+				width: 100%;
+				top: 60px;
+				text-align: center;
+				font-size: 100px;
+				color: #afafaf;
+				
+				i{
+					cursor: pointer;
+				}
+				&:hover {
+					  color: #18a2eb;
+				}
+			}
+			.add-assignments {
+				display: none;
+			}
+			.home-assignments-header {
+				top: -110px !important;
+				left: 0 !important;
+				width: 100%;
+				text-align: center;
+			}
+
+		}
+		.studentlist {
+			width: 250px !important;
+			.student-title{
+				left: 95px !important;
+			}
+		}
+	}
+	.task-active + .assignments-block-wrapper {
+		display:none !important;
+	}
+
+
+	//============================================//
+	//==========изменяем классный журнал==========//
+	.editjournal-wrapper {
+		min-width:275px;
+		.editjournal {
+			border-top: 0 solid #d0d0d0;
+			border-right: 0 solid #d0d0d0;
+			border-left: 0 solid #d0d0d0;
+			border-radius: 0;
+			width: auto !important;
+			background-color: #4e8ec8;
+
+			.assignments-block-wrapper {
+				.assignments-block {
+					border-right: 1px solid #d0d0d0;
+					padding-left: 250px;
+					width: 100%;
+					padding-right: 58px;
+					display: block;
+					& >div {
+						width: 100%;
+						& >div {
+							width: 100%;
+							display: block;
+							 .assignments-container-table  {
+								width: 100%;
+								 .div-table-safari {
+										width: 100%;
+									 .assignment-container {
+										   
+										display: none;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.jquery-before {
+				display: none;
+			}
+			.jquery-after {
+				display: none;
+			}
+			.assignments-header-block {
+				display:none;
+			}
+
+			.editjournal-left-block {
+				.home-assignment {
+					.assignments-header {
+						top: 8px;
+					}
+				}
+				.studentlist {
+					-webkit-border-top-left-radius: 0px;
+					width: 250px;
+					.student-block {
+						border-left: 1px solid #d0d0d0;
+					}
+				}
+			}
+			.editjournal-right-block {
+				border-top-right-radius: 0;
+				width: auto;
+				.attendance {
+					-webkit-border-top-right-radius: 0px;
+					.attendance-block {
+						border-right: 1px solid #d0d0d0;
+					}
+				}
+			}
+		}
+	}
+
+	.mCSB_container {
+		width: auto !important;
+	}
+}
+
+
+@media only screen and (max-width: 815px) {
+	.new-assignment-container {
+		display: none;
+	}
+	.editjournal-wrapper  {
+		.editjournal {
+			.editjournal-left-block {
+				.studentlist {
+					width: 175px;
+					.student-title {
+						  left: 55px !important;
+					}
+				}
+			}
+
+			.editjournal-right-block {
+				.studentlist { 
+					width: 175px;
+				}
+			}
+
+			.assignments-block-wrapper {
+				.assignments-block {
+					padding-right: 58px !important;
+					padding-left: 175px !important;
+				}
+			} 
+
+			.editjournal-left-block.task-active {
+				.home-assignment {
+					margin-right: 58px;
+					margin-left: 175px;
+				}
+				.studentlist {
+					width: 175px !important;
+				}
+			}
+		} 
+	}
+	.editJournal-panel {
+		.task {
+			.task-new {
+				display:block;
+			}
+		}
+	}
+}
+
+
+@media only screen and (max-width: 515px) {
+	.editJournal-panel{ 
+		.task {
+			.task-home {
+				max-width: 120px;
+			}
+		}
+	}
+	
+	.editjournal-wrapper {
+		min-width: 275px;
+		.editjournal {
+			.editjournal-right-block {
+				display: none !important ;
+			}
+
+			.assignments-block-wrapper {
+				.assignments-block {
+					padding-right: 0 !important;
+					border-right: 0 solid #d0d0d0 !important;
+					padding-left: 120px  !important;
+					& >div {
+						& >div {
+								.assignments-container-table  {
+									.div-table-safari {
+										.assignment-container {
+										.assignment-title {
+											border-right: 1px solid #4E8EC8;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.editjournal-left-block {
+				width: auto !important;
+				border-right: 0 solid #d0d0d0;
+				.studentlist {
+					width: 120px;
+					.student-title {
+						left: 31px   !important;
+					}
+				}
+				.home-assignment {
+					border-right: 0 solid #d0d0d0;
+					.results-block {
+						div {
+							border-right: 1px solid #d0d0d0;
+						}
+					}
+				}
+			}
+			.editjournal-left-block.task-active {
+				.home-assignment {
+					margin-right: 0;
+						margin-left: 120px;
+				}
+				.studentlist { 
+					width: 120px  !important;
+				}
+			}
+		}
+	}
+	
+	.task-header {
+		border-right: 1px solid #4E8EC8 !important;
+	}
+}*/
+
+/*=====================================================================================*/
+/*=====================================================================================*/
+/*=================================Конец адаптивным стилям=============================*/
+/*=====================================================================================*/
+/*=====================================================================================*/

@@ -1,0 +1,17 @@
+<div class="bootstrap-dialog type-primary" data-ng-init="checkButtons()">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{title}}</h4>
+		</div>
+	</div>
+	<div class="modal-body" ng-click="checkButtons()">
+		<select-organizations selected="model.selected" settings="model.settings" model="model" on-update="select(selected)"></select-organizations>
+	</div>
+
+	<div class="modal-footer">
+        <button ng-repeat="button in buttons track by button.id" class="btn" ng-class="button.class" ng-click="button.action()" ng-disabled="button.disabled()">
+            <span ng-if="button.icon" class="bootstrap-dialog-button-icon glyphicon glyphicon" ng-class="button.icon"></span>
+            <span>{{button.text}}</span>
+        </button>
+	</div>
+</div>

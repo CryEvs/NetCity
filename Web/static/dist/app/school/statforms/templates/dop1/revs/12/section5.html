@@ -1,0 +1,169 @@
+<style>
+    .day {
+        display: inline-block;
+    }
+    .month {
+        display: inline-block;
+    }
+    .year {
+        display: inline-block;
+    }
+</style>
+<div class="text-compact print-block">
+        <div style="margin-top:10px; margin-bottom:10px; text-align:center;">
+            <b>Справка. Источники финансирования внутренних затрат на внедрение и использование цифровых технологий</b>
+        </div>
+        <br/>
+    
+        <table class="ThinTable" align="center" border=1 cellpadding=3 cellspacing=0>
+            <tr align="middle" valign="center">
+                <td>Наименование показателя</td>
+                <td>№<br/>строки</td>
+                <td>Всего, тыс. руб.<br/>(с одним десятичным знаком)</td>
+            </tr>
+    
+            <tr align="middle" valign="center">
+                <td>1</td><td>2</td><td>3</td>
+            </tr>
+
+            <tr align="middle" valign="bottom">
+                <td align="left">Внутренние затраты на внедрение и использование цифровых технологий - всего (сумма строк 02, 03, 04)</td>
+                <td align="center">01</td>
+                <td ns-float-number-input config="{row: 1, colStart: 3, colEnd: 3}" decimal-places="1" section="section"></td>
+            </tr>
+
+            <tr align="middle" valign="bottom">
+                <td align="left">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;в том числе по источникам финансирования:<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;собственные средства организации
+                </td>
+                <td align="center">02</td>
+                <td ns-float-number-input config="{row: 2, colStart: 3, colEnd: 3}" decimal-places="1" section="section"></td>
+            </tr>
+    
+            <tr align="middle" valign="bottom">
+                <td align="left">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;средства бюджетов всех уровней
+                </td>
+                <td align="center">03</td>
+                <td ns-float-number-input config="{row: 3, colStart: 3, colEnd: 3}" decimal-places="1" section="section"></td>
+            </tr>
+
+            <tr align="middle" valign="bottom">
+                <td align="left">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;прочие привлеченные средства
+                </td>
+                <td align="center">04</td>
+                <td ns-float-number-input config="{row: 4, colStart: 3, colEnd: 3}" decimal-places="1" section="section"></td>
+            </tr>
+    
+            <tr align="middle" valign="bottom">
+                <td align="left">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					из них:<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					некоммерческих организаций
+                </td>
+                <td align="center">05</td>
+                <td ns-float-number-input config="{row: 5, colStart: 3, colEnd: 3}" decimal-places="1" section="section"></td>
+            </tr>
+
+            <tr align="middle" valign="bottom">
+                <td align="left">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					физических лиц
+                </td>
+                <td align="center">06</td>
+                <td ns-float-number-input config="{row: 6, colStart: 3, colEnd: 3}" decimal-places="1" section="section"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="text-compact print-block">
+    <table class="ThinTable" cellpadding="0" cellspacing="0" align="center">
+        <tr align="center" valign="middle">
+            <td align="left">
+                <br /><br />
+                Должностное лицо, ответственное за<br />
+                предоставление первичных статистических <br />
+                данных (лицо, уполномоченное предоставлять<br />
+                первичные статистические данные от имени
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td align="left">юридического лица)</td>
+            <td><ns-form-text-input param="'T05_post'" section="section" textlength="30"></ns-form-text-input></td>
+            <td></td>
+            <td><ns-form-text-input param="'T05_fio'" section="section" textlength="30"></ns-form-text-input></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr align="center" valign="bottom">
+            <td></td>
+            <td>____________________________</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>____________________________</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>____________________________</td>
+        </tr>
+
+        <tr align="center" valign="top">
+            <td></td>
+            <td>(должность)</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>(Ф.И.О.)</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>(подпись)</td>
+        </tr>
+
+        <tr><td><br /></td></tr>
+
+        <tr>
+            <td></td>
+            <td><ns-form-text-input param="'T05_contact'" section="section" textlength="12"></ns-form-text-input></td>
+            <td></td>
+            <td><ns-form-text-input param="'T05_email'" section="section" textlength="30"></ns-form-text-input></td>
+            <td></td>
+            <td>
+                <!-- ДЕНЬ -->
+                <span>"</span>
+                <span class="day"><ns-form-text-input param="'T05_day'" section="section" textlength="2" inputsize="1"></ns-form-text-input></span>
+                <span>"</span>
+                &nbsp;
+                <!-- МЕСЯЦ -->
+                <span class="month"><ns-form-text-input param="'T05_month'" section="section" textlength="8" inputsize="6"></ns-form-text-input></span>
+                <!-- ГОД -->
+                &nbsp;
+                &nbsp;
+                <span>20</span>
+                <span class="year"><ns-form-text-input param="'T05_year'" section="section" textlength="2" inputsize="1"></ns-form-text-input></span>
+                <span>года</span>
+            </td>
+        </tr>
+
+        <tr align="center" valign="bottom">
+            <td></td>
+            <td>____________________________</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>____________________________</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>____________________________</td>
+        </tr>
+
+        <tr align="center" valign="top">
+            <td></td>
+            <td>(номер контактного телефона)</td>
+            <td></td>
+            <td>(E-mail)</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>(дата составления документа)</td>
+        </tr>
+    </table>
+</div>

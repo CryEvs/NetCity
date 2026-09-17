@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/login/css/login.component.min.css?ver" />
+<link rel="stylesheet" type="text/css" href="/extras/mobile.authorize.css?ver" />
+
+<ng-include src="'/extras/mobile.authorize_header.html?ver'"></ng-include>
+
+<div class="container padding0">
+	<main class="main ng-cloak">
+		<div class="form primary-input-form h573">	
+			<div class="form__headertext mobile__headertext">{{$ctrl.mobileAppName}}</div>
+
+			<div class="hinttext text-center">
+				<div class="hinttext__header mobile__hinttext__header">
+					{{$ctrl.roleAuthMessage}}<br><span class="mobile__nickname">{{$ctrl.nickName}}</span><br>прошла успешно
+				</div>
+			</div>
+
+			<div ng-if="$ctrl.errorMessage" class="hinttext text-center">
+				<div class="hinttext__header mobile__hinttext__header_error" ng-bind-html="$ctrl.errorMessage"></div>
+			</div>
+	
+			<div class="logpass">
+				<div class="primary-button inactive-button" ng-show="$ctrl.state.processing">Загрузка...</span></div>
+				<div class="primary-button" ng-show="!$ctrl.state.processing" ng-click="$ctrl.done()">Продолжить <span ng-show="$ctrl.timeout > 0">({{$ctrl.timeout}})</span></div>
+			</div>
+		</div>
+	</main>		
+</div>

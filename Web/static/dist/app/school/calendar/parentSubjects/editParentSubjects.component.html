@@ -1,0 +1,42 @@
+
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+
+	<ns-form control-size="col-md-8" label-size="col-md-4" class="form-horizontal">
+
+		<ns-form-group title="{{$ctrl.language.Generic.SetupSchool.kFullName}}">
+			<input type="text" class="form-control FilterWhiteSpace" track-changes name="SGNAME" maxlength="50" ng-model="$ctrl.parentSubject.name" ng-readonly="$ctrl.state.parentSubjectLanguages">
+		</ns-form-group>
+
+		<ns-form-group title="{{$ctrl.language.Generic.SetupSchool.kAbbr_Name}}">
+			<input type="text" class="form-control FilterWhiteSpace" track-changes name="PSABBR" maxlength="50" ng-model="$ctrl.parentSubject.abbr" ng-readonly="$ctrl.state.parentSubjectLanguages">
+		</ns-form-group>
+
+		<ns-form-group title="{{$ctrl.language.Generic.SetupSchoolCalendar.kSubjFieldS}}">
+
+			<select class="form-control" track-changes name="SFID"
+				ng-options="subjectField.name for subjectField in $ctrl.subjectFields"
+				ng-change="$ctrl.filterSubjectsByField()"
+				ng-model="$ctrl.curSubjectField"
+				ng-if="!$ctrl.state.constSubjectField">
+			</select>
+			<span ng-if="$ctrl.state.constSubjectField" class="form-control form-control-title">
+				<span class="text">{{$ctrl.subjectField.name}}</span>
+			</span>
+
+		</ns-form-group>
+
+		<ns-form-group title="{{$ctrl.language.Generic.Common.kSubjects}}">
+			
+			<div style="max-height: 300px; overflow-y: auto; overflow-x: auto;">
+				<div class="checkbox" ng-repeat="subject in $ctrl.subjects">  
+					<label>  
+						<input track-changes type="checkbox" ng-checked="$ctrl.selected.isSelected(subject)" ng-click="$ctrl.selected.select(subject)"> {{subject.name}}
+					</label>
+				</div>
+			</div>
+
+		</ns-form-group>
+
+	</ns-form>
+
+</ns-modal>

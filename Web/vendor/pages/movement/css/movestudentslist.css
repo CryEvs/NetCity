@@ -1,0 +1,18 @@
+label.fio-label {
+  font-weight: normal;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+label.fio-label:hover {
+  cursor: pointer;
+}
+
+div.moveStudentsListCtrl table tr.impossible td {
+  color: gray;
+}
+div.moveStudentsListCtrl table tr.impossible td label.fio-label:hover {
+  cursor: not-allowed;
+}
+div.moveStudentsListCtrl .popover .popover-title {
+  color: #000;
+}

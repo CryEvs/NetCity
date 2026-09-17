@@ -1,0 +1,237 @@
+<div class="buttons-filters-panel form-horizontal single-row ns-cloak">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-right">
+					<button title="{{language.Generic.Buttons.kBtnPrint}}" type="button" class="btn btn-default" ng-click="lazyPrint()">
+						<span class="glyphicon glyphicon-print"></span> <span>{{language.Generic.Buttons.kPrint}}</span>
+					</button>
+					<button title="{{language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default" ng-click="lazyExport()">
+						<span class="glyphicon glyphicon-export"></span> <span>{{language.Generic.Common.kBtnExcel}}</span>
+					</button>
+				</div>
+			</div>
+
+			<div class="filters-panel filters-panel-compact" style="display: inline;"></div>
+			<div class="filters-panel-compact" style="display: inline;">
+				<div class="form-group" id="home-assigns-form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Grade.kLessonNames}}</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<a href="javascript:void(0)" class="form-control" ng-if="!data.subjectPlanData.subjectPlan" ng-click="goPlanner()">{{language.Generic.Grade.kAssignVariant}}</a>
+						<select ng-if="data.subjectPlanData.subjectPlan" storage class="form-control" ng-options="item.id as item.name for item in refs.lessonsViewTypes" ng-model="settings.lessonsViewType" ng-change="changeViewType()"></select>
+					</div>
+				</div>
+				<div class="form-group" id="home-assigns-form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Reports.kHomeAssignments}}</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<select storage class="form-control" ng-options="item.id as item.name for item in refs.homeAssignViewTypes" ng-model="settings.homeAssignViewType" ng-change="changeViewType()"></select>
+					</div>
+				</div>
+				<div class="form-group" id="other-assigns-form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Assignment.kOtherTypeAssignments}}</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<select storage class="form-control" ng-options="item.id as item.name for item in refs.otherAssignViewTypes" ng-model="settings.otherAssignViewType" ng-change="changeViewType()"></select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12 form-group">
+		<button id="load-assignments-btn" title={{language.Generic.Buttons.kLoad}} type="button" class="btn btn-primary btn-sm" ng-click="getAssignments()">
+			<span class="glyphicon glyphicon-search"></span>
+			<span>{{language.Generic.Buttons.kLoad}}</span>
+		</button>	
+	</div>
+</div>
+<div class="row" ng-if="!state.dataReady || state.filterChanged">
+	<div class="col-md-12 col-lg-12">
+		<div class="alert alert-info" role="alert">
+			{{language.Grade.kPressLoadForThemes}}
+		</div>
+	</div>
+</div>	
+<div class="row" ng-if="state.emptyData">
+	<div class="col-md-12 col-lg-12">
+		<div class="alert alert-info" role="alert">
+			{{language.Generic.Grade.kNoCMs}}
+		</div>
+	</div>
+</div>
+<div class="row ns-cloak" id="detailedInfo" ng-show="!state.emptyData && state.dataReady">
+	<div class="col-md-12">
+		<table class="table table-bordered table-responsive table-sm print-block">
+			<tr ng-if="!settings.weight">
+				<th width='1%'>{{language.Generic.Common.kDate}}</th>
+				<th width="30%">{{language.Curriculum.kLesTheme}}</th>
+				<th ng-if="settings.assignmentsToCM" width='30%'>{{language.Grade.kToCurrentLesson}}</th>
+				<th ng-if="!settings.assignmentsToCM" width='30%'>{{language.Grade.kToNextLesson}}</th>
+				<th ng-if="settings.showAnotherAssignments" width='30%'>{{language.Generic.Assignment.kOtherTypeAssignments}}</th>
+				<th ng-if="settings.showAnotherAssignments" width='1%' ng-bind-html="language.Generic.Grade.kAssignType"></th>
+			</tr>
+			<tr ng-if="settings.weight">
+				<th width='1%' rowspan="2">{{language.Generic.Common.kDate}}</th>
+				<th width="30%" rowspan="2">{{language.Curriculum.kLesTheme}}</th>
+				<th colspan="2" ng-if="settings.assignmentsToCM" width='30%'>{{language.Grade.kToCurrentLesson}}</th>
+				<th colspan="2" ng-if="!settings.assignmentsToCM" width='30%'>{{language.Grade.kToNextLesson}}</th>
+				<th colspan="3" ng-if="settings.showAnotherAssignments" width='30%'>{{language.Generic.Assignment.kOtherTypeAssignments}}</th>
+			</tr>
+			<tr ng-if="settings.weight">
+				<th>{{language.Generic.Assignment.kAssTheme}}</th>
+				<th width='3%'>{{language.Generic.Assignment.kWeight}}</th>
+				<th ng-if="settings.showAnotherAssignments">{{language.Generic.Assignment.kAssTheme}}</th>
+				<th ng-if="settings.showAnotherAssignments" width='3%'>{{language.Generic.Assignment.kWeight}}</th>
+				<th ng-if="settings.showAnotherAssignments" width='1%' ng-bind-html="language.Generic.Grade.kAssignType"></th>
+			</tr>
+			<tr ng-repeat-start="classMeeting in data.classMeetings">
+				<td class="text-right" rowspan="{{classMeeting.rows}}">
+					<span class="big" ng-if="!classMeeting.readOnly">
+						<a href="javascript:void(0);" ng-click="goEditJournal(classMeeting.id, classMeeting.date)" title="{{language.Generic.Grade.kSetMarks}}">{{classMeeting.date | date:'dd.MM'}}</a>
+					</span>
+					<span class="big" ng-if="classMeeting.readOnly">{{classMeeting.date | date:'dd.MM'}}</span>
+				</td>
+
+				<td rowspan="{{classMeeting.rows}}">
+					<dynamic-combo model="classMeeting.lesson"
+									items="data.lessons"
+									ng-if="data.subjectPlanData.subjectPlan && !classMeeting.readOnly"
+									on-change="onChangeLesson"
+									link-text="classMeeting.lesson.useName"
+									prepare-items="prepareLessons(classMeeting, data.lessons)"
+					               options="'item as item.useName for item in items track by item.id'"
+					               title-text="getLessonThemeTitle()">
+					</dynamic-combo>
+					<span ng-if="data.subjectPlanData.subjectPlan && classMeeting.readOnly">{{classMeeting.lesson.useName}}</span>
+				</td>
+
+				<td rowspan="{{calcRowSpan(classMeeting.displayHomeAssignments, classMeeting.anotherAssignments)}}">
+
+					<div class="ctx-btns-icons ctx-btns-icons-right ctx-btns-icons-horizon ctx-btns-icons-md" ng-if="classMeeting.displayHomeAssignment && !classMeeting.readOnly && !classMeeting.displayHomeAssignment.readOnly">
+						<a href="" ng-click="EditHomeAssignment(classMeeting.displayHomeAssignment, classMeeting)" title="{{language.Generic.Grade.kEditHomeAssignment}}" class="primary">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+						<a href="" ng-click="DelAssignment(classMeeting.displayHomeAssignment.id, true)" title="{{language.Generic.Grade.kDeleteHomeAssignment}}" class="danger">
+							<span class="glyphicon glyphicon-remove"></span>
+						</a>
+					</div>
+					<dynamic-text-box title-text="getHomeAssignmentTitle()" ng-if="classMeeting.displayHomeAssignment && !classMeeting.readOnly && !classMeeting.displayHomeAssignment.readOnly" on-change="changeAssignmentName" on-change-arg="classMeeting.displayHomeAssignment" model="classMeeting.displayHomeAssignment.assignmentName" styles="settings.assStyles"></dynamic-text-box>
+					<empty-assignment ng-if="!classMeeting.displayHomeAssignment && !classMeeting.readOnly && !HomeWorkDisabled(classMeeting.date)" on-change="addHomeAssignment" on-change-arg="classMeeting.id" empty-message="language.Generic.Assignment.kATEnterHomeAssignmentTheme" model="classMeeting.displayHomeAssignment" styles="settings.assStyles"></empty-assignment>					
+					<span ng-if="classMeeting.displayHomeAssignment && (classMeeting.readOnly || classMeeting.displayHomeAssignment.readOnly)">{{classMeeting.displayHomeAssignment.assignmentName}}</span>
+
+					<div ng-if="!classMeeting.readOnly && !classMeeting.displayHomeAssignments.length && !HomeWorkDisabled(classMeeting.date)" class="ctx-btns-icons ctx-btns-icons-right ctx-btns-icons-md">
+						<a href="#" ng-click="CreateHomeAssignment(classMeeting)" title="{{language.Generic.Grade.kCreateHomeAssignment}}" class="primary">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+					</div>
+				</td>
+				
+				<td ng-if="settings.weight" rowspan="{{calcRowSpan(classMeeting.displayHomeAssignments, classMeeting.anotherAssignments)}}" class="text-center">
+					<dynamic-text-box title-text="getHomeAssignmentWeightTitle()" directives="settings.weightDigits" styles="settings.weightStyles" ng-if="classMeeting.displayHomeAssignment && !classMeeting.readOnly" on-change="changeAssignmentWeight" on-change-arg="classMeeting.displayHomeAssignment" model="classMeeting.displayHomeAssignment.weight"></dynamic-text-box>
+					<span ng-if="classMeeting.displayHomeAssignment && classMeeting.readOnly">{{classMeeting.displayHomeAssignment.weight}}</span>
+				</td>
+
+				<td ng-if="settings.showAnotherAssignments" rowspan="{{calcRowSpan(classMeeting.anotherAssignments, classMeeting.displayHomeAssignments)}}">
+					<div class="ctx-btns-icons ctx-btns-icons-right ctx-btns-icons-horizon ctx-btns-icons-md" ng-if="classMeeting.anotherAssignment && !classMeeting.readOnly">
+						<a href="" ng-if="IsTestPlanBtn(classMeeting.anotherAssignment, classMeeting)" ng-click="EditTestPlan(classMeeting.anotherAssignment)" title="{{language.Generic.Grade.kTestPlan}}">
+							<span class="glyphicon glyphicon-list-alt"></span>
+						</a>
+						<a href="" ng-click="EditAnotherAssignment(classMeeting.anotherAssignment.id, classMeeting.id)" title="{{language.Generic.Grade.kEditAssignment}}" class="primary">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+						<a href="" ng-click="DelAssignment(classMeeting.anotherAssignment.id, true)" title="{{language.Generic.Grade.kDeleteAssign}}" class="danger">
+							<span class="glyphicon glyphicon-remove"></span>
+						</a>
+					</div>
+					<dynamic-text-box title-text="getAnotherAssignmentTitle()" ng-if="classMeeting.anotherAssignment && !classMeeting.readOnly && false" on-change="changeAssignmentName" on-change-arg="classMeeting.anotherAssignment" model="classMeeting.anotherAssignment.assignmentName"></dynamic-text-box>
+
+					<span ng-if="classMeeting.anotherAssignment && (classMeeting.readOnly || true)">
+						{{classMeeting.anotherAssignment.assignmentName}}
+					</span>
+
+					<div ng-if="!classMeeting.anotherAssignments.length && !classMeeting.readOnly && false" class="ctx-btns-icons ctx-btns-icons-right ctx-btns-icons-md">
+						<a href="" ng-click="CreateAnotherAssignment(classMeeting.id)" title="{{language.Generic.Grade.kAddAssignment}}" class="primary">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+					</div>
+				</td>
+				
+				<td class="text-center" ng-if="settings.showAnotherAssignments && settings.weight" rowspan="{{calcRowSpan(classMeeting.anotherAssignments, classMeeting.displayHomeAssignments)}}">
+					<dynamic-text-box title-text="getAnotherAssignmentWeightTitle()" directives="settings.weightDigits" styles="settings.weightStyles" ng-if="classMeeting.anotherAssignment && !classMeeting.readOnly" on-change="changeAssignmentWeight" on-change-arg="classMeeting.anotherAssignment" model="classMeeting.anotherAssignment.weight"></dynamic-text-box>
+					<span ng-if="classMeeting.anotherAssignment && classMeeting.readOnly">{{classMeeting.anotherAssignment.weight}}</span>
+				</td>
+
+				<td class="text-center" ng-if="settings.showAnotherAssignments" rowspan="{{calcRowSpan(classMeeting.anotherAssignments, classMeeting.displayHomeAssignments)}}">
+					<span ng-if="classMeeting.anotherAssignment" title="{{classMeeting.anotherAssignment.assignType.name}}">{{classMeeting.anotherAssignment.assignType.abbr}}</span>
+				</td>
+			</tr>
+
+			<tr ng-repeat-end ng-repeat="ind in classMeeting.extraRows">
+				<td ng-if="classMeeting.displayHomeAssignments[ind]" rowspan="{{calcRowSpan(classMeeting.displayHomeAssignments, classMeeting.anotherAssignments, ind)}}">
+					<div class="ctx-btns-icons ctx-btns-icons-right ctx-btns-icons-horizon ctx-btns-icons-md" ng-if="!classMeeting.readOnly && !classMeeting.displayHomeAssignments[ind].readOnly">
+						<a href="" ng-click="EditHomeAssignment(classMeeting.displayHomeAssignments[ind], classMeeting)" title="{{language.Generic.Grade.kEditHomeAssignment}}" class="primary">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+						<a href="" ng-click="DelAssignment(classMeeting.displayHomeAssignments[ind].id, true)" title="{{language.Generic.Grade.kDeleteHomeAssignment}}" class="danger">
+							<span class="glyphicon glyphicon-remove"></span>
+						</a>
+					</div>
+					<dynamic-text-box title-text="getHomeAssignmentTitle()" ng-if="!classMeeting.readOnly && !classMeeting.displayHomeAssignments[ind].readOnly" on-change="changeAssignmentName" on-change-arg="classMeeting.displayHomeAssignments[ind]" model="classMeeting.displayHomeAssignments[ind].assignmentName" styles="settings.assStyles"></dynamic-text-box>
+					<span ng-if="classMeeting.readOnly || HomeWorkDisabled(classMeeting.date)">
+						{{classMeeting.displayHomeAssignments[ind].assignmentName}}
+					</span>
+				</td>
+
+				<td ng-if="settings.weight && classMeeting.displayHomeAssignments[ind]" class="text-center" rowspan="{{calcRowSpan(classMeeting.displayHomeAssignments, classMeeting.anotherAssignments, ind)}}">
+					<dynamic-text-box title-text="getHomeAssignmentWeightTitle()" directives="settings.weightDigits" styles="settings.weightStyles" ng-if="!classMeeting.readOnly && !classMeeting.displayHomeAssignments[ind].readOnly" on-change="changeAssignmentWeight" on-change-arg="classMeeting.displayHomeAssignments[ind]" model="classMeeting.displayHomeAssignments[ind].weight"></dynamic-text-box>
+					<span ng-if="classMeeting.readOnly || HomeWorkDisabled(classMeeting.date)">
+						{{classMeeting.displayHomeAssignments[ind].weight}}
+					</span>
+				</td>
+				
+				<td ng-if="classMeeting.anotherAssignments[ind] && settings.showAnotherAssignments" rowspan="{{calcRowSpan(classMeeting.anotherAssignments, classMeeting.displayHomeAssignments, ind)}}">
+					<div class="ctx-btns-icons ctx-btns-icons-right ctx-btns-icons-horizon ctx-btns-icons-md" ng-if="!classMeeting.readOnly">
+						<a href="" ng-if="IsTestPlanBtn(classMeeting.anotherAssignments[ind], classMeeting)" ng-click="EditTestPlan(classMeeting.anotherAssignments[ind])" title="{{language.Generic.Grade.kTestPlan}}">
+							<span class="glyphicon glyphicon-list-alt"></span>
+						</a>
+						<a href="" ng-click="EditAnotherAssignment(classMeeting.anotherAssignments[ind].id, classMeeting.id)" title="{{language.Generic.Grade.kEditAssignment}}" class="primary">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+						<a href="" ng-click="DelAssignment(classMeeting.anotherAssignments[ind].id, true)" title="{{language.Generic.Grade.kDeleteAssign}}" class="danger">
+							<span class="glyphicon glyphicon-remove"></span>
+						</a>
+					</div>
+					<dynamic-text-box title-text="getAnotherAssignmentTitle()" ng-if="!classMeeting.readOnly && false" on-change="changeAssignmentName" on-change-arg="classMeeting.anotherAssignments[ind]" model="classMeeting.anotherAssignments[ind].assignmentName" styles="settings.assStyles"></dynamic-text-box>
+
+					<span ng-if="classMeeting.readOnly || true">
+						{{classMeeting.anotherAssignments[ind].assignmentName}}
+					</span>
+				</td>
+				<td class="text-center" ng-if="classMeeting.anotherAssignments[ind] && settings.showAnotherAssignments && settings.weight" rowspan="{{calcRowSpan(classMeeting.anotherAssignments, classMeeting.displayHomeAssignments, ind)}}">
+					<dynamic-text-box title-text="getAnotherAssignmentWeightTitle()" directives="settings.weightDigits" styles="settings.weightStyles" ng-if="!classMeeting.readOnly" on-change="changeAssignmentWeight" on-change-arg="classMeeting.anotherAssignments[ind]" model="classMeeting.anotherAssignments[ind].weight"></dynamic-text-box>
+					<span ng-if="classMeeting.readOnly">
+						{{classMeeting.anotherAssignments[ind].weight}}
+					</span>
+				</td>
+				<td ng-if="classMeeting.anotherAssignments[ind] && settings.showAnotherAssignments" class="text-center" rowspan="{{calcRowSpan(classMeeting.anotherAssignments, classMeeting.displayHomeAssignments, ind)}}">
+					<span title="{{classMeeting.anotherAssignments[ind].assignType.name}}">{{classMeeting.anotherAssignments[ind].assignType.abbr}}</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<br>
+<div class="legend print-block ns-cloak" ng-if="settings.showAnotherAssignments && state.dataReady && !state.filterChanged && !state.emptyData">
+	<div ng-repeat="assignTypeGroup in data.assignTypesByGroups">
+		<p ng-repeat="assignType in assignTypeGroup">
+			<span class="legend-label">
+				{{assignType.abbr}}
+			</span>
+			<span class="legend-description">
+				- {{assignType.name}}
+			</span>
+		</p>
+	</div>
+</div>
+

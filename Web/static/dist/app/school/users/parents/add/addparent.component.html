@@ -1,0 +1,13 @@
+<form name="$ctrl.userInfo" class="form-horizontal form-xs form-edit">
+	<div class="row">
+		<ns-add-user controller="$ctrl">
+			<common-user-info current-user="$ctrl.currentUser" user-info="$ctrl.userInfo" male-letter="$ctrl.maleLetter" female-letter="$ctrl.femaleLetter" birthday-not-required="!$ctrl.requireParentBirthDate" middle-name-not-required="true"></common-user-info>
+		</ns-add-user>
+		<userslist-qadd
+			title = "$ctrl.language.Generic.SetupSchoolUI.kListParentQAdd"
+			users = "$ctrl.users",
+			mode = "$ctrl.mode",
+			edit = "$ctrl.edit(arg)">
+		</userslist-qadd>
+	</div>
+<form>

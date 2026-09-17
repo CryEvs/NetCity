@@ -1,0 +1,84 @@
+﻿<!-- #INCLUDE FILE ="ExportCM_inc.asp" -->
+
+<% ' © 2007-2008 IRTech. All rights reserved.
+
+Sub onDrawPage()
+	Dim rsObj%>
+	<TimeTableExchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TimeTableWeek.xsd">
+	<%
+	DrawScheduleTimes
+
+	Set rsObj = objNSNET.GetTeacherListForExport(strCurrYearID)
+	Call DrawTable("teachers", "teacher", rsObj)
+
+	DrawSubjects
+	DrawRooms
+	DrawPlan
+	DrawClassMeetings
+	%>
+</TimeTableExchange><%
+End Sub
+
+Sub DrawSubjects
+	Dim rsSubjects, strSubjID, strOldSubjID
+	
+	Set rsSubjects = objNSNET.GetSubjectsWithTeachersForExport(strSchoolID)
+	If rsSubjects.EOF Then Exit Sub%>
+	<subjects><%strOldSubjID= -1
+	While Not rsSubjects.EOF
+		strSubjID = rsSubjects("SID")
+		If strSubjID <> strOldSubjID Then
+			If strOldSubjID<> -1 Then%></subject><%End If%>
+			<subject sid="<%=strSubjID%>" name="<%=DB2XML_Value(rsSubjects("NAME"))%>" abbr="<%=DB2XML_Value(rsSubjects("ABBR"))%>"<%=IIF(rsSubjects("foreign")<>"0", " foreign="""&rsSubjects("foreign")&"""", "")%>><%
+			strOldSubjID = strSubjID 
+		End If%>
+			<teacher tid="<%=rsSubjects("TID")%>" /><%
+		rsSubjects.MoveNext
+	WEnd%>
+	</subject>
+	</subjects><%
+End Sub
+
+Sub DrawRooms
+	Dim rsRooms
+
+	Set rsRooms = objNSNET.GetRoomsForExport(strSchoolID)
+	Call DrawTable("Rooms", "room", rsRooms)
+End Sub
+
+Sub DrawPlan
+	Dim rsClasses, rsSubjClasses, strClassID, strSubjClassID
+
+	Set rsClasses = objNSNET.GetYearClassesForExport(strCurrYearID)
+	Dim Item%>
+	<Plan><%
+		While Not rsClasses.EOF
+			strClassID = rsClasses("CLASSID")%>
+			<class id="<%=strClassID%>" name="<%=rsClasses("CLASSNAME")%>" grade="<%=rsClasses("GRADE")%>" studcnt="<%=rsClasses("studcnt")%>" boys="<%=rsClasses("boys")%>" girls="<%=rsClasses("girls")%>"> <%
+			Set rsSubjClasses = objNSNET.GetExportSubjectsListForClass(strClassID )
+			Call DrawTable("", "csg", rsSubjClasses)%>
+			</class><%
+			rsClasses.MoveNext
+		WEnd%>
+	</Plan><%
+End Sub
+
+Sub DrawTable( theGroupTag, theItemTag, rsObj )
+	Dim i
+	'Open Grouping Tag
+	If theGroupTag <> "" Then%>
+		<<%=theGroupTag%>>
+	<%End If
+	While Not rsObj.EOF%>
+		<<%Response.Write theItemTag
+		For i = 0 To rsObj.Fields.Count - 1
+			Response.Write " "&LCase(rsObj(i).Name) &"="&""""&DB2XML_Value(rsObj(i).Value)&""""
+		Next%>/><%
+		rsObj.MoveNext
+	WEnd
+	'Close Grouping Tag
+	If theGroupTag <> "" Then%>
+		</<%=theGroupTag%>>
+	<%End If
+End Sub
+%>

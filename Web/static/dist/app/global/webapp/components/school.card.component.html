@@ -1,0 +1,652 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+    <span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready">
+        <span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+    </span>
+
+    <div class="print-block" ng-if="$ctrl.ready">
+        <form class="form-horizontal form-xs" style="max-height: 500px; overflow-y: auto; padding-right: 15px;">
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kEOLegalForm}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.legalFormName">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="$ctrl.isDefaultLangRus">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kEOLegalForm83}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.legalFormName83">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.Common.kEOType}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.typeName">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="$ctrl.schoolCard.commonInfo.showFormName">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kEOForm}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.formName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kSmallOrganization}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.smallOrganization">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kEOName}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.schoolName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kEOFullName}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.fullSchoolName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kAdditionalName}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.additionalName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kEONumber}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.schoolNumber">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kEOFoundingDate}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.foundingDate | nsDate">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="!$ctrl.functionalities.isOrphanageSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kIndepend}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.independ">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kMainSchool}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.mainSchool">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">{{$ctrl.language.Generic.ServAdmin.kFounders}}</label>
+                <div class="col-md-7">
+                    <textarea disabled te class="form-control " rows="4" cols="40" wrap="soft" maxlength="2000" style="resize: none;">
+                        {{$ctrl.displayFounders()}}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">{{$ctrl.language.Generic.ServAdmin.kManagements}}</label>
+                <div class="col-md-7">
+                    <textarea disabled te class="form-control " rows="4" cols="40" wrap="soft" maxlength="2000" style="resize: none;">
+                        {{$ctrl.displayOwnEducManagements()}}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kStatus}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.status">
+                </div>
+            </div>
+
+            <div ng-if="$ctrl.functionalities.isSchool">
+                <div class="form-group">
+                    <label class="control-label col-md-5">
+                        {{$ctrl.language.Generic.SchoolInfo.kAreaType}}
+                    </label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.locationInfo.locationType.name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-5">
+                        {{$ctrl.language.Generic.SchoolInfo.kProvinceCenterSchool}}
+                    </label>
+                    <div class="col-md-7">
+                        <input ng-if="$ctrl.schoolCard.commonInfo.locationInfo.inProvinceCenter" class="form-control" type="text" disabled="disabled" ng-value="$ctrl.language.Generic.Common.kYes">
+                        <input ng-if="!$ctrl.schoolCard.commonInfo.locationInfo.inProvinceCenter" class="form-control" type="text" disabled="disabled" ng-value="$ctrl.language.Generic.Common.kNo">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-5">
+                        {{$ctrl.language.Generic.SchoolInfo.kProvinceSchoolInCity}}
+                    </label>
+                    <div class="col-md-7">
+                        <input ng-if="$ctrl.schoolCard.commonInfo.locationInfo.isProvinceSchoolInCity" class="form-control" type="text" disabled="disabled" ng-value="$ctrl.language.Generic.Common.kYes">
+                        <input ng-if="!$ctrl.schoolCard.commonInfo.locationInfo.isProvinceSchoolInCity" class="form-control" type="text" disabled="disabled" ng-value="$ctrl.language.Generic.Common.kNo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kAbout}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.commonInfo.about">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="$ctrl.functionalities.isPreSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kFIODirectorPreSchool}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.managementInfo.director">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="!$ctrl.functionalities.isPreSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kFIODirector}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.managementInfo.director">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="$ctrl.functionalities.isPreSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kFIOPrincipalUVR_PreSchool}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.managementInfo.principalUVR">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="!$ctrl.functionalities.isPreSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kFIOPrincipalUVR}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.managementInfo.principalUVR">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="$ctrl.functionalities.isPreSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kFIOPrincipalAHR_PreSchool}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.managementInfo.principalAHC">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="$ctrl.functionalities.isAddSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kFIOPrincipalAHR_Add}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.managementInfo.principalAHC">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="!$ctrl.functionalities.isPreSchool && !$ctrl.functionalities.isAddSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kFIOPrincipalAHC}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.managementInfo.principalAHC">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="$ctrl.functionalities.isOrphanageSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kFIOPrincipalBZh}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.managementInfo.principalIT">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="$ctrl.functionalities.isSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kFIOPrincipalIT}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.managementInfo.principalIT">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="!$ctrl.functionalities.isPreSchool && !$ctrl.functionalities.isAddSchool">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kCollegiateManagement}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.managementInfo.collegiateManagement">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.Common.kRegion}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.contactInfo.stateProvinceName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.Common.kCity}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.contactInfo.cityName">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="$ctrl.schoolCard.contactInfo.districtName">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.Common.kDistrict}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.contactInfo.districtName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kPostAddress}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.contactInfo.postAddress">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kJuridicalAddress}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.contactInfo.juridicalAddress">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kPhones}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.contactInfo.phones">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kFax}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.contactInfo.fax">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kEMailAddress}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.contactInfo.email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kWeb}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.contactInfo.web">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kAddressesAdditionalBuildings}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.contactInfo.addressesAdditionalBuildings">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kINN}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.inn">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kKPP}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.kpp">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kOGRN}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.ogrn">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kIDOKPO}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.okpo">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kIDOKATO}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.okato">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kIDOKOGU}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.okogu">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kOKOPF}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.okopf">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kOKFS}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.okfs">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kOKVED}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.okved">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.maxOccupancy}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.maxOccupancy">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.maxOccupancyOnShift}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.maxOccupancyOnShift">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kNumberShifts}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.numberShifts">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kSpecialization}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.specialization">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kReferenceToCharter}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.referenceToCharter">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kPresenceOfPool}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.presenceOfPool">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kBarrierFreeEnvironment}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.barrierFreeEnvironment">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kVideoSurveillance}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.videoSurveillance">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kSocialPartnership}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.socialPartnerShip">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kTimetable}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.timetable">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kConditionsEducation}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.otherInfo.conditionsEducation">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kBankName}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.bankDetails.bankName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kBankScore}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.bankDetails.bankScore">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kCorrScore}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.bankDetails.corrScore">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kBIK}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.bankDetails.bik">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kBankKpp}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.bankDetails.bankKpp">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kNote}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.bankDetails.note">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kComputersCount}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.internetConnectionInfo.computersCount">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kContentFilteringName}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.internetConnectionInfo.contentFilteringName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kInternetSpeedUnderContract}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.internetConnectionInfo.internetSpeedUnderContract">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kInternetSpeedInFact}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.internetConnectionInfo.internetSpeedInFact">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kInternetProviderName}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.internetConnectionInfo.internetProviderName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">
+                    {{$ctrl.language.Generic.SchoolInfo.kInternetAccessTechnology}}
+                </label>
+                <div class="col-md-7">
+                    <input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.schoolCard.internetConnectionInfo.internetAccessTechnology">
+                </div>
+            </div>
+        </form>
+    </div>
+</ns-modal>

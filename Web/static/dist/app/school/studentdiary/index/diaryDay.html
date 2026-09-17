@@ -1,0 +1,107 @@
+<div class="day" day-number="{{diaryDay.number}}">
+	<div class="day_table">
+		<table class="day_name_mobile visible-mobile up">
+			<tr>
+				<td><i class="left mdi mdi-chevron-up"></i><span>{{diaryDay.shortTitle}}</span><i class="right mdi mdi-chevron-up"></i></td>
+			</tr>
+		</table>
+		<table>
+			<tbody>
+			<tr>
+				<td rowspan="{{diaryDay.lessons.length + 1}}" class="day_name hidden-mobile day_name">
+					<span>{{diaryDay.title}}</span>
+				</td>
+				<td class="subject hidden-mobile" colspan="2">Урок</td>
+				<td class="homework hidden-mobile">Домашнее задание</td>
+				<td class="level hidden-mobile">Оценка</td>
+			</tr>
+			<tr ng-repeat-end ng-repeat="lesson in diaryDay.lessons" ng-class="{'hidden-xs': !lesson.subjectName}">
+				<td class="num_subject">{{lesson.number}}</td>
+				<td>
+					<a class="subject" ng-if="lesson.subjectName" title="{{lesson.subjectName}}">{{lesson.subjectName}}</a>
+					<div class="time" ng-if="lesson.subjectName">{{lesson.time}}
+						<span ng-if="lesson.room">, {{lesson.room}}</span>
+					</div>
+					<div class="visible-mobile wrapper_three_dots" ng-if="lesson.homeAssignments.length">
+
+						<input class="input_dots" type="checkbox"  />
+						<div class="three_dots">
+							<a href="#" ng-click="ctrl.showAssignInfo(assign)" ng-repeat="assign in lesson.homeAssignments">{{assign.assignmentName}}</a>
+						</div>
+						<label title="показать/свернуть все содержимое таблицы" class="icon_dots" ></label>
+						
+						<div class="icons_files lighter" ng-if="lesson.attachments && lesson.attachments.length">
+							<i class="mdi mdi-paperclip"></i>
+							<div class="attach">
+								<div class="attach_head">Вложенные файлы</div>
+								<a class="mdi mdi-file" href="#" ng-repeat="attach in lesson.attachments" ng-click="ctrl.openAttach(attach)">
+									<span>
+										<div class="name_file">{{attach.originalFileName}}</div>
+										<div class="description_file" ng-if="attach.description">{{attach.description}}</div>
+									</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td class="hidden-mobile wrapper_three_dots">
+
+					<input class="input_dots" type="checkbox"  />
+					<div class="three_dots">
+						<a href="#" ng-click="ctrl.showAssignInfo(assign)" ng-repeat="assign in lesson.homeAssignments">{{assign.assignmentName}}</a>
+					</div>
+					<label title="показать/свернуть все содержимое таблицы" class="icon_dots" ></label>
+
+					<!-- <div title="показать/свернуть все содержимое таблицы" class="icon_dots">...</div> -->
+					<div class="icons_files lighter" ng-if="lesson.attachments && lesson.attachments.length">
+						<i class="mdi mdi-paperclip"></i>
+						<div class="attach">
+							<div class="attach_head">Вложенные файлы</div>
+							<a class="mdi mdi-file" href="#" ng-repeat="attach in lesson.attachments" ng-click="ctrl.openAttach(attach)">
+								<span>
+									<div class="name_file">{{attach.originalFileName}}</div>
+									<div class="description_file" ng-if="attach.description">{{attach.description}}</div>
+								</span>
+							</a>
+						</div>
+					</div>
+				</td>
+				<td ng-class="{'comments_icon-show': ctrl.marksCommentsExists(lesson.assignments)}">
+					<div class="comments_icon" ng-class="{'lighter readed': ctrl.marksCommentsExists(lesson.assignments) && !ctrl.marksCommentsNotWasRead(lesson.assignments), 'lighter unreaded': ctrl.marksCommentsExists(lesson.assignments) && ctrl.marksCommentsNotWasRead(lesson.assignments)}">
+						<div class="attach">
+							<div class="attach_head">{{ctrl.language.Generic.Constructor.kComments}}</div>
+							<a href="#" class="comment_info" ng-repeat="assignment in lesson.assignments" ng-if="assignment.markComment" ng-value="assignment.markComment.id">
+								<div class="att-mark" title="{{assignment.typeName}}">{{assignment.typeAbbr}}</div>
+								<span>
+									<span class="name_file">
+										<i>{{assignment.markComment.teacher}}</i>
+									</span>
+									<span class="description_file">
+										{{assignment.markComment.name}}
+									</span>
+								</span>
+							</a>
+						</div>
+					</div>
+					<div class="level_data one two three four five mark">
+						<a href="#" ng-if="ctrl.data.maxMark == 5"
+							ng-repeat="assignWithMark in lesson.assignmentsWithMarks"
+							ng-click="ctrl.showAssignInfo(assignWithMark)"
+							ng-class="{one: assignWithMark.mark.mark == 1, two: assignWithMark.mark.mark == 2, three: assignWithMark.mark.mark == 3, four: assignWithMark.mark.mark == 4, five: assignWithMark.mark.mark == 5, mark: assignWithMark.mark.dutyMark}"
+							title="{{assignWithMark.typeName}}">
+						</a>
+						<a href="#" ng-if="ctrl.data.maxMark != 5"
+							ng-repeat="assignWithMark in lesson.assignmentsWithMarks"
+							ng-click="ctrl.showAssignInfo(assignWithMark)"
+							title="{{assignWithMark.typeName}}">
+							<span ng-if="!assignWithMark.mark.dutyMark">{{assignWithMark.mark.mark}}</span>
+							<span ng-if="assignWithMark.mark.dutyMark" style="color: red; font-size: 18px;"><b>&#183;</b></span>
+						</a>
+					</div>
+				</td>
+			</tr>
+
+			</tbody>
+		</table>
+	</div>
+</div>

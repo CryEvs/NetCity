@@ -1,0 +1,142 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subRows": {"start": 2, "end": 8},
+			"subCols": { "start": 9, "end": 11 },
+			"type": "sum"
+		},
+		{
+			"col": 3,
+			"subRows": {"start": 10, "end": 22},
+			"subCols": { "start": 9, "end": 11 },
+			"type": "sum"
+		},
+		{
+			"col": 18,
+			"subRows": {"start": 2, "end": 8},
+			"subCols": [3,12],
+			"type": "sum"
+		},
+		{
+			"col": 18,
+			"subRows": {"start": 10, "end": 22},
+			"subCols": [3,12],
+			"type": "sum"
+		},
+		{
+			"col": 3,
+			"subCols": [4],
+			"type": "ofthem"
+		},
+		{
+			"col": 4,
+			"subCols": [5, 6],
+			"type": "ofthem"
+		},
+		{
+			"col": 3,
+			"subCols": [7],
+			"type": "ofthem"
+		},
+		{
+			"col": 3,
+			"subCols": [8],
+			"type": "ofthem"
+		},
+		{
+			"col": 12,
+			"subCols": [13],
+			"type": "ofthem"
+		},
+		{
+			"col": 13,
+			"subCols": [14, 15],
+			"type": "ofthem"
+		},
+		{
+			"col": 12,
+			"subCols": [16],
+			"type": "ofthem"
+		},
+		{
+			"col": 12,
+			"subCols": [17],
+			"type": "ofthem"
+		},
+		{
+			"col": 19,
+			"subCols": [20],
+			"type": "ofthem"
+		},
+		{
+			"col": 20,
+			"subCols": [21, 22],
+			"type": "ofthem"
+		},
+		{
+			"col": 19,
+			"subCols": [23],
+			"type": "ofthem"
+		},
+		{
+			"col": 19,
+			"subCols": [24],
+			"type": "ofthem"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 1,
+			"subRows": [ 2, 4, 5 ],
+			"subCols": { "start": 3, "end": 17 },
+			"type": "sum"
+		},
+		{
+			"row": 1,
+			"subRows": [ 2, 4, 5 ],
+			"subCols": { "start": 18, "end": 24 },
+			"type": "sum"
+		},
+		{
+			"row": 9,
+			"subRows": [ 10, 11, 12 ],
+			"type": "sum"
+		},
+		{
+			"row": 2,
+			"subRows": [3],
+			"type": "include"
+		},
+		{
+			"row": 2,
+			"subRows": [6],
+			"type": "include"
+		},
+		{
+			"row": 10,
+			"subRows": [13],
+			"type": "include"
+		},
+		{
+			"row": 16,
+			"subRows": [10, 11],
+			"type": "suminclude"
+		},
+		{
+			"row": 16,
+			"subRows": [17],
+			"type": "include"
+		},
+		{
+			"row": 17,
+			"subRows": [18],
+			"type": "include"
+		},
+		{
+			"row": 19,
+			"subRows": [20],
+			"type": "include"
+		}
+	]
+}

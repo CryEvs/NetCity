@@ -1,0 +1,1 @@
+07/03/2018 06-14-38 A transport-level error has occurred when sending the request to the server. (provider: Session Provider, error: 19 - Physical connection is not usable)

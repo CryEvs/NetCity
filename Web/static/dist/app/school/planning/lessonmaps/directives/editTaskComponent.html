@@ -1,0 +1,197 @@
+<!-- НАЧАЛО ФОРМЫ РЕДАКТИРОВАНИЯ ЭТАПА УРОКА -->
+
+<style>
+	.show-tree-link {
+		padding-top: 7px;
+		font-size: 13px;
+	}
+
+	ul.dynatree-container {
+		font-family: Consolas;
+		letter-spacing: -0.5px;
+	}
+
+	.select2-dropdown {
+		max-width: 400px;
+	}
+</style>
+
+<div class="form-horizontal form-xs" ng-form name="$ctrl.stageForm">
+
+	<ns-panel panel-id="commonInfo" class="info" title="{{$ctrl.language.Generic.Common.kCommonInfo}}" expanded="true">
+
+		<div class="form-group row">
+			<!-- ЭТАП УРОКА -->
+			<div class="col-md-8"  ng-class="{ 'has-error': $ctrl.stageForm.ModelStage.$invalid && (!$ctrl.stageForm.ModelStage.$pristine || $ctrl.stageForm.$displayErrors) }">
+				<label class="control-label">Этап урока</label>
+				<div>
+					<select class="form-control" name="ModelStage" required
+							ng-options="modelStage.displayName for modelStage in $ctrl.mapTask.lessonMap.model.stages track by modelStage.id"
+							ng-change="$ctrl.select2Settings.changeModelStage('select.teacher-activity')"
+							ng-model="$ctrl.mapTask.data.modelStage" track-changes></select>
+		
+					<p ng-show="$ctrl.stageForm.ModelStage.$invalid && (!$ctrl.stageForm.ModelStage.$pristine || $ctrl.stageForm.$displayErrors)" class="help-block">
+						Поле Этап урока обязательно для заполнения
+					</p>
+				</div>
+			</div>
+			<!---->
+
+			<!-- НОМЕР ЗАДАНИЯ -->
+			<div class="col-md-4"  ng-class="{ 'has-error': $ctrl.stageForm.Number.$invalid && (!$ctrl.stageForm.Number.$pristine || $ctrl.stageForm.$displayErrors) }">
+				<label class="control-label">Номер задания</label>
+				<div>
+					<select class="form-control" name="Number" required
+							ng-options="number for number in $ctrl.numbers"
+							ng-model="$ctrl.mapTask.data.number" track-changes></select>
+
+					<p ng-show="$ctrl.stageForm.Number.$invalid && (!$ctrl.stageForm.Number.$pristine || $ctrl.stageForm.$displayErrors)" class="help-block">
+						Поле Номер задания обязательно для заполнения
+					</p>
+				</div>
+			</div>
+			<!---->
+		</div>
+
+		<!-- ЗАДАНИЕ -->
+		<div class="form-group row" ng-class="{ 'has-error': $ctrl.stageForm.Task.$invalid && (!$ctrl.stageForm.Task.$pristine || $ctrl.stageForm.$displayErrors) }">
+			<div class="col-md-12">
+				<label class="control-label">
+					{{$ctrl.language.Generic.Assignment.kATAssignment}}
+				</label>
+				<div>
+					<textarea name="Task" type="text" required ng-model="$ctrl.mapTask.data.task" class="form-control" maxlength="400" track-changes></textarea>
+					<p ng-show="$ctrl.stageForm.Task.$invalid && (!$ctrl.stageForm.Task.$pristine || $ctrl.stageForm.$displayErrors)" class="help-block">
+						{{$ctrl.language.Generic.Lessonmap.kTaskRequiredErr}}
+					</p>
+				</div>
+			</div>
+		</div>
+		<!---->
+
+		<div class="form-group row">
+			<div class="col-md-6">
+				<!-- ФОРМА КОММУНИКАЦИИ -->
+				<label class="control-label">Форма коммуникации</label>
+				<div>
+					<select class="form-control" ng-options="communicationForms.id as communicationForms.name for communicationForms in $ctrl.select2Settings.communicationForms" ng-model="$ctrl.mapTask.data.communicationForm" track-changes></select>
+				</div>
+				<!---->
+			</div>
+
+			<div class="col-md-6">
+				<!-- ФОРМА КОНТРОЛЯ -->
+				<label class="control-label">Форма контроля</label>
+				<div>
+					<select class="form-control" ng-options="controlForm.id as controlForm.name for controlForm in $ctrl.select2Settings.controlForms" ng-model="$ctrl.mapTask.data.controlForm" track-changes></select>
+				</div>
+				<!---->
+			</div>
+		</div>
+
+	</ns-panel>
+
+	<ns-panel panel-id="studentActivity" class="info" title="Деятельность учащихся" expanded="false">
+
+		<!-- ПРЕДМЕТНЫЕ УМЕНИЯ -->
+		<div class="form-group row">
+			<div class="col-md-12">
+				<label class="control-label">
+					{{$ctrl.language.Generic.Lessonmap.kSubjectSkills}}
+				</label>
+		
+				<div class="show-tree-link">
+					<a ng-click="$ctrl.data.activeTree = !$ctrl.data.activeTree" href="javascript:void(0)"
+						data-toggle="collapse" data-target="#subjectSkillsTree" aria-expanded="true" aria-controls="subjectSkillsTree">
+						<span ng-if="$ctrl.data.activeTree">{{$ctrl.language.Generic.Reports.kHide}}</span>
+						<span  ng-if="!$ctrl.data.activeTree">{{$ctrl.language.Generic.Reports.kShow}}</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- дерево -->
+		<div id="subjectSkillsTree" class="row collapse" ng-class="{'in': $ctrl.data.activeTree }">
+			<div class="col-md-12 col-lg-12 col-sm-12" ng-if="$ctrl.skillsData.skills && $ctrl.skillsData.skills.length">
+				<subject-skills-tree skills-data = "$ctrl.skillsData" service = "$ctrl.service" needreset = "$ctrl.needreset"></subject-skills-tree>	
+			</div>
+		</div>
+		<!---->
+
+		<!-- ПОЗНАВАТЕЛЬНЫЕ УУД -->
+		<div class="form-group row">
+			<div class="col-md-12">
+				<label class="control-label">
+					{{$ctrl.language.Generic.Lessonmap.kCognitiveActivities}}
+				</label>
+				<div ng-if="$ctrl.select2Settings.cognitiveActivities">
+					<select2 class="form-control" required multiple options="$ctrl.select2Settings.cognitiveActivities" ng-model="$ctrl.mapTask.data.activities.cognitive" track-changes></select2>
+				</div>
+			</div>
+		</div>
+		<!---->
+
+		<!-- КОММУНИКАТИВНЫЕ УУД -->
+		<div class="form-group row">
+			<div class="col-md-12">
+				<label class="control-label">
+					{{$ctrl.language.Generic.Lessonmap.kCommunicativeActivities}}
+				</label>
+				<div ng-if="$ctrl.select2Settings.communicativeActivities">
+					<select2 class="form-control" required multiple options="$ctrl.select2Settings.communicativeActivities" ng-model="$ctrl.mapTask.data.activities.communicative" track-changes></select2>
+				</div>
+			</div>
+		</div>
+		<!---->
+
+		<!-- РЕГУЛЯТИВНЫЕ УУД -->
+		<div class="form-group row">
+			<div class="col-md-12">
+				<label class="control-label">
+					{{$ctrl.language.Generic.Lessonmap.kRegulatoryActivities}}
+				</label>
+				<div ng-if="$ctrl.select2Settings.regulatoryActivities">
+					<select2 class="form-control" required multiple options="$ctrl.select2Settings.regulatoryActivities" ng-model="$ctrl.mapTask.data.activities.regulatory" track-changes></select2>
+				</div>
+			</div>
+		</div>
+		<!---->
+
+		<!-- ЛИЧНОСТНЫЕ УУД -->
+		<div class="form-group row">
+			<div class="col-md-12">
+				<label class="control-label">
+					{{$ctrl.language.Generic.Lessonmap.kPersonalActivities}}
+				</label>
+				<div ng-if="$ctrl.select2Settings.personalActivities">
+					<select2 class="form-control" required multiple options="$ctrl.select2Settings.personalActivities" ng-model="$ctrl.mapTask.data.activities.personal" track-changes></select2>
+				</div>
+			</div>
+		</div>
+		<!---->
+
+	</ns-panel>
+
+	<ns-panel panel-id="teacherActivity" class="info" title="Деятельность учителя" expanded="false">
+
+		<!-- ДЕЯТЕЛЬНОСТЬ УЧИТЕЛЯ -->
+		<div class="form-group row" ng-class="{ 'has-error': $ctrl.stageForm.TeacherActivity.$invalid && (!$ctrl.stageForm.TeacherActivity.$pristine || $ctrl.stageForm.$displayErrors) }">
+			<div class="col-md-12">
+				<label for="teacher-activity" class="control-label">
+					{{$ctrl.language.Generic.Lessonmap.kTeacherActivity}}
+				</label>
+				<div ng-if="$ctrl.select2Settings.teacherActivities">
+					<select2 name="TeacherActivity" class="form-control teacher-activity" required options="$ctrl.select2Settings.teacherActivities" ng-model="$ctrl.mapTask.data.teacherActivity" track-changes></select2>
+					<p ng-show="$ctrl.stageForm.TeacherActivity.$invalid && (!$ctrl.stageForm.TeacherActivity.$pristine || $ctrl.stageForm.$displayErrors)" class="help-block">
+						{{$ctrl.language.Generic.Lessonmap.kTeacherActivityRequiredErr}}
+					</p>
+				</div>
+			</div>
+		</div>
+		<!---->
+
+	</ns-panel>
+
+</div>
+
+<!-- КОНЕЦ ФОРМЫ РЕДАКТИРОВАНИЯ ЭТАПА УРОКА -->
+

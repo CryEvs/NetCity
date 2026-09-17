@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <settings>
+    <!--Determines if the bundle file should be automatically optimized after creation/update.-->
+    <minify>true</minify>
+    <!--Determine whether to generate/re-generate this bundle on building the solution.-->
+    <runOnBuild>true</runOnBuild>
+    <!--Specifies a custom subfolder to save files to. By default, compiled output will be placed in the same folder and nested under the original file.-->
+    <outputDirectory />
+  </settings>
+  <!--The order of the <file> elements determines the order of the files in the bundle.-->
+  <files>
+    <file>/vendor/bootstrap/js/transition.js</file>
+    <file>/vendor/bootstrap/js/alert.js</file>
+    <file>/vendor/bootstrap/js/button.js</file>
+    <file>/vendor/bootstrap/js/carousel.js</file>
+    <file>/vendor/bootstrap/js/collapse.js</file>
+    <file>/vendor/bootstrap/js/dropdown.js</file>
+    <file>/vendor/bootstrap/js/modal.js</file>
+    <file>/vendor/bootstrap/js/tooltip.js</file>
+    <file>/vendor/bootstrap/js/popover.js</file>
+    <file>/vendor/bootstrap/js/scrollspy.js</file>
+    <file>/vendor/bootstrap/js/tab.js</file>
+    <file>/vendor/bootstrap/js/affix.js</file>
+  </files>
+</bundle>

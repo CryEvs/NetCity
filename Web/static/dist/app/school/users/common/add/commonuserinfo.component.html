@@ -1,0 +1,130 @@
+<div>
+	<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.LN.$invalid && (!$ctrl.userInfo.LN.$pristine || $ctrl.userInfo.$displayErrors)}">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4">*** {{$ctrl.language.Generic.Common.kLastName}}</label>
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<div>
+				<input track-changes type="text" class="form-control" name="LN" size="30" maxlength="30" ng-model="$ctrl.currentUser.lastName" ng-change="$ctrl.changeLastName()" ng-pattern="$ctrl.namePattern" required="required">
+				<p ng-show="$ctrl.userInfo.LN.$invalid && (!$ctrl.userInfo.LN.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Movement.kFieldNotEmptyAndValidFio}}</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.FN.$invalid && (!$ctrl.userInfo.FN.$pristine || $ctrl.userInfo.$displayErrors)}">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4">*** {{$ctrl.language.Generic.Common.kFirstName}}</label>
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<div>
+				<input track-changes type="text" class="form-control" name="FN" size="30" maxlength="30" ng-model="$ctrl.currentUser.firstName" ng-change="$ctrl.changeFirstName()" ng-pattern="$ctrl.namePattern" required="required">
+				<p ng-show="$ctrl.userInfo.FN.$invalid && (!$ctrl.userInfo.FN.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Movement.kFieldNotEmptyAndValidFio}}</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.MN.$invalid && (!$ctrl.userInfo.MN.$pristine || $ctrl.userInfo.$displayErrors)}">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4"><span ng-if="!$ctrl.middleNameNotRequired">*** </span>{{$ctrl.language.Generic.Common.kMiddleName}}</label>
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<div ng-hide="$ctrl.currentUser.noMiddleName" ng-class="{'has-error': $ctrl.userInfo.MN.$invalid && (!$ctrl.userInfo.MN.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<input track-changes type="text" class="form-control" name="MN" size="30" maxlength="30" ng-model="$ctrl.currentUser.middleName" ng-change="$ctrl.changeMiddleName()" ng-pattern="$ctrl.namePattern" ng-required="!$ctrl.currentUser.noMiddleName && !$ctrl.middleNameNotRequired">
+				<p ng-show="$ctrl.userInfo.MN.$invalid && (!$ctrl.userInfo.MN.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Movement.kFieldNotEmptyAndValidFio}}</p>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input track-changes type="checkbox" name="NoMN" ng-change="$ctrl.changeNoMiddleName($ctrl.currentUser.noMiddleName)" ng-model="$ctrl.currentUser.noMiddleName" ng-value="true">{{$ctrl.language.Generic.Common.kNoMiddleName}}
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="form-group" ng-class="{'has-error': ((!$ctrl.currentUser.birthDate && !$ctrl.birthdayNotRequired) || $ctrl.userInfo.BDT.$invalid) && $ctrl.userInfo.$displayErrors}">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4"><span ng-if="!$ctrl.birthdayNotRequired">*** </span>{{$ctrl.language.Generic.Common.kBDate}}</label>
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<date-input-component max-date="$ctrl.maxBirthDate" required="!$ctrl.birthdayNotRequired" min-date="$ctrl.minBirthDate" track-changes name="BDT" date-model="$ctrl.currentUser.birthDate"></date-input-component>
+			<p ng-show="((!$ctrl.currentUser.birthDate && !$ctrl.birthdayNotRequired) || $ctrl.userInfo.BDT.$invalid) && $ctrl.userInfo.$displayErrors" class="help-block">{{$ctrl.dateErrorMessage}}</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Common.kGender}}</label>
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<label class="radio-inline">
+				<input track-changes type="radio" name="GN" ng-model="$ctrl.currentUser.gender" ng-value="$ctrl.maleLetter">{{$ctrl.language.Generic.Common.kMale}}
+			</label>
+			<label class="radio-inline">
+				<input track-changes type="radio" name="GN" ng-model="$ctrl.currentUser.gender" ng-value="$ctrl.femaleLetter">{{$ctrl.language.Generic.Common.kFemale}}
+			</label>
+		</div>
+	</div>
+	<div ng-if="!$ctrl.isPreSchool() || !$ctrl.addStudents" class="form-group" ng-class="{'has-error': $ctrl.userInfo.LON.$invalid && (!$ctrl.userInfo.LON.$pristine || $ctrl.userInfo.$displayErrors)}">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4">*** {{$ctrl.language.Generic.Common.kLogin}}</label>
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<div>
+				<input track-changes type="text" class="form-control" name="LON" size="15" maxlength="35" ng-model="$ctrl.currentUser.login" required="required" ng-minlength="$ctrl.minLoginLength" ng-pattern="$ctrl.loginPattern">
+				<p ng-show="$ctrl.userInfo.LON.$invalid && (!$ctrl.userInfo.LON.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Messages.kLoginMustHaveNotLessThan}} {{$ctrl.minLoginLength}}. {{$ctrl.language.Generic.Messages.kLoginAllowedSymbols}}</p>
+			</div>
+		</div>
+	</div>
+	<div ng-if="!$ctrl.isPreSchool() || !$ctrl.addStudents" class="form-group" ng-class="{'has-error': ($ctrl.userInfo.PW.$invalid || ($ctrl.currentUser.password != $ctrl.currentUser.passwordConfirm && (!$ctrl.userInfo.PW2.$pristine || $ctrl.userInfo.$displayErrors)) || $ctrl.checkPasswordReliabilityCurrentUser() || $ctrl.checkPasswordSurroundSpacesCurrentUser()) && (!$ctrl.userInfo.PW.$pristine || $ctrl.userInfo.$displayErrors)}">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4">*** {{$ctrl.language.Generic.Common.kPassword}}</label>
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<input track-changes type="password" class="form-control" autocomplete="off" name="PW" size="30" maxlength="40" ng-model="$ctrl.currentUser.password" ng-minlength="$ctrl.minPasswordLength" required="required" ng-pattern="$ctrl.passwordPattern">
+			<div ng-messages="$ctrl.userInfo.PW.$error" ng-if="$ctrl.userInfo.$displayErrors || !$ctrl.userInfo.PW.$pristine">
+                <span class="help-block" ng-message="required">{{$ctrl.language.Generic.Common.kEmptyFieldError}}</span>
+				<span class="help-block" ng-message="minlength">{{$ctrl.language.Generic.Messages.kPasswordLengthNotLessThan}} {{$ctrl.minPasswordLength}} {{$ctrl.language.Generic.Messages.kSymbols}}</span>
+				<span class="help-block" ng-message="pattern">{{$ctrl.language.Generic.Common.kErrNumericPasswordsRestricted}}</span>
+            </div>
+			<p ng-show="!$ctrl.userInfo.PW.$invalid && ($ctrl.currentUser.password != $ctrl.currentUser.passwordConfirm) && (!$ctrl.userInfo.PW2.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Messages.kPasswordAndConfirmMustEqual}}</p>
+			<p ng-show="!$ctrl.userInfo.PW.$invalid && $ctrl.checkPasswordReliabilityCurrentUser() && (!$ctrl.userInfo.PW.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Common.kSimplePassword}}</p>
+			<p ng-show="!$ctrl.userInfo.PW.$invalid && $ctrl.checkPasswordSurroundSpacesCurrentUser() && (!$ctrl.userInfo.PW.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Common.kErrPWDSurroundSpaces}}</p>
+		</div>
+	</div>
+	<div ng-if="!$ctrl.isPreSchool() || !$ctrl.addStudents" class="form-group" ng-class="{'has-error': ($ctrl.userInfo.PW2.$invalid || $ctrl.currentUser.password != $ctrl.currentUser.passwordConfirm && !$ctrl.userInfo.PW.$pristine) && (!$ctrl.userInfo.PW2.$pristine || $ctrl.userInfo.$displayErrors)}">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4">*** {{$ctrl.language.Generic.SetupSchoolUI.kConfirm}}</label>
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<input track-changes type="password" class="form-control" autocomplete="off" name="PW2" size="30" maxlength="40" ng-model="$ctrl.currentUser.passwordConfirm" ng-minlength="$ctrl.minPasswordLength" required="required" ng-pattern="$ctrl.passwordPattern">
+			<div ng-messages="$ctrl.userInfo.PW2.$error" ng-if="$ctrl.userInfo.$displayErrors || !$ctrl.userInfo.PW2.$pristine">
+                <span class="help-block" ng-message="required">{{$ctrl.language.Generic.Common.kEmptyFieldError}}</span>
+				<span class="help-block" ng-message="minlength">{{$ctrl.language.Generic.Messages.kPasswordLengthNotLessThan}} {{$ctrl.minPasswordLength}} {{$ctrl.language.Generic.Messages.kSymbols}}</span>
+				<span class="help-block" ng-message="pattern">{{$ctrl.language.Generic.Common.kErrNumericPasswordsRestricted}}</span>
+            </div>
+			<p ng-show="!$ctrl.userInfo.PW2.$invalid && ($ctrl.currentUser.password != $ctrl.currentUser.passwordConfirm) && (!$ctrl.userInfo.PW.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Messages.kPasswordAndConfirmMustEqual}}</p>			
+		</div>
+	</div>
+	<div ng-if="!$ctrl.isPreSchool() || !$ctrl.addStudents" class="form-group">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4"></label>
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<div class="checkbox">
+				<label>
+					<input track-changes type="checkbox" name="ChangePW" ng-model="$ctrl.currentUser.passwordExpired" ng-value="1">{{$ctrl.language.Generic.SetupSchoolUI.kPasswordPrompt}}
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div ng-if="!$ctrl.isPreSchool() || !$ctrl.addStudents" class="form-group">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.SetupSchoolUI.kMailManner}}</label>
+
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<div class="radio">
+				<label>
+					<input track-changes type="radio" name="PCM" ng-model="$ctrl.currentUser.preferedComm" checked="checked" value="C">
+					{{$ctrl.language.Generic.SetupSchoolUI.kNSSchoolAnnoun}} {{$ctrl.productName}}
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input track-changes type="radio" name="PCM" ng-model="$ctrl.currentUser.preferedComm" value="E">E-Mail
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input track-changes type="radio" name="PCM" ng-model="$ctrl.currentUser.preferedComm" value="P">{{$ctrl.language.Generic.SetupSchoolUI.kPaperMail}}
+				</label>
+			</div>
+		</div>
+	</div>
+	<div ng-if="!$ctrl.isPreSchool() || !$ctrl.addStudents" class="form-group" ng-class="{'has-error': $ctrl.userInfo.EM.$invalid && (!$ctrl.userInfo.EM.$pristine || $ctrl.userInfo.$displayErrors)}">
+		<label class="control-label col-md-4 col-lg-4 col-sm-4">E-Mail</label>
+		<div class="col-md-8 col-lg-8 col-sm-6">
+			<div><input track-changes type="text" class="form-control" name="EM" size="15" maxlength="80" ng-model="$ctrl.currentUser.email" ng-pattern="$ctrl.emailPattern"></div>
+			<p ng-show="$ctrl.userInfo.EM.$invalid && (!$ctrl.userInfo.EM.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Messages.kEMailAddressFormatError}}</p>
+		</div>
+	</div>
+
+</div>

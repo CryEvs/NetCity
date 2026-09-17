@@ -1,0 +1,2 @@
+23/08/2018 04-50-07 A transport-level error has occurred when sending the request to the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+23/08/2018 06-33-44 ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.

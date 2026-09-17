@@ -1,0 +1,82 @@
+﻿@import "../../../static/src/common/sass/var";
+/*
+@import this file directly into your existing Scss files to use these mixins
+*/
+@mixin sprite-header-logo() {
+/* You may have to set 'display: block' */
+	width: 48px;
+	height: 49px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -1px;
+}
+@mixin sprite-header-logo-addschool() {
+/* You may have to set 'display: block' */
+	width: 48px;
+	height: 49px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -51px;
+}
+@mixin sprite-header-logo-preschool() {
+/* You may have to set 'display: block' */
+	width: 48px;
+	height: 49px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -101px;
+}
+@mixin sprite-header-logo-ns() {
+/* You may have to set 'display: block' */
+	width: 48px;
+	height: 49px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -151px;
+}
+@mixin sprite-header-logo-bg() {
+/* You may have to set 'display: block' */
+	width: 260px;
+	height: 97px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -201px;
+}
+@mixin sprite-header-right-bg() {
+/* You may have to set 'display: block' */
+	width: 430px;
+	height: 50px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -299px;
+}
+@mixin sprite-header-vertical-line() {
+/* You may have to set 'display: block' */
+	width: 5px;
+	height: 48px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -350px;
+}
+@mixin sprite-header-vertical-line-small() {
+/* You may have to set 'display: block' */
+	width: 3px;
+	height: 36px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -399px;
+}
+@mixin sprite-footer-logo() {
+/* You may have to set 'display: block' */
+	width: 60px;
+	height: 60px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -436px;
+}
+@mixin sprite-btn-add-active() {
+/* You may have to set 'display: block' */
+	width: 50px;
+	height: 50px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -497px;
+}
+@mixin sprite-btn-add() {
+/* You may have to set 'display: block' */
+	width: 50px;
+	height: 50px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -548px;
+}
+@mixin sprite-panel-arrow() {
+/* You may have to set 'display: block' */
+	width: 21px;
+	height: 15px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -599px;
+}
+@mixin sprite-panel-arrow-active() {
+/* You may have to set 'display: block' */
+	width: 21px;
+	height: 15px;
+	background: url('/vendor/custom/img/sprite-template.png') -1px -615px;
+}

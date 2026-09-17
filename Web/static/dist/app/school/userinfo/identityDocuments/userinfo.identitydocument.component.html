@@ -1,0 +1,25 @@
+<div id="identity-document-{{$ctrl.identityDocument.id}}"></div>
+	<ng-form class="form-horizontal" name="$ctrl.form">
+		<div ng-if="$ctrl.editFlag" class="form-group">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{$ctrl.language.Generic.SchoolInfo.kDocumentType}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<input type="hidden" name="documentType" ng-model="$ctrl.identityDocument.docType"/>
+				<input class="form-control" size="250" maxlength="250" ng-model="$ctrl.identityDocument.docTypeInfo" disabled type="text">
+			</div>
+		</div>
+
+		<div ng-if="$ctrl.addFlag" class="form-group" ng-class="{'has-error': $ctrl.form.documentType.$invalid && (!$ctrl.form.documentType.$pristine || $ctrl.displayErrors)}">
+			<label class="control-label col-md-4 col-xs-4 col-lg-4">{{$ctrl.language.Generic.SchoolInfo.kDocumentType}}</label>
+			<div class="col-lg-8 col-md-8 col-xs-8">
+				<select class="form-control" required name="documentType" ng-model="$ctrl.identityDocument.docType" ng-change="$ctrl.changeIdentityDocumentType()">
+					<option ng-repeat="identityDocumentType in $ctrl.identityDocumentTypes" value="{{identityDocumentType.id}}">{{identityDocumentType.name}}</option>
+				</select>
+				<p ng-show="$ctrl.form.documentType.$invalid && (!$ctrl.form.documentType.$pristine || $ctrl.displayErrors)" class="help-block">
+					Необходимо выбрать тип документа
+				</p>				
+			</div>
+		</div>
+
+		<identity-document-field ng-repeat="fieldInfo in $ctrl.identityDocumentFields" form="$ctrl.form" doc-type-fields="$ctrl.docTypeFields" identity-document-types="$ctrl.identityDocumentTypes" readonly="$ctrl.readonly" edit-mode="$ctrl.editMode" display-errors="$ctrl.displayErrors" field-info=fieldInfo></identity-document-field>
+	</ng-form>
+</div>

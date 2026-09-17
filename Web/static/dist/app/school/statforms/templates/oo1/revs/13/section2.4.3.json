@@ -1,0 +1,22 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subRows": { "start": 2, "end": 5 },
+			"subCols": [4,5],
+			"type": "sum"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 1,
+			"subRows": [ 2, 3, 4 ],
+			"type": "sum"
+		},
+		{
+			"row": 1,
+			"subRows": [ 5 ],
+			"type": "include"
+		}
+	]
+}

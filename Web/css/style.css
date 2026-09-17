@@ -1,0 +1,634 @@
+﻿body
+{
+	margin:0;
+	font-family: verdana, tahoma, arial, helvetica;
+}
+.monos
+{
+	font-family: Consolas, DejaVu Sans Mono, Liberation Mono, Lucida Console,Courier New,Batang, Gulim, Dotum;
+	font-size: 12px;
+}
+
+form
+{
+	margin:0;
+}
+h2
+{
+	font-weight: bold;
+	font-size: 14px;
+}
+h3
+{
+	font-weight: bold;
+	font-size: 13px;
+}
+h4
+{
+	font-weight: bold;
+	font-size: 14px;
+}
+input
+{
+	font-family: verdana, tahoma, arial, helvetica;
+	font-size: 12px;
+	border-collapse:collapse;
+	border-width: thin;
+}
+input[type=checkbox]
+{
+	margin: 0;
+}
+input[type=radio]
+{
+	margin: 1;
+}
+.select
+{
+	font-size: 12px;
+}
+select
+{
+	font-family: verdana, tahoma, arial, helvetica;
+	font-size: 12px;
+}
+select.csg
+{
+	width: 100%;
+}
+
+div.subhead
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #ffffff;
+}
+p
+{
+	font-size: 11px;
+}
+td
+{
+	font-size: 11px;
+}
+th
+{
+	text-align: center;
+	font-weight: bold;
+	font-size: 12px;
+}
+div.bullet
+{
+	font-size: 13px;
+}
+
+
+div.footer
+{
+	font-size: 11px;
+}
+div.ltfooter
+{
+	font-size: 11px;
+	color: #cccccc;
+}
+div.PageTitle
+{
+	font-weight: bold;
+	font-size: 13px;
+}
+textarea
+{
+	font-size: 12px;
+	font-family: Consolas, DejaVu Sans Mono, Liberation Mono, Lucida Console,Courier New,Batang, Gulim, Dotum;
+}
+a.plunit
+{
+	font-size: 13px;
+	color: green;
+	text-decoration: none
+}
+a.pllesson
+{
+	font-size: 13px;
+	color: darkred;
+	text-decoration: none
+}
+.SmallHeader
+{
+	font-weight: bold;
+	font-size: 13px;
+}
+.normaltext
+{
+	font-size: 13px;
+}
+.smalltext
+{
+	font-size: 11px;
+}
+.body
+{
+	font-weight: bold;
+	font-size: 12px;
+}
+
+table.filterTable
+{
+	border-width: 0;
+}
+table.filterTable th
+{
+	width: 10%;
+	text-align: left;
+}
+table.filterTable td
+{
+	text-align: left
+}
+
+table.NullTable
+{
+	BORDER: 0 white ;
+	padding: 0;
+	border-collapse: separate;
+	float:none;
+}
+table.NullTable td
+{
+	padding: 0;
+}
+table.NullTable th
+{
+	text-align:left;
+	background-color: transparent;
+	padding: 0;
+}
+table.ThickTable
+{
+	border-collapse:collapse;
+	border:thick gray;
+}
+table.ThickTable td
+{
+	text-align: left;
+	border-color: gray;
+}
+table.ThickTable td input
+{
+	font-size:  12px;
+}
+
+table.ThickTable th
+{
+	background-color: #e7eff7;
+	text-align: left;
+	border-color: gray;
+}
+table.PlanTable
+{
+	empty-cells: show;
+	border:thin groove darkgray;
+	border-collapse:collapse;
+	white-space:normal;
+	margin: 0;
+	float:none;
+	padding: 0px;
+}
+table.PlanTable td
+{
+	border:thin groove darkgray;
+	text-align: center;
+	white-space:normal;
+	padding: 0px;
+}
+table.PlanTable th
+{
+	border:thin groove darkgray;
+	background-color: #e7eff7;
+	text-align: center;
+	padding: 0px;
+}
+table.xlTable
+{
+	empty-cells: show;
+	border:thin outset gray;
+	border-collapse:collapse;
+	white-space:normal;
+	margin: 0;
+	float:none;
+}
+table.xlTable td
+{
+	text-align: right;
+	border:thin inset gray;
+	white-space:normal;
+}
+table.xlTable th
+{
+	background-color: #EAEAEA;
+	border:thin inset gray;
+}
+table.ThinTable
+{
+	border:thin inset gray;
+	border-collapse:collapse;
+	empty-cells: show;
+	padding: 2px;
+}
+table.ThinTable td
+{
+	border-color:gray;
+	padding: 2px;/* 1px 2px 1px;*/
+}
+table.ThinTable th
+{
+	border-color:gray;
+	background-color: #e7eff7;
+	padding: 2px;
+	text-align: center;
+}
+
+table.ThinTable td.leftheader
+{
+	background-color: #ccccff
+}
+table.ThinTable th.leftheader
+{
+	background-color: #ccccff
+}
+table.ThinTable td.filled
+{
+	background-color: #99ccee
+}
+table.ThinTable td.relay1
+{
+	background-color: #f9ebc1
+}
+table.ThinTable td.relay2
+{
+	background-color: #e9f8cd
+}
+table.ThinTable td.relay3
+{
+	background-color: #cdf0f8
+}
+table.ThinTable td.event
+{
+	background-color: #C0FFC0
+}
+.onscrhelp
+{
+	font-size: 11px;
+	color: #5679cb;
+	font-family: arial, helvetica, sans-serif
+}
+.onscrhelp p
+{
+	font-size: 11px;
+	color: #5679cb;
+	font-family: arial, helvetica, sans-serif
+}
+td.alert
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #ff0000;
+	font-family: arial, helvetica, sans-serif
+}
+.ui-dialog {
+	font-weight: bold;
+	font-size: 13px;
+	color: #ff0000;
+	font-family: arial, helvetica, sans-serif
+}
+div.alert
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #ff0000;
+	font-family: arial, helvetica, sans-serif
+}
+a.plplan
+{
+	font-size: 13px;
+	color: blue;
+	text-decoration: none
+}
+button.button
+{
+	vertical-align: top;
+	margin: 2px;
+	width: 110px;
+}
+button.iconButton
+{
+	margin: 2px;
+	height: 24px;
+}
+button.inlineButton
+{
+	width: auto;
+}
+span.button
+{
+	display: inline-block;
+	font-family: Arial;
+	font-size: 8pt;
+	white-space: normal;
+}
+.FolderLink
+{
+	font-family: arial, helvetica, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none
+}
+#tooltip
+{
+	background: white;
+	font: menu;
+	border: 1px solid black;
+	margin: 0px 0px;
+	padding: 3px 5px;
+	position: absolute;
+	visibility: hidden;
+}
+table.SchedTable{
+}
+table.SchedTable th.SchedHeader
+{
+	background-color: #BFDEFD;
+}
+table.SchedTable th.SchedHeader2
+{
+	background-color: #E7F3FF;
+}
+table.SchedTable td.ViewWeekSched
+{
+	font-weight: bold;
+	font-size: 13px;
+	background-color: #C7E4FE;
+}
+table.SchedTable td.SchedEmptyCell
+{
+	background-color: white;
+}
+table.SchedTable td
+{
+	background-color: #CFF9FB;
+}
+table.SchedTable td.SchedVocationDay
+{
+	background-color: #FDF1F1;
+}
+table.SchedTable th.SchedEvents
+{
+	background-color: #D4F5FE;
+}
+table.SchedTable td.leftheader
+{
+	background-color: #C7DCFE
+}
+table.SchedTable td.filled
+{
+	background-color: #B5EBFD
+}
+table.SchedTable td.SchedVocDayBold
+{
+	font-weight: bold;
+	font-size: 13px;
+	background-color: #FDF1F1;
+}
+table.SchedTable td.SchedDayBold
+{
+	font-weight: bold;
+	font-size: 13px;
+	background-color: #CFF9FB;
+}
+table.SchedTable td.relay1
+{
+	background-color: #f9ebc1
+}
+table.SchedTable td.relay2
+{
+	background-color: #e9f8cd
+}
+table.SchedTable td.relay3
+{
+	background-color: #cdf0f8
+}
+a.SchedSchoolEvent
+{
+	color: #3F68C2
+}
+a.SchedClassEvent
+{
+	color: #1E86B7
+}
+a.SchedHolidays
+{
+	color: #DD0101
+}
+a.SchedVocations
+{
+	color: #DD0101
+}
+a.SchedDayNumb
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: blue;
+}
+a.SchedVocDayNumb
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: red;
+}
+.jqifade{
+	position: absolute;
+	background-color: #aaaaaa;
+}
+div.jqi{
+	width: 400px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	position: absolute;
+	background-color: #ffffff;
+	font-size: 11px;
+	text-align: left;
+	border: solid 1px #eeeeee;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding: 7px;
+}
+div.jqi .jqicontainer{
+	font-weight: bold;
+}
+div.jqi .jqiclose{
+	position: absolute;
+	top: 4px; right: -2px;
+	width: 18px;
+	cursor: default;
+	color: #bbbbbb;
+	font-weight: bold;
+}
+div.jqi .jqimessage{
+	padding: 10px;
+	line-height: 20px;
+	color: #444444;
+}
+div.jqi .jqibuttons{
+	text-align: right;
+	padding: 5px 0 5px 0;
+	border: solid 1px #eeeeee;
+	background-color: #f4f4f4;
+}
+div.jqi button{
+	padding: 3px 10px;
+	margin: 0 10px;
+	background-color: #2F6073;
+	border: solid 1px #f4f4f4;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 12px;
+}
+div.jqi button:hover{
+	background-color: #728A8C;
+}
+div.jqi button.jqidefaultbutton{
+	background-color: #BF5E26;
+}
+.jqiwarning .jqi .jqibuttons{
+	background-color: #BF5E26;
+}
+#importControls a img
+{
+	margin-bottom:-7px;
+}
+
+.invalidFormCell
+{
+	border: solid 2px #7eb3f6 !important;
+	border-color: Red !important;
+}
+
+.invalidDependentFormCell
+{
+	border: solid 2px #7eb3f6 !important;
+	border-color: Orange !important;
+}
+
+input.disabledFormCell
+{
+	border: solid 2px #7eb3f6;
+	border-color: #A5ACB2;
+	border-style:ridge;
+	background-color:#E7E7E7;
+}
+
+
+div.yearsTabs
+{
+	width: 500px;
+}
+ul.yearsTabs
+{
+	padding: 0px;
+}
+li.curYearTab
+{
+	font-weight: normal;
+}
+li.nonCurYearTab
+{
+	font-weight: bold;
+	border: 1px solid #0E1C74;
+}
+li.yearTab
+{
+	color: white;
+	height: 40px;
+	list-style: none outside none;
+	position: relative;
+	padding: 0;
+	top: 1px;
+	float: left;
+	border-bottom: 0 none;
+}
+ul.inTableList
+{
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-left: 25px;
+}
+a.yearTab
+{
+	left: 10px;
+	position: relative;
+	top: 10px;
+}
+a.curYearTab
+{
+	top: 11px;
+}
+tr.min-width_th th
+{
+	min-width:16px;
+	text-align:center;
+}
+.ui-state-default .ui-icon-rector
+{
+	background-image: url(../../images/Common/Buttons/rector.png);
+}
+.sortHeader
+{
+	display: inline-block;
+	overflow: hidden;
+	/* Хаки для IE7 */
+	zoom : 1;
+	* display : inline;
+}
+.sortTitle
+{
+	float: left;
+}
+.sortIcon
+{
+	float: left;
+	display: inline;
+	height: 22px;
+	width: 15px;
+}
+.ascsort .sortIcon
+{
+	background-image: url(../../images/Common/up.gif);
+}
+.descsort .sortIcon
+{
+	background-image: url(../../images/Common/down.gif);
+}
+
+.testPlan tr {
+	background-color: white;
+}
+
+.ui-state-default .ui-icon-ma
+{
+	background-image: url(../../images/Common/Buttons/ma.png);
+	height: 16px;
+	width: 32px;
+	margin-left: -3px;
+	padding: 1px;
+	}
+/*\*/
+* tr.min-width_th th div {
+	margin: 0px 0px 0px 0px;
+	_width:16px;
+	text-align:center;
+}
+/**/

@@ -1,0 +1,124 @@
+div.legend span.legend-overflow {
+  background-color: #FF6767; }
+
+div.legend span.legend-changes {
+  background-color: #C9DDF0; }
+
+div.legend span.legend-iup-no-classes {
+  background-color: #E584FF; }
+
+div#plan-container form {
+  margin: 0; }
+
+table.curiculum-plan td {
+  padding: 1px; }
+
+table.curiculum-plan th.vertical {
+  vertical-align: bottom; }
+
+table.curiculum-plan tr.header-row {
+  background-color: #E7EFF7; }
+  table.curiculum-plan tr.header-row th {
+    -ms-word-break: break-all;
+    word-break: break-all;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    text-align: center;
+    min-width: 22px; }
+    table.curiculum-plan tr.header-row th.no-iup-classes {
+      background-color: #E584FF; }
+
+table.curiculum-plan tr.class-row {
+  background-color: #E7EFF7; }
+  table.curiculum-plan tr.class-row th {
+    text-align: center;
+    min-width: 22px; }
+    table.curiculum-plan tr.class-row th.hover {
+      background-color: #FFF5C0; }
+    table.curiculum-plan tr.class-row th.no-iup-classes {
+      background-color: #E584FF; }
+
+body.preschool table.curiculum-plan tr.grade-row th {
+  font-size: 9px;
+  -ms-word-break: break-all;
+  word-break: break-all; }
+
+table.curiculum-plan tr.grade-row {
+  background-color: #E7EFF7; }
+  table.curiculum-plan tr.grade-row th {
+    text-align: center;
+    min-width: 22px; }
+
+table.curiculum-plan tr.total-row {
+  text-align: center;
+  font-weight: bold;
+  background-color: #FEEAC9; }
+
+table.curiculum-plan tr.total-fact-load-row {
+  background-color: #DFDFDF;
+  font-weight: bold; }
+  table.curiculum-plan tr.total-fact-load-row td {
+    min-width: 22px;
+    text-align: center; }
+    table.curiculum-plan tr.total-fact-load-row td.overflow {
+      background-color: #FF6767; }
+
+table.curiculum-plan tr.component-row {
+  text-align: center;
+  font-weight: bold;
+  background-color: #FEEAC9; }
+
+table.curiculum-plan tr.component-fact-load-row {
+  background-color: #DFDFDF;
+  font-weight: bold; }
+  table.curiculum-plan tr.component-fact-load-row td {
+    min-width: 22px;
+    text-align: center; }
+    table.curiculum-plan tr.component-fact-load-row td.overflow {
+      background-color: #FF6767; }
+
+table.curiculum-plan tr.total-teacher-load-row {
+  background-color: #DFDFDF; }
+  table.curiculum-plan tr.total-teacher-load-row > td {
+    padding-left: 1px;
+    padding-right: 1px;
+    min-width: 22px;
+    text-align: center;
+    font-weight: bold; }
+
+table.curiculum-plan tr.subject-field-row {
+  background-color: #E2FFEA; }
+  table.curiculum-plan tr.subject-field-row > td {
+    padding-left: 5px; }
+
+table.curiculum-plan.readonly tr.subject-row > td:not(:first-child) {
+  cursor: not-allowed;
+  background-color: #f0f0f0; }
+
+table.curiculum-plan tr.subject-row > td {
+  font-size: 12px;
+  min-width: 22px; }
+  table.curiculum-plan tr.subject-row > td.no-input {
+    background-color: #f0f0f0;
+    cursor: not-allowed; }
+  table.curiculum-plan tr.subject-row > td.waschanged {
+    background-color: #C9DDF0; }
+  table.curiculum-plan tr.subject-row > td > input {
+    min-height: 20px;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 20px; }
+  table.curiculum-plan tr.subject-row > td.input-cell {
+    cursor: text;
+    padding: 0;
+    margin: 0; }
+    table.curiculum-plan tr.subject-row > td.input-cell span {
+      display: block; }
+    table.curiculum-plan tr.subject-row > td.input-cell:hover {
+      background-color: #FFF5C0; }
+  table.curiculum-plan tr.subject-row > td span.subject-name {
+    padding-left: 10px;
+    white-space: nowrap;
+    overflow-x: hidden; }
