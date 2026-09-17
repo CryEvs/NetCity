@@ -1,0 +1,215 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/journal/testplans/results/css/testplanresults.css">
+
+<div class="buttons-filters-panel form-horizontal single-row ns-cloak">
+	<div class="row ns-cloak">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-right">
+					<button title="{{ctrl.language.Generic.QualityAssessment.kTestPlan}}" type="button"
+						class="btn btn-default" ng-click="ctrl.editPlan()">
+						<span class="glyphicon fa icon-list-ol"></span>
+						<span>{{ctrl.language.Generic.QualityAssessment.kTestPlan}}</span>
+					</button>
+				</div>
+			</div>
+
+			<div class="filters-panel-compact">
+				<div class="form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.Filter.kCourseGB}}</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<input class="form-control" type="text" disabled ng-value="ctrl.data.subjectGroup.name" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Grade.kLessonDate}}</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<input class="form-control" type="text" disabled ng-value="ctrl.data.classMeeting.date" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.Assignment.kATAssignmentTheme}}</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<input class="form-control" type="text" disabled ng-value="ctrl.data.assignment.name" />
+					</div>
+				</div>
+				<div class="form-group" ng-if="!ctrl.data.emptyPlan">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">{{ctrl.language.Generic.QualityAssessment.kTestLevel}}</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<input class="form-control" type="text" disabled ng-value="ctrl.data.testLevel.name" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel extra">
+			<div class="buttons-panel-left">
+				<button title="{{ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-sm btn-primary"
+					ng-click="ctrl.save()" ng-if="!ctrl.data.readOnly && !ctrl.data.emptyPlan">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>{{ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<style>
+	.table.table-xs td.input-cell-xs>input {
+		min-height: 22px;
+	}
+
+	.protocol-table tr.free-student>td {
+		background-color: #dcdcdc;
+	}
+</style>
+
+<div class="row" ng-if="ctrl.data.emptyPlan">
+	<div class="col-md-12">
+		<div class="alert alert-info" role="alert">
+			{{ctrl.language.Generic.Assignment.kNotSpecifiedTestPlan}}
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-if="!ctrl.data.emptyPlan">
+
+	<div class="col-md-12">
+		<div class="alert alert-info" role="alert">
+			{{ctrl.language.Generic.Assignment.kRecomTestPlan}}
+			<p ng-if="ctrl.isVpr()">Заполните код участника значениями в диапазоне от <span ng-model="ctrl.data.minStudentCode">{{ctrl.data.minStudentCode}}</span> до <span ng-model="ctrl.data.maxStudentCode">{{ctrl.data.maxStudentCode}}</span></p>
+		</div>
+
+		<table class="table table-bordered table-condensed table-thin table-xs table-print protocol-table" table-row-highlite nav-inputs="ctrl.navigateOptions">
+			<tbody>
+				<!--шапка для общего типа заданий-->
+				<tr ng-if="!ctrl.data.isRusDictation">
+					<th colspan="1" rowspan="4">{{ctrl.language.Grade.kStudentsColumn}}</th>
+					<th ng-if="ctrl.isVpr()" rowspan="4">Код {{ctrl.language.Reports.kOfStudent}}</th>
+					<th ng-if="ctrl.isVpr()" colspan="{{ctrl.data.partsAmount}}" rowspan="3">Варианты частей работы</th>
+					<th colspan="{{ctrl.data.pivot.x_Axis.length + 1}}">{{ctrl.language.Generic.QualityAssessment.kTestTaskScore}}</th>
+					<th rowspan="4" ng-bind-html="ctrl.language.Generic.QualityAssessment.kTotalPoints"></th>
+					<th rowspan="4">{{ctrl.language.Generic.Common.kMark}}</th>
+					<th rowspan="4" ng-if="!ctrl.data.isDictation" style="white-space: pre;">{{ctrl.language.Generic.QualityAssessment.kRecommendedAssessment}}</th>
+					<th rowspan="4">{{ctrl.language.Generic.Grade.kAttendanceColumn}}</th>
+				</tr>
+				<tr ng-if="!ctrl.data.isRusDictation">
+					<th>№</th>
+					<th ng-repeat="task in ctrl.data.pivot.x_Axis">{{task.number}}</th>
+				</tr>
+				<tr ng-if="!ctrl.data.isRusDictation">
+					<th>{{ctrl.language.Generic.QualityAssessment.kMaxScore}}</th>
+					<th ng-repeat="task in ctrl.data.pivot.x_Axis">{{task.possiblePoints}}</th>
+				</tr>
+				<tr ng-if="!ctrl.data.isRusDictation">
+					<th ng-if="ctrl.isVpr()" ng-repeat="part in [].constructor(ctrl.data.partsAmount) track by $index">Часть {{$index + 1}}</th>
+					<th>{{ctrl.language.Generic.QualityAssessment.kTaskDifficult}}</th>
+					<th ng-repeat="task in ctrl.data.pivot.x_Axis">{{ctrl.refs.taskDifficults[task.difficult].shortName}}</th>
+
+				</tr>
+
+				<tr ng-if="ctrl.data.isRusDictation">
+					<th colspan="1" rowspan="3">{{ctrl.language.Grade.kStudentsColumn}}</th>
+					<th></th>
+					<th ng-if="ctrl.isVpr()" rowspan="3">Код {{ctrl.language.Reports.kOfStudent}}</th>
+					<th ng-if="ctrl.isVpr()" colspan="{{ctrl.data.partsAmount}}" rowspan="2">Варианты частей работы</th>
+					<th colspan="{{ctrl.data.pivot.x_Axis.length}}">{{ctrl.language.Generic.QualityAssessment.kNumberOfErrors}}</th>
+					<th colspan="5">{{ctrl.language.Generic.ClassManagement.kSumm}}</th>
+					<th rowspan="3">{{ctrl.language.Generic.Common.kMark}}</th>
+					<th rowspan="3" style="white-space: pre;">{{ctrl.language.Generic.QualityAssessment.kRecommendedAssessment}}</th>
+					<th rowspan="3">{{ctrl.language.Generic.Grade.kAttendanceColumn}}</th>
+				</tr>
+
+				<!--шапка для диктанта по русскому языку-->
+				<tr ng-if="ctrl.data.isRusDictation">
+					<th>№</th>
+					<th ng-repeat="task in ctrl.data.pivot.x_Axis">{{task.number}}</th>
+					<th rowspan="2">О</th>
+					<th rowspan="2">П</th>
+					<th rowspan="2">Д</th>
+
+					<th rowspan="2">{{ctrl.language.Generic.QualityAssessment.kSumTaskMistake}}</th>
+					<th rowspan="2">{{ctrl.language.Generic.QualityAssessment.kTaskMistakeInCredit}}</th>
+				</tr>
+
+				<tr ng-if="ctrl.data.isRusDictation">
+					<th ng-if="ctrl.isVpr()" ng-repeat="part in [].constructor(ctrl.data.partsAmount) track by $index">Часть {{$index + 1}}</th>
+					<th>{{ctrl.language.Generic.QualityAssessment.kTaskMistakeTypeFull}}</th>
+					<th ng-repeat="task in ctrl.data.pivot.x_Axis" class="text-vmiddle">{{ctrl.refs.taskMistakeTypes[task.mistakeType].shortName}}</th>
+				</tr>
+
+				<tr ng-repeat="row in ctrl.data.pivot.rows" ng-class="{'free-student': row.y.free, 'individual-educ': row.y.individualEduc}">
+					<td class="student-name text-nowrap cell-text">
+						<span>{{$index + 1}}. {{row.y.fullName}}</span>
+					</td>
+					
+					<td class="input-cell input-cell-xs text-center" ng-if="ctrl.isVpr()">
+						<span ng-if="row.y.free || ctrl.data.readOnly">{{ctrl.data.studentCodeVector[row.y.id]}}</span>
+						<input ng-if="!row.y.free && !ctrl.data.readOnly" ng-model="ctrl.data.studentCodeVector[row.y.id]" name="studentcode">
+					</td>
+
+					<td class="input-cell input-cell-xs text-center" ng-if="ctrl.isVpr()"
+						ng-repeat="part in [].constructor(ctrl.data.partsAmount) track by $index">
+						<span ng-if="row.y.free || ctrl.data.readOnly">{{ctrl.data.fullVariantsMatrix[row.y.id][$index]}}</span>
+						<input ng-if="!row.y.free && !ctrl.data.readOnly" ng-model="ctrl.data.fullVariantsMatrix[row.y.id][$index]" name="partvariant">
+					</td>
+
+					<td></td>
+
+					<td class="input-cell input-cell-xs text-center" ng-repeat="cell in row.cells">
+						<span ng-if="row.y.free || ctrl.data.readOnly">{{cell.value}}</span>
+						<input ng-if="!row.y.free && !ctrl.data.readOnly" type="text" name="score" ng-model="cell.value" maxlength="{{cell.x.possiblePoints.toString().length}}" size="4" data-max-score="{{cell.x.possiblePoints}}">
+					</td>
+
+					<td class="text-center" ng-if="ctrl.data.isRusDictation">
+						<span>{{ctrl.stats.getOrthoSum(row)}}</span>
+					</td>
+
+					<td class="text-center" ng-if="ctrl.data.isRusDictation">
+						<span>{{ctrl.stats.getPunktoSum(row)}}</span>
+					</td>
+
+					<td class="text-center" ng-if="ctrl.data.isRusDictation">
+						<span>{{ctrl.stats.getOthersSum(row)}}</span>
+					</td>
+
+					<td class="text-center">
+						<span>{{ctrl.stats.getSumScore(row)}}</span>
+					</td>
+
+					<td class="text-center" ng-if="ctrl.data.isRusDictation">
+						<span>{{ctrl.stats.getInCredit(row)}}</span>
+					</td>
+
+					<td class="input-cell input-cell-xs text-center">
+						<span ng-if="row.y.free || ctrl.data.readOnly">{{ctrl.data.results[row.y.id].mark}}</span>
+						<input ng-if="!row.y.free && !ctrl.data.readOnly" type="text" maxlength="2" size="4" ng-model="ctrl.data.results[row.y.id].mark" name="result">
+					</td>
+
+					<td class="text-center" ng-if="!ctrl.data.isDictation || ctrl.data.isRusDictation">
+						<span>{{ctrl.stats.getRecomend(row)}}</span>
+					</td>
+
+					<td class="text-center">
+						{{ctrl.data.attendance[row.y.id].reason}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</div>
+
+<div class="legend print-block" ng-if="ctrl.hasIndividualEducs()">
+	<div>
+		<p>
+			<span class="legend-label individual-educ"></span>
+			<span class="legend-description"> — {{ctrl.language.Generic.Common.kIndividualEduc}}</span>
+		</p>
+	</div>
+</div>

@@ -1,0 +1,190 @@
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="{{language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="save()">
+					<span class="glyphicon glyphicon-floppy-save"></span> 
+					<span>{{language.Generic.Buttons.kSave}}</span>
+				</button>
+				
+				<button title="{{language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="reset()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{language.Generic.Buttons.kReset}}</span>
+				</button>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-10 col-lg-8">
+		<div class="panel panel-success">
+			<div class="panel-heading" role="tab" id="headingsubject">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#" class="collapsed" data-target="#subject" aria-expanded="true" aria-controls="subject">{{language.Generic.Common.kCommonInfo}}</a>
+				</h4>
+			</div>
+			<div id="subject" class="panel-collapse collapse in" aria-labelledby="headingsubject" role="tabpanel">
+				<div class="panel-body">
+					<form name="main" method="post" class="form-horizontal">
+
+						<div class="form-group">
+							<label class="control-label col-md-4">{{language.Generic.SetupSchoolCalendar.kSubjField}}</label>
+							<div class="col-md-8">
+								<select track-changes class="form-control" name="SBJFIELDID" ng-model="data.subjectInfo.subjectField" ng-options="field as field.name for field in data.subjectFields track by field.id"></select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-4">{{language.Generic.SetupSchoolCalendar.kFullName}}</label>
+							<div class="col-md-8">
+								<input track-changes type="text" class="form-control FilterWhiteSpace" name="SUBJECTNAME" size="50" maxlength="100" ng-model="data.subjectInfo.name">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-4">{{language.Generic.SetupSchoolCalendar.kAbbrName}}</label>
+							<div class="col-md-8">
+								<input track-changes type="text" class="form-control FilterWhiteSpace" name="SUBJECTABBREV" size="50" maxlength="70" ng-model="data.subjectInfo.shortName">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-4">{{language.Generic.Common.kGlobalSubject}}</label>
+							<div class="col-md-8">
+								<ui-select track-changes id="departOrg" ng-model="data.subjectInfo.globalSubject" allow-clear="true" theme="bootstrap" ng-if="state.globalSubjectsVisible">
+									<ui-select-match placeholder="{{language.Generic.Common.kPleaseEnterOneOrMoreCharacters}}">
+										{{$select.selected.name}}
+									</ui-select-match>
+									<ui-select-choices repeat="globalSubj as globalSubj in searchCtx.globalSubjects.items"
+													   ui-disable-choice="globalSubj.name === '{{language.Generic.Common.kNoMatchesFound}}' || globalSubj.name === '{{language.Generic.Common.kSearch}}'"
+													   refresh="searchCtx.globalSubjects.search($select.search)"
+													   on-select>
+										<div ng-bind-html="globalSubj.name | highlight: $select.search"></div>
+									</ui-select-choices>
+								</ui-select>
+								<div class="checkbox">
+									<label>
+										<input track-changes type="checkbox" name="newGlobalSubject" ng-model="data.createNewGlobalSubj" ng-value="true" ng-click="toggleNewGlobalSubj()"> {{language.Generic.SetupSchoolCalendar.kNewGlobalSubject}}
+									</label>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="form-group">
+							<label class="control-label col-md-4"></label>
+							<div class="col-md-8">
+								<div class="checkbox">
+									<label>
+										<input track-changes type="checkbox" name="extraCurricular" ng-model="data.subjectInfo.extraCurricular">Не включать в учебный план
+									</label>
+								</div>
+							</div>
+						</div> -->
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-info" ng-if="state.mode == 'edit' && state.moduleQA">
+			<div class="panel-heading" role="tab" id="headingcodebooks">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#" class="collapsed" data-target="#codebooks" aria-expanded="true" aria-controls="codebooks">{{language.Generic.QualityAssessment.kCodifiersFiPi}}</a>
+				</h4>
+			</div>
+			<div id="codebooks" class="panel-collapse collapse in" aria-labelledby="headingcodebooks" role="tabpanel">
+				<div class="panel-body">
+					
+					<form name="main" class="form-horizontal">
+
+						<div class="form-group">
+							<label class="control-label col-md-4">{{language.Generic.QualityAssessment.kCodifierGradeSchool}}</label>
+							<div class="col-md-8">
+								<select ng-if="!state.codifiersReady" class="form-control"><option selected="selected">{{language.Generic.Common.kLoad_2}}</option></select>
+								<select track-changes ng-if="state.codifiersReady" class="form-control" name="CODEBOOKEGEID" ng-model="data.codeBookInfo.gradeSchool.current" ng-options="book as book.name for book in data.codeBookInfo.gradeSchool.list track by book.id"></select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-4">{{language.Generic.QualityAssessment.kCodifierOGE}}</label>
+							<div class="col-md-8">
+								<select ng-if="!state.codifiersReady" class="form-control"><option selected="selected">{{language.Generic.Common.kLoad_2}}</option></select>
+								<select track-changes ng-if="state.codifiersReady" class="form-control" name="CODEBOOKEGEID" ng-model="data.codeBookInfo.oge.current" ng-options="book as book.name for book in data.codeBookInfo.oge.list track by book.id"></select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-4">{{language.Generic.QualityAssessment.kCodifierEGE}}</label>
+							<div class="col-md-8">
+								<select ng-if="!state.codifiersReady" class="form-control"><option selected="selected">{{language.Generic.Common.kLoad_2}}</option></select>
+								<select track-changes ng-if="state.codifiersReady" class="form-control" name="CODEBOOKEGEID" ng-model="data.codeBookInfo.ege.current" ng-options="book as book.name for book in data.codeBookInfo.ege.list track by book.id"></select>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-info" ng-if="state.mode == 'edit'">
+			<div class="panel-heading" role="tab" id="headingsubjGroups">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#" class="collapsed" data-target="#subjGroups" aria-expanded="true" aria-controls="subjGroups">{{language.Generic.SetupSchoolCalendar.kSubjectSubGroups}}</a>
+				</h4>
+			</div>
+			<div id="subjGroups" class="panel-collapse collapse in" aria-labelledby="headingsubjGroups" role="tabpanel">
+				<div class="panel-body">
+					<form name="GroupList" method="post">
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="buttons-panel">
+									<button title="{{language.Generic.SetupSchoolCalendar.kAddGroup}}" type="button" class="btn btn-info" ng-click="addGroup()">
+										<span class="glyphicon glyphicon-plus-sign"></span> 
+										<span>{{language.Generic.Buttons.kAdd}}</span>
+									</button>
+									
+									<button title="{{language.Generic.SetupSchoolCalendar.kEditGroup}}" type="button" class="btn btn-warning" ng-disabled="!data.group" ng-click="editGroup()">
+										<span class="glyphicon glyphicon-pencil"></span> 
+										<span>{{language.Generic.Buttons.kEdit}}</span>
+									</button>
+									
+									<button title="{{language.Generic.SetupSchoolCalendar.kDelGroup}}" type="button" class="btn btn-danger" ng-disabled="!data.group" ng-click="delGroup()">
+										<span class="glyphicon glyphicon-minus-sign"></span> 
+										<span>{{language.Generic.Buttons.kRemove}}</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="alert alert-info" role="alert" ng-if="!data.subjectInfo.groups || !data.subjectInfo.groups.length">{{language.Generic.Common.kNo}}</div>
+						<select track-changes class="form-control" size="4" ng-if="data.subjectInfo.groups && data.subjectInfo.groups.length" name="groups" ng-model="data.group" ng-options="group as group.name + ' (' + group.shortName + ')' for group in data.subjectInfo.groups track by group.id"></select>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-danger" ng-if="state.mode == 'edit'">
+			<div class="panel-heading" role="tab" id="headingteachers">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#" class="collapsed" data-target="#teachers" aria-expanded="true" aria-controls="teachers">{{language.Generic.SetupSchoolCalendar.kSubjTeachers}}</a>
+				</h4>
+			</div>
+			<div id="teachers" class="panel-collapse collapse in" aria-labelledby="headingteachers" role="tabpanel">
+				<div class="panel-body">
+					<form name="TeacherList" method="post">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="buttons-panel">
+									<button title="{{language.Generic.SetupSchoolCalendar.kEditSubjTeachers}}" type="button" class="btn btn-warning" ng-click="editTeachers()">
+										<span class="glyphicon glyphicon-pencil"></span>
+										<span>{{language.Generic.Buttons.kEdit}}</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="alert alert-info" role="alert" ng-if="!data.subjectInfo.teachers || !data.subjectInfo.teachers.length">{{language.Generic.Common.kNo}}</div>
+						<select class="form-control" size="4" name="teacher" ng-if="data.subjectInfo.teachers && data.subjectInfo.teachers.length" ng-model="data.teacher" ng-options="teacher as teacher.name for teacher in data.subjectInfo.teachers track by teacher.id"></select>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

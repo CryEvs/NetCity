@@ -1,0 +1,10 @@
+{
+	"sumRows": [
+		{
+			"row": 7,
+			"subRows": [ 8, 9 ],
+			"cols": [ 3 ],
+			"type": "include"
+		}
+	]
+}

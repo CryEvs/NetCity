@@ -1,0 +1,34 @@
+<form class="form-horizontal">
+	{{#if editFlag}}	
+	<div class="form-group">
+		<label class="control-label col-md-4 col-xs-4 col-lg-4">{{{language.Generic.SchoolInfo.kDocumentType}}}</label>
+		<div class="col-lg-8 col-md-8 col-xs-8">
+			<input type="hidden" name="documentType" value="{{../docType}}"/>
+			<input class="form-control" size="250" maxlength="250" value="{{../docTypeInfo}}" disabled type="text">
+		</div>
+	</div>
+	{{/if}}
+
+	{{#if addFlag}}
+	<div class="form-group">
+		<label class="control-label col-md-4 col-xs-4 col-lg-4">{{{language.Generic.SchoolInfo.kDocumentType}}}</label>
+		<div class="col-lg-8 col-md-8 col-xs-8">
+			<select class="form-control" name="documentType" value="{{docType}}">
+				{{#each identityDocumentTypes}}
+				<option value="{{id}}">{{name}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+	{{/if}}
+
+	{{> identityDocumentTextFieldTmpl editMode=editMode docTypeFields=docTypeFields docTypeFieldCode=128 id="otherDocName" title=language.Generic.Common.kOtherDocName size=400 maxLength=400 fieldValue=otherDocName readonly=readonly colsize=4 }}
+	{{> identityDocumentTextFieldTmpl editMode=editMode docTypeFields=docTypeFields docTypeFieldCode=1 id="series" title=language.Generic.Common.kSerial size=50 maxLength=50 fieldValue=series readonly=readonly colsize=4 }}
+	{{> identityDocumentTextFieldTmpl editMode=editMode docTypeFields=docTypeFields docTypeFieldCode=2 id="number" title=language.Generic.Common.kNumber size=50 maxLength=50 fieldValue=number readonly=readonly colsize=4}}
+	{{> identityDocumentDateFieldTmpl editMode=editMode docTypeFields=docTypeFields docTypeFieldCode=32 id="issueDate" title=language.Generic.UsersExport.kPassportDate size=10 maxLength=10 fieldValue=issueDate readonly=readonly colsize=4}}
+	{{> identityDocumentTextFieldTmpl editMode=editMode docTypeFields=docTypeFields docTypeFieldCode=8 id="issuer" title=language.Generic.Common.kPassportWho size=400 maxLength=400 fieldValue=issuer readonly=readonly colsize=8}}
+	{{> identityDocumentTextFieldTmpl editMode=editMode docTypeFields=docTypeFields docTypeFieldCode=16 id="issuerCode" title=language.Generic.Common.kSubdivCode size=7 maxLength=7 fieldValue=issuerCode readonly=readonly colsize=4}}
+	{{> identityDocumentTextFieldTmpl editMode=editMode docTypeFields=docTypeFields docTypeFieldCode=4 id="actNumber" title=language.Generic.Common.kActNumber size=150 maxLength=250 fieldValue=actNumber readonly=readonly colsize=4}}
+	{{> identityDocumentDateFieldTmpl editMode=editMode docTypeFields=docTypeFields docTypeFieldCode=64 id="expireDate" title=language.Generic.Common.kExpireDate size=10 maxLength=10 fieldValue=expireDate readonly=readonly colsize=4}}
+
+</form>

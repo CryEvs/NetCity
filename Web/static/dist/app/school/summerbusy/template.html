@@ -1,0 +1,256 @@
+<span class="content-page-preloader" id="preloader" ng-hide="viewReady"><span>Пожалуйста подождите...</span></span>
+
+<form class="form-horizontal" ng-show="viewReady">
+	<!-- Filter Area -->
+	<div class="row">
+		<div class="col-md-7">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-lg-3 col-sm-4">Учебный год</label>
+						<div class="col-md-8 col-lg-5 col-sm-8">
+							<select class="form-control"
+									ng-init="globalYear_filter" ng-model="globalYear_filter" storage
+									ng-change="getClasses()"
+									ng-options="globalYear.name for globalYear in globalYears track by globalYear.id"></select>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-lg-3 col-sm-4">Класс</label>
+						<div class="col-md-8 col-lg-5 col-sm-8">
+							<select class="form-control"
+									ng-init="class_filter" ng-model="class_filter" storage
+									ng-options="class.name for class in classes track by class.id"></select>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-lg-3 col-sm-4">Месяц</label>
+						<div class="col-md-8 col-lg-5 col-sm-8">
+							<select class="form-control"
+									ng-model="month" storage
+									ng-options="month.name for month in months"
+									ng-change="selectMonth(month)"></select>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /filter area-->
+			<!-- buttons panel-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="buttons-panel">
+						<div class="buttons-panel-left">
+
+							<button title="Применить" type="button" class="btn btn-info" id="applyButton" onclick="document.global.applyFilters()">
+								<span class="glyphicon glyphicon-filter"></span>
+								<span>Применить</span>
+							</button>
+
+							<button title="Сохранить" type="button" class="btn btn-primary" id="saveButton" onclick="document.global.saveButton()" ng-hide="readonly || !tableReady || !hasData">
+								<span class="glyphicon glyphicon-floppy-save"></span>
+								<span>Сохранить</span>
+							</button>
+
+							<button title="Восстановить" type="button" class="btn btn btn-warning" id="cancelButton" onclick="document.global.cancelButton()" ng-hide="readonly || !tableReady || !hasData">
+								<span class="glyphicon glyphicon-repeat"></span>
+								<span>Восстановить</span>
+							</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /buttons panel-->
+		</div>
+		<div class="col-md-4">
+			<div class="row">
+				<div class="col-md-12" ng-show="readonly && tableReady">
+					<div class="alert alert-info" role="alert">
+						Форма доступна только для просмотра
+					</div>
+				</div>
+			</div>
+			<div class="row" ng-repeat="month in months | filter:{id: '!-1'}" ng-show="tableReady && month.hasErrors">
+				<div class="col-md-12">
+					<div class="alert alert-danger" role="alert">
+						<b>{{month.name}}</b>: заполнена не вся необходимая информация
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<span class="content-page-preloader" id="tablePreloader" ng-show="filterWork"><span>Пожалуйста подождите...</span></span>
+	</div>
+<!-- Table area -->
+<div class="row">
+	<div class="modal-body" ng-show="tableReady && hasData">
+		<table class="table table-hover table-bordered table-thin table-xs" id="summerBusy">
+			<thead>
+			<tr>
+				<th rowspan="4">№ п/п</th>
+				<th rowspan="4">
+					ФИО учащегося
+					<input type="search" placeholder="Фильтр" class="form-control" model="search" ng-hide="true"/>
+				</th>
+			</tr>
+			<tr>
+				<th colspan="9" ng-hide="month.id == -1"> {{month.name}} </th>
+				<!--<th colspan="3" ng-repeat="month in months" ng-click="selectMonth(month)" ng-show="month.id == -1">-->
+				<th colspan="9" ng-repeat="m in months | filter:{id: '!-1'}" ng-show="month.id == -1">
+					{{m.name}}
+					<div class="pull-right">
+						<span class="glyphicon glyphicon-warning-sign" style="color: orangered" ng-show="m.hasErrors"></span>
+						<!--<span class="glyphicon glyphicon-minus" ng-show="month.selected"></span>-->
+						<!--<span class="glyphicon glyphicon-chevron-down" ng-hide="month.selected"></span>-->
+					</div>
+				</th>
+			</tr>
+			<tr ng-hide="month.id == -1">
+				<!--<th rowspan="2" ng-repeat-start="month in months">Дома</th>-->
+				<th nowrap class="vertical" rowspan="2">
+					<small class="text-vertical text-compact">
+						<i>Дома</i>
+					</small>
+				</th>
+				<th colspan="3" title="Организованные формы отдыха">ОФО</th>
+				<th colspan="5" ng-repeat-end>Занятость</th>
+			</tr>
+			<tr ng-hide="month.id == -1">
+				<!--<th ng-repeat-start="month in months">Малозатратные формы</th>-->
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Малозатратные формы</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Cтационарные лагеря на территории РК</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Cтационарные лагеря за пределами РК</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Трудоустройство</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Трудовая занятость</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Санаторно-курортное лечение</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Отдых с родителями</i>
+					</small>
+				</th>
+				<th>
+					Другая форма занятости
+				</th>
+				<!--<th ng-repeat-end>Другая форма занятости</th>-->
+			</tr>
+			<tr ng-show="month.id == -1">
+				<!--<th rowspan="2" ng-repeat-start="month in months">Дома</th>-->
+				<th nowrap class="vertical" rowspan="2" ng-repeat-start="month in months | filter:{id: '!-1'}">
+					<small class="text-vertical text-compact">
+						<i>Дома</i>
+					</small>
+				</th>
+				<th colspan="3" title="Организованные формы отдыха">ОФО</th>
+				<th colspan="5" ng-repeat-end>Занятость</th>
+			</tr>
+			<tr ng-show="month.id == -1">
+				<!--<th ng-repeat-start="month in months">Малозатратные формы</th>-->
+				<th nowrap class="vertical" ng-repeat-start="month in months | filter:{id: '!-1'}">
+					<small class="text-vertical text-compact">
+						<i>Малозатратные формы</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Cтационарные лагеря на территории РК</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Cтационарные лагеря за пределами РК</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Трудоустройство</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Трудовая занятость</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Санаторно-курортное лечение</i>
+					</small>
+				</th>
+				<th nowrap class="vertical">
+					<small class="text-vertical text-compact">
+						<i>Отдых с родителями</i>
+					</small>
+				</th>
+				<th ng-repeat-end>
+					Другая форма занятости
+				</th>
+				<!--<th ng-repeat-end>Другая форма занятости</th>-->
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="studentBusyData in data" ng-class="[{'bg-danger': studentBusyData.hasNotChoise}, {'bg-warning': studentBusyData.hasErrors}]">
+				<td>{{studentBusyData.id}}</td>
+				<td>
+					{{studentBusyData.student.name}}
+					<div class="pull-right">
+						<span class="glyphicon glyphicon-warning-sign" style="color: orangered" ng-show="studentBusyData.hasErrors"></span>
+					</div>
+				</td>
+				<td ng-repeat="busy in studentBusyData.busy" ng-show="month.id == -1 || busy.monthNum == month.id" title="{{busy.name}}" class="form-group">
+					<input type="checkbox" class="form-control" ng-model="busy.checked" ng-hide="busy.id == 256 || readonly" ng-click="checkRow(studentBusyData)"/>
+					<input type="text" class="form-control" ng-model="busy.busyFormDescription" ng-show="busy.id == 256 && !readonly" ng-change="changeOther(busy); checkRow(studentBusyData)"/>
+					<label class="control-label" ng-show="readonly && busy.id != 256 && busy.checked">Да</label>
+					<label class="control-label" ng-show="readonly && busy.id != 256 && !busy.checked">-</label>
+					<label class="control-label" ng-show="readonly && busy.id == 256">{{busy.busyFormDescription}}</label>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="col-md-10" ng-hide="!tableReady || hasData">
+		<div class="alert alert-info" role="alert">
+			В класс не зачислено ни одного ребёнка.
+		</div>
+	</div>
+
+</div>
+</form>

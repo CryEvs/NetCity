@@ -1,0 +1,25 @@
+﻿.adding-header p{
+    font-size: 150%;
+
+    color: #fff;
+
+    text-align: center;
+    white-space: initial;
+    margin: 0 -120px 15px;
+}
+.adding-header >img{
+    display: block;
+    width: 87px;
+    margin: 5px auto 5px;
+}
+@media screen and (max-width: 850px) {
+    .adding-header p{
+        width: 100%;
+        white-space: initial;
+        margin: 0 0 15px;
+    }
+    .adding-header >img{
+        margin: 0px auto;
+
+    }
+}  

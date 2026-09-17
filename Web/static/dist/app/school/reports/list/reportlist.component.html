@@ -1,0 +1,17 @@
+<table id="ReportsList">
+	<tbody>
+		<tr ng-repeat-start="reportGroup in ctrl.reportGroups">
+			<td colspan="2"><b>{{reportGroup.title}}</b></td>
+		</tr>
+		<tr ng-if="reportGroup.notices">
+			<td width="8%">&nbsp;</td>
+			<td><a href="javascript:void(0)" ng-click="ctrl.showNoticeError(reportGroup.notices)">{{reportGroup.notices.error}}</a></td>
+		</tr>
+		<tr ng-repeat-end ng-repeat="report in reportGroup.reports">
+			<td width="8%">&nbsp;</td>
+			<td>
+				<a ng-href="{{report.id.toLowerCase()}}" ng-click="$event.preventDefault(); ctrl.viewReport(report)">{{report.title}}</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

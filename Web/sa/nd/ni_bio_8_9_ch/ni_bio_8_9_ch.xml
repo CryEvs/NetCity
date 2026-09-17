@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Биология. 8-9 классы. Человек">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Биология. 8-9 классы. Человек" ID="1" Filename="ni_bio_8_9_ch/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Типы тканей" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Типы тканей" 
+				Filename="sgo/ni_bio_8_9_ch/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Головной мозг. Спинной мозг" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Головной мозг. Спинной мозг" 
+				Filename="sgo/ni_bio_8_9_ch/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Функции нервной системы" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Функции нервной системы" 
+				Filename="sgo/ni_bio_8_9_ch/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Строение и работа сердца" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Строение и работа сердца" 
+				Filename="sgo/ni_bio_8_9_ch/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Связь кровообращения и лимфообращения" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Связь кровообращения и лимфообращения" 
+				Filename="sgo/ni_bio_8_9_ch/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Дыхание" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Дыхание" 
+				Filename="sgo/ni_bio_8_9_ch/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Пищеварение" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Пищеварение" 
+				Filename="sgo/ni_bio_8_9_ch/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Строение почки" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Строение почки" 
+				Filename="sgo/ni_bio_8_9_ch/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Строение и функции кожи" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Строение и функции кожи" 
+				Filename="sgo/ni_bio_8_9_ch/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Строение и типы костей" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Строение и типы костей" 
+				Filename="sgo/ni_bio_8_9_ch/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Строение мышц" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Строение мышц" 
+				Filename="sgo/ni_bio_8_9_ch/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Восприятие. Органы чувств" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Восприятие. Органы чувств" 
+				Filename="sgo/ni_bio_8_9_ch/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

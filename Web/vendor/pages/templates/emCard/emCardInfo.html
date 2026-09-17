@@ -1,0 +1,63 @@
+﻿<div class="form-group">
+	<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Common.kShortName}}</label>
+	<div class="col-md-8 col-lg-9 col-sm-8">
+		<div>
+			<input type="text" class="form-control" name="Name" size="80" maxlength="250" value="{{emCardInfo.name}}" onchange="" disabled="disabled">
+		</div>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.SetupSchoolCalendar.kFullName}}</label>
+	<div class="col-md-8 col-lg-9 col-sm-8">
+		<div>
+			<input type="text" class="form-control" name="FullName" size="80" maxlength="250" value="{{emCardInfo.fullName}}" onchange="" disabled="disabled">
+		</div>
+	</div>
+</div>
+{{#if emCardInfo.parentName}}
+<div class="form-group">
+	<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.ServAdmin.kParentEM}}</label>
+	<div class="col-md-8 col-lg-9 col-sm-8">
+		<div>
+			<input type="text" class="form-control" name="ParentName" size="80" maxlength="250" value="{{emCardInfo.parentName}}" onchange="" disabled="disabled">
+		</div>
+	</div>
+</div>
+{{/if}}
+<div class="form-group">
+	<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.SchoolInfo.kJuridicalAddress}}</label>
+	<div class="col-md-8 col-lg-9 col-sm-8">
+		<div><input type="text" class="form-control" name="LegalAddress" size="80" maxlength="250" value="{{emCardInfo.legalAddress}}" onchange="dataChanged();">
+		</div>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.SchoolInfo.kINN}}</label>
+	<div class="col-md-8 col-lg-9 col-sm-8">
+		<div><input type="text" class="form-control" name="Inn" size="26" maxlength="12" value="{{emCardInfo.inn}}" onchange="dataChanged();">
+		</div>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.SchoolInfo.kOGRN}}</label>
+	<div class="col-md-8 col-lg-9 col-sm-8">
+		<div><input type="text" class="form-control" name="Ogrn" size="20" maxlength="15" value="{{emCardInfo.ogrn}}" onchange="dataChanged();">
+		</div>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.EM.kNPADetails}}</label>
+	<div class="col-md-8 col-lg-9 col-sm-8">
+		<div>
+			<input type="text" class="form-control" name="NPADetails" size="20" maxlength="500" value="{{emCardInfo.npaDetails}}" onchange="dataChanged();">
+		</div>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.EM.kIsNationOlympOrg}}</label>
+	<div class="col-md-8 col-lg-9 col-sm-8">
+		<div>
+			<input type="checkbox" name="NationOlympOrg" {{#if emCardInfo.nationOlympOrg}} checked {{/if}} onchange="dataChanged();">
+		</div>
+	</div>
+</div>

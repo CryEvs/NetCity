@@ -1,0 +1,29 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+    <form class="form form-xs" name="$ctrl.groupForm">
+        <ns-form control-size="col-xs-9" label-size="col-xs-3" class="form">
+            <div class="form-group"
+                 ng-class="{'has-error': $ctrl.groupForm.name.$invalid && (!$ctrl.groupForm.name.$pristine || $ctrl.groupForm.$displayErrors)}">
+                <label for="group-name" class="control-label">Название</label>
+                <div>
+                    <input track-changes type="text" name="name" id="group-name" class="form-control"
+                           ng-model="$ctrl.data.group.name" required maxlength="100" ng-disabled="$ctrl.isDefaultGroup">
+                    <p ng-show="$ctrl.groupForm.name.$invalid && (!$ctrl.groupForm.name.$pristine || $ctrl.groupForm.$displayErrors)"
+                       class="help-block">Это поле требуется заполнить.</p>
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="$ctrl.data.groups.length">
+                <label for="group-name" class="control-label">Расположение</label>
+                <div>
+                    <div id="tree-root" ui-tree="$ctrl.treeOptions">
+                        <ol ui-tree-nodes ng-model="$ctrl.data.tree">
+                            <li ng-repeat="item in $ctrl.data.tree" ui-tree-node
+                                ng-include="'/static/dist/app/school/portfolio/common/edit/groupTreeItem.html'">
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </ns-form>
+    </form>
+</ns-modal>

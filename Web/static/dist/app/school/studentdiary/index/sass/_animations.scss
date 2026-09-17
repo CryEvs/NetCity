@@ -1,0 +1,146 @@
+@keyframes puls {
+	0% {
+		transform: scale(0, 0);
+	}
+	35% {
+		transform: scale(3.1, 3.1);
+	}
+	75% {
+		transform: scale(2.2, 2.2);
+	}
+	100% {
+		transform: scale(2.3, 2.3);
+	}
+}
+@keyframes mail_rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.circle_anima {
+	transition: opacity .3s ease, width .3s ease, height .3s ease;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	position: absolute;
+	z-index: 0;
+	top: 20px;
+	right: -10px;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	border-radius: 50%;
+}
+.grid280 {
+	.circle_anima {
+		top: 30px;
+	}
+}
+.grid252 {
+	.circle_anima {
+		top: 30px;
+	}
+	>div.mail {
+		&:hover {
+			img.mail_bg {
+				margin-top: 10px;
+			}
+		}
+	}
+	>div.stat {
+		&:hover {
+			img.stat_bg {
+				margin-top: 10px;
+			}
+		}
+	}
+}
+.zol {
+	.circle_anima {
+		background: #f44336;
+	}
+}
+.poo {
+	.circle_anima {
+		background: #9c27b0;
+	}
+}
+.preschool {
+	.circle_anima {
+		background: #3f51b5;
+	}
+}
+.firstgrade {
+	.circle_anima {
+		background: #00bcd4;
+	}
+}
+.odo {
+	.circle_anima {
+		background: #4caf50;
+	}
+}
+.fifthgrade {
+	.circle_anima {
+		background: #afbf22;
+	}
+}
+.tenthgrade {
+	.circle_anima {
+		background: #03a9f4;
+	}
+}
+.ooo {
+	.circle_anima {
+		background: #ff9800;
+	}
+}
+.schooljournal {
+	.circle_anima {
+		background: #ff5722;
+	}
+}
+.reports {
+	&:hover {
+		.circle_anima {
+			width: 100%;
+			height: 100%;
+			opacity: 1;
+			animation: puls .8s ease forwards;
+		}
+	}
+}
+.grid {
+	>div.mail {
+		&:hover {
+			img.mail_bg {
+				transition: width .7s, opacity .4s, margin-top .7s;
+				animation: mail_rotate 18s 1.2s linear infinite;
+				width: 90%;
+				margin-top: 20px;
+				opacity: 1;
+			}
+		}
+	}
+	>div.stat {
+		&:hover {
+			img.stat_bg {
+				transition: width .7s, opacity .4s, margin-top .7s;
+				animation: mail_rotate 18s 1.2s linear infinite;
+				width: 90%;
+				margin-top: 20px;
+				opacity: 1;
+			}
+		}
+	}
+}
+div.stat {
+	&:hover {
+		img {
+			margin-top: 15px;
+		}
+	}
+}

@@ -1,0 +1,45 @@
+
+
+<style>
+	/*!!!!*/
+	div.similar-user-resolve-dialog {
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: 500px;
+		padding: 0 5px 0 5px;
+	}
+
+
+	.hideBtn {
+		display: none;
+	}
+
+
+	tr.validation-error > td {
+		background-color: rgb(255, 147, 147) !important;
+	}
+
+	.red {
+		color: red;
+	}
+</style>
+
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<div id="validationErrors" class="similar-user-resolve-dialog">
+		<import-errors model="$ctrl.model"></import-errors>
+
+		<div style="float:right" class="radioImportOption">
+			<div class="radio">
+				<label>
+					<input type="radio" name="mode" ng-value="$ctrl.importTypeOnlyValidStudents" ng-model="$ctrl.mode"> Импортировать полностью корректные строки
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="mode" ng-value="$ctrl.importTypeOnlyValidColumns" ng-model="$ctrl.mode"> Импортировать полностью корректные строки и строки с некритичными ошибками
+				</label>
+			</div>
+		</div>
+
+	</div>
+</ns-modal>

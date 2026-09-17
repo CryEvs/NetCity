@@ -1,0 +1,110 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<content-pre-loader ng-if="!$ctrl.ready"></content-pre-loader>
+	<form ng-if="$ctrl.ready" class="form-horizontal form-sm" name="$ctrl.form">
+		<ns-form control-size="col-md-8" label-size="col-md-4">
+			<div class="panel-group" id="formPanel">
+				<ns-panel panel-id="main" class="default" title="{{$ctrl.language.Generic.Common.kCommonInfo}}" expanded="true">
+					<ns-form-group title="{{$ctrl.language.Generic.Common.kName}}" ng-class="{'has-error': $ctrl.form.fullName.$invalid && (!$ctrl.form.fullName.$pristine || $ctrl.form.$displayErrors)}">
+						<input type="text" class="form-control" name="fullName" size="50" maxlength="150" ng-model="$ctrl.founder.fullName" required track-changes>
+						<div ng-if="!$ctrl.form.fullName.$pristine || $ctrl.form.$displayErrors" ng-messages="$ctrl.form.fullName.$error">
+							<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+						</div>
+					</ns-form-group>
+
+					<ns-form-group title="{{$ctrl.language.Generic.Common.kShortName}}" ng-class="{'has-error': $ctrl.form.name.$invalid && (!$ctrl.form.name.$pristine || $ctrl.form.$displayErrors)}">
+						<input type="text" class="form-control" name="name" size="50" maxlength="50" ng-model="$ctrl.founder.name" required track-changes>
+						<div ng-if="!$ctrl.form.name.$pristine || $ctrl.form.$displayErrors" ng-messages="$ctrl.form.name.$error">
+							<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+						</div>
+					</ns-form-group>
+
+					<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kFounderType}}" ng-class="{'has-error': $ctrl.form.founderKind.$invalid && (!$ctrl.form.founderKind.$pristine || $ctrl.form.$displayErrors)}">
+						<select class="form-control" name="founderKind" required ng-model="$ctrl.founder.founderKind" ng-options="fk.key as fk.name for fk in $ctrl.founderKinds" track-changes></select>
+						<div ng-if="!$ctrl.form.founderKind.$pristine || $ctrl.form.$displayErrors" ng-messages="$ctrl.form.founderKind.$error">
+							<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+						</div>
+					</ns-form-group>
+
+					<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kHasSystemAccount}}" ng-class="{'has-error': $ctrl.form.founderType.$invalid && (!$ctrl.form.founderType.$pristine || $ctrl.form.$displayErrors)}">
+						<select class="form-control" name="founderType" ng-disabled="$ctrl.editMode" required ng-model="$ctrl.founder.founderType" ng-options="ft.key as ft.name for ft in $ctrl.founderTypes" track-changes></select>
+						<div ng-if="!$ctrl.form.founderType.$pristine || $ctrl.form.$displayErrors" ng-messages="$ctrl.form.founderType.$error">
+							<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+						</div>
+					</ns-form-group>
+
+					<ns-form-group ng-if="$ctrl.isEducManagement()" title="{{$ctrl.language.Generic.ServAdmin.kHierarchyLevel}}" ng-class="{'has-error': $ctrl.form.hierarchyLevel.$invalid && (!$ctrl.form.hierarchyLevel.$pristine || $ctrl.form.$displayErrors)}">
+						<select class="form-control" name="hierarchyLevel" ng-disabled="$ctrl.editMode" required ng-model="$ctrl.founder.level" ng-options="at.key as at.name for at in $ctrl.hierarchyLevels" track-changes ng-change="$ctrl.onChangeData()"></select>
+						<div ng-if="!$ctrl.form.hierarchyLevel.$pristine || $ctrl.form.$displayErrors" ng-messages="$ctrl.form.hierarchyLevel.$error">
+							<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+						</div>
+					</ns-form-group>
+
+					<ns-form-group ng-if="$ctrl.isShowCity()" title="{{$ctrl.language.Generic.Common.kCity}}">
+						<select type="list" class="form-control" name="city" ng-model="$ctrl.founder.cityId" ng-options="city.id as city.name for city in $ctrl.cities" track-changes ng-change="$ctrl.onChangeData()"></select>
+					</ns-form-group>
+
+					<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kIsAuthority}}">
+						<div class="checkbox"><label><input type="checkbox" name="isAuthority" ng-click="$ctrl.founder.isAuthority=!$ctrl.founder.isAuthority" ng-checked="$ctrl.founder.isAuthority"></label></div>
+					</ns-form-group>
+
+					<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kAuthorityType}}" ng-if="$ctrl.founder.isAuthority">
+						<select class="form-control" name="authorityType" ng-model="$ctrl.founder.authorityType" ng-options="at.key as at.name for at in $ctrl.authorityTypes" track-changes></select>
+					</ns-form-group>
+
+					<ns-form-group ng-if="$ctrl.moduleNationOlympiad && $ctrl.isEducManagement()" title="{{$ctrl.language.Generic.EM.kIsNationOlympOrg}}">
+						<div class="checkbox"><label><input type="checkbox" name="nationOlympOrg" ng-click="$ctrl.founder.nationOlympOrg=!$ctrl.founder.nationOlympOrg" ng-checked="$ctrl.founder.nationOlympOrg"></label></div>
+					</ns-form-group>
+
+					<ns-form-group ng-if="$ctrl.isShowMunicipalityCode()" title="{{$ctrl.language.Generic.ServAdmin.kMunicipalityCode}}" ng-class="{'has-error': $ctrl.form.municipalityCode.$invalid}">
+						<input type="text" ng-disabled="$ctrl.isExistsCertificates()" class="form-control" name="municipalityCode" size="2" maxlength="2" ng-model="$ctrl.founder.code" track-changes>
+					</ns-form-group>
+
+					<ns-form-group ng-if="$ctrl.isEducManagement()" title="{{$ctrl.language.Generic.ServAdmin.kParentEM}}">
+						<select class="form-control" name="parentFounder" ng-model="$ctrl.founder.parentFounderId" ng-options="founder.id as founder.name for founder in $ctrl.possibleParentFounders" track-changes>
+							<option value="">{{$ctrl.language.Generic.Common.kNo}}<option>
+						</select>
+					</ns-form-group>
+
+					<ns-form-group ng-if="$ctrl.editMode && $ctrl.isEducManagement()" title="{{$ctrl.language.Generic.ServAdmin.kSubordinateEMs}}">
+						<ul name="subordinateFounders">
+							<li ng-repeat="sub in $ctrl.founder.childFounders">{{$ctrl.foundersInfo[sub]}}</li>
+						</ul>
+					</ns-form-group>
+				</ns-panel>
+				<ns-panel panel-id="login_password" ng-if="!$ctrl.editMode && $ctrl.isEducManagement()" class="default" title="Учётная запись" expanded="false">
+					<ns-form-group title="*** {{$ctrl.language.Generic.Common.kLogin}}" ng-class="{'has-error': $ctrl.form.LON.$invalid && (!$ctrl.form.LON.$pristine || $ctrl.form.$displayErrors)}">
+						<input class="form-control" track-changes type="text" name="LON" size="15" maxlength="35" ng-model="$ctrl.loginCredentials.login" required="required" ng-minlength="$ctrl.minLoginLength" ng-pattern="$ctrl.loginPattern">
+						<div>
+							<p ng-show="$ctrl.form.LON.$invalid && (!$ctrl.form.LON.$pristine || $ctrl.form.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Messages.kLoginMustHaveNotLessThan}} {{$ctrl.minLoginLength}}. {{$ctrl.language.Generic.Messages.kLoginAllowedSymbols}}</p>
+						</div>
+					</ns-form-group>
+					<ns-form-group title="*** {{$ctrl.language.Generic.Common.kPassword}}" ng-if="!$ctrl.editMode && $ctrl.isEducManagement()" ng-class="{'has-error': ($ctrl.form.PW.$invalid || ($ctrl.loginCredentials.pass != $ctrl.passwordConfirm && !$ctrl.form.PW2.$pristine) || $ctrl.checkPasswordReliability() || $ctrl.checkPasswordSurroundSpaces()) && (!$ctrl.form.PW.$pristine || $ctrl.form.$displayErrors)}">
+						<input class="form-control" track-changes type="password" autocomplete="off" name="PW" size="30" maxlength="40" ng-model="$ctrl.loginCredentials.pass" ng-minlength="$ctrl.minPasswordLength" required="required" ng-pattern="$ctrl.passwordPattern">
+						<div ng-messages="$ctrl.form.PW.$error" ng-if="$ctrl.form.$displayErrors || !$ctrl.form.PW.$pristine">
+							<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Common.kEmptyFieldError}}</span>
+							<span class="help-block" ng-message="minlength">{{$ctrl.language.Generic.Messages.kPasswordLengthNotLessThan}} {{$ctrl.minPasswordLength}} {{$ctrl.language.Generic.Messages.kSymbols}}</span>
+							<span class="help-block" ng-message="pattern">{{$ctrl.language.Generic.Common.kErrNumericPasswordsRestricted}}</span>
+						</div>
+						<p ng-show="!$ctrl.form.PW.$invalid && ($ctrl.loginCredentials.pass != $ctrl.passwordConfirm) && (!$ctrl.form.PW2.$pristine || $ctrl.form.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Messages.kPasswordAndConfirmMustEqual}}</p>
+						<p ng-show="!$ctrl.form.PW.$invalid && $ctrl.checkPasswordReliability() && (!$ctrl.form.PW.$pristine || $ctrl.form.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Common.kSimplePassword}}</p>
+						<p ng-show="!$ctrl.form.PW.$invalid && $ctrl.checkPasswordSurroundSpaces() && (!$ctrl.form.PW.$pristine || $ctrl.form.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Common.kErrPWDSurroundSpaces}}</p>
+					</ns-form-group>
+					<ns-form-group title="*** {{$ctrl.language.Generic.SetupSchoolUI.kConfirm}}" ng-if="!$ctrl.editMode && $ctrl.isEducManagement()" ng-class="{'has-error': ($ctrl.form.PW2.$invalid || $ctrl.loginCredentials.pass != $ctrl.passwordConfirm && !$ctrl.form.PW.$pristine) && (!$ctrl.form.PW2.$pristine || $ctrl.form.$displayErrors)}">
+						<input class="form-control" track-changes type="password" autocomplete="off" name="PW2" size="30" maxlength="40" ng-model="$ctrl.passwordConfirm" ng-minlength="$ctrl.minPasswordLength" required="required" ng-pattern="$ctrl.passwordPattern">
+						<div ng-messages="$ctrl.form.PW2.$error" ng-if="$ctrl.form.$displayErrors || !$ctrl.form.PW2.$pristine">
+							<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Common.kEmptyFieldError}}</span>
+							<span class="help-block" ng-message="minlength">{{$ctrl.language.Generic.Messages.kPasswordLengthNotLessThan}} {{$ctrl.minPasswordLength}} {{$ctrl.language.Generic.Messages.kSymbols}}</span>
+							<span class="help-block" ng-message="pattern">{{$ctrl.language.Generic.Common.kErrNumericPasswordsRestricted}}</span>
+						</div>
+						<p ng-show="!$ctrl.form.PW2.$invalid && ($ctrl.loginCredentials.pass != $ctrl.passwordConfirm) && (!$ctrl.form.PW.$pristine || $ctrl.form.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Messages.kPasswordAndConfirmMustEqual}}</p>			
+					</ns-form-group>
+				</ns-panel>
+				<ns-panel panel-id="organizations" ng-if="$ctrl.isEducManagement()" class="default" title="{{$ctrl.language.Generic.ServAdmin.kOrganizations}}" expanded="false">
+					<ns-form-group label-size="col-md-12" control-size="col-md-12" title="{{$ctrl.language.Generic.ServAdmin.kSchoolList}}">
+						<select-organizations organizations="$ctrl.organizations" selected="$ctrl.selected" settings="$ctrl.settings" on-update="$ctrl.onChangeOrgs(selected)"></select-organizations>
+					</ns-form-group>
+				</ns-panel>
+			</div>
+		</ns-form>
+	</form>
+</ns-modal>

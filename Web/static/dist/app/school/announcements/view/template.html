@@ -1,0 +1,68 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/announcements/view/view-announcements.min.css">
+<link rel="stylesheet" type="text/css" href="/vendor/custom/fonts/font-awesome/css/font-awesome.min.css">
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left"></div>
+			<div class="buttons-panel-right">
+				<button title="{{ctrl.language.Generic.Buttons.kSend}}" type="button" class="btn btn-default" ng-click="ctrl.add()" ng-if="ctrl.state.canPost">
+					<span class="glyphicon glyphicon-envelope"></span>
+					<span>{{ctrl.language.Generic.Buttons.kSend}}</span>
+				</button>
+
+				<button title="{{ctrl.language.Generic.Buttons.kRemove}}" type="button" class="btn btn-danger" ng-click="ctrl.delete()" ng-if="ctrl.state.canRemove">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<form>
+			<div class="alert alert-info" role="alert" ng-if="ctrl.state.emptyData">{{ctrl.language.Generic.Announcement.kNoAnnoun}}</div>
+			<div class="adver-container" ng-if="!ctrl.state.emptyData">
+				<div class="announcement" ng-repeat="announce in ctrl.data.announcements">
+					<div class="adver-body">
+						<h3><span>{{ctrl.language.Generic.Announcement.kTopic}}:</span>{{announce.name}}</h3>
+						<div class="visible-xs">
+							<a href="#" ng-if="announce.author" class="username-coloured">{{announce.author.nickName}}</a>
+						</div>
+						<div class="adver-info">
+							<span style="" >{{announce.postDateLocale | nsDateTime}}</span>
+							<input type="checkbox" name="del" value="{{announce.id}}" ng-if="ctrl.canEdit(announce)" ng-click="ctrl.toggleChecks(announce.id)">
+							<a href="javascript:void(0)" ng-click="ctrl.edit(announce)" tooltip="{{ctrl.language.Generic.Common.kEdit}}" ng-if="ctrl.canEdit(announce)">
+								<span class="icon-pencil"></span>
+							</a>
+						</div>
+						<div class="adver-content" ng-if="announce.description || (announce.attachments && announce.attachments.length)">
+							<div ng-bind-html="announce.description | trusted"></div>
+							<div class="fieldset" ng-if="announce.attachments && announce.attachments.length">
+								<span>{{ctrl.language.Generic.Common.kAttachedFiles}}</span>
+								<div ng-repeat="attach in announce.attachments">
+									<a href="javascript:void(0)" ng-click="ctrl.downloadAttach(attach)">{{attach.originalFileName}}</a>
+									<span ng-if="attach.description">{{attach.description}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="adver-profile hidden-xs">
+						<div class="profile-image">
+							<a ng-if="announce.author" href="#" style="background: url('{{ctrl.getPhotoUrl(announce.author.id)}}') center center no-repeat; background-size: cover;"></a>
+							<a ng-if="!announce.author" href="#" style="background: url('') center center no-repeat; background-size: cover;"></a>
+						</div>
+						<div>
+							<span ng-if="announce.author" class="username-coloured">{{announce.author.nickName}}</span>
+							<span ng-if="!announce.author" class="username-coloured">&nbsp;</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+

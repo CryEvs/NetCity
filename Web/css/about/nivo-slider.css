@@ -1,0 +1,39 @@
+.nivoSlider {
+	FONT-SIZE: 20px; FONT-FAMILY: Arial; POSITION: relative
+}
+.nivoSlider IMG {
+	LEFT: 0px; POSITION: absolute; TOP: 0px
+}
+.nivoSlider A.nivo-imageLink {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; DISPLAY: none; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; Z-INDEX: 60; LEFT: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 100%; PADDING-TOP: 0px; POSITION: absolute; TOP: 0px; HEIGHT: 100%; BORDER-RIGHT-WIDTH: 0px
+}
+.nivo-slice {
+	DISPLAY: block; Z-INDEX: 50; POSITION: absolute; HEIGHT: 100%
+}
+.nivo-caption {
+	Z-INDEX: 89; BACKGROUND: none transparent scroll repeat 0% 0%; FILTER: alpha(opacity=80); LEFT: 0px; WIDTH: 264px; BOTTOM: 0px; POSITION: absolute; HEIGHT: 110px; opacity: 0.8
+}
+.nivo-caption P {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 20px; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; MARGIN: 0px; VERTICAL-ALIGN: middle; COLOR: #898989; PADDING-TOP: 25px
+}
+.nivo-caption P A IMG {
+	BORDER-TOP-WIDTH: 0px; MARGIN-TOP: 14px; BORDER-LEFT-WIDTH: 0px; FLOAT: right; BORDER-BOTTOM-WIDTH: 0px; MARGIN-LEFT: 525px; BORDER-RIGHT-WIDTH: 0px
+}
+.nivo-directionNav A {
+	Z-INDEX: 99; CURSOR: pointer; POSITION: absolute; TOP: 110px
+}
+.nivo-prevNav {
+	LEFT: -40px
+}
+.nivo-nextNav {
+	RIGHT: -20px
+}
+.nivo-controlNav {
+	BOTTOM: -170px; POSITION: absolute; TEXT-ALIGN: center
+}
+.nivo-controlNav A {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; DISPLAY: block; Z-INDEX: 99; BACKGROUND: url(../images/bullets.gif) no-repeat 0px 0px; FLOAT: left; BORDER-LEFT: 0px; WIDTH: 14px; CURSOR: pointer; TEXT-INDENT: -9999px; MARGIN-RIGHT: 3px; BORDER-BOTTOM: 0px; POSITION: relative; HEIGHT: 9px
+}
+.nivo-controlNav A.active {
+	BACKGROUND-POSITION: -14px 0px
+}

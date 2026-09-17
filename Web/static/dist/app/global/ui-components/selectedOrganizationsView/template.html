@@ -1,0 +1,32 @@
+
+<div class="row" 
+    ng-repeat="group in (filtredGroups = ((groups | filter: filterGroups))) | limitTo : showAll || model.count" 
+    ng-if="model && model.selectedIds.length" 
+    ng-show="filtredGroups.length">
+
+    <div class="col-md-12">
+        <selected-organizations-view-row model="group"></selected-organizations-view-row>
+    </div>
+</div>
+
+<div class="row" ng-if="model && model.selectedIds.length && filtredGroups.length >= model.count">
+    <div class="col-md-12">
+        <br>
+        <div ng-hide="showAll" ng-click="showAllClick()">
+            <span class="glyphicon glyphicon-chevron-down" title="{{language.Generic.Common.kShowAll}}"></span>
+            <span>{{language.Generic.Common.kShowAll}}</span>
+        </div>
+        <div ng-show="showAll" ng-click="showAllClick()">
+            <span class="glyphicon glyphicon-chevron-up" title="{{language.Generic.Common.kHide}}"></span>
+            <span>{{language.Generic.Common.kHide}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12" ng-show="!model || !model.selectedIds.length">
+        <div class="alert alert-info">
+            {{language.Generic.Common.kOrganizationsNotSelected}}
+        </div>
+    </div>
+</div>

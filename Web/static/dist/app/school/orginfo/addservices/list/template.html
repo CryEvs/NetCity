@@ -1,0 +1,64 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel"  ng-show="!ctrl.state.readOnlyContext">
+
+			<button type="button" class="btn btn-info" ng-click="ctrl.addService()">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span>{{ctrl.language.Generic.Buttons.kAdd}}</span>
+			</button>
+
+			<button type="button" class="btn btn-info" ng-click="ctrl.editService(ctrl.data.selection)" ng-disabled="!ctrl.data.selection.selected">
+				<span class="glyphicon glyphicon-pencil"></span>
+				<span>{{ctrl.language.Generic.Buttons.kEdit}}</span>
+			</button>
+
+			<button type="button" class="btn btn-danger" ng-click="ctrl.removeService(ctrl.data.selection.item)" ng-disabled="!ctrl.data.selection.selected ">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{ctrl.language.Generic.Buttons.kRemove}}</span>
+			</button>
+
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="ctrl.state.dataReady && ctrl.state.emptyData">
+		<div class="alert alert-info" role="alert">Список дополнительных услуг пуст</div>
+	</div>
+</div>
+
+<div class="row" ng-show="ctrl.state.dataReady && !ctrl.state.emptyData">
+	<div class="col-md-12">
+		<ul ng-show="ctrl.paging.show" uib-pagination total-items="paging.totalcount" ng-model="ctrl.paging.page" items-per-page="paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="ctrl.load()"></ul>
+		<table class="table table-xs table-bright table-bright-hover table-selectable table-thin">
+			<tr>
+				<th>№ п/п</th>
+				<th>Наименование</th>
+				<th>Вид услуги</th>
+				<th>Специалист, оказывающий услугу</th>
+				<th>Сотрудник</th>
+				<th>Краткая информация</th>
+			</tr>
+			<tr ng-repeat="addService in ctrl.data.addServices" ng-class="{'selected': ctrl.data.selection.isSelected(addService)}" ng-click="ctrl.data.selection.select(addService)">
+				<td>
+					<span class="big">{{(ctrl.paging.page - 1) * ctrl.paging.pageSize + $index + 1}}</span>
+				</td>
+				<td>
+					<span class="big">{{ addService.name }}</span>
+				</td>
+				<td>
+					<span class="big">{{ addService.serviceType.name }}</span>
+				</td>
+				<td>
+					<span class="big">{{ addService.specialist }}</span>
+				</td>
+				<td>
+					<span class="big">{{ addService.user.name }}</span>
+				</td>
+				<td>
+					<span class="big">{{ addService.description }}</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

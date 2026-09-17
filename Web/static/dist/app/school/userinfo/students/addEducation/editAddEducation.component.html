@@ -1,0 +1,62 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+	<div class="modal-body">
+
+		<form class="form-horizontal form-xs" name="costForm">
+			<div class="form-group">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.ClassManagement.kProgDirection}}</label>
+				<div class="col-md-7">
+					<input type="text" class="form-control" disabled ng-value="$ctrl.programName">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.Reports.kProgramDirection}}</label>
+				<div class="col-md-7">
+					<input type="text" class="form-control" disabled ng-value="$ctrl.addEducation.direction">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.Reports.kAssociation}}</label>
+				<div class="col-md-7">
+					<input type="text" class="form-control" disabled ng-value="$ctrl.addEducation.class.name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.SetupAddSchool.kCost}}</label>
+				<div class="col-md-7">
+					<select class="form-control" ng-model="$ctrl.addEducation.cost" ng-options="cost.key as cost.name for cost in $ctrl.programCosts"></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.SetupAddSchool.kReason}}</label>
+				<div class="col-md-7">
+					<input name="reason" type="text" class="form-control" ng-model="$ctrl.addEducation.enrollReason">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+
+		<!-- СОХРАНИТЬ -->
+		<button class="btn btn-primary btn-sm" ng-click="$costForm.pristine = true; $ctrl.save(costForm.$valid || $ctrl.addEducation.cost != $ctrl.AddProgramCost.Certificate);">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<!-- ОТМЕНИТЬ -->
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+
+	</div>
+</div>

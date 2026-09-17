@@ -1,0 +1,70 @@
+﻿<% ' © 2007-2017 IRTech. All rights reserved. %>
+
+<table class="print-block" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<div align="center"><b>1.3. Перевозка обучающихся, проживающих в отдаленных районах</b></div>
+			<br>
+			<div align="right">Код по ОКЕИ: человек - 792</div>
+
+			<table class="ThinTable" align="left" border=1 cellpadding=3 cellspacing=0 width="100%">
+				<tr align="middle" valign="center">
+					<td>Наименование <br>показателей</td>
+					<td>№ <br>строки</td>
+					<td>Численность обучающихся, нуждающихся в подвозе  в <br>организацию  и (или) обратно</td>
+					<td>в том числе охвачено подвозом</td>
+				</tr>
+				<tr align="middle" valign="center"><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+				
+				<tr align="middle" valign="center">
+					<td align="left">&nbsp;1-4  классы</td>
+					<td>01</td>
+					<%=DrawInputs("01.3",1,3,4)%>
+				</tr>
+				<tr align="middle" valign="center">
+					<td align="left">&nbsp;5-9  классы</td>
+					<td>02</td>
+					<%=DrawInputs("01.3",2,3,4)%>
+				</tr>
+				<tr align="middle" valign="center">
+					<td align="left">&nbsp;10-11 (12) классы</td>
+					<td>03</td>
+					<%=DrawInputs("01.3",3,3,4)%>
+				</tr>
+				<tr align="middle" valign="center">
+					<td align="left">&nbsp;Всего (сумма строк 01 – 03)</td>
+					<td>04</td>
+					<%=DrawInputsWithTotals(4,3,4,"01.3",Array(3,4))%>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<!-- Справка -->
+	<tr>
+		<td>
+			<br>
+			<table class="ThinTable" align="left" border="0" cellpadding="3" cellspacing="0">
+				<tr>
+					<td align="left"><b>Справка 3.</b>&nbsp;Коды по ОКЕИ: единица – 642, место – 698</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Число автотранспортных средств, предназначенных для перевозки обучающихся&nbsp;&nbsp;</td>
+					<td>(05)</td>
+					<td>&nbsp;<%=IT("T01.30503", 5, 5)%>;</td>
+				</tr>
+				<tr>
+					<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;в них пассажирских мест&nbsp;</td>
+					<td>(06)</td>
+					<td>&nbsp;<%=IT("T01.30603", 5, 5)%></td>
+				</tr>
+				<tr>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Число автотранспортных средств, предназначенных для хозяйственных нужд&nbsp;&nbsp;</td>
+					<td>(07)</td>
+					<td>&nbsp;<%=IT("T01.30703", 5, 5)%></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>

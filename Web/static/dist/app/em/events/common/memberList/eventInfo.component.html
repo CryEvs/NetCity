@@ -1,0 +1,34 @@
+<h4>
+	{{ctrl.event.name}}
+</h4>
+
+<p>
+	<span data-prefix="Дата проведения: ">{{ctrl.event.date}}</span>
+	<span data-prefix="Тип: ">{{ctrl.event.awardEventType.name}}</span>
+	<span ng-show="ctrl.event.subject" data-prefix="Тема / Предмет / Вид спорта: ">{{ctrl.event.subject}}</span>
+	<span ng-show="ctrl.event.isNationOlympiad" data-prefix="Предмет: ">{{ctrl.event.olympSubject.name}}</span>
+	<span ng-if="!ctrl.event.isNationOlympiad" data-prefix="Уровень: ">{{ctrl.event.level}}</span>
+	<span ng-if="ctrl.event.isNationOlympiad" data-prefix="Этап: ">{{ctrl.event.level}}</span>
+</p>
+
+<p>
+	<span ng-if="ctrl.event.isNationOlympiad" data-prefix="Классы: ">{{ctrl.event.getGrades()}}</span>
+	<span data-prefix="Организатор: ">{{ctrl.event.founder.name}}</span>
+	<span data-prefix="Место проведения: ">{{ctrl.event.place.name}}</span>
+	<span data-prefix="Статус: ">{{ctrl.event.status.name}}</span>
+</p>
+
+<p ng-if="!ctrl.event.isNationOlympiad">
+	<span ng-show="ctrl.event.partForm" data-prefix="Форма участия: ">{{ctrl.event.partForm.name}}</span>
+	<span ng-show="ctrl.event.visitForm" data-prefix="Вид посещения: ">{{ctrl.event.visitForm.name}}</span>
+</p>
+
+<p>
+	<span ng-show="ctrl.data.event.documents.length" data-prefix="Документы: ">
+		<span class="block-item" ng-repeat="doc in ctrl.event.documents">
+			<a href="javascript:void()" ng-click="ctrl.download(doc)">{{doc.name}}</a>
+			<span class="item-descr">{{doc.description}}<span style="white-space: pre-wrap" ng-show="!$last">;  </span></span>
+		</span>
+	</span>
+	
+</p>

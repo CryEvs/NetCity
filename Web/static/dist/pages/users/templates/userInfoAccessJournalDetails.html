@@ -1,0 +1,18 @@
+<div style="max-height: 500px; overflow: auto;">
+	<table class="table table-bordered">
+		<tr>
+			<th style="width: 35%;">{{language.Generic.Common.kField}}</th>
+			<th>{{language.Generic.Common.kSetValue}}</th>
+		</tr>
+		{{#each accessJournalEntryDetails}}
+			<tr>
+				<td>
+					{{fieldName}}
+				</td>
+				<td>
+					{{fieldValue}}
+				</td>
+			</tr>
+		{{/each}}
+	</table>
+</div>

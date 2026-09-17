@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Окружающий мир. 1 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Окружающий мир. 1 класс" ID="1" Filename="ni_okrmir_1/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Части растений" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Части растений" 
+				Filename="sgo/ni_okrmir_1/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Садовые цветы" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Садовые цветы" 
+				Filename="sgo/ni_okrmir_1/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Комнатные цветы. Уход за комнатными цветами" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Комнатные цветы. Уход за комнатными цветами" 
+				Filename="sgo/ni_okrmir_1/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Звери. Части тела" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Звери. Части тела" 
+				Filename="sgo/ni_okrmir_1/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Дикие звери" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Дикие звери" 
+				Filename="sgo/ni_okrmir_1/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Домашние животные" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Домашние животные" 
+				Filename="sgo/ni_okrmir_1/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Птицы. Части тела" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Птицы. Части тела" 
+				Filename="sgo/ni_okrmir_1/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Зимующие птицы" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Зимующие птицы" 
+				Filename="sgo/ni_okrmir_1/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Перелетные птицы" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Перелетные птицы" 
+				Filename="sgo/ni_okrmir_1/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Рыбы. Части тела" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Рыбы. Части тела" 
+				Filename="sgo/ni_okrmir_1/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Насекомые. Части тела" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Насекомые. Части тела" 
+				Filename="sgo/ni_okrmir_1/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Динозавры" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Динозавры" 
+				Filename="sgo/ni_okrmir_1/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Земля. Луна" ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Земля. Луна" 
+				Filename="sgo/ni_okrmir_1/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Наша страна" ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Наша страна" 
+				Filename="sgo/ni_okrmir_1/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Знакомство с компьютером" ID="16">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Знакомство с компьютером" 
+				Filename="sgo/ni_okrmir_1/15/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+	 
+</Project>

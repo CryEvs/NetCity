@@ -1,0 +1,68 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<button title="ctrl.language.Generic.Calendar.kBtnDelLessons" type="button" class="btn btn-danger" ng-click="ctrl.delLessons()">
+				<span class="glyphicon glyphicon-minus-sign"></span> <span>{{ctrl.language.Generic.Calendar.kBtnDelLessons}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="alert alert-warning" role="alert">
+			{{ctrl.language.Calendar.kWarningMsgDelLessons}}
+		</div>
+	</div>
+</div>
+
+<div class="row" ng-if="ctrl.state.dataReady">
+	<div class="col-md-1" style="margin-top: 10px;">
+		<ng-form name="ctrl.form">
+			<div ng-class="{ 'has-error': ctrl.form.dtLesson.$invalid }">
+				<date-input-component name="dtLesson" date-model="ctrl.data.dtLesson" required="true" notrack="true"></date-input-component>
+
+				<div ng-messages="ctrl.form.dtLesson.$error">
+					<span class="help-block" ng-message="required">{{ctrl.language.Generic.Common.kEnterDate}}</span>
+					<span class="help-block" ng-message="dateFormat">{{ctrl.dateFormatMessage()}}</span>
+				</div>
+			</div>
+		</ng-form>
+	</div>
+</div>
+
+<div class="row" ng-if="ctrl.state.dataReady">
+	<div class="col-md-4" style="margin-top: 10px; display: block;">
+		<table class="table table-bordered">
+			<tr>
+				<th>{{ctrl.language.ClassManagement.kGrade}}</th>
+				<th>{{ctrl.language.MenuFolders.kFNClasses}}</th>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-click="ctrl.toggleAll()" ng-model="ctrl.data.selectAll" ng-checked="ctrl.data.selectAll"> {{ctrl.language.Generic.Common.kCheckAll}}
+						</label>
+					</div>
+				</td>
+			</tr>
+			<tr ng-repeat="group in ctrl.data.classesGroups">
+				<td>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-click="ctrl.toggleGroup(group);ctrl.selectAll()" ng-model="group.select" ng-checked="group.select"> {{group.title}}
+						</label>
+					</div>
+				</td>
+				<td>
+					<div ng-repeat="classData in group.classesData" class="checkbox inline-block" style="padding-right: 5px;">
+						<label>
+							<input type="checkbox" ng-click="ctrl.toggleClassData(classData);ctrl.selectGroupOrAll(classData)" ng-model="classData.select" ng-checked="classData.select"> {{ctrl.getClassDataName(classData)}};
+						</label>						
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

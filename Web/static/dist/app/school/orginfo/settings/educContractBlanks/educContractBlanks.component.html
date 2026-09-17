@@ -1,0 +1,21 @@
+<table class="table">
+	<tr class="success">
+		<td>
+			<file-icon ng-if="$ctrl.pfdoBlank" file="$ctrl.pfdoBlank.name"></file-icon>
+		</td>
+		<td style="vertical-align: middle">
+			<a ng-if="$ctrl.pfdoBlank"
+				href="javascript:void(0)" 
+				ng-click="$ctrl.download()" 
+				title="Бланк договора об обучении на основе сертификата ПФДО персонифицированного финансирования дополнительного образования">
+				Договор об обучении на основе сертификата ПФДО
+			</a>
+			<span ng-if="!$ctrl.pfdoBlank">Договор об обучении на основе сертификата ПФДО</span>
+		</td>
+		<td style="vertical-align: middle; width: 1px">
+			<a href="javascript:void(0)" ng-if="!$ctrl.pfdoBlank" ng-click="$ctrl.edit()">Загрузить</a>
+			<a href="javascript:void(0)" ng-if="$ctrl.pfdoBlank" ng-click="$ctrl.edit()">Изменить</a>
+			<a href="javascript:void(0)" ng-if="$ctrl.pfdoBlank" ng-click="$ctrl.delete()">Удалить</a>
+		</td>
+	</tr>
+</table>

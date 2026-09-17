@@ -1,0 +1,64 @@
+<div class="container" ng-if="$ctrl.ready">
+	<form class="form form-horizontal">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group" ng-if="$ctrl.userDetails.snils">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">
+						{{$ctrl.language.Generic.Common.kSnils}}
+					</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<div class="input-group">
+							<input type="text" class="form-control" ng-readonly="true" size="47" maxlength="39" ng-value="$ctrl.userDetails.snils">
+							<span class="input-group-addon"><input type="checkbox" ng-checked="true" ng-disabled="true"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" ng-if="$ctrl.userDetails.mobilePhone">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">
+						{{$ctrl.language.Generic.Common.kMobilePhone}}
+					</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<div class="input-group">
+							<input type="text" class="form-control" ng-readonly="true" size="47" maxlength="39" ng-value="$ctrl.userDetails.mobilePhone">
+							<span class="input-group-addon">
+								<input type="checkbox" ng-click="$ctrl.mpChecked = !$ctrl.mpChecked" ng-checked="$ctrl.mpChecked">
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" ng-if="$ctrl.userDetails.email">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">
+						{{$ctrl.language.Generic.Import.kEMail}}
+					</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<div class="input-group">
+							<input type="text" class="form-control" ng-readonly="true" size="47" maxlength="39" ng-value="$ctrl.userDetails.email">
+							<span class="input-group-addon">
+								<input type="checkbox" ng-click="$ctrl.emChecked = !$ctrl.emChecked" ng-checked="$ctrl.emChecked">
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="alert alert-info" role="alert" style="white-space: pre-line">{{$ctrl.saveDetailsMessage}}</div>
+	</form>
+	
+	<div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="buttons-panel">
+					<button title="{{$ctrl.language.Generic.Buttons.kCopy}}" type="button" class="btn btn-default" ng-click="$ctrl.save()">
+						<span class="glyphicon glyphicon-duplicate"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kCopy}}</span>
+					</button>
+					<button title="{{$ctrl.language.Generic.Buttons.kContinue}}" type="button" class="btn btn-default" ng-click="$ctrl.doContinue()">
+						<span class="glyphicon glyphicon-new-window"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kContinue}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

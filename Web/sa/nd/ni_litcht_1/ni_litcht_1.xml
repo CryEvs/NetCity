@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Литературное чтение. 1 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Литературное чтение. 1 класс" ID="1" Filename="ni_litcht_1/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Малые жанры фольклора" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Малые жанры фольклора" 
+				Filename="sgo/ni_litcht_1/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Народные сказки" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Народные сказки" 
+				Filename="sgo/ni_litcht_1/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Литературные (авторские) сказки" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Литературные (авторские) сказки" 
+				Filename="sgo/ni_litcht_1/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Сказки писателей России" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Сказки писателей России" 
+				Filename="sgo/ni_litcht_1/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Сказки зарубежных писателей" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Сказки зарубежных писателей" 
+				Filename="sgo/ni_litcht_1/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Самуил Яковлевич Маршак" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Самуил Яковлевич Маршак" 
+				Filename="sgo/ni_litcht_1/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Корней Иванович Чуковский" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Корней Иванович Чуковский" 
+				Filename="sgo/ni_litcht_1/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Владимир Григорьевич Сутеев" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Владимир Григорьевич Сутеев" 
+				Filename="sgo/ni_litcht_1/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Евгений Иванович Чарушин" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Евгений Иванович Чарушин" 
+				Filename="sgo/ni_litcht_1/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Виталий Валентинович Бианки" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Виталий Валентинович Бианки" 
+				Filename="sgo/ni_litcht_1/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Агния Львовна Барто" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Агния Львовна Барто" 
+				Filename="sgo/ni_litcht_1/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Книги о детях" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Книги о детях" 
+				Filename="sgo/ni_litcht_1/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+<Chapter Name="Читаем о животных" ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Читаем о животных" 
+				Filename="sgo/ni_litcht_1/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Читаем о родной природе" ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Читаем о родной природе" 
+				Filename="sgo/ni_litcht_1/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="О Родине и родной природе" ID="16">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="О Родине и родной природе" 
+				Filename="sgo/ni_litcht_1/15/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="По страницам любимых книг" ID="17">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="По страницам любимых книг" 
+				Filename="sgo/ni_litcht_1/16/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+	 
+</Project>

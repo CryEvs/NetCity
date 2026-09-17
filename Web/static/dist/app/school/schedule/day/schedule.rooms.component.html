@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-md-8">
+		<table class="schedule-table table table-bordered table-condensed print-block">
+			<tr>
+				<th rowspan="3" class="schedule-table-header">{{$ctrl.language.Common.kRoom}}</th>
+				<th colspan="{{$ctrl.dayScheduleTimes.length}}" class="schedule-table-header">{{$ctrl.language.Calendar.kLesson}}</th>
+			</tr>
+
+			<tr class="xtcb">
+				<td class="relay{{st.relay}}" ng-repeat="st in $ctrl.dayScheduleTimes">{{st.number}}</td>
+			</tr>
+
+			<tr class="xtcb">
+				<td class="relay{{st.relay}}" style="white-space:nowrap;" ng-repeat="st in $ctrl.dayScheduleTimes">{{st.startTime | nsTimeShort}} - {{st.endTime | nsTimeShort}}</td>
+			</tr>
+		
+			<tr ng-repeat="roomMeetings in $ctrl.roomsMeetings">
+				<th class="leftheader">{{roomMeetings.room.roomname}}</th>
+				
+				<td ng-repeat="st in roomMeetings.scheduleTimes" ng-class="{'filled-cell': st.meetings.length}">
+					<div ng-class="{'extraActivity': cm.extraActivity}" ng-repeat="cm in st.meetings">
+						<a href="javascript:void(0)" ng-click="$ctrl.editClassMeetings(cm)">{{cm.className}}/{{cm.subjectName}}</a>
+					</div>
+					<div class="{{$ctrl.eventsService.eventTypeInfos[event.eventType].cssClass}}" ng-repeat="event in st.events">
+						<a href="javascript:void(0)" ng-click="$ctrl.editEvent(event.id)" title="{{event.name}}">{{$ctrl.showEventName(event)}}</a>
+					</div>
+				</td>
+
+			</tr>
+		</table>
+	</div>
+</div>
+

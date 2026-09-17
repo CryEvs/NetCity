@@ -1,0 +1,75 @@
+<form class="form-horizontal" name="$ctrl.form" ng-if="$ctrl.ready">
+	<div class="buttons-filters-panel form-horizontal">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="buttons-panel">
+					<div class="buttons-panel-left">
+						<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+							<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="filters-panel col-md-6 col-lg-6 col-sm-12">
+				<ns-form control-size="col-md-9 col-lg-6 col-sm-6" label-size="col-md-3 col-sm-3">
+					<ns-form-group title="{{$ctrl.language.Generic.SetupSchool.kRegTimezone}}">
+						<select name="GMT" class="form-control form-control-inline"
+							ng-model="$ctrl.data.timeOffset"
+							ng-options="x.id as x.name for x in $ctrl.timezones"
+							ng-change="" ng-disabled="$ctrl.readOnly || !$ctrl.allowEditTimezoneInOo" track-changes>
+						</select>
+					</ns-form-group>
+
+					<ns-form-group title="{{$ctrl.language.Generic.SetupSchool.kRegDate}}">
+						<select name="0" class="form-control form-control-inline"
+							ng-model="$ctrl.data.firstDatePartFormat"
+							ng-options="x as $ctrl.service.locale(x) for x in $ctrl.firstDatePartFormats"
+							ng-change="$ctrl.toggleFirstDatePartFormat()" ng-disabled="$ctrl.readOnly" track-changes>
+						</select>
+
+						<select name="1" class="form-control form-control-inline"
+							ng-model="$ctrl.data.secondDatePartFormat"
+							ng-options="x as $ctrl.service.locale(x) for x in $ctrl.secondDatePartFormats"
+							ng-change="$ctrl.toggleSecondDatePartFormat()" ng-disabled="$ctrl.readOnly" track-changes>
+						</select>
+
+						<select name="2" class="form-control form-control-inline"
+							ng-model="$ctrl.data.thirdDatePartFormat"
+							ng-options="x as $ctrl.service.locale(x) for x in $ctrl.thirdDatePartFormats"
+							ng-change="$ctrl.toggleThirdDatePartFormat()" ng-disabled="$ctrl.readOnly" track-changes>
+						</select>
+
+						<input type="text" name="delim" ng-model="$ctrl.data.dateDelimiter" size="1" maxlength="1" ng-disabled="$ctrl.readOnly" ng-change="$ctrl.toggleDateDelimiter()" track-changes>
+						<div class="pull-right"><b>{{$ctrl.getDate()}}</b></div>
+					</ns-form-group>
+
+					<ns-form-group title="{{$ctrl.language.Generic.SetupSchool.kRegTime}}">
+						<select name="t0" class="form-control form-control-inline"
+							ng-model="$ctrl.data.hoursFormat"
+							ng-options="x as $ctrl.service.locale(x) for x in $ctrl.hourFormats"
+							ng-change="$ctrl.toggleTime()" ng-disabled="$ctrl.readOnly" track-changes>
+						</select>
+
+						<select name="t1" class="form-control form-control-inline"
+							ng-model="$ctrl.data.minutesFormat"
+							ng-options="x as $ctrl.service.locale(x) for x in $ctrl.minuteFormats"
+							ng-change="$ctrl.toggleTime()" ng-disabled="$ctrl.readOnly" track-changes>
+						</select>
+
+						<input type="text" name="tdelim" ng-model="$ctrl.data.timeDelimiter" size="1" maxlength="1" ng-disabled="$ctrl.readOnly" ng-change="$ctrl.toggleTimeDelimiter()" track-changes>
+
+						<div ng-if="$ctrl.isEng()">
+							am<input type="text" name="tam" ng-model="$ctrl.data.timeAm" size="6" ng-disabled="$ctrl.readOnly" track-changes>
+							pm<input type="text" name="tpm" ng-model="$ctrl.data.timePm" size="6" ng-disabled="$ctrl.readOnly" track-changes>
+						</div>
+						<div class="pull-right"><b>{{$ctrl.getTime()}}</b></div>
+					</ns-form-group>
+				</ns-form>
+			</div>
+		</div>
+	</div>
+</form>

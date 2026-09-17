@@ -1,0 +1,394 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+
+<div ng-if="!$ctrl.state.readOnly" class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="$ctrl.language.Generic.Buttons.kSave" type="button" class="btn btn-primary ng-binding" ng-click="$ctrl.addProgramForm.$displayErrors=true;  $ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+				
+				<button	title="$ctrl.language.Generic.Buttons.kReset" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+				<button ng-if="($ctrl.state.integrationIrtechPFDO && $ctrl.state.editMode)" title="Опубликовать в Навигаторе" type="button" class="btn btn-default" ng-click="$ctrl.publicate()">
+					<span class="glyphicon glyphicon-transfer"></span> 
+					<span>Опубликовать в Навигаторе</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<form id="addProgramForm" name="$ctrl.addProgramForm" class="form-horizontal form-sm" ng-if="$ctrl.state.dataReady">
+			<div class="row">
+			<div class="col-lg-9">
+				
+			<ns-panel panel-id="commonInfo" class="info" title="{{$ctrl.language.Generic.Common.kCommonInfo}}" expanded="true">
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.addProgramForm.PROGNAME.$invalid && (!$ctrl.addProgramForm.PROGNAME.$pristine || $ctrl.addProgramForm.$displayErrors)}">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupSchool.kProgramName}}<span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>*</b></span></label>
+				<div class="col-md-7 col-lg-5">
+					<textarea ng-disabled="$ctrl.state.readOnly" class="form-control" track-changes name="PROGNAME" ng-model="$ctrl.data.addProgram.name" rows="3" cols="50" wrap="soft" maxlength="255" required></textarea>
+					<p ng-show="$ctrl.addProgramForm.PROGNAME.$invalid && (!$ctrl.addProgramForm.PROGNAME.$pristine || $ctrl.addProgramForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.SetupSchool.kErrEmptyProgramName}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.addProgramForm.PROG_ATTR.$invalid && (!$ctrl.addProgramForm.PROG_ATTR.$pristine || $ctrl.addProgramForm.$displayErrors)}">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupSchool.kProgramAttr}}<span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>*</b></span></label>
+				<div class="col-md-7 col-lg-5">
+					<input ng-disabled="$ctrl.state.readOnly" type="text" class="form-control" track-changes name="PROG_ATTR" ng-model="$ctrl.data.addProgram.shortName" size="50" maxlength="50" maxlength="50" required />
+					<p ng-show="$ctrl.addProgramForm.PROG_ATTR.$invalid && (!$ctrl.addProgramForm.PROG_ATTR.$pristine || $ctrl.addProgramForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.SetupSchool.kErrEmptyProgramAttr}}</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupSchool.kProgramType}}</label>
+				<div class="col-md-7 col-lg-5">
+					<select ng-if="!$ctrl.state.readOnly" class="form-control" track-changes name="ADDPROGRAMTYPEID" ng-model="$ctrl.data.addProgram.programType"
+							ng-options="programType as programType.name for programType in $ctrl.programTypes track by programType.id"></select>
+					<input ng-if="$ctrl.state.readOnly" type="text" class="form-control" name="ADDPROGRAMTYPEID" disabled ng-value="$ctrl.data.addProgram.programType.name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupSchool.kProgramDirection}}<span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>*</b></span></label>
+				<div class="col-md-7 col-lg-5">
+					<select ng-if="!$ctrl.state.readOnly" class="form-control" track-changes name="DIRID" ng-model="$ctrl.data.addProgram.direction"
+							ng-options="direction as direction.name for direction in $ctrl.directions track by direction.id"
+							ng-change="$ctrl.onChangeDirection()"></select>
+					<input ng-if="$ctrl.state.readOnly" type="text" class="form-control" name="DIRID" disabled ng-value="$ctrl.data.addProgram.direction.name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kActivityType}}<span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>*</b></span></label>
+				<div class="col-md-7 col-lg-5">
+					<select ng-if="!$ctrl.state.readOnly" class="form-control" track-changes name="TYPEID" ng-model="$ctrl.data.addProgram.activityType"
+							ng-options="activityType as activityType.name for activityType in $ctrl.filterActivityTypesByDirection() track by activityType.id"></select>
+					<input ng-if="$ctrl.state.readOnly" type="text" class="form-control" name="TYPEID" disabled ng-value="$ctrl.data.addProgram.activityType.name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupSchool.kAdaptation}}</label>
+				<div class="col-md-7 col-lg-5">
+					<div class="checkbox">
+						<label>
+							<input ng-disabled="$ctrl.state.readOnly" type="checkbox" track-changes name="ADAPTATION" ng-model="$ctrl.data.addProgram.adaptation" ng-change="$ctrl.onChangeAdaption()">
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kDisabilityChildAdapted}}</label>
+				<div class="col-md-7 col-lg-5">
+					<div class="checkbox">
+						<label>
+							<input ng-disabled="$ctrl.state.readOnly" type="checkbox" track-changes name="DISABILITYCHILDADAPTED" ng-model="$ctrl.data.addProgram.disabilityChildAdapted" ng-change="$ctrl.onChangeAdaption()">
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.data.addProgram.disabilityChildAdapted || $ctrl.data.addProgram.adaptation">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kAdaptationType}}</label>
+				<div class="col-md-7 col-lg-5">
+					<select ng-if="!$ctrl.state.readOnly" class="form-control" track-changes name="ADAPTATIONTYPE" ng-model="$ctrl.data.addProgram.adaptationType"
+							ng-options="type as type.name for type in $ctrl.adaptationTypes track by type.id"></select>
+					<input ng-if="$ctrl.state.readOnly" type="text" class="form-control" name="ADAPTATIONTYPE" disabled ng-value="$ctrl.data.addProgram.adaptationType.name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kEducForm}}</label>
+				<div class="col-md-7 col-lg-5">
+					<select ng-if="!$ctrl.state.readOnly" class="form-control" track-changes name="EDUCFORM" ng-model="$ctrl.data.addProgram.educForm"
+							ng-options="educForm as educForm.name for educForm in $ctrl.educForms track by educForm.id"></select>
+					<input ng-if="$ctrl.state.readOnly" type="text" class="form-control" name="EDUCFORM" disabled ng-value="$ctrl.data.addProgram.educForm.name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupSchool.kFederalRequirements}}</label>
+				<div class="col-md-7 col-lg-5">
+					<textarea ng-disabled="$ctrl.state.readOnly" class="form-control" track-changes name="FEDERALREQUIREMENTS" ng-model="$ctrl.data.addProgram.federalRequirements" rows="3" cols="50" wrap="soft" maxlength="4000"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kShortDescription}}</label>
+				<div class="col-md-7 col-lg-5">
+					<textarea ng-disabled="$ctrl.state.readOnly" class="form-control" track-changes name="DESCR" ng-model="$ctrl.data.addProgram.description" rows="3" cols="50" wrap="soft" maxlength="1000"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kProgramContent}}</label>
+				<div class="col-md-7 col-lg-5">
+					<textarea ng-disabled="$ctrl.state.readOnly" class="form-control" track-changes name="PROGCONTENT" ng-model="$ctrl.data.addProgram.programContent" rows="3" cols="50" wrap="soft" maxlength="4000"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kFullContent}}</label>
+				<div class="col-md-7 col-lg-5">
+					<file-attachments settings="$ctrl.faFullContent"></file-attachments>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kKeyWord}}</label>
+				<div class="col-md-7 col-lg-5">
+					<textarea ng-disabled="$ctrl.state.readOnly" class="form-control" track-changes name="KEYWORD" ng-model="$ctrl.data.addProgram.keyWord" rows="3" cols="50" wrap="soft" maxlength="400"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kTarget}}</label>
+				<div class="col-md-7 col-lg-5">
+					<textarea ng-disabled="$ctrl.state.readOnly" class="form-control" track-changes name="TARGET" ng-model="$ctrl.data.addProgram.target" rows="3" cols="50" wrap="soft" maxlength="255"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kResult}}</label>
+				<div class="col-md-7 col-lg-5">
+					<textarea ng-disabled="$ctrl.state.readOnly" class="form-control" track-changes name="RESULT" ng-model="$ctrl.data.addProgram.result" rows="3" cols="50" wrap="soft" maxlength="255"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kMaterialBase}}</label>
+				<div class="col-md-7 col-lg-5">
+					<textarea ng-disabled="$ctrl.state.readOnly" class="form-control" track-changes name="MATERIALBASE" ng-model="$ctrl.data.addProgram.materialBase" rows="3" cols="50" wrap="soft" maxlength="255"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kHealthRequirements}}</label>
+				<div class="col-md-7 col-lg-5">
+					<textarea ng-disabled="$ctrl.state.readOnly" class="form-control" track-changes name="HEALTHREQUIREMENTS" ng-model="$ctrl.data.addProgram.healthRequirements" rows="3" cols="50" wrap="soft" maxlength="255"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kMedReference}}</label>
+				<div class="col-md-7 col-lg-5">
+					<div class="checkbox">
+						<label>
+							<input ng-disabled="$ctrl.state.readOnly" type="checkbox" track-changes name="MEDREFERENCE" ng-model="$ctrl.data.addProgram.medReference">
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': !$ctrl.isAgeRangeValid() && (!$ctrl.addProgramForm.AGEMIN.$pristine || !$ctrl.addProgramForm.AGEMAX.$pristine || $ctrl.addProgramForm.$displayErrors)}">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kAgeRange}}</label>
+				<div class="col-md-7 col-lg-5">
+					<div style="display: inline-block">
+						<span class="form-control-text">{{$ctrl.language.Generic.SetupAddSchool.kFrom}}</span>&nbsp;
+						<select ng-if="!$ctrl.state.readOnly" class="form-control form-control-inline" track-changes name="AGEMIN" ng-model="$ctrl.data.addProgram.ageMin"
+								ng-options="age as (age == null ? '' : age) for age in $ctrl.ages"></select>
+						<input size="10" ng-if="$ctrl.state.readOnly" type="text" class="form-control form-control-inline" name="AGEMIN" disabled ng-value="$ctrl.data.addProgram.ageMin">&nbsp;
+						<span class="form-control-text">{{$ctrl.language.Generic.SetupAddSchool.kTo}}</span>&nbsp;
+						<select ng-if="!$ctrl.state.readOnly" class="form-control form-control-inline" track-changes name="AGEMAX" ng-model="$ctrl.data.addProgram.ageMax"
+								ng-options="age as (age == null ? '' : age) for age in $ctrl.ages"></select>
+						<input size="10" ng-if="$ctrl.state.readOnly" type="text" class="form-control form-control-inline" name="AGEMAX" disabled ng-value="$ctrl.data.addProgram.ageMax">
+						<p ng-show="!$ctrl.isAgeRangeValid() && (!$ctrl.addProgramForm.AGEMIN.$pristine || !$ctrl.addProgramForm.AGEMAX.$pristine || $ctrl.addProgramForm.$displayErrors)" class="help-block form-control-text">{{$ctrl.language.Generic.SetupAddSchool.kInvalidAgeRange}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': !$ctrl.isCountStudentsValid() && (!$ctrl.addProgramForm.MINPERSONS.$pristine || !$ctrl.addProgramForm.MAXPERSONS.$pristine || $ctrl.addProgramForm.$displayErrors)}">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kCountStudents}}</label>
+				<div class="col-md-7 col-lg-5">
+					<div style="display: inline-block">
+						<span class="form-control-text">{{$ctrl.language.Generic.SetupAddSchool.kFrom}}</span>&nbsp;
+						<select ng-if="!$ctrl.state.readOnly" class="form-control form-control-inline" track-changes name="MINPERSONS" ng-model="$ctrl.data.addProgram.minPersons"
+							ng-options="countStudents for countStudents in $ctrl.countStudents"></select>
+						<input size="10" ng-if="$ctrl.state.readOnly" type="text" class="form-control form-control-inline" name="MINPERSONS" disabled ng-value="$ctrl.data.addProgram.minPersons">&nbsp;
+						<span class="form-control-text">{{$ctrl.language.Generic.SetupAddSchool.kTo}}</span>&nbsp;
+						<select ng-if="!$ctrl.state.readOnly" class="form-control form-control-inline" track-changes name="MAXPERSONS" ng-model="$ctrl.data.addProgram.maxPersons"
+							ng-options="countStudents for countStudents in $ctrl.countStudents"></select>
+						<input size="10" ng-if="$ctrl.state.readOnly" type="text" class="form-control form-control-inline" name="MAXPERSONS" disabled ng-value="$ctrl.data.addProgram.maxPersons">
+						<p ng-show="!$ctrl.isCountStudentsValid() && (!$ctrl.addProgramForm.MINPERSONS.$pristine || !$ctrl.addProgramForm.MAXPERSONS.$pristine || $ctrl.addProgramForm.$displayErrors)" class="help-block form-control-text">{{$ctrl.language.Generic.SetupAddSchool.kInvalidCountStudents}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kCost}}</label>
+				<div class="col-md-7 col-lg-5" id="paymentTypes">
+					<div ng-if="!$ctrl.state.readOnly" class="checkbox" ng-repeat="paymentType in $ctrl.refPaymentTypes">
+						<label><input type="checkbox" name="PAYMENTTYPES" track-changes ng-click="$ctrl.togglePaymentType(paymentType.key)" ng-checked="$ctrl.isPaymentType(paymentType.key)">{{paymentType.name}}</label>
+					</div>
+					<div ng-if="$ctrl.state.readOnly" ng-repeat="paymentType in $ctrl.getProgramPaymentTypes()">
+						{{paymentType.name}}
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kStatus}}</label>
+				<div class="col-md-7 col-lg-5">
+					<select ng-if="!$ctrl.state.readOnly" class="form-control" track-changes name="STATUS" ng-model="$ctrl.data.addProgram.status"
+							ng-options="status as status.name for status in $ctrl.statuses track by status.id"></select>
+					<input ng-if="$ctrl.state.readOnly" type="text" class="form-control" name="STATUS" disabled ng-value="$ctrl.data.addProgram.status.name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kSignificantProject}}</label>
+				<div class="col-md-7 col-lg-5">
+					<select ng-if="!$ctrl.state.readOnly" class="form-control" track-changes name="SIGNIFICANTPROJECT" ng-model="$ctrl.data.addProgram.significantProject"
+							ng-options="project as (project == null ? 'Не указано' : project.name) for project in $ctrl.significantProjects track by project.id"></select>
+					<input ng-if="$ctrl.state.readOnly" type="text" class="form-control" name="SIGNIFICANTPROJECT" disabled ng-value="$ctrl.data.addProgram.significantProject.name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupSchoolCurPlan.kTitleCurriculumPlan}}</label>
+				<div class="col-md-7 col-lg-5">
+					<file-attachments settings="$ctrl.fa"></file-attachments>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kImage}}</label>
+				<div class="col-md-7 col-lg-5">
+					<file-attachments settings="$ctrl.faImage"></file-attachments>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kDuration}}</label>
+				<div class="col-md-7 col-lg-5">
+					<div style="display: inline-block">
+						<select ng-if="!$ctrl.state.readOnly" class="form-control form-control-inline" track-changes name="DURATIONYEAR" ng-model="$ctrl.data.addProgram.durationYear"
+								ng-options="duration as (duration == null ? '' : duration) for duration in $ctrl.durationYears"></select>
+						<input size="10" ng-if="$ctrl.state.readOnly" type="text" class="form-control form-control-inline" name="DURATIONYEAR" disabled ng-value="$ctrl.data.addProgram.durationYear">
+						<span class="form-control-text form-control-inline">&nbsp;{{$ctrl.language.Generic.SetupAddSchool.kYears}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						<select ng-if="!$ctrl.state.readOnly" class="form-control form-control-inline" track-changes name="DURATIONMONTH" ng-model="$ctrl.data.addProgram.durationMonth"
+								ng-options="duration as (duration == null ? '' : duration) for duration in $ctrl.durationMonths"></select>
+						<input size="10" ng-if="$ctrl.state.readOnly" type="text" class="form-control form-control-inline" name="DURATIONMONTH" disabled ng-value="$ctrl.data.addProgram.durationMonth">
+						<span class="form-control-text form-control-inline">&nbsp;{{$ctrl.language.Generic.SetupAddSchool.kMonths}}</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.addProgramForm.SEATSNUMBER.$invalid && (!$ctrl.addProgramForm.SEATSNUMBER.$pristine || $ctrl.addProgramForm.$displayErrors)}">
+				<label class="control-label col-md-5 col-lg-4">{{$ctrl.language.Generic.SetupAddSchool.kSeatsNumber}}<span style="font-family:Helvetica,Arial; font-size:12pt; color:#FF0000"><b>*</b></span></label>
+				<div class="col-md-7 col-lg-5">
+					<input ng-disabled="$ctrl.state.readOnly" required type="number" class="form-control" track-changes name="SEATSNUMBER" numeric-input="{negative: false, fractional: false}" ng-model="$ctrl.data.addProgram.seatsNumber" size="10" maxlength="5" ng-maxlength="5" ng-min="1" />
+					<p ng-show="$ctrl.addProgramForm.SEATSNUMBER.$invalid && (!$ctrl.addProgramForm.SEATSNUMBER.$pristine || $ctrl.addProgramForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.SetupAddSchool.kSeatsNumberErrorMsg}}</p>
+				</div>
+			</div>
+
+			<div class="form-group white-space-nowrap">
+				<label class="control-label col-md-5 col-lg-4 white-space-normal">
+					<span>{{$ctrl.language.Generic.SetupAddSchool.kAddProgramAddress}}</span><br>
+					<span style="font-weight: normal">{{$ctrl.language.Generic.SetupAddSchool.kAddressComment}}</span>
+				</label>
+				<div class="col-md-7 col-lg-5">
+					<div ng-repeat="address in $ctrl.data.addresses" ng-form name="addressesForm">
+						<div class="row" style="display: flex; align-items: center;">
+							<div class="col-md-10">
+								<input class="form-control" track-changes name="ADDRESS" ng-model="address.name" maxlength="400" disabled></input>
+							</div>
+							<div class="col-md-1 ctx-btns-icons ctx-btns-icons-left ctx-btns-icons-lg" ng-if="!$ctrl.state.readOnly">
+								<a href="JavaScript:void(0)" ng-click="$ctrl.editAddress(address);" title="Изменить адрес" class="primary">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</div>
+						</div>
+						<div ng-if="!$last" style="margin-bottom: 2px;">
+						</div>
+					</div>
+				</div>
+				<div class="action-panel col-padding ctx-btns-icons ctx-btns-icons-left ctx-btns-icons-lg" ng-if="!$ctrl.state.readOnly">
+					<a href="javascript:void(0)" ng-click="$ctrl.addAddress()" title="Добавить адрес" class="primary" style="text-decoration: none;">
+						<span class="glyphicon glyphicon-plus"></span>
+					</a>
+				</div>
+			</div>
+
+			<div class="form-group white-space-nowrap">
+				<label class="control-label col-md-5 col-lg-4 white-space-normal">
+					<span>{{$ctrl.language.Generic.SetupSchool.kOrganizationAddress}}</span><br>
+					<span style="font-weight: normal">{{$ctrl.language.Generic.SetupSchool.kOrganizationAddressComment}} </span>
+				</label>
+				<div class="col-md-7 col-lg-5">
+					<span ng-if="$ctrl.juridicalAddress">{{$ctrl.juridicalAddress}}</span>
+					<span ng-if="!$ctrl.juridicalAddress">{{$ctrl.language.Generic.SetupSchool.kOrganizationAddressEmpty}}</span>
+				</div>
+			</div>
+
+			</ns-panel>
+
+
+			<ns-panel panel-id="pfdoPublishInfo" class="success" title="Публикация в Навигаторе" expanded="false">
+				<div class="print-block">
+					<div class="form-group">
+						<label class="control-label col-md-5 col-lg-4">Статус</label>
+						<div class="col-md-7 col-lg-5">
+							<div>
+								<input type="text" class="form-control" name="PublishStatus" disabled ng-value="$ctrl.pfdoPublishStatus.status">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-5 col-lg-4">Дата публикации</label>
+						<div class="col-md-7 col-lg-5">
+							<div>
+								<input type="text" class="form-control" name="NAVDATE" disabled ng-value="$ctrl.data.addProgram.pfdoNavDate | nsDateTimeSs">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-5 col-lg-4">Доп. информация</label>
+						<div class="col-md-7 col-lg-5">
+							<div>
+								<textarea disabled class="form-control" name="PublishExtendStatus" ng-model="$ctrl.pfdoPublishStatus.extendStatus" rows="5" cols="50" wrap="soft"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ns-panel>
+
+			<ns-panel panel-id="programHours" class="warning" title="{{$ctrl.language.Generic.SetupSchool.kProgramHours}}" expanded="false">
+				<table class="table table-bordered table-xs table-thin">
+					<tbody>
+						<tr>
+							<th class="text-center">{{$ctrl.language.Generic.SetupSchool.kLearningYear2}}</th>
+							<th class="text-center">{{$ctrl.language.Generic.SetupSchool.kForYear}}</th>
+							<th class="text-center">{{$ctrl.language.Generic.SetupSchool.kForWeek}}</th>
+						</tr>
+						<tr ng-repeat="limit in $ctrl.programLimits" ng-form name="limitsForm">
+							<th class="text-center">{{limit.grade}}</th>
+							<td ng-class="{'has-error': limitsForm.YEARHOURS.$invalid && (!limitsForm.YEARHOURS.$pristine || $ctrl.addProgramForm.$displayErrors)}">
+								<input ng-disabled="$ctrl.state.readOnly" type="number" class="form-control" track-changes name="YEARHOURS" ng-model="limit.yearHours" size="10" maxlength="5" ng-maxlength="5" ng-min="0.1" ng-max="9999" />
+								<p ng-show="limitsForm.YEARHOURS.$invalid && (!limitsForm.YEARHOURS.$pristine || $ctrl.addProgramForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.SetupAddSchool.kLimitErrorMsg}}</p>
+							</td>
+							<td ng-class="{'has-error': (limitsForm.WEEKHOURS.$invalid || !$ctrl.isValidLimit(limit)) && (!limitsForm.WEEKHOURS.$pristine || !limitsForm.YEARHOURS.$pristine || $ctrl.addProgramForm.$displayErrors)}">
+								<input ng-disabled="$ctrl.state.readOnly" type="number" class="form-control" track-changes name="WEEKHOURS" ng-model="limit.weekHours" size="10" maxlength="5" ng-maxlength="5" ng-min="0.1" ng-max="9999" />
+								<p ng-show="limitsForm.WEEKHOURS.$invalid && (!limitsForm.WEEKHOURS.$pristine || $ctrl.addProgramForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.SetupAddSchool.kLimitErrorMsg}}</p>
+								<p ng-show="!$ctrl.isValidLimit(limit) && (!limitsForm.WEEKHOURS.$pristine || !limitsForm.YEARHOURS.$pristine || $ctrl.addProgramForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.SetupAddSchool.kInvalidLimit}}</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</ns-panel>
+
+			</div>
+			</div>
+		</form>
+	</div>
+</div>

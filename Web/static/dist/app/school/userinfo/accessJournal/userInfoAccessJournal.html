@@ -1,0 +1,28 @@
+<div style="max-height: 500px; overflow: auto;">
+	<table class="table table-bordered table-bright-striped table-bright-hover table-xs">
+		<tr>
+			<th style="width: 30%;">{{language.Generic.Common.kDate}}</th>
+			<th>{{language.Generic.Common.kAuthorOfChanges}}</th>
+			<th style="width: 1%;">IP</th>
+			<th style="width: 1%;"></th>
+		</tr>
+		{{#each accessJournalEntries}}
+			<tr>
+				<td>
+					{{date}}
+				</td>
+				<td>
+					{{author}}
+				</td>
+				<td>
+					{{ip}}
+				</td>
+				<td>
+					<a class="link-display-journal-entry-details" data-entry-id="{{id}}" title="{{language.Generic.Common.kDetails}}" style="cursor: pointer;">
+						<span class="icon-th-list "></span>
+					</a>
+				</td>
+			</tr>
+		{{/each}}
+	</table>
+</div>

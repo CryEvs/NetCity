@@ -1,0 +1,117 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-close-button">
+				<button class="close" ng-click="ctrl.cancel()">&times;</button>
+			</div>
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<!--Поля формы-->
+		<form class="form form-sm" id="addNewRoom" name="ctrl.addNewRoom" method="post">
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="form-group" ng-class="{ 'has-error': ctrl.addNewRoom.RoomName.$invalid && (!ctrl.addNewRoom.RoomName.$pristine || ctrl.addNewRoom.$displayErrors) }">
+						<label>{{ctrl.language.Generic.Calendar.kRoomNumber}}</label>
+						<input track-changes type="text" class="form-control" name="RoomName" size="27" maxlength="50" ng-model="ctrl.data.room.roomname" rooms="ctrl.data.rooms" required roomname>
+
+						<div ng-show="ctrl.addNewRoom.RoomName.$invalid && (!ctrl.addNewRoom.RoomName.$pristine || ctrl.addNewRoom.$displayErrors)">
+							<p ng-show="addNewRoom.RoomName.$error.required" class="help-block">
+								{{ctrl.language.Calendar.kErrMsgEmpty}}.
+							</p>
+							<p ng-show="ctrl.addNewRoom.RoomName.$error.roomname" class="help-block">
+								{{ctrl.language.Generic.Common.kErrMsgExist}}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-9">
+					<div class="form-group">
+						<label>{{ctrl.language.Generic.Common.kCorp}}</label>
+						<input track-changes type="text" class="form-control" name="Corpus" size="27" maxlength="100" ng-model="ctrl.data.room.corpus">
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>{{ctrl.language.Generic.Calendar.kFloor}}</label>
+						<select track-changes class="form-control" name="Floor" ng-options="floor for floor in ctrl.data.floors" ng-model="ctrl.data.room.floor"></select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group" ng-class="{'has-error': ctrl.addNewRoom.Length.$invalid && (!ctrl.addNewRoom.Length.$pristine || ctrl.addNewRoom.$displayErrors)}">
+						<label>{{ctrl.language.Generic.Calendar.kLen}}</label>
+						<input track-changes type="number" class="form-control" name="Length" size="27" maxlength="50" ng-model="ctrl.data.room.length" ng-min="1" ng-max="100" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" min="1" max="100">
+						<p ng-show="ctrl.addNewRoom.Length.$invalid && (!ctrl.addNewRoom.Length.$pristine || ctrl.addNewRoom.$displayErrors)" class="help-block">{{ctrl.language.Generic.Calendar.kErrLen}}</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group" ng-class="{'has-error': ctrl.addNewRoom.Width.$invalid && (!ctrl.addNewRoom.Width.$pristine || ctrl.addNewRoom.$displayErrors)}">
+						<label>{{ctrl.language.Generic.Calendar.kWidth}}</label>
+						<input track-changes type="number" class="form-control" name="Width" size="27" maxlength="50" ng-model="ctrl.data.room.width" ng-min="1" ng-max="100" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" min="1" max="100">
+						<p ng-show="ctrl.addNewRoom.Width.$invalid && (!ctrl.addNewRoom.Width.$pristine || ctrl.addNewRoom.$displayErrors)" class="help-block">{{ctrl.language.Generic.Calendar.kErrWidth}}</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group" ng-class="{'has-error': ctrl.addNewRoom.Area.$invalid && (!ctrl.addNewRoom.Area.$pristine || ctrl.addNewRoom.$displayErrors)}">
+						<label>{{ctrl.language.Generic.Calendar.kArea}}</label>
+						<input track-changes type="number" class="form-control" name="Area" size="27" maxlength="50" ng-model="ctrl.data.room.area" ng-min="1" ng-max="999" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" min="1" max="100">
+						<p ng-show="ctrl.addNewRoom.Area.$invalid && (!ctrl.addNewRoom.Area.$pristine || ctrl.addNewRoom.$displayErrors)" class="help-block">
+							{{ctrl.language.Generic.Calendar.kErrArea}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>{{ctrl.language.Generic.Calendar.kResponsible}}</label>
+						<select track-changes class="form-control" name="RESPONSIBLEID" ng-options="staff as staff.name for staff in ctrl.data.staffs track by staff.id" ng-model="ctrl.data.room.responsible">
+							<option value="">не выбран</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group" ng-class="{'has-error': ctrl.addNewRoom.Seats.$invalid && (!ctrl.addNewRoom.Seats.$pristine || ctrl.addNewRoom.$displayErrors)}">
+						<label>{{ctrl.language.Calendar.kSeats}}</label>
+						<input track-changes class="form-control" name="Seats" size="3" maxlength="3" ng-model="ctrl.data.room.seats" ng-min="1" ng-max="100" type="number" min="1" max="100" required>
+						<p ng-show="ctrl.addNewRoom.Seats.$invalid && (!ctrl.addNewRoom.Seats.$pristine || ctrl.addNewRoom.$displayErrors)" class="help-block">{{ctrl.language.Calendar.kErrSeats2}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<div class="checkbox">
+							<label>
+								<input track-changes type="checkbox" name="Study" ng-checked="ctrl.data.room.study" ng-model="ctrl.data.room.study"> {{ctrl.language.Generic.Calendar.kStudy}}
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary ng-binding" ng-click="ctrl.addNewRoom.$displayErrors=true; ctrl.create()">
+			{{ctrl.language.Generic.Buttons.kSave}}
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			{{ctrl.language.Generic.Buttons.kCancel}}
+		</button>
+	</div>
+
+</div>

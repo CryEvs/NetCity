@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="Обновить" type="button" class="btn btn-info" ng-click="$ctrl.load()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>Обновить</span>
+				</button>
+				<button title="Удалить" type="button" class="btn btn-danger" ng-click="$ctrl.delete()" ng-disabled="!$ctrl.data.selection.selected || !$ctrl.data.selection.selected.length">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>Удалить</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right">
+				<button title="Монитор активных сессий" type="button" class="btn inlineButton btn-default" ng-click="$ctrl.sessionsMon()">
+					<span>Монитор активных сессий</span>
+				</button>
+				<button title="Статистика посещений" type="button" class="btn inlineButton btn-default" ng-click="$ctrl.loginStats()">
+					<span>Статистика посещений</span>
+				</button>
+				<button title="Статистика SMS сообщений" type="button" class="btn inlineButton btn-default" ng-click="$ctrl.smsStats()">
+					<span>Статистика SMS сообщений</span>
+				</button>
+				<button title="Статистика ошибок" type="button" class="btn inlineButton btn-default" ng-click="$ctrl.errorsStats()">
+					<span>Статистика ошибок</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10">
+		<div class="alert alert-info" ng-show="!$ctrl.state.dataLoaded" role="alert">Нажмите кнопку "Обновить" для загрузки данных</div>
+	</div>
+</div>
+
+<div class="row" ng-if="$ctrl.state.dataLoaded">
+	<div class="col-md-12">
+
+		<table class="table table-xs table-bright table-bright-hover table-selectable table-thin">
+			<tr>
+				<th>№</th>
+				<th>{{$ctrl.language.Generic.Common.kEO}}</th>
+				<th>{{$ctrl.language.Generic.Common.kEMName}}</th>
+				<th>{{$ctrl.language.Generic.Common.kDisplayName}}</th>
+				<th>{{$ctrl.language.Generic.Common.kUserName}}</th>
+				<th>{{$ctrl.language.Generic.ServAdmin.kLoginTime}}</th>
+				<th>Время последней активности</th>
+				<th>Ip</th>
+				<th>{{$ctrl.language.Generic.Common.kRoles}}</th>
+			</tr>
+			<tr ng-if="$ctrl.state.dataReady && $ctrl.state.emptyData">
+				<td colspan="9" style="text-align: center">{{$ctrl.language.Generic.ServAdmin.kNoUsersInSystem}}</td>
+			</tr>
+			<tr ng-repeat="session in $ctrl.data.activeSessions" ng-class="{'selected': $ctrl.data.selection.isSelected(session)}" ng-click="$ctrl.data.selection.select(session)">
+				<td>{{$index + 1}}</td>
+				<td>{{session.eoName}}</td>
+				<td>{{session.eMs}}</td>
+				<td>{{session.nickName}}</td>
+				<td>{{session.loginName}}</td>
+				<td>{{session.loginTime | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+				<td>{{session.lastAccessTime | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+				<td>{{session.ip}}</td>
+				<td>{{session.roles}}</td>
+			</tr>
+		</table>
+
+	</div>
+</div>

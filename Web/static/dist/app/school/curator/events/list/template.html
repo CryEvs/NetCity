@@ -1,0 +1,126 @@
+<form class="form-horizontal form-sm" ng-show="state.viewReady">
+	<div class="row">
+		<div class="col-md-6 col-lg-4">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{language.Generic.Common.kSchoolYear}}</label>
+				<div class="col-md-8 col-lg-7 col-sm-8">
+					<select storage class="form-control" ng-options="year.id as year.name for year in data.years" ng-change="load()" ng-model="data.yearId"></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{language.Generic.Events.kEventStatus}}</label>
+				<div class="col-md-8 col-lg-7 col-sm-8">
+					<select storage class="form-control" ng-options="eventStatus.id as eventStatus.name for eventStatus in data.refs.eventStatuses" ng-change="load()" ng-model="data.eventStatus"></select>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{language.Generic.Events.kEventType}}</label>
+				<div class="col-md-8 col-lg-7 col-sm-8">
+					<select storage class="form-control" ng-options="awardEventType.id as awardEventType.name for awardEventType in data.refs.awardEventTypes" ng-change="load()" ng-model="data.awardEventType">
+						<option value="" selected>Все</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{language.Generic.Events.kEventLevel}}</label>
+				<div class="col-md-8 col-lg-7 col-sm-8">
+					<select storage class="form-control" ng-options="level.id as level.name for level in data.refs.eventLevels" ng-change="load()" ng-model="data.eventLevel">
+						<option value="" selected>Все</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+
+			<button type="button" class="btn btn-info" ng-click="add()" ng-if="isPersonalPlan">
+				<span class="glyphicon glyphicon-plus-sign">
+				</span>
+				<span>{{language.Generic.Buttons.kAdd}}</span>
+			</button> 
+
+			<button type="button" class="btn btn-warning" ng-click="edit(data.selection.selected)" ng-if="isPersonalPlan" ng-disabled="!data.selection.selected || !isSelfPlanEvent(data.selection.selected)"  ng-hide="state.emptyData">
+				<span class="glyphicon glyphicon-pencil"></span>
+				<span>{{language.Generic.Buttons.kEdit}}</span>
+			</button>
+			
+			<button type="button" class="btn btn-danger" ng-click="remove(data.selection.selected)" ng-if="isPersonalPlan && (!data.selection.selected || !data.selection.selected.deleted)" ng-disabled="!data.selection.selected || !isSelfPlanEvent(data.selection.selected)"  ng-hide="state.emptyData">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{language.Generic.Buttons.kRemove}}</span>
+			</button>
+			
+			<button type="button" class="btn btn-danger" ng-click="restore(data.selection.selected)" ng-if="isPersonalPlan && (data.selection.selected && data.selection.selected.deleted)" ng-disabled="!data.selection.selected || !isSelfPlanEvent(data.selection.selected)"  ng-hide="state.emptyData">
+				<span class="glyphicon glyphicon-repeat"></span>
+				<span>{{language.Generic.Buttons.kReset}}</span>
+			</button>
+
+			<button title="{{language.Generic.Events.kViewEventMembers}}" type="button" class="btn btn-info" ng-click="viewEventMembers(data.selection.selected)" ng-disabled="!data.selection.selected"  ng-hide="state.emptyData">
+				<span class="icon-flag-checkered" style="font-size: 16px; vertical-align: middle;"></span>
+				<span>{{language.Generic.Events.kEventMembers}}</span>
+			</button>
+
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="state.dataReady && state.emptyData">
+		<div class="alert alert-info" role="alert">{{language.Generic.Events.kNoEventsByFilters}}</div>
+	</div>
+</div>
+
+<span class="content-page-preloader" id="preloader" ng-hide="state.viewReady"><span>Пожалуйста подождите...</span></span>
+
+<div class="row" ng-show="state.dataReady && !state.emptyData">
+	<div class="col-md-12">
+		<table class="table table-xs table-bright table-bright-hover table-selectable">
+			<tr>
+				<th>{{language.Generic.Events.kDateOfEvent}}</th>
+				<th>{{language.Generic.Events.kEvent}}</th>
+				<th>{{language.Generic.Events.kEventType}}</th>
+				<th>{{language.Generic.Events.kEventLevel}}</th>
+				<!--<th>Предмет/Направленность</th>-->
+				<th>{{language.Generic.Events.kEventFounder}}</th>
+				<th>{{language.Generic.Events.kEventPlace}}</th>
+			</tr>
+			<tr ng-repeat="event in data.events track by event.id" ng-class="{'selected': data.selection.isSelected(event), 'event-personal': event.personalEvent, 'event-deleted': event.deleted}" ng-click="data.selection.select(event)">
+				<td>{{ event.date }}</td>
+				<td>
+					<a ng-href="events/{{event.id}}/members">
+						{{ event.name }}
+					</a>
+				</td>
+				<td>{{ event.awardEventType.name }}</td>
+				<td>{{ event.level }}</td>
+				<!--<td> - </td>-->
+				<td>{{ event.founder.name }}</td>
+				<td>{{ event.place.name }}</td>
+			</tr>
+		</table>
+		
+		<div class="legend print-block" ng-if="isPersonalPlan">	
+			<div>
+				<p>
+					<span class="legend-label" style="background-color: #ffe074"></span>
+					<span class="legend-description"> — {{language.Generic.Events.kPersonalPlanEvents}}</span>
+				</p>
+			</div></div>
+	</div>
+</div>
+
+<style>
+	tr.event-personal td {
+		background-color: #ffe074;
+	}
+	tr.event-deleted td {
+		text-decoration: line-through;
+	}
+</style>
+

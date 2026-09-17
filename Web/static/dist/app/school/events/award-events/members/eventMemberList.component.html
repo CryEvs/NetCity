@@ -1,0 +1,19 @@
+<h3 class="first">Информация о мероприятии</h3>
+<event-info event="ctrl.data.event"></event-info>
+
+<hr />
+
+<h3 class="first">Список участников</h3>
+
+<div class="row ns-cloak">
+	<div class="col-md-12" ng-show="ctrl.state.registryReady">
+		<registry info="ctrl.registryInfo" controller="ctrl.controller"></registry>
+	</div>
+</div>
+
+<style>
+	.table-selectable tr.already-member td {
+		cursor: not-allowed;
+		background-color: #ffe074;
+	}
+</style>

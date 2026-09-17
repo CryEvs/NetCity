@@ -1,0 +1,49 @@
+2026-09-15T20:44:53.2671622+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T20:44:53.2902883+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T20:44:53.2905647+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T20:44:53.2906834+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T20:52:36.1631228+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T20:52:36.1837809+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T20:52:36.1840080+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T20:52:36.1840988+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T20:56:49.6269096+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T20:56:49.6474378+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T20:56:49.6476982+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T20:56:49.6477900+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T21:02:57.1631664+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T21:02:57.1832459+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T21:02:57.1834564+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T21:02:57.1835372+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T21:10:02.7726838+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T21:10:02.7919743+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T21:10:02.7922305+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T21:10:02.7923191+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T21:16:27.8997234+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T21:16:27.9197111+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T21:16:27.9199355+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T21:16:27.9200121+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T21:20:35.3482552+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T21:20:35.3680793+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T21:20:35.3682871+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T21:20:35.3683590+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T21:24:21.9925368+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T21:24:22.0122517+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T21:24:22.0124992+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T21:24:22.0125867+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T21:45:59.4576742+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T21:45:59.4767346+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T21:45:59.4769791+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T21:45:59.4770487+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T22:03:45.8541270+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T22:03:45.8734776+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T22:03:45.8737048+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T22:03:45.8737974+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T22:27:46.6392166+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T22:27:46.6591161+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T22:27:46.6593249+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T22:27:46.6593981+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T22:28:00.7702167+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2026-09-15T22:28:00.7896255+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2026-09-15T22:28:00.7898299+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2026-09-15T22:28:00.7899048+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Users\Nmnovich\Desktop\Repos\nc-sgo\Services\IRTech.NetCity.Mail.Api\
+2026-09-15T22:38:09.5183571+09:00 [Microsoft.Hosting.Lifetime] [INF] Application is shutting down...

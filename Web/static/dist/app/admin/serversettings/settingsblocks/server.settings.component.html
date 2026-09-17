@@ -1,0 +1,59 @@
+<style>
+	.radio-list-block {
+		padding-bottom: 20px;
+	}
+	.radio-list-block .alert.alert-warning {
+		margin-bottom: 5px;
+	}
+	.radio-list-block .radio-inline {
+		padding-top: 2px;
+	}
+</style>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<button title="{{$ctrl.language.Generic.ServAdmin.kSaveSettings}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+				<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+			</button>
+			<button title="{{$ctrl.language.Generic.ServAdmin.kServerTrustedCodes}}" type="button" class="btn btn-default" ng-click="$ctrl.goToApp()">
+				<span>{{$ctrl.language.Generic.ServAdmin.kServerTrustedCodes}}</span>
+			</button>
+			<button title="{{$ctrl.language.Generic.ServAdmin.kAuthClients}}" type="button" class="btn btn-default" ng-click="$ctrl.goToAuthClients()">
+				<span>{{$ctrl.language.Generic.ServAdmin.kAuthClients}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<ng-form class="form-horizontal" name="$ctrl.form" ng-if="$ctrl.state.ready">
+	<ns-form control-size="col-md-8 col-lg-5 col-sm-8" label-size="col-md-4 col-lg-3 col-sm-4">
+		<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kServerIPAddress}}">
+			<input type="text" class="form-control" ng-model="$ctrl.data.serverSettings.address" size="40" maxlength="100" track-changes>
+		</ns-form-group>
+
+		<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kServerAuxAddresses}}">
+			<input type="text" class="form-control" ng-model="$ctrl.data.serverSettings.auxAddresses" size="200" maxlength="200" track-changes>
+		</ns-form-group>
+
+		<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kProxyServerIPAddress}}" ng-class="{'has-error': $ctrl.form.ProxyIpAddress.$invalid}">
+			<input type="text" name="ProxyIpAddress" class="form-control" ip-address ng-model="$ctrl.data.serverSettings.proxyAddress" size="40" maxlength="100" track-changes>
+			<div ng-messages="$ctrl.form.ProxyIpAddress.$error">
+				<span class="help-block" ng-message="ipAddressMask">{{$ctrl.proxyAddressError()}}</span>
+			</div>
+		</ns-form-group>
+
+		<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kServerS2}}">
+			<input type="text" class="form-control" ng-model="$ctrl.data.serverSettings.trustedAppCode" size="40" maxlength="100" track-changes>
+		</ns-form-group>
+
+		<!-- Возможность настройки часового пояса в ОО -->
+		<ns-form-group title="{{$ctrl.language.Generic.ServAdmin.kServerAllowEditTimezoneInOo}}">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="$ctrl.data.serverSettings.allowEditTimezoneInOo" track-changes>
+				</label>
+			</div>
+		</ns-form-group>
+	</ns-form>
+</ng-form>

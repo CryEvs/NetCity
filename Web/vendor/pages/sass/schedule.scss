@@ -1,0 +1,228 @@
+@import '../../custom/sass/var';
+@import '../../custom/sass/mixins';
+
+table.schedule-table {
+	th.schedule-table-header {
+		background-color: #E7F3FF;
+		color: #2491FF;
+	}
+
+	td.vacation-day {
+		background-color: #D7FFD9;
+
+		a {
+			color: #00BB09;
+		}
+	}
+
+	td.class-event {
+		background-color: #C4E8E8;
+
+		a {
+			color: #0073A9;
+		 }
+	}
+
+	td.school-event {
+		a {
+			color: #3F68C2;
+		}
+	}
+
+	td.class-schedule-day {
+		white-space: nowrap;
+	}
+
+	td.schedule-day {
+		background-color: #FBFFBD;
+	}
+
+	td.filled-cell {
+		background-color: #DCFDDC;
+		color: #00B61E;
+
+		a {
+			color: #00B61E;
+		}
+	}
+
+	td.event {
+		background-color: #F7EDFF;
+		color: #B051FF;
+		a {
+			color: #B051FF;
+		}
+	}
+
+	td.week {
+		background-color: #F4FAFF;
+	}
+
+	td.leftheader, th.leftheader {
+		background-color: #ECF2FD;
+		color: #5691FF;
+	}
+}
+
+.relay1 {
+	background-color: #E6FFB8;
+	color: #82C800;
+}
+
+.relay2 {
+	background-color: #DEF4F9;
+	color: #00B2DA;
+}
+
+.relay3 {
+	background-color: #FFF7DD;
+	color: #C89900;
+}
+
+/*=======Стили к странице "Календарь на год"=======*/
+ .year-calendar {
+	max-width: 900px;
+	float: left;
+	padding: 0;
+
+	li {
+		display: inline-table;
+		margin: 0 20px 20px 0;
+
+		& > a {
+			text-align: center;
+			display: block;
+			height: 25px;
+			line-height: 2;
+			color: #fff;
+			font-size: 12px;
+			font-weight: 600;
+			background: adjust-hue(desaturate(darken($brand-primary-light, 26%), 4%), 7); // #1779ce ;
+			@include border-top-right-radius(6px);
+			@include border-top-left-radius(6px);
+			overflow: hidden;
+
+			&:hover, &:focus {
+				//color: #eee;
+				background: $brand-primary;
+				text-decoration: inherit;
+			}
+		}
+		
+		& > div {
+			height: 25px;
+			&:last-child { 
+				div {
+					&:last-child { 
+						@include border-bottom-right-radius(6px);
+					}
+					&:first-child { 
+						@include border-bottom-left-radius(6px);
+					}
+				}
+			}
+			/*дни недели*/
+			&.weekday {
+				background: #A8DAF5;
+				div {
+					background: #A8DAF5;
+					font-size: 12px;
+					color: #666666;
+					line-height: 2.3;
+
+					&:hover, &:focus {
+						cursor: context-menu;
+					}
+					&:last-child { 
+						//background: #A8DAF5;
+					}
+				}
+			}
+			
+			& > div { //td, th
+				text-align: center;	
+				border-left: 1px solid #BDBDBD;
+				border-bottom: 1px solid #BDBDBD;
+				width: 25px;
+				height: 25px;
+				font-weight: 100;
+				float: left;
+				font-size: 12px;
+
+				&:last-child { 
+					border-right: 1px solid #BDBDBD;	
+					background: #F0F0F0;
+				}
+				&:hover, &:focus {
+					cursor: context-menu;
+				}
+				
+				a, span {
+					text-align: center;
+					color: #555;
+					padding: 5px 5px 4px 5px;
+					display: block;
+					font-weight: 600;
+					
+					&:hover, &:focus {
+						text-decoration: inherit;
+						background: $brand-primary-light;
+						color: #fff;
+					} 
+				}
+				a:hover {
+					cursor: pointer;
+				}
+				
+				&.month {
+					a, span {
+						color:black;
+					}
+				}
+				
+				/*каникулы*/
+				&.vacation {  
+					background: #E0F3BA;
+				}
+				/*выходные*/
+				&.weekend {
+					a, span {
+						color: red !important;
+					}
+				}
+				&.school-day {
+					a, span {
+						color: #2280bb;
+					}
+				}
+				/*номера недели*/
+				&.weeknum {
+					a, span {
+						color:green; 
+						font-weight: 100;
+
+						&:hover, &:focus {
+							color:green; 
+							background: #D0D0D0;
+						}
+					}
+				}
+			}
+		}
+	}
+ }
+ 
+.summary-information {
+	float: right;
+}
+.summary-inform-bottom {
+	display: none;
+}
+@media only screen and (max-width: 1100px) {
+	.summary-information {
+		display: none;
+	}
+	.summary-inform-bottom {
+		display: block;
+	}
+ }

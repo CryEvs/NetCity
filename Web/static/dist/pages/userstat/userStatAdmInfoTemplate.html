@@ -1,0 +1,32 @@
+<table class="table table-bordered table-xs table-bright-striped table-bright-hover print-block">
+	<tr>
+		{{#ifEqual schoolFilterValue "-1"}}<th>{{language.Generic.Common.kEO}}</th>
+		<th>{{language.Generic.EM.kManagement}}</th>{{/ifEqual}}
+		<th>{{language.Generic.Common.kDisplayName}}</th>
+		<th>{{language.Generic.Common.kRole}}</th>
+		<th>{{language.Generic.ServAdmin.kLoginTime}}</th>
+		<th>{{language.Generic.ServAdmin.kLogoutTime}}</th>
+		<th>{{language.Generic.ServAdmin.kIPAddress}}</th>
+		<th>{{language.Generic.Login.kEsiaLogin}}</th>
+	</tr>
+	{{#each userStatAdmInfo.userStats}}
+	<tr>
+		{{#ifEqual ../schoolFilterValue "-1"}}<td>{{orgName}}</td>
+		<td>{{emNames}}</td>
+		{{/ifEqual}}
+		<td>{{userName}}</td>
+		<td align="CENTER">{{roleNames}}</td>
+		<td>{{date2str loginTime}}</td>
+		<td>{{date2str logoutTime}}</td>
+		<td>{{remoteAddress}}</td>
+		<td>{{#if esiaLogin}}{{../../language.Generic.Common.kYes}}{{/if}}</td>
+	</tr>
+	{{/each}}
+</table>
+<div class="row print-block">
+	<div class="col-md-6">
+		<span class="glyphicon glyphicon-user"></span>
+		<small>{{language.Generic.ServAdmin.kTotalLogins}}</small>
+		<strong>{{userStatAdmInfo.statsAmount}}</strong>
+	</div>
+</div>

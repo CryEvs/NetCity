@@ -1,0 +1,57 @@
+<div composit-table="$ctrl.compositTableCtrl" class="composit-table-wrap"> 
+
+	<table class="curiculum-plan table-xs table-export table-print" id="plan-table-header" style="table-layout: fixed">
+		<tr class="header-row">
+			<th rowspan="2" colspan="3">{{$ctrl.language.Generic.Common.kProgram}}</th>
+			<th class="text-center" colspan="{{dir.gradesCount}}" style="width: 1px" ng-repeat="dir in $ctrl.model.directionsRow">
+				<small class="text-vertical text-compact" ng-if="$ctrl.needVerticalDrawDirection(dir)"><i>{{dir.direction.name}}</i></small>
+				<span ng-if="!$ctrl.needVerticalDrawDirection(dir)">{{dir.direction.name}}</span>
+			</th>
+		</tr>
+	
+		<tr class="grade-row">
+			<th class="text-center" ng-repeat="dg in $ctrl.model.gradesRow" title="{{dg.grade}}">{{dg.grade}}</th>
+		</tr>
+	
+		<tr composit-table-row class="hidden-row">
+			<td colspan="3"><div style="width: 340px"></div></td>
+			<td ng-repeat="dg in $ctrl.model.gradesRow"><div></div></td>
+		</tr>
+	</table>
+
+	<div class="plan-table">
+		<table class="curiculum-plan table-xs text-compact table-export table-print" id="plan-table" input-table="$ctrl.inputSettings" ng-class="{'readonly': $ctrl.readonly}" style="table-layout: fixed">
+		
+			<tr composit-table-row class="hidden-row">
+				<td colspan="3"><div style="width: 340px"></div></td>
+				<td ng-repeat="dg in $ctrl.model.gradesRow"><div></div></td>
+			</tr>
+
+			<tr class="component-row" ng-repeat-start="componentData in $ctrl.model.planRows">
+				<td class="text-compact" rowspan="{{1 + $ctrl.model.countDirections}}">
+					<b>{{$ctrl.language.Generic.SetupSchoolCalendar.kLimit}}</b>
+				</td>
+				<td class="text-compact" colspan="2"><b> {{$ctrl.language.Generic.SetupSchoolCurPlan.kPlanned}}:</b></td>
+				<td ng-repeat="limit in componentData.limits" colspan="{{limit.objects}}">{{limit.hours | float2str:'onlyPositive' }}</td>
+			</tr>
+		
+			<tr class="component-fact-load-row" ng-repeat="direction in $ctrl.model.allEaDirections">
+				<td class="text-compact" rowspan="{{$ctrl.model.countDirections}}" ng-if="$index == 0">
+					<b>{{$ctrl.language.Generic.SetupSchoolCurPlan.kFactual}}</b>
+				</td>
+				<td class="text-compact"><b>{{direction.name}}:</b></td>
+				<td ng-repeat="total in $ctrl.model.getDirectionTotals(direction, componentData.totals)" ng-class="{'overflow': total.overflow}">{{total.hours | float2str:'onlyPositive'}}</td>
+			</tr>
+
+			<tr class="subject-row text-center" ng-class="{'newLimits': subjectData.new}" ng-repeat="subjectData in componentData.subjectFieldsData[0].subjectsData">
+				<td class="text-left text-break text-compact" colspan="3">
+					<span class="subject-name">{{subjectData.subject.name}}</span>
+				</td>
+				<td ng-class="{'no-input': hour.noLimits}" class="input-cell" input-table-cell model="hour.hours" ng-repeat="hour in subjectData.hours"><span>{{hour.hours | float2str:'onlyPositive'}}</span></td>
+			</tr>
+
+			<tr ng-repeat-end></tr>
+		</table>
+
+	</div>
+</div>

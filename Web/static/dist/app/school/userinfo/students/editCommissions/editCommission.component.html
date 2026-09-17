@@ -1,0 +1,91 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+	<div class="modal-body">
+
+		<form class="form-horizontal form-xs">
+			<div class="form-group">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.SetupSchool.kCommissionType}}</label>
+				<div class="col-md-7">
+					<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.comission.type.name" ng-if="$ctrl.editmode">
+					<select class="form-control" ng-if="!$ctrl.editmode" name="EducProgram" ng-model="$ctrl.comission.type" ng-options="type as type.name for type in $ctrl.refs.comissionTypes track by type.id"></select>
+				</div>
+			</div>
+			<div class="form-group" ng-if="$ctrl.comission.type.id != 4">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.SetupSchool.kCommissionNum}}</label>
+				<div class="col-md-7">
+					<input type="text" class="form-control" name="CommissNum" size="50" maxlength="100" ng-model="$ctrl.comission.commissNum">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-5">{{$ctrl.isPrivilege() ? $ctrl.language.Generic.SetupSchool.kPrivilegeStartDate : $ctrl.language.Generic.SetupSchool.kCommissionStartDate}}</label>
+				<div class="col-md-7">
+					<edit-date-input date="$ctrl.comission.startDate" track-changes ></edit-date-input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-5">{{$ctrl.isPrivilege() ? $ctrl.language.Generic.SetupSchool.kPrivilegeEndDate : $ctrl.language.Generic.SetupSchool.kCommissionEndDate}}</label>
+				<div class="col-md-7">
+					<edit-date-input date="$ctrl.comission.endDate" track-changes ></edit-date-input>
+				</div>
+			</div>
+			<div class="form-group" ng-if="$ctrl.isRecomendEducForm()">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.SetupSchool.kEducForm}}</label>
+				<div class="col-md-7">
+					<select class="form-control" name="EducForm" ng-model="$ctrl.comission.recommendEducForm" ng-options="item as item.name for item in $ctrl.refs.educForms track by item.id"></select>
+				</div>
+			</div>
+			<div class="form-group" ng-if="$ctrl.isRecomendEducProgram()">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.SetupSchool.kEducProgramm}}</label>
+				<div class="col-md-7">
+					<select class="form-control" name="EducProgram" ng-model="$ctrl.comission.recommendEducProgr" ng-options="item as item.name for item in $ctrl.refs.educPrograms track by item.id"></select>
+				</div>
+			</div>
+			<div class="form-group" ng-if="$ctrl.comission.type.id == 4">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.SetupSchool.kPrivilegeType}}</label>
+				<div class="col-md-7">
+					<div class="checkbox" ng-repeat="item in $ctrl.refs.privileges" style="padding-top: 2px;">
+						<label><input type="checkbox" name="info" value="{{item.id}}" ng-checked="$ctrl.infoSelected(item)" ng-click="$ctrl.toggleInfo(item)">{{item.name}}</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" ng-if="$ctrl.comission.type.id == 1">
+				<label class="control-label col-md-5">{{$ctrl.language.Generic.SetupSchool.kViolationType}}</label>
+				<div class="col-md-7">
+					<div class="checkbox" ng-repeat="item in $ctrl.refs.disabilityTypes" style="padding-top: 2px;">
+						<label><input type="checkbox" name="info" value="{{item.id}}" ng-checked="$ctrl.infoSelected(item)" ng-click="$ctrl.toggleInfo(item)">{{item.name}}</label>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+
+		<!-- СОХРАНИТЬ -->
+		<button class="btn btn-primary btn-sm" ng-click="$ctrl.save()">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<!-- СОХРАНИТЬ -->
+		<button class="btn btn-danger btn-sm" ng-click="$ctrl.remove()" ng-if="$ctrl.editmode">
+			<span class="glyphicon glyphicon-minus-sign"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+		</button>
+
+		<!-- ОТМЕНИТЬ -->
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+
+	</div>
+</div>

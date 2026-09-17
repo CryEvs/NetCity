@@ -1,0 +1,22 @@
+<nav class="navbar-inner">
+	<ul class="nav navbar-nav">
+		<li ng-repeat-start="menuItem in menuCtx.items" class="dropdown" ng-class="menuItem.selected ? 'active' : ''" ng-if="menuItem.dropDownMenu">
+			<a data-toggle="dropdown" href="#">
+				{{menuItem.title}}
+			</a>
+			<ul class="dropdown-menu">
+				<li class="divider" ng-if="!$first" ng-repeat-start="submenuItem in menuItem.submenu | filter:{ hasTabItems: true}"></li>
+				<li class="dropdown-header">&nbsp;--&nbsp;{{submenuItem.title}}&nbsp;--&nbsp;</li>
+				<li ng-repeat-end="" ng-repeat="tabItem in submenuItem.tabs" ng-class="tabItem.selected ? 'active' : ''">
+					<a ng-click="selectTab(tabItem)">{{tabItem.title}}</a>
+				</li>
+				<li ng-repeat="tabItem in menuItem.tabs" ng-class="tabItem.selected ? 'active' : ''">
+					<a ng-click="selectTab(tabItem)">{{tabItem.title}}</a>
+				</li>
+			</ul>
+		</li>
+		<li ng-repeat-end="" ng-repeat="tabItem in menuItem.tabs" ng-class="tabItem.selected ? 'active' : ''" ng-if="!menuItem.dropDownMenu && menuItem.hasTabItems">
+			<a ng-click="selectTab(tabItem)">{{tabItem.title}}</a>
+		</li>
+	</ul>
+</nav>

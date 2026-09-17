@@ -1,0 +1,46 @@
+{
+	"sumRows": [
+		{
+			"row": 1,
+			"subRows": [ 40 ],
+			"cols": [ 3 ],
+			"type": "bool1"
+		},
+		{
+			"row": 2,
+			"subRows": [ 3 ],
+			"cols": [ 3 ],
+			"type": "bool1"
+		},
+		{
+			"row": 4,
+			"subRows": [ 5 ],
+			"cols": [ 3 ],
+			"type": "bool1"
+		},
+		{
+			"row": 6,
+			"subRows": [ 17 ],
+			"cols": [ 3 ],
+			"type": "bool1"
+		},
+		{
+			"row": 25,
+			"subRows": [ 26 ],
+			"cols": [ 3 ],
+			"type": "bool1"
+		},
+		{
+			"row": 27,
+			"subRows": [ 28 ],
+			"cols": [ 3 ],
+			"type": "bool1"
+		},
+		{
+			"row": 29,
+			"subRows": [ 30 ],
+			"cols": [ 3 ],
+			"type": "bool1"
+		}
+	]
+}

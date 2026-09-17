@@ -1,0 +1,98 @@
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+		<div class="buttons-panel">
+			<div class="buttons-panel-right" ng-if="!$ctrl.state.readOnly">
+				<button title="{{$ctrl.language.Generic.Buttons.kEditFutureYear}}" type="button" class="btn btn-default" ng-if="$ctrl.data.state.canCreateFutureYear && !$ctrl.withTermTypeNotDefined" ng-click="$ctrl.createFutureYear()">
+					<span>{{$ctrl.language.Generic.Buttons.kEditFutureYear}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kOpenFutureYear}}" type="button" class="btn btn-default" ng-if="$ctrl.data.state.canOpenFutureYear" ng-click="$ctrl.openFutureYear()">
+					<span>{{$ctrl.language.Generic.SetupSchoolCalendar.kOpenFutureYear}}</span>
+				</button>
+
+				<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kWeekendDays}}" type="button" class="btn btn-default" ng-if="$ctrl.rights.hasRightToCreateCloseEditYear" ng-click="$ctrl.goWeekendDays()">
+					<span>{{$ctrl.language.Generic.SetupSchoolCalendar.kWeekendDays}}</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="filters-panel filters-panel-compact" style="display: inline;">
+			<div class="form-group active">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Common.kSchoolYear}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control" name="year" ng-change="$ctrl.changeYear()" ng-model="$ctrl.data.yearId" ng-options="year.id as year.name for year in $ctrl.data.years"></select>
+				</div>
+				<span style="color:green">{{$ctrl.getFormattedTextDate($ctrl.yearInfo.startDate)}} - {{$ctrl.getFormattedTextDate($ctrl.yearInfo.endDate)}}</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-show="$ctrl.withTermTypeNotDefined" class="alert alert-warning" role="alert">
+	{{$ctrl.language.Generic.Common.kNoTermsInYear}}
+	<br>{{$ctrl.language.Generic.Common.kDefineTermsTypes_1}}
+	<a style="cursor: pointer;" ng-click="$ctrl.goTermTypes()">{{$ctrl.language.Generic.SetupSchoolCalendar.kTermTypes}}</a> {{$ctrl.language.Generic.Common.kDefineTermsTypes_2}}
+</div>
+
+<div ng-hide="$ctrl.withTermTypeNotDefined">
+	<div class="row ns-cloak">
+		<div class="col-md-6">
+
+			<ns-panel panel-id="periods" class="success" title="{{$ctrl.language.Generic.Common.kPeriods}}" expanded="true">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="buttons-panel">
+							<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kEditTermTypesLimits}}" type="button" class="btn btn-warning" ng-if="!$ctrl.state.readOnly && $ctrl.rights.hasRightToCreateEditTerm" ng-click="$ctrl.goTerms()">
+								<span class="glyphicon glyphicon-pencil"></span> <span>{{$ctrl.language.Generic.Buttons.kChange}}</span>
+							</button>
+							<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kTermTypes}}" type="button" class="btn btn-default" ng-if="$ctrl.rights.hasRightToEditSchoolTermTypes" ng-click="$ctrl.goTermTypes()">
+								<span>{{$ctrl.language.Generic.SetupSchoolCalendar.kTermTypes}}</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<table class="table table-bordered">
+					<tbody>
+						<tr class="text-nowrap">
+							<th>{{$ctrl.language.Generic.Common.kName}}</th>
+							<th>{{$ctrl.language.Generic.Common.kStartDate}}</th>
+							<th>{{$ctrl.language.Generic.Common.kEndDate}}</th>
+						</tr>
+						<tr class="text-nowrap" ng-repeat="term in $ctrl.data.terms">
+							<td class="text-center">{{term.termName}}</td>
+							<td>{{$ctrl.getFormattedDate(term.startDate)}}</td>
+							<td>{{$ctrl.getFormattedDate(term.endDate)}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</ns-panel>
+
+		</div>
+		<div class="col-md-6">
+			<ns-panel panel-id="vacations" class="info" title="{{$ctrl.language.Generic.SetupSchoolCalendar.kVacations}}" expanded="true">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="buttons-panel">
+							<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kEditVacationsLimits}}" type="button" class="btn btn-warning" ng-if="!$ctrl.state.readOnly" ng-click="$ctrl.goVacations()">
+								<span class="glyphicon glyphicon-pencil"></span>
+								<span>{{$ctrl.language.Generic.Buttons.kChange}}</span>
+							</button>
+							<button title="{{$ctrl.language.SetupSchoolCalendar.kVacationsClasses}}" type="button" class="btn btn-default" ng-if="!$ctrl.state.readOnly" ng-click="$ctrl.goVacationsClasses()">
+								<span>{{$ctrl.language.SetupSchoolCalendar.kVacationsClasses}}</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<table class="table table-bordered">
+					<tr>
+						<th>{{$ctrl.language.Generic.Common.kDate}}</th>
+						<th>{{$ctrl.language.Generic.Common.kName}}</th>
+					</tr>
+					<tr ng-repeat="vacation in $ctrl.data.vacations">
+						<td class="text-nowrap">{{$ctrl.getFormattedDate(vacation.startTime)}} -- {{$ctrl.getFormattedDate(vacation.endTime)}}</td>
+						<td>{{vacation.name}}</td>
+					</tr>
+				</table>
+			</ns-panel>
+		</div>
+	</div>
+</div>

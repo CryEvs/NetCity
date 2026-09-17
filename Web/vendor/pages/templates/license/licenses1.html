@@ -1,0 +1,332 @@
+﻿{{#if licenseContainer.license}}
+<!--если лицензия на право ведения образовательной деятельности-->
+<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 license">
+	<div class="print-block">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					{{language.Generic.SchoolInfo.kLicense}}
+				</h4>
+			</div>
+
+
+
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kSeriesAndNumberOfForm}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.license.seriesBlank}} № {{licenseContainer.license.numberBlank}}"
+						 disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kRegistrationNumber}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.license.regNumber}}" disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDateOfIssue}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.license.issuedDate}}" disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kExpiryDate}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.license.expiredDate}}" disabled>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kLicenseOrgan}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.license.licenseOrganName}}" disabled>
+					</div>
+				</div>
+
+
+
+
+
+				<!--решение о лицензировании-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDecisionOnLicense}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{language.Generic.SchoolInfo.kOrder}}: {{licenseContainer.license.decisionOrderNumber}} {{language.Generic.Common.kDate}}: {{licenseContainer.license.decisionDate}}"
+						 disabled>
+					</div>
+				</div>
+
+				<!--ссылка на скан-копию-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kLinkToScanCopy}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<!-- <input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.license.linkToScanCopy}}" disabled> -->
+						<span id="licenseRef" style="display:block;" onclick='postTo({ path: "/webapi/attachments/" + {{licenseContainer.license.linkScanCopy.id}}, method: "GET" })'>
+							<a style="cursor: pointer;">{{licenseContainer.license.linkScanCopy.fileName}}</a>
+						</span>
+					</div>
+				</div>
+
+
+
+
+				{{#unless readonly}}
+				<button type="button" class="btn btn-default btn-sm " title="{{language.Generic.Buttons.kEdit}}" id="btnEditLicense">
+					<span class="glyphicon glyphicon-pencil"></span>
+					{{language.Generic.Buttons.kEdit}}
+				</button>
+				<button type="button" class="btn btn-default btn-sm " title="{{language.Generic.Buttons.kRemove}}" id="btnRemoveLicense">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					{{language.Generic.Buttons.kRemove}}
+				</button>
+				{{/unless}}
+			</div>
+		</div>
+	</div>
+</div>
+{{/if}} {{#if licenseContainer.licenseAES}}
+<!--если лицензия на право оказания доп образовательных услуг-->
+<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 licenseAES">
+	<div class="print-block">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					{{language.Generic.SchoolInfo.kLicenseAES}}
+				</h4>
+			</div>
+
+
+
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kSeriesAndNumberOfForm}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.licenseAES.seriesBlank}} № {{licenseContainer.licenseAES.numberBlank}}"
+						 disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kRegistrationNumber}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.licenseAES.regNumber}}" disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDateOfIssue}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.licenseAES.issuedDate}}" disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kExpiryDate}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.licenseAES.expiredDate}}" disabled>
+					</div>
+				</div>
+
+
+
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kLicenseOrgan}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.licenseAES.licenseOrganName}}"
+						 disabled>
+					</div>
+				</div>
+
+
+
+				<!--решение о лицензировании-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDecisionOnLicense}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{language.Generic.SchoolInfo.kOrder}}: {{licenseContainer.licenseAES.decisionOrderNumber}} {{language.Generic.Common.kDate}}: {{licenseContainer.licenseAES.decisionDate}}"
+						 disabled>
+					</div>
+				</div>
+
+				<!--ссылка на скан-копию-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kLinkToScanCopy}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<!-- <input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.licenseAES.linkToScanCopy}}" disabled> -->
+						<span id="licenseRef" style="display:block;" onclick='postTo({ path: "/webapi/attachments/" + {{licenseContainer.licenseAES.linkScanCopy.id}}, method: "GET" })'>
+							<a style="cursor: pointer;">{{licenseContainer.licenseAES.linkScanCopy.fileName}}</a>
+						</span>
+					</div>
+				</div>
+
+
+
+
+				{{#unless readonly}}
+				<button type="button" class="btn btn-default btn-sm " title="{{language.Generic.Buttons.kEdit}}" id="btnEditLicenseAES">
+					<span class="glyphicon glyphicon-pencil"></span>
+					{{language.Generic.Buttons.kEdit}}
+				</button>
+				<button type="button" class="btn btn-default btn-sm " title="{{language.Generic.Buttons.kRemove}}" id="btnRemoveLicenseAES">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					{{language.Generic.Buttons.kRemove}}
+				</button>
+				{{/unless}}
+			</div>
+		</div>
+	</div>
+</div>
+{{/if}} {{#if licenseContainer.accreditation}}
+<!--лицензия аккредитации-->
+<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 accreditation">
+	<div class="print-block">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					{{language.Generic.SchoolInfo.kCertificateAccreditation}}
+				</h4>
+			</div>
+
+
+
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kSeriesAndNumberOfForm}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.accreditation.seriesBlank}} № {{licenseContainer.accreditation.numberBlank}}"
+						 disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kRegistrationNumber}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.accreditation.regNumber}}" disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDateOfIssue}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.accreditation.issuedDate}}" disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kExpiryDate}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.accreditation.expiredDate}}"
+						 disabled>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kAccreditationOrgan}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.accreditation.licenseOrganName}}"
+						 disabled>
+					</div>
+				</div>
+
+
+
+
+
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kStatus}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.accreditation.status}}" disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kRenewCertificate}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" {{#ifCond licenseContainer.accreditation.isRenewCertificate
+						 "===" "1"}} value="Да" {{/ifCond}} {{#ifCond licenseContainer.accreditation.isRenewCertificate "===" "2"}} value="Нет"
+						 {{/ifCond}} disabled>
+					</div>
+				</div>
+
+
+				<!--решение об аккредитации-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDecisionAccreditation}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{language.Generic.SchoolInfo.kOrder}}: {{licenseContainer.accreditation.decisionOrderNumber}} {{language.Generic.Common.kDate}}: {{licenseContainer.accreditation.decisionDate}}"
+						 disabled>
+					</div>
+				</div>
+
+
+				<!--Переоформление свидетельства-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.ReIssuanceCertificates}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{language.Generic.SchoolInfo.kOrder}}: {{licenseContainer.accreditation.renewOrderNumber}} рег. №: {{licenseContainer.accreditation.renewRegNumber}} {{language.Generic.Common.kDate}}: {{licenseContainer.accreditation.renewDate}}"
+						 disabled>
+					</div>
+				</div>
+
+				<!--приостановка действия-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kSuspension}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{language.Generic.SchoolInfo.kOrder}}: {{licenseContainer.accreditation.suspensionOrderNumber}} {{language.Generic.Common.kDate}}: {{licenseContainer.accreditation.suspensionDate}}"
+						 disabled>
+					</div>
+				</div>
+
+
+
+				<!--Возобновление действия-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kRenewal}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{language.Generic.SchoolInfo.kOrder}}: {{licenseContainer.accreditation.renewalOrderNumber}} {{language.Generic.Common.kDate}}: {{licenseContainer.accreditation.renewalDate}}"
+						 disabled>
+					</div>
+				</div>
+
+
+				<!--Лишение аккредитации-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kDeprivation}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{language.Generic.SchoolInfo.kOrder}}: {{licenseContainer.accreditation.deprivationOrderNumber}} {{language.Generic.Common.kDate}}: {{licenseContainer.accreditation.deprivationOrderDate}}"
+						 disabled>
+					</div>
+				</div>
+
+				<!--Прекращение действия-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kStopAction}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<input type="text" class="form-control" size="40" maxlength="250" value="{{language.Generic.SchoolInfo.kOrder}}: {{licenseContainer.accreditation.stopActionOrderNumber}} {{language.Generic.Common.kDate}}: {{licenseContainer.accreditation.stopActionDate}}"
+						 disabled>
+					</div>
+				</div>
+
+				<!--ссылка на скан-копию-->
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4 col-lg-4">{{language.Generic.SchoolInfo.kLinkToScanCopy}}</label>
+					<div class="col-lg-8 col-md-8 col-xs-8">
+						<!-- <input type="text" class="form-control" size="40" maxlength="250" value="{{licenseContainer.accreditation.linkToScanCopy}}" disabled> -->
+						<span id="licenseRef" style="display:block;" onclick='postTo({ path: "/webapi/attachments/" + {{licenseContainer.accreditation.linkScanCopy.id}}, method: "GET" })'>
+							<a style="cursor: pointer;">{{licenseContainer.accreditation.linkScanCopy.fileName}}</a>
+						</span>
+					</div>
+				</div>
+
+
+				{{#unless readonly}}
+				<button type="button" class="btn btn-default btn-sm " title="{{language.Generic.Buttons.kEdit}}" id="btnEditAccreditation">
+					<span class="glyphicon glyphicon-pencil"></span>
+					{{language.Generic.Buttons.kEdit}}
+				</button>
+				<button type="button" class="btn btn-default btn-sm " title="{{language.Generic.Buttons.kRemove}}" id="btnRemoveAccreditation">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					{{language.Generic.Buttons.kRemove}}
+				</button>
+				{{/unless}}
+			</div>
+		</div>
+	</div>
+</div>
+{{/if}}

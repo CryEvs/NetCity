@@ -1,0 +1,76 @@
+<style>
+	.panel-group .panel {
+		margin-bottom: 5px;
+	}
+</style>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+
+		<ns-accordion class="panel-group" accordion-id="server-settings-accordion" ng-if="$ctrl.dataReady">
+			<ns-panel panel-id="title_server_settings" class="info" title="{{$ctrl.language.Generic.ServAdmin.kTitleServerSettings}}">
+				<server-settings></server-settings>
+			</ns-panel>
+
+			<ns-panel panel-id="title_sms_registry" class="info" title="{{$ctrl.language.Generic.ServAdmin.kTitleSMSRegistry}}">
+				<sms-settings></sms-settings>
+			</ns-panel>
+
+			<ns-panel ng-show="$ctrl.pushNotificationsEnabled" panel-id="push_settings" class="info" title="{{$ctrl.language.Generic.SchoolSettings.kPushSettings}}">
+				<push-settings></push-settings>
+			</ns-panel>
+
+			<ns-panel panel-id="mail_settings" class="info" title="{{$ctrl.language.Generic.ServAdmin.kMailSettings}}">
+				<mail-settings></mail-settings>
+			</ns-panel>
+
+			<ns-panel ng-show="!$ctrl.emptyGlobalYears" panel-id="move_periods" class="info" title="{{$ctrl.language.Generic.ServAdmin.kMovePeriods}}">
+				<move-periods-settings></move-periods-settings>
+			</ns-panel>
+
+			<ns-panel panel-id="title_security_settings" class="info" title="{{$ctrl.language.Generic.ServAdmin.kTitleSecuritySettings}}">
+				<security-settings></security-settings>
+			</ns-panel>
+
+			<ns-panel panel-id="title_integration_settings" class="info" title="{{$ctrl.language.Generic.ServAdmin.kTitleIntegrationSettings}}">
+				<integration-settings></integration-settings>
+			</ns-panel>
+
+			<ns-panel ng-show="$ctrl.moduleChats" panel-id="title_chats_settings" class="info" title="{{$ctrl.language.Generic.ServAdmin.kCommunicationEnvironmentSettings}}">
+				<chats-settings></chats-settings>
+			</ns-panel>
+
+			<ns-panel panel-id="title_useraccounts_settings" class="info" title="{{$ctrl.language.Generic.ServAdmin.kTitleUserAccountsSettings}}">
+				<useraccounts-settings></useraccounts-settings>
+			</ns-panel>
+
+			<ns-panel panel-id="title_userauthorization_settings" class="info" title="{{$ctrl.language.Generic.ServAdmin.kTitleUserAuthorizationSettings}}">
+				<userauthorization-settings></userauthorization-settings>
+			</ns-panel>
+
+			<ns-panel panel-id="title_popupwindowonloginscreen_settings" class="info" title="{{$ctrl.language.Generic.ServAdmin.kTitlePopUpWindowOnLoginScreenSettings}}">
+				<popupwindowonloginscreen-settings></popupwindowonloginscreen-settings>
+			</ns-panel>
+
+			<!--Сведения об образовательных организациях-->
+			<ns-panel panel-id="reason_for_changes_settings" class="info" title="{{$ctrl.language.Generic.ServAdmin.kReasonForChangeSchoolCardSavedSuccessInfo}}">
+				<school-info-settings></school-info-settings>
+			</ns-panel>
+
+			<!-- Настройки файловых вложений -->
+			<ns-panel panel-id="file_attachments_settings" parent-id="server-settings-accordion" class="info" title="{{$ctrl.language.Generic.ServAdmin.kFileAttachmentsSettings}}">
+				<file-attachments-settings></file-attachments-settings>
+			</ns-panel>
+
+			<!-- Настройки API Шлюза видеоконференций -->
+			<ns-panel ng-show="$ctrl.moduleDistanceLearning" panel-id="video_conf_settings" parent-id="server-settings-accordion" class="info" title="{{$ctrl.language.Generic.ServAdmin.kVideoConfSettings}}">
+				<videoconf-settings></videoconf-settings>
+			</ns-panel>
+
+			<!-- Настройки портфолио -->
+			<ns-panel ng-show="$ctrl.editableDefaultPortfolioGroups" panel-id="portfolio_settings" parent-id="server-settings-accordion" class="info" title="{{$ctrl.language.Generic.ServAdmin.kPortfolioSettings}}">
+				<portfolio-settings></portfolio-settings>
+			</ns-panel>
+		</ns-accordion>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"target": "es2017",
+		"allowSyntheticDefaultImports": false,
+		"baseUrl": ".",
+		"paths": {
+			"components/*": ["vendor/components/*"],
+			"approot/*": ["static/src/app/*"],
+			"webroot/*": ["*"]
+		},
+		"sourceMap": true
+	},
+	"exclude": [
+		"asp",
+		"css",
+		"help",
+		"images",
+		"sa",
+		"static/dist",
+		"vendor"
+	]
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Биология. Вещества растений. Клеточное строение">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Биология. Вещества растений. Клеточное строение" ID="1" Filename="ni_bio_vr_ks/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Увеличительные приборы" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Увеличительные приборы" 
+				Filename="sgo/ni_bio_vr_ks/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Клеточное строение растений" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Клеточное строение растений" 
+				Filename="sgo/ni_bio_vr_ks/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Пластиды" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Пластиды" 
+				Filename="sgo/ni_bio_vr_ks/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Запасные вещества и ткани растений" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Запасные вещества и ткани растений" 
+				Filename="sgo/ni_bio_vr_ks/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Строение растительной клетки" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Строение растительной клетки" 
+				Filename="sgo/ni_bio_vr_ks/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Покровная ткань растений" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Покровная ткань растений" 
+				Filename="sgo/ni_bio_vr_ks/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Механическая ткань растений" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Механическая ткань растений" 
+				Filename="sgo/ni_bio_vr_ks/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Образовательная ткань растений" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Образовательная ткань растений" 
+				Filename="sgo/ni_bio_vr_ks/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Основная ткань растений" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Основная ткань растений" 
+				Filename="sgo/ni_bio_vr_ks/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name=" Проводящая ткань растений (ксилема)" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name=" Проводящая ткань растений (ксилема)" 
+				Filename="sgo/ni_bio_vr_ks/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Проводящая ткань растений (флоэма)" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Проводящая ткань растений (флоэма)" 
+				Filename="sgo/ni_bio_vr_ks/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Жизнедеятельность клетки" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Жизнедеятельность клетки" 
+				Filename="sgo/ni_bio_vr_ks/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+	 
+</Project>

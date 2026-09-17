@@ -1,0 +1,7 @@
+<div >
+	<div class="input-group">		
+		<select track-changes name="hours" class="form-control" ng-model="hour" ng-options="item.id as item.value for item in hours" ng-change="changeHour()"></select>	
+		<span class="input-group-addon">:</span>
+		<select track-changes name="minutes" class="form-control" ng-model="minute" ng-options="item.id as item.value for item in minutes" ng-change="changeMinute()"></select>		
+	</div>
+</div>

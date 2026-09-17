@@ -1,0 +1,103 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-filters-panel form-horizontal single-row">
+			<div class="row">
+				<div class="filters-panel col-md-12 filters-panel-compact">
+					<form name="filterForm">
+						<div class="form-group">
+							<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.EMReports.kClassGroup}}</label>
+							<div class="col-md-8 col-lg-5 col-sm-8">
+								<select class="form-control" ng-model="$ctrl.selectedClass" ng-options="class as class.name for class in $ctrl.classes track by class.id" ng-change="$ctrl.changeClass()"></select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.FilterUsers.kSearch}}</label>
+							<div class="col-md-8 col-lg-5 col-sm-8">
+								<input class="form-control" type="text" placeholder="Фамилия ученика" maxlength="30" ng-model="$ctrl.searchString" ng-change="$ctrl.search()">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4 col-lg-3 col-sm-4">Количество записей в истории</label>
+							<div class="col-md-8 col-lg-5 col-sm-8">
+								<input class="form-control" name="take" type="number" min="1" max="100" float-input="$ctrl.takeInputSettings" placeholder="Количество записей" ng-model="$ctrl.take" ng-change="$ctrl.changeTake()">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-10">
+		<div class="buttons-panel buttons-panel-left" ng-if="$ctrl.dataReady && $ctrl.students.length > 0 && !filterForm.$invalid">
+			<button ng-if="$ctrl.hasEditRight()" title="Сохранить изменения" type="button" class="btn btn-primary" ng-click="$ctrl.save(form.$invalid)">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+			</button>
+
+			<button ng-if="$ctrl.hasEditRight()" title="Восстановить значения" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+				<span class="glyphicon glyphicon-repeat"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10">
+		<div class="alert alert-info ng-binding" ng-show="$ctrl.students.length == 0" role="alert">Не найдено учащихся по заданным критериям</div>
+		<div class="alert alert-info ng-binding" ng-show="$ctrl.firstOpen" role="alert">Выберите класс или воспользуйтесь поиском учащихся</div>
+		<div class="alert alert-warning ng-binding" ng-show="filterForm.$invalid" role="alert">Количество записей должно быть от 1 до 100</div>
+
+		<div class="content-preloader" ng-show="!$ctrl.dataReady && !$ctrl.firstOpen">
+			<span class="arrows"></span>
+			<span class="title">{{$ctrl.language.Generic.Curriculum.kPleaseWait}}</span>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-6">
+		<form name="form" class="form-xs">
+			<table ng-show="$ctrl.students.length > 0 && $ctrl.dataReady && !filterForm.$invalid" class="table table-xs table-bright table-middle-cells table-thin print-block">
+				<tr>
+					<th>Ученики</th>
+					<th>Класс</th>
+					<th ng-if="$ctrl.hasEditRight()">Текущие измерения</th>
+					<th>История измерений</th>
+				</tr>
+				<tr ng-repeat="student in $ctrl.students" ng-form="studentForm">
+					<td class="student-name"><span>{{$index + 1}}. {{student.name}}</span></td>
+					<td ng-if="$ctrl.selectedClass.id != -1">{{$ctrl.selectedClass.name}}</td>
+					<td ng-if="$ctrl.selectedClass.id == -1">{{student.className}}</td>
+					<td ng-if="$ctrl.hasEditRight()" class="text-center">
+						<div class="form-group" ng-class="{'has-error': studentForm.temperature.$invalid}">
+							<div class="checkbox">
+								<label><input track-changes type="checkbox" ng-model="student.hasTemperature">Повышенная температура</label>
+							</div>
+							<input class="input-sm form-control" track-changes float-input="$ctrl.decimalInputSettings" name="temperature" type="number" min="36"
+								   max="42" ng-if="student.hasTemperature" step="0.1" placeholder="Температура"
+								   ng-model="student.temperature"/>
+							<span class="help-block" ng-show="studentForm.temperature.$error.min || studentForm.temperature.$error.max">От 36 до 42 градусов</span>
+							<span class="help-block" ng-show="studentForm.temperature.$error.number">Не является числом</span>
+						</div>
+					</td>
+					<td ng-if="student.entries">
+					<span ng-repeat="entry in student.entries">
+						<a href="" ng-if="$ctrl.hasEditRight()" ng-click="$ctrl.edit(entry.id)">{{entry.date | nsDateTime}} Повышенная температура
+							<span ng-if="entry.temperature">({{entry.temperature | float2str}})</span></a>
+						<span ng-if="$ctrl.hasViewRight() && !$ctrl.hasEditRight()">{{entry.date | nsDateTime}} Повышенная температура
+							<span ng-if="entry.temperature">({{entry.temperature | float2str}})</span></span>
+						<br>
+					</span>
+					</td>
+					<td ng-if="!student.entries">
+						Нет данных для отображения
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

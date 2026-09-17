@@ -1,0 +1,39 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="header"></h4>
+			</div>
+			<div class="bootstrap-dialog-close-button" style="display: block;">
+				<button class="close" ng-click="cancel()">×</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<!--Поля формы-->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label class="control-label col-md-4">{{language.Generic.SetupSchoolCalendar.kComponent}}</label>
+					<div class="col-md-8">
+						<input track-changes type="text" class="form-control FilterWhiteSpace" name="COMPONENTNAME" size="20" maxlength="80" ng-model="data.component.name">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary ng-binding" ng-click="create()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			{{language.Generic.Buttons.kSave}}
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			{{language.Generic.Buttons.kCancel}}
+		</button>
+	</div>
+
+</div>

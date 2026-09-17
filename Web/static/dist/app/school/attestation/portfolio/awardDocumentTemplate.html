@@ -1,0 +1,38 @@
+<legend class="edit-block-legend">{{language.Generic.Reports.kDocument}}</legend>
+<div class="form-group" ng-class="{'has-error': editForm.academicDocType.$invalid && (!editForm.academicDocType.$pristine || editForm.$displayErrors)}">
+	<label for="academic-doc-type" class="control-label">{{language.Generic.SetupSchoolPortfolio.kDocName}}</label>
+	<div>
+		<select id="academic-doc-type" class="form-control" name="academicDocType" ng-model="data.item.awardDocument.docType" required ng-options="awardDocType.key as awardDocType.name for awardDocType in refs.awardDocTypes" onchange="dataChanged()"></select>
+		<p ng-show="editForm.academicDocType.$invalid && (!editForm.academicDocType.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+	</div>
+</div>
+<div class="form-group" ng-class="{'has-error': editForm.academicDocOrganization.$invalid && (!editForm.academicDocOrganization.$pristine || editForm.$displayErrors)}">
+	<label for="academic-doc-organization" class="control-label">{{language.Generic.Common.kOrganization}}</label>
+	<div>
+		<input type="text" id="academic-doc-organization" name="academicDocOrganization" class="form-control" ng-model="data.item.awardDocument.organization" required maxlength="400" onchange="dataChanged()">
+		<p ng-show="editForm.academicDocOrganization.$invalid && (!editForm.academicDocOrganization.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6 form-group">
+		<label for="academic-doc-serie" class="control-label">{{language.Generic.Common.kSerial}}</label>
+		<div>
+			<input type="text" id="academic-doc-serie" class="form-control" ng-model="data.item.awardDocument.series" maxlength="400" onchange="dataChanged()">
+		</div>
+	</div>
+	<div class="col-md-6 form-group" ng-class="{'has-error': editForm.academicDocNumber.$invalid && (!editForm.academicDocNumber.$pristine || editForm.$displayErrors)}">
+		<label for="academic-doc-number" class="control-label">{{language.Generic.UsersExport_1C.kNumberDocument}}</label>
+		<div>
+			<input type="text" id="academic-doc-number" name="academicDocNumber" class="form-control" ng-model="data.item.awardDocument.number" required maxlength="400" onchange="dataChanged()">
+			<p ng-show="editForm.academicDocNumber.$invalid && (!editForm.academicDocNumber.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+		</div>
+	</div>
+</div>
+<div class="form-group" ng-class="{'has-error': data.item.awardDocument.awardDate == null  && (editForm.$displayErrors)}">
+	<label for="academic-doc-awarddate" class="control-label">{{language.Generic.UsersExport_1C.kIssueDate}}</label>
+	<div class="input-group date" id="academic-doc-awarddate">
+		<input type="text" class="form-control date-input" required name="awardDate" size="11" maxlength="10" ns-date-model="data.item.awardDocument.awardDate" onchange="dataChanged()">
+		<span class="input-group-btn"><button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span> </button></span>
+	</div>
+	<p ng-show="data.item.awardDocument.awardDate == null && (editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+</div>

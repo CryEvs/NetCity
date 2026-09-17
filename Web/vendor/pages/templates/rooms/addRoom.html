@@ -1,0 +1,78 @@
+﻿<form class="form-horizontal" id="addNewRoom" name="addNewRoom" method="post">
+	<div class="form-group">
+		<label class="control-label col-md-4">{{language.Generic.Calendar.kRoomNumber}}</label>
+		<div class="col-md-8">
+			<div>
+				<input type="text" class="form-control" name="RoomName" size="27" maxlength="50" value="" onchange="dataChanged();">
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-4">{{language.Generic.Calendar.kFloor}}</label>
+		<div class="col-md-8">
+			<select class="form-control" name="Floor" onchange="dataChanged();">
+				{{#each @root.floors}}
+				<option value="{{this}}">{{this}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-4">{{language.Generic.Common.kCorp}}</label>
+		<div class="col-md-8">
+			<div>
+				<input type="text" class="form-control" name="Corpus" size="27" maxlength="100" value="" onchange="dataChanged();">
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-4">{{language.Generic.Calendar.kLen}}</label>
+		<div class="col-md-8">
+			<div>
+				<input type="text" class="form-control" name="Length" size="27" maxlength="50" value="" onchange="dataChanged();">
+			</div>
+		</div>
+	</div>
+	<div class="form-group"><label class="control-label col-md-4">{{language.Generic.Calendar.kWidth}}</label>
+		<div class="col-md-8">
+			<div>
+				<input type="text" class="form-control" name="Width" size="27" maxlength="50" value="" onchange="dataChanged();">
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-4">{{language.Generic.Calendar.kArea}}</label>
+		<div class="col-md-8">
+			<div>
+				<input type="text" class="form-control" name="Area" size="27" maxlength="50" value="" onchange="dataChanged();">
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-4">{{language.Generic.Calendar.kResponsible}}</label>
+		<div class="col-md-8">
+			<select class="form-control" name="RESPONSIBLEID" onchange="dataChanged();">
+				<option selected=""></option>
+				{{#each @root.staffs}}
+				<option value="{{userid}}">{{nickname}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-4">{{language.Generic.Calendar.kStudy}}</label>
+		<div class="col-md-8">
+			<div class="checkbox">
+				<label><input type="checkbox" name="Study" onclick="dataChanged();" checked="" value="1"></label>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-4">{{language.Calendar.kSeats}}</label>
+		<div class="col-md-8">
+			<div>
+				<input type="text" class="form-control" name="Seats" size="3" maxlength="3" value="" onchange="dataChanged();">
+			</div>
+		</div>
+	</div>
+</form>

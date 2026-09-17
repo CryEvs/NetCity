@@ -1,0 +1,85 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-filters-panel form-horizontal single-row">
+			<div class="row">
+				<div class="buttons-panel">
+					<div class="buttons-panel-right">
+						<button title="Нормативы оплаты питания" ng-if="$ctrl.hasRightsOnPayNorms()" type="button" class="btn btn-default" ng-click="$ctrl.goFoodPayNorms()">
+							<span>Нормативы оплаты питания</span>
+						</button>
+					</div>
+				</div>
+				<div class="filters-panel col-md-4">
+					<div class="form-group">
+						<filter-panel class="filters-panel col-md-12" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-10">
+		<div class="buttons-panel buttons-panel-left" ng-if="$ctrl.data.schoolOrders.length > 0 && $ctrl.state.ready && !$ctrl.noPayNorms">
+			<button ng-if="$ctrl.hasEditRight()" ng-disabled="!$ctrl.canClick() || $ctrl.checkApproved()" title="{{$ctrl.language.Generic.FoodPayModule.kApprove}}" type="button" class="btn btn-primary" ng-click="$ctrl.approveSchoolOrder()">
+				<span class="glyphicon glyphicon-ok"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kApprove}}</span>
+			</button>
+
+			<button ng-if="$ctrl.hasEditRight()" ng-disabled="!$ctrl.canClick() || !$ctrl.checkApproved()" title="{{$ctrl.language.Generic.FoodPayModule.kDisapprove}}" type="button" class="btn btn-warning" ng-click="$ctrl.disapproveSchoolOrder()">
+				<span class="glyphicon glyphicon-remove"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kDisapprove}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10">
+		<div class="content-preloader" ng-show="!$ctrl.state.ready">
+			<span class="arrows"></span>
+			<span class="title">{{$ctrl.language.Generic.Curriculum.kPleaseWait}}</span>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+
+	<div class="col-md-12">
+
+		<div ng-if="$ctrl.noPayNorms" class="alert alert-warning" role="alert">
+			<b>Внимание!</b> Необходимо оределить <a ng-if="$ctrl.hasRightsOnPayNorms()" href="javasctipt:void(0)" ng-click="$ctrl.goFoodPayNorms()">нормативы оплаты питания</a><span ng-if="!$ctrl.hasRightsOnPayNorms()">нормативы оплаты питания</span>.
+		</div>
+
+		<div ng-if="$ctrl.state.emptyData" class="alert alert-info" role="alert">
+			{{$ctrl.language.Generic.FoodPayModule.kNoSchoolOrders}}
+		</div>
+
+		<form class="form-sm" ng-if="!$ctrl.state.emptyData">
+			<table class="table table-thin table-xs table-bright table-bright-hover table-selectable print-block">
+				<tr>
+					<th rowspan="2">{{$ctrl.language.Generic.Common.kDate}}</th>
+					<th colspan="3">Заявок на питание от учащихся</th>
+					<th rowspan="2">{{$ctrl.language.Generic.FoodPayModule.kOrderStatus}}</th>
+				</tr>
+				<tr>
+					<th>Завтрак</th>
+					<th>Обед</th>
+					<th>Полдник</th>
+				</tr>
+				<tr ng-repeat="order in $ctrl.data.schoolOrders" ng-class="{'selected': $ctrl.data.selection.isSelected(order)}" ng-click="$ctrl.data.selection.select(order)">
+					<td>{{order.day | nsDate}}</td>
+					<td>{{order.breakfastOrders}}</td>
+					<td>{{order.lunchOrders}}</td>
+					<td>{{order.snackOrders}}</td>
+					<td>
+						<span ng-if="order.approved">{{$ctrl.language.Generic.FoodPayModule.kConfirmedOrder}}. {{order.approvedBy.name}} {{order.approvedAt | nsDateTime}}</span>
+						<span ng-if="!order.approved">{{$ctrl.language.Generic.FoodPayModule.kEmergingOrder}}</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+
+	</div>
+</div>

@@ -1,0 +1,79 @@
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="buttons-filters-panel form-horizontal single-row">
+			<div class="row">
+				<div class="filters-panel col-md-12"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel" id="buttonPanel" style="display: block;">
+			<div class="buttons-panel-left">
+				<button id="refreshButton" title="Обновить" type="button" class="btn btn-default" ng-click="browseStatFormInfo()">
+					<span class="glyphicon glyphicon-refresh"></span>
+					<span>Обновить</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right" id="actionPanel">
+				<div class="display-inline buttons-panel-export-send">
+					<button id="openToEditButton" title="Открыть на редактирование" type="button" class="btn btn-default" ng-click="openToEdit()" style="display: none;">
+						<span>Открыть на редактирование</span>
+					</button>
+					<button title="На печать" type="button" class="btn btn-default" ng-click="print()">
+						<span class="glyphicon glyphicon-print"></span> <span>На печать</span>
+					</button>
+					<button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="export()">
+						<span class="glyphicon glyphicon-export"></span> <span>Экспорт в Excel</span>
+					</button>
+				</div>
+			</div>
+
+			<div class="buttons-panel-adaptive btn-group" style="float: right; display: none; margin-right: 0px; right: 0px;">
+				<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<span class="glyphicon glyphicon-menu-hamburger"></span> <span id="action">Действия</span> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu buttons-panel-right buttons-panel-adaptive-wrapper pull-right" role="menu" style="display: block;">
+					<li>
+						<button id="openToEditButton" title="Открыть на редактирование" type="button" class="btn btn-default" ng-click="openToEdit()" style="display: none;">
+							<span>Открыть на редактирование</span>
+						</button>
+					</li>
+					<li>
+						<button title="На печать" type="button" class="btn btn-default" ng-click="print()">
+							<span class="glyphicon glyphicon-print"></span> <span>На печать</span>
+						</button>
+					</li>
+					<li><button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="export()">
+						<span class="glyphicon glyphicon-export"></span> <span>Экспорт в Excel</span>
+					</button></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-show="getForEditing()">
+
+	<div class="alert alert-info" role="alert">
+		{{language.Generic.Reports.kChoiceEoByOpenForm}}
+	</div>
+
+	<div class="buttons-panel buttons-panel-left">
+		<button title="{{language.Generic.Buttons.kOpen}}" type="button" class="btn btn-default" ng-click="reopenForms()">
+			<span>{{language.Generic.Buttons.kOpen}}</span>
+		</button>
+		<button title="{{language.Generic.Buttons.kCancel}}" type="button" class="btn btn-default" ng-click="cancel()">
+			<span>{{language.Generic.Buttons.kCancel}}</span>
+		</button>
+	</div>
+
+</div>
+
+<div id="statFormInfoPanel">
+</div>

@@ -1,0 +1,63 @@
+<div class="buttons-filters-panel form-horizontal ns-cloak">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+					<button title="{{$ctrl.language.Generic.Buttons.kReset}}" type="button" class="btn btn-warning" ng-click="$ctrl.restoreData()">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="filters-panel col-md-6 col-lg-6 col-sm-12">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Common.kClass}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<span class="form-control form-control-title">
+						<span class="text">
+							{{$ctrl.classInfo.name}}
+						</span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Common.kMonth}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<span class="form-control form-control-title">
+						<span class="text">
+							{{$ctrl.monthInfo.titleMonth}}
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<table class="table table-bordered table-xs table-middle-cells table-hover table-thin-sm">
+			<tbody>
+				<tr>
+					<th>{{$ctrl.language.Common.kStudents}}</th>
+					<th>{{$ctrl.language.Generic.FoodPayModule.kStartMonthBalance}}</th>
+				</tr>
+
+				<tr ng-repeat="studentBalance in $ctrl.studentBalances">
+					<td class="text-nowrap text-left student-name text-nowrap"><span>{{$index + 1}}. {{studentBalance.fullName}}</span></td>
+					<td class="text-center">
+						<input track-changes type="text" class="form-control" size="8" maxlength="8" numeric-input="{negative: true, fractional: true, allownull: true}" ng-model="studentBalance.monthBalances[0].balance">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

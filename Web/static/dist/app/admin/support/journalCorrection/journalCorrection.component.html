@@ -1,0 +1,55 @@
+<div class="buttons-filters-panel form-horizontal single-row ns-cloak">
+	<div class="row">
+		<filter-panel class="col-md-12 form-sm" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-show="$ctrl.dataReady">
+	<div class="col-md-12">
+
+		<div class="form-horizontal">
+			<div class="form-group">
+				<div class="col-md-12">
+					<button title="{{$ctrl.language.Generic.Buttons.kEdit}}" type="button" class="btn btn-sm btn-warning" ng-disabled="!$ctrl.selection.selected" ng-click="$ctrl.edit()" ng-show="$ctrl.marks.length">
+						<span class="glyphicon glyphicon-pencil"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+					</button>
+					<button title="{{$ctrl.language.Generic.Buttons.kAdd}}" type="button" class="btn btn-sm btn-warning" ng-disabled="!$ctrl.hasUnassignedMarks" ng-click="$ctrl.add()">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-if="$ctrl.dataReady && !$ctrl.marks.length">
+		<div class="alert alert-info" role="alert">Нет оценок</div>
+	</div>
+</div>
+
+<div class="row" ng-if="$ctrl.dataReady && $ctrl.marks.length">
+	<div class="col-md-12">
+
+		<table class="table table-xs table-bright table-bright-hover table-selectable table-thin">
+			<tr>
+				<th>Предмет</th>
+				<th>Тип</th>
+				<th>Период</th>
+				<th>Учитель</th>
+				<th>Оценка</th>
+			</tr>
+			<tr ng-repeat="mark in $ctrl.marks" ng-class="{'selected': $ctrl.selection.isSelected(mark)}" ng-click="$ctrl.selection.select(mark)">
+				<td>{{mark.subjectGroup.name}}</td>
+				<td>{{$ctrl.getmarkType(mark)}}</td>
+				<td>{{$ctrl.getmarkPeriod(mark)}}</td>
+				<td>{{mark.teacher.name}}</td>
+				<td>{{$ctrl.getMarkInfo(mark.mark, mark.subjectGroup, mark.periodType)}}</td>
+			</tr>
+		</table>
+
+	</div>
+</div>

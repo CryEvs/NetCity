@@ -1,0 +1,52 @@
+
+<div class="row ns-cloak" ng-if="!$ctrl.state.readOnly">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button ng-if="!$ctrl.wizard" title="{{$ctrl.language.Generic.SetupSchoolCalendar.kCreateSG}}" type="button" class="btn btn-info" 
+					ng-click="$ctrl.editParentSubject(null)">
+					<span class="glyphicon glyphicon-plus-sign"></span> 
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+				
+				<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kDeleteSG}}" type="button" class="btn btn-danger" 
+					ng-click="$ctrl.remove()" ng-disabled="$ctrl.selected.items.length == 0">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="alert alert-info" role="alert" ng-if="$ctrl.state.emptyData">
+	{{$ctrl.language.Generic.ServAdmin.kEmptyList}}
+</div>
+
+<div class="row" ng-if="!$ctrl.state.emptyData">
+	<div class="col-md-6">
+		<table class="table table-bordered">
+			<tbody>
+				<tr class="success">
+					<th>{{$ctrl.language.Generic.SetupSchoolCalendar.kTitleSubjectGroups}}</th>
+					<th>{{$ctrl.language.Generic.Common.kSubjects}}</th>
+					<th ng-bind-html="$ctrl.language.Generic.Common.kDeletingMark"></th>
+				</tr>
+				<tr ng-repeat="parentSubject in $ctrl.parentSubjects">
+					<td>
+						<a ng-if="!$ctrl.state.readOnly" href="JavaScript:void(0);" ng-click="$ctrl.editParentSubject(parentSubject)" 
+							title="{{$ctrl.language.Generic.SetupSchoolCalendar.kTitleEditSubjectGroup}}">{{parentSubject.name}}</a>
+						<span ng-if="$ctrl.state.readOnly">{{parentSubject.name}}</span>
+					</td>
+					<td ng-bind-html="$ctrl.showSubjects(parentSubject)"></td>
+					<td class="text-center" ng-if="!$ctrl.canRemove(parentSubject)" ng-bind-html="$ctrl.getSuppressionSign(parentSubject)"></td>
+					<td class="text-center" ng-if="$ctrl.canRemove(parentSubject)">
+						<input type="checkbox" name="PARENTSUBJECT" ng-checked="$ctrl.selected.isSelected(parentSubject)" 
+							ng-click="$ctrl.selected.select(parentSubject)" ng-disabled="$ctrl.state.readOnly">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

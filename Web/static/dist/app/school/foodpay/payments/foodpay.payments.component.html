@@ -1,0 +1,135 @@
+<div class="row">
+	<div class="col-md-6 col-lg-5" ng-if="$ctrl.showOrderBlock">
+		<h3 class="first">Заявки на питание</h3>
+
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form form-sm">
+					<div class="row">
+						<div class="col-lg-6 col-md-9">
+							<div class="form-group">
+								<label>Месяц</label>
+								<select class="form-control" ng-change="$ctrl.changeMonth()" ng-model="$ctrl.month" ng-options="month as month.name for month in $ctrl.monthes track by month.number"></select>
+							</div>
+						</div>
+					</div>
+				</form>
+
+				<div class="buttons-panel">
+
+					<button type="button" title="Подать заявку на питание" class="btn btn-info"
+						ng-click="$ctrl.postOrder()">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>Подать заявку на питание</span>
+					</button>
+
+					<button type="button" title="Отозвать заявку на питание" class="btn btn-danger"
+						ng-click="$ctrl.deleteOrder()" ng-disabled="!$ctrl.orderSelection.selected">
+						<span class="glyphicon glyphicon-minus-sign"></span>
+						<span>Отозвать заявку на питание</span>
+					</button>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="alert alert-info" role="alert" ng-if="$ctrl.payOrders && !$ctrl.payOrders.length">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					Заявок на питание за выбранный месяц нет
+				</div>
+
+				<table class="table table-xs table-bright table-bright-hover table-selectable table-thin"
+					ng-if="$ctrl.payOrders && $ctrl.payOrders.length">
+					<tr>
+						<th>№ п.п.</th>
+						<th>Дата</th>
+						<th>Питание</th>
+						<th>Отправлена когда</th>
+						<th>Отправлена кем</th>
+						<th>Утверждена</th>
+					</tr>
+					<tr ng-repeat="order in $ctrl.payOrders"
+						ng-class="{'selected': $ctrl.orderSelection.isSelected(order)}"
+						ng-click="$ctrl.orderSelection.select(order)">
+						<td>{{$index + 1}}</td>
+						<td>{{order.day | nsDate}}</td>
+						<td>
+							<span ng-if="order.breakfast">Завтрак</span>
+							<span ng-if="order.lunch">Обед</span>
+							<span ng-if="order.snack">Полдник</span>
+						</td>
+						<td>{{order.createdAt | nsDateTime}}</td>
+						<td>{{order.createdBy.name }}</td>
+						<td>
+							<span ng-if="order.approvalInfo">{{order.approvalInfo.approvedBy.name}} {{order.approvalInfo.approvedAt | nsDateTime}}</span>
+							<span ng-if="!order.approvalInfo">-</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-6 col-lg-5" ng-if="$ctrl.showPayDocumentBlock">
+		<h3 class="first">Платежные документы</h3>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="buttons-panel">
+
+					<button type="button" title="Сформировать платежный документ" class="btn btn-info"
+						ng-click="$ctrl.generatePayDocument()">
+						<span>Сформировать платежный документ</span>
+					</button>
+
+					<button type="button" title="Оплатить по QR-коду" class="btn btn-info"
+						ng-click="$ctrl.displayPayCode($ctrl.payDocumentSelection.selected)"
+						ng-disabled="!$ctrl.payDocumentSelection.selected">
+						<span>Оплатить по QR-коду</span>
+					</button>
+
+					<button type="button" title="Извещение" class="btn btn-info"
+						ng-click="$ctrl.downloadPdf($ctrl.payDocumentSelection.selected)"
+						ng-disabled="!$ctrl.payDocumentSelection.selected">
+						<span>Извещение</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-info" role="alert" ng-if="$ctrl.payDocuments && !$ctrl.payDocuments.length">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					Платёжных документов не обнаружено
+				</div>
+
+				<table class="table table-xs table-bright table-bright-hover table-selectable table-thin"
+					ng-if="$ctrl.payDocuments && $ctrl.payDocuments.length">
+					<tr>
+						<th>№ п.п.</th>
+						<th>Месяц</th>
+						<th>Кол-во завтраков</th>
+						<th>Кол-во обедов</th>
+						<th>Кол-во полдников</th>
+						<th>Сумма к оплате</th>
+					</tr>
+					<tr ng-repeat="payDoc in $ctrl.payDocuments"
+						ng-class="{'selected': $ctrl.payDocumentSelection.isSelected(payDoc)}"
+						ng-click="$ctrl.payDocumentSelection.select(payDoc)">
+						<td>{{$index + 1}}</td>
+						<td>{{payDoc.startMonth | nsDateMonth}}</td>
+						<td>{{payDoc.breakfastCount}}</td>
+						<td>{{payDoc.lunchCount}}</td>
+						<td>{{payDoc.snackCount}}</td>
+						<td>{{payDoc.toPay}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,57 @@
+<div class="buttons-filters-panel form-horizontal">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<button title="{{ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span> <span>{{ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+
+					<button title="{{ctrl.language.Generic.Secure.kbtnDefault}}" type="button" class="btn btn-default" ng-click="ctrl.setDefaultRigths()">
+						<span>{{ctrl.language.Generic.Secure.kbtnSetDefault}}</span>
+					</button>
+
+					<button title="{{ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="ctrl.reset()">
+						<span class="glyphicon glyphicon-repeat"></span> <span>{{ctrl.language.Generic.Buttons.kReset}}</span>
+					</button>
+
+					<button ng-show="!ctrl.state.accessClosed" title="{{ctrl.language.Generic.Secure.kCloseAccess}}" type="button" class="btn btn-close-rights" ng-click="ctrl.closeAccess()">
+						<span class="glyphicon glyphicon-user"></span> <span>{{ctrl.language.Generic.Secure.kCloseAccess}}</span>
+					</button>
+
+					<button title="{{ctrl.language.Generic.Secure.kCollapseAllPanels}}" type="button" class="btn btn-default" ng-click="ctrl.collapseAll()">
+						<span class="glyphicon glyphicon-folder-close"></span>
+					</button>
+
+					<button title="{{ctrl.language.Generic.Secure.kExpandAllPanels}}" type="button" class="btn btn-default" ng-click="ctrl.expandAll()">
+						<span class="glyphicon glyphicon-folder-open"></span>
+					</button>
+				</div>
+				<div class="buttons-panel-adaptive buttons-text btn-group" style="display: none;">
+					<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<span class="glyphicon glyphicon-menu-hamburger"></span> <span id="action">{{ctrl.language.Generic.Buttons.kActions}}</span> <span class="caret"></span>
+					</button>
+					<div class="buttons-panel-right dropdown-menu buttons-panel-adaptive-wrapper pull-right" role="menu">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="filters-panel col-md-6 col-md-offset-4">
+			<div class="form-group">
+				<filter-panel class="filters-panel col-md-12" ng-if="ctrl.filterPanelSettings" fp="ctrl.filterPanel" fp-settings="ctrl.filterPanelSettings"></filter-panel>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div ng-repeat="groups in ctrl.data.gridInfo.gridGroups" class="col-md-6 col-lg-4">
+		<div  ng-repeat="group in groups">
+			<group-rights ng-if="!ctrl.isGroupSettings(group)" role="ctrl.data.role" group="group" selected="ctrl.data.selected"></group-rights>
+			<group-settings ng-if="ctrl.isGroupSettings(group)" group="group"></group-settings>
+		</div>
+	</div>
+</div>

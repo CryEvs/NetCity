@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Русский язык. 6 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Русский язык. 6 класс" ID="1" Filename="ni_rus_6/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Самостоятельные и служебные части речи" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Самостоятельные и служебные части речи" 
+				Filename="sgo/ni_rus_6/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Род имён существительных" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Род имён существительных" 
+				Filename="sgo/ni_rus_6/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правописание приставок ПРЕ и ПРИ" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание приставок ПРЕ и ПРИ" 
+				Filename="sgo/ni_rus_6/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правописание НЕ с существительными" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание НЕ с существительными" 
+				Filename="sgo/ni_rus_6/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правописание суффиксов глаголов ОВА, ЕВА, ИВА и ЫВА" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание суффиксов глаголов ОВА, ЕВА, ИВА и ЫВА" 
+				Filename="sgo/ni_rus_6/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Н и НН в суффиксах прилагательных" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Н и НН в суффиксах прилагательных" 
+				Filename="sgo/ni_rus_6/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правописание НЕ с прилагательными" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание НЕ с прилагательными" 
+				Filename="sgo/ni_rus_6/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Написание прилагательных через дефис" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Написание прилагательных через дефис" 
+				Filename="sgo/ni_rus_6/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Числительные" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Числительные" 
+				Filename="sgo/ni_rus_6/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Склонение количественных числительных" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Склонение количественных числительных" 
+				Filename="sgo/ni_rus_6/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Порядковые числительные" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Порядковые числительные" 
+				Filename="sgo/ni_rus_6/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правописание сложных слов" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание сложных слов" 
+				Filename="sgo/ni_rus_6/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Разряды местоимений" ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Разряды местоимений" 
+				Filename="sgo/ni_rus_6/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Простое предложение" ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Простое предложение" 
+				Filename="sgo/ni_rus_6/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Сложное предложение" ID="16">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Сложное предложение" 
+				Filename="sgo/ni_rus_6/15/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

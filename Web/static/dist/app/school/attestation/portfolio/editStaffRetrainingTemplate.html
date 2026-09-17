@@ -1,0 +1,77 @@
+<div ng-model="EditStaffRetrainingCtrl">
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<form role="form" name="editForm" class="form form-xs">
+				<!--Поля формы-->
+				<fieldset>
+					<legend class="edit-block-legend">{{language.Generic.Common.kGeneralInformation}}</legend>
+					<div ng-include="'/static/dist/app/school/attestation/portfolio/staffCommonTrainingTemplate.html'" onload="initCalendar();"></div>
+
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="retraining-speciality" class="control-label">{{language.Generic.UsersExport_1C.kProfession}}</label>
+								<div>
+									<input type="text" id="retraining-speciality" class="form-control" ng-model="data.item.speciality" maxlength="400" onchange="dataChanged()">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="retraining-qualification" class="control-label">{{language.Generic.UsersExport_1C.kQualification}}</label>
+								<div>
+									<input type="text" id="retraining-qualification" class="form-control" ng-model="data.item.qualification" maxlength="400" onchange="dataChanged()">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="retraining-secondName" class="control-label">{{language.Generic.Common.kDiplomaSecondName}}</label>
+						<div>
+							<input track-changes type="text" id="retraining-secondName" class="form-control" ng-model="data.item.secondName" maxlength="50">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="retraining-note" class="control-label">{{language.Generic.UsersExport_1C.kNote}}</label>
+						<div>
+							<input type="text" id="retraining-note" class="form-control" ng-model="data.item.note"  maxlength="400" onchange="dataChanged()">
+						</div>
+					</div>
+					
+					<div class="form-group" ng-class="{'has-error': editForm.retrainingType.$invalid && (!editForm.retrainingType.$pristine || editForm.$displayErrors)}">
+						<label for="retraining-type" class="control-label">{{language.Generic.Common.kRetrainingType}}</label>
+						<div>
+							<select id="retraining-type" name="retrainingType" class="form-control" required="" ng-model="data.item.retrainingType" ng-options="retrainingType.key as retrainingType.name for retrainingType in refs.retrainingTypes" onchange="dataChanged()"></select>
+							<p ng-show="editForm.retrainingType.$invalid && (!editForm.retrainingType.$pristine || editForm.$displayErrors)" class="help-block">Обязательное поле</p>
+						</div>
+					</div>
+
+					<div ng-include="'/static/dist/app/school/attestation/portfolio/completionRetrainingDocumentTemplate.html'" onload="initCalendar();"></div>
+				</fieldset>
+			</form>
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="editForm.$displayErrors = true; save(editForm.$valid);">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,126 @@
+<form class="form">
+	<div class="row">
+		<div class="col-md-6" ng-if="$ctrl.withSorting">
+			<div class="form-group">
+				<label class="control-label">{{$ctrl.language.Generic.Common.kView}}</label>
+				<div class="">
+					<select class="form-control" name="mode" ng-model="$ctrl.state.mode">
+						<option ng-value="'grouped'" ng-if="$ctrl.showSubjectFields">{{$ctrl.language.Generic.Common.kNormal}}</option>
+						<option ng-value="'simple'" ng-if="!$ctrl.showSubjectFields">{{$ctrl.language.Generic.Common.kNormal}}</option>
+						<option ng-value="'sort'" ng-if="!$ctrl.state.readOnly">{{$ctrl.language.Generic.Constructor.kSortings}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group" ng-if="$ctrl.withStatusFilter && $ctrl.state.mode != 'sort'">
+				<label class="control-label">{{$ctrl.language.Generic.Curriculum.kStatus}}</label>
+				<div>
+					<select class="form-control" name="kView" ng-model="$ctrl.state.status">
+						<option ng-value="'using'">{{$ctrl.language.Generic.Common.kEmploy}}</option>
+						<option ng-value="'all'">{{$ctrl.language.Generic.Common.kAll}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel extra" ng-if="!$ctrl.state.readOnly">
+			<div class="buttons-panel-left">
+				<button title="{{$ctrl.languageService.Add}}" type="button" class="btn btn-info" ng-click="$ctrl.addSubject()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button title="{{$ctrl.languageService.Remove}}" type="button" class="btn btn-danger" ng-click="$ctrl.delSubject()" ng-disabled="$ctrl.state.mode == 'sort'">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<table class="table table-bordered table-sm table-striped" ng-if="$ctrl.state.mode == 'grouped'">
+	<tr>
+		<th width="60%">{{$ctrl.language.Generic.Common.kName}}</th>
+		<th width="15%">{{$ctrl.language.Common.kTeachers}}</th>
+		<th width="15%" ng-if="$ctrl.showGroups">{{$ctrl.language.Generic.MenuFolders.kFNSubgroups}}</th>
+		<th width="10%" ng-bind-html="$ctrl.language.Generic.Common.kDeletingMark" class="min" ng-if="!$ctrl.state.readOnly"></th>
+	</tr>
+	<tr ng-repeat-start="group in $ctrl.groupedSubjects">
+		<th colspan="4" class="text-center">
+			<a href="JavaScript:void(0);" ng-click="$ctrl.editSubjectField(group.subjectField)" title="{{$ctrl.language.Generic.SetupSchoolCalendar.kEditSubjectField}}" ng-if="!$ctrl.state.readOnly && group.subjectField.id > 0 && (group.subjectField.order > $ctrl.maxPredefined || group.subjectField.order == null)">
+				{{group.subjectField.name || '----'}}
+			</a>
+			<span ng-if="$ctrl.state.readOnly || group.subjectField.id == -1 || (group.subjectField.order > 0 && group.subjectField.order <= $ctrl.maxPredefined)">
+				{{group.subjectField.name}}
+			</span>
+		</th>
+	</tr>
+	<tr ng-repeat="subject in group.subjects | filter: $ctrl.filterSbjByStatus" ng-repeat-end>
+		<td>
+			<a ng-if="!$ctrl.state.readOnly" href="JavaScript:void(0);" ng-click="$ctrl.editSubject(subject)" title="{{$ctrl.languageService.Edit}}">{{subject.name}}</a><span ng-if="$ctrl.state.readOnly">{{subject.name}}</span> ({{subject.shortName}})
+		</td>
+		<td class="text-center">
+			<abbr title="{{subject.teachersStr}}">{{subject.teachers.length}}</abbr>
+		</td>
+		<td class="text-center" ng-if="$ctrl.showGroups">
+			<abbr title="{{subject.groupsStrTitle}}">{{subject.groupsStr}}</abbr>
+		</td>
+		<td class="text-center" ng-if="!$ctrl.state.readOnly">
+			<input type="checkbox" ng-checked="$ctrl.selection.isSelected(subject)" ng-click="$ctrl.selection.select(subject)" ng-disabled="subject.using"/>
+		</td>
+	</tr>
+</table>
+
+<table class="table table-bordered table-sm subjects table-striped" ng-if="$ctrl.state.mode == 'sort'">
+	<tr>
+		<th width="60%">{{$ctrl.language.Generic.Common.kName}}</th>
+		<th width="15%">{{$ctrl.language.Common.kTeachers}}</th>
+		<th width="15%" ng-if="$ctrl.showGroups">{{$ctrl.language.Generic.MenuFolders.kFNSubgroups}}</th>
+	</tr>
+	<tbody ui-sortable="$ctrl.sortableOptions" ng-model="$ctrl.subjects">
+	<tr ng-repeat="subject in $ctrl.subjects" style="cursor: move">
+		<td>
+			<span class="glyphicon glyphicon-resize-vertical"></span>
+			<span>{{$index + 1}}. {{subject.name}} ({{subject.shortName}})</span>
+		</td>
+		<td class="text-center">
+			<abbr title="{{subject.teachersStr}}">{{subject.teachers.length}}</abbr>
+		</td>
+		<td class="text-center" ng-if="$ctrl.showGroups">
+			<abbr title="{{subject.groupsStrTitle}}">{{subject.groupsStr}}</abbr>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<table class="table table-bordered table-sm table-striped" ng-if="$ctrl.state.mode == 'simple'">
+	<tr>
+		<th width="60%">{{$ctrl.language.Generic.Common.kName}}</th>
+		<th width="15%">{{$ctrl.language.Common.kTeachers}}</th>
+		<th width="15%" ng-if="$ctrl.showGroups">{{$ctrl.language.Generic.MenuFolders.kFNSubgroups}}</th>
+		<th width="10%" ng-bind-html="$ctrl.language.Generic.Common.kDeletingMark" class="min" ng-if="!$ctrl.state.readOnly"></th>
+	</tr>
+	<tbody>
+	<tr ng-repeat="subject in $ctrl.subjects | filter: $ctrl.filterSbjByStatus">
+		<td>
+			<a ng-if="!$ctrl.state.readOnly" href="JavaScript:void(0);" ng-click="$ctrl.editSubject(subject)" title="{{$ctrl.languageService.Edit}}">{{subject.name}}</a><span ng-if="$ctrl.state.readOnly">{{subject.name}}</span> ({{subject.shortName}})
+		</td>
+		<td class="text-center">
+			<abbr title="{{subject.teachersStr}}">{{subject.teachers.length}}</abbr>
+		</td>
+		<td class="text-center" ng-if="$ctrl.showGroups">
+			<abbr title="{{subject.groupsStrTitle}}">{{subject.groupsStr}}</abbr>
+		</td>
+		<td class="text-center" ng-if="!$ctrl.state.readOnly">
+			<input type="checkbox" ng-checked="$ctrl.selection.isSelected(subject)" ng-click="$ctrl.selection.select(subject)" ng-disabled="subject.using"/>
+		</td>
+	</tr>
+	</tbody>
+</table>

@@ -1,0 +1,157 @@
+<style>
+	.similar-resolve-container {
+		padding-left: 15px;
+	}
+	ul.similar-user-option-list {
+		 list-style-type: none;
+		 padding-left: 0;
+	}
+
+	p.similar-resolve-person {
+		font-weight: bold;
+	}
+
+	ul.similar-user-list {
+		list-style-type: none;
+	}
+
+	.similar-user-choice.radio {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.similar-user-option.radio {
+		margin-bottom: 2px;
+		margin-top: 2px;
+	}
+
+	span.similar-resolve-status-icon {
+		font-size: 35px;
+		float: right; 
+		left: -12px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		color: #ec0000;
+
+		-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		-moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		-ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		-o-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+		transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		-webkit-transition-duration: 0.5s;
+		-moz-transition-duration: 0.5s;
+		-ms-transition-duration: 0.5s;
+		-o-transition-duration: 0.5s;
+		transition-duration: 0.5s;
+	}
+
+	span.similar-resolve-status-icon:before {
+		content: "";
+	}
+
+	span.similar-resolve-status-icon.resolved {
+		color: #00af00;
+	}
+
+	span.similar-resolve-status-icon.resolved:before {
+		content: "";
+	}
+	div.similar-user-resolve-dialog {
+		overflow-y: auto; overflow-x: hidden; max-height: 500px; padding: 0 5px 0 5px;
+	}
+
+	div.similar-user-resolve-dialog hr {
+		margin-top: 5px;
+		margin-bottom: 10px;
+	}
+
+	span.similar-question-icon {
+		color: #3c3c3c;
+	}
+
+	span.similar-question-icon:hover {
+		color: #0066ff;
+	}
+
+	span.similar-question-icon:before {
+		content: "";
+	}
+
+	span.similar-info-icon {
+		color: #3c3c3c;
+	}
+
+	span.similar-info-icon:hover {
+		color: #0066ff;
+	}
+
+	span.similar-info-icon:before {
+		content: "";
+	}
+
+	.modal.fade.in.bootstrap-dialog {
+ 		z-index: 1100 !important;
+	}
+
+</style>
+
+
+<div class="similar-user-resolve-dialog">
+	<table class="table table-bordered table-bright-striped table-xs print-block">
+		<tr>
+			<th>{{{language.Generic.Filter.kN_PP}}}</th>
+			<th class="NotPrintable"></th>
+		</tr>
+		{{#each similarsResolveDataView}}
+			<tr>
+				<td>
+					{{Inc @index 0 0}}
+				</td>
+				<td>
+					
+					<div class="similar-resolve-container similar-learner" data-id="{{userIndex}}">
+						<div class="row">
+							<div class="col-md-10">
+								<p class="similar-resolve-person">
+									{{title}} ({{{ToLowerCase ../language.Common.kStudent}}})
+								</p>
+								{{#if similarGroups}}
+								{{> similarsByLocationsTmpl mainPersonId=personId}}
+								{{/if}}
+								{{#if similarOptions}}
+								{{> optionsTmpl}}
+								{{/if}}
+							</div>
+							<div class="col-md-2">
+								<span class="glyphicon similar-resolve-status-icon"></span>
+							</div>
+						</div>
+					</div>
+					{{#if parentsResolveData}}
+						{{#each parentsResolveData}}
+							<div class="similar-resolve-container similar-parents" data-id="{{userIndex}}">
+								<hr />								
+								<div class="row">
+									<div class="col-md-10">
+										<p class="similar-resolve-person">
+											{{title}} ({{{ToLowerCase ../../../language.Generic.Common.kParent}}})
+										</p>
+										{{#if similarGroups}}
+										{{> similarsByLocationsTmpl mainPersonId=personId}}
+										{{/if}}
+										{{#if similarOptions}}
+										{{> optionsTmpl}}
+										{{/if}}
+									</div>
+									<div class="col-md-2">
+										<span class="glyphicon similar-resolve-status-icon"></span>
+									</div>
+								</div>
+							</div>
+						{{/each}}
+					{{/if}}
+				</td>
+			</tr>
+		{{/each}}
+	</table>
+</div>

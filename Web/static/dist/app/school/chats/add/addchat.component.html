@@ -1,0 +1,55 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<form role="form" class="form-horizontal form-xs" name="$ctrl.form" ng-if="$ctrl.ready" ng-if="$ctrl.ready">
+		<ns-form>
+			<fieldset>
+				<legend class="first">{{$ctrl.language.Generic.Common.kGeneralInformation}}</legend>
+
+				<ns-form-group title="Тип чата" ng-class="{'has-error': $ctrl.form.chatType.$invalid && (!$ctrl.form.chatType.$pristine || $ctrl.form.$displayErrors)}">
+					<select ng-disabled="$ctrl.editMode" track-changes ng-change="$ctrl.onChatTypeChange()" class="form-control" name="chatType" id="chatType" required ng-options="type.key as type.name for type in $ctrl.chatTypes" ng-init="$ctrl.chat.chatType" ng-model="$ctrl.chat.chatType"></select>
+					<div ng-if="!$ctrl.form.chatType.$pristine || $ctrl.form.$displayErrors" ng-messages="$ctrl.form.chatType.$error">
+						<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+					</div>					
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.isShowClass()" title="{{$ctrl.language.Common.kClass}}" ng-class="{'has-error': $ctrl.form.chatClass.$invalid && (!$ctrl.form.chatClass.$pristine || $ctrl.form.$displayErrors)}">
+					<select ng-disabled="$ctrl.editMode" track-changes required ng-change="$ctrl.onClassChange()" class="form-control" name="chatClass" id="chatClass" required ng-options="cls.id as cls.name for cls in $ctrl.yearClasses" ng-init="$ctrl.chat.classId" ng-model="$ctrl.chat.classId"></select>
+					<div ng-if="!$ctrl.form.chatClass.$pristine || $ctrl.form.$displayErrors" ng-messages="$ctrl.form.chatClass.$error">
+						<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+					</div>					
+				</ns-form-group>
+				
+				<ns-form-group ng-if="$ctrl.isShowSubjectGroup()" title="{{$ctrl.language.Generic.Common.kSubject}}" ng-class="{'has-error': $ctrl.form.chatSubjectGroup.$invalid && (!$ctrl.form.chatSubjectGroup.$pristine || $ctrl.form.$displayErrors)}">
+					<select ng-disabled="$ctrl.editMode" track-changes required ng-change="$ctrl.onSgChange()" class="form-control" name="chatSubjectGroup" id="chatSubjectGroup" required ng-options="sg.id as sg.name for sg in $ctrl.subjectGroups" ng-init="$ctrl.chat.sgId" ng-model="$ctrl.chat.sgId"></select>
+					<div ng-if="!$ctrl.form.chatSubjectGroup.$pristine || $ctrl.form.$displayErrors" ng-messages="$ctrl.form.chatSubjectGroup.$error">
+						<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+					</div>					
+				</ns-form-group>
+
+				<ns-form-group title="Наименование чата" ng-class="{'has-error': $ctrl.form.chatName.$invalid && (!$ctrl.form.chatName.$pristine || $ctrl.form.$displayErrors)}">
+					<input track-changes id="chatName" name="chatName" type="text" ng-model="$ctrl.chat.chatName" class="form-control" maxlength="200" required>
+					<div ng-if="!$ctrl.form.chatName.$pristine || $ctrl.form.$displayErrors" ng-messages="$ctrl.form.chatName.$error">
+						<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+					</div>					
+				</ns-form-group>
+
+				<legend ng-if="$ctrl.editMode" class="first">Участники</legend>
+				<div class="row ns-cloak">
+					<div class="col-md-12" ng-if="$ctrl.editMode">
+						<registry info="$ctrl.registryInfo" controller="$ctrl.controller"></registry>
+					</div>
+				</div>
+			</fieldset>
+		</ns-form>
+	</form>
+</ns-modal>
+
+<style>
+	.table-selectable tr.already-member td {
+		cursor: not-allowed;
+		background-color: #ffe074;
+	}
+	.select-chat-members-component span.select2.select2-container {
+		width: 100% !important;
+	}
+</style>

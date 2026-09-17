@@ -1,0 +1,116 @@
+<form name="$ctrl.userInfo" class="form-horizontal form-xs form-edit">
+	<div class="row">
+		<ns-add-user controller="$ctrl">
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.SetupSchoolUI.kSelectDOCstr}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<span class="form-control form-control-title"><span class="text" ng-bind="$ctrl.moveDoc.docNumber"></span></span>
+				</div>
+			</div>
+
+			<common-user-info current-user="$ctrl.currentUser" user-info="$ctrl.userInfo" male-letter="$ctrl.maleLetter" female-letter="$ctrl.femaleLetter" add-students="true"></common-user-info>
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.eduGroupTitle}}:</label>
+				<div class="col-md-8 col-lg-8 col-sm-6" ng-if="$ctrl.moveDoc.docSubType">
+					<select track-changes class="form-control" name="CID" ng-model="$ctrl.currentUser.educGroupTo" ng-options="group as group.name for group in $ctrl.educGroups track by group.internalId"></select>
+				</div>
+				<div class="col-md-8 col-lg-8 col-sm-6" ng-if="$ctrl.moveDoc.docSubType === 0">
+					<select track-changes class="form-control" name="CID" ng-model="$ctrl.currentUser.educGroupTo" ng-options="group as group.name for group in $ctrl.educGroups track by group.grade"></select>
+				</div>
+			</div>
+			
+			<div ng-if="$ctrl.isAddSchool()" class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.categoryTitle}}:</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<select track-changes class="form-control" name="category" ng-model="$ctrl.currentUser.categoryNotEnrolled" ng-options="category as category.name for category in $ctrl.categorysNotEnrolled"></select>
+				</div>
+			</div>
+
+			<p class="bg-warning text-center"><b>{{$ctrl.language.Generic.Common.kFather}}</b></p>
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.FLN.$invalid && (!$ctrl.userInfo.FLN.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Common.kLastName}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<div>
+						<input track-changes type="text" class="form-control" name="FLN" size="30" maxlength="30" ng-model="$ctrl.currentUser.father.lastName" ng-change="$ctrl.changeFatherLastName()" ng-pattern="$ctrl.namePattern" ng-required="$ctrl.isFatherRequired()">
+						<p ng-show="$ctrl.userInfo.FLN.$invalid && (!$ctrl.userInfo.FLN.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Movement.kFieldValidFio}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.FFN.$invalid && (!$ctrl.userInfo.FFN.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Common.kFirstName}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<div>
+						<input track-changes type="text" class="form-control" name="FFN" size="30" maxlength="30" ng-model="$ctrl.currentUser.father.firstName" ng-change="$ctrl.changeFatherFirstName()" ng-pattern="$ctrl.namePattern" ng-required="$ctrl.isFatherRequired()">
+						<p ng-show="$ctrl.userInfo.FFN.$invalid && (!$ctrl.userInfo.FFN.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Movement.kFieldValidFio}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.FMN.$invalid && (!$ctrl.userInfo.FMN.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Common.kMiddleName}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<div>
+						<input track-changes type="text" class="form-control" name="FMN" size="30" maxlength="30" ng-model="$ctrl.currentUser.father.middleName" ng-change="$ctrl.changeFatherMiddleName()" ng-pattern="$ctrl.namePattern">
+						<p ng-show="$ctrl.userInfo.FMN.$invalid && (!$ctrl.userInfo.FMN.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Movement.kFieldValidFio}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.FBD.$invalid && (!$ctrl.userInfo.FBD.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4"><span ng-if="$ctrl.requireParentBirthDate">*** </span>{{$ctrl.language.Generic.Common.kBDate}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<date-input-component max-date="$ctrl.maxBirthDate" required="$ctrl.requireParentBirthDate && $ctrl.isFatherRequired()" min-date="$ctrl.minBirthDate" track-changes name="FBD" date-model="$ctrl.currentUser.father.birthDate"></date-input-component>
+					<p ng-show="$ctrl.userInfo.FBD.$invalid && (!$ctrl.userInfo.FBD.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.parentDateErrorMessage}}</p>
+				</div>
+			</div>
+
+			<p class="bg-warning text-center"><b>{{$ctrl.language.Generic.Common.kMother}}</b></p>
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.MLN.$invalid && (!$ctrl.userInfo.MLN.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Common.kLastName}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<div>
+						<input track-changes type="text" class="form-control" name="MLN" size="30" maxlength="30" ng-model="$ctrl.currentUser.mother.lastName" ng-change="$ctrl.changeMotherLastName()" ng-pattern="$ctrl.namePattern" ng-required="$ctrl.isMotherRequired()">
+						<p ng-show="$ctrl.userInfo.MLN.$invalid && (!$ctrl.userInfo.MLN.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Movement.kFieldValidFio}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.MFN.$invalid && (!$ctrl.userInfo.MFN.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Common.kFirstName}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<div>
+						<input track-changes type="text" class="form-control" name="MFN" size="30" maxlength="30" ng-model="$ctrl.currentUser.mother.firstName" ng-change="$ctrl.changeMotherFirstName()" ng-pattern="$ctrl.namePattern" ng-required="$ctrl.isMotherRequired()">
+						<p ng-show="$ctrl.userInfo.MFN.$invalid && (!$ctrl.userInfo.MFN.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Movement.kFieldValidFio}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.MMN.$invalid && (!$ctrl.userInfo.MMN.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Common.kMiddleName}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<div>
+						<input track-changes type="text" class="form-control" name="MMN" size="30" maxlength="30" ng-model="$ctrl.currentUser.mother.middleName" ng-change="$ctrl.changeMotherMiddleName()" ng-pattern="$ctrl.namePattern">
+						<p ng-show="$ctrl.userInfo.MMN.$invalid && (!$ctrl.userInfo.MMN.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Movement.kFieldValidFio}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.MBD.$invalid && (!$ctrl.userInfo.MBD.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4"><span ng-if="$ctrl.requireParentBirthDate">*** </span>{{$ctrl.language.Generic.Common.kBDate}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<date-input-component max-date="$ctrl.maxBirthDate" required="$ctrl.requireParentBirthDate && $ctrl.isMotherRequired()" min-date="$ctrl.minBirthDate" track-changes name="MBD" date-model="$ctrl.currentUser.mother.birthDate"></date-input-component>
+					<p ng-show="$ctrl.userInfo.MBD.$invalid && (!$ctrl.userInfo.MBD.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">{{$ctrl.parentDateErrorMessage}}</p>
+				</div>
+			</div>
+
+		</ns-add-user>
+		<userslist-qadd
+			title = "$ctrl.language.SetupSchoolUI.kListStudentQAdd"
+			users = "$ctrl.users",
+			mode = "$ctrl.mode",
+			edit = "$ctrl.edit(arg)">
+		</userslist-qadd>
+	</div>
+</form>

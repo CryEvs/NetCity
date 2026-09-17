@@ -1,0 +1,125 @@
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span> 
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+				
+				<button title="{{$ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-10 col-lg-8">
+		<ns-panel panel-id="subject" class="success" title="{{$ctrl.language.Generic.Common.kCommonInfo}}" expanded="true">
+			<form name="$ctrl.form" class="form-horizontal">
+				<ns-form control-size="col-md-8" label-size="col-md-4">
+				<ns-form-group title="{{$ctrl.languageService.Field}}" ng-if="!$ctrl.extraActivity">
+					<select track-changes class="form-control" name="SBJFIELDID" ng-model="$ctrl.data.subjectInfo.subjectField" 
+							ng-options="field as field.name for field in $ctrl.data.subjectFields track by field.id" 
+							ng-disabled="$ctrl.data.subjectInfo.parentSubject"
+							title="{{$ctrl.getSubjectFieldTitle(data.subjectInfo.parentSubject)}}">
+					</select>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.languageService.FullName}}" ng-class="{'has-error': ($ctrl.form.SUBJECTNAME.$invalid) && $ctrl.form.displayErrors}">
+					<input track-changes type="text" class="form-control FilterWhiteSpace" required name="SUBJECTNAME" size="50" maxlength="100" ng-model="$ctrl.data.subjectInfo.name">
+					<p ng-show="($ctrl.form.SUBJECTNAME.$invalid) && $ctrl.form.displayErrors" class="help-block">{{$ctrl.languageService.EnterFullName}}</p>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.languageService.ShortName}}" ng-class="{'has-error': ($ctrl.form.SUBJECTABBREV.$invalid) && $ctrl.form.displayErrors}">
+					<input track-changes type="text" class="form-control FilterWhiteSpace" required name="SUBJECTABBREV" size="50" maxlength="70" ng-model="$ctrl.data.subjectInfo.shortName">
+					<p ng-show="($ctrl.form.SUBJECTABBREV.$invalid) && $ctrl.form.displayErrors" class="help-block">{{$ctrl.languageService.EnterShortName}}</p>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.languageService.Field}}" ng-if="$ctrl.extraActivity && $ctrl.state.directionsReady" ng-class="{'has-error': ($ctrl.form.DIRECTION.$invalid || !$ctrl.data.subjectInfo.direction) && $ctrl.form.displayErrors}">
+					<select track-changes
+							ng-model="$ctrl.data.subjectInfo.direction" class="form-control" name="DIRECTION"
+							required
+							ng-if="$ctrl.state.mode == 'create'"
+							ng-options="direction as direction.name for direction in $ctrl.data.directions track by direction.id">
+					</select>
+					<input ng-if="$ctrl.state.mode == 'edit'" type="text" class="form-control" name="DIRECTION" disabled ng-value="$ctrl.data.subjectInfo.direction.name">
+					<p ng-show="($ctrl.form.DIRECTION.$invalid || !$ctrl.data.subjectInfo.direction) && $ctrl.form.displayErrors" class="help-block">Выберите направление внеурочной деятельности</p>
+				</ns-form-group>
+	
+
+				<ns-form-group title="{{$ctrl.language.Generic.Common.kGlobalSubject}}" ng-class="{'has-error': (!$ctrl.data.subjectInfo.globalSubject && $ctrl.state.globalSubjectsVisible) && $ctrl.form.displayErrors}" ng-if="!$ctrl.extraActivity">
+					<ui-select track-changes ng-model="$ctrl.data.subjectInfo.globalSubject" allow-clear="true" theme="bootstrap" ng-if="$ctrl.state.globalSubjectsVisible">
+						<ui-select-match placeholder="{{$ctrl.language.Generic.Common.kPleaseEnterOneOrMoreCharacters}}">
+							{{$select.selected.name}}
+						</ui-select-match>
+						<ui-select-choices repeat="globalSubj as globalSubj in $ctrl.searchCtx.globalSubjects.items"
+										   ui-disable-choice="globalSubj.name === '{{$ctrl.language.Generic.Common.kNoMatchesFound}}' || globalSubj.name === '{{$ctrl.language.Generic.Common.kSearch}}'"
+										   refresh="$ctrl.searchCtx.globalSubjects.search($select.search)"
+										   on-select>
+							<div ng-bind-html="globalSubj.name | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+					<div class="checkbox">
+						<label>
+							<input track-changes type="checkbox" name="newGlobalSubject" ng-model="$ctrl.data.createNewGlobalSubj" ng-value="true" ng-click="$ctrl.toggleNewGlobalSubj()"> {{$ctrl.language.Generic.SetupSchoolCalendar.kNewGlobalSubject}}
+						</label>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group title="" ng-if="!$ctrl.extraActivity && $ctrl.isSchoolFuncType()">
+					<div class="checkbox">
+						<label>
+							<input track-changes type="checkbox" name="modularSubject" ng-value="true"  ng-model="$ctrl.data.subjectInfo.isModular"> {{$ctrl.language.Generic.SetupSchoolCalendar.kModularSchoolSubject}}
+						</label>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group title="" ng-if="!$ctrl.extraActivity &&  $ctrl.isSchoolFuncType()">
+					<div class="checkbox">
+						<label>
+							<input track-changes type="checkbox" name="useExemption" ng-value="true"  ng-model="$ctrl.data.subjectInfo.useExemption"> {{$ctrl.language.Generic.SetupSchoolCalendar.kUseExemption}}
+						</label>
+					</div>
+				</ns-form-group>
+
+
+				</ns-form>
+			</form>
+		</ns-panel>
+
+		<ns-panel ng-if="$ctrl.state.mode == 'edit' && $ctrl.state.moduleQA && !$ctrl.extraActivity && $ctrl.isSchoolFuncType()" panel-id="codebooks" class="info" title="{{$ctrl.language.Generic.QualityAssessment.kCodifiersFiPi}}" expanded="true">
+			<form name="main" class="form-horizontal">
+				<ns-form control-size="col-md-8" label-size="col-md-4">
+				<ns-form-group title="{{$ctrl.language.Generic.QualityAssessment.kCodifierGradeSchool}}">
+					<select ng-if="!$ctrl.state.codifiersReady" class="form-control"><option selected="selected">{{$ctrl.language.Generic.Common.kLoad_2}}</option></select>
+					<select track-changes ng-if="$ctrl.state.codifiersReady" class="form-control" name="CODEBOOKEGEID" ng-model="$ctrl.data.codeBookInfo.gradeSchool.current" ng-options="book as book.name for book in $ctrl.data.codeBookInfo.gradeSchool.list track by book.id"></select>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.language.Generic.QualityAssessment.kCodifierOGE}}">
+					<select ng-if="!$ctrl.state.codifiersReady" class="form-control"><option selected="selected">{{$ctrl.language.Generic.Common.kLoad_2}}</option></select>
+					<select track-changes ng-if="$ctrl.state.codifiersReady" class="form-control" name="CODEBOOKEGEID" ng-model="$ctrl.data.codeBookInfo.oge.current" ng-options="book as book.name for book in $ctrl.data.codeBookInfo.oge.list track by book.id"></select>
+				</ns-form-group>
+
+				<ns-form-group title="{{$ctrl.language.Generic.QualityAssessment.kCodifierEGE}}">
+					<select ng-if="!$ctrl.state.codifiersReady" class="form-control"><option selected="selected">{{$ctrl.language.Generic.Common.kLoad_2}}</option></select>
+						<select track-changes ng-if="$ctrl.state.codifiersReady" class="form-control" name="CODEBOOKEGEID" ng-model="$ctrl.data.codeBookInfo.ege.current" ng-options="book as book.name for book in $ctrl.data.codeBookInfo.ege.list track by book.id"></select>
+				</ns-form-group>
+				</ns-form>
+			</form>
+		</ns-panel>
+
+		<ns-panel ng-if="$ctrl.state.mode == 'edit' && $ctrl.data.subjectInfo && !$ctrl.extraActivity" panel-id="groups" class="info" title="{{$ctrl.languageService.SubGroups}}" expanded="true">
+			<subject-groups subject="$ctrl.data.subjectInfo"></subject-groups>
+		</ns-panel>
+
+		<ns-panel ng-if="$ctrl.state.mode == 'edit' && $ctrl.data.subjectInfo" panel-id="teachers" class="danger" title="{{$ctrl.languageService.Teachers}}" expanded="true">
+			<subject-teachers subject="$ctrl.data.subjectInfo"></subject-teachers>
+		</ns-panel>
+
+	</div>
+</div>

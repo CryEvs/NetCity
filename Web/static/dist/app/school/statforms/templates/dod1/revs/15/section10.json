@@ -1,0 +1,21 @@
+{
+    "sumCols": [
+		{
+			"col": 4,
+			"subCols": [ 3 ],
+			"type": "bool1One"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 62,
+			"subRows": [ 61 ],
+			"type": "bool1any"
+		},
+		{
+			"row": 64,
+			"subRows": [ 63 ],
+			"type": "bool1any"
+		}
+    ]
+}

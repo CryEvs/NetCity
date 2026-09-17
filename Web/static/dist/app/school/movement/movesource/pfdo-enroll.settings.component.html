@@ -1,0 +1,43 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<div class="form-group">
+		<label class="control-label col-md-5 col-lg-5">{{$ctrl.language.Generic.SetupAddSchool.kCostForAllStudents}}:</label>
+		<div class="input-group col-md-5 col-lg-5">
+			<select class="form-control" name="paymentAll" ng-model="$ctrl.paymentTypeAll" ng-options="pt.key as pt.name for pt in $ctrl.paymentTypesRef"></select>
+			<span class="input-group-btn">
+				<button	title="{{$ctrl.language.Generic.Buttons.kChoose}}" type="button" class="btn btn-default" ng-click="$ctrl.setPaymentTypeAll()">
+					<span class="glyphicon glyphicon-hand-left"></span>
+				</button>
+			</span>
+		</div>
+	</div>
+	<div class="table-responsive" style="max-height: 600px">
+		<table class="table table-bordered table-bright-hover table-bright-striped table-xs print-block">
+			<tr>
+				<th ng-bind-html="$ctrl.language.Generic.Filter.kN_PP"></th>
+				<th> {{$ctrl.language.Generic.Filter.kFIO}} </th>
+				<th> {{$ctrl.language.Generic.Common.kBDate}} </th>
+				<th> {{$ctrl.language.Generic.SetupAddSchool.kCost}} </th>
+				<th> Основание </th>
+			</tr>
+			<tr ng-repeat="movement in $ctrl.movements">
+				<td>
+					{{ $index + 1}}
+				</td>
+				<td>
+					<label style="font-weight: normal;" for="movement-sel-{{id}}" class="fio-label" ng-click="$ctrl.selection.select(movement)">
+						{{ movement.student.fio }}
+					</label>
+				</td>
+				<td>
+					{{ movement.student.birthDate | nsDate }}
+				</td>
+				<td>
+					<select class="form-control" name="payment-{{movement.movementId}}" ng-model="movement.paymentInfo.paymentType" ng-options="pt.key as pt.name for pt in $ctrl.paymentTypesRef"></select>
+				</td>
+				<td>
+					<input class="form-control" name="reason-{{movement.movementId}}" ng-model="movement.paymentInfo.reason" type="text" maxlength="255" />
+				</td>
+			</tr>
+		</table>
+	</div>
+</ns-modal>

@@ -1,0 +1,255 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+	<form role="form" name="$ctrl.eventForm" ng-show="$ctrl.ready" class="form-horizontal form-sm ng-pristine ng-valid ng-scope">
+		<!--Поля формы-->
+
+		<fieldset ng-disabled="$ctrl.regionalNationOlympSaveDisabled || $ctrl.nationOlympOrgDisabled">
+			<legend>{{$ctrl.language.Generic.Common.kGeneralInformation}}</legend>
+
+			<div class="form-group" ng-if="!$ctrl.isNationOlymp" ng-class="{'has-error': $ctrl.eventForm.eventName.$invalid && (!$ctrl.eventForm.eventName.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-name" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Common.kName2}}</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<input track-changes type="text" id="event-name" name="eventName" class="form-control" ng-model="$ctrl.data.event.name" required maxlength="200">
+					<p ng-show="$ctrl.eventForm.eventName.$invalid && (!$ctrl.eventForm.eventName.$pristine || $ctrl.eventForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="!$ctrl.isNationOlymp && $ctrl.soloIntegration" ng-class="{'has-error': $ctrl.eventForm.direction.$invalid && (!$ctrl.eventForm.direction.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-direction" class="control-label col-md-4 col-lg-3 col-sm-4">Предмет / Направление</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select track-changes class="form-control" name="direction" id="event-direction" ng-options="direction as direction.name for direction in $ctrl.nationOlympData.directions track by direction.id"
+						ng-init="$ctrl.data.event.direction" ng-model="$ctrl.data.event.direction" required ng-change="$ctrl.onChangeDirection()"></select>
+					<p ng-show="$ctrl.eventForm.direction.$invalid && (!$ctrl.eventForm.direction.$pristine || $ctrl.eventForm.$displayErrors)" class="help-block">
+						{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="!$ctrl.isNationOlymp && !$ctrl.soloIntegration" ng-class="{'has-error': $ctrl.eventForm.eventSubject.$invalid && (!$ctrl.eventForm.eventSubject.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-subject" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Events.kThemeSubjSport}}</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<input track-changes type="text" id="event-subject" name="eventSubject" class="form-control" ng-model="$ctrl.data.event.subject"
+						required maxlength="200">
+					<p ng-show="$ctrl.eventForm.eventSubject.$invalid && (!$ctrl.eventForm.eventSubject.$pristine || $ctrl.eventForm.$displayErrors)"
+						class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.eventForm.awardtype.$invalid && (!$ctrl.eventForm.awardtype.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-awardtype" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Events.kEventType}}</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select track-changes class="form-control" name="awardtype" id="event-awardtype" ng-options="awardEventType.id as awardEventType.name for awardEventType in $ctrl.data.awardEventTypes"
+						ng-init="$ctrl.data.event.awardEventType" ng-model="$ctrl.data.event.awardEventType" ng-change="$ctrl.onChangeEventType()" ng-disabled="$ctrl.isNationOlymp" required></select>
+					<p ng-show="$ctrl.eventForm.awardtype.$invalid && (!$ctrl.eventForm.awardtype.$pristine || $ctrl.eventForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.eventForm.eventLevel.$invalid && (!$ctrl.eventForm.eventLevel.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-level" ng-if="!$ctrl.isNationOlymp" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Events.kEventLevel}}</label>
+				<label for="event-level" ng-if="$ctrl.isNationOlymp" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Lessonmap.kStage}}</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select track-changes class="form-control" name="eventLevel" id="event-level" ng-options="level.id as level.name for level in $ctrl.data.eventLevels"
+						ng-init="$ctrl.data.event.level" ng-model="$ctrl.data.event.level" required ng-change="$ctrl.onChangeLevel()" ng-disabled="$ctrl.data.eventLevels.length == 1"></select>
+					<p ng-show="$ctrl.eventForm.eventLevel.$invalid && (!$ctrl.eventForm.eventLevel.$pristine || $ctrl.eventForm.$displayErrors)"
+						class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.isNationOlymp" ng-class="{'has-error': $ctrl.eventForm.olympSubject.$invalid && (!$ctrl.eventForm.olympSubject.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-subject" class="control-label col-md-4 col-lg-3 col-sm-4">Предмет ВсОШ</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select track-changes class="form-control" name="olympSubject" id="event-olympSubject" ng-options="subj as subj.name for subj in $ctrl.nationOlympData.olympSubjects track by subj.id"
+						ng-init="$ctrl.data.event.olympSubject" ng-model="$ctrl.data.event.olympSubject" required></select>
+					<p ng-show="$ctrl.eventForm.olympSubject.$invalid && (!$ctrl.eventForm.olympSubject.$pristine || $ctrl.eventForm.$displayErrors)" class="help-block">
+						{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.isNationOlymp" ng-class="{'has-error': $ctrl.eventForm.grades.$invalid && (!$ctrl.eventForm.grades.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-subject" class="control-label col-md-4 col-lg-3 col-sm-4">Классы</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<label class="checkbox-inline" ng-repeat="grade in $ctrl.nationOlympData.grades">
+						<input ng-model="xyx" track-changes type="checkbox" ng-required="$ctrl.data.event.grades.length == 0" name="grades" ng-click="$ctrl.toggleGrade(grade)" id="grade_{{grade}}" ng-checked="$ctrl.hasGrade(grade)"> {{grade}}
+					</label>
+					<p ng-show="$ctrl.eventForm.grades.$invalid && (!$ctrl.eventForm.grades.$pristine || $ctrl.eventForm.$displayErrors)" class="help-block">
+						{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.isNationOlymp">
+				<label for="event-name" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Common.kName2}}</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<input track-changes type="text" id="event-name" name="eventName" class="form-control" ng-value="$ctrl.nationOlympEventName" maxlength="200" disabled>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': $ctrl.eventForm.status.$invalid && (!$ctrl.eventForm.status.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-status" class="control-label col-md-4 col-lg-3 col-sm-4">Статус</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select track-changes class="form-control" name="status" id="event-status" ng-options="awardEventStatus.id as awardEventStatus.name for awardEventStatus in $ctrl.data.refs.awardEventStatuses"
+						ng-init="$ctrl.data.event.status" ng-model="$ctrl.data.event.status" required ng-change="$ctrl.onChangeStatus('{{$ctrl.data.event.status}}')"></select>
+					<p ng-show="$ctrl.eventForm.status.$invalid && (!$ctrl.eventForm.status.$pristine || $ctrl.eventForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.settings.showLocality && $ctrl.showMunicipality" ng-class="{'has-error': $ctrl.eventForm.municipality.$invalid && (!$ctrl.eventForm.municipality.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-municipality" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Common.kMunicipalityDistrictShort}}</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select track-changes class="form-control" name="municipality" ng-required="!$ctrl.isNationOlymp" ng-options="municipality.id as municipality.name for municipality in $ctrl.data.municipalities" ng-model="$ctrl.data.event.municipalityId">
+						<option ng-if="$ctrl.isNationOlymp" value="" selected>{{$ctrl.language.Generic.Common.kAll}}</option>
+					</select>
+					<p ng-show="$ctrl.eventForm.municipality.$invalid && (!$ctrl.eventForm.municipality.$pristine || $ctrl.eventForm.$displayErrors)"
+						class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-hide="$ctrl.isNationOlymp" ng-class="{'has-error': $ctrl.eventForm.partForm.$invalid && (!$ctrl.eventForm.partForm.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-partForm" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Events.kSingleOrTeam}}</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select track-changes class="form-control" name="partForm" id="event-partForm" ng-options="participiationForm.id as participiationForm.name for participiationForm in $ctrl.data.refs.participiationForms"
+						ng-init="$ctrl.data.event.partForm" ng-model="$ctrl.data.event.partForm" required></select>
+					<p ng-show="$ctrl.eventForm.partForm.$invalid && (!$ctrl.eventForm.partForm.$pristine || $ctrl.eventForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-hide="$ctrl.isNationOlymp" ng-class="{'has-error': $ctrl.eventForm.visitForm.$invalid && (!$ctrl.eventForm.visitForm.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-visitForm" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Events.kPresenceType}}</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select track-changes class="form-control" name="visitForm" id="event-visitForm" ng-options="visitForm.id as visitForm.name for visitForm in $ctrl.data.refs.visitForms"
+						ng-init="$ctrl.data.event.visitForm" ng-model="$ctrl.data.event.visitForm" required></select>
+					<p ng-show="$ctrl.eventForm.visitForm.$invalid && (!$ctrl.eventForm.visitForm.$pristine || $ctrl.eventForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.isNationOlymp && $ctrl.isAllowedEventLevel()" ng-class="{'has-error': $ctrl.eventForm.founder.$invalid && (!$ctrl.eventForm.founder.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label for="event-founder" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Events.kEventFounder}}</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<span ng-if="!$ctrl.settings.canEditFounder">{{$ctrl.data.event.founder.name}}</span>
+
+					<select track-changes name="founder" ng-if="$ctrl.isNationOlymp && $ctrl.isAllowedEventLevel()" class="form-control" required
+							ng-options="districtOrg as districtOrg.name for districtOrg in $ctrl.nationOlympData.districtEmOrgs track by districtOrg.id"
+							ng-model="$ctrl.nationOlympFounder" ng-disabled="$ctrl.nationOlympData.districtEmOrgs.length == 1">
+					</select>
+
+					<p ng-show="$ctrl.eventForm.founder.$invalid && (!$ctrl.eventForm.founder.$pristine || $ctrl.eventForm.$displayErrors)" class="help-block">
+						{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="!$ctrl.isNationOlymp">
+				<label for="event-founder" class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Events.kEventFounder}}</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<span ng-if="!$ctrl.settings.canEditFounder">{{$ctrl.data.event.founder.name}}</span>
+
+					<ui-select ng-if="$ctrl.settings.canEditFounder" track-changes id="event-founder" ng-model="$ctrl.data.event.founder" theme="bootstrap">
+						<ui-select-match placeholder="{{$ctrl.language.Generic.Common.kPleaseEnterThreeOrMoreCharacters}}">{{$select.selected.name}}</ui-select-match>
+						<ui-select-choices repeat="org in $ctrl.data.search.founders" ui-disable-choice="org.name === '{{$ctrl.language.Generic.Common.kNoMatchesFound}}' || org.name === '{{$ctrl.language.Generic.Common.kSearch}}'"
+							refresh="$ctrl.searchFounder($select.search)">
+							<div ng-bind-html="org.name | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+
+				</div>
+			</div>
+
+			<div class="form-group" ng-hide="$ctrl.isNationOlymp">
+				<label for="event-place" class="control-label col-md-4 col-lg-3">{{$ctrl.language.Generic.Events.kEventPlace}}</label>
+				<div class="col-md-8 col-lg-9">
+					<ui-select track-changes id="event-place" ng-model="$ctrl.data.event.organization" theme="bootstrap" ng-disabled="!$ctrl.canEditDatesAndPlace">
+						<ui-select-match placeholder="{{$ctrl.language.Generic.Common.kPleaseEnterThreeOrMoreCharacters}}">{{$select.selected.name}}</ui-select-match>
+						<ui-select-choices repeat="org in $ctrl.data.search.orgs" ui-disable-choice="org.name === '{{$ctrl.language.Generic.Common.kNoMatchesFound}}' || org.name === '{{$ctrl.language.Generic.Common.kSearch}}'"
+							refresh="$ctrl.searchOrg($select.search)">
+							<div ng-bind-html="org.name | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3">{{$ctrl.language.Generic.Common.kSchoolYear}}</label>
+				<div class="col-md-8 col-lg-9">
+					<select track-changes class="form-control" ng-options="year.name for year in $ctrl.data.educYears track by year.id" ng-disabled="!$ctrl.canEditDatesAndPlace"
+						ng-change="$ctrl.globalYearChange()" ng-model="$ctrl.data.educYear" ng-init="$ctrl.data.educYear"></select>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error': (($ctrl.eventForm.$displayErrors || $ctrl.data.editMode) && (!$ctrl.data.event.startTime || $ctrl.eventForm['event-startTime'].$invalid || $ctrl.isStartBeforeEnd() || $ctrl.isInEducYear()))}">
+				<label class="control-label col-md-4 col-lg-3">{{$ctrl.language.Generic.Events.kDateOfEvent}}</label>
+				
+				<div class="col-md-4 col-lg-5">
+					<date-input-component track-changes
+						name="event-startTime"
+						id="startTime"
+						date-model="$ctrl.data.event.startTime"
+						min-date="$ctrl.dateOptions.minDate"
+						max-date="$ctrl.dateOptions.maxDate"
+						readonly="!$ctrl.canEditDatesAndPlace"
+						required="true">
+					</date-input-component>	
+					<div ng-messages="$ctrl.eventForm['event-startTime'].$error">
+						<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Common.kEnterDate}}</span>
+						<span class="help-block" ng-message="dateFormat">{{$ctrl.dateFormatMessage()}}</span>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-lg-4">
+					<date-input-component track-changes
+						name="event-endTime"
+						id="endTime"
+						readonly="!$ctrl.canEditDatesAndPlace"
+						date-model="$ctrl.data.event.endTime">
+					</date-input-component>	
+					<div ng-messages="$ctrl.eventForm['event-endTime'].$error">
+						<span class="help-block" ng-message="dateFormat">{{$ctrl.dateFormatMessage()}}</span>
+					</div>
+				</div>
+				<div class="col-md-4 col-lg-3"></div>
+				<div class="col-md-8 col-lg-9" ng-if="($ctrl.eventForm.$displayErrors || $ctrl.data.editMode) && ($ctrl.isStartBeforeEnd() || $ctrl.isInEducYear())">
+					<span class="help-block" ng-if="$ctrl.isStartBeforeEnd()">{{$ctrl.getIntervalDateMessage()}}</span>
+					<span class="help-block" ng-if="$ctrl.isInEducYear()">{{$ctrl.inEducYearMessage()}}</span>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.displayRegType"  ng-class="{'has-error': $ctrl.eventForm.regType.$invalid && (!$ctrl.eventForm.regType.$pristine || $ctrl.eventForm.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-3">Запись на мероприятие</label>
+				<div class="col-md-8 col-lg-9">
+					<select name="regType" track-changes class="form-control" ng-options="regType.id as regType.name for regType in $ctrl.data.refs.eventRegistrationTypes" ng-init="$ctrl.data.event.membersRegistrationType" ng-model="$ctrl.data.event.membersRegistrationType" required>
+					</select>
+					<p ng-show="$ctrl.eventForm.regType.$invalid && (!$ctrl.eventForm.regType.$pristine || $ctrl.eventForm.$displayErrors)" class="help-block">
+						{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="!$ctrl.isNationOlymp && $ctrl.settings.showIsLocal">
+				<label class="control-label col-md-4 col-lg-3"></label>
+				<div class="col-md-8 col-lg-9">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" track-changes ng-model="$ctrl.data.event.isLocal"> Локальное мероприятие
+						</label>
+					</div>
+
+					<p ng-show="$ctrl.data.event.isLocal">
+						Мероприятие скрыто от сотрудников органов управления. 
+						Недоступно им для редактирования и не отображается в отчетах.
+					</p>
+				</div>
+			</div>
+
+		</fieldset>
+
+		<edit-event-files ng-if="$ctrl.editMode" event-id="$ctrl.data.event.id" documents="$ctrl.data.documents" readonly="$ctrl.state.groupDataReadonly"></edit-event-files>
+
+		<div ng-if="$ctrl.regionalNationOlympSaveDisabled" class="alert alert-warning" role="alert">
+			Редактирование мероприятий ВсОШ регионального этапа доступно только региональным УО
+		</div>
+		<div ng-if="$ctrl.nationOlympOrgDisabled" class="alert alert-warning" role="alert">
+			Редактирование мероприятий всероссийской олимпиады школьников доступно только организаторам данного мероприятия.
+		</div>
+	</form>
+</ns-modal>

@@ -1,0 +1,16 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subCols": { "start": 4, "end": 47 },
+			"type": "sum"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 2,
+			"subRows": [ 3, 4, 5 ],
+			"type": "sum"
+		}
+	]
+}

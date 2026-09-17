@@ -1,0 +1,41 @@
+<div>
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+				<div class="bootstrap-dialog-close-button">
+					<button class="close" ng-click="cancel()">&times;</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+
+			<form role="form" name="mealsForm" class="form form-xs">
+				<!--Поля формы-->
+
+				<div class="form-group">
+					<label class="control-label">{{language.Generic.Common.kProductName}}</label>
+					<div>
+						<input class="form-control" maxlength="200" ng-model="data.product.name"/>
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="save()">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

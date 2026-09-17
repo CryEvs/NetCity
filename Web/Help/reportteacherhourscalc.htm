@@ -1,0 +1,100 @@
+<html>
+<head>
+   <title>Учёт учебных часов преподавателя</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Отчёты, учёт учебных часов преподавателя,Замены преподавателей, проведённые часы,Часы по учебному плану">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?reportteacherhourscalc.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Учёт учебных часов преподавателя
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Учетучебныхчасовпреподавателя"></a>Отчет "Учёт учебных часов преподавателя"</b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+Этот отчёт показывает все классы и предметы, в которых указанный учитель провёл хотя бы один урок за выбранный период времени.
+<br>
+Для каждого класса и предмета выводится:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">количество часов, проведённых согласно расписанию указанным учителем за этот период времени;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">количество часов, проведённых согласно расписанию другими учителями за этот период времени;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">количество часов согласно учебному плану.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+<b><u>Примечание 1</u></b>. Даты в фильтрах можно выбирать только в пределах текущего учебного года.
+<br>
+
+<br>
+<b><u>Примечание 2.</u></b> Если за указанного преподавателя проводил занятия другой преподаватель (посредством замены в расписании), то соответствующее количество часов будет указано в строке "Другие".
+<br>
+<b><u>
+<br>
+Примечание 3</u></b>. В строке «Остаток» выводится разность между плановым количеством часов (согласно учебному плану) и количеством часов, проведенных согласно расписанию с<b> начала учебного года</b> до<b> «даты окончания»</b> из параметров отчёта.
+<br>
+
+<br>
+Используется следующая формула:
+<br>
+<b>"Количество часов по учебному плану" = "Число недель в периоде" * "Число часов в учебном плане для периода"</b>,
+<br>
+где
+<br>
+<b>"Число недель в периоде" = ("Число дней в периоде" - "Число каникулярных дней в периоде") </b><b>/ 7</b>
+<br>
+
+<br>
+Число недель в периоде может быть дробным, поэтому и количество часов согласно учебному плану тоже может быть дробным.
+<br>
+
+<br>
+При учёте каникулярных дней - используется возможность задавать каникулы не только для всей школы, но и для отдельных классов (см. <a href=javaScript:parent.reDisplay('3.1.5',1,0)>"Каникулы и параллели"</a>).
+<br>
+
+<br>
+<b><u>Пример отчёта</u></b><b><u>:</u></b><b><u>
+<br>
+</u></b><img src="uchet.png" width="1050" height="378" border="0" alt="uchet">
+<br>
+</span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('7.1.1.8',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('7.1.1.10',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

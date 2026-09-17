@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Химия. 10-11 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Химия. 10-11 класс" ID="1" Filename="ni_chem_2/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Производство аммиака." ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Производство аммиака." 
+				Filename="sgo/ni_chem_2/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Производство серной кислоты." ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Производство серной кислоты." 
+				Filename="sgo/ni_chem_2/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Кривые растворимости некоторых солей." ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Кривые растворимости некоторых солей." 
+				Filename="sgo/ni_chem_2/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Форма электронных облаков и последовательность заполнения подуровней электронами." ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Форма электронных облаков и последовательность заполнения подуровней электронами." 
+				Filename="sgo/ni_chem_2/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Окраски пламени." ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Окраски пламени." 
+				Filename="sgo/ni_chem_2/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Аллотропия углерода." ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Аллотропия углерода." 
+				Filename="sgo/ni_chem_2/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электрохимические производства." ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электрохимические производства." 
+				Filename="sgo/ni_chem_2/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Вода - необычное вещество." ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Вода - необычное вещество." 
+				Filename="sgo/ni_chem_2/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Классификация и свойства оксидов." ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Классификация и свойства оксидов." 
+				Filename="sgo/ni_chem_2/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Расположение электронов по орбиталям в атомах первых двадцати элементов." ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Расположение электронов по орбиталям в атомах первых двадцати элементов." 
+				Filename="sgo/ni_chem_2/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Гибридизация атомных орбиталей." ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Гибридизация атомных орбиталей." 
+				Filename="sgo/ni_chem_2/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Химическая связь в органических соединениях." ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Химическая связь в органических соединениях." 
+				Filename="sgo/ni_chem_2/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Взаимное влияние атомов и групп в молекуле." ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Взаимное влияние атомов и групп в молекуле." 
+				Filename="sgo/ni_chem_2/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Пространственная изомерия." ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Пространственная изомерия." 
+				Filename="sgo/ni_chem_2/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Применение алкенов." ID="16">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Применение алкенов." 
+				Filename="sgo/ni_chem_2/15/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Бензол." ID="17">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Бензол" 
+				Filename="sgo/ni_chem_2/16/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Генетическая связь различных классов углеводородов." ID="18">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Генетическая связь различных классов углеводородов." 
+				Filename="sgo/ni_chem_2/17/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Жиры." ID="19">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Жиры." 
+				Filename="sgo/ni_chem_2/18/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Моносахариды." ID="20">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Моносахариды." 
+				Filename="sgo/ni_chem_2/19/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Полисахариды." ID="21">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Полисахариды." 
+				Filename="sgo/ni_chem_2/20/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

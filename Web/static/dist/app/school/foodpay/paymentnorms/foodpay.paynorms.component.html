@@ -1,0 +1,55 @@
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel buttons-panel-left">
+			<button title="Добавить норматив" type="button" class="btn btn-info" ng-click="$ctrl.addPayNorm()">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+			</button>
+
+			<button ng-disabled="!$ctrl.selection.selected" title="Редактировать норматив" type="button" class="btn btn-info" ng-click="$ctrl.editPayNorm()">
+				<span class="glyphicon glyphicon-pencil"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+			</button>
+
+			<button ng-disabled="!$ctrl.selection.selected" title="Удалить норматив" type="button" class="btn btn-warning" ng-click="$ctrl.deletePayNorm()">
+				<span class="glyphicon glyphicon-remove"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+
+	<div class="col-md-12">
+
+		<div ng-if="!$ctrl.payNorms.length" class="alert alert-info" role="alert">
+			Нормативы оплаты питания не установлены
+		</div>
+
+		<form class="form-sm" ng-if="$ctrl.payNorms.length">
+			<table class="table table-thin table-xs table-bright table-bright-hover table-selectable print-block">
+				<tr>
+					<th rowspan="2">№ п/п</th>
+					<th rowspan="2">Дата вступления в силу</th>
+					<th colspan="3">Размер оплаты</th>
+					<th rowspan="2">Основание</th>
+				</tr>
+				<tr>
+					<th>Завтрак</th>
+					<th>Обед</th>
+					<th>Полдник</th>
+				</tr>
+				<tr ng-repeat="payNorm in $ctrl.payNorms" ng-class="{'selected': $ctrl.selection.isSelected(payNorm)}" ng-click="$ctrl.selection.select(payNorm)">
+					<td>{{$index + 1}}</td>
+					<td>{{payNorm.startDate | nsDate}}</td>
+					<td>{{payNorm.breakfastCost || '-'}}</td>
+					<td>{{payNorm.lunchCost || '-'}}</td>
+					<td>{{payNorm.snackCost || '-'}}</td>
+					<td>{{payNorm.reason}}</td>
+				</tr>
+			</table>
+		</form>
+
+	</div>
+</div>

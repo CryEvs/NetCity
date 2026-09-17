@@ -1,0 +1,21 @@
+<div ng-model="treeSelectCtrl">
+	<div class="modal-header">
+		<h4 class="modal-title">{{header}}</h4>
+	</div>
+	<div class="alert alert-info" ng-show="tree.length == 0">
+		{{treeCfg.noText}}
+	</div>
+	<div class="modal-body">
+		<div data-angular-treeview="true"
+			 data-tree-id="tree"
+			 data-tree-model="tree"
+			 data-node-id="{{treeCfg.id}}"
+			 data-node-label="{{treeCfg.label}}"
+			 data-node-children="{{treeCfg.childrens}}">
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" x-ng-click="ok()">{{language.Generic.Buttons.kSelect}}</button>
+		<button class="btn btn-default" x-ng-click="cancel()">{{language.Generic.Curriculum.kBtnCancel}}</button>
+	</div>
+</div>

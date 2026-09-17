@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Сетевой Город. Образование</title>
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<meta name="viewport" content="width=320">
+	<meta http-equiv="Expires" content="10" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="icon" type="image/gif" href="/images/Common/faviconnetcity.gif" />
+
+	<link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap3-dialog/css/bootstrap-dialog.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="/vendor/custom/fonts/font-awesome/css/font-awesome.min.css">
+
+	<script src="/vendor/components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+	<script src="/static/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="/js/libs/bowser.min.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" type="text/css" href="/vendor/components/select2/dist/css/select2.min.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="/vendor/components/select2/dist/css/select2-bootstrap.min.css"/> -->
+
+	<script src="/vendor/components/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+	<script src="/vendor/components/select2/dist/js/i18n/ru.js" type="text/javascript"></script>
+	<script type="text/javascript">$.fn.select2.defaults.set("language", "ru"); $.fn.select2.defaults.set("dropdownAutoWidth", "true");</script>
+
+	<link rel="stylesheet" type="text/css" href="/static/dist/app/login/css/login.component.min.css?ver" />
+	<link rel="stylesheet" type="text/css" href="/extras/authorize.css?ver" />
+
+
+	<script src="/js/md5r.min.js" type="text/javascript"></script>
+
+	<script>
+		function getChromeVersion () {
+			var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+			return raw ? parseInt(raw[2], 10) : false;
+		}
+
+		if (navigator.appName == 'Microsoft Internet Explorer'
+			|| !!(navigator.userAgent.match(/Trident/) || (typeof $.browser !== "undefined" && $.browser.msie == 1))
+			|| getChromeVersion() < 57)
+		{
+			var fileref = document.createElement('script')
+			fileref.setAttribute("type","text/javascript")
+			fileref.setAttribute("src", "/vendor/components/babel-polyfill-standalone/babel-polyfill.min.js")
+			document.getElementsByTagName("head")[0].appendChild(fileref);
+		}
+	</script>
+
+
+
+	<!-- <script type="text/javascript" src="//www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+	<script type="text/javascript" src="/firebase_subscribe.js"></script> -->
+
+
+
+
+	<base href="/" />
+
+	<style>
+		/* body {
+			background: #369;
+			font-family: 'Open Sans',Verdana!important;
+		} */
+		.ns-cloak {
+			display: none !important;
+		}
+		/* .form, .wrapper-or__text {
+			box-sizing: content-box;
+		} */
+	</style>
+</head>
+
+<body class="school">
+	<ng-include src="'/extras/authorize_header.html?ver'"></ng-include>
+
+	<div class="container padding0">
+		<ng-view></ng-view>
+	</div>
+
+	<script src="/vendor/components/angular-bundle.min.js" type="text/javascript"></script>
+	<script src="/js/libs/angular-locale/angular-locale_ru-ru.js" type="text/javascript"></script>
+
+	<script src="/static/dist/lng/language_ru.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		$(function () {
+			var initInjector = angular.injector(['ng', 'appboostrap']);
+			var loginInitializer = initInjector.get("loginInitializer");
+
+			loginInitializer.init()
+				.then(function () {
+					angular.bootstrap(angular.element("body"), ["irtech.netcity.login"]);
+				});
+		});
+
+	</script>
+
+	<script src="/static/dist/app/login/app-bundle.js?ver" type="text/javascript"></script>
+	<script src="/extras/authorize.js?ver" type="text/javascript"></script>
+
+	<script src="/vendor/components/angular-bootstrap/ui-bootstrap-tpls-2.5.7.min.js" type="text/javascript"></script>
+	<div id="modals-holder"></div>
+
+	<script type="text/javascript">
+		var $buoop = { vs: { i: 11, f: 52, o: 44, s: 7, c: 49 }};
+		function $buo_f() {
+			var e = document.createElement("script");
+
+			e.src = "//browser-update.org/update.min.js";
+			document.body.appendChild(e);
+		};
+		try {
+			document.addEventListener("DOMContentLoaded", $buo_f, false);
+		}
+		catch ( e ) {
+			window.attachEvent("onload", $buo_f);
+		}
+	</script>
+</body>
+</html>

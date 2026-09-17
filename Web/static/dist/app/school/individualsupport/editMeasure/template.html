@@ -1,0 +1,70 @@
+<div class="bootstrap-dialog type-primary">
+
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+
+	<div class="modal-body">
+		<form name="ctrl.editMeasureForm">
+			<div class="form-group row" ng-if="!ctrl.editMode">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Мероприятие</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select ng-model="ctrl.measure.measureType" class="form-control" ng-options="measureType as measureType.name for measureType in ctrl.measureTypes track by measureType.id">
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Дата проведения мероприятия</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<edit-date-input-component date="ctrl.measure.date"></edit-date-input-component>
+				</div>
+			</div>
+
+			<div class="form-group row" ng-if="ctrl.isEventsParticipation()">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Вид мероприятия</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select ng-model="ctrl.measure.extraInfo" class="form-control" ng-options="partEventType as partEventType for partEventType in ctrl.participiationEventTypes track by partEventType">
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Описание</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<textarea class="form-control" ng-model="ctrl.measure.description" track-changes></textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Результат</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<input type="text" class="form-control" name="result" ng-model="ctrl.measure.result" track-changes/>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+
+		<!-- СОХРАНИТЬ -->
+		<button class="btn btn-primary btn-sm" ng-click="ctrl.save()">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span ng-show="!ctrl.editMode">{{ctrl.language.Generic.Buttons.kAdd}}</span>
+			<span ng-show="ctrl.editMode">{{ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<!-- ОТМЕНИТЬ -->
+		<button class="btn btn-default btn-sm" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+
+	</div>
+</div>

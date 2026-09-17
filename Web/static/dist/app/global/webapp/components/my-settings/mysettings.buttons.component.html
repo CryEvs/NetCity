@@ -1,0 +1,61 @@
+<div class="row ns-cloak">
+		<div class="col-md-12">
+			<div id="buttons-panel" class="buttons-panel">
+				<div class="buttons-panel-left">
+					<div style="display: inline">
+						<button type="button" title="{{$ctrl.language.Generic.Buttons.kSave}}" class="btn btn-primary btn-md" ng-click="$ctrl.save()">
+							<span class="glyphicon glyphicon-floppy-save"></span>
+							<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+						</button>
+						<button type="button" title="{{$ctrl.language.Generic.Buttons.kReset}}" class="btn btn-warning" ng-click="$ctrl.reset()">
+							<span class="glyphicon glyphicon-repeat"></span>
+							<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+						</button>
+
+						<button title="{{$ctrl.language.Generic.Common.kChangePassword}}" type="button" class="btn btn-default" ng-click="$ctrl.changePassword()">
+							<span>{{$ctrl.language.Generic.Common.kChangePassword}}</span>
+						</button>
+
+						<div style="display: inline" ng-if="$ctrl.identityProviders.irtech.enabled">
+							<button ng-if="!$ctrl.identityProviders.irtech.linked" title="{{$ctrl.language.Generic.Common.kLinkWithIdpAccount.replace('{0}', $ctrl.getAuthName('irtech'))}}" type="button" class="btn btn-primary btn-md" ng-click='$ctrl.link("irtech")'>
+								<span>{{$ctrl.language.Generic.Common.kLinkWithIdpAccount.replace('{0}', $ctrl.getAuthName('irtech'))}}</span>
+							</button>
+
+							<button ng-if="$ctrl.identityProviders.irtech.linked" title="{{$ctrl.language.Generic.Common.kRemoveLinkToIdpAccount.replace('{0}', $ctrl.getAuthName('irtech'))}}" type="button" class="btn btn-danger btn-md" ng-click='$ctrl.removeLink("irtech", "irtech")'>
+								<span>{{$ctrl.language.Generic.Common.kRemoveLinkToIdpAccount.replace('{0}', $ctrl.getAuthName('irtech'))}}</span>
+							</button>
+						</div>
+
+						<div style="display: inline" ng-if="$ctrl.identityProviders.esia.enabled">
+							<button ng-if="!$ctrl.identityProviders.esia.linked" title="{{$ctrl.language.Generic.Common.kLinkWithIdpAccount.replace('{0}', $ctrl.getAuthName('esia'))}}" type="button" class="btn btn-success btn-md" ng-click='$ctrl.link("esia")'>
+								<span>{{$ctrl.language.Generic.Common.kLinkWithIdpAccount.replace('{0}', $ctrl.getAuthName('esia'))}}</span>
+							</button>
+
+							<button ng-if="$ctrl.identityProviders.esia.linked" title="{{$ctrl.language.Generic.Common.kLinkWithIdpAccount.replace('{0}', $ctrl.getAuthName('esia'))}}" type="button" class="btn btn-danger btn-md" ng-click='$ctrl.removeLink("esia", "esia")'>
+								<span>{{$ctrl.language.Generic.Common.kRemoveLinkToIdpAccount.replace('{0}', $ctrl.getAuthName('esia'))}}</span>
+							</button>
+						</div>
+
+						<div style="display: inline" ng-if="$ctrl.identityProviders.esa.enabled">
+							<button ng-if="!$ctrl.identityProviders.esa.linked" title="{{$ctrl.language.Generic.Common.kLinkWithIdpAccount.replace('{0}', $ctrl.getAuthName('esa'))}}" type="button" class="btn btn-success btn-md" ng-click='$ctrl.link("esa")'>
+								<span>{{$ctrl.language.Generic.Common.kLinkWithIdpAccount.replace('{0}', $ctrl.getAuthName('esa'))}}</span>
+							</button>
+
+							<button ng-if="$ctrl.identityProviders.esa.linked" title="{{$ctrl.language.Generic.Common.kLinkWithIdpAccount.replace('{0}', $ctrl.getAuthName('esa'))}}" type="button" class="btn btn-danger btn-md" ng-click='$ctrl.removeLink("esa", "esa")'>
+								<span>{{$ctrl.language.Generic.Common.kRemoveLinkToIdpAccount.replace('{0}', $ctrl.getAuthName('esa'))}}</span>
+							</button>
+						</div>
+
+						<button ng-if="$ctrl.showNavigator" title="Войти в Навигатор" type="button" class="btn btn-default btn-md" ng-click="$ctrl.openPFDO()">
+							<span>Войти в Навигатор</span>
+						</button>
+					</div>
+				</div>
+				<div ng-if="$ctrl.showQueue" class="buttons-panel-right">
+					<button title="{{$ctrl.language.Movement.kImportProcessesQueue}}" type="button" class="btn btn-default" ng-click="$ctrl.showQueuedTasks()">
+						<span>{{$ctrl.language.Movement.kImportProcessesQueue}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,60 @@
+<div class="alert alert-danger" ng-if="$ctrl.error" role="alert" style="white-space: pre-line;">{{$ctrl.error}}</div>
+
+<div ng-if="$ctrl.ready && !$ctrl.error">
+
+	<ns-form-group title="Страна" ng-if="$ctrl.editAddress && !$ctrl.fiasMode && $ctrl.select2Settings.country">
+		<select2 class="form-control" options="$ctrl.select2Settings.country" ng-model="$ctrl.editAddress.country" track-changes></select2>
+	</ns-form-group>
+
+	<ns-form-group title="Регион" ng-if="$ctrl.editAddress">
+		<select2 class="form-control" options="$ctrl.select2Settings.region" required ng-model="$ctrl.editAddress.region" track-changes></select2>
+	</ns-form-group>
+
+	<ns-form-group title="Муниципальный район" ng-if="$ctrl.editAddress" ng-show="$ctrl.editAddress.region">
+		<select2 class="form-control" options="$ctrl.select2Settings.district" ng-model="$ctrl.editAddress.district" track-changes></select2>
+	</ns-form-group>
+
+	<ns-form-group title="Населенный пункт" ng-if="$ctrl.editAddress" ng-show="$ctrl.editAddress.region" ng-class="{'has-error': $ctrl.form.city.$invalid && ($ctrl.form.city.$dirty || $ctrl.form.$displayErrors)}">
+		<select2 name="city" class="form-control" options="$ctrl.select2Settings.city" ng-required="!$ctrl.isFederalCityRegion" ng-model="$ctrl.editAddress.city" track-changes></select2>
+		<p ng-if="$ctrl.form.city.$invalid && ($ctrl.form.city.$dirty || $ctrl.form.$displayErrors)" class="help-block">
+			{{"language.Generic.Messages.kRequiredField" | language}}
+		</p>
+	</ns-form-group>
+
+	<ns-form-group title="Улица" ng-if="$ctrl.editAddress" ng-show="$ctrl.showStreet"  ng-class="{'has-error': $ctrl.form.street.$invalid && ($ctrl.form.street.$dirty || $ctrl.form.$displayErrors)}">
+		<select2 name="street" class="form-control" options="$ctrl.select2Settings.street" ng-model="$ctrl.editAddress.street" track-changes></select2>
+		<p ng-if="$ctrl.form.street.$invalid && ($ctrl.form.street.$dirty || $ctrl.form.$displayErrors)" class="help-block">
+			{{"language.Generic.Messages.kRequiredField" | language}}
+		</p>
+	</ns-form-group>
+
+	<ns-form-group title="Дом" ng-if="$ctrl.editAddress" ng-show="$ctrl.showStreet" ng-class="{'has-error': $ctrl.form.building.$invalid && ($ctrl.form.building.$dirty || $ctrl.form.$displayErrors)}">
+		<select2 name="building" ng-if="$ctrl.fiasMode" class="form-control" options="$ctrl.select2Settings.building" required ng-model="$ctrl.editAddress.building" track-changes></select2>
+		<input name="building" ng-if="!$ctrl.fiasMode" class="form-control" id="building" name="building" type="text" required ng-model="$ctrl.editAddress.building.text" track-changes ng-change="$ctrl.syncAddress()">
+		<p ng-if="$ctrl.form.building.$invalid && ($ctrl.form.building.$dirty || $ctrl.form.$displayErrors)" class="help-block">
+			{{"language.Generic.Messages.kRequiredField" | language}}
+		</p>
+	</ns-form-group>
+
+	<hr />
+
+	<ns-form-group title="Корпус" ng-if="$ctrl.editAddress" ng-show="$ctrl.editAddress.building">
+		<input class="form-control" id="corp" name="corp" type="text" ng-model="$ctrl.editAddress.corpus" track-changes ng-change="$ctrl.syncAddress()" ng-disabled="$ctrl.fiasBuldingSelected">
+	</ns-form-group>
+
+	<ns-form-group title="Строение" ng-if="$ctrl.editAddress" ng-show="$ctrl.editAddress.building">
+		<input class="form-control" id="struc" name="struc" type="text" ng-model="$ctrl.editAddress.struc" track-changes ng-change="$ctrl.syncAddress()" ng-disabled="$ctrl.fiasBuldingSelected">
+	</ns-form-group>
+
+	<ns-form-group title="Квартира" ng-if="$ctrl.editAddress && !$ctrl.isSchoolAddress" ng-show="$ctrl.editAddress.building">
+		<input class="form-control" id="flat" name="flat" type="text" ng-model="$ctrl.editAddress.flat" track-changes ng-change="$ctrl.syncAddress()">
+	</ns-form-group>
+
+	<ns-form-group title="Индекс" ng-if="$ctrl.editAddress">
+		<input class="form-control" id="zipcode" name="zip" type="text" ng-disabled="$ctrl.fiasMode" ng-model="$ctrl.editAddress.zipCode" ng-change="$ctrl.syncAddress()">
+	</ns-form-group>
+
+	<div class="alert alert-danger" ng-if="$ctrl.fiasUnknown" role="alert">
+		Внимание! Указанный адрес отсутствует в адресном справочнике ФИАС.
+	</div>
+</div>

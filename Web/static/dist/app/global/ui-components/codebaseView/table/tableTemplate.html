@@ -1,0 +1,69 @@
+<style>
+	tr:hover {
+		background-color: #e2f6ff !important;
+		cursor: pointer;
+	}
+
+	tr.selected {
+		background-color: #C9DDEF !important
+	}
+
+	.table-hover > tbody > tr.system {
+		background-color: rgb(255, 195, 139)
+	}
+
+	.table-hover > tbody > tr.free {
+		background-color: rgb(227, 227, 227)
+	}
+</style>
+
+<div ng-if="$ctrl.getData() && $ctrl.getData().length">
+	<!-- Пейджинг (Должна прилепать к верхней части экрана?)-->
+	<ul ng-show="$ctrl.showPaging()"
+			uib-pagination total-items="$ctrl.getData().length"
+			ng-model="paging.page" items-per-page="paging.size"
+			max-size="15" class="pagination-sm"
+			direction-links="false" force-ellipses="true"></ul>
+
+	<table class="table table-bordered table-xs table-hover table-thin">
+
+		<thead>
+			<!-- (Должна прилепать к верхней части экрана)-->
+			<tr> <!--Добавить возможность обрабатывать многоуровневых заголовков-->
+				<th>№</th>
+				<th ng-repeat="column in $ctrl.fields | filter:{isHiden: false}">
+				<th ng-repeat="column in $ctrl.fields | filter:{isHidden: false}">
+					{{ column['uiName'].replace(br, '\n') || column['systemName']}}
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<!-- Содержимое таблицы -->
+			<tr ng-click="$ctrl.select(line)"
+				ng-class="{selected: $ctrl.isSelected(line), system: $ctrl.isSystem(line), free: $ctrl.isFree(line)}"
+				ng-repeat="line in page = $ctrl.getPage(paging.page, paging.size)">
+				<td>{{(paging.page - 1) * paging.size + $index + 1}}</td>
+				<td ng-repeat="column in $ctrl.fields | filter:{isHidden: false}">
+					<!-- Добавить обратку типов -->
+					<a ng-click="$ctrl.edit(line)" ng-if="$ctrl.isEditable(column)">
+						{{ $ctrl.getText(line, column) }}
+					</a>
+					<div ng-if="!$ctrl.isEditable(column)">
+						{{ $ctrl.getText(line, column) }}
+					</div>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+	<!-- Пейджинг (Должна прилепать к нижней части экрана?)-->
+	<ul ng-show="$ctrl.showPaging()"
+			uib-pagination total-items="$ctrl.getData().length"
+			ng-model="paging.page" items-per-page="paging.size"
+			max-size="15" class="pagination-sm"
+			direction-links="false" force-ellipses="true"></ul>
+</div>
+
+<div class="alert alert-info" role="alert" ng-if="!($ctrl.data && $ctrl.data.length)">{{messages.noData}}</div>
+<div class="alert alert-info" role="alert" ng-if="$ctrl.search && !($ctrl.filteredData && $ctrl.filteredData.length)">{{messages.notFound}}</div>

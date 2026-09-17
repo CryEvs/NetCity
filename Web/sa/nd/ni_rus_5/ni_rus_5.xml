@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Русский язык. 5 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Русский язык. 5 класс" ID="1" Filename="ni_rus_5/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Правописание корней с чередованием А-О" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание корней с чередованием А-О" 
+				Filename="sgo/ni_rus_5/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правописание корней с чередованием Е-И" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание корней с чередованием Е-И" 
+				Filename="sgo/ni_rus_5/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правописание И-Ы после Ц" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание И-Ы после Ц" 
+				Filename="sgo/ni_rus_5/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Разделительный Ъ" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Разделительный Ъ" 
+				Filename="sgo/ni_rus_5/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Разделительный Ь" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Разделительный Ь" 
+				Filename="sgo/ni_rus_5/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Ь после шипящих" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Ь после шипящих" 
+				Filename="sgo/ni_rus_5/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правописание Ь в количественных числительных" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание Ь в количественных числительных" 
+				Filename="sgo/ni_rus_5/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Склонение имен существительных" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Склонение имен существительных" 
+				Filename="sgo/ni_rus_5/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Спряжение глаголов" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Спряжение глаголов" 
+				Filename="sgo/ni_rus_5/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Главные и второстепенные члены предложения" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Главные и второстепенные члены предложения" 
+				Filename="sgo/ni_rus_5/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Главные члены предложения: способы выражения" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Главные члены предложения: способы выражения" 
+				Filename="sgo/ni_rus_5/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Знаки препинания в предложении с однородными членами" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Знаки препинания в предложении с однородными членами" 
+				Filename="sgo/ni_rus_5/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Знаки препинания в предложениях с прямой речью" ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Знаки препинания в предложениях с прямой речью" 
+				Filename="sgo/ni_rus_5/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правописание ТСЯ и ТЬСЯ, возвратные глаголы" ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание ТСЯ и ТЬСЯ, возвратные глаголы" 
+				Filename="sgo/ni_rus_5/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

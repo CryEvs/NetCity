@@ -1,0 +1,21 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<form class="form-horizontal form-sm" name="$ctrl.form" ng-if="$ctrl.ready">
+		<ns-form>
+
+			<ns-form-group title="Населенный пункт">
+				<input type="text" class="form-control" name="city" size="60" maxlength="200" ng-value="$ctrl.city.name" disabled>
+			</ns-form-group>
+
+			<ns-form-group title="Название" ng-class="{'has-error': $ctrl.form.name.$invalid}">
+				<input type="text" class="form-control" name="name" size="60" maxlength="200" ng-model="$ctrl.location.name" required track-changes>
+				<p ng-show="$ctrl.form.name.$error.required && ($ctrl.form.name.$dirty || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+			</ns-form-group>
+
+            <ns-form-group title="Тип">
+				<select class="form-control" name="atoType" required ng-model="$ctrl.atoTypeId" ng-options="x.id as x.name for x in $ctrl.atoTypes" track-changes></select>
+				<p ng-show="$ctrl.form.atoType.$error.required && ($ctrl.form.atoType.$dirty || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+			</ns-form-group>
+		</ns-form>
+	</form>
+</ns-modal>

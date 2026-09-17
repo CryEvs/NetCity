@@ -1,0 +1,13 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<form role="form" name="$ctrl.replaceeducorgForm" ng-show="$ctrl.ready" class="form form-xs">
+		<div class="form-group">
+			<label for="eoname">{{$ctrl.language.Generic.Common.kEduOrganization}}</label>
+			<input track-changes type="text" class="form-control" id="eoname" ng-model="$ctrl.eoName" readonly maxlength="200">
+		</div>
+		<div class="form-group">
+			<label for="replaceorg">{{$ctrl.language.Generic.ServAdmin.kReplaceTo}}</label>
+			<select track-changes class="form-control" id="replaceorg" ng-model="$ctrl.replaceOrgId" ng-options="org.id as org.name for org in $ctrl.orgs"></select>
+		</div>
+	</form>
+</ns-modal>

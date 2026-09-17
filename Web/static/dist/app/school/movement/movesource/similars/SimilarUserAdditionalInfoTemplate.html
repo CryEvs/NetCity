@@ -1,0 +1,78 @@
+<div>
+	<div class="form-group">
+		<label>{{{language.Generic.Reports.kFIOstud}}}</label>
+		<span class="form-control form-control-title"><span class="text">{{lastName}} {{firstName}} {{middleName}}</span></span>
+	</div>
+	<div class="form-group">
+		<label>{{{language.Generic.Common.kBDate}}}</label>
+		<span class="form-control form-control-title"><span class="text">{{DateOnly2str birthDate}}</span></span>
+	</div>
+	{{#if parents.length}}
+	<div class="form-group">
+		<label>{{{language.Generic.Common.kParents}}}</label>
+		<table class="table table-bordered table-bright-striped table-xs print-block">
+			<tr>
+				<th>{{{language.Generic.Filter.kN_PP}}}</th>
+				<th>{{{language.Generic.Common.kLastName}}}</th>
+				<th>{{{language.Generic.Common.kFirstName}}}</th>
+				<th>{{{language.Generic.Common.kMiddleName}}}</th>
+				<th>{{{language.Generic.Common.kBDate}}}</th>
+			</tr>
+			{{#each parents}}
+			<tr>
+				<td>
+					{{Inc @index 0 0}}
+				</td>
+				<td>
+					{{lastName}}
+				</td>
+				<td>
+					{{firstName}}
+				</td>
+				<td>
+					{{middleName}}
+				</td>
+				<td>
+					{{#if birthDate}}
+					{{DateOnly2str birthDate}}
+					{{/if}}
+				</td>
+			</tr>
+			{{/each}}
+		</table>
+	</div>
+	{{/if}}
+	<div class="form-group">
+		<label>{{{language.Generic.Common.kOwnInstitution}}}</label>
+		<span class="form-control form-control-title"><span class="text">{{organization.name}}</span></span>
+	</div>
+	{{#if studentClassRanges.length}}
+	<div class="form-group">
+		<label>{{{language.Generic.Common.kEduTrajectory}}}</label>
+		<table class="table table-bordered table-bright-striped table-xs print-block">
+			<tr>
+				<th>{{{language.Generic.Filter.kN_PP}}}</th>
+				<th>{{{language.Generic.Common.kEO}}}</th>
+				<th>{{{language.Generic.EMReports.kClassGroup}}}</th>
+				<th>{{{language.Generic.Common.kPeriod}}}</th>
+			</tr>
+			{{#each studentClassRanges}}
+			<tr>
+				<td>
+					{{Inc @index 0 0}}
+				</td>
+				<td>
+					{{organization}}
+				</td>
+				<td>
+					{{className}}
+				</td>
+				<td>
+					{{DateOnly2str enrollDate}} - {{DateOnly2str retireDate}}
+				</td>
+			</tr>
+			{{/each}}
+		</table>
+	</div>
+	{{/if}}
+</div>	

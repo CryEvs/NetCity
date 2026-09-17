@@ -1,0 +1,126 @@
+﻿
+<% ' © 2007-2008 IRTech. All rights reserved.
+
+Sub DrawPage_4()%>
+<table align="right" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr><td><div align="right" style="font-size:80%">4-я страница формы № Т-2</div></td></tr>
+<tr><td>
+	<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+		<tr><td><div align="center"><b style="font-size:120%">VII. ПООЩРЕНИЯ И НАГРАДЫ</b></div><br></td></tr>
+		<tr><td>
+			<table align="left" valign="top" border="1" cellspacing="0" cellpadding="2" width="100%">
+				<tr align="center">
+					<td width="47%" rowspan="2">Наименование награды</td><td colspan="3">Документ</td>
+				</tr><tr align="center">
+					<td width="22%">наименование</td><td>номер</td><td>дата</td>
+				</tr>
+				<tr align="center"><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+			</table>
+		</td></tr>
+	</table>
+</td></tr>
+<tr><td>
+	<br>
+	<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+		<tr><td><div align="center"><b style="font-size:120%">VIII. ОТПУСК</b></div><br></td></tr>
+		<tr><td>
+			<table align="left" valign="top" border="1" cellspacing="0" cellpadding="2" width="100%">
+				<tr align="center">
+					<td rowspan="2">Вид отпуска<br>(ежегодный, учебный, без<br>сохранения заработной<br>платы и др.)</td>
+					<td colspan="2">Период работы</td><td rowspan="2">Количество дней<br>отпуска</td>
+					<td colspan="2">Дата</td><td width="14%" rowspan="2">Основание</td>
+				</tr><tr align="center">
+					<td width="10%">с</td><td width="10%">по</td>
+					<td width="10%">начала</td><td width="10%">окончания</td>
+				</tr>
+				<tr align="center"><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+			</table>
+		</td></tr>
+	</table>
+</td></tr>
+<tr><td>
+	<br>
+	<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+		<tr><td><div align="center"><b style="font-size:120%">IX. СОЦИАЛЬНЫЕ ЛЬГОТЫ,</b><br>
+			<b>на которые работник имеет право в соответствии с законодательством</b>
+		</div><br></td></tr>
+		<tr><td>
+			<table align="left" valign="top" border="1" cellspacing="0" cellpadding="2" width="100%">
+				<tr align="center">
+					<td width="25%" rowspan="2">Наименование льготы</td><td colspan="2">Документ</td><td rowspan="2">Основание</td>
+				</tr><tr align="center">
+					<td width="25%">номер</td><td width="25%">дата выдачи</td>
+				</tr>
+				<tr align="center"><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+			</table>
+		</td></tr>
+	</table>
+</td></tr>
+<tr><td>
+	<br>
+	<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+		<tr><td><div align="center"><b style="font-size:120%">X. ДОПОЛНИТЕЛЬНЫЕ СВЕДЕНИЯ</b></div></td></tr>
+		<tr style="height: 10px"><td style="border-bottom:1px solid grey"></td></tr>
+		<tr style="height: 10px"><td style="border-bottom:1px solid grey"></td></tr>
+		<tr style="height: 10px"><td style="border-bottom:1px solid grey"></td></tr>
+		<tr style="height: 10px"><td style="border-bottom:1px solid grey"></td></tr>
+		<tr style="height: 10px"><td style="border-bottom:1px solid grey"></td></tr>
+	</table>
+</td></tr>
+<tr><td>
+	<br>
+	<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+		<tr><td><div align="left"><b style="font-size:120%">XI. Основание увольнения</b>&nbsp;</div><br></td></tr>
+		<tr><td>
+			<table align="left" valign="top" border="0" cellspacing="0" cellpadding="2" width="100%">
+				<tr><td>Дата увольнения&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;г.</td></tr>
+				<tr><td>Приказ (распоряжение) №&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;от&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;г.</td></tr>
+			</table>
+		</td></tr>
+
+	</table>
+</td></tr>
+<tr><td>
+	<br><br>
+	<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+		<tr><td><b>Работник кадровой службы</b></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr><td><div style="font-size:80%; height: 0px;">&nbsp;</div></td>
+			<td><div style="font-size:80%; height: 0px;">(должность)</div></td>
+			<td><div style="font-size:80%; height: 0px;">(личная подпись)</div></td>
+			<td><div style="font-size:80%; height: 0px;">(расшифровка подписи)</div></td></tr>
+	</table>
+</td></tr>
+<tr><td>
+	<br><br>
+	<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0">
+		<tr><td><b>Работник</b></td><td>&nbsp;</td></tr>
+		<tr><td><div style="font-size:80%; height: 0px;">&nbsp;</div></td>
+			<td><div style="font-size:80%; height: 0px;">(личная подпись)</div></td></tr>
+	</table>
+</td></tr>
+</table> <%
+End Sub
+%>

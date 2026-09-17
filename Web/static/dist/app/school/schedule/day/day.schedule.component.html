@@ -1,0 +1,48 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/schedule/css/schedule.min.css">
+<style>
+	.loading table.schedule-table {
+		opacity: 0;
+	}
+	table.schedule-table td.filled-cell a {
+		display: block;
+	}
+</style>
+
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+
+		<div class="buttons-panel">
+			<div class="buttons-panel-right">
+				<button title="{{$ctrl.language.Generic.Buttons.kPrint}}" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+					<span class="glyphicon glyphicon-print"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kPrint}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default"  ng-click="$ctrl.export()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>{{$ctrl.language.Generic.Common.kBtnExcel}}</span>
+				</button>
+			</div>
+		</div>
+
+		<filter-panel class="filters-panel filters-panel-compact" ng-if="$ctrl.filterPanelSettings"	fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+	</div>
+</div>
+
+<div>
+	<div>
+		<div class="content-preloader" ng-if="$ctrl.loading">
+			<span class="arrows"></span>
+			<span class="title">{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+		</div>
+
+		<div class="row" ng-if="!$ctrl.loading && $ctrl.viewData && !$ctrl.existsContent()">
+			<div class="col-md-8">
+				<div class="alert alert-info" role="alert">Нет занятий и мероприятий на этот день для выбранных условий
+				</div>
+			</div>
+		</div>
+
+		<day-view-times ng-if="$ctrl.viewData && $ctrl.viewType == 0 && $ctrl.existsContent()" ng-class="{'loading': $ctrl.loading}" data="$ctrl.viewData"></day-view-times>
+		<day-view-rooms ng-if="$ctrl.viewData && $ctrl.viewType == 1 && $ctrl.existsContent()" ng-class="{'loading': $ctrl.loading}" data="$ctrl.viewData"></day-view-rooms>
+	</div>
+</div>

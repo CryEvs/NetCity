@@ -1,0 +1,227 @@
+<style>
+	.move {
+		background-color: white;
+		border: 1px solid #ddd;
+		height: 29px;
+	}
+
+	table.subjects tr:first-child td {
+		border-top: 0 !important;
+	}
+
+	table.subjects td:nth-child(-n+3) {
+		border-right: 1px solid #ddd;
+	}
+
+	table.subjects {
+		margin-bottom: 0;
+		cursor: move;
+	}
+
+	table.subjects input[type="checkbox"]:not(:disabled) {
+		cursor: default;
+	}
+
+	.glyphicon-resize-vertical {
+		opacity: 0.5;
+	}
+
+	.highlight {
+		background-color: #fff5c0;
+		height: 29px;
+	}
+
+	.highlight > td:nth-child(-n+3) {
+		border-right: 0 !important;
+	}
+
+	.not-active > td > table {
+		background-color: #d3d3d3 !important;
+	}
+</style>
+
+<div class="row ns-cloak">
+	<div class="col-md-9" ng-class="{'col-md-push-3': funcType != 1}">
+		<div class="panel panel-info">
+			<div class="panel-heading" role="tab" id="headinglist_subjects">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#" class="" data-target="#list_subjects" aria-expanded="true" aria-controls="list_subjects">{{language.Generic.Common.kSubjects}}</a>
+				</h4>
+			</div>
+			<div></div>
+			<div id="list_subjects" class="panel-collapse collapse in" aria-labelledby="headinglist_subjects" role="tabpanel" aria-expanded="true">
+				<div class="panel-body">
+					<form class="form">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">{{language.Generic.Common.kView}}</label>
+									<div class="">
+										<select class="form-control" name="mode" ng-model="state.mode">
+											<option ng-value="'grouped'">{{language.Generic.Common.kNormal}}</option>
+											<option ng-value="'sort'" ng-if="!state.readOnly">{{language.Generic.Constructor.kSortings}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group" ng-if="state.mode == 'grouped'">
+									<label class="control-label">{{language.Generic.Curriculum.kStatus}}</label>
+									<div>
+										<select class="form-control" name="kView" ng-model="state.status">
+											<option ng-value="'using'">{{language.Generic.Common.kEmploy}}</option>
+											<option ng-value="'all'">{{language.Generic.Common.kAll}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</form>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="buttons-panel" ng-if="!state.readOnly">
+								<button title="{{language.Generic.Common.kAddSubject}}" type="button" class="btn btn-info" ng-click="addSubject()">
+									<span class="glyphicon glyphicon-plus-sign"></span>
+									<span>{{language.Generic.Buttons.kAdd}}</span>
+								</button>
+
+								<button title="{{language.Generic.SetupSchoolCalendar.kRemoveSubjects}}" type="button" class="btn btn-danger" ng-click="delSubject()" ng-disabled="state.mode == 'sort'">
+									<span class="glyphicon glyphicon-minus-sign"></span>
+									<span>{{language.Generic.Buttons.kRemove}}</span>
+								</button>
+
+							</div>
+						</div>
+					</div>
+
+					<table class="table table-bordered table-sm table-striped" ng-if="state.mode == 'grouped'">
+						<tr>
+							<th width="60%">{{language.Generic.Common.kName}}</th>
+							<th width="15%">{{language.Common.kTeachers}}</th>
+							<th width="15%" ng-if="funcType != 1">{{language.Generic.MenuFolders.kFNSubgroups}}</th>
+							<th width="10%" ng-bind-html="language.Generic.Common.kDeletingMark" class="min" ng-if="!state.readOnly"></th>
+						</tr>
+						<tr ng-repeat-start="group in data.groupedSubjects">
+							<th colspan="4" class="text-center">
+								<a href="JavaScript:void(0);" ng-click="editSubjectField(group.subjectField)" title="{{language.Generic.SetupSchoolCalendar.kEditSubjectField}}" ng-if="!state.readOnly && group.subjectField.id > 0 && (group.subjectField.order > maxPredefined || group.subjectField.order == null)">
+									{{group.subjectField.name || '----'}}
+								</a>
+								<span ng-if="state.readOnly || group.subjectField.id == -1 || (group.subjectField.order > 0 && group.subjectField.order <= maxPredefined)">
+									{{group.subjectField.name}}
+								</span>
+							</th>
+						</tr>
+						<tr ng-repeat="subject in group.subjects | filter: filterSbjByStatus" ng-repeat-end>
+							<td>
+								<a ng-if="!state.readOnly" href="JavaScript:void(0);" ng-click="editSubject(subject)" title="{{language.Generic.SetupSchoolCalendar.kEditSubject}}">{{subject.name}}</a><span ng-if="state.readOnly">{{subject.name}}</span> ({{subject.shortName}})
+								
+							</td>
+							<td class="text-center">
+								<abbr title="{{subject.teachersStr}}">{{subject.teachers.length}}</abbr>
+							</td>
+							<td class="text-center" ng-if="funcType != 1">
+								<abbr title="{{subject.groupsStrTitle}}">{{subject.groupsStr}}</abbr>
+							</td>
+							<td class="text-center" ng-if="!state.readOnly">
+								<input type="checkbox" ng-checked="selection.isSelected(subject)" ng-click="selection.select(subject)" ng-disabled="subject.using"/>
+							</td>
+						</tr>
+					</table>
+
+					<table class="table table-bordered table-sm subjects table-striped" ng-if="state.mode == 'sort'">
+						<tr>
+							<th width="60%">{{language.Generic.Common.kName}}</th>
+							<th width="15%">{{language.Common.kTeachers}}</th>
+							<th width="15%" ng-if="funcType != 1">{{language.Generic.MenuFolders.kFNSubgroups}}</th>
+						</tr>
+						<tbody ui-sortable="sortableOptions" ng-model="data.subjects">
+						<tr ng-repeat="subject in data.subjects" style="cursor: move">
+							<td>
+								<span class="glyphicon glyphicon-resize-vertical"></span>
+								
+								<a href="JavaScript:void(0);" ng-click="editSubject(subject)" title="{{language.Generic.SetupSchoolCalendar.kEditSubject}}">{{$index + 1}}. {{subject.name}}</a> ({{subject.shortName}})
+							</td>
+							<td class="text-center">
+								<abbr title="{{subject.teachersStr}}">{{subject.teachers.length}}</abbr>
+							</td>
+							<td class="text-center" ng-if="funcType != 1">
+								<abbr title="{{subject.groupsStrTitle}}">{{subject.groupsStr}}</abbr>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-3" ng-class="{'col-md-pull-9': funcType != 1}" ng-if="funcType != 1">
+		<div class="panel panel-danger">
+			<div class="panel-heading" role="tab" id="headingsubject_groups">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#" class="collapsed" data-target="#subject_groups" aria-expanded="true" aria-controls="subject_groups">{{language.Generic.SetupSchoolCurPlan.kSubjectGroups}}</a>
+				</h4>
+			</div>
+			<div id="subject_groups" class="panel-collapse collapse in" aria-labelledby="headingsubject_groups" role="tabpanel">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="buttons-panel" ng-if="!state.readOnly">
+								<button title="{{language.Generic.SetupSchoolCalendar.kEditSubjectGroups}}" type="button" class="btn btn-warning" ng-click="editParentSubjects()">
+									<span class="glyphicon glyphicon-pencil"></span>
+									<span>{{language.Generic.Buttons.kChange}}</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<table class="table table-bordered table-sm">
+						<tr ng-repeat="parentSubject in data.parentSubjects">
+							<td>{{parentSubject.name}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-success">
+			<div class="panel-heading" role="tab" id="headingsubject_fields">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#" class="collapsed" data-target="#subject_fields" aria-expanded="true" aria-controls="subject_fields">{{language.Generic.SetupSchoolCalendar.kSubjectFields}}</a>
+				</h4>
+			</div>
+			<div id="subject_fields" class="panel-collapse collapse in" aria-labelledby="headingsubject_fields" role="tabpanel">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="buttons-panel" ng-if="!state.readOnly">
+								<button title="{{language.Generic.SetupSchoolCalendar.kAddSubjectField}}" type="button" class="btn btn-info" ng-click="createSubjectField()">
+									<span class="glyphicon glyphicon-plus-sign"></span>
+									<span>{{language.Generic.Buttons.kAdd}}</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					
+					<div ng-if="data.unusedSubjectFields.length">
+						<form>
+							<h3>{{language.Generic.SetupSchoolCalendar.kNonBoundedFields}}</h3>
+						</form>
+					
+						<table class="table table-bordered table-xs table-bright-striped">
+							<tbody>
+							<tr ng-repeat="subjectField in data.unusedSubjectFields">
+								<td>
+									<a ng-if="!state.readOnly" href="JavaScript:void(0);" ng-click="editSubjectField(subjectField)" title="{{language.Generic.SetupSchoolCalendar.kEditSubjectField}}">{{subjectField.name}}</a>
+									<span ng-if="state.readOnly">{{subjectField.name}}</span>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

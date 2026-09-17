@@ -1,0 +1,59 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+<user-info-buttons></user-info-buttons>
+
+<span class="content-page-preloader" id="preloader"><span>{{$userInfoCtrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+<form NAME="UserInfo" METHOD="POST" class="form-horizontal form-edit form-sm" style="display: none;">
+	<div class="row">
+		<div class="col-lg-9">
+			<ns-parameters-form service="$userInfoCtrl.editUserInfoService">
+			<ns-panel panel-id="commonInfo" class="info" title="{{$userInfoCtrl.language.Generic.Common.kCommonInfo}}" expanded="true">
+				<user-info-common-data></user-info-common-data>
+				<div ng-if="$userInfoCtrl.isParent || $userInfoCtrl.isStudent">
+					<div class="col-md-1"></div>
+					<div class="col-md-11">
+						<parent-students ng-if="$userInfoCtrl.isParent"></parent-students>
+						<student-parents ng-if="$userInfoCtrl.isStudent"></student-parents>
+					</div>
+				</div>
+				<div ng-if="$userInfoCtrl.isStudent && ($userInfoCtrl.appContext.funcType == 3)">
+					<div class="col-md-1"></div>
+					<div class="col-md-11">
+						<student-main-educ></student-main-educ>
+					</div>
+				</div>
+			</ns-panel>
+
+			<ns-panel panel-id="family" ng-if="$userInfoCtrl.showFamilyInfo()" class="success" title="{{$userInfoCtrl.language.Generic.Reports.kFamilyStat}}">
+				<user-info-family>{{$userInfoCtrl.language.Generic.Movement.kPleaseWait}}</user-info-family>
+			</ns-panel>
+
+			<ns-panel ng-if="$userInfoCtrl.showAddEducation()" panel-id="add-educations" class="warning" title="{{$userInfoCtrl.addEducationTitle}}" expanded="$userInfoCtrl.addEducationExpanded">
+				<add-educations>
+					<div class="alert">{{$userInfoCtrl.language.Generic.Movement.kPleaseWait}}</div>
+				</add-educations>
+			</ns-panel>
+
+			<ns-panel ng-if="$userInfoCtrl.identityDocumentsAccess && !$userInfoCtrl.isWizard" panel-id="identity-documents" class="warning" title="{{$userInfoCtrl.language.Generic.Common.kIdentityDocuments}}">
+				<user-info-identity-docs>
+					<div class="alert">{{$userInfoCtrl.language.Generic.Movement.kPleaseWait}}</div>
+				</user-info-identity-docs>
+			</ns-panel>
+
+			<ns-panel ng-if="!$userInfoCtrl.isWizard" panel-id="contactInfo" class="success" title="{{$userInfoCtrl.language.Generic.Common.kContactInfo}}">
+				<user-info-contacts>{{$userInfoCtrl.language.Generic.Movement.kPleaseWait}}</user-info-contacts>
+			</ns-panel>
+
+			<user-info-parameters ng-if="!$userInfoCtrl.isWizard">
+				<div class="alert">{{$userInfoCtrl.language.Generic.Movement.kPleaseWait}}</div>
+			</user-info-parameters>
+
+			<ns-panel ng-if="$userInfoCtrl.fullAccess && $userInfoCtrl.checkEventsReadAccess && !$userInfoCtrl.isWizard" panel-id="userawards" class="info" title="{{$userInfoCtrl.language.Generic.Common.kPersonalAchievements}}">
+				<user-event-list>
+					<div class="alert" ng-hide="$userInfoCtrl.ready">{{$userInfoCtrl.language.Generic.Movement.kPleaseWait}}</div>
+				</user-event-list>
+			</ns-panel>
+			</ns-parameters-form>
+		</div>
+	</div>
+</form>

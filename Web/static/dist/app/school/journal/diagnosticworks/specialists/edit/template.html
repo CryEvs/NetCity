@@ -1,0 +1,62 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<form role="form" name="ctrl.specialistForm" class="form form-xs">
+			<div class="form-group">
+				<label for="specialist" class="control-label">{{ctrl.language.Generic.Common.kStaff}}</label>
+				<div ng-if="ctrl.state.searchMode">
+					<ui-select track-changes id="specialist" ng-model="ctrl.data.responsibleSpecialist.userId" theme="bootstrap" required on-select="ctrl.afterUserSelect($item)">
+						<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+						<ui-select-choices repeat="user as user in ctrl.searchCtx.users.items"
+						                   ui-disable-choice="user.name === 'Совпадений не найдено' || user.name === 'Поиск...'"
+						                   refresh="ctrl.searchCtx.users.search($select.search)">
+							<div ng-bind-html="user.searchName || user.name | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+				<div ng-if="!ctrl.state.searchMode">
+					<input track-changes type="text" id="specialist" name="specialist" class="form-control" ng-model="ctrl.data.responsibleSpecialist.fio" disabled>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="position" class="control-label">{{ctrl.language.Generic.EM.kPosition}}</label>
+				<input track-changes type="text" id="position" name="position" class="form-control" ng-model="ctrl.data.responsibleSpecialist.position" disabled>
+			</div>
+			<div class="form-group">
+				<label for="role" class="control-label">{{ctrl.language.Generic.Common.kRole}}</label>
+				<div class="">
+					<select track-changes
+					        class="form-control"
+					        id="role"
+					        ng-options="role.id as role.name for role in ctrl.data.dwRoles"
+					        required
+					        ng-model="ctrl.data.responsibleSpecialist.dwRole"></select>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<div class="modal-footer" ng-show="true">
+		<button class="btn btn-primary btn-sm" ng-if="ctrl.state.createMode" ng-click="ctrl.create(ctrl.data.responsibleSpecialist)" ng-disabled="!ctrl.specialistForm.$valid">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			<span>{{ctrl.language.Generic.Buttons.kAdd}}</span>
+		</button>
+
+		<button ng-if="!ctrl.state.createMode" class="btn btn-primary btn-sm" ng-click="ctrl.update(ctrl.data.responsibleSpecialist)" ng-disabled="!ctrl.specialistForm.$valid">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-floppy-save"></span>
+			<span>{{ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<button class="btn btn-default ng-binding btn-sm" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			{{ctrl.language.Generic.Buttons.kCancel}}
+		</button>
+	</div>
+</div>

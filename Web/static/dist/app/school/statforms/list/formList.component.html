@@ -1,0 +1,27 @@
+
+<div class="buttons-filters-panel form-horizontal">
+
+	<div class="row">
+		<div class="filters-panel col-md-6 col-lg-6 col-sm-12">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Common.kSchoolYear}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control" name="year" ng-change="$ctrl.changeYear()" ng-model="$ctrl.data.yearId" ng-options="year.id as year.name for year in $ctrl.data.years"></select>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<button title="{{form.title}}" type="button" class="btn inlineButton btn-default" ng-click="$ctrl.goForm(form)" ng-repeat="form in $ctrl.data.formList">
+				<span>Форма {{form.title}}</span>
+			</button>
+			<button title="{{$ctrl.language.Generic.StatReports.kFillingStatIndicators}}" type="button" class="btn btn-default" ng-click="$ctrl.openFillStatIndicators()">
+				<span>{{$ctrl.language.Generic.StatReports.kFillingStatIndicators}}</span>
+			</button>
+		</div>
+	</div>
+</div>

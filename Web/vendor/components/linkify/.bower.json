@@ -1,0 +1,13 @@
+{
+  "name": "linkify",
+  "homepage": "https://github.com/bradbeattie/jquery-linkify",
+  "_release": "ae66a5a16f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ae66a5a16ff0919b0f50fef6d9f5d7bd07e117ce"
+  },
+  "_source": "https://github.com/bradbeattie/jquery-linkify.git",
+  "_target": "*",
+  "_originalSource": "linkify"
+}

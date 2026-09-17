@@ -1,0 +1,16 @@
+//== Global styles
+
+// width bootstrap-var and custom alpha-mixins
+
+.has-error { // Default $state-danger-text: #a94442;
+	@include form-control-validation();
+}
+
+.has-warning {
+	@include form-control-validation($state-warning-text, $state-warning-text, $state-warning-text);
+}
+
+.has-success {
+	@include form-control-validation($state-success-text, $state-success-text, $state-success-text);
+}
+// /.Global styles

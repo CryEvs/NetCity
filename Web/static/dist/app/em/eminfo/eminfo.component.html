@@ -1,0 +1,76 @@
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="Сохранить изменения" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>Сохранить</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12 col-lg-9">
+		<ns-panel panel-id="mail-report" class="info" title="Общая информация" expanded="true">
+			<form class="form-horizontal form-xs" name="$ctrl.form">
+
+			<ns-form label-size="col-md-4 col-lg-3 col-sm-4" control-size="col-md-8 col-lg-9 col-sm-8">
+			<ns-form-group title="{{ 'language.Generic.Common.kShortName' | language }}">
+				<input type="text" class="form-control" name="Name" size="80" maxlength="250" ng-value="$ctrl.emCardInfo.name" disabled="disabled">
+			</ns-form-group>
+
+			<ns-form-group title="{{ 'language.Generic.SetupSchoolCalendar.kFullName' | language }}">
+				<input type="text" class="form-control" name="FullName" size="80" maxlength="250" ng-value="$ctrl.emCardInfo.fullName" disabled="disabled">
+			</ns-form-group>
+
+			<ns-form-group title="{{ 'language.Generic.ServAdmin.kParentEM' | language }}" ng-if="$ctrl.emCardInfo.parentName">
+				<input type="text" class="form-control" name="ParentName" size="80" maxlength="250" ng-value="$ctrl.emCardInfo.parentName" disabled="disabled">
+			</ns-form-group>
+
+			<ns-form-group title="{{ 'language.Generic.SchoolInfo.kJuridicalAddress' | language }}">
+				<input type="text" class="form-control" name="LegalAddress" size="80" maxlength="250" ng-model="$ctrl.emCardInfo.legalAddress" track-changes>
+			</ns-form-group>
+
+			<ns-form-group title="{{ 'language.Generic.SchoolInfo.kINN' | language }}" ng-class="{'has-error': $ctrl.form.Inn.$invalid}">
+				<input type="text" class="form-control" inn-input name="Inn" size="26" maxlength="12" ng-model="$ctrl.emCardInfo.inn" required track-changes>
+				<div ng-messages="$ctrl.form.Inn.$error">
+					<span class="help-block" ng-message="required">Обязательное поле</span>
+					<span class="help-block" ng-message="inn">Длина поля должна быть равна 10 или 12 символам</span>
+				</div>
+			</ns-form-group>
+			
+			<ns-form-group title="ОГРН" ng-class="{'has-error': $ctrl.form.Ogrn.$invalid}">
+				<input type="text" class="form-control" ogrn-input name="Ogrn" size="20" maxlength="13" ng-model="$ctrl.emCardInfo.ogrn" required track-changes>
+				<div ng-messages="$ctrl.form.Ogrn.$error">
+					<span class="help-block" ng-message="required">Обязательное поле</span>
+					<span class="help-block" ng-message="ogrn">Длина поля должна быть равна 13 символам</span>
+				</div>
+			</ns-form-group>
+
+			<ns-form-group title="{{ 'language.Generic.EM.kNPADetails' | language }}">
+				<input type="text" class="form-control" name="NPADetails" size="20" maxlength="500" ng-model="$ctrl.emCardInfo.npaDetails" track-changes>
+			</ns-form-group>
+			</ns-form>
+			</form>
+		</ns-panel>
+		
+		<ns-panel panel-id="organizations" class="default" title="Просмотр организаций" expanded="true">
+			<filter-panel class="filters-panel form-horizontal form-xs" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4"></label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<div id="preview-btn">
+						<button title="Зайти в ОО" type="button" class="btn btn-default" ng-click="$ctrl.login()">
+							<span class="glyphicon glyphicon-eye-open"></span>
+							<span>Просмотр</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</ns-panel>
+	</div>
+</div>
+
+

@@ -1,0 +1,54 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/journal/diagnosticworks/list/../css/diagnosticworks.css">
+
+
+<div class="row" ng-hide="ctrl.isEmpty()">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button class="btn btn-default" ng-click="ctrl.viewSpecialists(ctrl.selection.item)" ng-disabled="ctrl.selection.item.testLevel != ctrl.refs.TestLevel.Vpr">
+					<span class="bootstrap-dialog-button-icon glyphicon glyphicon-thumbs-up"></span>
+					<span>{{ctrl.language.Generic.Common.kResponsibleSpecialists}}</span>
+				</button>
+				<button class="btn btn-default" title="Экспорт результатов ВПР в формате СтатГрад" ng-click="ctrl.export(ctrl.selection.item)" ng-disabled="ctrl.selection.item.testLevel != ctrl.refs.TestLevel.Vpr || !ctrl.selection.item.vprForm || !ctrl.selection.item.vprForm.name">
+					<span class="bootstrap-dialog-button-icon glyphicon glyphicon-export"></span>
+					<span>{{ctrl.language.Generic.Buttons.kExport}} результатов ВПР</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="alert alert-info ng-binding" ng-show="ctrl.isEmpty()" role="alert">Для вашей образовательной организации не назначено ни одной диагностической контрольной работы</div>
+		<table ng-hide="ctrl.isEmpty()" class="table table-hover table-bordered table-selectable">
+			<tr>
+				<th>№</th>
+				<th>{{ctrl.language.Generic.Common.kName2}}</th>
+				<th>{{ctrl.language.Generic.UsersExport_1C.kLevel}}</th>
+				<th>{{ctrl.language.Generic.Common.kSubject}}</th>
+				<th>{{ctrl.language.Generic.ClassManagement.kGrade}}</th>
+				<th>{{ctrl.language.Generic.Events.kDateOfEvent}}</th>
+			</tr>
+			<tr ng-repeat="work in ctrl.data.diagnosticWorks"
+				ng-class="{'selected': ctrl.selection.isSelected(work), 'vprWorks': work.testLevel == ctrl.refs.TestLevel.Vpr }"
+				ng-click="ctrl.selection.select(work)">
+				<td>{{ $index + 1 }}</td>
+				<td>{{ work.name }}</td>
+				<td>{{ work.testLevelName }}</td>
+				<td>{{ work.subjectFipi.name }}</td>
+				<td>{{ work.gradesForShow }}</td>
+				<td>{{ work.date }}</td>
+			</tr>
+		</table>
+
+		<div class="legend print-block" ng-hide="ctrl.isEmpty()">
+			<div>
+				<p>
+					<span class="legend-label vprWorks"></span>
+					<span class="legend-description"> — Всероссийские проверочные работы</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

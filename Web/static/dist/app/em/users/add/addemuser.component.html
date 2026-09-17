@@ -1,0 +1,45 @@
+<form name="$ctrl.userInfo" class="form-horizontal form-xs form-edit">
+	<div class="row">
+		<ns-add-user controller="$ctrl">
+			<common-user-info current-user="$ctrl.currentUser" user-info="$ctrl.userInfo" male-letter="$ctrl.maleLetter" female-letter="$ctrl.femaleLetter" birthday-not-required="true" middle-name-not-required="true"></common-user-info>
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.POS.$invalid && (!$ctrl.userInfo.POS.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">
+					*** {{$ctrl.language.Generic.SetupSchoolUI.kTitlePosition}}
+				</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<div>
+						<input track-changes type="text" required class="form-control" name="POS" size="50" maxlength="200" ng-model="$ctrl.currentUser.position">
+					</div>
+					<p ng-show="$ctrl.userInfo.POS.$invalid && (!$ctrl.userInfo.POS.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">Должность должна быть заполнена</p>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.WPH.$invalid && (!$ctrl.userInfo.WPH.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">
+					{{$ctrl.language.Generic.SetupSchoolUI.kWorkPhone}}
+				</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<div>
+						<input type="text" class="form-control" name="WPH" size="50" maxlength="200" ng-model="$ctrl.currentUser.workPhone">
+					</div>
+					<p ng-show="$ctrl.userInfo.WPH.$invalid && (!$ctrl.userInfo.WPH.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">Ошибка при вводе рабочего телефона</p>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': $ctrl.userInfo.UR.$invalid && (!$ctrl.userInfo.UR.$pristine || $ctrl.userInfo.$displayErrors)}">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">
+					*** {{$ctrl.language.Generic.SetupSchoolUI.kUserRole}}
+				</label>
+				<div class="col-md-8 col-lg-8 col-sm-6">
+					<select name="UR" class="form-control" required ng-model="$ctrl.currentUser.emRole" ng-options="role as role.name for role in $ctrl.emRoles track by role.id">
+					</select>
+					<p ng-show="$ctrl.userInfo.UR.$invalid && (!$ctrl.userInfo.UR.$pristine || $ctrl.userInfo.$displayErrors)" class="help-block">Роль должна быть выбрана</p>
+				</div>
+			</div>
+		</ns-add-user>
+		<userslist-qadd
+			title = "$ctrl.language.Generic.SetupSchoolUI.kListEMUserQAdd"
+			users = "$ctrl.users",
+			mode = "$ctrl.mode",
+			edit = "$ctrl.edit(arg)">
+		</userslist-qadd>
+	</div>
+</form>

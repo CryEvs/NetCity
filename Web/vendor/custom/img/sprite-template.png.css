@@ -1,0 +1,81 @@
+﻿/*
+This is an example of how to use the image sprite in your own CSS files
+*/
+.header-logo {
+/* You may have to set 'display: block' */
+	width: 48px;
+	height: 49px;
+	background: url('sprite-template.png') -1px -1px;
+}
+.header-logo-addschool {
+/* You may have to set 'display: block' */
+	width: 48px;
+	height: 49px;
+	background: url('sprite-template.png') -1px -51px;
+}
+.header-logo-preschool {
+/* You may have to set 'display: block' */
+	width: 48px;
+	height: 49px;
+	background: url('sprite-template.png') -1px -101px;
+}
+.header-logo-ns {
+/* You may have to set 'display: block' */
+	width: 48px;
+	height: 49px;
+	background: url('sprite-template.png') -1px -151px;
+}
+.header-logo-bg {
+/* You may have to set 'display: block' */
+	width: 260px;
+	height: 97px;
+	background: url('sprite-template.png') -1px -201px;
+}
+.header-right-bg {
+/* You may have to set 'display: block' */
+	width: 430px;
+	height: 50px;
+	background: url('sprite-template.png') -1px -299px;
+}
+.header-vertical-line {
+/* You may have to set 'display: block' */
+	width: 5px;
+	height: 48px;
+	background: url('sprite-template.png') -1px -350px;
+}
+.header-vertical-line-small {
+/* You may have to set 'display: block' */
+	width: 3px;
+	height: 36px;
+	background: url('sprite-template.png') -1px -399px;
+}
+.footer-logo {
+/* You may have to set 'display: block' */
+	width: 60px;
+	height: 60px;
+	background: url('sprite-template.png') -1px -436px;
+}
+.btn-add-active {
+/* You may have to set 'display: block' */
+	width: 50px;
+	height: 50px;
+	background: url('sprite-template.png') -1px -497px;
+}
+.btn-add {
+/* You may have to set 'display: block' */
+	width: 50px;
+	height: 50px;
+	background: url('sprite-template.png') -1px -548px;
+}
+.panel-arrow {
+/* You may have to set 'display: block' */
+	width: 21px;
+	height: 15px;
+	background: url('sprite-template.png') -1px -599px;
+}
+.panel-arrow-active {
+/* You may have to set 'display: block' */
+	width: 21px;
+	height: 15px;
+	background: url('sprite-template.png') -1px -615px;
+}

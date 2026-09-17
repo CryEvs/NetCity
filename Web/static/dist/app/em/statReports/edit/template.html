@@ -1,0 +1,118 @@
+<div ng-app="netcity.em.indicators">
+	<div ng-controller="Em.Indicators.View">
+		<div class="buttons-filters-panel form-horizontal">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="buttons-panel">
+						<div class="buttons-panel-left">
+							<button type="button" ng-click="addGroup()" class="btn btn-default">
+								<span class="glyphicon glyphicon-plus"></span>
+								{{language.Generic.StatReports.kCreateNewGroup}}
+							</button>
+
+							
+							<button type="button" ng-click="publish()" ng-if="regionShowGroup" class="btn btn-default ng-hide" ng-show="!indicatorListEmpty()">
+								<span class="glyphicon glyphicon-transfer"></span>
+								{{language.Generic.StatReports.kPublish}}
+							</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="filters-panel col-md-10 col-lg-7">
+					<div class="form-group" ng-show="!indicatorListEmpty()">
+						<label for="indicatorGroup" class="col-md-2 control-label">{{language.Generic.StatReports.kReport}}</label>
+						<div class="col-md-8" style="padding-right: 0;">
+							<select id="indicatorGroup" class="form-control" ng-model="indicatorGroup" ng-options="g.number + ' ' + g.name for g in rootGroups" ng-change="load()"></select>
+						</div>
+						<div class="col-md-2" style="padding-left: 4px;">
+							<button type="button" class="btn btn-default" ng-click="editExplanation()" data-toggle="tooltip" data-placement="top" title="{{language.Generic.StatReports.kEditExplanation}}">
+								<span class="glyphicon glyphicon-info-sign"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 col-lg-7">
+				<div class="alert alert-info ng-hide" ng-show="indicatorListEmpty()">
+					{{language.Generic.StatReports.kIndicatorListIsEmpty}}
+				</div>
+				<div class="alert alert-info" ng-show="!indicatorListEmpty() && !indicatorSelected()">
+					{{language.Generic.StatReports.kMustSelectReport}}
+				</div>
+				<div ui-tree="sortableOptions" id="tree-root" ng-show="indicatorSelected()">
+					<ol ui-tree-nodes="sortableOptions" ng-model="indicatorList">
+						<li ng-repeat="node in indicatorList" ui-tree-node ng-include="'/static/dist/app/em/statReports/common/templates/nestedTreeNode.html'" ng-click="selectNode(node)" ng-mouseenter="node.hover = true" ng-mouseleave="node.hover = false"></li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.angular-ui-tree-handle {
+  background: #f8faff;
+  border: 1px solid #dae2ea;
+  color: #7c9eb2;
+  padding: 5px 5px;
+}
+.angular-ui-tree-handle:hover {
+  color: #438eb9;
+  background: #f4f6f7;
+  border-color: #dce2e8;
+}
+.angular-ui-tree-drag {
+  color: #ff0000;
+}
+.angular-ui-tree-placeholder {
+  background: #f0f9ff;
+  border: 2px dashed #bed2db;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.tree-node-button-panel {
+  position: absolute;
+  right: 2px;
+  top: 0;
+}
+.bootstrap-style .verticalBtnGroup {
+  margin-bottom: 10px;
+}
+.bootstrap-style .verticalBtnGroup .btn {
+  display: block;
+  margin-bottom: 5px !important;
+}
+.indicatorGroup {
+  background-color: #ebebeb;
+}
+.linkWithPredefined {
+  background-color: #ffe4e4 !important;
+}
+.group-title {
+  background-color: #687074 !important;
+  color: #FFF !important;
+}
+.tree-node-button-panel {
+    display: none;
+}
+
+.tree-node:hover > div.tree-node-button-panel {
+    display: block !important;
+}
+
+.tree-node:hover > div > .tree-node-button-panel {
+    display: block !important;
+}
+
+.tree-node-button-panel.btn-group {
+	position: relative !important;
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>

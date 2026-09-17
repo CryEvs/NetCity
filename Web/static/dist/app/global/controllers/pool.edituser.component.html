@@ -1,0 +1,155 @@
+<style>
+	.select2-dropdown {
+		z-index: 1070;
+		max-width: 400px;
+	}
+</style>
+
+<div ng-model="EditPoolUserCtrl" class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.language.SetupSchoolUI.kTitleStudentInfo}}: {{$ctrl.userPoolInfo.studentFio}}</h4>
+		</div>		
+	</div>
+	<div class="modal-body">
+		<div class="form-horizontal form-xs">
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.Common.kLastName}}</label>
+				<div class="col-md-8">
+					<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.userPoolInfo.lastName">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.Common.kFirstName}}</label>
+				<div class="col-md-8">
+					<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.userPoolInfo.firstName">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.Common.kMiddleName}}</label>
+				<div class="col-md-8">
+					<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.userPoolInfo.middleName">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.Common.kBDate}}</label>
+				<div class="col-md-8">
+					<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.userPoolInfo.studentBirthDate">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.Common.kGender}}</label>
+				<div class="col-md-8">
+					<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.userPoolInfo.gender">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.SetupSchoolUI.kHomePhone}}</label>
+				<div class="col-md-8">
+					<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.userPoolInfo.homePhone">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.Import.kEMail}}</label>
+				<div class="col-md-8">
+					<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.userPoolInfo.email">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.Common.kParents}}</label>
+				<div class="col-md-8">
+					<ul>
+						<li ng-repeat="parent in $ctrl.userPoolInfo.parents">{{parent.name}}</li>
+					</ul>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.Import.kForeignLanguage}}</label>
+				<div class="col-md-8">
+					<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.userPoolInfo.foreignlanguage">
+				</div>
+			</div>
+			<div class="form-group" ng-if="$ctrl.userPoolInfo.availabilityInfo.type != 'Enrolled'">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.PoolStudents.kAccessCategory}}</label>
+				<div class="col-md-8">
+					<select track-changes id="availabilityType" class="form-control" ng-options="availType.key as availType.name for availType in $ctrl.availabilityTypes" ng-model="$ctrl.userPoolInfo.availabilityInfo.type"></select>
+				</div>
+			</div>
+			<div class="form-group" ng-if="$ctrl.userPoolInfo.availabilityInfo.type == 'Enrolled' && $ctrl.userPoolInfo.availabilityInfo.currentOrgs && $ctrl.userPoolInfo.availabilityInfo.currentOrgs.length">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.PoolStudents.kAccessCategory}}</label>
+				<div class="col-md-8">
+					<input class="form-control" type="text" disabled="disabled" ng-value="'Зачислен: ' + $ctrl.userPoolInfo.availabilityInfo.currentOrgs[0].name">
+
+				</div>
+			</div>
+			<ns-depart-org-selector ng-show="$ctrl.userPoolInfo.availabilityInfo.type == 'Free' && $ctrl.userPoolInfo.docId"
+								on-change-event="$ctrl.departOrgEventEmitter"
+								step="$ctrl.step"
+								outside-type="$ctrl.userPoolInfo.departOrgOutsideType"
+								org="$ctrl.userPoolInfo.departOrg"
+								school-id="$ctrl.schoolId"
+								options="{moveDocType: $ctrl.userPoolInfo.moveType, outsideTypes: $ctrl.allowedOutsideTypes, funcType: $ctrl.userPoolInfo.poolOrganizationFuncType}">
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.PoolStudents.kOutsideType}}</label>
+				<div class="col-md-8">
+					<ns-outside-type></ns-outside-type>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.PoolStudents.kPoolDepartPlace}}</label>
+				<div class="col-md-8">
+					<ns-depart-org></ns-depart-org>
+				</div>
+			</div>
+		</ns-depart-org-selector>
+		<div class="form-group" ng-show="$ctrl.userPoolInfo.availabilityInfo.type == 'Free' && $ctrl.userPoolInfo.docId">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.PoolStudents.kPoolReason}}</label>
+				<div class="col-md-8">
+					<select track-changes id="departReason" class="form-control" ng-options="departReason as departReason.name for departReason in $ctrl.departReasons track by departReason.id" ng-model="$ctrl.userPoolInfo.departReason"></select>
+				</div>
+			</div>
+			<div ng-if="$ctrl.userPoolInfo.availabilityInfo.type == 'Archive'" class="form-group">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.PoolStudents.kInaccessibilityReason}}</label>
+				<div class="col-md-8">
+					<select track-changes id="inaccessibilityReason" class="form-control" required="required" ng-options="inaccessibilityReason as inaccessibilityReason.name for inaccessibilityReason in $ctrl.inaccessibilityReasons track by inaccessibilityReason.key" ng-model="$ctrl.userPoolInfo.availabilityInfo.inaccessibilityReason" ng-init="$ctrl.initInaccessibilityReason($ctrl.userPoolInfo)"></select>
+				</div>
+			</div>
+			<div class="form-group" ng-show="!$ctrl.userPoolInfo.docId">
+				<label class="control-label col-md-4">{{$ctrl.language.Generic.PoolStudents.kCategory}}</label>
+				<div class="col-md-8">
+					<select track-changes id="poolCategory" class="form-control" ng-options="poolCategory.id as poolCategory.name for poolCategory in $ctrl.poolCategories" ng-model="$ctrl.userPoolInfo.poolCategory.id"></select>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-show="$ctrl.userPoolInfo.classes && $ctrl.userPoolInfo.classes.length">
+			<div class="col-md-12">
+				<table class="table table-bordered table-striped">
+					<tr>
+						<th>{{$ctrl.language.Generic.Common.kEO}}</th>
+						<th>{{$ctrl.language.Common.kClass}}</th>
+						<th>{{$ctrl.language.Generic.SetupSchool.kEnrollDate}}</th>
+						<th>{{$ctrl.language.Generic.Movement.kDocNumber}}</th>
+					</tr>
+					<tr ng-repeat="classInfo in $ctrl.userPoolInfo.classes">
+						<td>{{classInfo.organization}}</td>
+						<td>{{classInfo.className}}</td>
+						<td>{{classInfo.enrollDate | date:'dd.MM.yyyy'}}</td>
+						<td>{{classInfo.docNumber}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary ng-binding" ng-click="$ctrl.save($ctrl.userPoolInfo)">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-floppy-save"></span>
+			Сохранить
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			Закрыть
+		</button>
+	</div>
+</div>
+

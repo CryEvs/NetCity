@@ -1,0 +1,153 @@
+<div ng-form name="$ctrl.form">
+	<div class="col-md-1 text-center" ng-if="$ctrl.ready">
+		<user-info-photo user-id="$ctrl.editUserInfoService.editUserId" user-name="$ctrl.userName" exists-photo="$ctrl.editUserInfoService.userInfoData.existsPhoto"></user-info-photo>
+	</div>
+	<div class="col-md-11" ng-if="$ctrl.ready">
+		<div class="form-group" ng-class="{'has-error': ($ctrl.form.LN_ANG.$invalid || $ctrl.badFio($ctrl.form.LN_ANG.$$element[0]))}">
+			<label class="control-label col-md-2 col-lg-2">*** {{$ctrl.language.Generic.Common.kLastName}}</label>
+			<div class="col-md-9 col-lg-9">
+				<input type="text" track-changes class="form-control" required name="LN_ANG" size="25" maxlength="30" ng-model="$ctrl.commondata.lastName" ng-disabled="$ctrl.readonly">
+				<p ng-show="$ctrl.form.LN_ANG.$error.required" class="help-block">
+					{{$ctrl.language.Generic.SetupSchoolUI.kErrEmpty}} {{$ctrl.language.Generic.SetupSchoolUI.kErrLastName}}
+				</p>
+				<p ng-show="$ctrl.badFio($ctrl.form.LN_ANG.$$element[0])" class="help-block">
+					{{$ctrl.badFioMessage($ctrl.language.Generic.Common.kLastName)}}
+				</p>
+
+			</div>
+		</div>
+		<div class="form-group" ng-class="{'has-error': ($ctrl.form.FN_ANG.$invalid || $ctrl.badFio($ctrl.form.FN_ANG.$$element[0]))}">
+			<label class="control-label col-md-2 col-lg-2">*** {{$ctrl.language.Generic.Common.kFirstName}}</label>
+			<div class="col-md-9 col-lg-9">
+				<input track-changes type="text" class="form-control" [attr.required]="!$ctrl.isStaffLoginAdmin()" name="FN_ANG" size="25" maxlength="30" ng-model="$ctrl.commondata.firstName" ng-disabled="$ctrl.readonly">
+				<p ng-show="$ctrl.form.FN_ANG.$error.required" class="help-block">
+					{{$ctrl.language.Generic.SetupSchoolUI.kErrEmpty}} {{$ctrl.language.Generic.SetupSchoolUI.kErrFirstName}}
+				</p>
+				<p ng-show="$ctrl.badFio($ctrl.form.FN_ANG.$$element[0])" class="help-block">
+					{{$ctrl.badFioMessage($ctrl.language.Generic.Common.kFirstName)}}
+				</p>
+			</div>
+		</div>
+		<div class="form-group" ng-show="!$ctrl.commondata.noMiddleName" ng-class="{'has-error': $ctrl.form.MN_ANG.$invalid || $ctrl.badFio($ctrl.form.MN_ANG.$$element[0])}">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Common.kMiddleName}}</label>
+			<div class="col-md-9 col-lg-9">
+				<input track-changes type="text" class="form-control" name="MN_ANG" size="25" ng-required="$ctrl.isMiddleNameRequired()" maxlength="30" ng-model="$ctrl.commondata.middleName" ng-disabled="$ctrl.readonly">
+				<p ng-show="$ctrl.badFio($ctrl.form.MN_ANG.$$element[0])" class="help-block">
+					{{$ctrl.badFioMessage($ctrl.language.Generic.Common.kMiddleName)}}
+				</p>
+				<div ng-messages="$ctrl.form.MN_ANG.$error">
+					<span class="help-block" ng-message="required">
+						{{$ctrl.language.Generic.Common.kEmptyFieldError}}
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="form-group" ng-if="!$ctrl.readonly">
+			<label class="control-label col-md-2 col-lg-2"></label>
+			<div class="col-md-9 col-lg-9">
+				<div class="checkbox">
+					<label><input track-changes type="checkbox" name="NoMiddleName_ANG" ng-model="$ctrl.commondata.noMiddleName">{{$ctrl.language.Generic.Common.kNoMiddleName}}</label>
+				</div>
+			</div>
+		</div>
+	
+		<div class="form-group" ng-class="{ 'has-error': $ctrl.form.BDT_ANG.$invalid }">
+			<label ng-if="$ctrl.userInfoCtrl.isStudent || $ctrl.userInfoCtrl.isStaff" class="control-label col-md-2 col-lg-2">*** {{$ctrl.language.Generic.Common.kBDate}}</label>
+			<label ng-if="!$ctrl.userInfoCtrl.isStudent && !$ctrl.userInfoCtrl.isStaff" class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Common.kBDate}}</label>
+
+			<div class="col-md-9 col-lg-9">
+				<date-input-component readonly = "$ctrl.readonly" date-model = "$ctrl.commondata.birthDate" name = "BDT_ANG" required = "$ctrl.isBirthDateRequired"></date-input-component>
+
+				<div ng-messages="$ctrl.form.BDT_ANG.$error">
+					<span class="help-block" ng-message="required">{{$ctrl.dateRequiredMessage()}}</span>
+					<span class="help-block" ng-message="dateFormat">{{$ctrl.dateFormatMessage()}}</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Common.kGender}}</label>
+			<div class="col-md-9 col-lg-9">
+				<div class="radio">
+					<label><input track-changes ng-disabled="$ctrl.readonly" type="radio" name="Gender_ANG" value="Male" ng-model="$ctrl.commondata.gender">{{$ctrl.language.Generic.Common.kMale}}</label>
+					<label><input track-changes ng-disabled="$ctrl.readonly" type="radio" name="Gender_ANG" value="Female" ng-model="$ctrl.commondata.gender">{{$ctrl.language.Generic.Common.kFemale}}</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.Common.kNation}}</label>
+			<div class="col-md-9 col-lg-9">
+				<select track-changes ng-if="!$ctrl.readonly" class="form-control" name="CITIZENSHIP_ANG" ng-disabled="$ctrl.readonly" ng-model="$ctrl.commondata.citizenship" ng-options="item.id as item.name for item in $ctrl.citizenships"></select>
+				<input type="text" class="form-control" name="CITIZENSHIP_ANG" disabled ng-value="$ctrl.citizenship.name" ng-if="$ctrl.readonly">
+			</div>
+		</div>
+		<div class="form-group" ng-if="$ctrl.nationalityParameter">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.nationalityParameter.title}}</label>
+			<div class="col-md-9 col-lg-9">
+				<form-parameter parameter="$ctrl.nationalityParameter"></form-parameter>
+				<small>{{$ctrl.language.Generic.Common.kNationDetail}}</small>
+			</div>
+		</div>
+		<div class="form-group"  ng-class="{'has-error': ($ctrl.form.DN_ANG.$invalid || $ctrl.badFirstLetter($ctrl.form.DN_ANG.$$element[0]))}">
+			<label class="control-label col-md-2 col-lg-2">*** {{$ctrl.language.Generic.Common.kDisplayName}}</label>
+			<div class="col-md-9 col-lg-9">
+				<div class="input-group" ng-if="!$ctrl.readonly">
+					<input track-changes type="text" required class="form-control" name="DN_ANG" size="40" maxlength="95" ng-model="$ctrl.commondata.nickName">
+					<span class="input-group-btn">
+						<button	title="Создать автоматически" type="button" class="btn btn-default" ng-click="$ctrl.createNickName()">
+							<span class="glyphicon glyphicon-hand-left"></span>
+						</button>
+					</span>
+				</div>
+				<input type="text" ng-if="$ctrl.readonly" class="form-control" name="DN_ANG" size="40" maxlength="95" ng-model="$ctrl.commondata.nickName" disabled>
+				<p ng-show="$ctrl.form.DN_ANG.$error.required" class="help-block">
+					{{$ctrl.language.Generic.SetupSchoolUI.kErrEmpty}} {{$ctrl.language.Generic.Common.kDisplayName.toLowerCase()}}
+				</p>
+				<p ng-show="$ctrl.badFirstLetter($ctrl.form.DN_ANG.$$element[0])" class="help-block">
+					{{$ctrl.badFirstLetterMessage()}}
+				</p>
+			</div>
+		</div>
+		<div class="form-group" ng-if="$ctrl.accessInfo.showUserAccount">
+			<label class="control-label col-md-2 col-lg-2">*** {{$ctrl.language.Generic.Common.kLogin}}</label>
+			<div class="col-md-9 col-lg-9">
+				<div class="input-group" ng-if="!$ctrl.readonly && $ctrl.accessInfo.canEditUserAccount">
+					<input track-changes type="text" class="form-control" name="LON_ANG" size="25" maxlength="35" ng-model="$ctrl.commondata.loginName" ng-disabled="$ctrl.readonly || !$ctrl.accessInfo.canEditUserAccount">
+					<span class="input-group-btn">
+						<button title="{{$ctrl.language.Generic.Common.kChangePassword}}" type="button" class="btn btn-default" ng-click="$ctrl.changePassword()">
+							<span>{{$ctrl.language.Generic.Common.kChangePassword}}</span>
+						</button>
+					</span>
+				</div>
+				<input type="text" ng-if="$ctrl.readonly || !$ctrl.accessInfo.canEditUserAccount" class="form-control" name="LON_ANG" size="25" maxlength="35" ng-model="$ctrl.commondata.loginName" disabled>
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="$ctrl.accessInfo.showUserAccount && $ctrl.accessInfo.canEditUserAccount && !$ctrl.readonly">
+			<label class="control-label col-md-2 col-lg-2"></label>
+			<div class="col-md-9 col-lg-9">
+				<div class="checkbox">
+					<label><input track-changes type="checkbox" name="ChangePW_ANG" ng-model="$ctrl.commondata.changePwd" ng-true-value="true" ng-false-value="null">{{$ctrl.language.Generic.SetupSchoolUI.kPasswordPrompt}}</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="$ctrl.accessInfo.showUserAccount && $ctrl.userInfoCtrl.windowsAuth">
+			<label class="control-label col-md-2 col-lg-2">{{$ctrl.language.Generic.SetupSchoolUI.kWinLogon}}</label>
+			<div class="col-md-9 col-lg-9">
+				<div class="input-group" ng-if="!$ctrl.readonly && $ctrl.accessInfo.canEditUserAccount">
+					<input type="text" track-changes class="form-control" name="WLN_ANG" size="25" maxlength="50" ng-model="$ctrl.commondata.windowsAccount">
+					<span class="input-group-btn">
+						<button title="{{$ctrl.language.Generic.Login.kAssociateWithWindowsAccount}}" type="button" class="btn btn-default" ng-click="$ctrl.bindWinAccount()">
+							<span class="glyphicon glyphicon-log-in"></span>
+						</button>
+					</span>
+				</div>
+				<input type="text" ng-if="$ctrl.readonly || !$ctrl.accessInfo.canEditUserAccount" disabled class="form-control" name="WLN_ANG" size="25" maxlength="50" ng-model="$ctrl.commondata.windowsAccount">
+			</div>
+		</div>
+
+		<staff-info ng-if="$ctrl.userInfoCtrl.isStaff"></staff-info>
+		<em-user-info ng-if="$ctrl.userInfoCtrl.isEmUser"></em-user-info>
+	</div>
+</div>

@@ -1,0 +1,86 @@
+<html>
+<head>
+   <title>Шаг 8 - Выбор фильтров для пользователя</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Конструктор отчётов, фильтры для пользователя">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?reportbuildwizardstep8.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Шаг 8 - Выбор фильтров для пользователя
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Фильтрыпользователя"></a>Фильтры пользователя</b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Вы можете создать такой отчет, при выполнении которого пользователь сам смог бы выбирать значения фильтров (параметров). Фильтров может быть несколько или может не быть совсем: это зависит от выбранного на <b><a href=reportbuildwizardstep2.htm#Объектданныхдлязапроса>Шаге 2</a></b> и <b><a href=reportbuildwizardstep3.htm#Дополнительныеобъектыданных>Шаге 3</a></b> объекта данных.
+<br>
+
+<br>
+В нашем примере отчета <b>«Список мальчиков 90-91 гг. рождения»</b> в качестве фильтров для пользователя определяем: 
+<br>
+ - <b>Учебный год</b>;<b>
+<br>
+ - Состав учеников на период, включающий дату</b> (данный фильтр добавляется автоматически, если используются одновременно два объекта: «Ученики» и «Классы»).
+<br>
+
+<br>
+<img src="constructor_8.png" width="768" height="351" border="0" alt="constructor_8">
+<br>
+Это означает, что при выборе этого отчета у пользователя, кроме стандартных кнопки печати <img src="printex1.png" width="39" height="32" border="0" alt="printex1"> и кнопки экспорта в MS Excel <img src="printex2.png" width="39" height="32" border="0" alt="printex2">, будет еще выпадающий список <b>Учебный год</b> и поле <b>Состав учеников на период, включающий дату</b>, выбирая значения в которых, он будет получать разные отчеты.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Длякакихобъектовданныхмогу"></a>Для каких объектов данных могут быть указаны подобные фильтры</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Подобные фильтры могут быть указаны не для всех объектов данных. В случае, если для данного объекта такой фильтр указать нельзя, вы увидите сообщение<b> Нет параметризуемых объектов</b>.
+<br>
+
+<br>
+Полный список фильтров и объектов, к которым они могут быть применены, можно просмотреть в документе под названием <b>"Руководство по Конструктору отчетов"</b>.
+<br>
+
+<br>
+Кроме того, любое поле (кроме сложных полей) в любом объекте можно сделать фильтром для пользователя.
+<br>
+
+<br>
+Вы можете, по желанию, использовать или не использовать фильтры. Для этого оставьте галочки справа от фильтров пустыми и нажмите кнопку <b>След. &gt;&gt;</b> для перехода на завершающий этап - <b><a href=reportbuildwizardstep9.htm#Тестированиеипубликация>Шаг 9 - Тестирование и публикация</a></b>.
+<br>
+</span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('7.3.9',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('7.3.11',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

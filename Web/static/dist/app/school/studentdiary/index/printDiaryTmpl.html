@@ -1,0 +1,139 @@
+<style>
+	body {
+		font-family: 'PT Sans Caption','Open Sans', Arial, Helvetica, sans-serif;
+	}
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse
+	}
+	table tr td {
+		position: relative;
+		height: 36px;
+		padding: 0 10px;
+	}
+	.day_name {
+		width: 43px;
+		min-width: 43px
+	}
+	.day_name span {
+		display: block;
+		position: absolute;
+		-webkit-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		transform: rotate(-90deg);
+		line-height: 20px;
+		width: 350px;
+		left: -155px;
+		text-align: center;
+	}
+
+	@media print {
+		@page {
+			size: 180mm 330mm;
+			margin: 0;
+		}
+
+		@-moz-document url-prefix() {
+			@page {
+				size: 130mm 220mm;
+				margin: 0;
+			}
+		}
+
+		table, th, td {
+			font-size: 4.5pt;
+		}
+
+		table {
+			table-layout: fixed;
+		}
+
+		table tr td {
+			position: relative;
+			height: 18px;
+		}
+
+		table tr td div {
+			margin: 0;
+			padding: 0;
+		}
+
+		html, body {
+			padding:0;
+			margin-left: 10px;
+			font-size: 5pt;
+			transform: scale(1.);
+		}
+
+		.day_name {
+			width: 20px;
+			min-width: 20px
+		}
+
+		.day_name span {
+			width: 120px;
+			left: -45px;
+		}
+	}
+</style>
+
+<div align="center">
+	<p>{{fullSchoolName}}</p>
+	<h2>Дневник: {{studentName}}, {{className}}, {{termName}}</h2>
+	<h3>{{weekTitle}}</h3>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		
+		<table>
+			<tbody ng-repeat="diaryDay in data.weekDays">
+				<tr>
+					<td rowspan="{{diaryDay.lessons.length + 1}}" class="day_name">
+						<span>{{diaryDay.title}}</span>
+					</td>
+					<td colspan="2" style="text-align: center">Урок</td>
+					<td style="text-align: center">Домашнее задание</td>
+					<td style="text-align: center">Оценка</td>
+					<td style="text-align: center">Комментарий</td>
+				</tr>
+				<tr ng-repeat-end ng-repeat="lesson in diaryDay.lessons">
+					<td>{{lesson.number}}</td>
+					<td>
+						<div ng-if="lesson.subjectName">{{lesson.subjectName}}</div>
+						<div class="time" ng-if="lesson.subjectName">
+							{{lesson.time}}
+							<span ng-if="lesson.room">, {{lesson.room}}</span>
+						</div>
+					</td>
+					<td>
+						<div>
+							<div ng-repeat="assign in lesson.homeAssignments">{{assign.assignmentName}}</div>
+						</div>
+					</td>
+					<td style="text-align: center;">
+						<span ng-repeat="assignWithMark in lesson.assignmentsWithMarks">
+							<span ng-if="!assignWithMark.mark.dutyMark">{{assignWithMark.mark.mark}}</span>
+							<span ng-if="assignWithMark.mark.dutyMark" style="font-size: 18px;"><b>&#183;</b></span>
+						</span>
+					</td>
+					<td>
+						<div>
+							<div ng-repeat="assignment in lesson.assignments" ng-if="assignment.markComment">
+								<span>({{assignment.typeAbbr}}) {{assignment.markComment.teacher}}: {{assignment.markComment.name}}</span>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div style="padding-top: 10px;">
+			<div class="smalltext"><i>{{kStateOn}} {{now}}</i>
+			</div>
+			<div class="smalltext">© <i>{{productName}}</i>&nbsp;{{version}}
+			</div>
+		</div>
+
+	</div>
+</div>
+

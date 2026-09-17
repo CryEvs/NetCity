@@ -1,0 +1,35 @@
+<div class="alert alert-info" role="alert" ng-if="$ctrl.members && !$ctrl.members.length">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	Список участников мероприятия пуст. Для того, чтобы добавить необходимо нажать кнопку "Добавить"
+</div>
+
+<div class="alert alert-info" role="alert" ng-if="$ctrl.members && $ctrl.members.length && !$ctrl.viewMembers.length">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	Список участников мероприятия по указанному значению фильтра пуст.
+</div>
+
+
+<ul ng-show="$ctrl.pageMembers && $ctrl.pageMembers.length && $ctrl.paging.totalRows > $ctrl.paging.pageSize" uib-pagination total-items="$ctrl.paging.totalRows" ng-model="$ctrl.paging.page" items-per-page="$ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="$ctrl.pageLoad()"></ul>
+
+<table class="table table-xs table-bright table-bright-hover table-selectable table-thin" ng-if="$ctrl.pageMembers && $ctrl.pageMembers.length">
+	<tr>
+		<th>№ п.п.</th>
+		<th>ФИО участника</th>
+		<th>Дата рождения</th>
+		<th>Образовательная организация</th>
+		<th>Результат участия</th>
+	</tr>
+	<tr ng-repeat="member in $ctrl.pageMembers" ng-class="{'selected': $ctrl.selection.isSelected(member)}" ng-click="$ctrl.selection.select(member)">
+		<td>{{$ctrl.pageStart + $index + 1}}</td>
+		<td>{{member.user.name}}</td>
+		<td>{{member.user.birthDate}}</td>
+		<td>{{member.organization.name}}</td>
+		<td>
+			<div ng-repeat="result in member.results">
+				<span class="result-type">{{result.type}}</span>: <span class="result-item">{{result.item}}</span>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<ul ng-show="$ctrl.pageMembers && $ctrl.pageMembers.length && $ctrl.paging.totalRows > $ctrl.paging.pageSize" uib-pagination total-items="$ctrl.paging.totalRows" ng-model="$ctrl.paging.page" items-per-page="$ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="$ctrl.pageLoad()"></ul>

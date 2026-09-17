@@ -1,0 +1,93 @@
+<main class="main">
+	<div class="form secondary-input-form-in h636" ng-if="$ctrl.ready" ng-enter="$ctrl.enter()">
+		<a href class="backbutton" ng-click="$ctrl.goToAccounts()">
+			<img class="backbutton-icon" src="/static/dist/app/login/img/back.png">
+		</a>
+
+		<div class="form__headertext">Вход в учетную запись</div>
+		<div class="mainuser">
+			<div class="mainuser__avatar avaColor0">{{$ctrl.firstLetter}}</div>
+			<div class="mainuser__name">
+				<span id="mainuser-name-data">{{$ctrl.account.user.name}}</span>
+			</div>
+			<div class="mainuser__date">
+				Дата последнего входа:  <span id="mainuser-date-data">{{$ctrl.account.loginTime | date:'dd.MM.yy HH:mm'}}</span>
+			</div>
+		</div>
+		<div class="hinttext">
+			<div class="hinttext__regular margin0">
+				Выберите организацию, в которую хотите выполнить вход.
+			</div>
+		</div>
+
+		<div class="logpass">
+			<div class="select-options margintop16" ng-click="$ctrl.toggleOrganizations()" ng-click-outside="$ctrl.showOrganizations">
+				<div class="select-options__button" ng-class="{ 'active-button': $ctrl.showOrganizations }">
+					<div class="select-options__button-text">
+						{{$ctrl.activeOrg.name}}
+					</div>
+					<div class="select-options__button-icon" ng-show="$ctrl.organizations && $ctrl.organizations.length > 1">
+						<img src="/static/dist/app/login/img/select_opt.png">
+					</div>
+				</div>
+				<div class="select-options__menu-org" ng-slide-toggle="$ctrl.showOrganizations" ng-show="$ctrl.organizations && $ctrl.organizations.length > 1">
+					<a class="select-options__item" ng-class="{ 'active': $ctrl.activeOrg.id == org.id }" ng-repeat="org in $ctrl.organizations" ng-click="$ctrl.chooseOrganization(org)">
+						<div class="org-name-data">
+							{{org.name}}
+						</div>
+						<div class="org-icon">
+							<img src="/static/dist/app/login/img/check.png">
+						</div>
+						<div class="clearfix"></div>
+					</a>
+				</div>
+			</div>
+			<div class="select-options margintop8" ng-if="$ctrl.userRoles.length > 1" ng-click="$ctrl.toggleRoles()" ng-click-outside="$ctrl.showRoles">
+				<div class="select-options__button" ng-class="{ 'active-button': $ctrl.showRoles }">
+					<div class="select-options__button-text">
+						{{$ctrl.activeRole.role.name}}
+					</div>
+					<div class="select-options__button-icon">
+						<img src="/static/dist/app/login/img/select_opt.png">
+					</div>
+				</div>
+				<div class="select-options__menu-role" ng-slide-toggle="$ctrl.showRoles">
+					<a class="select-options__item-role" ng-class="{ 'active': $ctrl.activeRole.role.id == userRole.role.id }" ng-repeat="userRole in $ctrl.userRoles" ng-click="$ctrl.chooseRole(userRole)">
+						<div class="role-text">
+							{{userRole.role.name}}
+						</div>
+						<div class="role-icon">
+							<img src="/static/dist/app/login/img/check.png">
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="lc-input lc-input-login" id="login" ng-class="{ 'valid': $ctrl.loginName, 'active': $ctrl.editLoginName || $ctrl.loginName }" ng-if="$ctrl.allowLoginWithLoginPassCheck()">
+				<div class="lc-input-placeholder">
+					{{$ctrl.language.Generic.Common.kLogin}}
+				</div>
+				<input class="lc-input-control" type="text" ng-model="$ctrl.loginName" ng-click="$ctrl.editLoginName = true" ng-blur="$ctrl.editLoginName = false">
+				<div class="lc-input-valid-icon">
+					<img src="/static/dist/app/login/img/check.png">
+				</div>
+			</div>
+			<div class="logpass__pass" id="password" ng-class="{ 'openeye': $ctrl.showPassword, 'active': $ctrl.editPassword || $ctrl.password }" ng-if="$ctrl.allowLoginWithLoginPassCheck()">
+				<div class="logpass__pass-placeholder">
+					Пароль
+				</div>
+				<input class="logpass__input" ng-attr-type="{{ $ctrl.showPassword ? 'text' : 'password' }}" ng-model="$ctrl.password" ng-click="$ctrl.editPassword = true" ng-blur="$ctrl.editPassword = false">
+				<div class="logpass__pass-icon" ng-click="$ctrl.togglePasswordIcon()">
+					<img class="eyeon" src="/static/dist/app/login/img/eye.png">
+					<img class="eyeoff" src="/static/dist/app/login/img/eyeoff.png">
+					<img class="eyeon-blue" src="/static/dist/app/login/img/blue_eye.png">
+					<img class="eyeoff-blue" src="/static/dist/app/login/img/blue_eyeoff.png">
+				</div>
+			</div>
+
+		</div>
+		<div class="add_features" ng-if="$ctrl.allowLoginWithLoginPassCheck()">
+			<a class="add_features-forgotpass" href ng-click="$ctrl.recoveryPassword()">Забыли пароль?</a>
+		</div>
+		<div class="primary-button top32" ng-click="$ctrl.login()">Войти</div>
+	</div>
+</main>

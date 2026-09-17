@@ -1,0 +1,30 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+    <form class="form-horizontal form-sm" name="$ctrl.form">
+        <ns-form control-size="col-md-8" label-size="col-md-4">
+            <ns-form-group title="{{$ctrl.language.Generic.Common.kSchoolYear}}">
+                <select class="form-control"
+                    ng-options="globalYear.name for globalYear in $ctrl.data.globalYears track by globalYear.id"
+                    ng-model="$ctrl.data.globalYear"></select>
+            </ns-form-group>
+
+            <ns-form-group title="{{$ctrl.language.Generic.Common.kStatusOrganization}}"
+                ng-class="{'has-error': $ctrl.ready && $ctrl.anyCheckboxTouched() && !$ctrl.anyCheckboxEnabled()}">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="$ctrl.data.allStatusOrgs" ng-click="$ctrl.toggleAllStatusOrgs()">
+                        {{$ctrl.language.Generic.Common.kAll}}
+                    </label>
+                </div>
+                <div class="checkbox" ng-repeat="statusOrg in $ctrl.data.statusOrgs">
+                    <label>
+                        <input type="checkbox" ng-model="statusOrg.isChecked" name="{{statusOrg.status.id}}" ng-click="$ctrl.toggleStatusOrg()">
+                        {{statusOrg.status.name}}
+                    </label>
+                </div>
+                <p class="help-block" ng-show="$ctrl.ready && $ctrl.anyCheckboxTouched() && !$ctrl.anyCheckboxEnabled()">
+                    {{$ctrl.language.Generic.ServAdmin.kErrStatusOrganizationsEmpty}}
+                </p>
+            </ns-form-group>
+        </ns-form>
+    </form>
+</ns-modal>

@@ -1,0 +1,55 @@
+<div class="bootstrap-dialog type-primary">
+
+        <!-- ЗАГОЛОВОК МОДАЛЬНОГО ОКНА -->
+        <div class="modal-header">
+            <div class="bootstrap-dialog-title">
+                <h4 class="modal-title">Внимание</h4>
+            </div>
+        </div>
+        
+    
+        <!-- ТЕЛО МОДАЛЬНОГО ОКНА -->
+        <div class="modal-body">
+                <div class="alert alert-warning">
+                    {{$ctrl.language.Generic.Import.kImportFGSNWarn}}
+                </div>
+
+                <div class="table-responsive" style="max-height: 600px;">
+                    <table class="table table-bordered table-xs table-thin">
+                        <tr>
+                            <th>Раздел</th>
+                            <th>№ строки</th>
+                            <th>№ столбца</th>
+                            <th>Текущее значение</th>
+                            <th>Ошибка</th>
+                        </tr>
+                        <tr ng-repeat="error in $ctrl.errors">
+                            <td>{{error.sheetName}}</td>
+                            <td>{{error.rowNumber}}</td>
+                            <td>{{error.colNumber}}</td>
+                            <td>{{error.currentValue}}</td>
+                            <td>{{error.message}}</td>
+                        </tr>
+                    </table>
+                </div>
+        </div>
+
+    
+        <div class="modal-footer">
+    
+            <!-- ПРОДОЛЖИТЬ -->
+            <button class="btn btn-default btn-sm" ng-click="$ctrl.continue()">
+                <!-- <span class="glyphicon glyphicon-arrow-right"></span> -->
+                <span>{{$ctrl.language.Generic.Buttons.kContinue}}</span>
+            </button>
+
+            <!-- ОТМЕНА -->
+            <button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+                <!-- <span class="glyphicon glyphicon-arrow-left"></span> -->
+                <span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+            </button>
+
+        </div>
+    </div>
+
+

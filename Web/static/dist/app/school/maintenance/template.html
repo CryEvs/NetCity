@@ -1,0 +1,66 @@
+<style>
+	.room-cell-invalid {
+		border: solid 1px #7eb3f6 !important;
+		border-color: #ee0000 !important;
+	}
+</style>
+
+
+<div class="row ns-cloak" ng-if="!readonly">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button class="btn btn-primary ng-binding" type="button" ng-click="ctrl.scope.maintenanceForm.$displayErrors=true; ctrl.save(ctrl.scope.maintenanceForm.$valid)">
+					<span class="glyphicon glyphicon-floppy-save"></span> {{ctrl.language.Generic.Buttons.kSave}}
+				</button>
+				<button class="btn btn-warning" type="button" ng-click="reset()">
+					<span class="glyphicon glyphicon-repeat"></span> {{ctrl.language.Generic.Buttons.kReset}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<form id="maintenanceForm" name="maintenanceForm" class="ns-cloak">
+	<table class="table table-bordered table-sm table-thin" id="maintenance-table">
+		<thead>
+			<tr>
+				<th rowspan="2">{{ctrl.language.Generic.Maintenance.kSpecialty}}</th>
+				<th colspan="2">{{ctrl.language.Generic.Maintenance.kSpecialistsNumber}}</th>
+			</tr>
+			<tr>
+				<th>{{ctrl.language.Generic.Maintenance.kOfStaff}}</th>
+				<th>{{ctrl.language.Generic.Maintenance.kOfFreelance}}</th>
+			</tr>
+		</thead>
+
+		<!-- рисуется если readonly = true -->
+		<tbody ng-if="ctrl.readonly">
+			<tr ng-repeat="maintain in ctrl.data.maintenance" align="middle" valign="center">
+				<td class="text-left">{{maintain.specialty.name}}</td>
+				<td>{{maintain.specNumber1}}</td>
+				<td>{{maintain.specNumber2}}</td>
+			</tr>
+		</tbody>
+
+		<!-- рисуется если readonly = false -->
+		<tbody ng-if="!ctrl.readonly">
+			<tr ng-repeat="maintain in ctrl.data.maintenance" id="maintain-{{maintain.specialty.id}}" ng-form name="maintainForm" align="middle" valign="center">
+				<td class="text-left">{{maintain.specialty.name}}</td>
+				<td ng-class="{'has-error': (maintainForm.Staff.$invalid && (!maintainForm.Staff.$pristine || ctrl.scope.maintenanceForm.$displayErrors)) || (!ctrl.checkDefects(maintain, true)) || (!ctrl.checkMedicals(maintain, true)) }">
+					<input track-changes type="number" class="form-control" name="Staff" size="3" maxlength="3" ng-model="maintain.specNumber1" ng-min="0" ng-max="999" required>
+					<p ng-show="maintainForm.Staff.$invalid && (!maintainForm.Staff.$pristine || ctrl.scope.maintenanceForm.$displayErrors)" class="help-block">{{ctrl.language.Generic.Maintenance.kErrSpecNumber}}</p>
+					<p ng-if="maintain.specialty.id === ctrl.specialty.defectologist" ng-show="!maintainForm.Staff.$invalid && (!ctrl.checkDefects(maintain, true))" class="help-block">{{ctrl.language.Generic.Maintenance.kErrDefects}}</p>
+					<p ng-if="maintain.specialty.id === ctrl.specialty.med" ng-show="!maintainForm.Staff.$invalid && (!ctrl.checkMedicals(maintain, true))" class="help-block">{{ctrl.language.Generic.Maintenance.kErrMedicals}}</p>
+				</td>
+				<td ng-class="{'has-error': (maintainForm.Freelance.$invalid && (!maintainForm.Freelance.$pristine || ctrl.scope.maintenanceForm.$displayErrors)) || (!ctrl.checkDefects(maintain, false)) || (!ctrl.checkMedicals(maintain, false)) }">
+					<input track-changes type="number" class="form-control" name="Freelance" size="3" maxlength="3" ng-model="maintain.specNumber2" ng-min="0" ng-max="999" required>
+					<p ng-show="maintainForm.Freelance.$invalid && (!maintainForm.Freelance.$pristine || ctrl.scope.maintenanceForm.$displayErrors)" class="help-block">{{ctrl.language.Generic.Maintenance.kErrSpecNumber}}</p>
+					<p ng-if="maintain.specialty.id === ctrl.specialty.defectologist" ng-show="!maintainForm.Freelance.$invalid && (!ctrl.checkDefects(maintain, false))" class="help-block">{{ctrl.language.Generic.Maintenance.kErrDefects}}</p>
+					<p ng-if="maintain.specialty.id === ctrl.specialty.med" ng-show="!maintainForm.Freelance.$invalid && (!ctrl.checkMedicals(maintain, false))" class="help-block">{{ctrl.language.Generic.Maintenance.kErrMedicals}}</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>

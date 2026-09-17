@@ -1,0 +1,28 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+	<form class="form-horizontal form-sm" name="$ctrl.form" ng-if="$ctrl.ready">
+		<ns-form>
+            <ns-form-group title="Наименование урока" ng-class="{'has-error': $ctrl.form.name.$invalid && ($ctrl.form.name.$dirty || $ctrl.form.$displayErrors)}">
+                <input type="text" class="form-control" name="name" size="60" maxlength="200" ng-model="$ctrl.meetingName" required track-changes>
+                <p ng-show="$ctrl.form.name.$error.required && ($ctrl.form.name.$dirty || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+            </ns-form-group>
+
+            <ns-form-group title="Время начала">
+                <input type="text" class="form-control" ng-model="$ctrl.meetingTimeStart" disabled>
+            </ns-form-group>
+
+            <ns-form-group title="Время окончания">
+                <input type="text" class="form-control" ng-model="$ctrl.meetingTimeEnd" disabled>
+            </ns-form-group>
+
+            <ns-form-group title="Система ВКС">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button class="btn btn-info btn-sm" style="min-width: 110px;" ng-repeat="provider in $ctrl.meetingProviders"  ng-click="$ctrl.switchProvider(provider)" ng-class="{'active': $ctrl.meetingCurrentProvider == provider}" type="button">
+                        {{provider.name}}
+                    </button>
+                </div>
+            </ns-form-group>
+		</ns-form>
+	</form>
+</ns-modal>

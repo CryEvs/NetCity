@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <settings>
+    <!--Determines if the bundle file should be automatically optimized after creation/update.-->
+    <minify>true</minify>
+    <!--Determine whether to generate/re-generate this bundle on building the solution.-->
+    <runOnBuild>false</runOnBuild>
+    <!--Specifies a custom subfolder to save files to. By default, compiled output will be placed in the same folder and nested under the original file.-->
+    <outputDirectory />
+  </settings>
+  <!--The order of the <file> elements determines the order of the files in the bundle.-->
+  <files>
+	<file>/vendor/custom/js/menu.js</file>
+	<file>/js/exportBlob.js</file>
+	<file>/js/printUtils.js</file>
+	<file>/js/filterWhitespaces.js</file>
+	<file>/js/activeSessions.js</file>
+	<file>/js/libs/jquery.mousewheel.js</file>
+	<file>/vendor/custom/js/jquery.m-scrollbar.js</file>
+	<file>/vendor/custom/js/block-floating-scrolls.js</file>
+	<!--<file>/vendor/select2/js/select2.min.js</file>
+	<file>/vendor/select2/js/i18n/ru.js</file>-->
+	<file>/js/libs/jquery.blockUI-2.66.0.js</file>
+  </files>
+</bundle>

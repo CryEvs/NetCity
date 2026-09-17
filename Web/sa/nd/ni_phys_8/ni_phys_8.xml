@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Физика. 8 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Физика. 8 класс" ID="1" Filename="ni_phys_8/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Внутренняя энергия." ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Внутренняя энергия." 
+				Filename="sgo/ni_phys_8/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Количество теплоты. Удельная теплоемкость. Удельная теплота сгорания." ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Количество теплоты. Удельная теплоемкость. Удельная теплота сгорания." 
+				Filename="sgo/ni_phys_8/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Закон сохранения и превращения энергии." ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Закон сохранения и превращения энергии." 
+				Filename="sgo/ni_phys_8/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name=" Плавление и отвердевание кристаллических тел." ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name=" Плавление и отвердевание кристаллических тел." 
+				Filename="sgo/ni_phys_8/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Испарение. Кипение. Удельная теплота парообразования и конденсации." ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Испарение. Кипение. Удельная теплота парообразования и конденсации." 
+				Filename="sgo/ni_phys_8/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Влажность воздуха." ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Влажность воздуха." 
+				Filename="sgo/ni_phys_8/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name=" Работа газа и пара при расширении. Двигатель внутреннего сгорания." ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name=" Работа газа и пара при расширении. Двигатель внутреннего сгорания." 
+				Filename="sgo/ni_phys_8/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электризация тел. Электрическое поле." ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электризация тел. Электрическое поле." 
+				Filename="sgo/ni_phys_8/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Строение атомов." ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Строение атомов." 
+				Filename="sgo/ni_phys_8/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электрический ток. Электрическая цепь." ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электрический ток. Электрическая цепь." 
+				Filename="sgo/ni_phys_8/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электрический ток в металлах. Сила тока." ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электрический ток в металлах. Сила тока." 
+				Filename="sgo/ni_phys_8/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электрическое напряжение." ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электрическое напряжение." 
+				Filename="sgo/ni_phys_8/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Измерение силы тока и напряжения." ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Измерение силы тока и напряжения." 
+				Filename="sgo/ni_phys_8/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электрическое сопротивление проводников. Закон Ома для участка цепи." ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электрическое сопротивление проводников. Закон Ома для участка цепи." 
+				Filename="sgo/ni_phys_8/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Удельное сопротивление проводника." ID="16">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Удельное сопротивление проводника." 
+				Filename="sgo/ni_phys_8/15/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Последовательное и параллельное соединение проводников." ID="17">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Последовательное и параллельное соединение проводников." 
+				Filename="sgo/ni_phys_8/16/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Работа электрического тока. Мощность электрического тока." ID="18">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Работа электрического тока. Мощность электрического тока." 
+				Filename="sgo/ni_phys_8/17/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Магнитное поле." ID="19">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Магнитное поле." 
+				Filename="sgo/ni_phys_8/18/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Световые явления." ID="20">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Световые явления." 
+				Filename="sgo/ni_phys_8/19/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Линзы." ID="21">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Линзы." 
+				Filename="sgo/ni_phys_8/20/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

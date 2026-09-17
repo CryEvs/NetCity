@@ -1,0 +1,20 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/schedule/css/schedule.min.css">
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-right">
+				<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kYearEvents}}" type="button" class="btn btn-default" ng-click="$ctrl.gotoYearEvents()">
+					<span class="glyphicon glyphicon-flag"></span>
+					<span>{{$ctrl.language.Generic.SetupSchoolCalendar.kYearEvents}}</span>
+				</button>
+				<button ng-if="$ctrl.showMoveDaysButton" title="{{$ctrl.language.Generic.SetupSchoolCalendar.kMoveDays}}" type="button" class="btn btn-default" ng-click="$ctrl.gotoMoveDays()">
+					<span class="glyphicon glyphicon-share"></span>
+					<span>{{$ctrl.language.Generic.SetupSchoolCalendar.kMoveDays}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<month-table name="table"></month-table>

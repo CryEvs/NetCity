@@ -1,0 +1,14 @@
+{
+	"sumRows": [
+		{
+			"row": 122,
+			"subRows": [ 123, 124 ],
+			"type": "sum"
+		},
+		{
+			"row": 122,
+			"subRows": [ 125 ],
+			"type": "include"
+		}
+    ]
+}

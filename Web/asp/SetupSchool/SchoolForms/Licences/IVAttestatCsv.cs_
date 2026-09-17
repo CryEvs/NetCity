@@ -1,0 +1,157 @@
+﻿<!-- #INCLUDE VIRTUAL=/asp/headertxt.asp -->
+
+<% ' © 2007-2012 IRTech. All rights reserved.
+Dim blnWasSaved, strBackPage, strGrade, nMaxMark
+
+Function hasUserRightsOnPage()
+	hasUserRightsOnPage = HasUserRight(arProfileEditSchoolInfo)
+End Function
+
+Sub Main()
+	strGrade = Request("gradeType")
+	strBackPage = "\asp\SetupSchool\SchoolForms\SchoolInfo.asp"
+End Sub
+
+Function onLoad()
+End Function
+
+Sub ReadState()
+	nMaxMark = CLng(Request("maxMark"))
+End Sub
+
+Sub onDrawPage()
+	Dim rs, marks, id, i, mainTail, addTail, strRows, delim
+	Dim bIsGradeSystemPass
+
+	set rs = objNsNet.GetStudentsForAttestat(strSchoolYearID, Request("gradeType"))
+	delim = ";"
+	strRows = "Фамилия (именит. падеж),Имя (им. падеж),Отчество (им. падеж),Фамилия (дат. падеж),Имя (дат. падеж),Отчество (дат. падеж),День рождения,Месяц рождения,Год рождения,Код аттестата,Серия аттестата,Номер аттестата"
+	strRows = Replace(strRows, ",",delim)
+	const mainCnt = 42
+	const addCnt = 17
+	For i = 1 To mainCnt
+		strRows = strRows & delim&"Предмет " & i
+	Next
+	For i = 1 To addCnt
+		strRows = strRows & delim&"Доп.сведения " & i
+	Next
+	strRows = strRows & vbCRLF
+	strRows = strRows & String(11, delim)
+	For i = 1 To Request("subjMain").Count
+		strRows = strRows & delim & Request("subjMain")(i)
+	Next
+	mainTail = String(mainCnt-Request("subjMain").Count, delim)
+	strRows = strRows & mainTail
+	For i = 1 To Request("subjAdd").Count
+		'strRows = strRows & delim & Request("subjAdd")(i)
+		strRows = strRows & delim
+	Next
+	addTail = String(addCnt-Request("addTail").Count, delim)
+	strRows = strRows & addTail
+
+	Dim birth, dict, subj, mark
+	Set dict = CreateObject("Scripting.Dictionary")
+
+	Do While Not rs.EOF
+		strRows = strRows & vbCRLF
+		birth = rs("BIRTHDATE").Value
+		strRows = strRows & DB2HTML(rs("LASTNAME")) & delim & DB2HTML(rs("FIRSTNAME")) & delim
+		If Not IsDull(rs("MIDDLENAME")) Then strRows = strRows & DB2HTML(rs("MIDDLENAME"))
+		strRows = strRows & String(4, delim)
+		strRows = strRows & day(birth) & delim & GetMonthName_Rod( month(birth) ) & delim & year(birth)
+		strRows = strRows & String(3, delim)
+		Set marks=rs("chapMarks").Value
+		dict.RemoveAll
+		Do While Not marks.EOF
+			subj = marks("SUBJECTNAME").Value
+			subj = UCase(subj)
+
+			bIsGradeSystemPass = (GetSafeLng(marks("PASS"), Null) = kGradingSystem_Pass)
+			mark = GetSafeLng(marks("MARK"), -1)
+			If bIsGradeSystemPass And (mark <> nMaxMark) Then
+				dict(subj) = Null ' для "зачёт/незачёт" убираем "незачёт"
+			Else
+				dict(subj) = marks("MARK").Value
+			End If
+
+			marks.MoveNext
+		Loop
+
+	  If nMaxMark=5 Then ' 99% случаев
+
+		For i = 1 To Request("subjMain").Count
+			subj = Request("subjMain")(i)
+			subj = UCase(subj)
+			strRows = strRows & delim
+			mark = dict(subj)
+			If not IsDull(mark) Then 
+				If CLng(mark)>0 Then strRows = strRows & mark
+			End If
+		Next
+		strRows = strRows & mainTail
+		For i = 1 To Request("subjAdd").Count
+			subj = Request("subjAdd")(i)
+			strRows = strRows & delim & subj
+			subj = UCase(subj)
+			mark = dict(subj)
+			If not IsDull(mark) Then 
+				If CLng(mark)>0 Then strRows = strRows & " " & mark
+			End If
+		Next
+
+	  Else  ' nMaxMark<>5
+
+		For i = 1 To Request("subjMain").Count
+			subj = Request("subjMain")(i)
+			subj = UCase(subj)
+			strRows = strRows & delim
+			mark = dict(subj)
+			If not IsDull(mark) Then 
+				If CLng(mark)>0 Then strRows = strRows & RoundTo5( mark, nMaxMark )
+			End If
+		Next
+		strRows = strRows & mainTail
+		For i = 1 To Request("subjAdd").Count
+			subj = Request("subjAdd")(i)
+			strRows = strRows & delim & subj
+			subj = UCase(subj)
+			mark = dict(subj)
+			If not IsDull(mark) Then 
+				If CLng(mark)>0 Then strRows = strRows & " " & RoundTo5( mark, nMaxMark )
+			End If
+		Next
+
+	  End If
+		strRows = strRows & addTail
+		rs.MoveNext
+	Loop
+	' Кодировку нужно менять в последнюю очередь иначе портится кодировка и в Request("subjMain") и предметы кракозябрятся
+	Response.CodePage = 1251
+	rw strRows
+End Sub
+
+Function GetMonthName_Rod( nMonth )
+	Dim sName
+	Select Case nMonth
+	  Case 1: sName = "января"
+	  Case 2: sName = "февраля"
+	  Case 3: sName = "марта"
+	  Case 4: sName = "апреля"
+	  Case 5: sName = "мая"
+	  Case 6: sName = "июня"
+	  Case 7: sName = "июля"
+	  Case 8: sName = "августа"
+	  Case 9: sName = "сентября"
+	  Case 10: sName = "октября"
+	  Case 11: sName = "ноября"
+	  Case 12: sName = "декабря"
+	End Select
+	GetMonthName_Rod = sName
+End Function
+
+Function RoundTo5( m, Base )
+  ' Приведение отметки "m" по основанию "Base" к 5-балльной шкале.
+  ' Округление происходит не с отбрасыванием дробной части, а напротив, в большую сторону
+  RoundTo5 = Int( 5*(m+0.5)/Base +0.5 )
+End Function
+%>

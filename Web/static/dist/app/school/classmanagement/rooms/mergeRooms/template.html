@@ -1,0 +1,41 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-md-4">{{language.Common.kRoom}}</label>
+				<div class="col-md-8">
+					<select track-changes class="form-control" name="MERGEROOMID" ng-options="room.id as room.roomname for room in data.rooms" ng-model="data.mergeRoomId" ng-change="dataChanged()">
+					</select>
+				</div>
+			</div>
+			<div>{{language.Generic.SetupSchool.kReplaceTo}}</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">{{language.Common.kRoom}}</label>
+				<div class="col-md-8">
+					<select track-changes class="form-control" name="ROOMID" ng-options="room.id as room.roomname for room in data.rooms" ng-model="data.roomId" ng-change="dataChanged()">
+					</select>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary ng-binding" ng-click="merge()">
+			{{language.Generic.SetupSchool.kReplace}}
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			{{language.Generic.Buttons.kClose}}
+		</button>
+	</div>
+</div>

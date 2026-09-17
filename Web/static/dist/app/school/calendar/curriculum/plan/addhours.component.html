@@ -1,0 +1,62 @@
+<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title">{{$ctrl.header}}</h4>
+			</div>
+			<div class="bootstrap-dialog-close-button">
+				<button class="close" ng-click="$ctrl.cancel()">×</button>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<form>
+
+				<div class="form-group row" ng-if="!$ctrl.extraActivity">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">
+						{{$ctrl.language.Generic.SetupSchoolCalendar.kComponent}}
+					</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<select class="form-control" name="component" ng-change="$ctrl.changeComponent()" ng-model="$ctrl.component" ng-options="component as component.name for component in $ctrl.components"></select>
+					</div>
+				</div>
+
+				<div class="form-group row" ng-if="$ctrl.componentSubjects.length">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">
+						{{$ctrl.language.Generic.Common.kSubject}}
+					</label>
+					<div class="col-md-8 col-lg-9 col-sm-8" ng-if="$ctrl.ready">
+						<select2 name="subject" class="form-control" ng-model="$ctrl.subject" required s2-options="subject as subject.name for subject in $ctrl.componentSubjects track by subject.id"></select2>
+						<!-- <select class="form-control" name="subject" ng-model="$ctrl.subject" ng-options="subject as subject.name for subject in $ctrl.componentSubjects"></select> -->
+					</div>
+				</div>
+
+				<div class="form-group row" ng-if="($ctrl.subject && !$ctrl.extraActivity)">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">
+						{{$ctrl.language.Generic.SetupSchoolCalendar.kSubjField}}
+					</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input type="text" class="form-control" disabled readonly ng-value="$ctrl.getSubjectFielName($ctrl.subject)">
+					</div>
+				</div>
+				
+				<div class="alert alert-info" role="alert" ng-if="!$ctrl.componentSubjects.length" >
+					Все предметы уже добавлены в план
+				</div>
+			</form>
+		</div>
+
+		<div class="modal-footer">
+
+			<button class="btn btn-primary btn-sm" ng-click="$ctrl.add()" ng-if="$ctrl.componentSubjects.length">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+			</button>
+
+
+			<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+			</button>
+	
+		</div>
+	</div>

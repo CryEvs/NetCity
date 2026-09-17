@@ -1,0 +1,67 @@
+@charset "UTF-8";
+.file-attachment-block.multiple .file-attachment {
+  margin-top: 3px;
+}
+.file-attachment-block .btn {
+  border-radius: 0;
+}
+
+.file-attachment {
+  background-color: #f5f5f5;
+  border: 1px solid #dcdcdc;
+  padding: 5px 45px 6px 8px;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.file-attachment:hover {
+  cursor: pointer;
+}
+.file-attachment .file-info {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.file-attachment .file-name {
+  font-weight: bold;
+  color: #15c;
+}
+.file-attachment .file-description {
+  color: #777;
+  font-size: 13px;
+}
+.file-attachment .buttons {
+  position: absolute;
+  right: 5px;
+  top: 6px;
+}
+.file-attachment .buttons .glyphicon {
+  color: #636161;
+  margin-left: 2px;
+}
+.file-attachment .buttons .glyphicon:hover {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.explanatory-note > .row .col {
+  padding-left: 0;
+  padding-right: 0;
+}
+.explanatory-note > .row .form-group {
+  display: block;
+}
+
+/*флексовая обёртка*/
+.wrap-flex-btn-files {
+  display: flex;
+}
+.wrap-flex-btn-files .btn-file {
+  flex: 0 0 125px;
+  max-width: 125px;
+}
+.wrap-flex-btn-files .file-attachment {
+  flex: 1;
+  padding-right: 8px;
+}

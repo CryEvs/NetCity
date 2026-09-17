@@ -1,0 +1,613 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetCity.WebServices.FederalDataService</name>
+    </assembly>
+    <members>
+        <member name="T:NetCity.WebServices.FederalDataService.Contracts.IFederalDataService">
+            <summary>
+            Сервис выгрузки информации о контингенте
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Messages.MsgGetContingentRequest">
+            <summary>
+            Запрос а выгрузку информации о контингенте
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Messages.MsgGetContingentRequest.KLADR">
+            <summary>
+            КЛАДР муниципалитета
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Messages.MsgGetCountContingentRequest">
+            <summary>
+            Запрос на выгрузку информации о количестве контингента
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Messages.MsgGetCountContingentRequest.KLADR">
+            <summary>
+            КЛАДР муниципалитета
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.Age">
+            <summary>
+            Возраст
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Age.Years">
+            <summary>
+            Лет
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Age.Monthes">
+            <summary>
+            Месяцев
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.AgeRange">
+            <summary>
+            Диапазон возрастов
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.AgeRange.Min">
+            <summary>
+            Минимальный
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.AgeRange.Max">
+            <summary>
+            Максимальный
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.DisablityGroup">
+            <summary>
+            Группа инвалидности
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.DisablityGroup.None">
+            <summary>
+            Нет
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.DisablityGroup.Group1">
+            <summary>
+            Группа 1
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.DisablityGroup.Group2">
+            <summary>
+            Группа 2
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.DisablityGroup.Group3">
+            <summary>
+            Группа 3
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.DisablityGroup.DisabledChild">
+            <summary>
+            Ребенок-инвалид
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.EducInstitution">
+            <summary>
+            Образовательное усреждение
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.EducInstitution.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.EducInstitution.Name">
+            <summary>
+            Краткое наименование ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.EducInstitution.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.EducInstitution.OKATO">
+            <summary>
+            ОКАТО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.EducInstitution.KLADR">
+            <summary>
+            КЛАДР
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.EducInstitution.OrganizationForm">
+            <summary>
+            Форма организации
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.EducInstitution.Rooms">
+            <summary>
+            Список комнат/помещений/групповых ячеек
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.EducPrograms">
+            <summary>
+            Образовательные программы
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.EducPrograms.General">
+            <summary>
+            Общеразвивающая программа
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.EducPrograms.Adapted">
+            <summary>
+            Адаптированная программа
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.Gender">
+            <summary>
+            Пол
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.Group">
+            <summary>
+            Группа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.Name">
+            <summary>
+            Название группы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.EducYear">
+            <summary>
+            Год обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.StayRegime">
+            <summary>
+            Режим пребывания
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.HealthSpecialization">
+            <summary>
+            Специализация по здоровью
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.AddHealthSpecialization">
+            <summary>
+            Дополнительная специализация по здоровью
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.Orientation">
+            <summary>
+            Направленность группы дошкольной группы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.AgeRange">
+            <summary>
+            Диапазон возрастов группы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.Students">
+            <summary>
+            Список учащихся
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.SeatsForTransfer">
+            <summary>
+            Количество мест для перевода детей
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.NoInformika">
+            <summary>
+            Не выгружать в ФСПЭО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.Id">
+            <summary>
+            GUID
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.SeatsForShort">
+            <summary>
+            Количество мест в группе для детей с кратковременным режимом пребывания
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.Chiefs">
+            <summary>
+            Количество воспитателей в группе
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.StudentDays">
+            <summary>
+            Число дней, проведенных воспитанниками в группе в текущем месяце
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.IsGeneralEducProgram">
+            <summary>
+            Общеразвивающая программа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Group.IsAdaptedEducProgram">
+            <summary>
+            Адаптированная программа
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.HealthSpecialization">
+            <summary>
+             Специализация по здоровью
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Unlimited">
+            <summary>
+             Без ограничений (I группа здоровья)
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.SpeechDisorder">
+            <summary>
+            С тяжелыми нарушениями речи
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.VisuallyImpaired">
+            <summary>
+            Слабовидящие
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Noda">
+            <summary>
+            С нарушениями опорно-двигательного аппарата (НОДА)
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.TuberculousIntoxication">
+            <summary>
+            С туберкулезной интоксикацией
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Chbd">
+            <summary>
+            Часто болеющие дети
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.MentalRetardation">
+            <summary>
+            С умственной отсталостью (нарушением интеллекта)
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.ImpairedMental">
+            <summary>
+            С задержкой психического развития
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.HearingImpaired">
+            <summary>
+            Слабослышащие и позднооглохшие
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Diabetes">
+            <summary>
+            С сахарным диабетом
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Allergopathology">
+            <summary>
+            С аллергопатологией
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Deaf">
+            <summary>
+            Глухие
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Blind">
+            <summary>
+            Слепые
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.AutisticDisorder">
+            <summary>
+            С расстройством аутистического спектра
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.DevelopmentDisorder">
+            <summary>
+            С тяжелыми и множественными нарушениями развития
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Sdvg">
+            <summary>
+            С синдромом дефицита внимания и гиперактивности (СДВГ)
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.AfterCochlear">
+            <summary>
+            Дети после операции по кохлеарной имплантации
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.OtherProfile">
+            <summary>
+            Иной профиль
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Respiratory">
+            <summary>
+            С заболеваниями органов дыхания
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Cardiovascular">
+            <summary>
+            С заболеваниями сердечно-сосудистой системы
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.NephroUrological">
+            <summary>
+            С нефро-урологическими заболеваниями
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.HealthSpecialization.Celiac">
+            <summary>
+            С целиакией
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Psychologist">
+            <summary>
+            педагог-психолог
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Logopedist">
+            <summary>
+            учитель-логопед
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Defectologist">
+            <summary>
+            учитель-дефектолог
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Oligophren">
+            <summary>
+            олигофрено-педагог
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Surdo">
+            <summary>
+            сурдопедагог
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Tiflo">
+            <summary>
+            тифлопедагог
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Lfk">
+            <summary>
+            инструктор-методист ЛФК
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Afk">
+            <summary>
+            инструктор по АФК
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Social">
+            <summary>
+            социальный педагог
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Med">
+            <summary>
+            медицинский работник
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Pediatr">
+            <summary>
+            врач-педиатр
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Neurolog">
+            <summary>
+            врач-невролог
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Ophthalmologist">
+            <summary>
+            врач-офтальмолог
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.MaintainDataSpecialty.Audiologist">
+            <summary>
+            врач-сурдолог
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.MaintenanceData.Specialty">
+            <summary>
+            Специальность
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.MaintenanceData.StaffNum">
+            <summary>
+            Количество Штатных специалистов
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.MaintenanceData.FreelanceNum">
+            <summary>
+            Количество Внештатных специалистов
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.OrganizationForm">
+            <summary>
+            Организационная форма
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.OrganizationForm.State">
+            <summary>
+            Государственная
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.OrganizationForm.NonState">
+            <summary>
+            Негосударственная
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.OrganizationForm.Individual">
+            <summary>
+            Индивидульный предприниматель
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.Orientation">
+            <summary>
+            Направленность группы дошкольной группы
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.Orientation.GeneralDeveloping">
+            <summary>
+            Общеразвивающая
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.Orientation.Compensating">
+            <summary>
+            Компенсирующая
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.Orientation.Combined">
+            <summary>
+            Комбинированная
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.Orientation.Wellness">
+            <summary>
+            Оздоровительная
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.Orientation.EarlyAge">
+            <summary>
+            Для детей раннего возраста
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.Orientation.SupervisionAndCare">
+            <summary>
+            Группы по присмотру и уходу
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.Orientation.FamilyLearning">
+            <summary>
+            Семейные дошкольные группы
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.RegimeType.None">
+            <summary>
+            Без режима пребывания
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.RegimeType.FullDay">
+            <summary>
+            Полный день
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.RegimeType.Reduced">
+            <summary>
+            Сокращенного дня
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.RegimeType.Extended">
+            <summary>
+            Продленного дня
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.RegimeType.Short">
+            <summary>
+            Кратковременного пребывания
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.FederalDataService.Model.RegimeType.Night">
+            <summary>
+            Круглосуточного пребывания
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.Room">
+            <summary>
+            Комната "Групповая ячейка"
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Room.Groups">
+            <summary>
+            Список посещающих данное помещение дошкольных групп
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Room.MaxCapacity">
+            <summary>
+            Максимальная наполняемость
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Room.Area">
+            <summary>
+            Площадь (м2)
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.FederalDataService.Model.Student">
+            <summary>
+            Учащийся
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.Id">
+            <summary>
+            Идентификатор учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.Name">
+            <summary>
+            Имя учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.Gender">
+            <summary>
+            Пол
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.IsShortStayStudent">
+            <summary>
+            Признак - посещение ДОО в кратковременном режиме пребывания
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.IsGraduateAtYearEnd">
+            <summary>
+            Признак - планирует уйти из ДОО по окончании текущего учебного года в связи с зачислением в 1 класс
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.IsVacantOvz">
+            <summary>
+            Занимает вакантное место ОВЗ
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.HealthSpecializationList">
+            <summary>
+            Специализация по здоровью
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.DisablityGroup">
+            <summary>
+            Группа инвалидности
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.EnrollmentInquiryNumber">
+            <summary>
+            Номер обращения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.NextEnrollmentInquiryNumber">
+            <summary>
+            Следующий номер обращения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.FederalDataService.Model.Student.EnrollDate">
+            <summary>
+            Дата зачисления учащегося в группу
+            </summary>
+        </member>
+    </members>
+</doc>

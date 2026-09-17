@@ -1,0 +1,50 @@
+<div class="buttons-filters-panel form-horizontal">
+	<div class="row">
+		<div class="filters-panel col-md-6 col-lg-6 col sm-12">
+			<div class="form-group">
+				<label for="referenceTypeFilter"
+					class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.ServAdmin.kRef}}</label>
+
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select ng-model="$ctrl.referenceType" id="referenceTypeFilter" class="form-control"
+						ng-options="type as type.name for type in $ctrl.referenceTypes"></select>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.reference && $ctrl.reference.data && $ctrl.reference.data.length">
+				<label for="searchInput"
+					class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.FilterUsers.kSearch}}</label>
+
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<div class="input-group mb-3">
+						<input ng-model="$ctrl.search" id="searchInput" class="form-control" />
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-search"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<button ng-repeat="button in $ctrl.buttons track by button.id" class="btn btn-default" ng-class="button.class" ng-click="button.action()"
+						ng-disabled="!button.isEnabled()" ng-hide="button.isHidden" title="{{button.title}}">
+						<span ng-if="button.icon" class="bootstrap-dialog-button-icon glyphicon" ng-class="button.icon"></span>
+						<span>{{button.title}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<table-view ng-model="$ctrl.reference" on-select="$ctrl.onSelect(data)" on-edit="$ctrl.editLink(data)"
+			search="$ctrl.search"></table-view>
+	</div>
+</div>

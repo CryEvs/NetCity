@@ -1,0 +1,160 @@
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+		
+		<div class="buttons-panel" ng-if="!ctrl.extraActivitySg">
+			<div class="buttons-panel-right"  ng-if="!ctrl.state.emptyFpData && !ctrl.state.warning">
+				<button title="Экспорт" type="button" class="btn btn-default" ng-click="ctrl.exportCm()">
+					<span class="glyphicon glyphicon-export"></span> 
+					<span>{{ctrl.language.Generic.Calendar.kSaveXML}}</span>
+				</button>
+				
+				<button title="Экспорт" type="button" class="btn btn-default" ng-click="ctrl.exportCm_R()">
+					<span class="glyphicon glyphicon-export"></span> 
+					<span>{{ctrl.language.Generic.Calendar.kSaveXML_R}}</span>
+				</button>
+				
+				<button title="Импорт" type="button" class="btn btn-default" ng-click="ctrl.importCm()" ng-if="!ctrl.state.readOnly">
+					<span class="glyphicon glyphicon-import"></span>
+					<span>{{ctrl.language.Generic.Calendar.kLoadXML}}</span>
+				</button>
+			</div>
+		</div>
+
+		<filter-panel class="filters-panel filters-panel-compact" ng-if="ctrl.filterPanelSettings" fp="ctrl.filterPanel" fp-settings="ctrl.filterPanelSettings"> 
+		</filter-panel>
+	</div>
+</div>
+
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel extra" ng-if="!ctrl.state.readOnly">
+			<div class="buttons-panel-left" ng-if="!ctrl.state.emptyFpData && !ctrl.state.warning">
+
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<span class="glyphicon glyphicon-floppy-save"></span> {{ctrl.language.Generic.Buttons.kSave}} <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:void(0)" ng-click="ctrl.save()">{{ctrl.language.Generic.Calendar.kSelectedWeek}}</a></li>
+						<li><a href="javascript:void(0)" ng-click="ctrl.savePeriod()">{{ctrl.language.Generic.Calendar.kInInterval}}</a></li>
+					</ul>
+				</div>
+
+				<button title="{{ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="ctrl.reset()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+				<button type="button" class="btn btn-info" ng-click="ctrl.add()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{ctrl.language.Generic.Calendar.kAddLesson}}</span>
+				</button>
+				
+				<div class="btn-group" ng-if="!ctrl.extraActivitySg">
+					<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<span class="glyphicon glyphicon-minus-sign"></span> {{ctrl.language.Generic.Calendar.kTitleDelLessons}} <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:void(0)" ng-click="ctrl.deleteSchedule2()">{{ctrl.language.Calendar.kForSeveralClass}}</a></li>
+						<li><a href="javascript:void(0)" ng-click="ctrl.deleteSgSchedule()">{{ctrl.language.Generic.Calendar.kForSelectSubject}}</a></li>
+					</ul>
+				</div>
+				<button type="button" class="btn btn-danger" title="{{ctrl.language.Generic.Calendar.kTitleDelLessons + ' ' + ctrl.language.Generic.Calendar.kForSelectedGroup}}" ng-click="ctrl.deleteSgSchedule()" ng-if="ctrl.extraActivitySg">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{ctrl.language.Generic.Calendar.kTitleDelLessons}}</span>
+				</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	tr.overflow {
+		background-color: #ffd158;
+	}
+	tr > td.invalid {
+		background-color: #ffb8b8;
+	}
+	span.label-cm-overflow {
+		background-color: #ffd158;
+	}
+	span.label-cm-invalid {
+		background-color: #ffb8b8;
+	}
+</style>
+
+<div class="row" ng-if="ctrl.state.dataReady && ctrl.state.warning">
+	<div class="col-md-12 col-lg-8">
+		<div class="alert alert-info">
+			{{ctrl.data.warning}}
+		</div>
+	</div>
+</div>
+
+<div class="row" ng-if="ctrl.state.dataReady && !ctrl.state.emptyData && !ctrl.state.warning">
+	<div class="col-md-12">
+		<form name="ctrl.templateForm">
+			<table class="table table-bordered table-condensed table-thin">
+				<tbody>
+				<tr>
+					<th colspan="2">{{ctrl.language.Generic.Calendar.kLessonDay}}</th>
+					<th colspan="2">{{ctrl.language.Calendar.kLesson}}</th>
+					<th>{{ctrl.language.Common.kRoom}}</th>
+					<th>{{ctrl.language.Filter.kTeacherGB}}</th>
+				</tr>
+				<tr ng-repeat="tpl in ctrl.data.cmTemplates" ng-form="cmForm" ng-class="{'overflow': tpl.isFilled() && tpl.isOverflow(), 'invalid': tpl.isFilled() && tpl.isInvalid()}">
+					<td>
+						<select track-changes class="form-control" name="weekDay" ng-disabled="ctrl.state.readOnly" ng-options="wd.id as wd.name for wd in ctrl.data.weekDays" ng-model="tpl.weekDay">
+							<option value="">{{tpl.getEmptyTitle()}}</option>
+						</select>
+					</td>
+					<td>
+						<input class="form-control" type="text" name="cmday" size="10" disabled="" ng-model="tpl.dateStr">
+					</td>
+					<td ng-class="{'invalid': cmForm.scheduletime.$invalid}">
+						<select track-changes class="form-control" name="scheduletime" ng-disabled="(tpl.weekDay == null) || ctrl.state.readOnly" ng-options="st.id as st.name for st in ctrl.data.dayScheduleTimes[tpl.weekDay]" ng-model="tpl.scheduleId" ng-required="(tpl.weekDay != null)" >
+							<option></option>
+						</select>
+					</td>
+					<td>
+						<input class="form-control" type="text" name="hours" size="10" disabled="" ng-value="tpl.hoursStr">
+					</td>
+					<td>
+						<select track-changes class="form-control" name="room" ng-disabled="(tpl.weekDay == null) || ctrl.state.readOnly" ng-options="room.id as room.roomname for room in ctrl.data.rooms" ng-model="tpl.roomId">
+							<option></option>
+						</select>
+					</td>
+					<td ng-class="{'invalid': cmForm.teacher.$invalid}">
+						<select ng-if="!ctrl.multipleTeachers" track-changes class="form-control" name="teacher" ng-disabled="(tpl.weekDay == null) || ctrl.state.readOnly" ng-options="teacher as teacher.name for teacher in tpl.teachers track by teacher.id" ng-model="tpl.selectedTeachers[0]" ng-required="(tpl.weekDay != null)">
+							<option></option>
+						</select>
+						<select2 ng-if="ctrl.multipleTeachers && ctrl.data.teachers && ctrl.data.teachers.length" width="400px" ng-disabled="(tpl.weekDay == null) || ctrl.state.readOnly" multiple required name="teacher" class="form-control" s2-options="teacher as teacher.name for teacher in tpl.teachers track by teacher.id" ng-model="tpl.selectedTeachers" track-changes ng-required="(tpl.weekDay != null)"></select2>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</form>
+		
+		
+		<div class="legend print-block">
+			<div>
+				<p ng-if="ctrl.hasOverflows()">
+					<span class="legend-label label-cm-overflow"></span>
+					<span class="legend-description">
+						{{ctrl.language.Generic.Calendar.kLessonsOutsideThisWeekTerm}}
+					</span>
+				</p>
+				
+				<p ng-if="ctrl.hasInvalids()">
+					<span class="legend-label label-cm-invalid"></span>
+					<span class="legend-description">
+						{{ctrl.language.Generic.Common.kErrNotFilledRequiredField}}
+					</span>
+				</p>
+			</div>
+		</div>
+
+	</div>
+</div>
+

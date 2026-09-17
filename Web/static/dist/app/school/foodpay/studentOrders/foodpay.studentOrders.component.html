@@ -1,0 +1,125 @@
+<style>
+	label.student-label {
+		font-weight: normal;
+		cursor: pointer; 
+	}
+</style>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-filters-panel form-horizontal single-row">
+			<div class="row">
+				<div class="buttons-panel">
+					<div class="buttons-panel-right">
+						<button title="Заявки от организации" ng-if="$ctrl.hasRightOnSchoolOrders()" type="button" class="btn btn-default" ng-click="$ctrl.goSchoolOrders()">
+							<span>Заявки от организации</span>
+						</button>
+					</div>
+				</div>
+				<div class="filters-panel col-md-12 filters-panel-compact">
+					<form name="filterForm">
+						<div class="form-group">
+							<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.EMReports.kClassGroup}}</label>
+							<div class="col-md-8 col-lg-5 col-sm-8">
+								<select class="form-control" ng-model="$ctrl.selectedClass" ng-options="class as class.name for class in $ctrl.classes track by class.id" ng-change="$ctrl.changeClass()"></select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.FilterUsers.kSearch}}</label>
+							<div class="col-md-8 col-lg-5 col-sm-8">
+								<input class="form-control" type="text" placeholder="Фамилия ученика" maxlength="30" ng-model="$ctrl.searchString" ng-change="$ctrl.search()">
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': !$ctrl.date}">
+							<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Common.kDate}}</label>
+							<span class="help-block" ng-show="!$ctrl.date">Некорректная дата</span>
+							<div class="col-md-8 col-lg-5 col-sm-8">
+								<div class="input-daterange input-group date" id="dateRange">
+									<date-input-component date-model="$ctrl.date" min-date="$ctrl.minDate" date-change="$ctrl.dateChanged()"></date-input-component>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-10">
+		<div class="buttons-panel buttons-panel-left" ng-if="$ctrl.studentsOrders.length > 0 && $ctrl.dataReady && !filterForm.$invalid && $ctrl.payNorm">
+			<button ng-if="!$ctrl.dateApproved" title="Сохранить изменения" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+			</button>
+
+			<button ng-if="!$ctrl.dateApproved" title="Восстановить значения" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+				<span class="glyphicon glyphicon-repeat"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10">
+		<div class="alert alert-info ng-binding" ng-show="$ctrl.studentsOrders.length == 0" role="alert">Не найдено учащихся по заданным критериям</div>
+		<div class="alert alert-info ng-binding" ng-show="$ctrl.firstOpen" role="alert">Выберите класс или воспользуйтесь поиском учащихся</div>
+		<div class="alert alert-info ng-binding" ng-show="$ctrl.dateApproved" role="alert">Внимание! Заявка на питание на {{$ctrl.date | nsDate}} уже утверждена.</div>
+		<div ng-if="!$ctrl.firstOpen && !$ctrl.payNorm" class="alert alert-warning" role="alert">
+			<b>Внимание!</b> На выбранную дату не обнаружено действующих нормативов оплаты питания. Необходимо определить <a ng-if="$ctrl.hasRightsOnPayNorms()" href="javasctipt:void(0)" ng-click="$ctrl.goFoodPayNorms()">нормативы оплаты питания</a><span ng-if="!$ctrl.hasRightsOnPayNorms()">нормативы оплаты питания</span>.
+		</div>
+		<div class="content-preloader" ng-show="!$ctrl.dataReady">
+			<span class="arrows"></span>
+			<span class="title">{{$ctrl.language.Generic.Curriculum.kPleaseWait}}</span>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-6">
+		<form name="form" class="form-xs">
+			<table ng-show="$ctrl.studentsOrders.length > 0 && $ctrl.dataReady && !filterForm.$invalid" class="table table-xs table-bright table-middle-cells table-thin print-block">
+				<tr>
+					<th rowspan="2">Ученик</th>
+					<th rowspan="2">Класс</th>
+					<th colspan="3">Постановка на питание</th>
+				</tr>
+				<tr>
+					<th><a href="javascript:void(0)" ng-click="$ctrl.toggleBreakfast()">Завтрак</a></th>
+					<th><a href="javascript:void(0)" ng-click="$ctrl.toggleLunch()">Обед</a></th>
+					<th><a href="javascript:void(0)" ng-click="$ctrl.toggleSnack()">Полдник</a></th>
+				</tr>
+				<tr ng-repeat="studentOrder in $ctrl.studentsOrders">
+					<td class="student-name">
+						<a href="javascript:void(0)" ng-click="$ctrl.toggleStudent(studentOrder.student)">{{$index + 1}}. {{studentOrder.student.name}}</a>
+					</td>
+					<td ng-if="$ctrl.selectedClass.id != -1">{{$ctrl.selectedClass.name}}</td>
+					<td ng-if="$ctrl.selectedClass.id == -1">{{studentOrder.className}}</td>
+					<td class="text-center">
+						<div class="form-group">
+							<label ng-if="!$ctrl.dateApproved && $ctrl.payNorm.breakfastCost"><input id="check_{{studentOrder.student.id}}" track-changes type="checkbox" ng-model="studentOrder.breakfast"></label>
+							<p ng-if="$ctrl.dateApproved && studentOrder.breakfast">X</p>
+							<p ng-if="!$ctrl.payNorm.breakfastCost">-</p>
+						</div>
+					</td>
+					<td class="text-center">
+						<div class="form-group">
+							<label ng-if="!$ctrl.dateApproved && $ctrl.payNorm.lunchCost"><input id="check_{{studentOrder.student.id}}" track-changes type="checkbox" ng-model="studentOrder.lunch"></label>
+							<p ng-if="$ctrl.dateApproved && studentOrder.lunch">X</p>
+							<p ng-if="!$ctrl.payNorm.lunchCost">-</p>
+						</div>
+					</td>
+					<td class="text-center">
+						<div class="form-group">
+							<label ng-if="!$ctrl.dateApproved && $ctrl.payNorm.snackCost"><input id="check_{{studentOrder.student.id}}" track-changes type="checkbox" ng-model="studentOrder.snack"></label>
+							<p ng-if="$ctrl.dateApproved && studentOrder.snack">X</p>
+							<p ng-if="!$ctrl.payNorm.snackCost">-</p>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<form role="form" name="$ctrl.form" ng-show="$ctrl.ready" class="form form-xs">
+		<textarea ng-if="$ctrl.model" ng-model="$ctrl.model" readonly rows="10" style="width: 100%; white-space: pre-wrap; resize: none;">
+
+		</textarea>
+	</form>
+</ns-modal>

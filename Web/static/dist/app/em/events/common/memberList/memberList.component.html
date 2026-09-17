@@ -1,0 +1,30 @@
+<div class="ns-cloak">
+	<h3 class="first">Общая информация</h3>
+	<event-info event="ctrl.data.event"></event-info>
+
+	<hr />
+</div>
+
+<div ng-if="ctrl.state.membersReadAccess" class="ns-cloak">
+	<h3 class="first">Список участников</h3>
+
+	<div class="row">
+		<div class="col-md-12" ng-show="ctrl.state.registryReady">
+			<div class="alert alert-warning" role="alert" ng-if="!ctrl.canEditByOrganizer">
+				Редактирование списка участников доступно только организатору данного мероприятия
+			</div>
+			<registry info="ctrl.registryInfo" controller="ctrl.controller"></registry>
+		</div>
+	</div>
+
+</div>
+
+<style>
+	.table-selectable tr.already-member td {
+		cursor: not-allowed;
+		background-color: #ffe074;
+	}
+	.select-event-members-component span.select2.select2-container {
+		width: 100% !important;
+	}
+</style>

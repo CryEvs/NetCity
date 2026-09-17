@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Физика. 9 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Физика. 9 класс" ID="1" Filename="ni_phys_9/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Материальная точка. Координаты движущегося тела." ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Материальная точка. Координаты движущегося тела." 
+				Filename="sgo/ni_phys_9/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Ускорение." ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Ускорение." 
+				Filename="sgo/ni_phys_9/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Законы Ньютона." ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Законы Ньютона." 
+				Filename="sgo/ni_phys_9/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Закон всемирного тяготения." ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Закон всемирного тяготения." 
+				Filename="sgo/ni_phys_9/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Прямолинейное и криволинейное движение. Движение тела по окружности." ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Прямолинейное и криволинейное движение. Движение тела по окружности." 
+				Filename="sgo/ni_phys_9/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Импульс тела. Закон сохранения импульса." ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Импульс тела. Закон сохранения импульса." 
+				Filename="sgo/ni_phys_9/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Свободные колебания. Величины, характеризующие колебательное движение." ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Свободные колебания. Величины, характеризующие колебательное движение." 
+				Filename="sgo/ni_phys_9/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Гармонические колебания. Затухающие колебания." ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Гармонические колебания. Затухающие колебания." 
+				Filename="sgo/ni_phys_9/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Вынужденные колебания. Резонанс." ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Вынужденные колебания. Резонанс." 
+				Filename="sgo/ni_phys_9/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Волны. Продольные и поперечные волны." ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Волны. Продольные и поперечные волны." 
+				Filename="sgo/ni_phys_9/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Звуковые колебания." ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Звуковые колебания." 
+				Filename="sgo/ni_phys_9/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Звуковые волны. Эхо. Интерференция звука." ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Звуковые волны. Эхо. Интерференция звука." 
+				Filename="sgo/ni_phys_9/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Магнитное поле. Направление линий магнитного поля тока." ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Магнитное поле. Направление линий магнитного поля тока." 
+				Filename="sgo/ni_phys_9/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Обнаружение магнитного поля по его действию на электрический ток." ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Обнаружение магнитного поля по его действию на электрический ток." 
+				Filename="sgo/ni_phys_9/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Индукция магнитного поля. Линии магнитной индукции. Однородное и неоднородное магнитное поле." ID="16">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Индукция магнитного поля. Линии магнитной индукции. Однородное и неоднородное магнитное поле." 
+				Filename="sgo/ni_phys_9/15/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Магнитный поток. Явление электромагнитной индукции." ID="17">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Магнитный поток. Явление электромагнитной индукции." 
+				Filename="sgo/ni_phys_9/16/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электромагнитные волны. Интерференция света." ID="18">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электромагнитные волны. Интерференция света." 
+				Filename="sgo/ni_phys_9/17/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Радиоактивность." ID="19">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Радиоактивность." 
+				Filename="sgo/ni_phys_9/18/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Состав атомного ядра. Изотопы. Альфа и Бета распад." ID="20">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Состав атомного ядра. Изотопы. Альфа и Бета распад." 
+				Filename="sgo/ni_phys_9/19/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Энергия связи. Дефект масс. Деление ядер урана. Цепная реакция." ID="21">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Энергия связи. Дефект масс. Деление ядер урана. Цепная реакция." 
+				Filename="sgo/ni_phys_9/20/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

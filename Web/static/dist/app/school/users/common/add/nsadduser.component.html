@@ -1,0 +1,33 @@
+<div class="col-md-7 col-lg-5 col-md-push-4 col-lg-push-3">
+	<form name="$ctrl.controller.userInfo" class="form-horizontal form-xs form-edit">
+		<div class="form-group">
+			<label class="control-label col-md-4 col-lg-4 col-sm-4 hidden-sm hidden-xs"></label>
+			<div class="col-md-8 col-lg-8 col-sm-6">
+				<div class="buttons-panel">
+					<div class="buttons-panel-left">
+						<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-sm btn-primary" ng-click="$ctrl.controller.save()">
+							<span class="glyphicon glyphicon-floppy-save"></span>
+							<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+						</button>
+						<button ng-if="$ctrl.controller.mode === 'add'" title="{{$ctrl.language.Generic.Buttons.kAdd}}" type="button" class="btn btn-sm btn-default" ng-click="$ctrl.controller.userInfo.$displayErrors=true; $ctrl.controller.add();">
+							<span ng-if="$ctrl.controller.mode === 'add'">{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+						</button>
+						<button ng-if="$ctrl.controller.mode === 'edit'" title="{{$ctrl.language.Generic.Buttons.kRefresh}}" type="button" class="btn btn-sm btn-default" ng-click="$ctrl.controller.userInfo.$displayErrors=true; $ctrl.controller.updateAndCreate();">
+							<span ng-if="$ctrl.controller.mode === 'edit'">{{$ctrl.language.Generic.Buttons.kRefreshAndAdd}}</span>
+						</button>
+						<button ng-if="$ctrl.controller.mode === 'edit' && $ctrl.controller.users && $ctrl.controller.users.length" title="{{$ctrl.language.Generic.Buttons.kRemove}}" type="button" class="btn btn-sm btn-default" ng-click="$ctrl.controller.userInfo.$displayErrors=true; $ctrl.controller.delete();">
+							<span ng-if="$ctrl.controller.mode === 'edit'">{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+						</button>
+						<button ng-if="$ctrl.controller.mode === 'add'" title="{{$ctrl.language.Generic.SetupSchoolUI.kStrRestore_}}" type="button" class="btn btn-sm btn-default" ng-click="$ctrl.controller.userInfo.$displayErrors=false; $ctrl.controller.clearCurrentUser();">
+							<span ng-if="$ctrl.controller.mode === 'add'">{{$ctrl.language.Generic.SetupSchoolUI.kStrRestore_}}</span>
+						</button>
+						<button ng-if="$ctrl.controller.mode === 'edit'" title="{{$ctrl.language.Generic.Buttons.kReset}}" type="button" class="btn btn-sm btn-default" ng-click="$ctrl.controller.userInfo.$displayErrors=false; $ctrl.controller.refresh();">
+							<span ng-if="$ctrl.controller.mode === 'edit'">{{$ctrl.language.Generic.Buttons.kReset}}</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<ng-transclude></ng-transclude>
+	</form>
+</div>

@@ -1,0 +1,56 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<div class="alert alert-info" role="alert" ng-if="!$ctrl.familyObserves.length">
+			Нет информации о постановке семьи на учёт
+		</div>
+
+		<div style="overflow:auto" ng-if="$ctrl.familyObserves.length">
+			<table class="table table-bordered table-xs table-thin table-selectable">
+				<tr>
+					<th>Вид учёта</th>
+					<th>Дата постановки на учёт</th>
+					<th>Причина постановки на учёт</th>
+				</tr>
+				<tr ng-repeat="familyObserve in $ctrl.familyObserves" ng-class="{'selected': $ctrl.data.selection.isSelected(familyObserve)}" ng-click="$ctrl.data.selection.select(familyObserve)">
+					<td valign="top">
+						<a href="javaScript:void(0);" ng-click="$ctrl.edit(familyObserve)" title="{{$ctrl.language.Generic.Common.kEdit}}">
+							{{familyObserve.type.name}}
+						</a>
+					</td>
+					<td valign="top">{{familyObserve.startDate | nsDate}}</td>
+					<td valign="top">{{familyObserve.reason}}</td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+
+	<div class="modal-footer">
+
+		<button class="btn btn-info btn-sm" ng-click="$ctrl.add()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+		</button>
+
+		<button type="button" class="btn btn-danger btn-sm" ng-click="$ctrl.remove()" ng-disabled="!$ctrl.data.selection.selected">
+			<span class="glyphicon glyphicon-minus-sign"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+		</button>
+
+		<!-- ОТМЕНИТЬ -->
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kClose}}</span>
+		</button>
+
+	</div>
+</div>

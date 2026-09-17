@@ -1,0 +1,13 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form role="form" name="$ctrl.form" class="form-horizontal form-sm">
+		<div class="form-group" ng-class="{'has-error': $ctrl.form.temperature.$invalid}">
+			<label class="control-label col-md-4 ng-binding">Температура</label>
+			<div class="col-md-8">
+				<input class="input-sm form-control" name="temperature" track-changes float-input="$ctrl.decimalInputSettings" type="number" step="0.1"
+					style="width: 80%" min="36" max="42" placeholder="Температура" ng-model="$ctrl.temperature"/>
+				<span class="help-block" ng-show="$ctrl.form.temperature.$error.min || $ctrl.form.temperature.$error.max">От 36 до 42 градусов</span>
+				<span class="help-block" ng-show="$ctrl.form.temperature.$error.temperatureInput">Не более 1 знака после запятой</span>
+			</div>
+		</div>
+	</form>
+</ns-modal>

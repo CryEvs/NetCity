@@ -1,0 +1,102 @@
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<form class="form-horizontal form-sm">
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">Образовательная организация</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<ui-select id="school" ng-model="filter.selected.school" save-state theme="bootstrap" on-select="onFilterChange()">
+						<ui-select-match>{{$select.selected.name}}</ui-select-match>
+						<ui-select-choices repeat="school as school in filter.items.schools | filter: $select.search">
+							<div ng-bind-html="school.name | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">Куратор</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<ui-select id="curator" ng-model="filter.selected.curator" save-state theme="bootstrap" on-select="onFilterChange()">
+						<ui-select-match placeholder="Выберите куратора">{{$select.selected.fio}}</ui-select-match>
+						<ui-select-choices repeat="curator as curator in filter.items.curators | filter: $select.search">
+							<div ng-bind-html="curator.fio | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+
+
+		</form>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<hr/>
+		<div class="buttons-panel">
+
+			<button title="Просмотреть портфолио ученика" type="button" class="btn btn-info" ng-click="viewPortfolio()" ng-disabled="!data.selection.selected">
+				<span class="glyphicon glyphicon-briefcase"></span>
+				<span>Портфолио</span>
+			</button>
+
+			<button title="Просмотреть личные достижения ученика" type="button" class="btn btn-warning" ng-click="viewAwards()" ng-disabled="!data.selection.selected">
+				<span class="glyphicon glyphicon-education"></span>
+				<span>Личные достижения</span>
+			</button>
+
+			<button title="{{language.Generic.TalentStudents.kAssignCurator}}" type="button" class="btn btn-warning" ng-click="assignCurator()" ng-disabled="!data.selection.selected">
+				<span class="icon-group"></span>
+				<span>{{language.Generic.TalentStudents.kAssignCurator}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="alert alert-info ns-cloak" role="alert" ng-if="data.students.length == 0">{{language.Generic.TalentStudents.kNoTalentStudents}}</div>
+<div class="alert alert-info ns-cloak" role="alert" ng-if="data.students.length && !data.viewStudents.length">{{language.Generic.TalentStudents.kNoTalentStudentsByFilter}}</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<ul ng-show="data.viewStudents.length && paging.show" uib-pagination total-items="paging.totalcount" ng-model="paging.page" items-per-page="paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="load()"></ul>
+
+		<table class="table table-thin table-bright table-bright-hover table-selectable" ng-show="data.viewStudents.length > 0" ng-class="{'loading': !state.dataReady}">
+			<tr>
+				<th>{{language.Generic.Common.kDisplayName}}</th>
+				<th>{{language.Generic.Common.kBDate}}</th>
+				<th>{{language.Generic.Common.kEO}}</th>
+				<th>{{language.Common.kClass}}</th>
+				<th>{{language.Generic.TalentStudents.kCurator}}</th>
+				<th>{{language.Generic.TalentStudents.kTalentDirection}}</th>
+			</tr>
+			<tr ng-repeat="student in data.viewStudents"  ng-class="{'selected': data.selection.isSelected(student)}" ng-click="data.selection.select(student)">
+				<td>{{student.name}}</td>
+				<td>{{student.birthDate}}</td>
+				<td>{{student.education.school.name}}</td>
+				<td>{{student.education.className}}</td>
+				<td>
+					<span class="text-separated" ng-repeat="curator in student.curators">{{curator.fio}}</span>
+				</td>
+				<td>{{student.talentDirection}}</td>
+			</tr>
+
+		</table>
+		<ul ng-show="data.viewStudents.length && paging.show" uib-pagination total-items="paging.totalcount" ng-model="paging.page" items-per-page="paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="load()"></ul>
+
+	</div>
+</div>
+
+<style>
+	table.loading {
+		opacity: 0.5;
+	}
+	table.loading > tbody > tr > td {
+		cursor: wait !important;
+	}
+	span.text-separated + span.text-separated:before {
+		content: ', ';
+	}
+</style>

@@ -1,0 +1,120 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subCols": [4,10,12,13,14,15],
+			"type": "ofthem"
+		},
+		{
+			"col": 4,
+			"subCols": [5,6,7,8,9],
+			"type": "ofthem"
+		},
+		{
+			"col": 10,
+			"subCols": [11],
+			"type": "ofthem"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 1,
+			"subRows": [2,6,40,41],
+			"type": "sum"
+		},
+		{
+			"row": 6,
+			"subRows": [7,28,29,33,34,35,36,37,38,39],
+			"type": "sum"
+		},
+		{
+			"row": 7,
+			"subRows": [8,9,10,11,12,13,14,15,16,17,18,22,23,24,25,26,27],
+			"type": "sum"
+		},
+		{
+			"row": 58,
+			"subRows": [60,61],
+			"type": "sum"
+		},
+		{
+			"row": 2,
+			"subRows": [3, 4, 5],
+			"type": "include"
+		},
+		{
+			"row": 2,
+			"cols": [3],
+			"subRows": [54],
+			"type": "ofthem"
+		},
+		{
+			"row": 6,
+			"cols": [3],
+			"subRows": [56],
+			"type": "ofthem"
+		},
+		{
+			"row": 6,
+			"subRows": [45, 47, 49, 52],
+			"type": "ofthem"
+		},
+		{
+			"row": 7,
+			"cols": [3],
+			"subRows": [62],
+			"type": "ofthem"
+		},
+		{
+			"row": 18,
+			"subRows": [19, 20, 21],
+			"type": "ofthem"
+		},
+		{
+			"row": 29,
+			"subRows": [30, 31 ,32],
+			"type": "ofthem"
+		},
+		{
+			"row": 29,
+			"cols": [3],
+			"subRows": [53],
+			"type": "ofthem"
+		},
+		{
+			"row": 45,
+			"subRows": [46],
+			"type": "ofthem"
+		},
+		{
+			"row": 47,
+			"subRows": [48],
+			"type": "ofthem"
+		},
+		{
+			"row": 49,
+			"subRows": [50],
+			"type": "ofthem"
+		},
+		{
+			"row": 50,
+			"subRows": [51],
+			"type": "ofthem"
+		},
+		{
+			"row": 54,
+			"subRows": [55],
+			"type": "ofthem"
+		},
+		{
+			"row": 56,
+			"subRows": [57],
+			"type": "ofthem"
+		},
+		{
+			"row": 58,
+			"subRows": [59],
+			"type": "ofthem"
+		}
+	]
+}

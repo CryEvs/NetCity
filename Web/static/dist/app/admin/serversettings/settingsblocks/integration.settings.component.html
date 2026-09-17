@@ -1,0 +1,469 @@
+<form class="form-horizontal" ng-if="$ctrl.state.ready">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<button title="{{$ctrl.language.Generic.ServAdmin.kSaveSettings}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kEServicesUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.eServicesUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kEServicesUrl, $ctrl.data.integrationSettings.eServicesUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kEServicesExternalUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.eServicesExternalUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kEServicesExternalUrl, $ctrl.data.integrationSettings.eServicesExternalUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kFiasAddressServiceUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.fiasAddressServiceUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kFiasAddressServiceUrl, $ctrl.data.integrationSettings.fiasAddressServiceUrl+'?fiasaoId=bb035cc3-1dc2-4627-9d25-a1bf2d4b936b', true)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kExternalFiasAddressServiceUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control"  size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.externalFiasAddressServiceUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kExternalFiasAddressServiceUrl, $ctrl.data.integrationSettings.externalFiasAddressServiceUrl+'?fiasaoId=bb035cc3-1dc2-4627-9d25-a1bf2d4b936b', true)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kContingentSystem}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.contingentUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kContingentSystem, $ctrl.data.integrationSettings.contingentUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+<span ng-if="$ctrl.flags.modulePooIntegration">
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kNetCityPooUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100"ng-model="$ctrl.data.integrationSettings.netCityPooUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kNetCityPooUrl, $ctrl.data.integrationSettings.netCityPooUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kNetCityPooManagementUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100"ng-model="$ctrl.data.integrationSettings.netCityPooManagementUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kNetCityPooManagementUrl, $ctrl.data.integrationSettings.netCityPooManagementUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kNetCityPooUserName}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.netCityPooUserName" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kNetCityPooPassword}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.netCityPooPassword" track-changes>
+			</div>
+		</div>
+	</div>
+</span>
+	<div class="form-group" ng-if="$ctrl.flags.moduleRegion">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kRegionUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.regionUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kRegionUrl, $ctrl.data.integrationSettings.regionUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.moduleRegion">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kClientIdForSync}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="number" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.clientIdForSync" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.moduleQa">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kMsokoUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" name="NSMsokoUrl" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.msokoUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kMsokoUrl, $ctrl.data.integrationSettings.msokoUrl, true)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kYaCounterCode}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="number" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.yaCounterCode" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.moduleStaffAttest">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kStaffAttestUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.staffAttestUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kStaffAttestUrl, $ctrl.data.integrationSettings.staffAttestUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.moduleStaffAttest">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kStaffAttestLogin}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.staffAttestLogin" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.moduleStaffAttest">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kStaffAttestSecret}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.staffAttestSecret" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.integrationPfdoType">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kEducPortalUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.educPortalUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kEducPortalUrl, $ctrl.data.integrationSettings.educPortalUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.integrationPfdoType">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kEducPortalApiUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.educPortalApiUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kEducPortalApiUrl, $ctrl.data.integrationSettings.educPortalApiUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.soloIntegration">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kSoloEsaClientId}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.soloEsaClientId" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.soloIntegration">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kSoloEsaClientSecret}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="500" maxlength="500" ng-model="$ctrl.data.integrationSettings.soloEsaClientSecret" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.soloIntegration">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kSoloEsaUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="300" maxlength="300" ng-model="$ctrl.data.integrationSettings.soloEsaUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kSoloEsaUrl, $ctrl.data.integrationSettings.soloEsaUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.soloIntegration">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kSoloRbooApiUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="300" maxlength="300" ng-model="$ctrl.data.integrationSettings.soloRbooApiUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kSoloRbooApiUrl, $ctrl.data.integrationSettings.soloRbooApiUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.soloIntegration">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kSoloRefsApiUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="300" maxlength="300" ng-model="$ctrl.data.integrationSettings.soloRefsApiUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kSoloRefsApiUrl, $ctrl.data.integrationSettings.soloRefsApiUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.soloIntegration">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kSoloEnrollmentUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="300" maxlength="300" ng-model="$ctrl.data.integrationSettings.soloEnrollmentUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kSoloEnrollmentUrl, $ctrl.data.integrationSettings.soloEnrollmentUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.soloIntegration">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kSoloSchoolEnrollmentUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="300" maxlength="300" ng-model="$ctrl.data.integrationSettings.soloSchoolEnrollmentUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kSoloSchoolEnrollmentUrl, $ctrl.data.integrationSettings.soloSchoolEnrollmentUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.pfdoIntegrationWithVolgograd">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kPFDOClientId}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.pfdoClientId" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.pfdoIntegrationWithVolgograd">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kPFDOClientSecret}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.pfdoClientSecret" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.pfdoIntegrationWithVolgograd">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kPFDOUserName}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.pfdoUserName" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="$ctrl.flags.pfdoIntegrationWithVolgograd">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kPFDOPassword}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.pfdoPassword" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kSchoolFoodUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.schoolFoodUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kSchoolFoodUrl, $ctrl.data.integrationSettings.schoolFoodUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kSchoolFoodPassword}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="100" maxlength="100" ng-model="$ctrl.data.integrationSettings.schoolFoodPassword" track-changes>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kIdentityServerUrl}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="300" maxlength="300" ng-model="$ctrl.data.integrationSettings.identityServerUrl" track-changes>
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="$ctrl.checkConnection($ctrl.language.Generic.ServAdmin.kIdentityServerUrl, $ctrl.data.integrationSettings.identityServerUrl, false)" type="button">
+						{{$ctrl.language.Generic.ServAdmin.kCheckConnection}}
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-4 col-lg-3 col-sm-4">
+			{{$ctrl.language.Generic.ServAdmin.kRabbitMqConnection}}
+		</label>
+		<div class="col-md-8 col-lg-5 col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" size="300" maxlength="300" ng-model="$ctrl.data.integrationSettings.rabbitMqConnection" track-changes>
+			</div>
+		</div>
+	</div>
+</form>

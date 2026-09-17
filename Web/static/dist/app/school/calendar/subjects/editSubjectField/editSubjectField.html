@@ -1,0 +1,43 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<div class="row">
+			<form role="form" name="editSubjectFieldForm" class="form form-sm">
+				<div class="form-group">
+					<label class="control-label col-md-4">{{language.Generic.Common.kName}}</label>
+					<div class="col-md-8">
+						<input track-changes type="text" class="form-control FilterWhiteSpace" name="SUBJECTFIELDNAME" size="50" maxlength="50" ng-model="subjectField.name">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok()" ng-if="mode == 'create'">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			<span>{{language.Generic.Buttons.kAdd}}</span>
+		</button>
+		
+		<button class="btn btn-primary" ng-click="ok()" ng-if="mode == 'edit'">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			<span>{{language.Generic.Buttons.kSave}}</span>
+		</button>
+		
+		<button class="btn btn-danger" ng-click="delete()" ng-if="mode == 'edit'">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-minus-sign"></span>
+			<span>{{language.Generic.Buttons.kRemove}}</span>
+		</button>
+
+		<button class="btn btn-default" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{language.Generic.Buttons.kCancel}}</span>
+		</button>
+	</div>
+</div>

@@ -1,0 +1,62 @@
+<div class="alert alert-danger" role="alert" ng-if="$ctrl.errorCertifInfo">
+	{{$ctrl.errorCertifInfo}}
+</div>
+
+<div class="form-group" ng-if="$ctrl.showCertInfo">
+	<label class="control-label col-md-3 col-lg-3">Сертификат дополнительного образования</label>
+	<div class="form-group col-md-8 col-lg-8">
+		<div class="form-group">
+			<label class="control-label col-md-3 col-lg-3">
+				Номер
+			</label>
+			<div class="col-md-9 col-lg-9">
+				<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.certNumber" name="certificateNumber">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-3 col-lg-3">
+				Статус
+			</label>
+			<div class="col-md-9 col-lg-9">
+				<input class="form-control" type="text" disabled="disabled" ng-model="$ctrl.certStatus" name="certificateStatus">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="alert alert-info" ng-if="!$ctrl.addEducations || !$ctrl.addEducations.length" role="alert">Нет данных о зачислении в организации дополнительного образования</div>
+<table class="table table-xs table-bordered table-print-text" ng-if="$ctrl.addEducations && $ctrl.addEducations.length">
+	<tr>
+		<th rowspan="2">{{$ctrl.language.Generic.ClassManagement.kProgDirection}}</th>
+		<th rowspan="2">{{$ctrl.language.Generic.Reports.kProgramDirection}}</th>
+		<th rowspan="2">{{$ctrl.language.Generic.Reports.kAssociation}}</th>
+		<th rowspan="2">{{$ctrl.language.Generic.SetupAddSchool.kCost}}</th>
+		<th rowspan="2">{{$ctrl.language.Generic.SetupAddSchool.kReason}}</th>
+		<th rowspan="2">{{$ctrl.language.Generic.Reports.kYearNum2}}</th>
+		<th colspan="2">{{$ctrl.language.Generic.SetupSchool.kProgramHours}}</th>
+		<th rowspan="2">{{$ctrl.language.Generic.Reports.kEnrollDate_2}}</th>
+		<th rowspan="2">{{$ctrl.language.Generic.Reports.kDepartDate_2}}</th>
+	</tr>
+	<tr>
+		<th>{{$ctrl.language.Generic.SetupSchool.kForYear}}</th>
+		<th>{{$ctrl.language.Generic.SetupSchool.kForWeek}}</th>
+	</tr>
+	<tr ng-repeat-start="addEducationsBySchool in $ctrl.addEducationsBySchools">
+		<th colspan="10" class="text-center">{{addEducationsBySchool[1][0].school.name}}</th>
+	</tr>
+	<tr ng-repeat-end ng-repeat="addEducation in addEducationsBySchool[1]">
+		<td ng-if="!$ctrl.showAddProgramLink(addEducation)">{{addEducation.program.name}}<span ng-if="addEducation.depart"> ({{$ctrl.language.Generic.Common.kOut}})</span></td>
+		<td ng-if="$ctrl.showAddProgramLink(addEducation)"><a href=# ng-click="$ctrl.editAddProgram(addEducation)" title="{{$ctrl.language.Generic.Common.kChange}}">{{addEducation.program.name}}<span ng-if="addEducation.depart"> ({{$ctrl.language.Generic.Common.kOut}})</span></a></td>
+		<td>{{addEducation.direction}}</td>
+		<td>{{addEducation.class.name}}</td>
+		<td ng-if="addEducation.cost">{{$ctrl.getCostName(addEducation.cost)}}</td>
+		<td ng-if="!addEducation.cost"></td>
+		<td>{{addEducation.enrollReason}}</td>
+		<td ng-if="!addEducation.grade"></td>
+		<td ng-if="addEducation.grade">{{addEducation.grade}}</td>
+		<td>{{addEducation.yearHours}}</td>
+		<td>{{addEducation.weekHours}}</td>
+		<td>{{addEducation.enrollDate | nsDate}}</td>
+		<td ng-if="addEducation.depart">{{addEducation.departDate | nsDate}}</td>
+		<td ng-if="!addEducation.depart"></td>
+	</tr>
+</table>

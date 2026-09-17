@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="buttons-filters-panel form-horizontal single-row">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="buttons-panel">
+						<div class="buttons-panel-left">
+							<button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="exportForm()">
+								<span class="glyphicon glyphicon-export"></span> <span>Экспорт</span>
+							</button>
+							<button title="Экспорт сводной формы" type="button" class="btn btn-default" ng-click="exportAggregateForm()">
+								<span class="glyphicon glyphicon-export"></span> <span>Экспорт сводной формы</span>
+							</button>
+						</div>
+						<div class="buttons-panel-right"></div>
+
+						<div class="buttons-panel-adaptive btn-group" style="float: right; display: none; margin-right: 0px; right: 0px;">
+							<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<span class="glyphicon glyphicon-menu-hamburger"></span> <span id="action">Действия</span> <span class="caret"></span>
+							</button>
+							
+							<ul class="dropdown-menu buttons-panel-right buttons-panel-adaptive-wrapper pull-right" role="menu" style="display: block;">
+								<li>
+									<button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="exportForm()">
+										<span class="glyphicon glyphicon-export"></span> <span>Экспорт</span>
+									</button>
+								</li>
+								<li>
+									<button title="Экспорт сводной формы" type="button" class="btn btn-default" ng-click="exportAggregateForm()">
+										<span class="glyphicon glyphicon-export"></span> <span>Экспорт сводной формы</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="filters-panel col-md-12 filters-panel-compact"></div>
+			</div>
+		</div>
+	</div>
+
+</div>

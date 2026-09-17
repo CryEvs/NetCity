@@ -1,0 +1,18 @@
+﻿//== Global styles
+
+// width bootstrap-var and custom alpha-mixins
+@import (reference) "var.less";
+@import (reference) "mixins.less";
+
+.has-error { // Default @state-danger-text: #a94442;
+	.form-control-validation();
+}
+
+.has-warning {
+	.form-control-validation(@state-warning-text, @state-warning-text, @state-warning-text);
+}
+
+.has-success {
+	.form-control-validation(@state-success-text, @state-success-text, @state-success-text);
+}
+// /.Global styles

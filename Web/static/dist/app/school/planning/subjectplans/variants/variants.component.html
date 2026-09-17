@@ -1,0 +1,87 @@
+<div class="row ns-cloak">
+
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row ">
+		<div class="buttons-panel" ng-if="$ctrl.showVariantsAssignment()">
+			<div class="buttons-panel-right">
+				<button title="{{'language.Generic.Curriculum.kBtnUseInJournal' | language}}" type="button" class="btn btn-default" ng-click="$ctrl.variantsAssignment()">
+					<span>{{'language.Generic.Curriculum.kBtnUseInJournal' | language}}</span>
+				</button>
+			</div>
+		</div>
+
+		<filter-panel ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+
+	</div>
+</div>
+
+<style>
+	tr > td.invalid {
+		background-color: #ffb8b8;
+	}
+</style>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel extra">
+			<div class="buttons-panel-left">
+				<button type="button" class="btn btn-primary" ng-click="$ctrl.save()" ng-if="!$ctrl.readOnly && $ctrl.subjectPlans && $ctrl.subjectPlans.length">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="$ctrl.reset()" ng-if="!$ctrl.readOnly && $ctrl.subjectPlans && $ctrl.subjectPlans.length">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="$ctrl.add()" ng-if="!$ctrl.readOnly">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button type="button" class="btn btn-warning" ng-click="$ctrl.delete()" ng-if="!$ctrl.readOnly && $ctrl.subjectPlans && $ctrl.subjectPlans.length">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-if="!$ctrl.subjectPlans.length">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">{{$ctrl.language.Generic.Assignment.kNoKTPVariants}}</div>
+    </div>
+</div>
+
+
+<div class="row ns-cloak" ng-if="$ctrl.subjectPlans && $ctrl.subjectPlans.length">
+	<div class="col-md-12">
+		<table class="table table-xs table-print table-bordered table-thin">
+			<thead>
+			<tr>
+				<th>{{'language.Generic.Curriculum.kVariantName' | language}}</th>
+				<th>Автор</th>
+				<th ng-bind-html="$ctrl.language.Generic.Common.kDeletingMark" ng-if="!$ctrl.readOnly"></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="subjectPlan in $ctrl.subjectPlans">
+				<td ng-class="{'invalid': subjectPlan.isInvalid}">
+					<input ng-if="$ctrl.canEdit(subjectPlan)" size="100" class="form-control" name="subjectPlanName" track-changes type="text" ng-model="subjectPlan.name" ng-value="subjectPlan.name" maxlength="100" required />
+					<span ng-if="!$ctrl.canEdit(subjectPlan)">{{subjectPlan.name}}</span>
+				</td>
+				<td>
+					<select ng-if="$ctrl.canEditAuthors()" track-changes class="form-control" ng-model="subjectPlan.author" ng-options="teacher as teacher.name for teacher in $ctrl.teachers track by teacher.id"></select>
+					<span ng-if="!$ctrl.canEditAuthors()">{{subjectPlan.author.name}}</span>
+				</td>
+				<td class="text-center" ng-if="!$ctrl.readOnly">
+					<input type="checkbox" ng-checked="$ctrl.selection.isSelected(subjectPlan)" ng-click="$ctrl.selection.select(subjectPlan)" ng-if="!subjectPlan.used" ng-disabled="!$ctrl.canEdit(subjectPlan)"/>
+					<span ng-if="subjectPlan.used">{{'language.Generic.Common.kEmploy' | language}}</span>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+

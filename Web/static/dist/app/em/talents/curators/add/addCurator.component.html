@@ -1,0 +1,38 @@
+
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form role="form" name="portfolioForm" class="form form-xs">
+		<!--Поля формы-->
+
+		<div class="form-group">
+			<label for="curator-org" class="control-label">{{$ctrl.language.Generic.Common.kEO}}</label>
+			<div class="">
+
+				<ui-select track-changes id="curator-org" ng-model="$ctrl.data.curator.schoolId" theme="bootstrap">
+					<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+					<ui-select-choices repeat="school.id as school in $ctrl.searchCtx.schools.items"
+										ui-disable-choice="school.name === 'Совпадений не найдено' || school.name === 'Поиск...'"
+										refresh="$ctrl.searchCtx.schools.search($select.search)"
+										on-select>
+						<div ng-bind-html="school.name | highlight: $select.search"></div>
+					</ui-select-choices>
+				</ui-select>
+
+			</div>
+		</div>
+		
+		<div class="form-group" ng-if="$ctrl.data.curator.schoolId">
+			<label for="curator-user" class="control-label">{{$ctrl.language.Generic.Common.kStaff}}</label>
+			<div class="">
+
+				<ui-select track-changes id="curator-user" ng-model="$ctrl.data.curator.userId" theme="bootstrap">
+					<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+					<ui-select-choices repeat="user.id as user in $ctrl.searchCtx.staffs.items"
+										ui-disable-choice="user.name === 'Совпадений не найдено' || user.name === 'Поиск...'"
+										refresh="$ctrl.searchCtx.staffs.search($select.search)">
+						<div ng-bind-html="user.name | highlight: $select.search"></div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+		</div>
+	</form>
+</ns-modal>

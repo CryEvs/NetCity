@@ -1,0 +1,45 @@
+<div class="row ns-cloak">
+	<div class="col-md-12">	
+		<div class="buttons-panel">	
+			<div class="buttons-panel-left" ng-if="$ctrl.state.dataReady && !$ctrl.state.readOnly">
+				<button class="btn btn-primary" type="button" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+
+				<button	title="$ctrl.language.Generic.Buttons.kReset" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+					<span class="glyphicon glyphicon-repeat"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12 col-lg-8">
+		<form class="form-horizontal form-sm" name="$ctrl.form" ng-if="$ctrl.state.dataReady">
+			<ns-form control-size="col-md-8" label-size="col-md-4">
+
+				<ns-form-group title="{{ 'language.Generic.Curriculum.kUnitName' | language }}" ng-class="{'has-error': $ctrl.form.Unitname.$invalid}">
+					<input type="text" class="form-control" unitname-input name="Unitname" size="60" maxlength="200" ng-model="$ctrl.unit.name" required track-changes ng-readonly="$ctrl.state.readOnly">
+					<div ng-messages="$ctrl.form.Unitname.$error">
+						<span class="help-block" ng-message="required">Обязательное поле</span>
+						<span class="help-block" ng-message="unitname">Длина поля должна быть не больше 200 символам</span>
+					</div>
+				</ns-form-group>
+				
+				<ns-form-group title="{{ 'language.Generic.Curriculum.kNUnitINPlan' | language }}">
+					<span ng-if="$ctrl.state.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.unit.unitNumber}}</span></span>
+					<select ng-if="!$ctrl.state.readOnly" class="form-control" name="UnitNumber" ng-model="$ctrl.unit.unitNumber" ng-options="unitNumber for unitNumber in $ctrl.unitNumbers track by unitNumber" track-changes>
+					</select>
+				</ns-form-group>
+
+				<ns-form-group title="{{ 'language.Generic.Curriculum.kDescription' | language }}">
+					<textarea class="form-control" ng-model="$ctrl.unit.description" rows="5" cols="60" wrap="soft" maxlength="2000" ng-disabled="$ctrl.state.readOnly" track-changes></textarea>
+				</ns-form-group>
+
+			</ns-form>
+		</form>
+	</div>
+</div>

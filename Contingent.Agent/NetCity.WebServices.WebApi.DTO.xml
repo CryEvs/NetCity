@@ -1,0 +1,2859 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetCity.WebServices.WebApi.DTO</name>
+    </assembly>
+    <members>
+        <member name="P:NetCity.WebServices.WebApi.DTO.AccessJournal.SchoolInfoAccessJournalEntryDto.Author">
+            <summary>
+            ФИО автора изменений
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.AccessJournal.SchoolInfoAccessJournalEntryDto.Date">
+            <summary>
+            Дата изменения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.AccessJournal.SchoolInfoAccessJournalEntryDto.Ip">
+            <summary>
+            IP - адрес автора
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.AccessJournal.SchoolInfoAccessJournalEntryDto.Reason">
+            <summary>
+            причина изменения в карточке ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.AccessJournal.SchoolInfoAccessJournalEntryDto.ReasonDocId">
+            <summary>
+            документ - основание для изменения карточки ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.AccessJournal.UserInfoAccessJournalEntryDto.Author">
+            <summary>
+            ФИО автора изменений
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.AccessJournal.UserInfoAccessJournalEntryDto.Date">
+            <summary>
+            Дата изменения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.AccessJournal.UserInfoAccessJournalEntryDto.Ip">
+            <summary>
+            IP - адрес автора
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Announcements.EditAnnouncementDto.SchoolIds">
+            <summary>
+            Массив id организаций
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Announcements.RecipientInfo">
+            <summary>
+            Информация по получателям объявления
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Announcements.RecipientInfo.FuncTypes">
+            <summary>
+            тип ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Announcements.RecipientInfo.OrgsCount">
+            <summary>
+            список образовательных организаций
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Announcements.RecipientInfo.RolesStr">
+            <summary>
+            группы пользователей
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Documents.DocumentDto.Seria">
+            <summary>
+            Серия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Documents.DocumentDto.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Documents.DocumentDto.Issued">
+            <summary>
+            Кем выдан
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Documents.DocumentDto.IssuedDate">
+            <summary>
+            Дата выдачи
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Em.EmSchoolDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Em.EmSchoolDto.CityName">
+            <summary>
+            Населенный пункт
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Em.EmSchoolDto.ShortName">
+            <summary>
+            Краткое наименование ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Em.EmSchoolDto.SchoolCode">
+            <summary>
+            Код ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Em.EmSchoolDto.EmId">
+            <summary>
+            Принадлежность к УО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Em.EmSchoolDto.OwnEmId">
+            <summary>
+            Непосредственная привязка к УО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.StateId">
+            <summary>
+            Ид региона
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.MunicipalityId">
+            <summary>
+            ид муниципального раойна / гор. округа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.Municipality">
+            <summary>
+            муниципальный раойн / гор. округ
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.AwardEventType">
+            <summary>
+            Тип мероприятия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.Level">
+            <summary>
+            Уровень мероприятия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.PartForm">
+            <summary>
+            Форма участия/проведения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.Members">
+            <summary>
+            Участники
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.Founder">
+            <summary>
+            Информация об организаторе мероприятия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.Subject">
+            <summary>
+            Тема
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.Deleted">
+            <summary>
+            Признак удалено
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.VisitForm">
+            <summary>
+            Форма посещения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.CuratorId">
+            <summary>
+            Куратор. Для мероприятий из личного плана куратора
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.Curator">
+            <summary>
+            Куратор - ФИО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.Status">
+            <summary>
+            Статус
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.MembersRegistrationType">
+            <summary>
+            Способ записи участников на мероприятие
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.IsLocal">
+            <summary>
+            признак "Локальное мероприятие / скрытое от сотрудников ОУ"
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.OlympSubject">
+            <summary>
+            Предмет ВсоШ
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.Direction">
+            <summary>
+            Предмет / направление (для адаптации модуля ВсОШ - Ленинградская область)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.AwardEventDTO.Grades">
+            <summary>
+            Параллели ВсОШ
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.ClassEventDTO.Room">
+            <summary>
+            <see cref="P:NetCity.WebServices.WebApi.DTO.Events.IRoomedEventDto.Room"/>
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventDTO.StartTime">
+            <summary>
+            Дата с
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventDTO.EndTime">
+            <summary>
+            Дата по
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventDTO.GlobalYearId">
+            <summary>
+            Учебный год
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventDTO.Organization">
+            <summary>
+            Информация о месте проведения мероприятия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventDTO.EventType">
+            <summary>
+            Тип события
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventDTO.Periodicity">
+            <summary>
+            Признак годовой периодичности
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventDTO.Description">
+            <summary>
+            Описание
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventDTO.ModifyDate">
+            <summary>
+            Дата создания/изменения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.EventType">
+            <summary>
+            Тип мероприятия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.EventTypes">
+            <summary>
+            Типы мероприятий
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.Start">
+            <summary>
+            начало интервала
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.End">
+            <summary>
+            окончание интервала
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.YearId">
+            <summary>
+            ид учебного года (глобального)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.OrgSchoolId">
+            <summary>
+            ид организатора - ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.OrgEmId">
+            <summary>
+            ид организатора - ОУ
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.OrgName">
+            <summary>
+            наименование организатора
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.PlaceName">
+            <summary>
+            наименование места проведения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.PlaceSchoolId">
+            <summary>
+            ид места проведения - ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.PlaceEmId">
+            <summary>
+            ид места проведения - ОУ
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.Level">
+            <summary>
+            уровень мероприятия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.AwardEventType">
+            <summary>
+            тип "конкурсного" мероприятий
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.LocalScope">
+            <summary>
+            Область видимости с ограничением по текущему муниципалитету
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.Name">
+            <summary>
+            наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.CuratorId">
+            <summary>
+            ид куратора
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.Status">
+            <summary>
+            статус мероприятия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.AwardEventStatus">
+            <summary>
+            статус мероприятия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.ShowPrivateEvents">
+            <summary>
+            признак - отображать мероприятия из "личного плана мероприятий"
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventFilter.ModifiedFrom">
+            <summary>
+            Созданные/измененные после определенной даты
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventMemberDTO.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventMemberDTO.User">
+            <summary>
+            Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventMemberDTO.Organization">
+            <summary>
+            Организация
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.EventMemberDTO.CuratorId">
+            <summary>
+            Куратор
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Events.EventType">
+            <remarks>
+            Есть схожий тип NetCity.Common.EEventTypes
+            Числовые значения выставлены таким образом, чтобы не конфликтовать с NetCity.Common.EEventTypes и сделать типы взаимозаменяемыми
+            </remarks>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Events.IRoomedEventDto">
+            <summary>
+            Мероприятие проводится в конкретном помещении
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.IRoomedEventDto.Room">
+            <summary>
+            Помещение проведения мероприятия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.NationOlymp.OlympPassRateDto.GlobalYearId">
+            <summary>
+            Идентификатор глобального учебного года
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.NationOlymp.OlympPassRateDto.EventLevel">
+            <summary>
+            уровень/этап ВсОШ
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.NationOlymp.OlympPassRateDto.DistrictEmId">
+            <summary>
+            ид УО-округа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.NationOlymp.OlympPassRateDto.MunicipalityId">
+            <summary>
+            Идентификатор муниципалитета
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.NationOlymp.OlympPassRateDto.OlympSubjectId">
+            <summary>
+            Идентификатор предмета
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.NationOlymp.OlympPassRateDto.Rate">
+            <summary>
+            Проходной балл
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.NationOlymp.OlympPassRateDto.Grades">
+            <summary>
+            Параллели
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.ParticipationInfoDTO.Title">
+            <summary>
+            Титул
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.ParticipationInfoDTO.SportTitle">
+            <summary>
+            Спортивное звание
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.ParticipationInfoDTO.SportCategory">
+            <summary>
+            Спортивный разряд
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.ParticipationInfoDTO.SpecialNotes">
+            <summary>
+            Особые отметки
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.ParticipationInfoDTO.Rank">
+            <summary>
+            Место/Рейтинг
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.ParticipationInfoDTO.Files">
+            <summary>
+            Файлы - сканы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.ParticipationInfoDTO.Score">
+            <summary>
+            Количество набранных баллов
+            Только для мероприятий ВсОШ
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.ParticipationInfoDTO.AppealId">
+            <summary>
+            Ссылка на апелляцию (просмотр работы)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.ParticipationInfoDTO.AppealStatus">
+            <summary>
+            Состояние апелляции
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Events.SchoolEventDTO">
+            <summary>
+            Мероприятие проводимое в образовательной организации
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Events.SchoolEventDTO.Room">
+            <summary>
+            <see cref="P:NetCity.WebServices.WebApi.DTO.Events.IRoomedEventDto.Room"/>
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Login.PrepareEmAuthFormResponse.EducManagement">
+            <summary>
+            УО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Login.PrepareAuthFormResponse.Organization">
+            <summary>
+            Организация
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.Abstractions.NamedObject`1">
+            <summary>
+            Объект с именованным полем
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.FieldType">
+            <summary>
+            Тип элемента
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.SystemName">
+            <summary>
+            Системное имя 
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.Type">
+            <summary>
+            Тип. Служит для отображения объекта в интерфейсе пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.PermitedActions">
+            <summary>
+            Набор допустимых действий
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.UIName">
+            <summary>
+            Имя для пользовательского интерфейса
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.IsHidden">
+            <summary>
+            Элемент не должен отображаться на экране
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.IsMain">
+            <summary>
+            Этот элемент главный
+            </summary>
+            <remarks>При отображении справочников используется для привязывания ссылки на окно редактирования</remarks>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.IsEditableInStatus">
+            <summary>
+            Поле редактируемо в статусе
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.EmbendedScriptsEditable">
+            <summary>
+            Скрипты определяющие возможность редактирования
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.IsAutoField">
+            <summary>
+            Вычисляемое поле
+            </summary>
+            <remarks>Это поле не может быть заполнено пользователем</remarks>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.AvailableValues">
+            <summary>
+            Список доступных значений
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.Messages">
+            <summary>
+            Предопределённые сообщения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.Order">
+            <summary>
+            Порядковый номер для сортировки
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.Validators">
+            <summary>
+            Набор выражений для проверки поля
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.FieldType.Information">
+            <summary>
+            Набор выражений, которые должны появляться при условии
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts">
+            <summary>
+            Встраиваемые скрипты
+            </summary>
+            <remarks>Сложный инструмент, которого не должно было появиться</remarks>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts.CombinationWithOtherOperations">
+            <summary>
+            Определяет как будет сочетаться с другими операциями
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts._script">
+            <summary>
+            Место, где будет сохраненно выражение в виде js
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts.Script">
+            <summary>
+            Скрипт, для использования на клиенте
+            </summary>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts.SetCombinator(NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts.LogicOperations)">
+            <summary>
+            Задать логическую операцию, для совмещения с другими выражениями
+            </summary>
+            <param name="combinator">Логическая операция</param>
+            <remarks>Значение по-умолчанию LogicOperations.And</remarks>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts.SetExpression``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Задать логическое выражение, которое будет преобразовано в js
+            </summary>
+            <typeparam name="TModel">Модель данных</typeparam>
+            <param name="expr">Выражение, которое будет преобразовано в js</param>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts.PrepareExpressionTree(System.Linq.Expressions.Expression,System.Type)">
+            <summary>
+            Разобрать дерево выражений и сформировать js код
+            </summary>
+            <param name="expr">Выражение</param>
+            <param name="modelType">Тип исходной модели, используется для отображения X в информацию о можели</param>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts.LogicOperations">
+            <summary>
+            Логические операции
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts.LogicOperations.And" -->
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts.LogicOperations.Or">
+            <summary>
+            ||
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.FieldTypesEnum">
+            <summary>
+            Типы полей
+            </summary>
+            <remarks>Для них должны быть реализованы обработчики</remarks>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.FieldTypesEnum.Undefined">
+            <summary>
+            Неопределённый тип
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.FieldTypesEnum.String">
+            <summary>
+            Строка
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.FieldTypesEnum.Number">
+            <summary>
+            Число
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.FieldTypesEnum.Date">
+            <summary>
+            Дата
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.FieldTypesEnum.Table">
+            <summary>
+            Таблица
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.FieldTypesEnum.Select">
+            <summary>
+            Выбор из списка доступных значений
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.FieldTypesEnum.CheckBox">
+            <summary>
+            Чекбокс
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.ActionEnum">
+            <summary>
+            Перечисление действий
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.ActionEnum.None">
+            <summary>
+            Нет допустимых действий
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.ActionEnum.Create">
+            <summary>
+            Разрешено создание
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.ActionEnum.Edit">
+            <summary>
+            Разрешено Редактирование 
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.ActionEnum.Delete">
+            <summary>
+            Разрешено удаление
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.ActionEnum.Replace">
+            <summary>
+            Разрешена замена элементов справочника другим элементом того же справочника
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIEmployeePositionMapper._availableEmployeePositionsTypes">
+            <summary>
+            Получить список типов должностей сотрудников
+            </summary>
+            <returns>Массив типов должностей сотрудников</returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIEmployeePositionMapper.#ctor(NetCity.WebServices.WebApi.DTO.Models.Mappers.UIItems{System.Int32}[])">
+            <summary>
+            Создать маппер
+            </summary>
+            <param name="availableEmployeePositionsTypes">Список доступных типов должностей сотрудников</param>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIItems`1">
+            <summary>
+            Элемент списка
+            </summary>
+            <typeparam name="TProperty">Тип ключа списка</typeparam>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIItems`1.Id">
+            <summary>
+            Ключ списка
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIItems`1.Name">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIItems`1.ShortName">
+            <summary>
+            Короткое имя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIItems`1.Order">
+            <summary>
+            Порядок сортировки
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper">
+            <summary>
+            Абстрактный класс-хранилище моделей
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper.ModelStorage">
+            <summary>
+            Хранилище моделей
+            </summary>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper.HasMap(System.Type)">
+            <summary>
+            Проверить существует ли маппер для типа
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper.AddModel``1(NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse{``0})">
+            <summary>
+            Добавить модель в хранилище
+            </summary>
+            <typeparam name="TModel">Модель данных</typeparam>
+            <param name="model">модель представления</param>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper.GetModel(System.Type)">
+            <summary>
+            Получить модель представления по типу модели данных
+            </summary>
+            <param name="type">Тип модели данных</param>
+            <returns>Модель представления <see cref="T:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1"/></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper.GetModel``1">
+            <summary>
+             Получить модель представления по типу модели данных
+            </summary>
+            <typeparam name="TModel">Тип модели данных</typeparam>
+            <returns>Модель представления <see cref="T:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1"/></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper.GetUIModel``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Получить модель представления с данными
+            </summary>
+            <param name="data">Данные</param>
+            <returns>Модель представления с данными</returns>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1">
+            <summary>
+            Абстрактный класс описывающий методы для создания модели представления в веб интерфейсе
+            </summary>
+            <typeparam name="TModel">Модель данных</typeparam>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.Config">
+            <summary>
+            Настройки формаирования модели представления 
+            </summary>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.DisableActions(NetCity.WebServices.WebApi.DTO.Models.ActionEnum)">
+            <summary>
+            Запретить действия над реестром
+            </summary>
+            <param name="unavailableActions">Набор запрещённых действий</param>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.DisableActions(NetCity.WebServices.WebApi.DTO.Models.ActionEnum[])">
+            <summary>
+            Запретить действия над реестром
+            </summary>
+            <param name="unavailableActions">Набор запрещённых действий</param>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.CreateFieldType(System.Reflection.PropertyInfo)">
+            <summary>
+            Создать <see cref="T:NetCity.WebServices.WebApi.DTO.Models.FieldType"/> с основной информацией
+            </summary>
+            <param name="info">Описание поля в модели данных</param>
+            <returns>Описание поля в модели представления</returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.MapType(System.Type)">
+            <summary>
+            Получить тип элемента
+            </summary>
+            <param name="type">Исходный тип</param>
+            <returns>Тип пригодный для отоборажения на стороне клиента</returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.SetOrderMethod(System.Func{System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{`0}})">
+            <summary>
+            Задать метод сортировки
+            </summary>
+            <param name="order">Метод сортировки</param>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.SetReplaceable">
+            <summary>
+            Дать разрешение на замену элементов справочника другим элементом того же справочника
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.MapTypeDictionary">
+            <summary>
+            Словарь соответствия Guid типа, простому типу, для которого реализован обработчик на стороне клиента
+            </summary>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.SetClassProperty">
+            <summary>
+            Задать параметры класса
+            </summary>
+            <returns>Вспомогательный класс для заполнения модели представления <see cref="T:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1"/></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.SetFieldProperty``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Задать параметры поля модели данных
+            </summary>
+            <typeparam name="TProperty">Тип поля модели данных</typeparam>
+            <param name="getter">Метод получения поля подели данных</param>
+            <returns>Вспомогательный класс для заполнения модели представления <see cref="T:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1"/></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.IsAutoField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Пометить поле модели как формируемое автоматически. В интерфейсе поле будет отображаться, но его нельзя будет изменить.
+            </summary>
+            <param name="getter">Метод получения поля</param>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.GetPropertyInfo``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Получить информацию о свойстве по выражению получения этого свойства
+            </summary>
+            <param name="getter">Выражение получения свойства объекта</param>
+            <returns>Информация о свойстве</returns>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1">
+            <summary>
+            Класс-помощник, для заполнения модели представления
+            </summary>
+            <typeparam name="TProperty">Тип поля, для которого задаётся представления</typeparam>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.BoolValues(NetCity.Common.Components.Abstraction.ILanguageManager)">
+            <summary>
+            Описание булевой переменной
+            </summary>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.IsAutoField">
+            <summary>
+            Поментить поле модели как формируемое автоматически. В интерфейсе поле будет отображаться, но его нельзя будет изменить.
+            </summary>
+            <param name="getter">Метод получения поля</param>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.IsMainField">
+            <summary>
+            Это поле основное
+            </summary>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AvailableValues">
+            <summary>
+            Задать допустимые значения по типу
+            </summary>
+            <returns>Текущий объект</returns>
+            <remarks>Вызывается автоматически</remarks>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AvailableValues(`1[])">
+            <summary>
+            Задать допустимые значения из ограниченного списка элементов перечисления
+            </summary>
+            <param name="availableEnums">Перечисление</param>
+            <returns>Текущий объект</returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AvailableValues(NetCity.WebServices.WebApi.DTO.Models.Mappers.UIItems{`1}[])">
+            <summary>
+            Задать набор значений 
+            </summary>
+            <param name="availableValues">Набор доступных значений <see cref="T:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIItems`1"/></param>
+            <returns>Текущий объект</returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.SetFieldType(NetCity.WebServices.WebApi.DTO.Models.FieldTypesEnum)">
+            <summary>
+            Задать тип поля
+            </summary>
+            <param name="type">Тип поля</param>
+            <returns>Текущий объект</returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.Editable">
+            <summary>
+            Делает поле редактируемым в любом статусе, т.е. возвращает к значению поумолчанию
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.Editable(NetCity.WebServices.WebApi.DTO.References.ValueStatus[])">
+            <summary>
+            Определить статус элемента справочника, в котором доступно редактиорвание
+            </summary>
+            <remarks>Переопределяет значение списка статусов, в которых доступно редактирование. Поумолчанию редактирование доступно во всех статусах</remarks>
+            <param name="editAvailableForStatus">Статусы в которых доступно редактирование</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.NotEditable(NetCity.WebServices.WebApi.DTO.References.ValueStatus[])">
+            <summary>
+            Определить статус элемента справочника, в котором не доступно редактиорвание
+            </summary>
+            <remarks>В отличии от <see cref="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.Editable(NetCity.WebServices.WebApi.DTO.References.ValueStatus[])"/> вносит изменение в текущее значение справочника </remarks>
+            <param name="editUnAvailableForStatus">Статусы в которых не доступно редактирование</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.NotEditable">
+            <summary>
+            Делает поле справочника нередактируемым
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.SetHidden">
+            <summary>
+            Скрыть поле для отображения
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.SetMessages(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Задать сообщения
+            </summary>
+            <param name="messages">Сообщения в виде ключ из набора <see cref="T:NetCity.WebServices.WebApi.DTO.References.ReferencesConstants"/> и строка сообщения</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AddMessages(System.String,System.String)">
+            <summary>
+            Добавить сообщение 
+            </summary>
+            <param name="key">Ключ из набора <see cref="T:NetCity.WebServices.WebApi.DTO.References.ReferencesConstants"/></param>
+            <param name="message">Сообщение</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.ViewName(System.String)">
+            <summary>
+            Задать отображаемое имя в пользовательском интерфейсе
+            </summary>
+            <param name="name">Отображаемое имя</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.SetOrderNumber(System.Int32)">
+            <summary>
+            Задать номер по порядку. используется для сортировки на стороне клиента
+            </summary>
+            <param name="orderNumber">Номер по порядку</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AddValidator(System.String,System.String)">
+            <summary>
+            Задать регулярное выражение для проверки поля
+            </summary>
+            <param name="regularExpression">Текстовое представление регулярного выражения</param>
+            <param name="message">Сообщение выводимое при несоответствии регулярному выражению</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AddNumberValidator(System.String)">
+            <summary>
+            В поле можно ввести только числа
+            </summary>
+            <param name="message">Сообщение</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AddNumberValidator">
+            <summary>
+            В поле можно ввести только числа
+            </summary>
+            <param name="message">Сообщение</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AddEmptyValidator(System.String)">
+            <summary>
+            Добавить проверку заполненности поля
+            </summary>
+            <param name="message">Сообщенеи об ошибке</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AddEmptyValidator">
+            <summary>
+            Добавить проверку заполненности поля
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AddMaxSizeValidator(System.Int32,System.String)">
+            <summary>
+            Задать максимальное значение длины строки ввода
+            </summary>
+            <param name="maxSize">Максимальное значение длины строки ввода</param>
+            <param name="message">Сообщенеи о превышении длины строки ввода</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AddMaxSizeValidator(System.Int32)">
+            <summary>
+            Задать максимальное значение длины строки ввода
+            </summary>
+            <param name="maxSize">Максимальное значение длины строки ввода</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AddInformationMessage(System.String,System.String,NetCity.WebServices.WebApi.DTO.Models.UIMessageType,System.Boolean)">
+            <summary>
+            Задать сообщение с условием вывода
+            </summary>
+            <param name="regularExpression">Регулаярное выражение </param>
+            <param name="message">Текст сообщения</param>
+            <param name="type">Тип сообщения. Влияет на цвет сообщения</param>
+            <param name="sourceValue">Проверять исходное состояние поля</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:NetCity.WebServices.WebApi.DTO.Models.Mappers.UIMapper`1.FieldTypePreparer`1.AddEditEmbendedExpression(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},NetCity.WebServices.WebApi.DTO.Models.UIEmbendedScripts.LogicOperations)" -->
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1">
+            <summary>
+            Описание справочника
+            </summary>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1.DefaultOrder(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Метод сортировки по умолчанию
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1.OrderMethod">
+            <summary>
+            Метод сортировки данных
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1.Fields">
+            <summary>
+            Заголовок таблицы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1.Data">
+            <summary>
+            Содержимое таблицы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1.PermitedActions">
+            <summary>
+            Набор разрешённых действий над справочником
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1.PageSize">
+            <summary>
+            Размер страницы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1.NoDataMessage">
+            <summary>
+            Сообщение об отсутствии данных
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1.Type">
+            <summary>
+            Описание типа данных
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.ReferenceResponse`1.IsReplaceable">
+            <summary>
+            Элементы справочника могут быть заменены другими элементами этого же справочника
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.UIMessage">
+            <summary>
+            Сообщение для поля
+            </summary>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.UIMessage.#ctor(System.String,System.String,NetCity.WebServices.WebApi.DTO.Models.UIMessageType,System.Boolean)">
+            <summary>
+            Создать сообщение с условием вывода
+            </summary>
+            <param name="validateRegeExp">Регулярное выражение условия вывода сообщения</param>
+            <param name="message">Текст сообщения</param>
+            <param name="type">Тип сообщения (влияет на цвет рамки)</param>
+            <param name="sourceValue">Проверять исходное состояние поля</param>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.UIMessageType">
+            <summary>
+            Типы сообщений 
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Models.UIValidator">
+            <summary>
+            Класс содержащий выражение для проверки и сообщение о несоответствии 
+            </summary>
+        </member>
+        <member name="M:NetCity.WebServices.WebApi.DTO.Models.UIValidator.#ctor(System.String,System.String)">
+            <summary>
+            Создать условие для проверки
+            </summary>
+            <param name="validateRegeExp">Текст регулярного выражения, которому должно соответствовать поле</param>
+            <param name="message">Сообщение о несоответствии значения поля условию</param>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.UIValidator.Condition">
+            <summary>
+            Текст регулярного выражения, которому должно соответствовать поле
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Models.UIValidator.Message">
+            <summary>
+            Сообщение о несоответствии значения поля условию
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.AddStudentsDTO.SourceId">
+            <summary>
+            Идентифкатор источника учащихся для движения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.AddStudentsDTO.MoveDoc">
+            <summary>
+            Информация о документе о движения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.AddStudentsDTO.Identifiers">
+            <summary>
+            Список выбранных учащихся для зачисления
+            </summary>
+            <remarks>
+            Заполняются все идентификаторы всех выбранных учащихся
+            </remarks>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.AddStudentsDTO.MoveDirection">
+            <summary>
+            Данные о направлении движения
+            </summary>
+            <remarks>
+            Заполняется не во всех источниках движения. В некоторых источника класс определяется для каждого учащегося отдельно
+            </remarks>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.AddStudentsDTO.SimilarsResolveData">
+            <summary>
+            Данные о разрешении дублей учащихся
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.AddStudentsDTO.ExtraData">
+            <summary>
+            Дополнительная информация
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Movement.ApplyMovementEnqueueInfo">
+            <summary>
+            Информация о постановке задачи на применения "движения" учащихся
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.ApplyMovementEnqueueInfo.MoveDocId">
+            <summary>
+            Идентификатор документа о двжиении
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.DocId">
+            <summary>
+            Идентификатор документа выбытия/выпуска
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.StudentId">
+            <summary>
+            Идентификатор учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.StudentFio">
+            <summary>
+            ФИО учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.StudentBirthDate">
+            <summary>
+            Дата рождения учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.Parents">
+            <summary>
+            Родители
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.HomePhone">
+            <summary>
+            Домашний телефон
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.Gender">
+            <summary>
+            Пол
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.Email">
+            <summary>
+            E-Mail
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.PoolOrganization">
+            <summary>
+            Организация выбытия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.PoolOrganizationFuncType">
+            <summary>
+            Тип функциональности организации выбытия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.PoolOrganizationClassId">
+            <summary>
+            Kласс, из которого выбыл учащийся
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.PoolOrganizationClassGrade">
+            <summary>
+            Ступень класса, из которого выбыл учащийся
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.PoolOrganizationSchoolYearId">
+            <summary>
+            Учебный год, из которого выбыл учащийся
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.DepartReason">
+            <summary>
+            Причина выбытия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.DepartOrg">
+            <summary>
+            Куда выбыл
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.PoolCategory">
+            <summary>
+            Категория пула
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.DepartOrgOutsideType">
+            <summary>
+            Тип выбытия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.DepartEoType">
+            <summary>
+            Тип функциональности организации выбытия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.MoveType">
+            <summary>
+            Тип документа движения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.AvailabilityInfo">
+            <summary>
+            Информация о доступности учащегося для зачисления
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentDetailDto.Classes">
+            <summary>
+            Информация о движении ученика по классам и организациям
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentAvailabilityType">
+            <summary>
+            Тип/категория доступности выбывшего ученика 
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentAvailabilityInfo.Type">
+            <summary>
+            Тип доступности
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentAvailabilityInfo.CurrentOrgs">
+            <summary>
+            Список текущих организаций
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.PoolStudentAvailabilityInfo.InaccessibilityReason">
+            <summary>
+            Причина недоступности (для архивного пула)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Movement.RemoveStudentsDTO.SubDocStudentIds">
+            <summary>
+            композитный идентификаторы. 
+            идентификатор subdoc + _ + идентификатор учаещгося
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Organizations.EmCardInfo">
+            <summary>
+            Информация карточки УО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.EmCardInfo.Name">
+            <summary>
+            Наименование учредителя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.EmCardInfo.FullName">
+            <summary>
+            Полное наименование учредителя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.EmCardInfo.ParentName">
+            <summary>
+            Наименование родительского учредителя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.EmCardInfo.LegalAddress">
+            <summary>
+            Юридический адрес
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.EmCardInfo.Inn">
+            <summary>
+            ИНН
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.EmCardInfo.Ogrn">
+            <summary>
+            ОГРН
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.EmCardInfo.NpaDetails">
+            <summary>
+            Реквизиты НПА
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.EmCardInfo.NationOlympOrg">
+            <summary>
+            Может являться организатором этапа ВсОШ
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Organizations.MaintenanceDto">
+            <summary>
+            Для передачи информации о дополнительных услугах в школе
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.MaintenanceDto.Specialty">
+            <summary>
+            Специальность
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.MaintenanceDto.SpecNumber1">
+            <summary>
+            Количество специалистов первого типа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Organizations.MaintenanceDto.SpecNumber2">
+            <summary>
+            Количество специалистов второго типа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TeacherActivitiesInfo.TeacherPerformanceItems">
+            <summary>
+            Результативность образовательной деятельности педагога
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TeacherActivitiesInfo.TotalTeacherPerformance">
+            <summary>
+            Среднее
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Portfolio.TeacherPerformanceDto">
+            <summary>
+            Результативность образовательной деятельности педагога
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TeacherPerformanceDto.YearId">
+            <summary>
+            Идентификатор глобального года
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TeacherPerformanceDto.YearName">
+            <summary>
+            Учебный год
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TeacherPerformanceDto.TotalStudentsCount">
+            <summary>
+            Общее кол-во обучающихся
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TeacherPerformanceDto.StudentsWithPositiveResultsCount">
+            <summary>
+            Кол-во обучающихся, имеющих положительные результаты обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TeacherPerformanceDto.StudentsWithMarkTwoCount">
+            <summary>
+            Кол-во обучающихся, имеющих «2»
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TeacherPerformanceDto.PercentageStudentsWithPositiveResults">
+            <summary>
+            Результаты обучающихся (средние данные по годам в процентном отношении от числа участвующих)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TotalTeacherPerformanceDto.StudentsWithPositiveResultsCount">
+            <summary>
+            Кол-во обучающихся, имеющих положительные результаты обучения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TotalTeacherPerformanceDto.StudentsWithMarkTwoCount">
+            <summary>
+            Кол-во обучающихся, имеющих «2»
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Portfolio.TotalTeacherPerformanceDto.PercentageStudentsWithPositiveResults">
+            <summary>
+            Результаты обучающихся (средние данные по годам в процентном отношении от числа участвующих)
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.ExamTypeDto">
+            <summary>
+            Тип экзамена
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ExamTypeDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ExamTypeDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ExamTypeDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ExamTypeDto.ShortName">
+            <summary>
+            Краткое наиенование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ExamTypeDto.Type">
+            <summary>
+            Способ оценки знаний
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ExamTypeDto.Order">
+            <summary>
+            Поле для сортировки
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.CitizenshipDto">
+            <summary>
+            Представление гражданства
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.CitizenshipDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.CitizenshipDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.CitizenshipDto.NumberOfUses">
+            <summary>
+            Количество использований
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.CitizenshipDto.CodeId">
+            <summary>
+            Код страны в реестре ОКСМ
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.TermTypeDto">
+            <summary>
+            Представление типа учебного периода
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.TermTypeDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.TermTypeDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.TermTypeDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.TermTypeDto.Count">
+            <summary>
+            Количество учебных периодов
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.TermTypeDto.IsAllowed">
+            <summary>
+            Разрешён к использованию
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.ForeignLangDto">
+            <summary>
+            Представление справочника иностранных языков
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ForeignLangDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ForeignLangDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ForeignLangDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.GlobalYearDto">
+            <summary>
+            Представление справочника глобальных учебных годов
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.GlobalYearDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.GlobalYearDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.GlobalYearDto.StartYear">
+            <summary>
+            Начало учебного года
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.GlobalYearDto.EndYear">
+            <summary>
+            Конец учебного года
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.GlobalYearDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.GlobalSubjectDto">
+            <summary>
+            Представление справочника GlobalSubject
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.GlobalSubjectDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.GlobalSubjectDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.GlobalSubjectDto.ShortName">
+            <summary>
+            Краткое наиенование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.GlobalSubjectDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.GlobalSubjectDto.IsFederal">
+            <summary>
+            Зафиксировано в нормативно-правовых документах
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.SubjectfieldDto">
+            <summary>
+            Представление справочника образовательной области
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.SubjectfieldDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.SubjectfieldDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.SubjectfieldDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.SubjectfieldDto.Order">
+            <summary>
+            Поле для сортировки
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ExtraOrgFormDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ExtraOrgFormDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ExtraOrgFormDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.AssignmentTypeDto">
+            <summary>
+            Представление справочника типов заданий
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.AssignmentTypeDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.AssignmentTypeDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.AssignmentTypeDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.AssignmentTypeDto.ShortName">
+            <summary>
+            Краткое наиенование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.AssignmentTypeDto.Order">
+            <summary>
+            Поле для сортировки
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.EmployeePositionDto">
+            <summary>
+            Должность сотрудника
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.EmployeePositionDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.EmployeePositionDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.EmployeePositionDto.ShortName">
+            <summary>
+            Краткое наиенование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.EmployeePositionDto.Order">
+            <summary>
+            Поле для сортировки
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.EmployeePositionDto.PositionType">
+            <summary>
+            Тип должности 
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.EmployeePositionDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.UserParameterDto">
+            <summary>
+            Представление словоря параметров пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.UserParameterDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.UserParameterDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.UserParameterDto.ShortName">
+            <summary>
+            Краткое наиенование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.UserParameterDto.Order">
+            <summary>
+            Поле для сортировки
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.UserParameterDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.UserParameterNationDto">
+            <summary>
+            Представление словоря параметров пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.UserParameterNationDto.Id">
+            <summary>
+            Id записи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.UserParameterNationDto.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.UserParameterNationDto.Order">
+            <summary>
+            Поле для сортировки
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.UserParameterNationDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.ProjectTypeForSchoolDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.OlympSubjectDto.IsUsed">
+            <summary>
+            Запись уже используется
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.ReferencesConstants">
+            <summary>
+            Константы для справочников
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.References.ReferencesConstants.DeleteConfirm">
+            <summary>
+            Ключ для сообщения подтверждения удаления записи
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.References.ReferencesConstants.NoDataMessage">
+            <summary>
+            Ключ для сообщения об отсутствии данных в ответе сервера
+            </summary>
+        </member>
+        <member name="F:NetCity.WebServices.WebApi.DTO.References.ReferencesConstants.NotFoundMessage">
+            <summary>
+            Сообщение о том, что по указанному фильтру не найдено ни одного значения
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.SeniorityTypeDto">
+            <summary>
+            Представление справочника Виды стажа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.SeniorityTypeDto.Abbr">
+            <summary>
+            Сокращённое название
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.References.SeniorityTypeDto.IsUsed">
+            <summary>
+            Статус использования записи
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.References.ValueStatus">
+            <summary>
+            Статус записи
+            </summary>
+            <remarks>Служит для отображения возможности удаления</remarks>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.CommonInfo.AdditionalName">
+            <summary>
+            Дополнительное наименование (на момент реорганизации)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.CommonInfo.MainSchool">
+            <summary>
+            Головная организация
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.CommonInfo.Founders">
+            <summary>
+            Учредители
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.CommonInfo.OwnEducManagements">
+            <summary>
+            Управления
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.CommonInfo.Status">
+            <summary>
+            статус
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.CommonInfo.LocationInfo">
+            <summary>
+            Данные о местонахождении
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.CommonInfo.About">
+            <summary>
+            О нас (дополнительная текстовая информация об организации)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.FoodPayDetails.FoodPayOrgName">
+            <summary>
+            Наименование организации
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.SchoolCard.SchoolAddServiceDto">
+            <summary>
+            Для передачи информации о дополнительных услугах в школе
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.SchoolAddServiceDto.Description">
+            <summary>
+            Описание дополнительной услуги
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.SchoolAddServiceDto.School">
+            <summary>
+            Школа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.SchoolAddServiceDto.User">
+            <summary>
+            Пользователь, предоставляющий услугу
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.SchoolAddServiceDto.ServiceType">
+            <summary>
+            Тип услуги (платная/бесплатная)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.SchoolCard.SchoolAddServiceDto.Specialist">
+            <summary>
+            Специалист, оказывающий услугу
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.AuthClientDTO.ClientId">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.AuthClientDTO.ClientName">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.AuthClientDTO.ClientSecret">
+            <summary>
+            Пароль
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.AuthClientDTO.RedirectUri">
+            <summary>
+            Разрешенные url возврата
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.AuthClientDTO.AuthCodeFlow">
+            <summary>
+            authorization code
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.AuthClientDTO.RefreshTokenFlow">
+            <summary>
+            refresh token
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.AuthClientDTO.ClientCredFlow">
+            <summary>
+            сlient сredentials
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.AuthClientDTO.ResourceOwnerCredFlow">
+            <summary>
+            resource owner password credentials
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.AuthClientDTO.SchoolsInfo">
+            <summary>
+            Информация о количестве и функциональных типах ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.AuthClientDTO.Scopes">
+            <summary>
+             Области доступа 
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.Settings.AuthClientSchoolsDTO">
+            <summary>
+            Информация о количестве и функциональных типах ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.VideoConferenceSettingDto.Id">
+            <summary>
+            Идентификатор настройки
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.VideoConferenceSettingDto.FounderName">
+            <summary>
+            Управление
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.VideoConferenceSettingDto.School">
+            <summary>
+            Школа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.Settings.VideoConferenceSettingDto.VcGateUrl">
+            <summary>
+            Адреса API Шлюза видеоконференция для организаций
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.StatForms.EmStatFormDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.EmStatFormDto.FormId">
+            <summary>
+            Идентификатор формы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.EmStatFormDto.DisplayName">
+            <summary>
+            Название на экране
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.EmStatFormDto.Link">
+            <summary>
+            Ссылка на редактирование формы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.EmStatFormDto.Order">
+            <summary>
+            Порядок
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.ReopenStatFormDto.Year">
+            <summary>
+            Год
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.ReopenStatFormDto.Mns">
+            <summary>
+            КМНС
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.ReopenStatFormDto.SchoolIds">
+            <summary>
+            Идентификаторы школ
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.StatForms.StatFormDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormDto.EmName">
+            <summary>
+            Управление
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormDto.ProvinceName">
+            <summary>
+            Муниципальный район
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormDto.CityName">
+            <summary>
+            Населенный пункт
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormDto.EoName">
+            <summary>
+            Образовательная организация
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormDto.Status">
+            <summary>
+            Статус
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormDto.SchoolId">
+            <summary>
+            Идентификатор года
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.StatForms.StatFormFlags">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormFlags.HasGou">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormFlags.HasNou">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormFlags.HasGouInternats">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormFlags.HasNouInternats">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatForms.StatFormFlags.ShowMns">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculateExpDTO">
+            <summary>
+            DTO объект описывающий вычисляющее выражение/>
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculateExpDTO.CalculatorId">
+            <summary>
+            Ссылка на вычислитель
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculateExpDTO.ValueType">
+            <summary>
+            Тип значения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculateExpDTO.Params">
+            <summary>
+            Параметры
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculateExpParamDTO">
+            <summary>
+            DTO объект описывающий параметр вычисляющего выражения/>
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculateExpParamDTO.ArgId">
+            <summary>
+            Ссылка на аргумент
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculateExpParamDTO.Value">
+            <summary>
+            Значение
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorArgumentDTO">
+            <summary>
+            DTO объект описывающий аргумент вычислителя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorArgumentDTO.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorArgumentDTO.Type">
+            <summary>
+            Тип значения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorArgumentDTO.Description">
+            <summary>
+            Описание
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorArgumentDTO.Multiple">
+            <summary>
+            Возможность нескольких значений
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorDTO">
+            <summary>
+            DTO объект описывающий вычислитель/>
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorDTO.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorDTO.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorDTO.IsGroup">
+            <summary>
+            Принак - группа вычислителей
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorDTO.Arguments">
+            <summary>
+            Набор аргументов
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.Calculations.IndicatorCalculatorDTO.Calculators">
+            <summary>
+            Набор вычислителей
+            <remarks>только для групп</remarks>
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.StatReports.FilterItemDTO">
+            <summary>
+            Данный объект необходим для получения значений фильтров 
+            (пока будет использоваться в экране Актуальность данных)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.FilterItemDTO.Id">
+            <summary>
+            Идентификатор значения фильтра
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.FilterItemDTO.Name">
+            <summary>
+            Название фильтра
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO">
+            <summary>
+            Объект
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.Number">
+            <summary>
+            Номер в рамках данного уровня
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.FullNumber">
+            <summary>
+            Полный номер
+            Вида 1.2.2.1
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.SubIndicators">
+            <summary>
+            Список вложенных индикаторов/групп индикаторов
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.Level">
+            <summary>
+            Уровень
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.ValueType">
+            <summary>
+            Тип значения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.GroupId">
+            <summary>
+            Идентификатор родительской группы индикаторов
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.IsPredefined">
+            <summary>
+            Признак "предустановленный индикатор"
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.IsGroup">
+            <summary>
+            Признак "группа индикаторов"
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.CalcExpression">
+            <summary>
+            Связь с выражением для вычисления
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.IsApproved">
+            <summary>
+            Является индикатор утвержденным
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorDTO.IsCalculated">
+            <summary>
+            Является ли индикатор авторасчитываемым
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorGroupDTO">
+            <summary>
+            Объект группы индикаторов, на самом деле это индикатор,
+             у которого нет родителя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorGroupDTO.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorGroupDTO.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorGroupDTO.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorGroupDTO.Explanation">
+            <summary>
+            Пояснение
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorsAccessJournalDTO.InstName">
+            <summary>
+            Наименование организации
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorsAccessJournalDTO.LastEditAuthor">
+            <summary>
+            Автор последнего редактирования
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorsAccessJournalDTO.LastEditDate">
+            <summary>
+            Дата последнего редактирования
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorsAccessJournalDTO.ApproveAuthor">
+            <summary>
+            Автор подтверждения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.StatReports.IndicatorsAccessJournalDTO.ApproveDate">
+            <summary>
+            Дата подтверждения
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.System.TrustedApplicationDTO">
+            <summary>
+            Объект представления доверенного приложения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.UserStatInfoDto.EventId">
+            <summary>
+            Ключ события входа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.UserStatInfoDto.DateLogin">
+            <summary>
+            Дата/время входа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.UserStatInfoDto.DateLogout">
+            <summary>
+            Дата/время выхода
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.UserStatInfoDto.Login">
+            <summary>
+            Имя входа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.UserStatInfoDto.IP">
+            <summary>
+            IP-адрес
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.UserStatInfoDto.Role">
+            <summary>
+            Роль
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.UserStatInfoDto.UserClasses">
+            <summary>
+            Классы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.UserStatInfoDto.WorkTime">
+            <summary>
+            Время соединения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.UserStatInfoDto.EsiaLogin">
+            <summary>
+            Признак входа через ЕСИА
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.StatByUserDto.Login">
+            <summary>
+            Имя входа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.StatByUserDto.LoginCount">
+            <summary>
+            Количество входов
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.StatByUserDto.LastDateTimeLogin">
+            <summary>
+            Дата/время последнего входа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.StatByUserDto.WorkTime">
+            <summary>
+            Общее время соединения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.StatByUserDto.ClassesNames">
+            <summary>
+            Имeна классов соединения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.UserStat.StatByUserDto.Roles">
+            <summary>
+            Роли
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.User.AddUserDto">
+            <summary>
+            Структура используется для добавления пользователя после процедуры поиска дублей
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.AddUserDto.Position">
+            <summary>
+            Должность
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.AddUserDto.WorkPhone">
+            <summary>
+            Рабочий телефон
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.AddUserDto.Password">
+            <summary>
+            Пароль (md5)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.AddUserDto.Roles">
+            <summary>
+            Роли пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.AddUserDto.IsPasswordExpired">
+            <summary>
+            Признак того, что пароль нужно сменить при следующем входе в систему
+            </summary>
+        </member>
+        <member name="T:NetCity.WebServices.WebApi.DTO.User.ContextDto">
+            <summary>
+            Авторизованный контекст пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.At">
+            <summary>
+            Токен доступа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.UserId">
+            <summary>
+            ид пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.FuncType">
+            <summary>
+            Функциональность
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.SchoolId">
+            <summary>
+            Ид школы/организации
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.SchoolYearId">
+            <summary>
+            ид школьного учебного года
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.GlobalYearId">
+            <summary>
+            ид учебного года
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.EmId">
+            <summary>
+            ид органа управления
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.ProductName">
+            <summary>
+            наименование продукта
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.UserLanguage">
+            <summary>
+            язык интерфейса
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.Version">
+            <summary>
+            версия продукта
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.VersionDate">
+            <summary>
+            дата версии 
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.OrganizationName">
+            <summary>
+            наименование школы/организации
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.MenuContext">
+            <summary>
+            меню приложения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.Rights">
+            <summary>
+            права
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.Roles">
+            <summary>
+            роли
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.Schoolyear">
+            <summary>
+            школьный учебный год
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.User">
+            <summary>
+            пользователь
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.Organization">
+            <summary>
+            школа / организация
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.DateFormat">
+            <summary>
+            формат даты
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.TimeFormat">
+            <summary>
+            формат времени
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.NationOlympOrg">
+            <summary>
+            Признак "Может являться организатором этапа ВсОШ"
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.IsTopEm">
+            <summary>
+            Признак регионального УО
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.AuthorityType">
+            <summary>
+            Тип ведомства
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.YaCounterOff">
+            <summary>
+            Признак отключения яндекс-метрики
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.YaCounterCode">
+            <summary>
+            Дополнительные код яндекс-метрики (пользовательский)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.ContextDto.ServerId">
+            <summary>
+            Код сервера
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.EditFamilyData.FamilyId">
+            <summary>
+            Идентификатор семьи редактирование которой происходит
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.EditFamilyData.Member">
+            <summary>
+            Информация о добавляемом/удаляемом члене семьи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.EditFamilyData.WithRelatedMembers">
+            <summary>
+            Список членов семьи, которых необходимо также добавить или удалить из семьи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.EditFamilyData.LinkWithStudentParents">
+            <summary>
+            Список детей/родителей с которыми необходимо связать добавляемого члена семьи
+            ВАЖНО! указывается только при добавлении
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.EditFamilyData.IsStudent">
+            <summary>
+            Признак того, что редактируем учащегося
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.FieldValidationOptionDto.FieldId">
+            <summary>
+            Поле
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.FieldValidationOptionDto.Field">
+            <summary>
+            Поле
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.FieldValidationOptionDto.Regex">
+            <summary>
+            Регулярное выражения для значения поля
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.FieldValidationOptionDto.ErrorMessage">
+            <summary>
+            Сообщение при ошибке валидации
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.FieldValidationOptionDto.Required">
+            <summary>
+            Признак обязательности заполнения поля
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.Id">
+            <summary>
+            Идентификатор документа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.UserId">
+            <summary>
+            Код пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.DocType">
+            <summary>
+            Тип документа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.DocTypeInfo">
+            <summary>
+            Описание типа документа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.DocTypeFields">
+            <summary>
+            Поля для заполнения данного типа документа
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.Series">
+            <summary>
+            Серия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.ActNumber">
+            <summary>
+            Номер актовой записи (свид-во о рождении)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.Issuer">
+            <summary>
+            Кем выдан
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.IssuerCode">
+            <summary>
+            Код выдавшей организации (Код подразделения для паспорта)
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.IssueDate">
+            <summary>
+            Дата выдачи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.ExpireDate">
+            <summary>
+            Действителен до
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentDto.OtherDocName">
+            <summary>
+            Название другого документа, удостоверяющего личность
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentTypeDto.Id">
+            <summary>
+            Идентификатор типа документа, удостоверяющего личность
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentTypeDto.Name">
+            <summary>
+            Наименование типа документа, удостоверяющего личность
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentTypeDto.IdentityDocumentFields">
+            <summary>
+            Битовая маска отображаемых полей для данного типа документа, удостоверяющего личность
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.IdentityDocumentTypeDto.FieldValidationOptions">
+            <summary>
+            Правила валидации полей
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.MenuContextDto.ModelMenu">
+            <summary>
+            Полная модель меню приложения,
+            которая содержит в себе MenuItems и TabItems, удовлетворяющие правилам отображения
+            с выставленным правилом selected и установленными Url
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.MenuContextDto.MenuItemInfo">
+            <summary>
+            Модель выбранного TabItem,
+            содежит: id, title, Url, Selected
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.MenuContextDto.TabItemInfo">
+            <summary>
+            Модель выбранного TabItem,
+            содежит: id, title, Url, Selected
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Firstname">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Middlename">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Lastname">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Birthdate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Gender">
+            <summary>
+            Пол
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.SchoolIds">
+            <summary>
+            ОО, в которых работает сотрудник
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Education">
+            <summary>
+            Уровень образования
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Position">
+            <summary>
+            Должность слушателя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.IsChief">
+            <summary>
+            Руководитель/не руководитель
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.HomeAddress">
+            <summary>
+            Адрес проживания
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Homephone">
+            <summary>
+            Домашний телефон
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Mobilephone">
+            <summary>
+            Мобильный телефон
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Passport">
+            <summary>
+            Паспорт
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Snils">
+            <summary>
+            № СНИЛС
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Inn">
+            <summary>
+            ИНН слушателя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.Subjects">
+            <summary>
+            Преподаваемые предметы
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.AcademicAwards">
+            <summary>
+            Профессиональное научное развитие
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.StaffEducations">
+            <summary>
+            Информация об образовании
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.Staff.TrainingStaffDto.StaffRetrainings">
+            <summary>
+            Второе высшее, профессиональная переподготовка
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.UserDto.Nickname">
+            <summary>
+            Имя на экране
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.UserDto.Name">
+            <summary>
+            Имя на экране
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.UserDto.Loginname">
+            <summary>
+            Логин
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.UserDto.Logintype">
+            <summary>
+            Тип входа?
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.UserDto.Email">
+            <summary>
+            Почта
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.UserDto.Homephone">
+            <summary>
+            Дом. телефон
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.UserDto.Citizenship">
+            <summary>
+            Гражданство
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.UserDto.FamilyInfo">
+            <summary>
+            Состав семьи пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.UserDto.PrefferedCM">
+            <summary>
+            Предпочтительный способ связи
+            </summary>
+        </member>
+        <member name="P:NetCity.WebServices.WebApi.DTO.User.UserInfo.UserInfoParameterDto.AccessType">
+            <summary>
+            Тип доступа
+            </summary>
+        </member>
+    </members>
+</doc>

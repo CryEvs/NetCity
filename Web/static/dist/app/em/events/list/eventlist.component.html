@@ -1,0 +1,179 @@
+
+<div class="col-md-12" ng-if="!$ctrl.data.years || !$ctrl.data.years.length">
+	<div class="alert alert-warning" role="alert">
+		Нет данных по учебным годам
+	</div>
+</div>	
+
+<form class="form-horizontal form-sm ns-cloak" ng-show="$ctrl.state.viewReady && $ctrl.data.years && $ctrl.data.years.length">
+	<div class="row">
+		<div class="col-md-5 col-lg-4">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Common.kSchoolYear}}</label>
+				<div class="col-md-8 col-lg-7 col-sm-8">
+					<select save-state class="form-control" ng-options="year.name for year in $ctrl.data.years track by year.id" ng-change="$ctrl.load()" ng-model="$ctrl.data.year"></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Events.kEventType}}</label>
+				<div class="col-md-8 col-lg-7 col-sm-8">
+					<select save-state class="form-control" ng-options="awardEventType.name for awardEventType in $ctrl.data.awardEventTypes track by awardEventType.id" ng-change="$ctrl.load()" ng-model="$ctrl.data.awardEventType">
+						<option value="" selected>{{$ctrl.language.Generic.Common.kAll}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Events.kEventStatus}}</label>
+				<div class="col-md-8 col-lg-7 col-sm-8">
+					<select save-state class="form-control" ng-options="status.name for status in $ctrl.data.refs.awardEventStatuses track by status.id" ng-change="$ctrl.load()" ng-model="$ctrl.data.awardEventStatus">
+						<option value="" selected>{{$ctrl.language.Generic.Common.kAll}}</option>
+					</select>
+				</div>
+			</div>			
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Events.kEventLevel}}</label>
+				<div class="col-md-8 col-lg-7 col-sm-8">
+					<select save-state class="form-control" ng-options="level.name for level in $ctrl.data.refs.eventLevels track by level.id" ng-change="$ctrl.load()" ng-model="$ctrl.data.eventLevel">
+						<option value="" selected>{{$ctrl.language.Generic.Common.kAll}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group" ng-if="$ctrl.moduleTalentStudents">
+				<label class="control-label col-md-4 col-lg-4 col-sm-4">{{$ctrl.language.Generic.Events.kShowPersonalEventsOfCurators}}</label>
+				<div class="col-md-8 col-lg-7 col-sm-8">
+					<input save-state type="checkbox" ng-model="$ctrl.search.showPrivateEvents" ng-checked="$ctrl.search.showPrivateEvents" ng-change="$ctrl.load()">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-7 col-lg-8">
+			<div class="form-group">
+				<label for="FounderFilter" class="control-label col-md-3 col-lg-2 col-sm-4">{{$ctrl.language.Generic.Events.kEventFounder}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-8">
+					<!--<select storage class="form-control" ng-options="ownType.name for ownType in data.ownTypes track by ownType.id" ng-change="load()" ng-model="data.eventFounderOwnType"></select>-->
+					<ui-select id="FounderFilter" ng-model="$ctrl.search.founder" theme="bootstrap" ng-change="$ctrl.load()">
+						<ui-select-match placeholder="{{$ctrl.language.Generic.Common.kAll}}"> {{$select.selected.name}}</ui-select-match>
+						<ui-select-choices group-by='$ctrl.groupOrgs' repeat="founder as founder in $ctrl.data.filter.founder | filter: $select.search">
+							<div ng-bind-html="founder.name | highlight: $select.search "></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="PlaceFilter" class="control-label col-md-3 col-lg-2 col-sm-4">{{$ctrl.language.Generic.Events.kEventPlace}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-8">
+					<ui-select id="PlaceFilter" ng-model="$ctrl.search.place" theme="bootstrap" ng-change="$ctrl.load()">
+						<ui-select-match placeholder="{{$ctrl.language.Generic.Common.kAll}}"> {{$select.selected.name}}</ui-select-match>
+						<ui-select-choices group-by='$ctrl.groupOrgs' repeat="place as place in $ctrl.data.filter.place | filter: $select.search">
+							<div ng-bind-html="place.name | highlight: $select.search "></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="NameFilter" class="control-label col-md-3 col-lg-2 col-sm-4">{{$ctrl.language.Generic.Events.kEventName}}</label>
+				<div class="col-md-8 col-lg-8 col-sm-8">
+					<input id="NameFilter" type="search" ng-model="$ctrl.search.name" placeholder="{{$ctrl.language.Generic.Common.kAll}}" class="col-md-12 col-lg-12 col-sm-12" ng-change="$ctrl.throttleLoad()"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<!-- #17155. ВНИМАНИЕ!!! Кнопка "Добавить" должна быть только при наличии права 'Редактировать список мероприятий', иначе - "только для чтения".
+Аналогично далее - "редактировать/удалить" мероприятие должно быть доступно только при наличии соотв. права -->
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<hr/>
+
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button type="button" class="btn btn-info" ng-click="$ctrl.add()" ng-disabled="!$ctrl.state.dataReady" ng-hide="$ctrl.state.readOnly">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="$ctrl.addNationOlymp()" ng-if="$ctrl.nationOlympModule && $ctrl.appContext.nationOlympOrg" ng-disabled="!$ctrl.state.dataReady" ng-hide="$ctrl.state.readOnly">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}} мероприятие ВсОШ</span>
+				</button>
+
+				<button type="button" class="btn btn-info" ng-click="$ctrl.edit($ctrl.data.selection.selected)" ng-disabled="!$ctrl.data.selection.selected || $ctrl.data.selection.selected.curatorId" ng-hide="$ctrl.state.readOnly">
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+				</button>
+
+				<button type="button" class="btn btn-danger" ng-click="$ctrl.delete($ctrl.data.selection.selected)" ng-disabled="!$ctrl.data.selection.selected || $ctrl.data.selection.selected.curatorId" ng-hide="$ctrl.state.readOnly">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+
+				<button title="{{$ctrl.language.Generic.Events.kViewEventMembers}}" ng-if="$ctrl.state.accessToMembers" type="button" class="btn btn-info" ng-click="$ctrl.eventMembers($ctrl.data.selection.selected)" ng-disabled="!$ctrl.data.selection.selected" ng-hide="$ctrl.state.readOnly">
+					<span class="icon-flag-checkered" style="font-size: 16px; vertical-align: middle;"></span>
+					<span>{{$ctrl.language.Generic.Events.kEventMembers}}</span>
+				</button>
+
+			</div>
+
+			<div class="buttons-panel-right" ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData && $ctrl.data.events.length">
+				<button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="$ctrl.exportToExcel()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>Экспорт в Excel</span>
+				</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="$ctrl.state.dataReady && $ctrl.state.emptyData && !$ctrl.state.readOnly">
+		<div class="alert alert-info" role="alert">
+			{{$ctrl.language.Generic.Events.kNoEvents}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="$ctrl.state.dataReady && !$ctrl.data.events.length && !$ctrl.state.emptyData">
+		<div class="alert alert-info" role="alert">
+			{{$ctrl.language.Generic.Events.kNoEventsByFilters}}
+		</div>
+	</div>
+</div>
+
+<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.state.dataReady"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+<ul ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData && $ctrl.paging.totalRows > $ctrl.paging.pageSize" uib-pagination total-items="$ctrl.paging.totalRows" ng-model="$ctrl.paging.page" items-per-page="$ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="$ctrl.pageLoad()"></ul>
+
+<div class="row ns-cloak" ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData && $ctrl.data.events.length">
+	<div class="col-md-12">
+		<table class="table table-xs table-bright table-bright-hover table-selectable print-block">
+			<tr>
+				<th>{{$ctrl.language.Generic.Events.kDateOfEvent}}</th>
+				<th>{{$ctrl.language.Generic.Events.kEvent}}</th>
+				<th>{{$ctrl.language.Generic.Events.kEventType}}</th>
+				<th>{{$ctrl.language.Generic.Events.kEventStatus}}</th>
+				<th>{{$ctrl.language.Generic.Events.kEventLevel}}</th>
+				<th>{{$ctrl.language.Generic.Common.kMunicipalityDistrictShort}}</th>
+				<th>{{$ctrl.language.Generic.Events.kEventFounder}}</th>
+				<th>{{$ctrl.language.Generic.Events.kEventPlace}}</th>
+				<th ng-if="$ctrl.search.showPrivateEvents">{{$ctrl.language.Generic.Events.kAuthorCurator}}</th>
+			</tr>
+			<tr ng-repeat="event in $ctrl.data.events" ng-class="{'selected': $ctrl.data.selection.isSelected(event)}" ng-click="$ctrl.data.selection.select(event)">
+				<td>{{ event.date }}</td>
+				<td>
+					<a ng-href="{{event.id}}/members">{{ event.name }}</a>
+				</td>
+				<td>{{ event.awardEventType.name }}</td>
+				<td>{{ event.status.name }}</td>
+				<td>{{ event.level }}</td>
+				<td>{{ event.municipality.name || "-" }}</td>
+				<td>{{ event.founder.name }}</td>
+				<td>{{ event.place.name }}</td>
+				<td ng-if="$ctrl.search.showPrivateEvents">{{ event.curator }}</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<ul ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData && $ctrl.paging.totalRows > $ctrl.paging.pageSize" uib-pagination total-items="$ctrl.paging.totalRows" ng-model="$ctrl.paging.page" items-per-page="$ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="$ctrl.pageLoad()"></ul>

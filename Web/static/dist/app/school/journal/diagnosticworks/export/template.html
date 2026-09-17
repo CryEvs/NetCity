@@ -1,0 +1,27 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<div class="form-group" >
+			<label class="control-label" for="orgInfo">Логин организации в ФИС ОКО</label>
+			<input class="form-control" type="text" id="orgInfo" ng-model="ctrl.data.orgInfo">
+		</div>
+
+	</div>
+	<div class="modal-footer" ng-show="true">
+		<button class="btn btn-default ng-binding" ng-click="ctrl.export()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-export"></span>
+			Выгрузить
+		</button>
+		<button class="btn btn-default ng-binding" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			{{ctrl.language.Generic.Buttons.kCancel}}
+		</button>
+	</div>
+</div>

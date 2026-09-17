@@ -1,0 +1,22 @@
+{
+	"sumRows": [
+		{
+			"row": 97,
+			"subRows": [ 98 ],
+			"cols": [ 3 ],
+			"type": "include"
+		},
+		{
+			"row": 97,
+			"subRows": [ 99 ],
+			"cols": [ 3 ],
+			"type": "ofthem"
+		},
+		{
+			"row": 102,
+			"subRows": [ 101 ],
+			"cols": [ 3 ],
+			"type": "bool1any"
+		}
+	]
+}

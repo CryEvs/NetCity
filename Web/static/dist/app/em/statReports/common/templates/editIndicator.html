@@ -1,0 +1,52 @@
+<div ng-model="EmIndicators.Edit">
+	<form role="form" name="formIndcator">
+		<div class="bootstrap-dialog type-primary">
+			<div class="modal-header">
+				<div class="bootstrap-dialog-header">
+					<div class="bootstrap-dialog-title">
+						<h4 class="modal-title" ng-bind="header"></h4>
+					</div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="form-group" ng-show="editIndicator.getParent() != null">
+					<label for="groupName">{{language.Generic.StatReports.kIndicatorGroupName}}</label>
+					<input type="text" class="form-control" id="groupName" x-ng-model="editIndicator.getParent().name" disabled="disabled">
+				</div>
+				<div class="form-group" ng-switch="editIndicator.isGroup">
+					<label for="name">{{language.Generic.StatReports.kIndicatorName}}</label>
+					<div class="alert alert-danger" ng-show="$errorHandler.errorList.length > 0">
+						<span ng-repeat="error in $errorHandler.errorList" style="display: inherit;">
+							{{error}}
+						</span>
+					</div>
+					<input ng-switch-when="true" type="text" class="form-control" id="name" x-ng-model="editIndicator.name" placeholder="{{language.Generic.Common.kEnterTheName}}" autofocus>
+					<div ng-switch-when="false" class="input-group">
+						<input type="text" class="form-control" id="name" ng-disabled="predefined" x-ng-model="editIndicator.name" placeholder="{{language.Generic.Common.kEnterTheName}}" autofocus>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> &nbsp; <span class="caret"></span></button>
+							<ul class="dropdown-menu pull-right" role="menu">
+								<li><a href="#" ng-click="buildCalcExp()">{{language.Generic.StatReports.kChooseCalculator}}</a></li>
+								<li><a href="#" ng-click="removeCalcExp()" ng-show="editIndicator.calcExpression">{{language.Generic.StatReports.kRemoveRefWithCalculator}}</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" ng-show="!editIndicator.isGroup">
+					<label for="indicatorType">{{language.Generic.StatReports.kIndicatorValueType}}</label>
+					<select class="form-control" ng-model="editIndicator.valueType" id="indicatorType" ng-options="valType.key as valType.name for valType in indicatorValTypes"></select>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" x-ng-click="ok()">
+					<span class="glyphicon glyphicon-save"></span>
+					{{language.Generic.Buttons.kSave}}
+				</button>
+				<button class="btn btn-default" x-ng-click="cancel()">
+					<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+					{{language.Generic.Curriculum.kBtnCancel}}
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

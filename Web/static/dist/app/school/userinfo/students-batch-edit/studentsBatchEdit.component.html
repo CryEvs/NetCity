@@ -1,0 +1,84 @@
+<div class="buttons-filters-panel form-horizontal single-row ns-cloak">
+	<div class="row journal-filters">
+		<filter-panel class="filters-panel col-md-12 filters-panel-compact" ng-if="$ctrl.filterPanelSettings"
+			fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+	</div>
+	<div>
+		<div id="quick-edit-options" class="filters-panel-compact form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Параметр ЛК</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control" ng-model="$ctrl.displayParameter" ng-change="$ctrl.parameterChange()" save-state
+						ng-options="parameter as parameter.title for parameter in $ctrl.parameters track by parameter.id">
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row ns-cloak">
+	<div class="col-md-12 col-lg-12">
+		<div class="form-horizontal">
+			<div class="form-group">
+				<div class="col-md-12">
+					<button id="load-journal-btn" title="{{$ctrl.language.Generic.Buttons.kLoad}}" type="button"
+						class="btn btn-primary btn-sm" ng-click="$ctrl.load()" ng-disabled="$ctrl.emptyFilter">
+						<span class="glyphicon glyphicon-search"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kLoad}}</span>
+					</button>
+					<button title="{{$ctrl.language.Generic.Buttons.kSave}}" ng-click="$ctrl.save()" type="button"
+						class="btn btn-primary btn-sm">
+						<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+					<button title="{{$ctrl.language.Generic.Buttons.kCancel}}" ng-click="$ctrl.load()" type="button"
+						ng-disabled="!$ctrl.changeTracker.isDataChanged()"
+						class="btn btn-default btn-sm">
+						<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row ns-cloak">
+	<div class="col-md-12 col-lg-12">
+		<div class="info-message" ng-show="!$ctrl.state.loaded && !$ctrl.state.loading && !$ctrl.state.emptyData">
+			<div class="alert alert-info" role="alert">Нажмите кнопку "Загрузить" для показа списка пользователей</div>
+		</div>
+
+		<div class="info-message" ng-show="!$ctrl.state.loading && $ctrl.state.emptyData">
+			<div class="alert alert-info" role="alert">Для выбранного фильтра нет данных</div>
+		</div>
+
+		<div class="content-preloader" ng-if="$ctrl.state.loading">
+			<span class="arrows"></span>
+			<span class="title">{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+		</div>
+
+		<ul ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData && $ctrl.paging.totalRows > $ctrl.paging.pageSize" uib-pagination total-items="$ctrl.paging.totalRows" ng-model="$ctrl.paging.page" items-per-page="$ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="$ctrl.pageChange()"></ul>
+
+		<table ng-form="$ctrl.form" ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData" class="table table-xs table-bright table-bright-hover table-thin">
+			<tr>
+				<th>№ п/п</th>
+				<th ng-repeat="field in $ctrl.fields">{{field.title}}</th>
+				<th ng-if="$ctrl.parameter"> {{ $ctrl.parameter.title }} </th>
+			</tr>
+			
+			<tr ng-repeat="row in $ctrl.rows" ns-parameters-form-dir service="$ctrl.service.getStudentParamsService(row.id)">
+
+				<td> {{ row.rownum }}</td>
+				<td ng-repeat="field in $ctrl.fields">
+					<span ng-if="field.id != 'nickname'">{{ row[field.id] }}</span>
+					<a ng-if="field.id == 'nickname'" href="javascript: void(0)" ng-click="$ctrl.editStudent(row.id)">{{ row[field.id] }}</a>
+				</td>
+				<td ng-if="$ctrl.parameter">
+					<form-parameter parameter="$ctrl.parameter"></form-parameter>
+				</td>
+			</tr>
+
+		</table>
+
+		<ul ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData && $ctrl.paging.totalRows > $ctrl.paging.pageSize" uib-pagination total-items="$ctrl.paging.totalRows" ng-model="$ctrl.paging.page" items-per-page="$ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="$ctrl.pageChange()"></ul>
+
+	</div>
+</div>

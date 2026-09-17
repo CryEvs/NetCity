@@ -1,0 +1,63 @@
+<div class="bootstrap-dialog type-primary">
+
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+
+	<div class="modal-body">
+		<form name="ctrl.setSchoolLinkForm">
+
+			<div class="form-group">
+				<label for="member-school" class="control-label">{{$ctrl.language.Common.kSchool}}</label>
+				<div>
+					<ui-select id="member-school"
+							   ng-model="$ctrl.school" theme="bootstrap">
+						<ui-select-match placeholder="Пожалуйста, введите 3 или более символов">{{$select.selected.name}}</ui-select-match>
+						<ui-select-choices repeat="school as school in $ctrl.search.schools.items"
+										   ui-disable-choice="school.name === 'Совпадений не найдено' || school.name === 'Поиск...'"
+										   refresh="$ctrl.search.schools.search($select.search)">
+							<div ng-bind-html="school.name | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+
+			<table class="table table-thin table-xs table-xs table-bright table-bright-hover table">
+				<tbody>
+					<tr>
+						<th>Дата платежа</th>
+						<th>№ платежного документа</th>
+						<th>№ лицевого счета</th>
+						<th>Информация о платеже</th>
+						<th>Сумма платежа</th>
+					</tr>
+					<tr ng-repeat="payment in $ctrl.payments">
+						<td>{{payment.payDate}}</td>
+						<td>{{payment.payNumber}}</td>
+						<td>{{payment.accountNumber}}</td>
+						<td><small>{{payment.payInfo}}</small></td>
+						<td>{{payment.pay}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary btn-sm" ng-click="$ctrl.save()">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+	</div>
+</div>

@@ -1,0 +1,120 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{searchCtrl.title}}</h4>
+		</div>
+	</div>
+	<div class="modal-body">
+		<form role="form" name="searchCtrl.searchForm" class="form form-xs">
+			<fieldset>
+				<legend>{{searchCtrl.language.Generic.EMReports.kStudentFIO}}</legend>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="search-lastname" class="control-label">{{searchCtrl.language.Generic.Common.kLastName}}</label>
+							<div>
+								<input type="text" required id="search-lastname" name="lastname" class="form-control" ng-model="searchCtrl.searchData.lastname">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="search-firstname" class="control-label">{{searchCtrl.language.Generic.Common.kFirstName}}</label>
+							<div>
+								<input type="text" required id="search-firstname" name="firstname" class="form-control" ng-model="searchCtrl.searchData.firstname">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="search-middlename" class="control-label">{{searchCtrl.language.Generic.Common.kMiddleName}}</label>
+							<div>
+								<div class="input-group">
+									<input type="text" id="search-middlename" name="middlename" class="form-control" ng-disabled="searchCtrl.searchData.noMiddlename" ng-model="searchCtrl.searchData.middlename">
+									<span class="input-group-addon"><input type="checkbox" ng-model="searchCtrl.searchData.noMiddlename"> Нет</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+		
+		<div class="alert alert-info" ng-if="!searchCtrl.searchCompleted" role="alert">Для поиска учащегося заполните поля и нажмите кнопку "Поиск"</div>
+		
+		<div ng-if="searchCtrl.searchCompleted">
+			<h3 class="first" ng-if="!searchCtrl.isEmptyStudents">Результаты поиска</h3>
+			
+			<div class="alert alert-info" ng-if="searchCtrl.isEmptyStudents && searchCtrl.isEmptyStudentsExternal" role="alert">По указанным данным учащихся не обнаружено</div>
+			
+			<div style="max-height: 400px; overflow-y: auto">
+				<div class="table-responsive">
+					<table class="table table-bright table-bright-hover table-xs table-selectable" ng-if="!searchCtrl.isEmptyStudents">
+						<tr>
+							<th>{{searchCtrl.language.Generic.EMReports.kStudentFIO}}</th>
+							<th>Дата рождения обучающегося</th>
+							<th>Документ, уд. личность</th>
+							<th>СНИЛС</th>
+							<th>Адрес регистрации</th>
+							<th>ФИО родителя</th>
+							<th>Образовательная организация</th>
+						</tr>
+
+						<tr ng-repeat="student in searchCtrl.students.students" ng-class="{'selected': searchCtrl.selection.isSelected(student)}" ng-click="searchCtrl.selection.select(student)">
+							<td>{{student.studentFio}}</td>
+							<td>{{student.studentBirthDate | date : 'dd.MM.yyyy'}}</td>
+							<td>{{student.identityDocumentInfo}}</td>
+							<td>{{student.snils}}</td>
+							<td>{{student.addressInfo}}</td>
+							<td>{{student.parentsInfo}}</td>
+							<td>{{student.educOrgsInfo}}</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+		</div>
+		<div ng-if="searchCtrl.searchCompleted && !searchCtrl.isEmptyStudentsExternal">
+			<h3 class="first">Результаты поиска в модуле ПОО</h3>
+			<div style="max-height: 400px; overflow-y: auto">
+				<div class="table-responsive">
+					<table class="table table-bright table-bright-hover table-xs table-selectable" ng-if="!searchCtrl.isEmptyStudentsExternal">
+						<tr>
+							<th>{{searchCtrl.language.Generic.EMReports.kStudentFIO}}</th>
+							<th>Дата рождения обучающегося</th>
+							<th>Документ, уд. личность</th>
+							<th>Образовательная организация</th>
+							<th>Населённый пункт</th>
+						</tr>
+
+						<tr ng-repeat="student in searchCtrl.students.studentsExternal" ng-class="{'selected': searchCtrl.selection.isSelected(student)}" ng-click="searchCtrl.selection.select(student)">
+							<td>{{student.studentFio}}</td>
+							<td>{{student.studentBirthDate | date : 'dd.MM.yyyy'}}</td>
+							<td>{{student.identityDocumentInfo}}</td>
+							<td>{{student.educOrgsInfo}}</td>
+							<td>{{student.addressInfo}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="searchCtrl.select()" ng-disabled="!searchCtrl.selection.selected">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon glyphicon-ok"></span>
+			<span>Выбрать</span>
+		</button>
+
+		<button class="btn btn-primary" ng-click="searchCtrl.search()" ng-disabled="!searchCtrl.searchForm.$valid">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon glyphicon-search"></span>
+			<span>Поиск</span>
+		</button>
+
+		<button class="btn btn-default" ng-click="searchCtrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			Отмена
+		</button>
+	</div>
+</div>

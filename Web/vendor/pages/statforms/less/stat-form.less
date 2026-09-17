@@ -1,0 +1,29 @@
+﻿ @import (reference) "../../../custom/less/var.less";
+ @import (reference) "../../../custom/less/mixins.less";
+
+.stat-form-wrapper {
+	font-size: 11px;
+	background: lighten(@gray-light, 52%);
+	text-align: -webkit-center;
+
+	form {
+		overflow-x: auto;
+	}
+}
+
+.form-cell-invalid {
+	border: solid 1px #7eb3f6 !important;
+	border-color: saturate(darken(@base-red-bg-color, 40%), 50%) !important;
+}
+
+.form-cell-dependent-invalid {
+	border: solid 1px #7eb3f6 !important;
+	border-color: saturate(darken(@default-orange-color, 10%), 50%) !important;
+}
+
+	input.form-cell-disabled {
+		border: solid 1px #7eb3f6;
+		border-color: @default-gray-color;
+		border-style: ridge;
+		background-color: #E7E7E7;
+	}

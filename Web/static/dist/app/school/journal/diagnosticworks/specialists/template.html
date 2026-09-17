@@ -1,0 +1,73 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<span class="content-page-preloader" id="preloader" ng-hide="ctrl.state.dataReady"><span>{{ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+		
+		<form class="form-horizontal">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="buttons-panel">
+						<div class="buttons-panel-left">
+							<button type="button" class="btn btn-info btn-sm" ng-click="ctrl.add()">
+								<span class="glyphicon glyphicon-plus-sign"></span>
+								<span>{{ctrl.language.Generic.Buttons.kAdd}}</span>
+							</button>
+
+							<button type="button" class="btn btn-info btn-sm" ng-click="ctrl.edit(ctrl.selection.item)" ng-disabled="!ctrl.selection.selected">
+								<span class="glyphicon glyphicon-pencil"></span>
+								<span ng-if="!ctrl.state.readOnly">{{ctrl.language.Generic.Buttons.kEdit}}</span>
+								<span ng-if="ctrl.state.readOnly">{{ctrl.language.Generic.Buttons.kView}}</span>
+							</button>
+
+							<button type="button" class="btn btn-danger btn-sm" ng-click="ctrl.delete(ctrl.selection.item)" ng-disabled="!ctrl.selection.selected">
+								<span class="glyphicon glyphicon-minus-sign"></span>
+								<span>{{ctrl.language.Generic.Buttons.kRemove}}</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="alert alert-info" role="alert" ng-if="ctrl.data.specialists.length == 0">
+						Список ответственных специалистов не определен
+					</div>
+					<table class="table table-xs table-hover table-bordered table-selectable" ng-if="ctrl.data.specialists.length > 0">
+						<tr>
+							<th>{{ctrl.language.Generic.Reports.kNumberRow}}</th>
+							<th>{{ctrl.language.Generic.Common.kRole}}</th>
+							<th>{{ctrl.language.Generic.Common.kLastName}}</th>
+							<th>{{ctrl.language.Generic.Common.kFirstName}}</th>
+							<th>{{ctrl.language.Generic.Common.kMiddleName}}</th>
+							<th>{{ctrl.language.Generic.EM.kPosition}}</th>
+						</tr>
+						<tr ng-repeat="specialist in ctrl.data.specialists"
+						    ng-class="{'selected': ctrl.selection.isSelected(specialist)}"
+						    ng-click="ctrl.selection.select(specialist)">
+							<td>{{ $index + 1 }}</td>
+							<td>{{ specialist.roleName }}</td>
+							<td>{{ specialist.lastName }}</td>
+							<td>{{ specialist.firstName }}</td>
+							<td>{{ specialist.middleName }}</td>
+							<td>{{ specialist.position }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer" ng-show="true">
+		<button class="btn btn-default btn-sm ng-binding" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			{{ctrl.language.Generic.Buttons.kClose}}
+		</button>
+	</div>
+</div>

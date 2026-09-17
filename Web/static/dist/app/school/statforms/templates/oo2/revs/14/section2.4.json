@@ -1,0 +1,10 @@
+{
+	"sumRows": [
+		{
+			"row": 3,
+			"subRows": [ 4, 5 ],
+			"cols": [ 3 ],
+			"type": "cell"
+		}
+	]
+}

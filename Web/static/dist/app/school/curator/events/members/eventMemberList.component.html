@@ -1,0 +1,57 @@
+<h3 class="first">Информация о мероприятии</h3>
+<event-info event="ctrl.data.event"></event-info>
+
+<hr />
+
+<h3 class="first">Список участников</h3>
+
+<div class="row">
+	<div class="col-md-4">
+		<form class="form-horizontal form-sm">
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Вид</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select save-state class="form-control" ng-options="viewType.id as viewType.title for viewType in ctrl.filter.items.viewType" ng-change="ctrl.filterMembers()" ng-model="ctrl.filter.selected.viewType"></select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Итог участия</label>
+				<div class="col-md-8 col-lg-9 col-sm-8">
+					<select save-state class="form-control" ng-options="title.id as title.name for title in ctrl.filter.items.eventMemberTitles" ng-change="ctrl.filterMembers()" ng-model="ctrl.filter.selected.eventMemberTitle"></select>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<div class="row" ng-if="!ctrl.state.emptyData">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+
+			<button type="button" title="Добавить в участники подопечного" class="btn btn-info" ng-click="ctrl.addMember()">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span>{{ctrl.language.Generic.Buttons.kAdd}}</span>
+			</button>
+
+			<button type="button" class="btn btn-info" ng-click="ctrl.editMember(ctrl.data.selection.selected)" ng-disabled="!ctrl.data.selection.selected || !ctrl.isCuratorStudent(ctrl.data.selection.selected)">
+				<span class="glyphicon glyphicon-pencil"></span>
+				<span>{{ctrl.language.Generic.Buttons.kEdit}}</span>
+			</button>
+
+			<button type="button" class="btn btn-info" ng-click="ctrl.removeMember(ctrl.data.selection.selected)" ng-disabled="!ctrl.data.selection.selected || !ctrl.isCuratorStudent(ctrl.data.selection.selected)">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{ctrl.language.Generic.Buttons.kRemove}}</span>
+			</button>
+
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<event-members-component members="ctrl.data.members" view-members="ctrl.data.viewMembers" selection="ctrl.data.selection"></event-members-component>
+	</div>
+</div>

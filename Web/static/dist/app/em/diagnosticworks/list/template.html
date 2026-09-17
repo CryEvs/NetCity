@@ -1,0 +1,196 @@
+<style>
+	.link-icon:hover{
+		color: #ff3d00;
+		text-decoration: none;
+	}
+</style>
+
+<form class="form-horizontal" ng-show="ctrl.viewReady && !ctrl.criticalError">
+	<div class="row">
+		<div class="col-md-7">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Учебный год</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control" ng-init="ctrl.data.globalYear" ng-options="globalYear.name for globalYear in ctrl.data.globalYears track by globalYear.id"
+							ng-change="ctrl.updateTable()" ng-model="ctrl.data.globalYear" save-state></select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-7">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Предмет</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control" name="subject" ng-init="ctrl.data.subject = {id: -1, name:'Все'}" ng-options="subject.name for subject in ctrl.data.subjects track by subject.id"
+							ng-change="ctrl.updateTable()" ng-model="ctrl.data.subject" save-state></select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-7">
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">Уровень работы</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control" name="testlevel" ng-init="ctrl.data.testLevel = {id: -1, name:'Все'}" ng-options="testLevel.name for testLevel in ctrl.data.testLevels track by testLevel.id"
+							ng-change="ctrl.updateTable()" ng-model="ctrl.data.testLevel" save-state></select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel" ng-hide="ctrl.state.readOnly">
+				<div class="buttons-panel-left">
+
+					<button title="Добавить" type="button" class="btn btn-info btn-sm" ng-click="ctrl.addDiagnosticWork()">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>Добавить</span>
+					</button>
+
+					<button ng-attr-title="{{ctrl.data.selection.selected.published ? 'Просмотр' : 'Редактировать'}}" type="button" class="btn btn-warning btn-sm" ng-click="ctrl.editDiagnosticWork(ctrl.data.selection.selected)"
+							ng-disabled="!ctrl.data.selection.selected" ng-show="ctrl.tableReady && !ctrl.isReadOnlyWork(ctrl.data.selection.selected)">
+						<span class="glyphicon glyphicon-pencil"></span>
+						<span ng-if="!ctrl.data.selection.selected.published">Редактировать</span>
+						<span ng-if="ctrl.data.selection.selected.published">Просмотр</span>
+					</button>
+
+					<button title="Добавить вариант работы" type="button" class="btn btn-info btn-sm" ng-click="ctrl.editVariant(ctrl.data.selection.selected, null)"
+							ng-disabled="!ctrl.data.selection.selected" ng-show="ctrl.tableReady && ctrl.data.selection.selected && !ctrl.data.selection.selected.published && !ctrl.isReadOnlyWork(ctrl.data.selection.selected) && !ctrl.isVpr(ctrl.data.selection.selected)">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>Добавить вариант</span>
+					</button>
+
+					<button ng-attr-title="{{ctrl.data.publishing ? 'Идёт публикация...' : 'Опубликовать'}}" type="button" class="btn btn-sm" ng-click="ctrl.publish(ctrl.data.selection.selected)"
+							ng-disabled="!ctrl.data.selection.selected || ctrl.data.publishing || !ctrl.isExistsTestTasksInAllVariants(ctrl.data.selection.selected)" ng-show="ctrl.tableReady && ctrl.data.selection.selected && (!ctrl.data.selection.selected.published || ctrl.data.selection.selected.regionalPublishedCondition == 'ExistsNotPublished') && !ctrl.isReadOnlyWork(ctrl.data.selection.selected)">
+						<span class="glyphicon glyphicon-send"></span>
+						<span>Опубликовать</span>
+					</button>
+
+					<button title="Информация о публикации" type="button" class="btn btn-sm" ng-click="ctrl.publishInfo(ctrl.data.selection.selected)"
+							ng-disabled="!ctrl.data.selection.selected" ng-show="ctrl.tableReady && ctrl.data.selection.selected && ctrl.data.selection.selected.published && ctrl.state.regional && ctrl.data.selection.selected.regionGuid && ctrl.isRegionalLevelWork(ctrl.data.selection.selected)">
+						<span class="glyphicon glyphicon-list" style="color:green"></span>
+						<span>Информация о публикации</span>
+					</button>
+
+					<button title="Отозвать публикацию" type="button" class="btn btn-sm" ng-click="ctrl.unpublish(ctrl.data.selection.selected)"
+							ng-disabled="!ctrl.data.selection.selected" ng-show="ctrl.tableReady && ctrl.data.selection.selected && ctrl.data.selection.selected.published && !ctrl.isReadOnlyWork(ctrl.data.selection.selected)">
+						<span class="glyphicon glyphicon-send" style="color:orangered"></span>
+						<span>Отозвать публикацию</span>
+					</button>
+
+					<button title="Удалить" type="button" class="btn btn-danger btn-sm" ng-click="ctrl.removeDiagnosticWorks(ctrl.data.selection.selected)"
+							ng-disabled="!ctrl.data.selection.selected" ng-show="ctrl.tableReady && !ctrl.data.selection.selected.published && !ctrl.isReadOnlyWork(ctrl.data.selection.selected)">
+						<span class="glyphicon glyphicon-trash"></span>
+						<span>Удалить</span>
+					</button>
+
+					<span title="Нельзя удалить опубликованную ДКР" class="d-inline-block" tabindex="0" data-toggle="tooltip" ng-show="ctrl.tableReady && ctrl.data.selection.selected.published">
+						<button type="button" class="btn btn-danger btn-sm" disabled data-toggle="tooltip" data-placement="right">
+							<span class="glyphicon glyphicon-trash"></span>
+							<span>Удалить</span>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12" ng-show="ctrl.tableReady">
+			<table class="table table-hover table-bordered table-selectable">
+				<tr>
+					<th rowspan="2">№ п/п</th>
+					<th rowspan="2">Наименование</th>
+					<th rowspan="2">Уровень</th>
+					<th rowspan="2">Предмет</th>
+					<th rowspan="2">Дата проведения</th>
+					<th rowspan="2">Параллель</th>
+					<th colspan="3">Варианты</th>
+				</tr>
+				<tr>
+					<th>Название</th>
+					<th>Назначено</th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="variant in ctrl.data.variants track by variant.index" ng-class="{'selected': ctrl.data.selection.isSelected(variant.diagnosticWork), 'warning': variant.diagnosticWork.regionalPublishedCondition == 'ExistsNotPublished' && variant.diagnosticWork.published, 'info': variant.diagnosticWork.regionalPublishedCondition == 'CheckStatusFail' && variant.diagnosticWork.published, 'success': variant.diagnosticWork.published && !variant.diagnosticWork.existsNotPublished}"
+					ng-click="ctrl.data.selection.select(variant.diagnosticWork)">
+					<td ng-if="variant.isFirstVariant" rowspan={{variant.diagnosticWork.variants.length}}>{{variant.diagnosticWorkIndex}}</td>
+					<td ng-if="variant.isFirstVariant" rowspan={{variant.diagnosticWork.variants.length}}>
+						{{
+						variant.diagnosticWork.name
+						}}
+					</td>
+					<td ng-if="variant.isFirstVariant" rowspan={{variant.diagnosticWork.variants.length}}>
+						{{
+						variant.diagnosticWork.testLevelName
+						}}
+					</td>
+					<td ng-if="variant.isFirstVariant" rowspan={{variant.diagnosticWork.variants.length}}>
+						{{
+						variant.diagnosticWork.subjectFipi.name
+						}}
+					</td>
+					<td ng-if="variant.isFirstVariant" rowspan={{variant.diagnosticWork.variants.length}}>
+						{{
+						variant.diagnosticWork.date
+						}}
+					</td>
+					<td ng-if="variant.isFirstVariant" rowspan={{variant.diagnosticWork.variants.length}}>
+						{{
+						variant.diagnosticWork.gradesForShow
+						}}
+					</td>
+
+					<td>{{ variant.name }}</td>
+					<td>{{ variant.appointedType.name }}</td>
+					<td>
+						<div ng-hide="ctrl.state.readOnly">
+							<a class="link-icon" ng-hide="variant.diagnosticWork.published" href="#" type="button" ng-click="ctrl.editVariant(variant.diagnosticWork, variant)"
+							   title="Редактировать вариант">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+							<a class="link-icon" ng-hide="variant.diagnosticWork.published" href="#" type="button" ng-click="ctrl.delVariant(variant.diagnosticWork, variant)"
+							   title="Удалить вариант">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+							<a class="link-icon" href="#" type="button" ng-hide="ctrl.isVpr(variant.diagnosticWork) && variant.diagnosticWork.vprForm && variant.diagnosticWork.vprForm.name" ng-click="ctrl.editTestPlan(variant.diagnosticWork, variant)" title="Редактировать план диагностической работы">
+								<span class="glyphicon glyphicon-list-alt"></span>
+							</a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="col-md-10" ng-hide="ctrl.tableReady">
+			<div class="alert alert-info" role="alert">
+				<button type="button" class="close" data-dismiss="alert">×</button>Список диагностических работ пуст. Для того
+				чтобы добавить, необходимо нажать кнопку "Добавить"
+			</div>
+		</div>
+	</div>
+</form>
+<span class="content-page-preloader" id="preloader" ng-hide="ctrl.viewReady || ctrl.criticalError"><span>{{ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+<div class="row" ng-show="ctrl.criticalError">
+	<div class="col-md-10">
+		<div class="alert alert-danger" role="alert">{{ctrl.criticalError}}</div>
+	</div>
+</div>
+<div class="legend print-block">
+	<div>
+		<p>
+			<span class="legend-label bg-success"></span>
+			<span class="legend-description"> — Опубликованные работы</span>
+		</p>
+		<p>
+			<span class="legend-label bg-warning" ng-if="ctrl.state.regional"></span>
+			<span class="legend-description" ng-if="ctrl.state.regional"> — Опубликованы не во всех ОО</span>
+		</p>
+		<p>
+			<span class="legend-label bg-info" ng-if="ctrl.state.regional"></span>
+			<span class="legend-description" ng-if="ctrl.state.regional"> — Ошибка при получении статуса публикации</span>
+		</p>
+	</div>
+</div>

@@ -1,0 +1,95 @@
+{
+  "images": [
+    {
+      "name": "/vendor/custom/img/header-logo.png",
+      "width": 48,
+      "height": 49,
+      "offsetX": 1,
+      "offsetY": 1
+    },
+    {
+      "name": "/vendor/custom/img/header-logo-addschool.png",
+      "width": 48,
+      "height": 49,
+      "offsetX": 1,
+      "offsetY": 51
+    },
+    {
+      "name": "/vendor/custom/img/header-logo-preschool.png",
+      "width": 48,
+      "height": 49,
+      "offsetX": 1,
+      "offsetY": 101
+    },
+    {
+      "name": "/vendor/custom/img/header-logo-ns.png",
+      "width": 48,
+      "height": 49,
+      "offsetX": 1,
+      "offsetY": 151
+    },
+    {
+      "name": "/vendor/custom/img/header-logo-bg.png",
+      "width": 260,
+      "height": 97,
+      "offsetX": 1,
+      "offsetY": 201
+    },
+    {
+      "name": "/vendor/custom/img/header-right-bg.png",
+      "width": 430,
+      "height": 50,
+      "offsetX": 1,
+      "offsetY": 299
+    },
+    {
+      "name": "/vendor/custom/img/header-vertical-line.png",
+      "width": 5,
+      "height": 48,
+      "offsetX": 1,
+      "offsetY": 350
+    },
+    {
+      "name": "/vendor/custom/img/header-vertical-line-small.png",
+      "width": 3,
+      "height": 36,
+      "offsetX": 1,
+      "offsetY": 399
+    },
+    {
+      "name": "/vendor/custom/img/footer-logo.png",
+      "width": 60,
+      "height": 60,
+      "offsetX": 1,
+      "offsetY": 436
+    },
+    {
+      "name": "/vendor/custom/img/btn-add-active.png",
+      "width": 50,
+      "height": 50,
+      "offsetX": 1,
+      "offsetY": 497
+    },
+    {
+      "name": "/vendor/custom/img/btn-add.png",
+      "width": 50,
+      "height": 50,
+      "offsetX": 1,
+      "offsetY": 548
+    },
+    {
+      "name": "/vendor/custom/img/panel-arrow.png",
+      "width": 21,
+      "height": 15,
+      "offsetX": 1,
+      "offsetY": 599
+    },
+    {
+      "name": "/vendor/custom/img/panel-arrow-active.png",
+      "width": 21,
+      "height": 15,
+      "offsetX": 1,
+      "offsetY": 615
+    }
+  ]
+}

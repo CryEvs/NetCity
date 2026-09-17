@@ -1,0 +1,33 @@
+<table class="table table-bordered table-bright-hover table-bright-striped table-xs print-block">
+	<tr>
+		<th>{{{language.Generic.Filter.kN_PP}}}</th>
+		<th>{{{language.Generic.Filter.kFIO}}}</th>
+		<th>{{{language.Generic.UsersExport_1C.kBirthDate}}}</th>
+		<th>{{{language.Generic.SetupAddSchool.kCost}}}</th>
+		<th>Основание</th>
+<tr>
+	{{#each movements}}
+	<tr class="{{#unless possible}}impossible{{/unless}}">
+		<td>
+			{{Inc @index 0 0}}
+		</td>
+		<td>
+			<label style="font-weight: normal;" for="payment-{{movementId}}" class="fio-label">{{FIO studentInfo}}</label>
+		</td>
+		<td>
+			{{DateOnly2str studentInfo.birthDate}}
+		</td>
+		<td>
+			<select class="form-control" name="payment-{{movementId}}">
+				{{#each ../paymentTypes}}
+				<option value="{{id}}" {{#ifEqual key ../studentInfo.paymentTypeInformation}}selected{{/ifEqual}}>{{name}}
+				</option>
+				{{/each}}
+			</select>
+		</td>
+		<td>
+			<input class="form-control" name="reason-{{movementId}}" type="text" maxlength="255" />
+		</td>
+	</tr>
+	{{/each}}
+</table>

@@ -1,0 +1,600 @@
+﻿.normaltext {
+  font-size: 13px;
+}
+.smalltext {
+  font-size: 11px;
+}
+body {
+  margin: 0;
+  font-family: verdana, tahoma, arial, helvetica;
+}
+.monos {
+  font-family: Consolas, DejaVu Sans Mono, Liberation Mono, Lucida Console, Courier New, Batang, Gulim, Dotum;
+  font-size: 12px;
+}
+form {
+  margin: 0;
+}
+h2,
+h4 {
+  font-weight: bold;
+  font-size: 14px;
+}
+h3 {
+  font-weight: bold;
+  font-size: 13px;
+}
+input {
+  font-family: verdana, tahoma, arial, helvetica;
+  font-size: 12px;
+  border-collapse: collapse;
+  border-width: thin;
+}
+input[type=checkbox] {
+  margin: 0;
+}
+input[type=radio] {
+  margin: 1px;
+}
+.select {
+  font-size: 12px;
+}
+select {
+  font-family: verdana, tahoma, arial, helvetica;
+  font-size: 12px;
+}
+select.csg {
+  width: 100%;
+}
+p,
+td {
+  font-size: 11px;
+}
+th {
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+div.subhead {
+  font-weight: bold;
+  font-size: 13px;
+  color: #ffffff;
+}
+div.bullet {
+  font-size: 13px;
+}
+div.footer {
+  font-size: 11px;
+}
+div.ltfooter {
+  font-size: 11px;
+  color: #cccccc;
+}
+div.PageTitle {
+  font-weight: bold;
+  font-size: 13px;
+}
+div.alertDialog {
+  font-weight: bold;
+  font-size: 13px;
+  color: #ff0000;
+  white-space: pre-wrap;
+  font-family: arial, helvetica, sans-serif;
+}
+div.yearsTabs {
+  width: 500px;
+}
+textarea {
+  font-size: 12px;
+}
+a.curYearTab {
+  top: 11px;
+}
+a.plunit {
+  font-size: 13px;
+  color: green;
+  text-decoration: none;
+}
+a.pllesson {
+  font-size: 13px;
+  color: darkred;
+  text-decoration: none;
+}
+a.plplan {
+  font-size: 13px;
+  color: blue;
+  text-decoration: none;
+}
+a.SchedSchoolEvent {
+  color: #3F68C2;
+}
+a.SchedClassEvent {
+  color: #1E86B7;
+}
+a.SchedHolidays {
+  color: #DD0101;
+}
+a.SchedVocations {
+  color: #DD0101;
+}
+a.SchedDayNumb {
+  font-weight: bold;
+  font-size: 13px;
+  color: blue;
+}
+a.SchedVocDayNumb {
+  font-weight: bold;
+  font-size: 13px;
+  color: red;
+}
+a.yearTab {
+  left: 10px;
+  position: relative;
+  top: 10px;
+}
+.SmallHeader {
+  font-weight: bold;
+  font-size: 13px;
+}
+.body {
+  font-weight: bold;
+  font-size: 12px;
+}
+table.filterTable {
+  border-width: 0;
+}
+table.filterTable th {
+  width: 10%;
+  text-align: left;
+}
+table.filterTable td {
+  text-align: left;
+}
+table.NullTable {
+  border: 0 white;
+  padding: 0;
+  border-collapse: separate;
+  float: none;
+}
+table.NullTable th {
+  text-align: left;
+  background-color: transparent;
+  padding: 0;
+}
+table.NullTable td {
+  padding: 0;
+}
+table.ThickTable {
+  border-collapse: collapse;
+  border: thick gray;
+}
+table.ThickTable td {
+  text-align: left;
+  border-color: gray;
+}
+table.ThickTable td input {
+  font-size: 12px;
+}
+table.ThickTable th {
+  background-color: #e7eff7;
+  text-align: left;
+  border-color: gray;
+}
+table.PlanTable {
+  empty-cells: show;
+  border: thin groove darkgray;
+  border-collapse: collapse;
+  white-space: normal;
+  margin: 0;
+  float: none;
+  padding: 0px;
+}
+table.PlanTable td {
+  border: thin groove darkgray;
+  text-align: center;
+  white-space: normal;
+  padding: 0px;
+}
+table.PlanTable th {
+  border: thin groove darkgray;
+  background-color: #e7eff7;
+  text-align: center;
+  padding: 0px;
+}
+table.xlTable {
+  empty-cells: show;
+  border: thin outset gray;
+  border-collapse: collapse;
+  white-space: normal;
+  margin: 0;
+  float: none;
+}
+table.xlTable td {
+  text-align: right;
+  border: thin inset gray;
+  white-space: normal;
+}
+table.xlTable th {
+  background-color: #EAEAEA;
+  border: thin inset gray;
+}
+table.ThinTable {
+  border: thin inset gray;
+  border-collapse: collapse;
+  empty-cells: show;
+  padding: 2px;
+}
+table.ThinTable td {
+  border-color: gray;
+  padding: 2px;
+}
+table.ThinTable td.leftheader {
+  background-color: #ccccff;
+}
+table.ThinTable td.filled {
+  background-color: #99ccee;
+}
+table.ThinTable td.relay1 {
+  background-color: #f9ebc1;
+}
+table.ThinTable td.relay2 {
+  background-color: #e9f8cd;
+}
+table.ThinTable td.relay3 {
+  background-color: #cdf0f8;
+}
+table.ThinTable td.event {
+  background-color: #C0FFC0;
+}
+table.ThinTable th {
+  border-color: gray;
+  background-color: #e7eff7;
+  text-align: center;
+  padding: 2px;
+}
+table.ThinTable th.leftheader {
+  background-color: #ccccff;
+}
+table.CenterTable {
+  border: thin inset gray;
+  border-collapse: collapse;
+  empty-cells: show;
+  padding: 2px;
+}
+table.CenterTable td {
+  border-color: gray;
+  padding: 2px;
+  white-space: nowrap;
+  text-align: center;
+}
+table.CenterTable td.txt {
+  border-color: gray;
+  padding: 2px;
+  white-space: nowrap;
+  text-align: left;
+}
+table.CenterTable th {
+  border-color: gray;
+  background-color: #e7eff7;
+  text-align: center;
+  min-width: 16px;
+  padding: 2px;
+}
+table.SchedTable th.SchedHeader {
+  background-color: #BFDEFD;
+}
+table.SchedTable th.SchedHeader2 {
+  background-color: #E7F3FF;
+}
+table.SchedTable th.SchedEvents {
+  background-color: #D4F5FE;
+}
+table.SchedTable td {
+  background-color: #CFF9FB;
+}
+table.SchedTable td.ViewWeekSched {
+  font-weight: bold;
+  font-size: 13px;
+  background-color: #C7E4FE;
+}
+table.SchedTable td.SchedEmptyCell {
+  background-color: white;
+}
+table.SchedTable td.SchedVocationDay {
+  background-color: #FDF1F1;
+}
+table.SchedTable td.leftheader {
+  background-color: #C7DCFE;
+}
+table.SchedTable td.filled {
+  background-color: #B5EBFD;
+}
+table.SchedTable td.SchedVocDayBold {
+  font-weight: bold;
+  font-size: 13px;
+  background-color: #FDF1F1;
+}
+table.SchedTable td.SchedDayBold {
+  font-weight: bold;
+  font-size: 13px;
+  background-color: #CFF9FB;
+}
+table.SchedTable td.relay1 {
+  background-color: #f9ebc1;
+}
+table.SchedTable td.relay2 {
+  background-color: #e9f8cd;
+}
+table.SchedTable td.relay3 {
+  background-color: #cdf0f8;
+}
+.onscrhelp {
+  font-size: 11px;
+  color: #5679cb;
+  font-family: arial, helvetica, sans-serif;
+}
+.onscrhelp p {
+  font-size: 11px;
+  color: #5679cb;
+  font-family: arial, helvetica, sans-serif;
+}
+td.alert,
+.ui-dialog {
+  font-weight: bold;
+  font-size: 13px;
+  color: #ff0000;
+  font-family: arial, helvetica, sans-serif;
+}
+button.button {
+  vertical-align: top;
+  margin: 2px;
+  width: 110px;
+}
+button.inlineButton {
+  width: auto;
+}
+button.iconButton {
+  margin: 2px;
+  height: 24px;
+}
+span.button {
+  display: inline-block;
+  font-family: Arial;
+  font-size: 8pt;
+  white-space: normal;
+}
+.FolderLink {
+  font-family: arial, helvetica, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  line-height: normal;
+  font-weight: bold;
+  font-variant: normal;
+  text-transform: none;
+  text-decoration: none;
+}
+#importControls a img {
+  margin-bottom: -7px;
+}
+ul.inTableList {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-left: 25px;
+}
+ul.yearsTabs {
+  padding: 0px;
+}
+li.curYearTab {
+  font-weight: normal;
+}
+li.yearTab {
+  color: white;
+  height: 40px;
+  list-style: none outside none;
+  position: relative;
+  padding: 0;
+  top: 1px;
+  float: left;
+  border-bottom: 0 none;
+}
+li.nonCurYearTab {
+  font-weight: bold;
+  border: 1px solid #0E1C74;
+}
+.ui-state-default .ui-icon-rector {
+  background-image: url(../../images/Common/Buttons/rector.png);
+}
+.sortHeader {
+  display: inline-block;
+  overflow: hidden;
+  /* Хаки для IE7 */
+  zoom: 1;
+  /** display : inline;*/
+  /*решить, что делать со здвездочкой*/
+}
+.sortTitle {
+  float: left;
+}
+.sortIcon {
+  float: left;
+  display: inline;
+  height: 22px;
+  width: 15px;
+}
+.ascsort .sortIcon {
+  background-image: url(../../images/Common/up.gif);
+}
+.descsort .sortIcon {
+  background-image: url(../../images/Common/down.gif);
+}
+.testPlan tr {
+  background-color: white;
+}
+.ui-state-default .ui-icon-ma {
+  background-image: url(../../images/Common/Buttons/ma.png);
+  height: 16px;
+  width: 32px;
+  margin-left: -3px;
+  padding: 1px;
+}
+.ui-dialog {
+  z-index: 1002;
+}
+.select-indicator-group {
+  width: 400px !important;
+}
+.IndicatorsTable {
+  border: 1px solid #c0baba;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: #000000;
+  background-color: #e7eff7;
+}
+.IndicatorsTable td {
+  background: -o-linear-gradient(bottom, #e7eff7 5%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e7eff7), color-stop(1, #ffffff));
+  background: -moz-linear-gradient(center top, #e7eff7 5%, #ffffff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e7eff7", endColorstr="#ffffff");
+  background: -o-linear-gradient(top, #e7eff7, ffffff);
+  border: 1px solid #c0baba;
+  border-width: 0px 1px 1px 0px;
+  text-align: left;
+  padding: 7px;
+  font-size: 11px;
+}
+.IndicatorsTable tr:first-child td {
+  background: -o-linear-gradient(bottom, #e7eff7 5%, #a4c1dd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e7eff7), color-stop(1, #a4c1dd));
+  background: -moz-linear-gradient(center top, #e7eff7 5%, #a4c1dd 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e7eff7", endColorstr="#a4c1dd");
+  background: -o-linear-gradient(top, #e7eff7, a4c1dd);
+  border: 0px solid #c0baba;
+  text-align: center;
+  border-width: 0px 0px 1px 1px;
+  font-size: 13px;
+}
+.IndicatorsTable-GroupIndicator td {
+  background: -o-linear-gradient(bottom, #e7eff7 5%, #b1d0ef 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e7eff7), color-stop(1, #b1d0ef));
+  background: -moz-linear-gradient(center top, #e7eff7 5%, #b1d0ef 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e7eff7", endColorstr="#b1d0ef");
+  background: -o-linear-gradient(top, #e7eff7, b1d0ef);
+}
+.readonly-indicator-input {
+  background-color: #E0E0E0;
+}
+.margin-from-row {
+  margin-bottom: 10px;
+}
+.input-indicator-value {
+  width: auto !important;
+  padding: 6px 12px !important;
+  display: inline-block !important;
+  padding-right: 20px !important;
+}
+.icon-align {
+  top: 0 !important;
+  right: 8px !important;
+  text-align: right !important;
+  width: 10px !important;
+}
+h5 {
+  font-weight: bold !important;
+}
+#tooltip {
+  background: white;
+  font: menu;
+  border: 1px solid black;
+  margin: 0px 0px;
+  padding: 3px 5px;
+  position: absolute;
+  visibility: hidden;
+}
+.tooltip-inner {
+  min-width: 150px;
+  background-color: #ce8483 !important;
+}
+.right .tooltip-arrow {
+  border-right-color: #ce8483 !important;
+}
+.input-parameter-value {
+  width: 100px;
+}
+div.bootstrap-style .calculator-input .form-control {
+  border-color: #ECDA21;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+div.bootstrap-style .calculator-input .form-control:focus {
+  border-color: #E0D133;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffea12;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffea12;
+}
+.bs-callout {
+  padding-left: 10px;
+  margin: 20px 0;
+  border-radius: 3px;
+  white-space: pre-line;
+}
+.bs-callout-warning {
+  border-left: 5px solid #f0ad4e;
+  font-family: arial, helvetica, sans-serif;
+}
+.bs-callout-warning p {
+  font-size: 13px;
+  margin: 0 !important;
+}
+div.alert {
+  font-weight: bold;
+  font-size: 13px;
+  font-family: arial, helvetica, sans-serif;
+}
+div.upload input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  filter: alpha(opacity=0);
+  direction: ltr;
+  cursor: pointer;
+}
+div.upload {
+  width: auto;
+  height: 25px;
+  background-color: white;
+  position: relative;
+  border: 1px solid #8baed8;
+}
+div.upload input#fileName {
+  width: 270px;
+  height: 22px;
+  position: relative;
+  font-size: 13px;
+  line-height: 25px;
+  margin-left: 92px;
+  pointer-events: none;
+  background-color: white;
+  border: 0;
+  left: 0;
+}
+div.upload div#button {
+  cursor: pointer;
+  display: block;
+  width: 90px;
+  background: #e2ebff;
+  height: 25px;
+  color: #3d7199;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 11px;
+  line-height: 25px;
+  text-align: center;
+  overflow: hidden;
+}
+div.upload div#button:hover {
+  background: #CBD9F8;
+}
+/*# sourceMappingURL=styles.css.map */

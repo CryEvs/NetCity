@@ -1,0 +1,25 @@
+<form name="GroupList" method="post">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kAddGroup}}" type="button" class="btn btn-info" ng-click="$ctrl.addGroup()">
+					<span class="glyphicon glyphicon-plus-sign"></span> 
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+				
+				<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kEditGroup}}" type="button" class="btn btn-warning" ng-disabled="!$ctrl.group" ng-click="$ctrl.editGroup()">
+					<span class="glyphicon glyphicon-pencil"></span> 
+					<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+				</button>
+				
+				<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kDelGroup}}" type="button" class="btn btn-danger" ng-disabled="!$ctrl.group" ng-click="$ctrl.delGroup()">
+					<span class="glyphicon glyphicon-minus-sign"></span> 
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="alert alert-info" role="alert" ng-if="!$ctrl.subject.groups || !$ctrl.subject.groups.length">{{$ctrl.language.Generic.Common.kNo}}</div>
+	<select track-changes class="form-control" size="4" ng-if="$ctrl.subject.groups && $ctrl.subject.groups.length" name="groups" ng-model="$ctrl.group" ng-options="group as group.name + ' (' + group.shortName + ')' for group in $ctrl.subject.groups track by group.id"></select>
+</form>

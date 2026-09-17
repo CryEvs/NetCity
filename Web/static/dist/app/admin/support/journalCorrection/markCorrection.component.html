@@ -1,0 +1,54 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<ns-form control-size="col-md-9" label-size="col-md-3" class="form-horizontal">
+
+		<ns-form-group title="Предмет" ng-if="$ctrl.regimeAddNew">
+			<select track-changes name="subject" class="form-control form-control-inline" 
+					ng-options="subject as subject.name for subject in $ctrl.subjects track by subject.id"
+					ng-change="$ctrl.changeSubject()"
+					ng-model="$ctrl.unassignedSubject" >
+			</select>
+		</ns-form-group>
+
+		<ns-form-group title="Предмето-группа" ng-if="$ctrl.regimeAddNew && !$ctrl.singleSg">
+			<select track-changes name="sg" class="form-control form-control-inline" 
+					ng-options="subjectGroup as subjectGroup.name for subjectGroup in $ctrl.subjectGroups track by subjectGroup.id"
+					ng-change="$ctrl.changeSubjectGroup()"
+					ng-model="$ctrl.subjectGroup" >
+			</select>
+		</ns-form-group>
+
+		<ns-form-group title="Предмет" ng-if="!$ctrl.regimeAddNew">
+			<input type="text" class="form-control" name="sg" disabled ng-model="$ctrl.mark.subjectGroup.name">
+		</ns-form-group>
+
+		<ns-form-group title="Период">
+			<select track-changes name="period" class="form-control form-control-inline" ng-if="$ctrl.regimeAddNew" 
+					ng-options="mark as (mark.term == null ? mark.periodType.name : mark.term.name) for mark in $ctrl.sgMarks track by (mark.term == null ? '1_' + mark.periodType.id : '0_' + mark.term.id)"
+					ng-change="$ctrl.changePeriod()"
+					ng-model="$ctrl.mark" >
+			</select>
+			<input type="text" class="form-control" name="period" disabled ng-model="$ctrl.periodName" ng-if="!$ctrl.regimeAddNew">
+		</ns-form-group>
+
+		<ns-form-group title="Учитель">
+			<input type="text" class="form-control" name="teacher" disabled ng-model="$ctrl.mark.teacher.name">
+		</ns-form-group>
+
+		<ns-form-group title="Оценка" ng-if="!$ctrl.regimeAddNew">
+			<input type="text" class="form-control" name="mark" disabled ng-model="$ctrl.markInfo">
+		</ns-form-group>
+
+		<ns-form-group title="Новая оценка">
+			<select track-changes name="MarkType" class="form-control form-control-inline" 
+					ng-options="markType as markType.name for markType in $ctrl.markTypesForSelect track by markType.id"
+					ng-change="$ctrl.changeNewMarkType()"
+					ng-model="$ctrl.newMarkType" >
+			</select>
+			<input required track-changes int-input="$ctrl.intInputOptions" type="text" class="form-control text-center form-control-inline" autocomplete="off" name="Mark" size="3" maxlength="4" ng-model="$ctrl.newMark" ng-hide="$ctrl.newMarkType.id != 1 || $ctrl.gradingSys == 'Pass'" >
+		</ns-form-group>
+
+		<ns-form-group title="Основание">
+			<textarea name="reason" ng-model="$ctrl.reason" class="form-control" rows="3" wrap="soft" required></textarea>
+		</ns-form-group>
+	</ns-form>
+</ns-modal>

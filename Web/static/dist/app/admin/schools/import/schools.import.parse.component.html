@@ -1,0 +1,37 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<b ng-if="$ctrl.model.alreadyCreated">{{$ctrl.language.Generic.Import.kSchoolsAlreadyCreated}}</b>
+
+	<div style="overflow-y: auto; max-height: 600px">
+		<table class="table table-xs table-hover table-striped">
+			<tr>
+				<th>{{$ctrl.language.Generic.Reports.kOrderNum}}</th>
+
+				<th>{{$ctrl.language.Generic.Common.kState}}</th>
+				<th ng-if="$ctrl.showProvinces">{{$ctrl.language.Generic.Common.kProvince}}</th>
+				<th>{{$ctrl.language.Generic.Common.kCity}}</th>
+				<th ng-if="$ctrl.showDistricts">{{$ctrl.language.Generic.Common.kDistrict}}</th>
+				<th>{{$ctrl.language.Generic.SchoolInfo.kEOName}}</th>
+				<th>{{$ctrl.language.Generic.Common.kEOType}}</th>
+				<th ng-if="$ctrl.showEOForm">{{$ctrl.language.Generic.SchoolInfo.kEOForm}}</th>
+				<th ng-if="$ctrl.showComments">{{$ctrl.language.Generic.Common.kComment}}</th>
+				<th>{{$ctrl.language.Generic.Import.kToImport}}</th>
+			</tr>
+			<tr class="text-center" ng-repeat="school in $ctrl.data.schools" ng-class="{'success': school.canImport, 'danger': !school.canImport}">
+				<td class="text-center">{{$index + 1}}</td>
+
+				<td class="text-left">{{school.stateName}}</td>
+				<td class="text-left" ng-if="$ctrl.showProvinces">{{school.provinceName}}</td>
+				<td class="text-left">{{school.cityName}}</td>
+				<td class="text-left" ng-if="$ctrl.showDistricts">{{school.districtName}}</td>
+				<td class="text-left">{{school.shortName}}</td>
+				<td class="text-left">{{school.typeName}}</td>
+				<td class="text-left" ng-if="$ctrl.showEOForm">{{school.formName}}</td>
+				<td class="text-left" ng-if="$ctrl.showComments">{{school.comment}}</td>
+				<td class="text-center">
+					<input ng-if="school.canImport" type="checkbox" name="incEO" ng-checked="$ctrl.selection.isSelected($index+1)" ng-click="$ctrl.selection.select($index+1)"/>
+					<input ng-if="!school.canImport" type="checkbox" name="incEO" disabled="disabled">
+				</td>
+			</tr>
+		</table>
+	</div>
+</ns-modal>

@@ -1,0 +1,20 @@
+<div class="alert alert-info" ng-if="ctrl.subgroup.isList()">
+	<label class="control-label">{{ctrl.subgroup.subgroup.name}}</label>
+	<div class="radio" ng-repeat="right in ctrl.subgroup.rights">
+		<label>
+			<input name="{{ctrl.subgroup.subgroup.key}}" type="radio" ng-click="ctrl.toggle(right)" ng-checked="ctrl.isSelected(right)" ng-disabled="ctrl.noDeselect(right)" track-changes>&nbsp;<span>{{right.name}}</span>
+		</label>
+	</div>
+	<div class="radio">
+		<label>
+			<input name="{{ctrl.subgroup.subgroup.key}}" type="radio" ng-click="ctrl.toggleNoAccess()" ng-checked="ctrl.noAccess()" ng-disabled="ctrl.noDeselect()" track-changes>&nbsp;{{ctrl.language.Generic.Common.kNoAccess}}
+		</label>
+	</div>
+</div>
+<div ng-if="!ctrl.subgroup.isList()">
+	<div class="checkbox" ng-repeat="right in ctrl.subgroup.rights">
+		<label>
+			<input type="checkbox" ng-click="ctrl.toggle(right)" ng-checked="ctrl.isSelected(right)" ng-disabled="ctrl.noDeselect(right)" track-changes>&nbsp;<span>{{right.name}}</span>
+		</label>
+	</div>
+</div>

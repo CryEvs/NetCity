@@ -1,0 +1,89 @@
+<div ng-model="EditMethodicalActivityCtrl">
+	<div class="bootstrap-dialog type-primary">
+		<div class="modal-header">
+			<div class="bootstrap-dialog-header">
+				<div class="bootstrap-dialog-title">
+					<h4 class="modal-title" ng-bind="header"></h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-body">
+			<form role="form" name="editForm" class="form form-xs ng-pristine ng-valid ng-scope">
+				<fieldset>
+					<!--Поля формы-->
+					<div class="form-group" ng-class="{'has-error': (editForm.activityYearStart.$invalid || editForm.activityYearEnd.$invalid) && (!editForm.activityYearStart.$pristine || !editForm.activityYearEnd.$pristine || editForm.$displayErrors)}">
+						<label for="activity-years" class="control-label">{{language.Generic.Common.kPeriod}}</label>
+						<div class="input-group" id="activity-years">
+							<span class="input-group-addon">Год начала </span>
+							<input type="number" name="activityYearStart" id="activity-year-start" class="form-control" ng-model="data.item.period.start" required maxlength="4" ng-pattern="/^\d*$/" min="1950" max="2100" onchange="dataChanged()">
+							<span class="input-group-addon"> Год окончания </span>
+							<input type="number" name="activityYearEnd" id="activity-year-end" class="form-control" ng-model="data.item.period.end" maxlength="4" ng-pattern="/^\d*$/" min="1950" max="2100" onchange="dataChanged()">
+						</div>
+						<div>
+							<p ng-show="editForm.activityYearStart.$invalid && (!editForm.activityYearStart.$pristine || editForm.$displayErrors)" class="help-block">Введите корректный год начала деятельности (4 знака, 1950-2100) - обязательный параметр)</p>
+							<p ng-show="editForm.activityYearEnd.$invalid && (!editForm.activityYearEnd.$pristine || editForm.$displayErrors)" class="help-block">Введите корректный год окончания деятельности (4 знака, 1950-2100)) - необязательный параметр</p>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error': editForm.activityWork.$invalid && (!editForm.activityWork.$pristine || editForm.$displayErrors)}">
+						<label for="activity-work" class="control-label">{{language.Generic.Common.kWorkName}}</label>
+						<div>
+							<input type="text" id="activity-work" name="activityWork" class="form-control" ng-model="data.item.workName"  required maxlength="400" onchange="dataChanged()">
+							<p ng-show="editForm.activityWork.$invalid && (!editForm.activityWork.$pristine || editForm.$displayErrors)" class="help-block">Название работы - обязательный параметр</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="activity-product" class="control-label">{{language.Generic.Common.kProductName}}</label>
+						<div>
+							<input type="text" id="activity-product" class="form-control" ng-model="data.item.productName" maxlength="400" onchange="dataChanged()">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6" ng-class="{'has-error': editForm.activityLevel.$invalid && (!editForm.activityLevel.$pristine || editForm.$displayErrors)}">
+							<label for="activity-level" class="control-label">{{language.Generic.UsersExport_1C.kLevel}}</label>
+							<div>
+								<select id="activity-level" name="activityLevel" class="form-control" ng-model="data.item.level" ng-options="level.key as level.name for level in refs.levels" required onchange="dataChanged()"></select>
+								<p ng-show="editForm.activityLevel.$invalid && (!editForm.activityLevel.$pristine || editForm.$displayErrors)" class="help-block">Параметр обязателен для заполнения</p>
+							</div>
+						</div>
+
+						<div class="form-group col-md-6" ng-class="{'has-error': editForm.activityStatus.$invalid && (!editForm.activityStatus.$pristine || editForm.$displayErrors)}">
+							<label for="activity-status" class="control-label">{{language.Generic.Common.kParticipationStatus}}</label>
+							<div>
+								<select id="activity-status" name="activityStatus" class="form-control" ng-model="data.item.participation" ng-options="status.key as status.name for status in refs.participationStatus" required onchange="dataChanged()"></select>
+								<p ng-show="editForm.activityStatus.$invalid && (!editForm.activityStatus.$pristine || editForm.$displayErrors)" class="help-block">Параметр обязателен для заполнения</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="activity-implemented-in" class="control-label">{{language.Generic.Common.kImplementedIn}}</label>
+						<div>
+							<input type="text" id="activity-implemented-in" class="form-control" ng-model="data.item.implementedIn" maxlength="400" onchange="dataChanged()">
+						</div>
+					</div>
+					<div class="form-group"  ng-class="{'has-error': editForm.hostingAddress.$invalid && (!editForm.hostingAddress.$pristine || editForm.$displayErrors)}">
+						<label for="activity-hosting" class="control-label">{{language.Generic.Common.kHostingAddress}}</label>
+						<div>
+							<input type="url" id="activity-hosting" name="hostingAddress" class="form-control" ng-model="data.item.hostingAddress" maxlength="400" onchange="dataChanged()">
+							<p ng-show="editForm.hostingAddress.$invalid && (!editForm.hostingAddress.$pristine || editForm.$displayErrors)" class="help-block">Должен быть указан url с протоколом</p>
+						</div>
+					</div>
+
+				</fieldset>
+			</form>
+		</div>
+
+		<div class="modal-footer">
+			<button class="btn btn-primary ng-binding" ng-click="editForm.$displayErrors=true; save(editForm.$valid);">
+				{{language.Generic.Buttons.kSave}}
+			</button>
+
+			<button class="btn btn-default ng-binding" ng-click="cancel()">
+				<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+				{{language.Generic.Buttons.kCancel}}
+			</button>
+		</div>
+
+	</div>
+</div>

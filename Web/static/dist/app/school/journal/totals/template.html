@@ -1,0 +1,88 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/journal/totals/css/totals.css">
+
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+		<div class="buttons-panel">
+
+			<div class="buttons-panel-right">
+
+				<button title="{{language.Generic.Buttons.kPrint}}" type="button" class="btn btn-default" ng-click="ctrl.print()">
+					<span class="glyphicon glyphicon-print"></span>
+					<span>{{ctrl.language.Generic.Buttons.kPrint}}</span>
+				</button>
+				
+				<button title="{{language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default"  ng-click="ctrl.export()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>{{ctrl.language.Generic.Common.kBtnExcel}}</span>
+				</button>
+
+			</div>
+		</div>
+		<filter-panel fp-settings="ctrl.filterPanelSettings"></filter-panel>
+	</div>
+</div>
+
+<div class="row" ng-if="ctrl.warning">
+	<div class="col-md-12 col-lg-8">
+		<div class="alert alert-warning">
+			{{ctrl.warning}}
+		</div>
+	</div>
+</div>
+
+<div class="row" ng-if="ctrl.data.studentList && ctrl.data.studentList.length == 0">
+	<div class="col-md-12 col-lg-8">
+		<div class="alert alert-info">
+			{{ctrl.language.Filter.kNoStudents}}
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-if="ctrl.data.studentList && ctrl.data.studentList.length > 0 && !ctrl.warning">
+	<div class="col-md-12">
+			<table class="table table-bordered table-hover table-striped table-thin table-xs print-block">
+				<tr>
+					<th rowspan="2">{{ctrl.language.Grade.kStudentsColumn}}</th>
+					<th colspan="{{ctrl.data.terms.length}}">{{ctrl.language.Generic.Grade.kPeriodsColumn}}</th>
+
+					<th ng-repeat="periodType in ctrl.data.periodTypes" rowspan="{{(periodType.name == 'exam' && ctrl.data.examPeriodTypes.length) ? 1 : 2}}" colspan="{{periodType.name == 'exam' ? (ctrl.data.examPeriodTypes.length || 1) : 1}}">
+						<a ng-if="ctrl.canEditPeriodType(periodType)" href title="{{ctrl.language.Generic.Grade.kEditTotals}}" ng-click="ctrl.editYearTotals(ctrl.data.sgId, periodType)">{{periodType.title}}</a>
+						<span ng-if="!ctrl.canEditPeriodType(periodType)">{{periodType.title}}</span>
+					</th>
+
+				</tr>
+				<tr>
+					<th ng-repeat="term in ctrl.data.terms">
+						<a ng-if="ctrl.canEditTerm(term)" href title="{{ctrl.language.Generic.Grade.kEditTotals}}" ng-click="ctrl.editTotals(ctrl.data.sgId, term.id)">{{term.termName}}</a>
+						<span ng-if="!ctrl.canEditTerm(term)">{{term.termName}}</span>
+					</th>
+					<th ng-repeat="periodType in ctrl.data.examPeriodTypes">
+						<a ng-if="ctrl.canEditPeriodType(periodType)" href title="{{ctrl.language.Generic.Grade.kEditTotals}}" ng-click="ctrl.editYearTotals(ctrl.data.sgId, periodType)">{{periodType.abbr}}</a>
+						<span ng-if="!ctrl.canEditPeriodType(periodType)">{{periodType.abbr}}</span>
+					</th>
+				</tr>
+				<tr ng-repeat="studentRow in ctrl.data.studentRows" class="text-center" ng-class="{'individual-educ': studentRow.student.individualEduc}">
+					<td align="left" nowrap class="student-name text-nowrap">
+						<span>{{$index + 1}}. {{studentRow.student.fullName}}</span>
+					</td>
+					<td ng-repeat="total in studentRow.totals">
+						{{total.mark}}
+					</td>
+
+					<td ng-repeat="yearTotal in studentRow.yearTotals">
+						{{yearTotal.mark}}
+					</td>
+				</tr>
+			</table>
+
+			<div class="legend print-block" ng-if="ctrl.hasIndividualEducs()">
+				<div>
+					<p>
+						<span class="legend-label individual-educ"></span>
+						<span class="legend-description"> — {{ctrl.language.Generic.Common.kIndividualEduc}}</span>
+					</p>
+				</div>
+			</div>
+	</div>
+</div>
+

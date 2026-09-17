@@ -1,0 +1,26 @@
+$color_individual_educ: #FFE094;
+
+.individual-educ {
+	background-color: $color_individual_educ;
+	> td {
+		background-color: $color_individual_educ;
+	}
+	> td > input {
+		background-color: $color_individual_educ;
+	}
+	> input {
+		background-color: $color_individual_educ;
+	}
+	> select {
+		background-color: $color_individual_educ;
+	}
+
+	&.student-name, .student-name {
+		span:after {
+			font-family: 'Glyphicons Halflings';
+			content: "\e021";
+			margin-left: 5px;
+			font-size: 10px;
+		}
+	}
+}

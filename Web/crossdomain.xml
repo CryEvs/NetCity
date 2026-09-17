@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"?> 
+<!DOCTYPE cross-domain-policy SYSTEM
+"http://www.adobe.com/xml/dtds/cross-domain-policy.dtd">
+
+<cross-domain-policy> 
+	<site-control permitted-cross-domain-policies="all"/>
+    <allow-access-from domain="school.nd.ru" secure="false" /> 
+    <allow-access-from domain="www.school.nd.ru" secure="false" /> 
+	<allow-access-from domain="obr.nd.ru" secure="false" /> 
+    <allow-access-from domain="www.obr.nd.ru" secure="false" />
+	<allow-http-request-headers-from domain="school.nd.ru" headers="*" secure="false"/>
+	<allow-http-request-headers-from domain="www.school.nd.ru" headers="*" secure="false"/>
+	<allow-http-request-headers-from domain="obr.nd.ru" headers="*" secure="false"/>
+	<allow-http-request-headers-from domain="www.obr.nd.ru" headers="*" secure="false"/>
+	<allow-https-request-headers-from domain="school.nd.ru" headers="*" secure="false"/>
+	<allow-https-request-headers-from domain="www.school.nd.ru" headers="*" secure="false"/>
+	<allow-https-request-headers-from domain="obr.nd.ru" headers="*" secure="false"/>
+	<allow-https-request-headers-from domain="www.obr.nd.ru" headers="*" secure="false"/>
+</cross-domain-policy>

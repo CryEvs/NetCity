@@ -1,0 +1,57 @@
+{{#if data.alreadyCreated}}
+<b>{{language.Generic.Import.kSchoolsAlreadyCreated}}</b>
+{{/if}}
+<div style="overflow-y: auto; max-height: 600px">
+	<table class="table table-xs table-hover table-striped">
+		<tr>
+			<th>{{language.Generic.Reports.kOrderNum}}</th>
+
+			<th>{{language.Generic.Common.kState}}</th>
+			{{#if showProvinces}}
+			<th>{{language.Generic.Common.kProvince}}</th>
+			{{/if}}
+			<th>{{language.Generic.Common.kCity}}</th>
+			{{#if showDistricts}}
+			<th>{{language.Generic.Common.kDistrict}}</th>
+			{{/if}}
+			<th>{{language.Generic.SchoolInfo.kEOName}}</th>
+			<th>{{language.Generic.Common.kEOType}}</th>
+			{{#if showEOForm}}
+			<th>{{language.Generic.SchoolInfo.kEOForm}}</th>
+			{{/if}}
+			{{#if showComments}}
+			<th>{{language.Generic.Common.kComment}}</th>
+			{{/if}}
+			<th>{{language.Generic.Import.kToImport}}</th>
+		</tr>
+		{{#each data.schoolList}}
+		<tr class="text-center {{#if CanImport}}success{{else}}danger{{/if}}">
+			<td class="text-center">{{match @index}}</td>
+
+			<td class="text-left">{{StateName}}</td>
+			{{#if @root.showProvinces}}
+			<td class="text-left">{{ProvinceName}}</td>
+			{{/if}}
+			<td class="text-left">{{CityName}}</td>
+			{{#if @root.showDistricts}}
+			<td class="text-left">{{DistrictName}}</td>
+			{{/if}}
+			<td class="text-left">{{ShortName}}</td>
+			<td class="text-left">{{TypeName}}</td>
+			{{#if @root.showEOForm}}
+			<td class="text-left">{{FormName}}</td>
+			{{/if}}
+			{{#if @root.showComments}}
+			<td class="text-left">{{Comment}}</td>
+			{{/if}}
+			<td class="text-center">
+				{{#if CanImport}}
+				<input type="checkbox" name="incEO" value="{{match @index}}">
+				{{else}}
+				<input type="checkbox" name="incEO" disabled="disabled">
+				{{/if}}
+			</td>
+		</tr>
+		{{/each}}
+	</table>
+</div>

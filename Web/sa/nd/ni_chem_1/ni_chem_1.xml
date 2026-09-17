@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Химия. 8-9 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Химия. 8-9 класс" ID="1" Filename="ni_chem_1/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Валентность." ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Валентность." 
+				Filename="sgo/ni_chem_1/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Строение атома, Изотопы." ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Строение атома, Изотопы." 
+				Filename="sgo/ni_chem_1/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электронные конфигурации атомов." ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электронные конфигурации атомов." 
+				Filename="sgo/ni_chem_1/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Образование ковалентной и ионной химических связей." ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Образование ковалентной и ионной химических связей." 
+				Filename="sgo/ni_chem_1/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Типы кристаллических решеток." ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Типы кристаллических решеток." 
+				Filename="sgo/ni_chem_1/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Окислительно-восстановительные реакции." ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Окислительно-восстановительные реакции." 
+				Filename="sgo/ni_chem_1/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Реакции обмена в водных растворах." ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Реакции обмена в водных растворах." 
+				Filename="sgo/ni_chem_1/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Важнейшие кислоты и их соли." ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Важнейшие кислоты и их соли." 
+				Filename="sgo/ni_chem_1/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Классификация оксидов." ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Классификация оксидов." 
+				Filename="sgo/ni_chem_1/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Классификация солей." ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Классификация солей." 
+				Filename="sgo/ni_chem_1/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Генетическая связь важнейших классов неорганических веществ." ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Генетическая связь важнейших классов неорганических веществ." 
+				Filename="sgo/ni_chem_1/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Кислотность среды." ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Кислотность среды." 
+				Filename="sgo/ni_chem_1/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электролитическая диссоциация." ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электролитическая диссоциация." 
+				Filename="sgo/ni_chem_1/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Скорость химических реакций." ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Скорость химических реакций." 
+				Filename="sgo/ni_chem_1/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Химическое равновесие." ID="16">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Химическое равновесие." 
+				Filename="sgo/ni_chem_1/15/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Классификация органических соединений." ID="17">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Классификация органических соединений." 
+				Filename="sgo/ni_chem_1/16/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Изометрия." ID="18">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Изометрия." 
+				Filename="sgo/ni_chem_1/17/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Гомология." ID="19">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Гомология." 
+				Filename="sgo/ni_chem_1/18/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Нефть-источник углеводородов." ID="20">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Нефть-источник углеводородов." 
+				Filename="sgo/ni_chem_1/19/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Белки." ID="21">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Белки." 
+				Filename="sgo/ni_chem_1/20/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

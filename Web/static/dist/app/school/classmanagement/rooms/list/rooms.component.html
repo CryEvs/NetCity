@@ -1,0 +1,152 @@
+<style>
+	.room-cell-invalid {
+		border: solid 1px #7eb3f6 !important;
+		border-color: #ee0000 !important;
+	}
+</style>
+
+<div class="ns-cloak">
+	<div class="row" ng-if="$ctrl.state.dataReady && !$ctrl.readonly">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<button class="btn btn-primary ng-binding" type="button" ng-click="$ctrl.roomsForm.$displayErrors=true; $ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span> {{$ctrl.language.Generic.Buttons.kSave}}
+					</button>
+					<button class="btn btn-warning" type="button" ng-click="$ctrl.reset()">
+						<span class="glyphicon glyphicon-repeat"></span> {{$ctrl.language.Generic.Buttons.kReset}}
+					</button>
+					<button title="{{$ctrl.language.Calendar.kAddRoom}}" type="button" class="btn btn-info" ng-click="$ctrl.add()">
+						<span class="glyphicon glyphicon-plus-sign"></span> <span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+					</button>
+					<button class="btn btn-danger" type="button" ng-click="$ctrl.remove()">
+						<span class="glyphicon glyphicon-minus-sign"></span> {{$ctrl.language.Generic.Buttons.kRemove}}
+					</button>
+					<button class="btn btn-warning" type="button" ng-click="$ctrl.merge()">
+						<span class="glyphicon glyphicon-replace"></span> {{$ctrl.language.Generic.SetupSchool.kReplace}}
+					</button>
+				</div>
+
+				<div class="buttons-panel-right">
+					<button ng-if="$ctrl.funcType == 1" title="{{$ctrl.kClasses}}" type="button" class="btn btn-default" ng-click="$ctrl.goToClasses()">
+						<span>{{$ctrl.kClasses}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- рисуется, если нет помещений -->
+	<div class="row" ng-if="$ctrl.state.dataReady && $ctrl.state.emptyData">
+		<div class="col-md-10 col-lg-7">
+			<div class="alert alert-info" role="alert">
+				{{$ctrl.language.Common.kNoRooms}}
+			</div>
+		</div>
+	</div>
+
+	<!-- рисуется, если помещения есть -->
+	<div class="row" ng-if="$ctrl.state.dataReady && !$ctrl.state.emptyData && $ctrl.roomsWithSeatsAbove.length">
+		<div class="col-md-10 col-lg-7">
+			<div class="alert alert-warning">
+				{{$ctrl.language.Generic.Calendar.kInRooms}}:
+				<div ng-repeat="room in $ctrl.roomsWithSeatsAbove">
+					- {{room.roomname}}
+				</div>
+				{{$ctrl.language.Generic.Calendar.kRoomNormNotFit}}
+			</div>
+		</div>
+	</div>
+
+	<!-- рисуется, если помещения есть -->
+	<div class="row" ng-if="$ctrl.state.dataReady && !$ctrl.state.emptyData">
+		<div class="col-md-12">
+			<form id="roomsForm" name="$ctrl.roomsForm">
+				<table class="table table-bordered table-sm table-thin" id="rooms-table">
+					<thead>
+						<tr>
+							<th>{{$ctrl.language.Generic.Calendar.kRoomNumber}}</th>
+							<th>{{$ctrl.language.Generic.Calendar.kFloor}}</th>
+							<th>{{$ctrl.language.Generic.Common.kCorp}}</th>
+							<th>{{$ctrl.language.Generic.Calendar.kLen}}</th>
+							<th>{{$ctrl.language.Generic.Calendar.kWidth}}</th>
+							<th>{{$ctrl.language.Generic.Calendar.kArea}}</th>
+							<th>{{$ctrl.language.Generic.Calendar.kResponsible}}</th>
+							<th style="width: 1%">{{$ctrl.language.Generic.Calendar.kStudy}}</th>
+							<th style="width: 1%">{{$ctrl.language.Calendar.kSeats}}</th>
+							<th>{{$ctrl.kClasses}}</th>
+							<th style="width: 1%" ng-if="!$ctrl.readonly">{{$ctrl.language.Generic.Common.kDeletingMark2}}</th>
+						</tr>
+					</thead>
+
+					<!-- рисуется если readonly = true -->
+					<tbody ng-if="$ctrl.readonly">
+						<tr ng-repeat="room in $ctrl.data.rooms" align="middle" valign="center">
+							<td align="left">{{room.roomname}}</td>
+							<td>{{room.floor}}</td>
+							<td>{{room.corpus}}</td>
+							<td>{{room.length}}</td>
+							<td>{{room.width}}</td>
+							<td>{{room.area}}</td>
+							<td>{{room.responsible.name}}</td>
+							<td>
+								<span ng-if="room.study">{{$ctrl.language.Generic.Common.kYes}}</span>
+								<span ng-if="!room.study">{{$ctrl.language.Generic.Common.kNo}}</span>
+							</td>
+							<td>{{room.seats}}</td>
+							<td>{{room.classesnames}}</td>
+						</tr>
+					</tbody>
+
+					<!-- рисуется если readonly = false -->
+					<tbody ng-if="!$ctrl.readonly">
+						<tr ng-repeat="room in $ctrl.data.rooms" id="room-{{room.id}}" ng-form name="roomForm">
+							<td ng-class="{ 'has-error': roomForm.RoomName.$invalid && (!roomForm.RoomName.$pristine || $ctrl.roomsForm.$displayErrors) }">
+								<input track-changes type="hidden" name="RoomID" ng-value="room.id">
+								<!-- <input track-changes type="text" name="RoomName" class="form-control" ng-class="{'room-cell-invalid': room.duplicate}" size="27" maxlength="50" ng-model="room.roomname" ng-change="$ctrl.onChangeRoomName(room)" required> -->
+								<input track-changes type="text" name="RoomName" class="form-control" ng-class="{'room-cell-invalid': room.duplicate}" size="27" maxlength="50" ng-model="room.roomname" required>
+								<p ng-show="roomForm.RoomName.$invalid && (!roomForm.RoomName.$pristine || $ctrl.roomsForm.$displayErrors)" class="help-block">{{$ctrl.language.Calendar.kErrMsgEmpty}}</p>
+							</td>
+							<td>
+								<select track-changes class="form-control" name="Floor" ng-options="floor for floor in $ctrl.data.floors" ng-model="room.floor"></select>
+							</td>
+							<td>
+								<input track-changes type="text" class="form-control" name="Corpus" size="27" maxlength="100" ng-model="room.corpus">
+							</td>
+							<td ng-class="{'has-error': roomForm.Length.$invalid && (!roomForm.Length.$pristine || $ctrl.roomsForm.$displayErrors)}">
+								<input track-changes type="number" class="form-control" name="Length" size="3" maxlength="50" ng-model="room.length" ng-min="1" ng-max="100" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" min="1" max="100">
+								<p ng-show="roomForm.Length.$invalid && (!roomForm.Length.$pristine || $ctrl.roomsForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Calendar.kErrLen}}</p>
+							</td>
+							<td ng-class="{'has-error': roomForm.Width.$invalid && (!roomForm.Width.$pristine || $ctrl.roomsForm.$displayErrors)}">
+								<input track-changes type="number" class="form-control" name="Width" size="3" maxlength="50" ng-model="room.width" ng-min="1" ng-max="100" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" min="1" max="100">
+								<p ng-show="roomForm.Width.$invalid && (!roomForm.Width.$pristine || $ctrl.roomsForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Calendar.kErrWidth}}</p>
+							</td>
+							<td ng-class="{'has-error': roomForm.Area.$invalid && (!roomForm.Area.$pristine || $ctrl.roomsForm.$displayErrors)}">
+								<input track-changes type="number" class="form-control" name="Area" size="3" maxlength="50" ng-model="room.area" ng-min="1" ng-max="999" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" min="1" max="999">
+								<p ng-show="roomForm.Area.$invalid && (!roomForm.Area.$pristine || $ctrl.roomsForm.$displayErrors)" class="help-block">{{$ctrl.language.Generic.Calendar.kErrArea}}</p>
+							</td>
+							<td>
+								<select track-changes class="form-control" name="RESPONSIBLEID" ng-options="staff as staff.name for staff in $ctrl.data.staffs track by staff.id" ng-model="room.responsible">
+									<option value="">не выбран</option>
+								</select>
+							</td>
+							<td style="text-align: center;">
+								<input type="checkbox" name="Study" ng-model="room.study" ng-checked="room.study" ng-disabled="room.used">
+							</td>
+							<td ng-class="{'has-error': roomForm.Seats.$invalid && (!roomForm.Seats.$pristine || $ctrl.roomsForm.$displayErrors)}">
+								<input track-changes type="number" class="form-control" name="Seats" size="3" maxlength="3" ng-model="room.seats" ng-min="1" ng-max="100" min="1" max="100" required>
+								<p ng-show="roomForm.Seats.$invalid && (!roomForm.Seats.$pristine || $ctrl.roomsForm.$displayErrors)" class="help-block">{{$ctrl.language.Calendar.kErrSeats2}}</p>
+							</td>
+							<td class="text-center">
+								<span ng-if="room.classes.length">{{room.classesStr}}</span>
+							</td>
+							<td style="text-align: center;">
+								<input type="checkbox" name="DeleteID" ng-value="room.id" ng-model="room.removable">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>

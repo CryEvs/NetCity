@@ -1,0 +1,125 @@
+<div class="col-md-12 col-lg-9" ng-if="$ctrl.ready">
+	<div ng-if="!$ctrl.readonly" class="buttons-panel">
+		<button title="{{$ctrl.language.Generic.Common.kSave}}" ng-disabled="!$ctrl.normForm.$valid || !$ctrl.normDecreeForm.$valid" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+			<span class="glyphicon glyphicon-floppy-save"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<button title="{{$ctrl.language.Generic.Buttons.kReset}}" type="button" class="btn btn-info" ng-click="$ctrl.reset()">
+			<span class="glyphicon glyphicon-repeat"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+		</button>
+
+		<button ng-if="!$ctrl.payNormDecree.used" title="{{$ctrl.language.Generic.EM.kDeleteNormsInfo}}" ng-click="$ctrl.deleteDecree()" type="button" class="btn btn-danger">
+			<span class="glyphicon glyphicon-minus-sign"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+		</button>
+	</div>
+
+	<ns-panel panel-id="decree" class="info" title="Редактирование руководящего постановления" expanded="true">
+		<div class="col-md-12">
+			<form name="$ctrl.normDecreeForm" class="form-horizontal form-edit form-xs">
+				<div class="form-group">
+					<label class="control-label col-md-2">{{$ctrl.language.Generic.EM.kStartNorms}}</label>
+					<div class="col-md-10 col-lg-10">
+						<select track-changes class="form-control form-control-inline" name="month" ng-model="$ctrl.selectedMonthId" ng-options="item.id as item.name for item in $ctrl.monthList"></select>
+						<select track-changes class="form-control form-control-inline" name="year" ng-model="$ctrl.selectedYear" ng-options="item.id as item.name for item in $ctrl.yearList"></select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-2">{{$ctrl.language.Generic.EM.kRuleResolution}}</label>
+					<div class="col-md-10 col-lg-10" ng-class="{'has-error': $ctrl.normDecreeForm.decree.$invalid}">
+						<textarea track-changes required name="decree" class="form-control " rows="2" cols="80" wrap="soft" maxlength="1000" ng-model="$ctrl.payNormDecree.decree.name"></textarea>
+						<p class="help-block" ng-show="$ctrl.normDecreeForm.decree.$error.required">Обязательное поле</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</ns-panel>
+
+	<ns-panel panel-id="payNormTable" class="info" title="Редактирование таблицы нормативов" expanded="true">
+		<div class="col-md-12">
+			<div ng-if="!$ctrl.readonly">
+				<div class="buttons-panel">
+					<button title="{{$ctrl.language.Generic.EM.kAddNewNorm}}" type="button" class="btn btn-primary" ng-click="$ctrl.addRow()">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						{{$ctrl.language.Generic.Buttons.kAdd}}
+					</button>
+
+					<button ng-if="$ctrl.payNormList.length != 0" title="{{$ctrl.language.Generic.EM.kDeleteSelectedNorms}}" ng-click="$ctrl.deleteSelectedNorms()" type="button" class="btn btn-danger">
+						<span class="glyphicon glyphicon-minus-sign"></span>
+						<span>{{$ctrl.language.Generic.EM.kDeleteSelectedNorms}}</span>
+					</button>
+				</div>
+			</div>
+
+			<div ng-if="$ctrl.payNormList.length == 0">
+				<div class="alert alert-info ng-binding" role="alert">
+					{{$ctrl.language.Generic.EM.kNoNormsInTable}}
+				</div>
+			</div>
+
+			<div ng-if="$ctrl.payNormList.length != 0">
+				<form name="$ctrl.normForm">
+					<table class="table table-bordered table-xs table-hover table-middle-cells">
+						<tbody>
+							<tr>
+								<th colspan="6">{{$ctrl.language.Generic.EM.kNormsTable}}</th>
+							</tr>
+							<tr class="text-center">
+								<th>{{$ctrl.language.Generic.EM.kNorm}}</th>
+								<th>{{$ctrl.language.Generic.EM.kNormSumm}}</th>
+								<th>{{$ctrl.language.Generic.EM.kNormAver}}</th>
+								<th>{{$ctrl.language.Generic.EM.kDouPayKind}}</th>
+								<th>{{$ctrl.language.Generic.EM.kNormComment}}</th>
+								<th class="NotPrintable">Отметка для<br />удаления</th>
+							</tr>
+
+							<tr class="text-center" ng-repeat="payNorm in $ctrl.payNormList" ng-form="normForm">
+								<td>
+									<div ng-class="{'has-error': normForm.abbrev.$invalid}">
+										<input track-changes class="form-control" type="text" name="abbrev" required size="10" maxlength="10" ng-model="payNorm.abbrev" norm="payNorm" abbrev-unique />
+										<p class="help-block" ng-show="normForm.abbrev.$error.unique">{{$ctrl.language.Generic.EM.kErrorNormNamesTheSame}}</p>
+										<p class="help-block" ng-show="normForm.abbrev.$error.required">{{$ctrl.language.Generic.Messages.kRequiredField}}</p>
+									</div>
+								</td>
+
+								<td>
+									<div ng-class="{'has-error': normForm.normValue.$invalid}">
+										<input class="form-control" track-changes float-input="$ctrl.decimalInputSettings" size="7" name="normValue" type="number" min="0" max="999.99" step="0.01" ng-model="payNorm.normValue" ng-disabled="payNorm.used" />
+										<span class="help-block" ng-show="normForm.normValue.$error.min || normForm.normValue.$error.max">От 0 до 999.99</span>
+										<span class="help-block" ng-show="normForm.normValue.$error.number">Не является числом</span>
+									</div>
+								</td>
+								<td>
+									<div ng-class="{'has-error': normForm.avgValue.$invalid}">
+										<input class="form-control" track-changes float-input="$ctrl.decimalInputSettings" size="7" name="avgValue" type="number" min="0" max="999.99" step="0.01" ng-model="payNorm.avgValue" ng-disabled="payNorm.used" />
+										<span class="help-block" ng-show="normForm.avgValue.$error.min || normForm.avgValue.$error.max">От 0 до 999.99</span>
+										<span class="help-block" ng-show="normForm.avgValue.$error.number">Не является числом</span>
+									</div>
+								</td>
+								<td>
+									<input track-changes required type="checkbox" name="NoAttendance" size="7" maxlength="7" ng-click="payNorm.noAttendance = !payNorm.noAttendance" ng-checked="payNorm.noAttendance">&nbsp;{{$ctrl.language.Generic.EM.kForNoAttendance}}
+								</td>
+								<td>
+									<div ng-class="{'has-error': normForm.comment.$invalid}">
+										<textarea track-changes required name="comment" class="form-control " rows="2" cols="80" wrap="soft" maxlength="300" ng-model="payNorm.comment"></textarea>
+										<p class="help-block" ng-show="normForm.comment.$error.unique">{{$ctrl.language.Generic.ServAdmin.kErrIdentifierRepeat}}</p>
+										<p class="help-block" ng-show="normForm.comment.$error.required">Обязательное поле</p>
+									</div>
+								</td>
+								<td class="text-center">
+									<span style="cursor: help;" ng-if="payNorm.used">
+										<b>X</b>
+									</span>
+									<input type="checkbox" ng-if="!payNorm.used" ng-click="$ctrl.toggleClass(payNorm)" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</ns-panel>
+</div>
+			

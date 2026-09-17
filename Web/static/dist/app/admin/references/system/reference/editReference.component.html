@@ -1,0 +1,29 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.title}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">&times;</button>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<div class="form-horizontal">
+			<ui-edit-field ng-if="$ctrl.model" ng-repeat="field in $ctrl.model"
+				ng-model="field" is-edit="$ctrl.isEdit" status="$ctrl.status" parent-model="$ctrl.model"
+				min-date="field.systemName == 'endYear' && $ctrl.getValueBySystemName('startYear') || null"
+				max-date="field.systemName == 'startYear' && $ctrl.getValueBySystemName('endYear') || null"
+			></ui-edit-field>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-class="button.class"
+			ng-repeat="button in $ctrl.buttons track by button.id"
+			ng-click="button.action()" ng-disabled="!button.isEnabled()">
+			<span ng-if="button.icon" class="bootstrap-dialog-button-icon glyphicon glyphicon" ng-class="button.icon"></span>
+			<span>{{button.title}}</span>
+		</button>
+	</div>
+</div>

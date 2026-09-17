@@ -1,0 +1,701 @@
+@charset "UTF-8";
+/*
+@import this file directly into your existing Scss files to use these mixins
+*/
+.individual-educ {
+  background-color: #FFE094; }
+  .individual-educ > td {
+    background-color: #FFE094; }
+  .individual-educ > td > input {
+    background-color: #FFE094; }
+  .individual-educ > input {
+    background-color: #FFE094; }
+  .individual-educ > select {
+    background-color: #FFE094; }
+  .individual-educ.student-name span:after, .individual-educ .student-name span:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e021";
+    margin-left: 5px;
+    font-size: 10px; }
+
+.editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div.individual-educ {
+  background-color: #FFE094; }
+  .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div.individual-educ > td {
+    background-color: #FFE094; }
+  .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div.individual-educ > td > input {
+    background-color: #FFE094; }
+  .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div.individual-educ > input {
+    background-color: #FFE094; }
+  .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div.individual-educ > select {
+    background-color: #FFE094; }
+  .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div.student-name.individual-educ span:after, .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div.individual-educ .student-name span:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e021";
+    margin-left: 5px;
+    font-size: 10px; }
+
+/*======================================================================*/
+/*======================================================================*/
+/*==============================переменные==============================*/
+/*==============================переменные==============================*/
+/*цвета*/
+/*отступы*/
+#editJournal, #legend {
+  -moz-transition: opacity .25s ease-in-out;
+  -o-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+  transition: opacity .25s ease-in-out;
+  opacity: 0; }
+  #editJournal.ready, #legend.ready {
+    opacity: 1; }
+
+.editjournal-wrapper {
+  min-width: 546px;
+  /*==============================================*/
+  /*==================Легенда=====================*/ }
+  .editjournal-wrapper .editjournal {
+    font-size: 0;
+    letter-spacing: -0.03em;
+    position: relative;
+    white-space: nowrap;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    /*ученики*/
+    /*==============================================*/
+    /*=========шаблон для создания колонок==========*/
+    /*==============================================*/
+    /*==============кнопка добавить=================*/
+    /*==============================================*/
+    /*===обёртка пустого элемента для прокрутки=====*/ }
+    .editjournal-wrapper .editjournal .editjournal-left-block {
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-bottom: 1px solid #d0d0d0;
+      border-right: 1px solid #d0d0d0;
+      z-index: 1;
+      border-top-left-radius: 5px;
+      /*ученики*/
+      /*Домашняя работа*/
+      /*посещаемость*/ }
+      .editjournal-wrapper .editjournal .editjournal-left-block div {
+        font-size: 14px; }
+      .editjournal-wrapper .editjournal .editjournal-left-block .studentlist {
+        position: absolute;
+        width: 175px;
+        border-right: 1px solid #d0d0d0;
+        border-bottom: 1px solid #d0d0d0;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        -webkit-border-top-left-radius: 5px;
+        -webkit-border-bottom-left-radius: 5px; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .studentlist .student-title {
+          position: absolute;
+          line-height: 1.2;
+          top: 55px;
+          left: 55px;
+          font-size: 15px;
+          font-weight: 400;
+          color: #fff; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .studentlist .student-block {
+          margin-top: 120px;
+          background: #FFF;
+          border-left: 1px solid #d0d0d0; }
+          .editjournal-wrapper .editjournal .editjournal-left-block .studentlist .student-block .student {
+            display: block;
+            height: 20px;
+            border-bottom: 1px solid #d0d0d0;
+            font-size: 13px;
+            overflow: hidden;
+            text-align: left;
+            -ms-text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 1.65;
+            padding: 0 4px 0 5px;
+            position: relative; }
+            .editjournal-wrapper .editjournal .editjournal-left-block .studentlist .student-block .student:hover {
+              background: #FFFACD; }
+              .editjournal-wrapper .editjournal .editjournal-left-block .studentlist .student-block .student:hover div {
+                display: block;
+                right: 5px;
+                top: 8px;
+                max-width: 10px;
+                height: 10px;
+                position: absolute;
+                margin: 0;
+                border: 0;
+                padding: 5px 6px;
+                cursor: pointer; }
+            .editjournal-wrapper .editjournal .editjournal-left-block .studentlist .student-block .student:last-child {
+              border-bottom: 0 solid #d0d0d0; }
+            .editjournal-wrapper .editjournal .editjournal-left-block .studentlist .student-block .student div {
+              display: none; }
+      .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment {
+        position: absolute;
+        top: 0;
+        left: 236px;
+        z-index: 1;
+        border-right: 1px solid #d0d0d0;
+        border-bottom: 1px solid #d0d0d0; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .home-assignments-header {
+          position: absolute;
+          top: 9px;
+          left: 7px;
+          font-size: 15px;
+          z-index: 1;
+          color: #fff;
+          font-weight: 400;
+          margin-top: 43px; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .add-assignments .icon-plus-sign {
+          display: none; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignments-header {
+          position: absolute;
+          top: 9px;
+          left: 10px;
+          font-size: 15px;
+          z-index: 1;
+          color: #fff; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title {
+          margin-top: 0;
+          padding-left: 0;
+          border-top: 1px solid #d0d0d0;
+          overflow: hidden; }
+          .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title .ctx-btns-icons a, .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title .ctx-btns-icons div {
+            width: 22px;
+            cursor: pointer; }
+            .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title .ctx-btns-icons a:hover > span.glyphicon, .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title .ctx-btns-icons div:hover > span.glyphicon {
+              -moz-transform: scale(1.3, 1.3);
+              -ms-transform: scale(1.3, 1.3);
+              -o-transform: scale(1.3, 1.3);
+              -webkit-transform: scale(1.3, 1.3);
+              transform: scale(1.3, 1.3);
+              -moz-transition-duration: 0.5s;
+              -o-transition-duration: 0.5s;
+              -webkit-transition-duration: 0.5s;
+              transition-duration: 0.5s; }
+          .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title .ctx-btns-icons .primary {
+            color: white; }
+            .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title .ctx-btns-icons .primary:hover {
+              color: rgba(9, 127, 189, 0.6); }
+          .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title .ctx-btns-icons span {
+            top: 4px; }
+          .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title input {
+            z-index: 4; }
+          .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title span {
+            display: block; }
+          .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .assignment-title .assignment-name {
+            margin-left: 22px; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .add-assignments-adaptive {
+          display: none; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .empty-block {
+          margin-top: 120px;
+          font-size: 13px;
+          background: #F9F9F9; }
+          .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .empty-block > div {
+            height: 20px;
+            width: 1px; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .home-assignment-title-border-top {
+          border-top: 1px solid #d0d0d0; }
+          .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .home-assignment-title-border-top input {
+            display: block; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .home-assignment .home-assignment-block-inactive {
+          border-top: 1px solid #d0d0d0;
+          background: #F9F9F9; }
+      .editjournal-wrapper .editjournal .editjournal-left-block .attendance {
+        vertical-align: top;
+        position: absolute;
+        width: 61px;
+        left: 175px;
+        top: 0;
+        border-right: 1px solid #d0d0d0;
+        border-bottom: 1px solid #d0d0d0; }
+        .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-title {
+          top: 46px;
+          left: -2px;
+          font-size: 15px;
+          position: absolute;
+          color: #fff;
+          font-weight: 400;
+          text-align: center;
+          line-height: 1.1;
+          -moz-transform: rotate(-90deg);
+          -ms-transform: rotate(-90deg);
+          -o-transform: rotate(-90deg);
+          -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+        .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block {
+          margin-top: 120px;
+          background: #FFF; }
+          .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div {
+            text-align: center;
+            height: 20px;
+            border-bottom: 1px solid #d0d0d0;
+            line-height: 2.2;
+            cursor: pointer; }
+            .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div:hover {
+              background: #FFFACD; }
+            .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div select {
+              border: 0 solid #d0d0d0;
+              width: 100%;
+              background: #fff right center no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAGCAYAAAAYLBS/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALBJREFUeNpiCA4OnsnAwPCRmZn5ERA/AdFA/gdPT88F////Z8CGGVavXm0jKSn5AajwPwyLiop+nTNnjhMuTUxSUlLHUlJSJjAggdjY2MlAgw4x4ABMvLy8/+zs7Bbo6upeAQmoq6vftrKyms3Hx/cHpyZOTk4GHR2dB6mpqVNBAvHx8dP19PTu8vDwMODUxM7OzsDExMRgaWm5u7m5udbc3HwHCwsLAwcHB05NAAEGAHh3Tf8aoY+FAAAAAElFTkSuQmCC");
+              padding: 1px 10px 1px 12px;
+              display: block;
+              height: 100%;
+              box-shadow: none; }
+              .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div select option {
+                padding-left: 14px; }
+              .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block div select:hover {
+                box-shadow: inset 0 0 7px #D6C101; }
+          .editjournal-wrapper .editjournal .editjournal-left-block .attendance .attendance-block > div:last-child {
+            border-bottom: 0 solid #d0d0d0; }
+    .editjournal-wrapper .editjournal .assignments-header-block {
+      top: 9px;
+      width: 100%;
+      height: 20px;
+      position: absolute;
+      z-index: 6;
+      color: #000;
+      font-size: 15px;
+      text-align: center; }
+      .editjournal-wrapper .editjournal .assignments-header-block .assignments-header {
+        margin: 0 auto;
+        padding-left: 235px;
+        color: #fff;
+        font-weight: 400; }
+        .editjournal-wrapper .editjournal .assignments-header-block .assignments-header-lite {
+          padding-left: 75px; }
+    .editjournal-wrapper .editjournal .assignments-block-wrapper {
+      white-space: nowrap;
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      overflow: hidden; }
+      .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block {
+        display: table; }
+        .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari {
+          display: table;
+          border-bottom: 1px solid #d0d0d0;
+          margin: 0 160px 0 395px;
+          position: relative; }
+          .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari-lite {
+            margin-left: 235px; }
+          .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari::before {
+            content: "Задания";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 37px;
+            color: #fff;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none; }
+          .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container {
+            display: block;
+            position: relative;
+            height: 100%;
+            vertical-align: top;
+            float: left; }
+            .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container .assignment-title {
+              border-top: 1px solid #d0d0d0;
+              border-right: 1px solid #d0d0d0;
+              border-bottom: 0 solid #d0d0d0;
+              background: transparent;
+              overflow: hidden; }
+              .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container .assignment-title .ctx-btns-icons a, .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container .assignment-title .ctx-btns-icons div {
+                width: 22px;
+                cursor: pointer; }
+                .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container .assignment-title .ctx-btns-icons a:hover > span.glyphicon, .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container .assignment-title .ctx-btns-icons div:hover > span.glyphicon {
+                  -moz-transform: scale(1.3, 1.3);
+                  -ms-transform: scale(1.3, 1.3);
+                  -o-transform: scale(1.3, 1.3);
+                  -webkit-transform: scale(1.3, 1.3);
+                  transform: scale(1.3, 1.3);
+                  -moz-transition-duration: 0.5s;
+                  -o-transition-duration: 0.5s;
+                  -webkit-transition-duration: 0.5s;
+                  transition-duration: 0.5s; }
+              .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container .assignment-title .ctx-btns-icons .primary {
+                color: white; }
+                .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container .assignment-title .ctx-btns-icons .primary:hover {
+                  color: rgba(9, 127, 189, 0.6); }
+              .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container .assignment-title .ctx-btns-icons span {
+                top: 4px; }
+              .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container .assignment-title span {
+                display: block; }
+            .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari .assignment-container .results-block {
+              border-right: 1px solid #d0d0d0; }
+          .editjournal-wrapper .editjournal .assignments-block-wrapper .assignments-block .div-table-safari > div:only-child {
+            display: block; }
+      .editjournal-wrapper .editjournal .assignments-block-wrapper .block-floating-scrolls {
+        margin: 0 160px 0 395px;
+        color: #444; }
+        .editjournal-wrapper .editjournal .assignments-block-wrapper .block-floating-scrolls .div-table-safari {
+          margin: 0; }
+      .editjournal-wrapper .editjournal .assignments-block-wrapper .block-floating-scrolls.mCS_no_scrollbar .shadow_right, .editjournal-wrapper .editjournal .assignments-block-wrapper .block-floating-scrolls.mCS_no_scrollbar .shadow_left {
+        display: none; }
+      .editjournal-wrapper .editjournal .assignments-block-wrapper .block-floating-scrolls.mCS_no_scrollbar .floating-wrapper-empty {
+        display: none !important; }
+      .editjournal-wrapper .editjournal .assignments-block-wrapper .floating-wrapper-empty {
+        width: 100%;
+        height: 32px;
+        position: fixed;
+        bottom: 0 !important;
+        left: 0;
+        background-color: #fff;
+        z-index: 10;
+        display: none;
+        /*right: 58px;
+				left: 25px;
+				border-top: 1px solid #d0d0d0;*/ }
+      .editjournal-wrapper .editjournal .assignments-block-wrapper .block-floating-scrolls.active > .floating-wrapper-empty {
+        display: block; }
+    .editjournal-wrapper .editjournal .editjournal-right-block {
+      display: inline-block;
+      margin-left: -217px;
+      z-index: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      /*border-left: 1px solid $border-color;*/
+      /*overflow: hidden;*/
+      background: #F6FCFF;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      width: 221px;
+      /*блок для клонирования*/ }
+      .editjournal-wrapper .editjournal .editjournal-right-block .name-course {
+        display: none; }
+      .editjournal-wrapper .editjournal .editjournal-right-block .type-assignment {
+        display: none; }
+      .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-left: 1px solid #d0d0d0;
+        border-bottom: 1px solid #d0d0d0; }
+        .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container {
+          height: 100%;
+          width: 160px; }
+          .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container .assignment-title {
+            top: 0;
+            left: 0;
+            font-size: 15px;
+            position: absolute;
+            width: 100%;
+            text-align: center; }
+            .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container .assignment-title input {
+              display: none; }
+            .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container .assignment-title span {
+              display: block; }
+            .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container .assignment-title .assignments-header-empty {
+              color: #fff;
+              font-weight: 400;
+              height: 120px;
+              padding-top: 51px; }
+            .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container .assignment-title .assignments-header {
+              font-size: 15px;
+              color: #fff;
+              height: 120px;
+              padding-top: 51px; }
+            .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container .assignment-title .assignment-title-name {
+              height: 38px;
+              line-height: 2.7;
+              color: #18a2eb;
+              -ms-text-overflow: ellipsis;
+              -o-text-overflow: ellipsis;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              padding: 0 4px 0 5px; }
+          .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container .results-block-inactive {
+            background: #F9F9F9;
+            border-right: 1px solid #d0d0d0; }
+            .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container .results-block-inactive div {
+              border-top: 0 solid #d0d0d0;
+              display: none; }
+            .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container .results-block-inactive > div {
+              height: 20px;
+              width: 1px;
+              display: block;
+              padding-left: 0;
+              border-bottom: 0 solid #d0d0d0; }
+          .editjournal-wrapper .editjournal .editjournal-right-block .new-assignment-container .assignment-container .add-assignments .icon-plus-sign {
+            display: none; }
+    .editjournal-wrapper .editjournal .assignment-column {
+      width: 160px; }
+      .editjournal-wrapper .editjournal .assignment-column .assignment-title {
+        top: 37px;
+        left: 0;
+        font-size: 13px;
+        position: absolute;
+        width: 100%;
+        text-align: center; }
+        .editjournal-wrapper .editjournal .assignment-column .assignment-title input {
+          width: 13px;
+          height: 13px;
+          position: absolute;
+          top: 60px;
+          left: 5px;
+          border-right: 1px solid #d0d0d0; }
+        .editjournal-wrapper .editjournal .assignment-column .assignment-title .assignment-name {
+          line-height: 3;
+          border-left: 1px solid #d0d0d0;
+          /*08.06.2015*/
+          -ms-text-overflow: ellipsis;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          padding: 0 4px 0 5px;
+          height: 82px; }
+        .editjournal-wrapper .editjournal .assignment-column .assignment-title .assignment-activity {
+          color: #333;
+          height: 20px;
+          width: 100%;
+          position: absolute;
+          top: 37px;
+          left: 0;
+          font-size: 11px;
+          text-align: center;
+          margin-left: 23px;
+          line-height: 1.7; }
+          .editjournal-wrapper .editjournal .assignment-column .assignment-title .assignment-activity span {
+            border-top: 1px solid #d0d0d0;
+            display: block;
+            padding-right: 23px;
+            color: #fff0a3;
+            letter-spacing: -0.02em; }
+        .editjournal-wrapper .editjournal .assignment-column .assignment-title .assignment-type {
+          color: #fff;
+          height: 20px;
+          width: 100%;
+          position: absolute;
+          top: 57px;
+          left: 0;
+          font-size: 11px;
+          text-align: center;
+          line-height: 2.1;
+          margin-left: 23px;
+          /*08.06.2015*/ }
+          .editjournal-wrapper .editjournal .assignment-column .assignment-title .assignment-type span {
+            border-top: 1px solid #d0d0d0;
+            display: block;
+            padding-right: 23px;
+            letter-spacing: -0.03em; }
+      .editjournal-wrapper .editjournal .assignment-column .results-block {
+        margin-top: 120px;
+        background: #FFF;
+        font-size: 13px; }
+        .editjournal-wrapper .editjournal .assignment-column .results-block div {
+          text-align: center;
+          height: 20px;
+          border-bottom: 1px solid #d0d0d0;
+          line-height: 1.2;
+          /*cursor: pointer;*/
+          position: relative;
+          padding-left: 22px; }
+          .editjournal-wrapper .editjournal .assignment-column .results-block div:hover {
+            background: #FFFACD; }
+          .editjournal-wrapper .editjournal .assignment-column .results-block div input {
+            text-align: center;
+            margin-top: 0;
+            line-height: 1.2;
+            padding-left: 3px;
+            border: 0 solid #d0d0d0;
+            font-size: 13px;
+            padding: 2px 8px 3px 8px;
+            width: 100%;
+            height: 100%;
+            border-radius: 0; }
+            .editjournal-wrapper .editjournal .assignment-column .results-block div input:hover {
+              box-shadow: inset 0 0 7px 0 #D6C101; }
+          .editjournal-wrapper .editjournal .assignment-column .results-block div span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-right: 4px;
+            border-right: 1px solid #e0e0e0;
+            /*08.06.2015*/
+            height: 100%; }
+            .editjournal-wrapper .editjournal .assignment-column .results-block div span input[type="checkbox"] {
+              width: 13px;
+              height: 13px;
+              margin-left: 5px;
+              padding: 0;
+              margin-top: 5px;
+              margin-bottom: 2px; }
+
+@-moz-document url-prefix() {
+  .editjournal-wrapper .editjournal .assignment-column .results-block div .div-table-safari .assignment-container .results-block div input {
+    padding-left: 5px !important; } }
+        .editjournal-wrapper .editjournal .assignment-column .results-block > div:last-child {
+          border-bottom: 0 solid #d0d0d0; }
+    .editjournal-wrapper .editjournal .add-assignments {
+      position: absolute;
+      top: 160px;
+      left: 57px;
+      width: 50px;
+      /* You may have to set 'display: block' */
+      width: 50px;
+      height: 50px;
+      background: url("/vendor/custom/img/sprite-template.png") -1px -548px;
+      font-size: 13px;
+      padding-top: 50px;
+      color: #fff;
+      cursor: pointer; }
+      .editjournal-wrapper .editjournal .add-assignments:hover {
+        /* You may have to set 'display: block' */
+        width: 50px;
+        height: 50px;
+        background: url("/vendor/custom/img/sprite-template.png") -1px -497px;
+        color: #18A2EB; }
+        .editjournal-wrapper .editjournal .add-assignments:hover span {
+          color: #18A2EB; }
+      .editjournal-wrapper .editjournal .add-assignments span {
+        margin: 0 0 0 -12px;
+        text-transform: uppercase;
+        color: #AFAFAF;
+        font-size: 14px;
+        display: block;
+        padding-top: 10px; }
+        .editjournal-wrapper .editjournal .add-assignments span:hover {
+          color: #18A2EB; }
+    .editjournal-wrapper .editjournal .wrapper {
+      width: 1px;
+      display: block;
+      padding-top: 120px;
+      float: left;
+      /*height: 100px;*/
+      display: none; }
+      .editjournal-wrapper .editjournal .wrapper > div {
+        height: 20px;
+        width: 1px;
+        display: block;
+        padding-left: 0; }
+    .editjournal-wrapper .editjournal .assignment-container + .wrapper {
+      display: none; }
+  .editjournal-wrapper .legend {
+    font-size: 12px;
+    margin-top: 7px;
+    padding-left: 15px; }
+    .editjournal-wrapper .legend div {
+      display: inline-block;
+      margin-right: 20px;
+      vertical-align: top; }
+      .editjournal-wrapper .legend div p {
+        height: 25px;
+        margin-top: 9px; }
+        .editjournal-wrapper .legend div p span {
+          width: 40px;
+          height: 25px;
+          border: 1px solid #d0d0d0;
+          float: left;
+          padding: 3px 0 0 10px;
+          margin: -3px 5px 0 0; }
+          .editjournal-wrapper .legend div p span.slice-work {
+            background: #E8FFDE; }
+          .editjournal-wrapper .legend div p span.examination {
+            background: #FFFFE4; }
+  .editjournal-wrapper .block-floating-scrolls .mCSB_scrollTools {
+    z-index: 2; }
+  .editjournal-wrapper .block-floating-scrolls .shadow_left {
+    left: -1px;
+    background: transparent;
+    top: -13px; }
+  .editjournal-wrapper .block-floating-scrolls .shadow_right {
+    right: 0;
+    background: transparent;
+    top: -13px; }
+
+/**************************************/
+/**************************************/
+/***Ошибки нет*************************/
+input {
+  -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2);
+  -o-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: inset 0 0px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2); }
+
+.editJournal-panel, .task-text {
+  display: none; }
+
+.home-assignment .task-header {
+  display: none; }
+
+@media only screen and (max-width: 985px) {
+  .editJournal-panel, .task-text {
+    display: none; } }
+
+/*==============Стили для адаптивности странницы выставления оценок====================*/
+/*==================================================*/
+/*==================================================*/
+/*==========Стили для устранения бага в IE. ========*/
+/*==========Была проблема с отступами в ячейках=====*/
+@media only screen and (min-width: 1015px) {
+  .block-classJournal {
+    overflow-x: hidden; } }
+
+/*хаки на IE*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /*9,10,11*/
+  .editjournal-wrapper .editjournal .assignment-column .results-block div input {
+    padding-top: 1px; } }
+
+.add-assignments > span {
+  white-space: normal; }
+
+/*Комментарии к оценкам*/
+i.comment-btn {
+  position: absolute;
+  transition: 0.05s;
+  right: 3px;
+  top: 2px;
+  opacity: 0; }
+
+i.comment-btn.commented {
+  color: #ff6a00;
+  opacity: 1; }
+
+i.comment-btn.readed {
+  color: #ff6a00;
+  opacity: 1; }
+
+i.comment-btn.visible {
+  opacity: 1; }
+
+i.comment-btn:hover {
+  color: #0088ff;
+  cursor: pointer; }
+
+i.comment-btn.readonly:hover {
+  cursor: auto; }
+
+/*Ответы на задания*/
+i.answer-btn {
+  position: absolute;
+  transition: 0.05s;
+  left: 26px;
+  top: 2px;
+  opacity: 1; }
+
+i.answer-btn.attached {
+  color: #ff6a00; }
+
+i.answer-btn:hover {
+  color: #0088ff;
+  cursor: pointer; }
+
+div.answer-text {
+  max-height: 500px;
+  overflow-y: auto;
+  white-space: pre-line; }

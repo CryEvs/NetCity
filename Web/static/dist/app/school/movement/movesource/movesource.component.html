@@ -1,0 +1,116 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/movement/movesource/movesource.component.min.css">
+
+<div class="panel-group" id="users-filter-accordion" role="tablist" aria-multiselectable="true">
+	<ns-panel panel-id="FindByFilter" class="default" title="{{$ctrl.language.Generic.FilterUsers.kFilter}}"
+		expanded="!$ctrl.sourceInfo.collapsedFilter">
+		<div class="buttons-filters-panel form-horizontal">
+			<div class="row">
+				<filter-panel class="filters-panel col-md-12 filters-panel-compact" ng-if="$ctrl.filterPanelSettings"
+					fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings">
+					<div class="form-group active aux">
+						<div class="col-md-12">
+							<button title="{{$ctrl.language.Generic.Buttons.kApply}}" type="button"
+								class="btn btn-warning" ng-click="$ctrl.load()" ng-disabled="$ctrl.state.emptyFilter || ($ctrl.warnings && $ctrl.warnings.length)">
+								<span class="glyphicon glyphicon-search"></span>
+								<span>{{$ctrl.language.Generic.Buttons.kApply}}</span>
+							</button>
+						</div>
+					</div>
+				</filter-panel>
+				<div class="col-md-12" ng-repeat="warning in $ctrl.warnings">
+					<div class="alert alert-warning" role="alert">
+						{{warning}}
+					</div>
+				</div>								
+			</div>
+		</div>
+	</ns-panel>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button title="{{$ctrl.language.Movement.kAddStudentsToDoc}}" type="button" class="btn btn-primary"
+					ng-click="$ctrl.add()">
+					<span class="glyphicon glyphicon-ok-sign"></span>
+					<span>{{$ctrl.language.Movement.kAddStudentsToDoc}}</span>
+				</button>
+				<button title="{{$ctrl.language.Movement.kSelectedStudents}}" type="button"
+					class="btn btn-default checked-students-btn" ng-click="$ctrl.showSelected()">
+					<span ng-if="!$ctrl.selection.items.length">{{$ctrl.language.Movement.kSelectedStudents}}</span>
+					<span ng-if="$ctrl.selection.items.length">{{$ctrl.language.Movement.kSelectedStudents}} ({{$ctrl.selection.items.length}})</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right" ng-if="$ctrl.isPool() || $ctrl.isPoolOutOfSystem()">
+				<button ng-if="$ctrl.isPool()" title="{{$ctrl.language.Generic.PoolStudents.kOutOfSystem}}"
+					type="button" class="btn btn-default" ng-click="$ctrl.switchPool(true)">
+					<span>{{$ctrl.language.Generic.PoolStudents.kOutOfSystem}}</span>
+				</button>
+				<button ng-if="$ctrl.isPoolOutOfSystem()" title="{{$ctrl.language.Generic.PoolStudents.kInSystem}}"
+					type="button" class="btn btn-default" ng-click="$ctrl.switchPool(false)">
+					<span>{{$ctrl.language.Generic.PoolStudents.kInSystem}}</span>
+				</button>
+
+			</div>
+		</div>
+		<div class="alert alert-info" role="alert" ng-if="!$ctrl.sourceInfo.autoLoadOnInit && !$ctrl.state.dataReady && !$ctrl.state.loading"
+			title="{{$ctrl.language.Generic.Movement.kMsgApplyBtnClick}}">
+			<span>{{$ctrl.language.Generic.Movement.kMsgApplyBtnClick}}</span>
+		</div>
+		<div class="alert alert-info" role="alert" ng-if="$ctrl.state.dataReady && $ctrl.state.emptyData">
+			<span>{{$ctrl.language.Generic.Movement.kMsgNoStudentsForFilters}}</span>
+		</div>
+	</div>
+</div>
+
+
+<div class="content-preloader" ng-if="$ctrl.state.loading">
+	<span class="arrows"></span>
+	<span class="title">{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+</div>
+
+<ul ng-show="$ctrl.state.dataReady && !$ctrl.state.emptyData && !$ctrl.state.loading && $ctrl.paging.totalRows > $ctrl.paging.pageSize"
+	uib-pagination total-items="$ctrl.paging.totalRows" ng-model="$ctrl.paging.page"
+	items-per-page="$ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false"
+	force-ellipses="true" ng-change="$ctrl.pageChange()"></ul>
+
+<table ng-show="$ctrl.state.dataReady && !$ctrl.state.loading && !$ctrl.state.emptyData" class="table table-bordered table-bright-hover table-bright-striped table-xs print-block">
+	<tr>
+		<th rowspan="{{$ctrl.titles.rowSpan}}" class="NotPrintable min"> <input type="checkbox" ng-click="$ctrl.selectAll()" ng-checked="$ctrl.isSelectedAll"></th>
+		<th rowspan="{{$ctrl.titles.rowSpan}}" ng-bind-html="$ctrl.language.Generic.Filter.kN_PP"></th>
+		<th rowspan="{{$ctrl.titles.rowSpan}}"> {{$ctrl.language.Generic.Filter.kFIO}}</th>
+		<th rowspan="{{$ctrl.titles.rowSpan}}"> {{$ctrl.language.Generic.Common.kBDate}}</th>
+		<th ng-repeat="title in $ctrl.titles.mainTitleRow" rowspan="{{title.rowSpan}}" colspan="{{title.colSpan}}">
+			{{ title.title }}
+		</th>
+	</tr>
+
+	<tr ng-repeat="subTitleRow in $ctrl.titles.subTitleRows">
+		<th ng-repeat="title in subTitleRow" rowspan="{{title.rowSpan}}" colspan="{{title.colSpan}}">
+			{{ title.title }}
+		</th>
+	</tr>
+
+	<tr ng-class="{'impossible': !movement.possible}" ng-repeat="movement in $ctrl.moveStudentsList">
+		<td>
+			<input type="checkbox" id="movement-{{movement.movementId}}" ng-disabled="!movement.possible" ng-checked="$ctrl.selection.isSelected(movement)" ng-click="$ctrl.select(movement)" data-original-title="{{movement.possibility && movement.possibility.statusComment}}">
+		</td>
+		<td>
+			{{ movement.num }}
+		</td>
+		<td>
+			<label style="font-weight: normal;" for="movement-{{id}}" class="fio-label"	data-original-title="{{movement.possibility && movement.possibility.statusComment}}" ng-click="$ctrl.select(movement)">
+				{{ movement.student.fio }}
+			</label>
+		</td>
+		<td>
+			{{ movement.student.birthDate | nsDate }}
+		</td>
+		<td ng-repeat="dataTitle in $ctrl.titles.dataTitles">
+			{{ $ctrl.getStudentAddData(movement, dataTitle) }}
+		</td>
+		
+	</tr>
+
+</table>

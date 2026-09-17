@@ -1,0 +1,5 @@
+2024-12-26T15:47:08.2873422+09:00 [Microsoft.Hosting.Lifetime] [INF] Now listening on: http://localhost:5071
+2024-12-26T15:47:08.4973542+09:00 [Microsoft.Hosting.Lifetime] [INF] Application started. Press Ctrl+C to shut down.
+2024-12-26T15:47:08.4983542+09:00 [Microsoft.Hosting.Lifetime] [INF] Hosting environment: Production
+2024-12-26T15:47:08.4983542+09:00 [Microsoft.Hosting.Lifetime] [INF] Content root path: C:\Program Files\NetCity2\Services\IRTech.NetCity.Mail.Api\
+2024-12-26T15:50:58.8575300+09:00 [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] [WRN] Failed to determine the https port for redirect.

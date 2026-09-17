@@ -1,0 +1,1556 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetCity.Integration.EServices</name>
+    </assembly>
+    <members>
+        <member name="M:NetCity.Integration.EServices.Controllers.EServicesIntegrationController.FindChild(NetCity.Integration.EServices.Models.FindChildRequest)">
+            <summary>
+            Поиск ребенка
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:NetCity.Common.Exceptions.AppException"></exception>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Controllers.EServicesIntegrationController.GetChildInfo(System.Int32)">
+            <summary>
+            Получение информации о ребенке
+            </summary>
+            <param name="childId"></param>
+            <returns></returns>
+            <exception cref="T:NetCity.Common.Exceptions.AppException"></exception>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Controllers.EServicesIntegrationController.GetChildsWithChanges(NetCity.Integration.EServices.Models.GetChildsWithChangesRequest)">
+            <summary>
+            Получение списка детей, по которым были изменения в ЛК  
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:NetCity.Common.Exceptions.AppException"></exception>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Controllers.EServicesIntegrationController.GetChildsActiveSchools(NetCity.Integration.EServices.Models.GetChildsActiveOrgsRequest)">
+            <summary>
+            Получение организаций, в которые зачислены дети
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:NetCity.Common.Exceptions.AppException"></exception>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Controllers.EServicesIntegrationController.GetEducationGroups(IRTech.Common.Integration.EServicesWcfServices.Model.Groups.GroupRequest)">
+            <summary>
+            Получение групп 
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Controllers.EServicesIntegrationController.GetOrganizations(IRTech.Common.Integration.EServicesWcfServices.Messages.GetEducInstitutionsRequest)">
+            <summary>
+            Получение списка организаций
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Controllers.EServicesIntegrationController.GetOrganizationsByKladr(IRTech.Common.Integration.EServicesWcfServices.Messages.GetEducInstitutionsByKladrRequest)">
+            <summary>
+            Получение организаций по КЛАДР
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Controllers.EServicesIntegrationController.GetChildEnrollmentInfo(System.String,System.String)">
+            <summary>
+            Информация о зачислении по заявкам
+            </summary>
+            <param name="inquiryNumber"></param>
+            <param name="childId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.GetOrganizationQueueInfo(NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.OrganizationQueueInfoRequest)">
+            <summary>
+            Запрос информации о дошкольном образовательном учреждении, в которое зачислен гражданин.
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.OrganizationQueueInfoRequest">
+            <summary>
+            Формат запроса информации об:<br/>
+            - максимальной наполняемости организации,<br/>
+            - количестве детей, которые посещают ОО<br/>
+            - очереди в ОО только из тех, у кого она указана как приоритетная
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.OrganizationQueueInfoRequest.Inn">
+            <summary>
+            ИНН организации<br/>
+            Строковый тип данных.<br/>
+            Ограничение 10 цифр.<br/>
+            Обязательное поле.<br/>
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.OrganizationQueueInfoRequest.Kpp">
+            <summary>
+            КПП организации<br/>
+            Строковый тип данных.<br/>
+            Ограничение 10 цифр.<br/>
+            Обязательное поле.<br/>
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.Organization">
+            <summary>
+            Информация по организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.Organization.OrganizationName">
+            <summary>
+            Наименование организации 
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.Organization.Capacity">
+            <summary>
+            Максимальная наполняемость организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.Organization.Attendance">
+            <summary>
+            Количество детей, которые посещают ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.Organization.Queue">
+            <summary>
+            Информация об очереди в ОО <br />
+            C разбивкой по годам по ЖДЗ
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.YearQueueInfo">
+            <summary>
+            Информация об очереди в ОО 
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.YearQueueInfo.Year">
+            <summary>
+            Год
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Controllers.EServicesOrganizationInfoController.YearQueueInfo.QueueLength">
+            <summary>
+            Очередь
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetEducOrganizations(System.Collections.Generic.IEnumerable{System.String},IRTech.Common.Integration.EServicesWcfServices.Model.Subordinates)">
+            <summary>
+            Получить образовательные организации по адресу (КЛАДР)
+            </summary>
+            <param name="kladrs">Список КЛАДР кодов</param>
+            <param name="subordinates"><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Subordinates"/></param>
+            <returns>Массив <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.EducOrganization"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetEducOrganizations(System.Collections.Generic.IEnumerable{IRTech.Common.Integration.EServicesWcfServices.Model.Address.Address},IRTech.Common.Integration.EServicesWcfServices.Model.Subordinates)">
+            <summary>
+            Получить образовательные организации по адресу (КЛАДР)
+            </summary>
+            <param name="addresses">Список <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Address.Address"/></param>
+            <param name="subordinates"><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Subordinates"/></param>
+            <returns>Массив <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.EducOrganization"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.Convert2EducOrganization(NetCity.Common.ObjectModel.Nhibernate.Organizations.School,IRTech.Common.Integration.EServicesWcfServices.Model.Subordinates)">
+            <summary>
+            Преобразовать <see cref="T:NetCity.Common.ObjectModel.Nhibernate.Organizations.School"/> в <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.EducOrganization"/>
+            </summary>
+            <param name="school"><see cref="T:NetCity.Common.ObjectModel.Nhibernate.Organizations.School"/></param>
+            <param name="subordinates"><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Subordinates"/></param>
+            <returns><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.EducOrganization"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetManagementStructureType(NetCity.Common.ObjectModel.Nhibernate.Organizations.School)">
+            <summary>
+            Получить <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.ManagementStructureType"/>
+            </summary>
+            <param name="school"><see cref="T:NetCity.Common.ObjectModel.Nhibernate.Organizations.School"/></param>
+            <returns><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.ManagementStructureType"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetLicenceDocument(NetCity.Common.ObjectModel.Nhibernate.Organizations.School,IRTech.Common.Integration.EServicesWcfServices.Model.Documents.LicenceDocumentType)">
+            <summary>
+            Получить <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Documents.LicenceDocument"/>
+            </summary>
+            <param name="school"><see cref="T:NetCity.Common.ObjectModel.Nhibernate.Organizations.School"/></param>
+            <param name="doctype"><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Documents.LicenceDocumentType"/></param>
+            <returns><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Documents.LicenceDocument"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetDocument(NetCity.Common.ObjectModel.Nhibernate.Organizations.School,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Получить <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Documents.Document"/>
+            </summary>
+            <param name="school"><see cref="T:NetCity.Common.ObjectModel.Nhibernate.Organizations.School"/></param>
+            <param name="serial">Имя параметра Серия</param>
+            <param name="number">Имя параметра Номер</param>
+            <param name="regNumber">Имя параметра Регистрационный номер</param>
+            <param name="issueDate">Имя параметра Дата выдачи</param>
+            <param name="expirationDate">Имя параметра Дата окончания действия</param>
+            <returns><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Documents.Document"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetLicenceDocument(NetCity.Common.ObjectModel.Nhibernate.Organizations.School,System.String,System.String,System.String,System.String,System.String,IRTech.Common.Integration.EServicesWcfServices.Model.Documents.LicenceDocumentType)">
+            <summary>
+            Получить <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Documents.LicenceDocument"/>
+            </summary>
+            <param name="school"><see cref="T:NetCity.Common.ObjectModel.Nhibernate.Organizations.School"/></param>
+            <param name="serial">Имя параметра Серия</param>
+            <param name="number">Имя параметра Номер</param>
+            <param name="regNumber">Имя параметра Регистрационный номер</param>
+            <param name="issueDate">Имя параметра Дата выдачи</param>
+            <param name="expirationDate">Имя параметра Дата окончания действия</param>
+            <param name="doctype"><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Documents.LicenceDocumentType"/></param>
+            <returns><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Documents.LicenceDocument"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.ParseDate(System.String)">
+            <summary>
+            Парсер даты
+            </summary>
+            <param name="date">Строковое представление даты</param>
+            <returns><see cref="T:System.DateTime"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetGroups(IRTech.Common.Integration.EServicesWcfServices.Model.Groups.GroupRequest)">
+            <summary>
+            Получить массив <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Groups.EducationGroup"/>
+            </summary>
+            <param name="groupRequest"><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Groups.GroupRequest"/></param>
+            <returns>Массив <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Groups.EducationGroup"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.InitClassRooms(System.Int32[])">
+            <summary>
+            Получить все связи групп и кабинетов
+            </summary>
+            <param name="educyears">Массив <see cref="!:Schoolyear.Id"/></param>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetDepartmentGroups(System.Int32,System.Int32)">
+            <summary>
+            Рекурентное получение групп подчинённых организаций
+            </summary>
+            <param name="schoolId">Id вышестоящей организации</param>
+            <param name="educYear">Учебный год в виде '2016'</param>
+            <returns>Спискок <see cref="T:NetCity.Common.ObjectModel.Nhibernate.Classes.Class"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetDepartmentSchools(System.Int32)">
+            <summary>
+            Получить подчинённые организации
+            </summary>
+            <param name="schoolid"><see cref="!:School.Id"/></param>
+            <returns>Массив <see cref="!:School.Id"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetClasses(System.Int32,System.Int32)">
+            <summary>
+            Получить список классов
+            </summary>
+            <param name="educYear">Учебный год в формате '2047'</param>
+            <param name="eoId"><see cref="!:School.Id"/></param>
+            <returns>Перечисление <see cref="T:NetCity.Common.ObjectModel.Nhibernate.Classes.Class"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.CovertToEducationGroup``1(``0)">
+            <summary>
+            Преобразовать <see cref="T:NetCity.Common.ObjectModel.Nhibernate.Classes.Class"/> совместимый объект в <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Groups.EducationGroup"/>
+            </summary>
+            <typeparam name="T"><see cref="T:NetCity.Common.ObjectModel.Nhibernate.Classes.Class"/> или его потомки</typeparam>
+            <param name="group">Группа или класс</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetPreSchoolGroup(NetCity.Common.ObjectModel.Nhibernate.Classes.PreClass)">
+            <summary>
+            Преобразовать <see cref="T:NetCity.Common.ObjectModel.Nhibernate.Classes.PreClass"/> в <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Groups.PreschoolGroup"/>
+            </summary>
+            <param name="preClass"><see cref="T:NetCity.Common.ObjectModel.Nhibernate.Classes.PreClass"/></param>
+            <returns><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Groups.PreschoolGroup"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.Convert(NetCity.Infrastructure.Common.Model.INamedEntity)">
+            <summary>
+            Преобразовать именнованную сущность в модель <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.NamedEntity"/>
+            </summary>
+            <param name="namedEntity">Именованная сущность</param>
+            <returns>Модель <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.NamedEntity"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetSchoolGroup(NetCity.Common.ObjectModel.Nhibernate.Classes.Class)">
+            <summary>
+            Преобразовать <see cref="T:NetCity.Common.ObjectModel.Nhibernate.Classes.Class"/> в <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Groups.EducationGroup"/>
+            </summary>
+            <param name="group"><see cref="T:NetCity.Common.ObjectModel.Nhibernate.Classes.Class"/></param>
+            <returns><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Groups.EducationGroup"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.Convert(NetCity.Common.ObjectModel.Nhibernate.Classes.Class)">
+            <summary>
+            Получить из информации Nhibernate класса список помещений
+            </summary>
+            <param name="classGroup"><see cref="T:NetCity.Common.ObjectModel.Nhibernate.Classes.Class"/></param>
+            <returns>Массив <see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Room"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.Convert(NetCity.Common.ObjectModel.Nhibernate.Schedule.Room)">
+            <summary>
+            Преобразовать Nhibernate класс помещенеия в dto класс помещения
+            </summary>
+            <param name="room"><see cref="!:Common.ObjectModel.Nhibernate.Schedule.Room"/></param>
+            <returns><see cref="T:IRTech.Common.Integration.EServicesWcfServices.Model.Room"/></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.EServicesWcfService.GetIdEducYear(System.Int32,System.Int32)">
+            <summary>
+            Получить id школьного учебного года
+            </summary>
+            <param name="educYear">Год (2014)</param>
+            <param name="schoolId">Id ОО</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Exceptions.OperationFaultException">
+            <summary>
+            Ошибка выполнения операции.
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Exceptions.OperationFaultException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.ServiceModel.FaultException"/> class with the specified fault reason.
+            </summary>
+            <param name="reason">Сообщение об ошибке</param>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Infrastructure.EServicesAddressGetter">
+            <summary>
+            Вычисляет адрес сервиса ЕУ
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.EServicesAddressGetter.GetAsync">
+            <summary>
+            Получить адрес сервиса ЕУ
+            </summary>
+            <remarks>Проверка доступности адреса осуществляется асинхронно</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.EServicesAddressGetter.Get">
+            <summary>
+            Получить адрес сервиса ЕУ
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.EServicesMovementSourceIdsService.IsGroupMovementSourceIds(System.String[])">
+            <summary>
+            movementSourceIds содержит в себе id формата: ид заявки:ид ученика|номер заявки,ид ученика|номер заявки
+            </summary>
+            <param name="movementSourceIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.EServicesMovementSourceIdsService.IsGroupMovementSourceId(System.String)">
+            <summary>
+            movementSourceId имеет формат: ид заявки:ид ученика|номер заявки,ид ученика|номер заявки
+            </summary>
+            <param name="movementSourceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.EServicesMovementSourceIdsService.ParseMovementSourceIds(System.String[])">
+            <summary>
+            Получение EServiceMovementSourceId[] на основе формата: номер заявки,ид ребенка,ид заявки
+            </summary>
+            <param name="movementSourceIds">Должен иметь формат: номер заявки,ид ребенка,ид заявки</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.EServicesMovementSourceIdsService.ParseMovementSourceId(System.String)">
+            <summary>
+            Получение EServiceMovementSourceId на основе формата: номер заявки,ид ребенка,ид заявки
+            </summary>
+            <param name="movementSourceId">Должен иметь формат: номер заявки,ид ребенка,ид заявки</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.EServicesMovementSourceIdsService.ParseGroupMovementSourceIds(System.String[])">
+            <summary>
+            Получение EServiceMovementSourceId[] на основе формата: ид заявки:ид ученика|номер заявки,ид ученика|номер заявки
+            </summary>
+            <param name="movementSourceIds">Должен иметь формат: ид заявки:ид ученика|номер заявки,ид ученика|номер заявки</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.EServicesMovementSourceIdsService.ParseGroupMovementSourceId(System.String)">
+            <summary>
+            Получение EServiceMovementSourceId[] на основе формата: ид заявки:ид ученика|номер заявки,ид ученика|номер заявки
+            </summary>
+            <param name="movementSourceId">Должен иметь формат: ид заявки:ид ученика|номер заявки,ид ученика|номер заявки</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.IAddressGetterStrategy">
+            <summary>
+            Стратегия получения адреса
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.IAddressGetterStrategy.Name">
+            <summary>
+            Наисенование стратегии
+            </summary>
+            <remarks>Используется для записи в кеш</remarks>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.IAddressGetterStrategy.Suffixex">
+            <summary>
+            Набор суфиксов, которые могут быть добавлены к адресу ЕУ, для получения адреса сервиса, в порядке вероятности использования
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.IAddressGetterStrategy.MatchingFunction(System.String)">
+            <summary>
+            Функция проверки адреса, на соответствие шаблону
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.RestAddressGetterStrategy">
+            <summary>
+            Стратегия получения адреса REST сервиса
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.RestAddressGetterStrategy.Name">
+            <summary>
+            Наисенование стратегии
+            </summary>
+            <remarks>Используется для записи в кеш</remarks>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.RestAddressGetterStrategy.DefaultRestSuffixes">
+            <summary>
+            Суффиксы сервиса Rest
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.RestAddressGetterStrategy.MatchingFunction(System.String)">
+            <summary>
+            Функция проверки адреса, на соответствие шаблону
+            </summary>
+            <param name="address">Адрес сервиса </param>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.WcfAddressGetterStrategy">
+            <summary>
+            Стратегия получения адреса WCF сервиса
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.WcfAddressGetterStrategy.Name">
+            <summary>
+            Наисенование стратегии
+            </summary>
+            <remarks>Используется для записи в кеш</remarks>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.WcfAddressGetterStrategy.DefaultWcfSuffixes">
+            <summary>
+            Суффиксы сервиса WCF
+            </summary>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.WcfAddressGetterStrategy.KeyWord">
+            <summary>
+            Ключевое слово, которое должно быть в адресе
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Infrastructure.Stratagies.Addresses.WcfAddressGetterStrategy.MatchingFunction(System.String)">
+            <summary>
+            Функция проверки адреса, на соответствие шаблону
+            </summary>
+            <param name="address">Адрес сервиса </param>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.AddressInfo.FiasId">
+            <summary>
+            Идентификатор ФИАС
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.AddressInfo.FiasIdLevel">
+            <summary>
+            Уровень FiasId
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.AddressInfo.FullName">
+            <summary>
+            Полный адрес
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.AddressInfo.Index">
+            <summary>
+            Индекс
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.AddressInfo.House">
+            <summary>
+            Дом
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.AddressInfo.Struc">
+            <summary>
+            Строение
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.AddressInfo.Building">
+            <summary>
+            Корпус
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.AddressInfo.Flat">
+            <summary>
+            Квартира
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.Child">
+            <summary>
+            Данные о ребенке
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Child.Parents">
+            <summary>
+            Информация по родителям
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Child.LivingAddress">
+            <summary>
+            Адрес проживания
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.ChildOrganization.ChildId">
+            <summary>
+            Идентификатор ребенка
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.ChildOrganization.OrganizationId">
+            <summary>
+            Идентификатор организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Enrollment.ChildId">
+            <summary>
+            Ид ребенка (ЕУ)
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Enrollment.OrganizationId">
+            <summary>
+            Ид организации (СГО)
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Enrollment.EducGroupId">
+            <summary>
+            Ид группы зачисления
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Enrollment.MoveDocument">
+            <summary>
+            Документ о зачислении
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.FindChildRequest">
+            <summary>
+            Данные запроса на поиск ребенка
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.FindChildRequest.Person">
+            <summary>
+            Данные о ребенке
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.FindChildRequest.Organizations">
+            <summary>
+            Организации, в которых необходимо осуществлять поиск
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.FindChildRequest.Year">
+            <summary>
+            Календарный год, в котором необходимо осуществлять поиск
+            </summary>
+            <remarks>
+            Для поиска в 2017/2018 учебном году - должен указываться 2017 год 
+            </remarks>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.FindChildRequest.Parent">
+            <summary>
+            Данные для поиска ребенка по родителю
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.GetChildsActiveOrgsRequest">
+            <summary>
+            Запрос получения текущих организаций, в которые зачислены дети
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.GetChildsActiveOrgsRequest.Year">
+            <summary>
+            Учебный год
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.GetChildsActiveOrgsRequest.Childs">
+            <summary>
+            Список детей
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.GetChildsActiveOrgsRequest.CheckDate">
+            <summary>
+            Дата, на которую должна выполняться проверка
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.GetChildsActiveOrgsRequest.OrgTypes">
+            <summary>
+            Типы организаций
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.GetChildsActiveOrgsResponse">
+            <summary>
+            Данные ответа на запрос получения текущих организаций, в которые зачислены дети
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.GetChildsWithChangesRequest">
+            <summary>
+            Запрос получения списка детей, для которых были изменения в ЛК  
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.GetChildsWithChangesRequest.FromDate">
+            <summary>
+            Дата, с которой выполняется проверка
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.GetChildsWithChangesRequest.Childs">
+            <summary>
+            Список детей
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.IdentityDocument">
+            <summary>
+            Документ удостоверющий личность пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.IdentityDocument.DocType">
+            <summary>
+            Тип документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.IdentityDocument.Series">
+            <summary>
+            Серия
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.IdentityDocument.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.IdentityDocument.ActNumber">
+            <summary>
+            Номер актовой записи (свид-во о рождении)
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.IdentityDocument.Issuer">
+            <summary>
+            Кем выдан
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.IdentityDocument.IssuerCode">
+            <summary>
+            Код выдавшей организации (Код подразделения для паспорта)
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.IdentityDocument.IssueDate">
+            <summary>
+            Дата выдачи
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.IdentityDocument.ExpireDate">
+            <summary>
+            Действителен до
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.IdentityDocument.ActualOn">
+            <summary>
+            Дата актульности / дата редактирования информации
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.IdentityDocument.OtherDocName">
+            <summary>
+            Название другого документа, удостоверяющего личность
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.Inquiry">
+            <summary>
+            Заявление
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Inquiry.Number">
+            <summary>
+            Номер заявления
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.MoveDocument.Id">
+            <summary>
+            Ид документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.MoveDocument.Number">
+            <summary>
+            Номер документа
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.MoveDocument.Date">
+            <summary>
+            Дата документа
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.Order">
+            <summary>
+            Приказ
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Order.OrderNumber">
+            <summary>
+            Номер приказа
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Order.ChildIds">
+            <summary>
+            Список учеников, которых косается приказ
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Order.Autor">
+            <summary>
+            Автор
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Order.Date">
+            <summary>
+            Дата приказа
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.OrderPerson">
+            <summary>
+            Персона
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.OrderPerson.Id">
+            <summary>
+            Id пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.OrderPerson.Name">
+            <summary>
+            Имя персоны
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.Person">
+            <summary>
+            Данные о персоне
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Person.LastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Person.FirstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Person.MiddleName">
+            <summary>
+            Отчество
+            </summary>
+            
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Person.NoMiddleName">
+            <summary>
+            Признак - нет отчества
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.Person.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Models.User">
+            <summary>
+            Данные о пользователе системы
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.User.Id">
+            <summary>
+            Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.User.Person">
+            <summary>
+            Данные о персоне
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Models.User.IdentityDocuments">
+            <summary>
+            Данные по документам, удостоверения личности
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.AdditionInformation">
+            <summary>
+            Дополнительная информация об ОО
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.AdditionInformation.Inn">
+            <summary>
+            ИНН
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.AdditionInformation.Ogrn">
+            <summary>
+            ОГРН
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.AdditionInformation.Kpp">
+            <summary>
+            КПП
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.AdditionInformation.Okfs">
+            <summary>
+            ОКФС
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.AdditionInformation.Okogu">
+            <summary>
+            ОКОГУ
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.AdditionInformation.Okopf">
+            <summary>
+            ОКОПФ
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.AdditionInformation.Okpo">
+            <summary>
+            ОКПО
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.AdditionInformation.Okved">
+            <summary>
+            ОКВЕД
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.ContactData">
+            <summary>
+            Контактные данные
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.Documents.Document">
+            <summary>
+            Документ
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Documents.Document.Series">
+            <summary>
+            Серия
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Documents.Document.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Documents.Document.RegNumber">
+            <summary>
+            Регистрационный номер
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Documents.Document.IssueDate">
+            <summary>
+            Дата выдачи
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Documents.Document.ExpirationDate">
+            <summary>
+            Дата окончания срока действия
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Model.Documents.DocumentList.#ctor(System.Collections.Generic.IEnumerable{NetCity.Integration.EServices.Model.Documents.Document})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Collections.Generic.List`1"/> class that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.
+            </summary>
+            <param name="collection">The collection whose elements are copied to the new list.</param><exception cref="T:System.ArgumentNullException"><paramref name="collection"/> is null.</exception>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Model.Documents.DocumentList.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Collections.Generic.List`1"/> class that is empty and has the default initial capacity.
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.Documents.LicenceDocument">
+            <summary>
+            Лицензия
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Documents.LicenceDocument.LicenceType">
+            <summary>
+            <see cref="T:NetCity.Integration.EServices.Model.Documents.LicenceDocumentType"/>
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.Documents.LicenceDocumentType">
+            <summary>
+            Тип лицензии образовательной организации
+            </summary>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Model.Documents.LicenceDocumentType.BasicEducationLicence">
+            <summary>
+            Лицензия на вдение образовательной деятельности
+            </summary>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Model.Documents.LicenceDocumentType.AdditionalEducationLicence">
+            <summary>
+            Лизензия на ведение дополнительного образования
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.EducationLevel">
+            <summary>
+            Уровень образования
+            </summary>
+            <remarks>Дублирует NetCity.Common.Movement.Model.Common.EducationLevel</remarks>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Model.EducationLevel.Preschool">
+            <summary>
+            Дошкольное образование
+            </summary>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Model.EducationLevel.School">
+            <summary>
+            Школа
+            </summary>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Model.EducationLevel.AddSchool">
+            <summary>
+            Дополнительное образование
+            </summary>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Model.EducationLevel.Other">
+            <summary>
+            Другой
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.EducOrganization">
+            <summary>
+            Образовательная организация
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.Guid">
+            <summary>
+            Уникальный идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.ServerGuid">
+            <summary>
+            Серверный уникальный идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.Version">
+            <summary>
+            Дата последнего изменения информации
+            Date last changes information
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.FullName">
+            <summary>
+            Полное наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.Licences">
+            <summary>
+            Массив лицензций
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.Accreditation">
+            <summary>
+            Аккредитация
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.ManagementStructure">
+            <summary>
+            Организационная структура
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.Contacts">
+            <summary>
+            Контактные данные
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.SubordinatesOrganizations">
+            <summary>
+            Подчинённые организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.AdditionalInformation">
+            <summary>
+            Другая информация
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.Type">
+            <summary>
+            Тип образовательной организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.EducOrganization.Form">
+            <summary>
+            Форма образовательной организации
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.Groups.AddschoolGroup">
+            <summary>
+            Группа дополнительного образования
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.Groups.Class">
+            <summary>
+            Класс (группа учеников)
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.Class.Letter">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.Groups.EducationGroup">
+            <summary>
+            Базовая группа.
+            Описывает общие параметры любой группы
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.EducationGroup.Id">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.EducationGroup.GlobalId">
+            <summary>
+            Глобальный идентификатор (см. задачу #16765)
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.EducationGroup.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.EducationGroup.EducationLevel">
+            <summary>
+            Уровень образования
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.EducationGroup.Grade">
+            <summary>
+            Год обучения (grade из таблицы CLASSES)
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.EducationGroup.EducOrganizationId">
+            <summary>
+            Id школы
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.EducationGroup.Classroom">
+            <summary>
+            Закрепленное помещение/кабинет (см. задачу #16753)
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.EducationGroup.Version">
+            <summary>
+            Дата последнего изменения (см. задачу #16764)
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.Groups.PreschoolGroup">
+            <summary>
+            Дошкольная группа
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.PreschoolGroup.Program">
+            <summary>
+            Образовательная программа
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.PreschoolGroup.DouGroupType">
+            <summary>
+            Тип группы
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.PreschoolGroup.AgeCategory">
+            <summary>
+            Возрастная категория группы
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.PreschoolGroup.Age">
+            <summary>
+            Возрастной диапазон 
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.PreschoolGroup.StayRegime">
+            <summary>
+            Режим пребывания
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.PreschoolGroup.Corpus">
+            <summary>
+            Корпус
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.PreschoolGroup.CapacityNoLim">
+            <summary>
+            Мест для детей без ограничения по здоровью
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.PreschoolGroup.CapacityOvz">
+            <summary>
+            Мест для детей с ОВЗ
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.PreschoolGroup.NoInformika">
+            <summary>
+            Нет информике
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Groups.PreschoolGroup.SeatsForTransfer">
+            <summary>
+            Сидячие места для перемещения?
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.ManagementStructure">
+            <summary>
+            Орг. структура
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.ManagementStructure.TopEducOrganizationId">
+            <summary>
+            Вышестоящая организация
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.ManagementStructure.EducComplexGuid">
+            <summary>
+            Уникальный идентификатор головной организации
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.ManagementStructure.Type">
+            <summary>
+            Тип орг. структуры 
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.ManagementStructure.Сhief">
+            <summary>
+            Руководитель
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.ManagementStructureType">
+            <summary>
+            Тип организационной структуры
+            </summary>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Model.ManagementStructureType.Independent">
+            <summary>
+            Самостоятельная организация
+            </summary>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Model.ManagementStructureType.Branch">
+            <summary>
+            Филиал. Обособленное структурное подразделение
+            </summary>
+        </member>
+        <member name="F:NetCity.Integration.EServices.Model.ManagementStructureType.Department">
+            <summary>
+            Необособленное структурное подразделение
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.Room">
+            <summary>
+            Кабинет
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Room.Floor">
+            <summary>
+            Этаж
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Room.Roomname">
+            <summary>
+            Название кабинета
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Room.Seats">
+            <summary>
+            Количество мест
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Model.Subordinates">
+            <summary>
+            Подчинённые
+            </summary>
+            <remarks>Регулирует поиск подчинённых объектов, по отношению к указанному</remarks>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Subordinates.GetSubordinates">
+            <summary>
+            Возвращать подчинённых
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.Model.Subordinates.MaxDepth">
+            <summary>
+            Максимальная глубина поиска подчинённых
+            </summary>
+            <remarks>Если указано отрицательное число -- стоит искать вышестоящие организации</remarks>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesBaseClient.SendRequest``1(System.String,RestSharp.Method,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <param name="resource"></param>
+            <param name="method"></param>
+            <returns>Success</returns>
+            <exception cref="T:NetCity.Common.Exceptions.AppException">A server side error occurred.</exception>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesBaseClient.SendRequest``2(System.String,RestSharp.Method,``0,System.Threading.CancellationToken)">
+            <param name="body"></param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <param name="resource"></param>
+            <param name="method"></param>
+            <returns>Success</returns>
+            <exception cref="T:NetCity.Common.Exceptions.AppException">A server side error occurred.</exception>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesBaseClient.SendRequest``1(System.String,RestSharp.Method,``0,System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="resource"></param>
+            <param name="method"></param>
+            <param name="body"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.GetInquiry(System.String)">
+            <summary>
+            Получить информацию по номеру заявки
+            </summary>
+            <param name="inquiryNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.GetInquiryIdByNumber(System.String)">
+            <summary>
+            Получение идентификатора заявки по номеру
+            </summary>
+            <param name="inquiryNumber"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.GetInquiries(System.String,System.String,System.String[],System.String,System.String,System.String,System.Nullable{IRTech.Common.Enums.CommonEnum.ChildGender},System.Nullable{IRTech.Common.Enums.CommonEnum.CommonSpecHealthCategory},System.Nullable{IRTech.Common.Enums.CommonEnum.EnrollStatus},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Получить заявки на зачисление
+            </summary>
+            <param name="organizationId "></param>
+            <param name="year"></param>
+            <param name="inquiryIds"></param>
+            <param name="inquiriesNumber"></param>
+            <param name="certificateNumber"></param>
+            <param name="groupId"></param>
+            <param name="pageSize"></param>
+            <param name="pageNumber"></param>
+            <param name="gender"></param>
+            <param name="endRangeLetter"></param>
+            <param name="startRangeLetter"></param>
+            <param name="specHealth"></param>
+            <param name="enrollStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.GetBatchInquiries(System.String,System.String[])">
+            <summary>
+            Пакетное получение заявок по номеру
+            </summary>
+            <param name="organizationId"></param>
+            <param name="inquiryIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.GetInstitutionEnrollmentGroups(System.String,System.String)">
+            <summary>
+            Получить классы распределения ЕУ
+            </summary>
+            <param name="organizationId"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.GetSpecHealths">
+            <summary>
+            Получить специализации по здоровью группы распределения
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.CheckInquiry(System.String,IRTech.EServices.NetCityIntegration.Model.Command)">
+            <summary>
+            Проверить возможность зачисления ученика
+            </summary>
+            <param name="inquiryId"></param>
+            <param name="body"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.EnrollComplete(System.String,IRTech.EServices.NetCityIntegration.Model.Command)">
+            <summary>
+            Уведомление об успешном зачислении
+            </summary>
+            <param name="inquiryId"></param>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.EnrollInProgress(System.String,IRTech.EServices.NetCityIntegration.Model.Command)">
+            <summary>
+            Уведомление о запуске процесса зачисления
+            </summary>
+            <param name="inquiryId"></param>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.EnrollRefused(System.String,IRTech.EServices.NetCityIntegration.Model.RefuseCommand)">
+            <summary>
+            Уведомление об отмене зачисления
+            </summary>
+            <param name="inquiryId"></param>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.Depart(System.String,IRTech.EServices.NetCityIntegration.Model.Command)">
+            <summary>
+            Уведомление об завершении обучения
+            </summary>
+            <param name="inquiryId"></param>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.RetirementOrder(System.String,System.String,System.String[],NetCity.Integration.EServices.Models.OrderPerson,System.DateTime)">
+            <summary>
+            Сообщить о выбытии
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInquiryClient.Cancel(System.String,System.String,System.String[],NetCity.Integration.EServices.Models.OrderPerson,System.DateTime)">
+            <summary>
+            Отменить выбытие
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.RestClients.EServicesInstitutionsInfoClient.GetCountQueue(System.String,System.String)">
+            <summary>
+            Информация об очереди в ОО c разбивкой по годам по ЖДЗ
+            </summary>
+            <param name="inn"></param>
+            <param name="kpp"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NetCity.Integration.EServices.RestClients.EsYearQueueInfo.Year">
+            <summary>
+            Год
+            </summary>
+        </member>
+        <member name="P:NetCity.Integration.EServices.RestClients.EsYearQueueInfo.QueueLength">
+            <summary>
+            Очередь
+            </summary>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Services.EServicesChangesInformingService">
+            <summary>
+            Сервис оповещающий ЕУ о выбытии/отмене выбытия учеников зачисленных из ЕУ
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Services.EServicesChangesInformingService.RetirementOrder(NetCity.Common.Movement.Model.Common.MoveDoc,NetCity.Integration.EServices.Models.OrderPerson,System.Int32[])">
+            <summary>
+            Сообщить о выбытии
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Services.EServicesChangesInformingService.Cancel(NetCity.Common.Movement.Model.Common.MoveDoc,NetCity.Integration.EServices.Models.OrderPerson,System.Int32[])">
+            <summary>
+            Отменить выбытие
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Services.EServicesChangesInformingService.GetStudentsEServicesMovementSourceIds(System.Int32,NetCity.Common.Movement.Model.Common.MoveDocType,System.Int32[])">
+            <summary>
+            Получить список номеров заявлений детей
+            </summary>
+            <param name="movDocId">Номер документа о движении <see cref="!:Common.ObjectModel.Movement.MoveDoc.Id"/></param>
+            <param name="docType"></param>
+            <param name="studentIds">Id детей (СГО)</param>
+            <returns>Список номеров заявлений ЕУ</returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Services.EServicesMovementPoolService.GetClassId(System.Nullable{System.Guid},System.String,System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            Поиск ид класса на основе уникального идентификатора, имени, параллели и учебного года
+            </summary>
+            <param name="classGuid"></param>
+            <param name="className"></param>
+            <param name="grade"></param>
+            <param name="schoolYearId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Sources.EServicesMovement">
+            <summary>
+            Е-Услуги
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.#ctor(NetCity.Common.Filters.Initializers.IFilterPanelInititalizer)">
+            <summary>
+            ctor
+            </summary>
+            <remarks>Реализация конструктора для предоставления контракта</remarks>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.GetMovementList(NetCity.Common.Movement.Services.Messages.MovementSourceListRequest)">
+            <summary>
+            Метод получения списка доступных учащихся для зачисления
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.ProxyGetMovementList(NetCity.Common.Movement.Services.Messages.MovementSourceListRequest)">
+            <summary>
+            Метод выполнения запроса с предобработкой (фильтрация уже существующих записей в БД) 
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.GetStudentDetailedInfo(NetCity.Common.Movement.Services.Messages.MovementSourceDetailsRequest)">
+            <summary>
+            Метод получения дополнительной информации по учащимся
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.InnProcess(NetCity.Common.DTO.Users.Documents.DocumentsData,NetCity.Common.Movement.Model.Sources.StudentInfo.Attribute.AttributePersonData)">
+            <summary>
+            Обработать ИНН
+            </summary>
+            <param name="documents">Список удостоверений личности</param>
+            <param name="attributes">Список атрибутов</param>
+            <remarks>#22403</remarks>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.RemoveInnFormDocuments(NetCity.Common.DTO.Users.Documents.DocumentsData)">
+            <summary>
+            Удалить ИНН из списка удостоверений личности
+            </summary>
+            <param name="documents">Список документов удостоверяющих личность</param>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.GetDocumentInn(NetCity.Common.DTO.Users.Documents.DocumentsData)">
+            <summary>
+            Получить ИНН из удостоверений личности
+            </summary>
+            <param name="documents">Набор удостоверений личности</param>
+            <returns>Удостоверение личности ИНН</returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.GetAttributeInn(NetCity.Common.Movement.Model.Sources.StudentInfo.Attribute.AttributePersonData)">
+            <summary>
+            Получить ИНН из атрибутов
+            </summary>
+            <param name="attributePersonData">Аттрибутивные данные</param>
+            <returns>Атрибут ИНН или null</returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.PostProcessstudentAttributeData(NetCity.Common.Movement.Model.Sources.StudentInfo.StudentDetailedData)">
+            <summary>
+            Постобработка аттрибутивной информации ребёнка
+            </summary>
+            <param name="studentData">Информация о ребёнке</param>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.ProcessAttributeData(NetCity.Common.Movement.Model.Sources.StudentInfo.Attribute.AttributeData[])">
+            <summary>
+            Обработка атрибутивнх параметров
+            </summary>
+            <param name="data">Аттрибутивные данные</param>
+            <returns>Обработанный набор аттрибутивных данных</returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.MapDisabilityType(System.Nullable{System.Int32})">
+            <summary>
+            Отображение значений ЕУ в значения СГО
+            </summary>
+            <param name="code">Код типа ограничения возможностей здоровья</param>
+            <returns>Код ограничения СГО</returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.CheckMovement(NetCity.Common.Movement.Services.Messages.MovementSourceCheckRequest)">
+            <summary>
+            Метод для проверки возможности зачисления учащегося
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <remarks>
+            Вызывается 3-им для получения предварительного разрешения на зачисление
+            </remarks>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.MakeMovement(NetCity.Common.Movement.Services.Messages.MovementSourceMakeRequest)">
+            <summary>
+            Метод фактического зачисления учащихся
+            </summary>
+            <param name="request"></param>
+            <remarks>
+            Вызывается 4-ым для получения окончательного разрешения и завершение процесса зачисления
+            </remarks>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.CompleteMovement(NetCity.Common.Movement.Services.Messages.MovementSourceCompleteRequest)">
+            <summary>
+            Метод успешного зачисления учащихся
+            </summary>
+            <param name="request"></param>
+            <remarks>
+            Вызывается 5-ым после завершения процесса зачисления
+            </remarks>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.RefuseMovement(NetCity.Common.Movement.Services.Messages.MovementSourceRefuseRequest)">
+            <summary>
+            Метод информирования об отмене зачисления учащихся зачисленных из источника
+            </summary>
+            <remarks>
+            Вызывается при отмене документа о зачислении
+            </remarks>
+            <param name="request"></param>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.RepairMovementId(NetCity.Common.Movement.Services.Messages.MovementSourceRefuseRequest)">
+            <summary>
+            Восстановить недостающие MovementId
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.InitFilterPanel(NetCity.Common.Filters.Description.Context.FilterContext)">
+            <summary>
+            Метод инициализации специфичной/расширенной фильтр панели для данного источника
+            </summary>
+            <param name="customFilterContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.WaitAndCatchException(System.Threading.Tasks.Task)">
+            <summary>
+            Ожидание выполнения задачи и обработка исключений
+            </summary>
+            <param name="task"></param>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.FillDocuments(NetCity.Common.DTO.Users.Documents.DocumentsData)">
+            <summary>
+            Заполнить текстовые поля массива документов
+            </summary>
+            <param name="docdata">Список документов</param>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.FillEmptyFieldDocument(NetCity.Common.DTO.Users.Documents.Document)">
+            <summary>
+            Проверет строковые поля документа и пишет "-" в пустые
+            </summary>
+            <param name="document">Проверяемый документ</param>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.CheckFillField(NetCity.Common.DTO.Users.Documents.Document,System.Linq.Expressions.Expression{System.Func{NetCity.Common.DTO.Users.Documents.Document,System.String}})">
+            <summary>
+            Проверяем вставляем "-" если поле пустое
+            </summary>
+            <param name="document">Документ</param>
+            <param name="field">Поле</param>
+        </member>
+        <member name="T:NetCity.Integration.EServices.Sources.EServicesMovement.MultiException">
+            <summary>
+            Позволяет обобщить сообщения <see cref="T:System.AggregateException"/>
+            </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesMovement.MultiException.GetByAggregateException(System.AggregateException)">
+            <summary>
+            Получить <see cref="T:NetCity.Integration.EServices.Sources.EServicesMovement.MultiException"/>
+            </summary>
+            <param name="exception">Набор исключений</param>
+            <returns>Исключение с обощённым сообщением</returns>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesEnrollmentBase.GetSourceInfo(NetCity.Common.Movement.Services.Messages.MovementSourceInfoRequest)">
+             <summary>
+            Метод получения информации об источнике учащихся для зачисления
+             </summary>
+        </member>
+        <member name="M:NetCity.Integration.EServices.Sources.EServicesEnrollmentBase.EducYearsDictionary(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Подготовить словарь из учебных периодов
+            </summary>
+            <param name="currentYear">Текущий учебный год</param>
+            <param name="count">Сколько учебных периодов должно быть после текущего</param>
+            <param name="fromDelta">Сколькько учебных периодов должно быть перед текущим</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

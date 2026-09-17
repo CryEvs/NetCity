@@ -1,0 +1,99 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+
+			<button type="button" class="btn btn-info" id="saveButton" ng-disabled="!state.dataReady || state.emptyData" ng-click="save(state.dataReady && !state.emptyData)">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span>{{language.Generic.Buttons.kSave}}</span>
+			</button>
+
+			<button type="button" class="btn btn-info" id="resetButton" ng-disabled="!state.dataReady || state.emptyData" ng-click="reset()">
+				<span class="glyphicon glyphicon-repeat"></span>
+				<span>{{language.Generic.Buttons.kReset}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="state.dataReady && state.emptyData">
+		<div class="alert alert-info" role="alert">{{language.Common.kNoVacationInfo}}</div>
+	</div>
+</div>
+<div ng-show="!state.emptyData && state.dataReady">
+	<table class="table table-xs table-bright table-thin">
+		<tr>
+			<th rowspan="2" colspan="3">
+				{{language.Common.kClass}} / {{language.Generic.Common.kVacationHeader_2}}
+			</th>
+			<th class="text-center" ng-repeat="vacation in data.vacations">
+				<label style="cursor: pointer" for="checkVacation_{{vacation.id}}">{{vacation.name}}</label>
+			</th>
+		</tr>
+		<tr>
+			<th ng-repeat="vacation in data.vacations" class="text-center th-checkbox">
+				<div class="container-checkbox">
+					<input track-changes type="checkbox" ng-model="data.vacationsChecks[$index]" ng-indeterminate="data.vacationsChecks[$index]===null" ng-change="setVacationCheckCondition(vacation.id, data.vacationsChecks[$index])" id="checkVacation_{{vacation.id}}">
+					<label class="indeterminate" for="checkVacation_{{vacation.id}}"></label>
+				</div>
+			</th>
+		</tr>
+
+		<tr ng-repeat="class in data.classes">
+			{{class.grade.id}}
+			<th ng-if="getPrevClassGrade($index) != class.grade.id" rowspan="{{getClassesByGrade(class.grade.id).length}}">
+				<label style="cursor: pointer" for="checkGrade_{{class.grade.id}}">{{class.grade.name}}</label>
+			</th>
+			<th ng-click="setClassCheckCondition(class.id, !data.classesChecks[$index])">
+				<label style="cursor: pointer">{{class.name}}</label>
+			</th>
+			<th ng-if="getPrevClassGrade($index) != class.grade.id" rowspan="{{getClassesByGrade(class.grade.id).length}}" class="th-checkbox">
+				<div class="container-checkbox">
+					<input track-changes type="checkbox" ng-model="data.gradesChecks[getGradeIndexById(class.grade.id)]" ng-indeterminate="data.gradesChecks[getGradeIndexById(class.grade.id)]===null" ng-change="setGradeCheckCondition(class.grade.id, data.gradesChecks[getGradeIndexById(class.grade.id)])" id="checkGrade_{{class.grade.id}}">
+					<label class="indeterminate" for="checkGrade_{{class.grade.id}}"></label>
+				</div>
+			</th>
+			<td ng-repeat="vacation in data.vacations" class="text-center" ng-class="{'danger' : checkCellChange($parent.$index, $index)}">
+				<input track-changes type="checkbox" ng-model="data.classVacationMatrix[$parent.$index][$index]" ng-change="checkCell()">
+			</td>
+		</tr>
+	</table>
+
+	<table class="table table-xs table-bright table-thin" ng-show="false">
+		<tr>
+			<th rowspan="3" colspan="2">
+				{{language.Generic.Common.kVacationHeader}} / {{language.Common.kClass}}
+			</th>
+			<th ng-repeat="grade in data.grades" colspan="{{grade.length}}">
+				<label style="cursor: pointer" for="checkGrade_{{grade[0].grade.id}}">{{grade[0].grade.name}}</label>
+			</th>
+		</tr>
+		<tr>
+			<th ng-repeat="grade in data.grades" colspan="{{grade.length}}" class="text-center th-checkbox">
+				<div class="container-checkbox">
+					<input track-changes type="checkbox" ng-model="data.gradesChecks[$index]" ng-indeterminate="data.gradesChecks[$index]===null" ng-change="setGradeCheckCondition(grade[0].grade.id, data.gradesChecks[$index])" name="checkGrade_{{grade[0].grade.id}}" id="checkGrade_{{grade[0].grade.id}}">
+					<label class="indeterminate" for="checkGrade_{{grade[0].grade.id}}"></label>
+				</div>
+			</th>
+		</tr>
+		<tr>
+			<th ng-repeat="class in data.classes" ng-click="setClassCheckCondition(class.id, !data.classesChecks[$index])">
+				<label style="cursor: pointer">{{class.name}}</label>
+			</th>
+		</tr>
+		<tr ng-repeat="vacation in data.vacations">
+			<th class="text-right">
+				<label style="cursor: pointer" for="checkVacation_{{vacation.id}}">{{vacation.name}}</label>
+			</th>
+			<th class="text-center th-checkbox">
+				<div class="container-checkbox">
+					<input track-changes type="checkbox" id="checkVacation_{{vacation.id}}" name="checkVacation_{{vacation.id}}" ng-model="data.vacationsChecks[$index]" ng-indeterminate="data.vacationsChecks[$index]===null" ng-change="setVacationCheckCondition(vacation.id, data.vacationsChecks[$index])">
+					<label class="indeterminate" for="checkVacation_{{vacation.id}}"></label>
+				</div>
+			</th>
+			<td ng-repeat="class in data.classes" class="text-center" ng-class="{'danger' : checkCellChange($index, $parent.$index)}">
+				<input track-changes type="checkbox" ng-model="data.classVacationMatrix[$index][$parent.$index]" ng-change="checkCell()">
+			</td>
+		</tr>
+	</table>
+</div>

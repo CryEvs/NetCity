@@ -1,0 +1,13 @@
+<div class="col-md-4 col-lg-3 col-md-pull-7 col-lg-pull-5">
+	<span title="{{$ctrl.title}}">{{$ctrl.title}}</span>
+	<br>
+	<select title="" size="10" name="UserList" style="width: 300px;">
+		<option ng-repeat="user in $ctrl.users" ng-click="$ctrl.selectUser(user)">
+			{{user.fullName}}
+		</option>
+	</select>
+
+	<br>
+	<br>
+	<span title="">{{$ctrl.language.Generic.SetupSchoolUI.kTotalRecords}}:</span> <input title="{{$ctrl.language.Generic.SetupSchoolUI.kTotalRecords}}" type="text" name="qadd_total" size="3" ng-value="$ctrl.users.length" disabled>
+</div>

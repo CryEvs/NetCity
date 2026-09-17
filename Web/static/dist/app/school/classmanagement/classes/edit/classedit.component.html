@@ -1,0 +1,280 @@
+<div class="row ns-cloak">
+		<div class="col-md-12">	
+			<div class="buttons-panel">	
+				<div class="buttons-panel-left">
+					<button class="btn btn-primary" type="button" ng-click="$ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+
+					<button	title="$ctrl.language.Generic.Buttons.kReset" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+					</button>
+				</div>
+			</div>	
+		</div>
+	</div>
+	
+	<div class="row ns-cloak">
+
+		<div ng-if="$ctrl.class.hasClassNotWorkingTeacher" class="alert alert-warning" role="alert">
+			{{$ctrl.language.ClassManagement.kClassHasNotWorkingTeacher}}
+		</div>
+
+		<div class="col-md-12 col-lg-8">
+			<form class="form-horizontal form-sm" name="$ctrl.form" ng-if="$ctrl.dataReady">
+			<ns-form control-size="col-md-8" label-size="col-md-4">
+				<div class="form-group" ng-class="{'has-error': !$ctrl.validGrade()}">
+					<label class="control-label col-md-4">{{ 'language.Common.kClass' | language }}</label>
+					<div class="col-md-8">
+						<div class="row" ng-if="!$ctrl.class.id">
+							<div class="col-md-6" ng-if="!$ctrl.isPreSchool">
+								<select class="form-control" ng-model="$ctrl.class.grade" name="GRADEID" ng-options="grade as grade.name for grade in $ctrl.grades track by grade.id" track-changes></select>
+							</div>
+							<div class="col-md-6">
+								<div ng-class="{'input-group': !$ctrl.isPreSchool}">
+									<input type="text" name="Letter2" class="form-control" filterwhitespace="" size="4" maxlength="15" ng-model="$ctrl.class.letter" track-changes>
+									<div class="input-group-btn" ng-if="!$ctrl.isPreSchool">
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+											<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu dropdown-menu-right" role="menu">
+											<li ng-repeat="letter in $ctrl.letters" ng-click="$ctrl.class.letter = letter">{{letter}}</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6" ng-if="$ctrl.isPreSchool">
+								<select class="form-control" ng-model="$ctrl.class.grade" name="GRADEID" ng-options="grade as grade.name for grade in $ctrl.grades track by grade.id" track-changes></select>
+							</div>
+						</div>
+						<div class="row" ng-if="$ctrl.class.id">
+							<div class="col-md-6" ng-if="!$ctrl.isPreSchool">
+								<input type="text" class="form-control" name="GRADEID" disabled="disabled" readonly="readonly" maxlength="2" ng-model="$ctrl.class.grade.name">
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="LETTER" maxlength="15" ng-model="$ctrl.class.letter" track-changes>
+							</div>
+							<div class="col-md-6" ng-if="$ctrl.isPreSchool">
+								<select class="form-control" ng-model="$ctrl.class.grade" name="GRADEID" ng-options="grade as grade.name for grade in $ctrl.grades track by grade.id" track-changes></select>
+							</div>
+						</div>
+						<div class="help-block" ng-if="!$ctrl.validGrade()">
+								{{$ctrl.gradeNoProfilesError()}}
+						</div>
+					</div>
+				</div>
+
+				<ns-form-group ng-if="$ctrl.showProfile" title="{{ 'language.Common.kProfile' | language }}" ng-class="{'has-error': !$ctrl.validateProfile()}">
+					<span ng-if="$ctrl.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.class.profile.name}}</span></span>
+					<select ng-if="!$ctrl.readOnly" ng-model="$ctrl.class.profileId" class="form-control" name="PROFILE" ng-options="profile.id as profile.name for profile in $ctrl.profiles" track-changes></select>
+					<div class="help-block" ng-if="!$ctrl.validateProfile()">
+						{{$ctrl.profileIdError()}}
+					</div>
+				</ns-form-group>
+
+				<!--ДОО-->
+				<ns-form-group ng-if="$ctrl.isPreSchool" title="{{ 'language.Generic.ClassManagement.kDOUGroupAgeCategory' | language }}">
+					<span ng-if="$ctrl.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.class.douGroupAgeCategory.name}}</span></span>
+					<select ng-if="!$ctrl.readOnly" ng-model="$ctrl.class.douGroupAgeCategory" class="form-control" name="AgeCategory" ng-options="ageCategory as ageCategory.name for ageCategory in $ctrl.ageCategories track by ageCategory.id" track-changes></select>
+				</ns-form-group>	
+
+				<ns-form-group ng-if="$ctrl.isPreSchool" title="{{ 'language.Generic.ClassManagement.kDOUGroupAge' | language }}">
+					<span ng-if="$ctrl.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.class.douGroupAge.name}}</span></span>
+					<select ng-if="!$ctrl.readOnly" ng-model="$ctrl.class.douGroupAge" class="form-control" name="Age" ng-options="age as age.name for age in $ctrl.ages track by age.id" track-changes></select>
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.isPreSchool && !$ctrl.wizard" title="{{ 'language.Generic.ClassManagement.kDOUGroupType' | language }}" ng-class="{'has-error': $ctrl.form.DouGroupType.$invalid}">
+					<span ng-if="$ctrl.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.class.douGroupType.name}}</span></span>
+					<select ng-if="!$ctrl.readOnly" ng-model="$ctrl.class.douGroupType" class="form-control" name="DouGroupType" ng-change="$ctrl.changeDouGroupType()" ng-options="douGroupType as douGroupType.name for douGroupType in $ctrl.douGroupTypes track by douGroupType.id" track-changes>
+					</select>
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.isPreSchool && !$ctrl.wizard" title="{{ 'language.Generic.ClassManagement.kEducPrograms' | language }}">
+					<div class="checkbox" ng-repeat="douProgram in $ctrl.douPrograms">
+						<label ng-style="{ color: $ctrl.isDisabledDouProgram(douProgram) ? 'grey' : '' }">
+							<input type="checkbox" name="DOUPROGRAM" ng-click="$ctrl.toggleDouProgram(douProgram)" ng-checked="$ctrl.isCheckedDouProgram(douProgram)" ng-disabled="$ctrl.isDisabledDouProgram(douProgram)" track-changes>{{douProgram.name}}
+						</label>
+					</div>
+				</ns-form-group>
+				<!--ДОО-->
+
+				<!--ОДО-->
+				<ns-form-group ng-if="$ctrl.isAddSchool" title="{{ 'language.Generic.ClassManagement.kProgDirection' | language }}" ng-class="{'has-error': $ctrl.form.Program.$invalid && (!$ctrl.form.Program.$pristine || $ctrl.form.$displayErrors)}">
+					<span ng-if="$ctrl.readOnly || $ctrl.classId != 0" class="form-control form-control-title"><span class="text">{{$ctrl.class.addProgram.shortName}}</span></span>
+					<select ng-if="!$ctrl.readOnly && $ctrl.classId == 0" required ng-model="$ctrl.class.addProgram" class="form-control" name="Program" ng-options="program as program.shortName for program in $ctrl.programs track by program.id" track-changes></select>
+					<div ng-if="$ctrl.form.Program.$invalid && (!$ctrl.form.Program.$pristine || $ctrl.form.$displayErrors)" ng-messages="$ctrl.form.Program.$error" style="color:#a94442">
+						<div ng-message="required">{{$ctrl.language.Generic.Common.kEmptyFieldError}}</div>
+					</div>					
+				</ns-form-group>
+				<!--ОДО-->
+
+				<ns-form-group ng-if="$ctrl.isAddSchool" title="{{ 'language.Generic.Reports.kProgramFullName' | language }}">
+					<textarea class="form-control" ng-model="$ctrl.class.addProgram.name" rows="3" cols="50" wrap="soft" maxlength="255" readonly></textarea>
+				</ns-form-group>
+
+				<ns-form-group ng-if="!$ctrl.isAddSchool && !$ctrl.wizard" title="{{ 'language.ClassManagement.kClassType' | language }}" ng-class="{'has-error': $ctrl.form.classType.$invalid}">
+					<span ng-if="$ctrl.readOnly" class="form-control form-control-title">
+						<span class="text">{{class.classType.name}}</span>
+					</span>
+					<select ng-if="!$ctrl.readOnly" ng-model="$ctrl.class.classType" class="form-control" name="classType" ng-options="classType as classType.name for classType in $ctrl.classTypes track by classType.id"
+							ng-change="$ctrl.changeClassType()" grouptype douGroupType="$ctrl.class.douGroupType" edit-class="$ctrl.class" invalid-class-type="$ctrl.invalidClassType" class-types="$ctrl.classTypes" track-changes></select>
+
+					<div class="help-block" ng-if="$ctrl.invalidClassType">
+						Для поля "Тип группы" со значением "{{$ctrl.invalidClassType.douGroupType.name}}" разрешены следующие значения текущего поля:
+						<ul>
+							<li ng-repeat="classType in $ctrl.invalidClassType.validClassTypes">{{classType.name}}</li>
+						</ul>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.isPreSchool && $ctrl.displayAddSpecialization()" title="{{ 'language.Generic.ClassManagement.kAddSpecialization' | language }}" ng-class="{'has-error': $ctrl.form.addSpecialization.$invalid}">
+					<span ng-if="$ctrl.readOnly" class="form-control form-control-title"><span class="text">{{$ctrl.class.addSpecialization.name}}</span></span>
+					<select ng-if="!$ctrl.readOnly" ng-model="$ctrl.class.addSpecialization" class="form-control" name="addSpecialization" ng-options="classType as classType.name for classType in $ctrl.addSpecialization track by classType.id" addspec edit-class="$ctrl.class" track-changes>
+						<option value=""><{{$ctrl.language.Generic.Movement.kNotSelected}}></option>
+					</select>
+					<div ng-messages="$ctrl.form.addSpecialization.$error">
+						<span class="help-block" ng-message="addspec">
+							{{$ctrl.language.Generic.ClassManagement.kErrAddSpecialization}}
+						</span>
+					</div>
+				</ns-form-group>
+
+				<!--ДОО-->
+				<ns-form-group ng-if="$ctrl.isPreSchool && !$ctrl.wizard" title="{{ 'language.Generic.ClassManagement.kStayRegime' | language }}" ng-class="{'has-error': $ctrl.form.StayRegime.$invalid}">
+					<span ng-if="$ctrl.readOnly" class="form-control form-control-title">
+						<span class="text">{{class.stayRegime.name}}</span>
+					</span>
+
+					<select ng-if="!$ctrl.readOnly" ng-model="$ctrl.class.stayRegime" class="form-control" name="StayRegime" ng-options="stayRegime as stayRegime.name for stayRegime in $ctrl.stayRegimes track by stayRegime.id" stayregimeid edit-class="$ctrl.class" class-rooms="$ctrl.classRooms" classes="$ctrl.classes" track-changes></select>
+
+					<div ng-messages="$ctrl.form.StayRegime.$error">
+						<span class="help-block" ng-message="stayregimeid">
+							{{$ctrl.stayRegimeIdError()}}
+						</span>
+					</div>
+				</ns-form-group>
+				<!--ДОО-->
+
+				<ns-form-group ng-if="$ctrl.isSchool" title="{{ 'language.Generic.SetupSchoolCurPlan.kTitleCurriculumPlan' | language }}">
+					<span ng-if="$ctrl.class.iup && readOnly" class="form-control form-control-title">
+						<span class="text">{{$ctrl.language.Generic.Curriculum.kIndividualCP}}</span>
+					</span>
+					<span ng-if="!$ctrl.class.iup && readOnly" class="form-control form-control-title">
+						<span class="text">{{$ctrl.language.Generic.Curriculum.kClassicCP}}</span>
+					</span>
+					<select ng-if="!$ctrl.readOnly" class="form-control" name="plan" ng-model="$ctrl.class.iup" track-changes>
+						<option ng-value="true">{{$ctrl.language.Generic.Curriculum.kIndividualCP}}</option>
+						<option ng-value="false">{{$ctrl.language.Generic.Curriculum.kClassicCP}}</option>
+					</select>
+				</ns-form-group>
+
+				<!-- <ns-form-group title="{{ 'language.Common.kRoom' | language }}">
+					<span ng-if="$ctrl.readOnly" class="form-control form-control-title"><span class="text">{{class.room?.name}}</span></span>
+					<select ng-if="!$ctrl.readOnly" ng-model="$ctrl.class.room" class="form-control" name="CLASSROOM" ng-options="classRoom as classRoom.roomname for classRoom in $ctrl.classRooms track by classRoom.id" track-changes>
+					</select>
+				</ns-form-group> -->
+
+				<ns-form-group ng-if="!$ctrl.wizard" title="{{ 'language.Common.kRoom' | language }}" ng-class="{'has-error': $ctrl.form.CLASSROOM.$invalid}">
+					<span ng-if="$ctrl.readOnly" class="form-control form-control-title">
+						<span class="text">{{$ctrl.class.room?.name}}</span>
+					</span>
+
+					<select ng-if="!$ctrl.readOnly" ng-model="$ctrl.data.roomId" class="form-control" name="CLASSROOM" roomid edit-class="$ctrl.class" class-rooms="$ctrl.classRooms" classes="$ctrl.classes" track-changes>
+						<option ng-repeat="classRoom in $ctrl.classRooms" ng-value="classRoom.id" ng-style="{ color: $ctrl.highlightRoom(classRoom) ? 'grey' : '' }">
+							{{classRoom.roomname}}
+						</option>
+					</select>
+
+					<div ng-messages="$ctrl.form.CLASSROOM.$error">
+						<span class="help-block" ng-message="roomid">
+							{{$ctrl.roomIdError()}}
+						</span>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.enableStudentsDataQuality && (!$ctrl.isPreSchool || !$ctrl.wizard)" title="Кол-во {{ 'language.Common.kStudents_r' | language }} на 20.09.{{$ctrl.appContext.currYear.slice(0, 4)}}" ng-class="{'has-error': $ctrl.form.plannedOccupancy.$invalid}">
+					<input type="number" name="plannedOccupancy" class="form-control" id="plannedOccupancy" placeholder="Количество" size="3" maxlength="2" ng-model="$ctrl.class.plannedOccupancy" track-changes
+						ng-min="1" ng-max="99" ng-pattern="/^\d+$/"
+					>
+					<div ng-messages="$ctrl.form.plannedOccupancy.$error">
+						<span class="help-block" ng-message="number">{{$ctrl.digitsError()}}</span>
+						<span class="help-block" ng-message="pattern">{{$ctrl.digitsError()}}</span>
+						<span class="help-block" ng-message="min">{{$ctrl.plannedOccupancyMinError()}}</span>
+						<span class="help-block" ng-message="max">{{$ctrl.plannedOccupancyMaxError()}}</span>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.isPreSchool && !$ctrl.wizard" title="{{ 'language.Generic.ClassManagement.kSeatsForTransfer' | language }}" ng-class="{'has-error': $ctrl.form.seatsForTransfer.$invalid}">
+					<input type="number" name="seatsForTransfer" class="form-control" id="seatsForTransfer" placeholder="Количество" maxlength="2" ng-model="$ctrl.class.seatsForTransfer" track-changes
+						ng-min="0" ng-max="99">
+					<div ng-messages="$ctrl.form.seatsForTransfer.$error">
+						<span class="help-block" ng-message="number">{{$ctrl.digitsError()}}</span>
+						<span class="help-block" ng-message="min">{{$ctrl.seatsForTransferMinError()}}</span>
+						<span class="help-block" ng-message="max">{{$ctrl.plannedOccupancyMaxError()}}</span>
+					</div>
+					<p class="bg-danger" style="padding: 8px;" ng-if="$ctrl.class.seatsForTransfer > 0" ng-bind-html="$ctrl.language.Generic.ClassManagement.kSeatsForTransferWarning"></p>
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.isPreSchool && $ctrl.displaySeatsForShort() && !$ctrl.wizard" title="Количество мест для детей с кратковременным режимом пребывания" ng-class="{'has-error': $ctrl.form.seatsForShort.$invalid}">
+					<input type="number" name="seatsForShort" class="form-control" id="seatsForShort" placeholder="Количество" maxlength="3" ng-model="$ctrl.class.seatsForShort" track-changes
+						required
+						min="0"
+						max="35"
+					>
+					<div ng-messages="$ctrl.form.seatsForShort.$error">
+						<span class="help-block" ng-message="required">{{$ctrl.seatsForShortRequiredError()}}</span>
+						<span class="help-block" ng-message="number">{{$ctrl.digitsError()}}</span>
+						<span class="help-block" ng-message="min">{{$ctrl.digitsError()}}</span>
+						<span class="help-block" ng-message="max">{{$ctrl.seatsForShortMaxError()}}</span>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.isSchool || !$ctrl.classId" title="{{ 'language.Common.kClassChief' | language }}">
+					<span ng-if="$ctrl.readOnly" class="form-control form-control-title">
+						<span class="text">{{class.chief.name}}</span>
+					</span>
+					<select ng-if="!$ctrl.readOnly" track-changes class="form-control" name="CLASSCHIEF" 
+						ng-options="teacher as teacher.name for teacher in $ctrl.teachers track by teacher.id" ng-model="$ctrl.classChief" ng-change="$ctrl.changeClassChief()">
+						<option ng-if="$ctrl.noContingent" value="">не выбран</option>
+					</select>
+				</ns-form-group>
+
+				<ns-form-group ng-if="!$ctrl.isSchool && $ctrl.classId" title="{{ 'language.Common.kClassChief' | language }}">
+					<ul>
+						<li ng-repeat="chief in $ctrl.classChiefs">{{chief.name}}</li>
+					</ul>
+
+					<button ng-if="!$ctrl.readOnly" title="{{$ctrl.language.ClassManagement.kAssignTeacher}}" type="button" class="btn btn-warning" ng-click="$ctrl.editChiefs()">
+						<span class="glyphicon glyphicon-pencil"></span> <span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+					</button>
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.isPreSchool" title="{{ 'language.Generic.ClassManagement.kDOUNoInformika' | language }}">
+					<span ng-if="$ctrl.readOnly" class="text-center"><span ng-if="$ctrl.class.noInformika">не выгружать</span></span>
+					<input ng-if="!$ctrl.readOnly" TYPE="checkbox" NAME="noInformika" ng-checked="$ctrl.class.noInformika" ng-click="$ctrl.class.noInformika = !$ctrl.class.noInformika" track-changes>					
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.isPreSchool && !$ctrl.wizard" title="{{$ctrl.language.Generic.ClassManagement.kGroupNoContingent}}">
+					<div class="checkbox">
+						<label><input type="checkbox" ng-click="$ctrl.toggleNoContingent()" ng-checked="$ctrl.noContingent" ng-disabled="$ctrl.classId"></label>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.displayVacations()" title="{{$ctrl.language.Generic.Common.kVacationHeader}}">
+					<div class="checkbox" ng-repeat="vacation in $ctrl.vacations">
+						<label><input type="checkbox" name="VACATIONS" ng-click="$ctrl.toggleVacation(vacation)" ng-checked="$ctrl.isClassVacation(vacation)" ng-disabled="$ctrl.classId" track-changes>{{vacation.name}}</label>
+					</div>
+				</ns-form-group>
+
+				<ns-form-group ng-if="$ctrl.isSchool" title="Вид класса">
+					<div class="checkbox" ng-repeat="classForm in $ctrl.forms">
+						<label><input type="checkbox" name="CLASSFORM" ng-click="$ctrl.toggleClassForm(classForm)" ng-checked="$ctrl.isClassForm(classForm)" track-changes>{{classForm.name}}</label>
+					</div>
+				</ns-form-group>
+
+			</ns-form>
+			</form>
+		</div>
+	</div>

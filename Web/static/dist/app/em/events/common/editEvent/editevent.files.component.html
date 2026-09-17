@@ -1,0 +1,20 @@
+<fieldset>
+	<div class="col-12">
+		<div class="block-heading">
+			<h4>{{$ctrl.language.Generic.Common.kDocuments}}</h4>
+			<button type="button" title="{{$ctrl.language.Generic.Buttons.kAdd}}" class="round icon-plus" ng-click="$ctrl.UpdateDocument()" ng-show="$ctrl.documents.length < 5 && !$ctrl.readonly"></button>
+		</div>
+		<p class="fggray" ng-hide="$ctrl.documents.length < 5">{{$ctrl.language.Generic.Events.kOnlyFiveAttachments}}</p>
+		<div class="block-data">
+			<p class="fggray" ng-show="!$ctrl.documents.length">{{$ctrl.language.Generic.Events.kOnlyFiveAttachments}}</p>
+			<div class="block-item" ng-repeat="doc in $ctrl.documents">
+				<a href="javascript:void(0)" ng-click="$ctrl.DownloadDocument(doc)">{{doc.name}}</a>
+				<div class="ops" ng-hide="$ctrl.readonly">
+					<button class="icon-pencil" ng-click="$ctrl.UpdateDocument(doc)" title="{{$ctrl.language.Generic.Buttons.kEdit}}"></button>
+					<button class="icon-trash" ng-click="$ctrl.RemoveDocument(doc)" title="{{$ctrl.language.Generic.Buttons.kRemove}}"></button>
+				</div>
+				<span class="item-descr">{{doc.description}}</span>
+			</div>
+		</div>
+	</div>
+</fieldset>

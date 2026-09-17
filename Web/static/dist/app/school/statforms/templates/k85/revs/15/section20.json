@@ -1,0 +1,24 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subCols": [ 4 ],
+			"rows": [ 1, 2, 3, 4 ],
+			"type": "include"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 1,
+			"subRows": [ 2, 3 ],
+			"cols": [ 3, 4 ],
+			"type": "include"
+		},
+		{
+			"row": 1,
+			"subRows": [ 4 ],
+			"cols": [ 3, 4 ],
+			"type": "ofthem"
+		}
+	]
+}

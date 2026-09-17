@@ -1,0 +1,56 @@
+<form name="StatReports" method="POST" action="" onsubmit="return canSubmit();">
+
+	<div class="buttons-filters-panel form-horizontal">
+
+		<div class="row">
+			<div class="filters-panel col-md-6 col-lg-6 col-sm-12">
+				<div class="form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">Учебный год</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<select name="year" class="form-control" ng-model="data.year" ng-options="year as year.name for year in data.years" ng-change="onYearChange()"></select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<button type="button" class="btn btn-default" ng-click="navigate('/fill')">
+					<span>{{language.Generic.StatReports.kFillingStatIndicators}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<h3>Создание и редактирование отчетов</h3>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<button type="button" class="btn btn-default" ng-click="navigate('/edit', {it: 0})">
+					<span>{{language.Generic.StatReports.kSchoolIndicators}}</span>
+				</button>
+				<button type="button" class="btn btn-default" ng-click="navigate('/edit', {it: 1})">
+					<span>{{language.Generic.StatReports.kEmIndicators}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<h3>Отчеты</h3>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<button type="button" class="btn btn-default" ng-click="navigate('/view')">
+					<span>{{language.Generic.StatReports.kViewStatIndicatorData}}</span>
+				</button>
+				<button type="button" class="btn btn-default" ng-click="navigate('/relevance')">
+					<span>{{language.Generic.StatReports.kRelevanceData}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,54 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}">
+    <span class="content-page-preloader" id="preloader" ng-hide="$ctrl.state.dataReady">
+        <span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+    </span>
+
+    <div class="table-responsive" style="max-height: 600px;" ng-if="$ctrl.state.dataReady">
+        <table class="table table-bordered table-hover table-condensed" ng-class="{'table-xs': $ctrl.data.activeSessions.length > 20}">
+            <thead> 
+                <th>№</th>
+                <th ng-if="!$ctrl.state.emptyData && $ctrl.data.activeSessions[0].eoName">
+                    {{$ctrl.language.Generic.Common.kEO}}
+                </th>
+                <th>{{$ctrl.language.Generic.Common.kDisplayName}}</th>
+                <th ng-if="!$ctrl.state.emptyData && $ctrl.data.activeSessions[0].ip">
+                    {{$ctrl.language.Generic.Common.kUserName}}
+                </th>
+                <th ng-if="!$ctrl.state.emptyData && $ctrl.data.activeSessions[0].ip">
+                    {{$ctrl.language.Generic.ServAdmin.kLoginTime}}
+                </th>
+                <th ng-if="!$ctrl.state.emptyData && $ctrl.data.activeSessions[0].ip">
+                    ip
+                </th>
+                <th>{{$ctrl.language.Generic.Common.kRoles}}</th>
+            </thead>
+
+            <tbody ng-if="!$ctrl.state.emptyData">
+                <tr ng-repeat="activeSession in $ctrl.data.activeSessions">
+                    <td class="text-right">{{$index + 1}}</td>
+                    <td ng-if="$ctrl.data.activeSessions[0].eoName">
+                        {{activeSession.eoName}}
+                    </td>
+                    <td>{{activeSession.nickName}}</td>
+                    <td ng-if="$ctrl.data.activeSessions[0].eoName || $ctrl.data.activeSessions[0].ip">
+                        {{activeSession.loginName}}
+                    </td>
+                    <td ng-if="$ctrl.data.activeSessions[0].eoName || $ctrl.data.activeSessions[0].ip">
+                        {{activeSession.loginTime | nsDateTime}}
+                    </td>
+                    <td ng-if="$ctrl.data.activeSessions[0].eoName || $ctrl.data.activeSessions[0].ip">
+                        {{activeSession.ip}}
+                    </td>
+                    <td>{{activeSession.roles}}</td>
+                </tr>
+            </tbody>
+            <tbody ng-if="ctrl.state.emptyData">
+                <tr>
+                    <td colspan="8" class="body" align="center">
+                        Нет пользователей в системе Сетевой Город. Образование
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ns-modal>

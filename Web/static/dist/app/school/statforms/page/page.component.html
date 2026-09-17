@@ -1,0 +1,71 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/stat-forms/css/stat-form.min.css"/>
+
+<div class="buttons-filters-panel form-horizontal">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left"></div>
+				<div class="buttons-panel-right">
+
+					<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()" ng-if="$ctrl.page.id != 1 && !$ctrl.pageInfo.readOnly && !$ctrl.formClosed">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+
+					<button title="{{$ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="$ctrl.reset()" ng-if="$ctrl.page.id != 1 && !$ctrl.pageInfo.readOnly && !$ctrl.formClosed">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+					</button>
+
+					<button title="{{$ctrl.language.Generic.SchoolInfo.kbtnCalculate}}" type="button" class="btn btn-default" ng-click="$ctrl.autoCalc()"  ng-if="$ctrl.page.id != 1 && $ctrl.pageInfo.withAutoCalc && !$ctrl.pageInfo.readOnly && !$ctrl.formClosed">
+						<span>{{$ctrl.language.Generic.SchoolInfo.kbtnCalculate_}}</span>
+					</button>
+					
+					<button title="Закрыть форму" type="button" class="btn btn-default" ng-click="$ctrl.close()" ng-if="$ctrl.page.id === 1 && !$ctrl.pageInfo.readOnly && !$ctrl.formClosed">
+						<span>Закрыть форму</span>
+					</button>
+					
+					<button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="$ctrl.export()" ng-if="$ctrl.page.id === 1">
+						<span class="glyphicon glyphicon-export"></span> 
+						<span>Экспорт в Excel</span>
+					</button>
+
+					<button title="Для печати" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+						<span class="glyphicon glyphicon-print"></span>
+						<span>На печать</span>
+					</button>
+
+					<button title="Импорт" type="button" class="btn btn-default" ng-click="$ctrl.import()" ng-if="$ctrl.page.id === 1 && !$ctrl.pageInfo.readOnly && !$ctrl.formClosed">
+						<span class="glyphicon glyphicon-import"></span>
+						<span>Импорт</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="filters-panel col-md-offset-3 col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-4">Раздел</label>
+				<div class="col-md-8">
+					<select class="form-control" name="page" ng-change="$ctrl.changePage()" ng-model="$ctrl.page" ng-options="page as page.name for page in $ctrl.pageList"></select>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<hr style="box-shadow: inset 0 0 5px 5px rgba(0,0,0,.1); height: 5px;">
+
+<div class="stat-form-wrapper">
+	<form class="form form-xs">
+		<div ng-repeat="section in $ctrl.sections" class="form-group">
+			<div ns-form-section section = "section" school-data = "$ctrl.schoolData"></div>
+		</div>
+	</form>
+	
+</div>
+
+<hr style="box-shadow: inset 0 0 5px 5px rgba(0,0,0,.1); height: 5px;">

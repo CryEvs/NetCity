@@ -1,0 +1,48 @@
+<style type="text/css">
+	td {
+	  font-size: 7pt;
+	  font-family: Verdana, Arial, Helvetica;
+	  padding: 2px 3px 1px;
+	}
+	th {
+	  font-weight: bold;
+	  font-size: 8pt;
+	  font-family: Verdana, Arial, Helvetica;
+	  padding: 2px 3px 1px;
+	}
+</style>
+<table align="right" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr><td>
+        <div align="center"><b style="font-size:120%">МИНИСТЕРСТВО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ</b></div>
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <div align="center"><b style="font-size:250%">{{language.Generic.SetupSchoolUI.kStudentCard | uppercase}}</b></div>
+        <div align="center"><b style="font-size:250%">№ {{paramPage.personalFileNumber}}</u></b><br><br></div>
+    </td></tr>
+    <tr><td>
+        <br><br><br>
+        <table class="ThinTable" align="center" border="0" cellspacing="0" cellpadding="0" width="90%">
+            <tr align="center" valign="bottom"><td colspan="2"><div align="center" style="font-size:120%"><br><b>{{paramPage.user.lastName}}&nbsp;{{paramPage.user.firstName}}&nbsp;{{paramPage.user.middleName}}</b><hr></td></tr>
+            <tr valign="top"><td colspan="2"><div align="center" style="font-size:80%">(фамилия, имя, отчество)</div></div></td></tr>
+            <tr align="center" valign="bottom"><td colspan="2"><br><div align="center" style="font-size:120%"><b>{{schoolName}}</b></div><hr></td></tr>
+            <tr valign="top"><td colspan="2"><div align="center" style="font-size:80%">(название общеобразовательной организации)</div></td></tr>
+            <tr align="center" valign="bottom"><td colspan="2"><br><div align="center" style="font-size:120%"><b>{{schoolAddress}}</b></div><hr></td></tr>
+            <tr valign="top"><td colspan="2"><div align="center" style="font-size:80%">(месторасположение общеобразовательной организации)</div></td></tr>
+            <tr align="center"><td colspan="2"><br>&nbsp;<br><hr></td></tr>
+        </table>
+    </td></tr>
+    <tr><td>
+        <br><br><br><br><br><br><br><br>
+        <table class="ThinTable" align="left" border="0" cellspacing="0" cellpadding="0">
+            <tr><td><br><br>Зачислен в __________________________ класс</td></tr>
+            <tr><td><br><br>"____"___________________________________г.</td></tr>
+            <tr><td><br><br>_________________________________________</td></tr>
+            <tr align="center" valign="top"><td><div align="center" style="font-size:80%">(подпись директора)</div></td></tr>
+        </table>
+    </td></tr>
+    <tr><td>
+    <br><br><br><br><br><br>
+    М.П.
+    <br><br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Личная карта является документом, хранится в общеобразовательной организации и при переходе обучающегося в другую общеобразовательную организацию выдается его родителям (законным представителям)
+    </td></tr>
+</table>

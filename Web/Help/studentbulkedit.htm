@@ -1,0 +1,114 @@
+<html>
+<head>
+   <title>Пакетное обновление данных об учащихся</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Пакетное обновление данных об учащихся,Массовое редактирование данных об учащихся,Родители, массовое редактирование данных,Ученики, массовое редактирование данных">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?studentbulkedit.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Пакетное обновление данных об учащихся
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Кнопка <b>Пакетное обновление </b>обеспечивает возможность <u>массового редактирования личных карточек учащихся</u>, например, в случае, когда всем учащимся нужно заполнить какое-то поле. Удобно, что нет необходимости входить в личную карточку каждого ученика.
+<br>
+
+<br>
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Порядок действий при пакетном обновлении</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+1. Откройте экран <b>Управление -</b><b>&gt; </b><b>Пользователи -</b><b>&gt;</b><b> Ученики</b>. Если нужно, ограничьте список учеников при помощи фильтров, затем нажмите кнопку <b>Загрузить</b>. 
+<br>
+
+<br>
+2. Нажмите кнопку <b>Пакетное обновление-</b><b>&gt;</b><b>1. Выгрузка данных</b>.  Выберите, какие сведения об учащихся и родителях (краткие либо полные) вы хотите сохранить.
+<br>
+
+<br>
+3. Сохраните файл формата Microsoft Excel на своём рабочем месте. (Также он может быть открыт в OpenOffice Calc.)
+<br>
+
+<br>
+4. Отредактируйте нужные ячейки в этом файле на своём рабочем месте с помощью Microsoft Excel или OpenOffice Calc.
+<br>
+<b>Внимание! Ограничения при редактировании файла .</b><b>xls:
+<br>
+  -</b> нельзя менять названия столбцов в таблице;
+<br>
+  - нельзя редактировать ФИО и дату рождения учащихся.
+<br>
+
+<br>
+5. Сохраните файл на своём рабочем месте, оставив его в формате "Книга Excel 97-2003 (*.xls)".
+<br>
+
+<br>
+6. Выберите команду <b>Пакетное обновление-</b><b>&gt;</b><b>2. Обновление данных </b>и укажите на этот файл, чтобы импортировать его обратно в систему.
+<br>
+
+<br>
+7. Если в процессе импорта произойдут ошибки, то появится окно диагностики, как при импорте новых учащихся, см. "<span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF"><u><span class="weblink"><a href="/asp/SetupSchool/importExt.asp?RT=2&FT=2" target="_blank">Правила обработки файла импорта</a></span></u></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">".
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>
+<br>
+Особенности редактирования информации о родителях
+<br>
+</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Если в Excel-файле для ученика <u>заполнена</u> информация о родителе:
+<br>
+при импорте файла считываются ФИО и дата рождения родителя, и по этим полям выполняется поиск в списке родителей в системе.
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Если в системе уже есть такой родитель, то информация о нём будет обновлена согласно информации в Excel-файле.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Если в системе нет такого родителя, то будет создан новый родитель с информаций из Excel-файла.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Если в Excel-файле для ученика <u>не заполнена</u> информация о родителе:
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><font face="Symbol" size="2" color="#000000">&#183;</font></span></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Если в системе к ученику уже присоединён родитель с соответствующим полом (мать - Ж, отец - М), то данный родитель будет отсоединён.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+</span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('2.2.13',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('2.2.15',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

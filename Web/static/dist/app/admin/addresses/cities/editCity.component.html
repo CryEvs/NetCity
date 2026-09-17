@@ -1,0 +1,35 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+	<div class="alert alert-warning" role="alert" ng-if="$ctrl.ready && !$ctrl.editMode"> 
+		<strong>Внимание! </strong> Населенные пункты - гор. округа создаются автоматически при создании муниципалитетов
+	</div>
+
+	<form class="form-horizontal form-sm" name="$ctrl.form" ng-if="$ctrl.ready">
+		<ns-form>
+			<ns-form-group title="Муниципалитет">
+				<select class="form-control" name="municipality" ng-class="{'has-error': $ctrl.form.municipality.$invalid && ($ctrl.form.municipality.$dirty || $ctrl.form.$displayErrors)}" ng-model="$ctrl.municipalityId" required ng-options="x.id as x.name for x in $ctrl.municipalities" ng-disabled="$ctrl.isKladr" track-changes></select>
+				<p ng-show="$ctrl.form.municipality.$error.required && ($ctrl.form.municipality.$dirty || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+			</ns-form-group>
+
+			<ns-form-group title="Название" ng-class="{'has-error': $ctrl.form.name.$invalid && ($ctrl.form.name.$dirty || $ctrl.form.$displayErrors)}">
+				<input type="text" class="form-control" name="name" size="60" maxlength="200" ng-model="$ctrl.name" required ng-disabled="$ctrl.isKladr" track-changes>
+				<p ng-show="$ctrl.form.name.$error.required && ($ctrl.form.name.$dirty || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+			</ns-form-group>
+
+			<ns-form-group title="Тип населенного пункта" ng-class="{'has-error': $ctrl.form.atoType.$invalid && ($ctrl.form.atoType.$dirty || $ctrl.form.$displayErrors)}">
+				<select class="form-control" name="atoType" ng-model="$ctrl.atoTypeId" required ng-options="x.id as x.name for x in $ctrl.atoTypes" ng-disabled="$ctrl.isKladr" track-changes></select>
+				<p ng-show="$ctrl.form.atoType.$error.required && ($ctrl.form.atoType.$dirty || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+			</ns-form-group>
+
+			<ns-form-group title="Обобщённый тип нас.пункта" ng-class="{'has-error': $ctrl.form.settlementType.$invalid && ($ctrl.form.settlementType.$dirty || $ctrl.form.$displayErrors)}">
+				<select class="form-control" name="settlementType" ng-model="$ctrl.settlementTypeId" required ng-options="x.id as x.name for x in $ctrl.settlementTypes" track-changes></select>
+				<p ng-show="$ctrl.form.settlementType.$error.required && ($ctrl.form.settlementType.$dirty || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+			</ns-form-group>
+
+			<ns-form-group title="Наличие улиц">
+				<select class="form-control" name="availabilityOfStreet" ng-model="$ctrl.availabilityOfStreet" ng-options="x.id as x.name for x in $ctrl.booleans" track-changes></select>
+			</ns-form-group>
+
+		</ns-form>
+	</form>
+</ns-modal>

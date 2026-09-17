@@ -1,0 +1,114 @@
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+		<div class="buttons-panel">
+			<div class="buttons-panel-right" ng-if="!state.readOnly">
+				<button title="{{language.Generic.Buttons.kEditFutureYear}}" type="button" class="btn btn-default" ng-if="data.state.canCreateFutureYear && !withTermTypeNotDefined" ng-click="createFutureYear()">
+					<span>{{language.Generic.Buttons.kEditFutureYear}}</span>
+				</button>
+				<button title="{{language.Generic.SetupSchoolCalendar.kOpenFutureYear}}" type="button" class="btn btn-default" ng-if="data.state.canOpenFutureYear" ng-click="openFutureYear()">
+					<span>{{language.Generic.SetupSchoolCalendar.kOpenFutureYear}}</span>
+				</button>
+
+				<button title="{{language.Generic.SetupSchoolCalendar.kWeekendDays}}" type="button" class="btn btn-default" ng-if="rights.hasRightToCreateCloseEditYear" ng-click="goWeekendDays()">
+					<span>{{language.Generic.SetupSchoolCalendar.kWeekendDays}}</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="filters-panel filters-panel-compact" style="display: inline;">
+			<div class="form-group active">
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{language.Generic.Common.kSchoolYear}}</label>
+				<div class="col-md-8 col-lg-5 col-sm-8">
+					<select class="form-control" name="year" ng-change="changeYear()" ng-model="data.yearId" ng-options="year.id as year.name for year in data.years"></select>
+				</div>
+				<span style="color:green">{{getFormattedTextDate(schoolyearLimits.start)}} - {{getFormattedTextDate(schoolyearLimits.end)}}</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-show="withTermTypeNotDefined" class="alert alert-warning" role="alert">
+	{{language.Generic.Common.kNoTermsInYear}}
+	<br>{{language.Generic.Common.kDefineTermsTypes_1}}
+	<a style="cursor: pointer;" ng-click="goTermTypes()">{{language.Generic.SetupSchoolCalendar.kTermTypes}}</a> {{language.Generic.Common.kDefineTermsTypes_2}}
+</div>
+
+<div ng-hide="withTermTypeNotDefined">
+	<div class="row ns-cloak">
+	<div class="col-md-6">
+		<div class="panel panel-success">
+			<div class="panel-heading" role="tab" id="headingperiods">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#" class="collapsed" data-target="#periods" aria-expanded="true" aria-controls="periods">{{language.Generic.Common.kPeriods}}</a>
+				</h4>
+			</div>
+			<div id="periods" class="panel-collapse collapse in" aria-labelledby="headingperiods" role="tabpanel">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="buttons-panel">
+									<button title="{{language.Generic.SetupSchoolCalendar.kEditTermTypesLimits}}" type="button" class="btn btn-warning" ng-if="!state.readOnly && rights.hasRightToCreateEditTerm" ng-click="goTerms()">
+									<span class="glyphicon glyphicon-pencil"></span> <span>{{language.Generic.Buttons.kChange}}</span>
+								</button>
+									<button title="{{language.Generic.SetupSchoolCalendar.kTermTypes}}" type="button" class="btn btn-default" ng-if="rights.hasRightToEditSchoolTermTypes" ng-click="goTermTypes()">
+									<span>{{language.Generic.SetupSchoolCalendar.kTermTypes}}</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<table class="table table-bordered">
+						<tbody>
+							<tr class="text-nowrap">
+								<th>{{language.Generic.Common.kName}}</th>
+								<th>{{language.Generic.Common.kStartDate}}</th>
+								<th>{{language.Generic.Common.kEndDate}}</th>
+							</tr>
+							<tr class="text-nowrap" ng-repeat="term in data.terms">
+								<td class="text-center">{{term.termName}}</td>
+								<td>{{getFormattedDate(term.startDate)}}</td>
+								<td>{{getFormattedDate(term.endDate)}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel panel-info">
+			<div class="panel-heading" role="tab" id="headingvacations">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#" class="collapsed" data-target="#vacations" aria-expanded="true" aria-controls="vacations">{{language.Generic.SetupSchoolCalendar.kVacations}}</a>
+				</h4>
+			</div>
+			<div id="vacations" class="panel-collapse collapse in" aria-labelledby="headingvacations" role="tabpanel">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="buttons-panel">
+								<button title="{{language.Generic.SetupSchoolCalendar.kEditVacationsLimits}}" type="button" class="btn btn-warning" ng-if="!state.readOnly" ng-click="goVacations()">
+										<span class="glyphicon glyphicon-pencil"></span>
+									<span>{{language.Generic.Buttons.kChange}}</span>
+								</button>
+								<button title="{{language.SetupSchoolCalendar.kVacationsClasses}}" type="button" class="btn btn-default" ng-if="!state.readOnly" ng-click="goVacationsClasses()">
+									<span>{{language.SetupSchoolCalendar.kVacationsClasses}}</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<table class="table table-bordered">
+						<tr>
+							<th>{{language.Generic.Common.kDate}}</th>
+							<th>{{language.Generic.Common.kName}}</th>
+						</tr>
+						<tr ng-repeat="vacation in data.vacations">
+							<td class="text-nowrap">{{getFormattedDate(vacation.startTime)}} -- {{getFormattedDate(vacation.endTime)}}</td>
+							<td>{{vacation.name}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

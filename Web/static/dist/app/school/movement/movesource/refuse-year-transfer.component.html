@@ -1,0 +1,37 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<div class="alert alert-warning" role="alert"> 
+		<strong>Внимание! </strong> Следующие воспитанники уже переведены на следующий учебный год. <br />
+		В случае продолжения будут отменены соответствующие приказы на перевод их в группы будущего года. <br />
+		Вы желаете продолжить?
+	</div>
+
+	<div class="table-responsive" style="max-height: 600px">
+		<table class="table table-bordered table-bright-hover table-bright-striped table-xs print-block">
+			<tr>
+				<th rowspan="2" ng-bind-html="$ctrl.language.Generic.Filter.kN_PP"></th>
+				<th rowspan="2"> {{$ctrl.language.Generic.Filter.kFIO}} </th>
+				<th colspan="2">Документ о переводе</th>
+			</tr>
+			<tr>
+				<th> {{$ctrl.language.Generic.Movement.kDocNumber}} </th>
+				<th>{{$ctrl.language.Generic.Movement.kDocDate}} </th>
+			</tr>
+			<tr ng-repeat="info in $ctrl.data">
+				<td>
+					{{ $index + 1}}
+				</td>
+				<td>
+					<label style="font-weight: normal;" class="fio-label">
+						{{ info.studentFio }}
+					</label>
+				</td>
+				<td>
+					{{ info.docName }}
+				</td>
+				<td>
+					{{ info.docDate | nsDate }}
+				</td>
+			</tr>
+		</table>
+	</div>
+</ns-modal>

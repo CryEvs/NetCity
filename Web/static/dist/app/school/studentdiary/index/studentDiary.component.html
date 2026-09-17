@@ -1,0 +1,98 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/studentdiary/index/css/studentdiary.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.8.55/css/materialdesignicons.min.css">
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+
+<div class="row" ng-show="ctrl.canShowNotification()">
+	<div class="col-md-12">
+		<!-- уведомление -->
+		<div class="ns_notification">
+			<div class="ns_notification_href ns_notification_href_center">
+				<a href="javascript:void(0)" ng-click="ctrl.gotoNetSchoolApp()">
+					<span class="ns_notification_href_text">Получить мобильное приложение</span>
+				</a>
+			</div>
+			<div class="ns_notification_href ns_notification_href_right">
+				<a href="javascript:void(0)" ng-click="ctrl.doNotShowAgain()">
+					<span class="ns_notification_href_text">Больше не показывать</span>
+				</a>
+			</div>
+			<div id="ns_closeIcon" ng-click="ctrl.showNetSchoolApp = false"></div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="ctrl.state.dataReady && ctrl.state.emptyData">
+		<div class="alert alert-info" role="alert">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			{{ctrl.state.emptyMessage}}
+		</div>
+	</div>
+</div>
+
+<div class="row" ng-show="!ctrl.state.emptyData" class="ns-cloak">
+	<div class="col-md-12">
+		<div class="wrapper">
+
+			<div class="other_tasks" ng-class="{data_empty: !ctrl.data.pastMandatory.length}">
+				<past-mandatory data="ctrl.data.pastMandatory" show-assign="ctrl.showAssignInfo(assign)"></past-mandatory>
+				<la-assigns data="ctrl.data.diary.laAssigns" ng-if="ctrl.data.withLaAssigns" show-assign="ctrl.showAssignInfo(assign)"></la-assigns>
+
+				<!-- Кнопка на печать -->
+				<div class="buttons-panel">
+					<div class="buttons-panel-right">
+						<button title="{{ctrl.language.Generic.Buttons.kPrint}}" type="button" class="btn btn-default diary-print-btn">
+							<span class="glyphicon glyphicon-print"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="schooljournal_content" ng-class="{column: ctrl.state.view == 'column', row: ctrl.state.view == 'row', highlight: !ctrl.state.dataReady}">
+				<div class="controls_box">
+					<div class="change_views">
+						<div class="h" ng-class="{hidden: ctrl.state.view == 'column'}" ng-click="ctrl.changeView('column')"></div>
+						<div class="v" ng-class="{hidden: ctrl.state.view == 'row'}" ng-click="ctrl.changeView('row')"></div>
+						<div class="text">порядок дней:</div>
+					</div>
+					<div class="week_switcher">
+						<div class="button_prev">
+							<i class="mdi mdi-arrow-left-bold" ng-click="ctrl.prevWeek()"></i>
+						</div>
+						<div class="thisweek">
+							<div class="week_title">
+								<select class="week_select" ng-options="week.title for week in ctrl.data.weekList" ng-model="ctrl.data.week" ng-change="ctrl.load()"></select>
+							</div>
+						</div>
+						<div class="button_next">
+							<i class="mdi mdi-arrow-right-bold" ng-click="ctrl.nextWeek()"></i>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="left_col">
+				
+					<div ng-repeat="diaryDay in ctrl.data.weekDays | limitTo: 3">
+						<diary-day day="diaryDay" student-id="ctrl.data.student.studentId" reload-diary="ctrl.load()" reload-attachments="ctrl.diaryAttachmentsLoad()" image-marks="ctrl.data.maxMark == 5" weight="ctrl.data.weight"></diary-day>
+					</div>
+				</div>
+
+				<div class="right_col">
+					<div ng-repeat="diaryDay in ctrl.data.weekDays | limitTo: 3:3">
+						<diary-day day="diaryDay" student-id="ctrl.data.student.studentId" reload-diary="ctrl.load()" reload-attachments="ctrl.diaryAttachmentsLoad()" image-marks="ctrl.data.maxMark == 5" weight="ctrl.data.weight"></diary-day>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10" ng-show="ctrl.state.dataReady && !ctrl.state.emptyData">
+		<div class="alert alert-info" role="alert">
+			Нажмите на оценку, чтобы узнать, за что она выставлена, или на домашнее задание, чтобы увидеть его подробности.
+		</div>
+	</div>
+</div>

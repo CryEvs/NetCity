@@ -1,0 +1,10 @@
+<li class="similar-user-list-item">
+	<div class="similar-user-choice radio">
+		<label>
+			<input type="radio" value="ExistingPerson" name="SimilarRadio_{{DelQuots mainPersonId}}_" data-id="{{similarUserId}}" {{#ifEqual canUse false}} disabled{{/ifEqual}} {{#if _checked}}checked=""{{/if}} /></input>
+			{{#if questionHint}}<span class="glyphicon similar-question-icon" title="{{questionHint}}"></span>{{/if}}
+			{{#if infoHint}} <span class="glyphicon similar-info-icon" title="{{infoHint}}"></span> {{/if}}
+			<span class="similar-user-name">{{#if auxComment}}{{auxComment}} {{/if}}{{title}} {{#if birthDate}} {{DateOnly2str birthDate}} {{/if}}</span>
+		</label>
+	</div>
+</li>

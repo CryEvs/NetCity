@@ -1,0 +1,20 @@
+<div class="row form-group" ng-show="$ctrl.skillsData.skills && $ctrl.skillsData.skills.length"> 
+	<div class="col-md-12">
+		<input id="filter" ng-model="$ctrl.filter" class="form-control" placeholder="{{$ctrl.language.Generic.FilterUsers.kSearch}}"/> 
+	</div>
+</div>
+
+<div class="row" ng-show="!$ctrl.subjectSkillsTree || !$ctrl.subjectSkillsTree.children || !$ctrl.subjectSkillsTree.children.length">
+	<div class="col-md-12">
+		<div class="alert alert-info">
+			{{$ctrl.language.Generic.Common.kNoMatchesFound}}
+		</div>
+	</div>
+</div>
+
+<div class="row" ng-show="$ctrl.subjectSkillsTree && $ctrl.subjectSkillsTree.children && $ctrl.subjectSkillsTree.children.length">
+	<div class="col-md-12">
+		<tree model="$ctrl.subjectSkillsTree.children" settings="$ctrl.defaultSettings" on-update="$ctrl.onUpdate(selected)"></tree>
+	</div>
+</div>
+

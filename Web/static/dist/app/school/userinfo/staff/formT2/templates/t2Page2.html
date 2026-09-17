@@ -1,0 +1,188 @@
+<style type="text/css">
+	td {
+		font-size: 7pt;
+		font-family: Verdana, Arial, Helvetica;
+		padding: 2px 3px 1px;
+	}
+
+	th {
+		font-weight: bold;
+		font-size: 8pt;
+		font-family: Verdana, Arial, Helvetica;
+		padding: 2px 3px 1px;
+	}
+</style>
+<table align="right" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td><div align="right" style="font-size:80%">2-я страница формы № Т-2</div></td></tr>
+	<tr>
+		<td>
+			<br><br>
+			<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr><td>8. Стаж работы (по состоянию на	{{paramPage.dateNow}}г.):</td></tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br>
+			<table align="left" valign="top" border="0" cellspacing="0" cellpadding="2" width="100%">
+				<tr>
+					<td>&nbsp;&nbsp;Общий</td>
+					<td align="right"><b>{{paramPage.dateCommon.days}}</b>&nbsp;</td>
+					<td>дней</td>
+					<td align="right"><b>{{paramPage.dateCommon.months}}</b>&nbsp;</td>
+					<td>месяцев</td>
+					<td align="right"><b>{{paramPage.dateCommon.years}}</b>&nbsp;</td>
+					<td>лет</td>
+				</tr>
+				<tr>
+					<td>&nbsp;&nbsp;Непрерывный</td>
+					<td align="right"><b>{{paramPage.dateContinuous.days}}</b>&nbsp;</td>
+					<td>дней</td>
+					<td align="right"><b>{{paramPage.dateContinuous.months}}</b>&nbsp;</td>
+					<td>месяцев</td>
+					<td align="right"><b>{{paramPage.dateContinuous.years}}</b>&nbsp;</td>
+					<td>лет</td>
+				</tr>
+				<tr><td>&nbsp;&nbsp;Дающий право на надбавку за выслугу лет</td><td>&nbsp;</td><td>дней</td><td>&nbsp;</td><td>месяцев</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>лет</td></tr>
+				<tr><td>&nbsp;</td><td>&nbsp;</td><td>дней</td><td>&nbsp;</td><td>месяцев</td><td>&nbsp;</td><td>лет</td></tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br>
+			<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<td>9. Состояние в браке</td>
+					<td>&nbsp;&nbsp;<b>{{paramPage.familyInfoStr}}</b>&nbsp;&nbsp;</td>
+					<td align="right">Код по ОКИН&nbsp;</td>
+					<td>
+						<table align="left" valign="top" border="1" cellspacing="0" cellpadding="0" width="100%">
+							<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br>
+			<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr><td>10. Состав семьи:<br><br></td></tr>
+				<tr>
+					<td>
+						<table align="left" valign="top" border="1" cellspacing="0" cellpadding="2" width="100%">
+							<tr align="center"><td>Степень родства<br>(ближайшие родственники)</td><td>Фамилия, имя, отчество</td><td>Год рождения</td></tr>
+							<tr align="center"><td>1</td><td>2</td><td>3</td></tr>
+
+							<tr ng-repeat="familyInfo in paramPage.user.familyInfo" align="center">
+								<td>{{familyInfo.relationShipType.toLowerCase()}}</td>
+								<td>{{familyInfo.lastName}} {{familyInfo.firstName}} {{familyInfo.middleName}}</td>
+								<td>{{familyInfo.birthDate | nsDate}}</td>
+							</tr>
+
+							<tr ng-repeat="item in paramPage.user.familyInfo.freeArr">
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br><br><br>
+			<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<td style="width:20%;">11. {{language.Generic.Common.kPassport}}: </td>
+					<td style="border-bottom:1px solid black; width:20%;" align="center">{{paramPage.user.passport.series}}&nbsp;№&nbsp;{{paramPage.user.passport.number}}</td>
+					<td style="border-bottom:1px solid white; width:20%;"> {{language.Generic.Common.kDate}} выдачи:</td>
+					<td style="border-bottom:1px solid black; width:20%;" align="center">{{paramPage.user.passport.issueDate | nsDate}}&nbsp;г</td>
+				</tr>
+				<tr>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;{{language.Generic.Common.kPassportInfo}}</td>
+					<td align="center" colspan="3" style="border-bottom:1px solid black;">&nbsp;{{paramPage.user.passport.issuer}}</td>
+				</tr>
+				<tr>
+					<td><div style="font-size:80%">&nbsp;</div></td>
+					<td colspan="3"><div align="center" style="font-size:80%">(наименование органа, выдавшего паспорт)</div></td>
+				</tr>
+				<tr>
+					<td colspan="4" style="border-bottom:1px solid black; padding-top:30px;"></td>
+				</tr>
+				<tr>
+					<td colspan="4" style="border-bottom:1px solid black; padding-top:30px;"></td>
+				</tr>
+				<tr><td colspan="4" style="padding-top: 30px;">Дата регистрации по месту жительства&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;г.</td></tr>
+				<tr><td colspan="2" style="padding-top: 30px;">Номер телефона <b>{{paramPage.user.homePhone}}</b></td></tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br><br>
+			<div align="center"><b style="font-size:120%">II. СВЕДЕНИЯ О ВОИНСКОМ УЧЕТЕ</b></div><br>
+			<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<td valign="top">
+						<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+							<tr align="left"><td>1. Категория запаса</td></tr>
+							<tr align="left"><td>2. Воинское звание</td></tr>
+							<tr align="left"><td>3. Состав (профиль)</td></tr>
+							<tr align="left"><td>4. Полное кодовое обозначение ВУС</td></tr>
+							<tr align="left"><td>5. Категория годности к военной службе</td></tr>
+						</table>
+					</td>
+					<td>
+						<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+							<tr align="left"><td>6. Наименование военного</td></tr>
+							<tr align="left"><td>комиссариата по месту жительства</td></tr>
+							<tr align="left"><td>&nbsp;</td></tr>
+							<tr align="left"><td>7. Состоит на воинском учете:</td></tr>
+							<tr align="left"><td>&nbsp;&nbsp;а) общем (номер команды, партии)</td></tr>
+							<tr align="left"><td>&nbsp;&nbsp;б) специальном</td></tr>
+							<tr align="left"><td>8.</td></tr>
+							<tr align="center"><td><div style="font-size:80%">(отметка о снятии с воинского учета)</div></td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br><br>
+			<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr><td><b>Работник кадровой службы</b></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				<tr>
+					<td><div style="font-size:80%">&nbsp;</div></td>
+					<td><div style="font-size:80%">(должность)</div></td>
+					<td><div style="font-size:80%">(личная подпись)</div></td>
+					<td><div style="font-size:80%">(расшифровка подписи)</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br><br>
+			<table align="left" valign="top" border="0" cellspacing="0" cellpadding="0">
+				<tr><td><b>Работник</b></td><td>&nbsp;</td></tr>
+				<tr>
+					<td><div style="font-size:80%">&nbsp;</div></td>
+					<td><div style="font-size:80%">(личная подпись)</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			"&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;г.
+		</td>
+	</tr>
+</table>

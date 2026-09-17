@@ -1,0 +1,10 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form role="form" name="editSubjectFieldForm" class="form-horizontal form-sm">
+		<div class="form-group">
+			<label class="control-label col-md-4">{{$ctrl.language.Generic.Common.kName}}</label>
+			<div class="col-md-8">
+				<input track-changes type="text" class="form-control FilterWhiteSpace" name="SUBJECTFIELDNAME" size="50" maxlength="50" ng-model="$ctrl.subjectField.name">
+			</div>
+		</div>
+	</form>
+</ns-modal>

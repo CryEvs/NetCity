@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Русский язык. 4 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Русский язык. 4 класс" ID="1" Filename="ni_rus_4/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Три склонения имён существительных" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Три склонения имён существительных" 
+				Filename="sgo/ni_rus_4/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Падежи" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Падежи" 
+				Filename="sgo/ni_rus_4/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Окончания имён существительных" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Окончания имён существительных" 
+				Filename="sgo/ni_rus_4/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Склонение личных местоимений" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Склонение личных местоимений" 
+				Filename="sgo/ni_rus_4/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Склонение личных местоимений 1-го лица и 2-го лица с предлогами" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Склонение личных местоимений 1-го лица и 2-го лица с предлогами" 
+				Filename="sgo/ni_rus_4/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Склонение личных местоимений 3-го лица с предлогами" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание окончаний имен прилагательных" 
+				Filename="sgo/ni_rus_4/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Мягкий знак после шипящих" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Мягкий знак после шипящих" 
+				Filename="sgo/ni_rus_4/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Однородные члены предложения" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Однородные члены предложения" 
+				Filename="sgo/ni_rus_4/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Cпряжение глаголов" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Cпряжение глаголов" 
+				Filename="sgo/ni_rus_4/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Безударные личные окончания глаголов" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Безударные личные окончания глаголов" 
+				Filename="sgo/ni_rus_4/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Как определить спряжение глагола" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Как определить спряжение глагола" 
+				Filename="sgo/ni_rus_4/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Разноспрягаемые глаголы" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Разноспрягаемые глаголы" 
+				Filename="sgo/ni_rus_4/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+  	 
+</Project>

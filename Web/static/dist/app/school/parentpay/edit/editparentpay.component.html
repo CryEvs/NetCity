@@ -1,0 +1,110 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/parentpay/edit/editparentpay.component.min.css">
+
+<div class="buttons-filters-panel form-horizontal single-row ns-cloak">
+	<div class="row">
+		<filter-panel class="col-md-12 form-sm" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-show="!$ctrl.emptyData">
+	<div class="col-md-12">
+
+		<div class="form-horizontal">
+			<div class="form-group">
+				<div class="col-md-12">
+					<button ng-if="!$ctrl.readOnly" title="Сохранить изменения" type="button" class="btn btn-sm btn-primary" ng-click="$ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<div class="row ns-cloak">
+
+	<div class="col-md-12">
+
+		<div class="alert alert-info" ng-if="!$ctrl.noPayNorms && !$ctrl.studentMonthPays.length" role="alert">{{$ctrl.language.Filter.kNoStudents}}</div>
+		<div class="alert alert-danger" ng-if="$ctrl.noPayNorms" role="alert">{{$ctrl.language.Generic.Grade.kNoPayNormsForMonth}}</div>
+
+		<form name="$ctrl.parentPayForm" class="form-sm" ng-if="$ctrl.studentMonthPays.length">
+			<table class="table table-bordered table-xs table-hover parent-pay">
+				<tr>
+					<th rowspan="3">{{$ctrl.language.Common.kStudents}}</th>
+					<th rowspan="3">{{$ctrl.language.Generic.Grade.kOverpayDebt}}</th>
+					<th colspan="3">{{$ctrl.language.Generic.Grade.kAttendanceColumn}}</th>
+					<th rowspan="3">{{$ctrl.language.Generic.Grade.kToPay}}</th>
+					<th rowspan="3" style="min-width: 95px;">{{$ctrl.language.Generic.Grade.kPayValS}}</th>
+					<th rowspan="3">{{$ctrl.language.Generic.Grade.kForContentS}}</th>
+					<th rowspan="3">{{$ctrl.language.Generic.Grade.kToCompensS}}</th>
+					<th rowspan="3">{{$ctrl.language.Generic.Grade.kOverpayDebt}}</th>
+					<th rowspan="3" style="min-width: 95px;">{{$ctrl.language.Generic.Grade.kCorrection}}</th>
+					<th rowspan="3">{{$ctrl.language.Generic.Grade.kLegalAgent}}</th>
+				</tr>
+				<tr>
+					<th colspan="2">по табелю</th>
+					<th rowspan="2" style="min-width: 200px;">по нормативам</th>
+				</tr>
+				<tr>
+					<th class="min">дней непосещения</th>
+					<th class="min">дней посещения</th>
+				</tr>
+
+				<tr ng-repeat="studentMonthPay in $ctrl.studentMonthPays" ng-class="{'warning': $ctrl.isAttendanceMismatch(studentMonthPay)}">
+					<td align="left">
+						<nobr>{{$index + 1}}. {{studentMonthPay.info.studentName}}</nobr>
+					</td>
+
+					<td>{{studentMonthPay.prevDebt | float2str:'fractDigits'}}</td>
+
+					<td>{{studentMonthPay.info.absentAttendance}}</td>
+					<td>{{studentMonthPay.info.presentAttendance}}</td>
+
+					<td style="width: 220px;">
+						<parent-pay-attendance read-only="$ctrl.readOnly || studentMonthPay.info.readOnly || $ctrl.outDebtsMode" max-attendance="$ctrl.maxAttendance" pay-norms="$ctrl.payNorms" attendance="studentMonthPay.attendance" on-change="$ctrl.onChange(studentMonthPay)"></parent-pay-attendance>
+					</td>
+
+					<td>{{studentMonthPay.toPay | float2str:'fractDigits'}}</td>
+					<td>
+						<input ng-disabled="$ctrl.readOnly || studentMonthPay.info.readOnly" class="form-control" type="text" size="8" maxlength="8" numeric-input="{negative: true, fractional: true, allownull: true}" ng-model="studentMonthPay.payVal" ng-change="$ctrl.onChange(studentMonthPay)">
+					</td>
+					<td>{{studentMonthPay.content | float2str:'fractDigits'}}</td>
+					<td>{{studentMonthPay.compensation | float2str:'fractDigits'}}</td>
+					<td>{{studentMonthPay.debt | float2str:'fractDigits'}}</td>
+					<td>
+						<input ng-disabled="$ctrl.readOnly || studentMonthPay.info.readOnly" class="form-control" type="text" size="8" maxlength="8" numeric-input="{negative: true, fractional: true, allownull: true}" ng-model="studentMonthPay.correction" ng-change="$ctrl.onChange(studentMonthPay)">
+					</td>
+
+					<td>
+						<select ng-if="!$ctrl.readOnly" class="form-control" track-changes ng-options="parent.id as parent.name for parent in studentMonthPay.parents" ng-model="studentMonthPay.parentId">
+							<option value=""></option>
+						</select>
+						<span ng-if="$ctrl.readOnly">{{studentMonthPay.parentFio}}</span>
+					</td>
+
+				</tr>
+
+				<tr>
+					<th align="left">{{$ctrl.language.Generic.Reports.kTotal2}}</th>
+					<th>{{$ctrl.parentPayTotals.prevDebt | float2str:'fractDigits'}}</th>
+					<th>{{$ctrl.parentPayTotals.absentAttendance}}</th>
+					<th>{{$ctrl.parentPayTotals.presentAttendance}}</th>
+					<th>&nbsp;</th>
+					<th>{{$ctrl.parentPayTotals.toPay | float2str:'fractDigits'}}</th>
+					<th>{{$ctrl.parentPayTotals.payVal | float2str:'fractDigits'}}</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>{{$ctrl.parentPayTotals.currDebt | float2str:'fractDigits'}}</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+
+			</table>
+		</form>
+
+	</div>
+</div>

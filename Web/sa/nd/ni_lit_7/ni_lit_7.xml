@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Литература. 7 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Литература. 7 класс" ID="1" Filename="ni_lit_7/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Образ. Характер. Герой" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Образ. Характер. Герой" 
+				Filename="sgo/ni_lit_7/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Тема. Идея. Проблема в литературном произведении" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Тема. Идея. Проблема в литературном произведении" 
+				Filename="sgo/ni_lit_7/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Героический эпос в русской и мировой литературе" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Героический эпос в русской и мировой литературе" 
+				Filename="sgo/ni_lit_7/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Баллада в русской и мировой литературе" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Баллада в русской и мировой литературе" 
+				Filename="sgo/ni_lit_7/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Историческая основа поэмы М. Ю. Лермонтова «Песня про царя Ивана Васильевича, молодого опричника и удалого купца Калашникова»" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Историческая основа поэмы М. Ю. Лермонтова «Песня про царя Ивана Васильевича, молодого опричника и удалого купца Калашникова»" 
+				Filename="sgo/ni_lit_7/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="М. Ю. Лермонтов «Песня про царя Ивана Васильевича, молодого опричника и удалого купца Калашникова». Словарь историзмов и архаизмов" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="М. Ю. Лермонтов «Песня про царя Ивана Васильевича, молодого опричника и удалого купца Калашникова». Словарь историзмов и архаизмов" 
+				Filename="sgo/ni_lit_7/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Особенности драмы как рода литературы" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Особенности драмы как рода литературы" 
+				Filename="sgo/ni_lit_7/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Система образов в пьесе Н. В. Гоголя «Ревизор»" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Система образов в пьесе Н. В. Гоголя «Ревизор»" 
+				Filename="sgo/ni_lit_7/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Сказки М. Е. Салтыкова-Щедрина «Для детей изрядного возраста»" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Сказки М. Е. Салтыкова-Щедрина «Для детей изрядного возраста»" 
+				Filename="sgo/ni_lit_7/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Комическое в литературе" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Комическое в литературе" 
+				Filename="sgo/ni_lit_7/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Основные средства композиции" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Основные средства композиции" 
+				Filename="sgo/ni_lit_7/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Классицизм как литературное направление" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Классицизм как литературное направление" 
+				Filename="sgo/ni_lit_7/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+
+</Project>

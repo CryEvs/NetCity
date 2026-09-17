@@ -1,0 +1,41 @@
+{
+	"sumRows": [
+		{
+			"row": 1,
+			"subRows": [ 3, 12 ],
+			"cols": [ 3 ],
+			"type": "sum"
+		},
+		{
+			"row": 1,
+			"subRows": [ 2 ],
+			"cols": [ 3 ],
+			"type": "include"
+		},
+		{
+			"row": 3,
+			"subRows": [ 4, 7, 9, 11 ],
+			"cols": [ 3 ],
+			"type": "include"
+		},
+		{
+			"row": 4,
+			"subRows": [ 5, 6 ],
+			"cols": [ 3 ],
+			"type": "include"
+		},
+		{
+			"row": 7,
+			"subRows": [ 8 ],
+			"cols": [ 3 ],
+			"type": "include"
+		},
+		{
+			"row": 9,
+			"subRows": [ 10 ],
+			"cols": [ 3 ],
+			"type": "include"
+		}
+	]
+}
+

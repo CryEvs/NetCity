@@ -1,0 +1,151 @@
+@import (reference) "var.less";
+@import (reference) "mixins.less";
+@import (reference) "controls.less";
+@import (reference) "../../custom/img/sprite-template.png.less";
+
+.form-group.inactive {
+	display: none !important;
+}
+
+.content {
+	.row {
+		& > a {
+			padding-top: 10px;
+			margin-top: 10px;
+			border-top: 1px solid #ddd;
+			position:absolute;
+			top: 30px;
+		}
+		& > a[aria-expanded='true']:before {
+			content: '';
+			width: 21px;
+			height: 18px;
+			position: absolute;
+			cursor: pointer;
+			right: 10px;
+			top: 25px;
+			bottom: 0;
+			margin: auto;
+			color: #bbb;
+			// после тестирование данный комментарий удалить (24.06.2015 Милов Л.)
+			//background: url('/vendor/custom/img/panel_arrows.png') no-repeat left top;
+			.sprite-panel-arrow-active;
+		}
+		& > a[aria-expanded='false']:before {
+			content: '';
+			width: 21px;
+			height: 18px;
+			position: absolute;
+			cursor: pointer;
+			right: 10px;
+			top: 25px;
+			bottom: 0;
+			margin: auto;
+			z-index: 555;
+			color: #bbb;
+			// после тестирование данный комментарий удалить (24.06.2015 Милов Л.)
+			//background: url('/vendor/custom/img/panel_arrows.png') no-repeat left -15px;
+			.sprite-panel-arrow;
+		}
+
+		& > a[aria-expanded='true'] + .filters-panel {
+			display: none;
+		}
+		
+		//ошибка #11984. В связи с тем что слетает вёрстка, select разъезжаются
+		//добавленно данное свойство css. Ошибка происходило от того что плагин "select-2"
+		//по своему считает ширину select-ов. 
+
+		.select2-container{
+			width: 100% !important;
+		}
+		
+	}
+
+	.filters-panel-compact, .filters-panel-collapsable {
+		float: none;
+	}
+
+	.filters-panel-collapsable {
+		margin-top: 10px;
+	}
+
+	@media screen and (max-width: @container-sm) {
+		.filters-panel-compact, .filters-panel-collapsable {
+			display: block;
+			visibility: visible; 
+			height:auto !important;
+		}
+		.filters-panel-collapsable { 
+			margin-top: 0;
+		}
+	}
+
+	@media screen and (min-width: @container-sm) {
+	
+		.filters-panel-compact {
+			width: 100%;
+			border-radius: 4px;
+			padding-top: 5px;
+
+			.form-group {
+				margin: 0;
+				display: inline-block;
+				padding-right: 8px;
+				margin-bottom: 8px;
+				vertical-align: bottom;
+
+				label, &>div {
+					display: block;
+					float: none;
+					width: 100%;
+					padding: 0;
+					text-align: left;
+					font-weight: 400;
+					font-size: 13px;
+				}
+
+				label {
+					padding-bottom: 5px;
+					text-align: left;
+					font-weight: 600;
+					font-size: 13px;
+				}
+
+				.form-control {
+					width: 200px;
+					letter-spacing: -0.04em;
+					&-inline {
+						width: auto;
+					}
+				}
+
+				.select2-container{
+					width: 200px !important;
+				}
+
+				.input-group { 
+					max-width: 200px;
+					&.input-daterange {
+						max-width: 100%;
+					}
+					.form-control {
+						width: auto;
+					}
+					.input-group-addon {
+						float: left;
+						padding: 8px 12px;
+					}
+				}
+			}
+
+		}
+
+	}
+    @media only screen and (max-width: 900px){
+        .filters-panel-compact{
+              margin-top: 32px;
+        }
+    }
+
+}

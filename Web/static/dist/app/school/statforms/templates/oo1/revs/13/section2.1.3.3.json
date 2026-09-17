@@ -1,0 +1,36 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subCols": { "start": 4, "end": 17 },
+			"type": "sum"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 9,
+			"subRows": [1,3,5,7],
+			"type": "sum"
+		},
+		{
+			"row": 10,
+			"subRows":[2,4,6,8],
+			"type": "sum"
+		},
+		{
+			"row": 10,
+			"subRows": [11,12,13,16,17,18],
+			"type": "ofthem"
+		},
+		{
+			"row": 13,
+			"subRows": [14,15],
+			"type": "ofthem"
+		},
+		{
+			"row": 18,
+			"subRows": [19],
+			"type": "ofthem"
+		}
+	]
+}

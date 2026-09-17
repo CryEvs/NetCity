@@ -1,0 +1,77 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<button title="Сохранить права доступа к портфолио" type="button" class="btn btn-primary" ng-click="$ctrl.save()" ng-disabled="!$ctrl.state.dataChanged">
+				<span class="glyphicon glyphicon-floppy-disk"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+			</button>
+			
+			<button title="Применить" type="button" class="btn btn-default" ng-click="$ctrl.load()" ng-disabled="!$ctrl.filter.ready()">
+				<span>Применить</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<form class="form-horizontal">
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">Вид</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<select name="userType" class="form-control" ng-change="" ng-model="$ctrl.filter.selected.viewAccess">
+						<option ng-value="true">Имеют доступ</option>
+						<option ng-value="false">Доступ запрещён</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.state.ready">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">Образовательная организация</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<select2 class="form-control" ng-model="$ctrl.filter.selected.school" options="$ctrl.organizationsOptions">
+					</select2>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">Группа пользователей</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<select name="userType" class="form-control" ng-change="$ctrl.changeUserType()" ng-model="$ctrl.filter.selected.userType" ng-options="userType.id as userType.name for userType in $ctrl.filter.items.userTypes"></select>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="$ctrl.displayClassFilter()">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">Класс</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<select name="studentClass" class="form-control" ng-model="$ctrl.filter.selected.studentClass" ng-options="class.id as class.name for class in $ctrl.filter.items.schoolClasses">
+					</select>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<div class="alert alert-info" role="alert" ng-if="!$ctrl.state.dataLoaded">Выберите в фильтре организацию и нажмите кнопку "Применить"</div>
+<div class="alert alert-info" role="alert" ng-if="$ctrl.state.dataLoaded && $ctrl.data.users.length == 0">Нет информации о пользователях по данному фильтру</div>
+
+<div class="row" ng-show="$ctrl.data.users.length > 0">
+	<div class="col-md-12">
+		<ul ng-show="$ctrl.paging.show" uib-pagination total-items="$ctrl.paging.totalcount" ng-model="$ctrl.paging.page" items-per-page="$ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="$ctrl.load()"></ul>
+		<table class="table table-thin table-bright table-bright-hover table-selectable" ng-show="$ctrl.data.users.length > 0" style="width: 55%">
+			<tr>
+				<th>№ п/п</th>
+				<th>Имя на экране</th>
+				<th>Доступ</th>
+			</tr>
+			<tr ng-repeat="user in $ctrl.data.users" ng-class="{'selected': $ctrl.selected(user), 'disabled':  $ctrl.disabled(user)}" ng-click="$ctrl.toggle(user)">
+				<td>{{$index + 1 + ($ctrl.paging.page - 1) * $ctrl.paging.pageSize}}</td>
+				<td>{{user.name}}</td>
+				<td><span class="check-mark"></span></td>
+			</tr>
+		</table>
+		<ul ng-show="$ctrl.paging.show" uib-pagination total-items="$ctrl.paging.totalcount" ng-model="$ctrl.paging.page" items-per-page="$ctrl.paging.pageSize" max-size="20" class="pagination-sm" direction-links="false" force-ellipses="true" ng-change="$ctrl.load()"></ul>
+	</div>
+</div>

@@ -1,0 +1,66 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title">Подробности задачи</h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+
+		<form role="form" name="infoForm" class="form form-xs ng-scope">
+			<!--Поля формы-->
+
+			<fieldset>
+				<legend>Общая информация</legend>
+				<div class="row form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">Тип</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						{{data.queueTask.taskType}}
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">Статус</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						{{data.queueTask.status}}
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">Дата установки в очередь</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						{{data.queueTask.enqueueDate}}
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">Дата запуска</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						{{data.queueTask.startDate}}
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">Дата завершения</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						{{data.queueTask.endDate}}
+					</div>
+				</div>
+				
+				<legend>Данные по задаче</legend>
+
+				<div class="row form-group">
+					<div class="col-md-12">
+						<textarea rows="14" style="width: 100%; white-space: pre-wrap; font-size: 9px;">{{data.queueTask.jsonData}}</textarea>
+					</div>
+				</div>
+
+				<legend>Результат</legend>
+				
+				<div class="row form-group">
+					<div class="col-md-12">
+						<textarea rows="14" style="width: 100%; white-space: pre-wrap; font-size: 9px;">{{data.queueTask.resultData}}</textarea>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>

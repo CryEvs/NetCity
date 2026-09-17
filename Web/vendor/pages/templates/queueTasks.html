@@ -1,0 +1,22 @@
+﻿<table class="table table-xs table-hover table-striped">
+	<tr>
+		<th>{{language.Generic.MySettings.kEnqueueDate}}</th>
+		<th>{{language.Generic.MySettings.kStartProcessingDate}}</th>
+		<th>{{language.Generic.MySettings.kNumberInQueue}}</th>
+		<th>{{language.Generic.Common.kFileName}}</th>
+		<th>{{language.Generic.ServAdmin.kDocNumber}}</th>
+		<th>{{language.Generic.Movement.kDocDate}}</th>
+		<th>{{language.Generic.MySettings.kQueueCurrentStatus}}</th>
+	</tr>
+	{{#each tasks}}
+	<tr>
+		<td>{{enqueueDate}}</td>
+		<td>{{startDate}}</td>
+		<td>{{queuePosition}}</td>
+		<td>{{fileName}}</td>
+		<td>{{docNumber}}</td>
+		<td>{{docDate}}</td>
+		<td>{{status}}</td>
+	</tr>
+	{{/each}}
+</table>

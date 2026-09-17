@@ -1,0 +1,100 @@
+<style>
+	.form-group input[type="text"] {
+		width: 100%;
+	}
+
+	.form-group input.date-input[disabled], .form-group input.date-input[disabled]:hover {
+		border: 1px solid #ccc;
+	}
+
+	input.form-control[disabled] {
+		border: 1px solid #C5C5C5 !important;
+	}
+</style>
+
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<div class="buttons-panel">	
+			<div class="buttons-panel-left">
+				<button class="btn btn-default" type="button" name="add-license" title="Добавить документ" ng-if="$ctrl.canAdd()" ng-click="$ctrl.add()">
+					<span class="glyphicon glyphicon-plus-sign"></span> 
+					<span>Добавить документ</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right" ng-if="!$ctrl.emptyLicenses">
+				<button title="{{$ctrl.language.Generic.Buttons.kPrint}}" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+					<span class="glyphicon glyphicon-print"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kPrint}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default" ng-click="$ctrl.export()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>{{$ctrl.language.Generic.Common.kBtnExcel}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-if="$ctrl.emptyLicenses">
+	<div class="col-md-12">
+		<div class="alert alert-info">Список документов пустой. Для того чтобы добавить новый документ, нажмите кнопку "Добавить документ"</div>
+	</div>
+</div>
+
+<div class="row ns-cloak" >
+	<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 license print-block" ng-if="$ctrl.licenses.license">
+		<ns-panel panel-id="license" class="success" title="{{$ctrl.language.Generic.SchoolInfo.kLicense}}" expanded="true">
+			<div class="form form-xs">
+				<ns-form control-size=" " label-size=" ">
+				<license license="$ctrl.licenses.license" readonly="true"></license>
+				<button ng-disabled="!$ctrl.ready" type="button" class="btn btn-default btn-sm" title="{{$ctrl.language.Generic.Buttons.kEdit}}" ng-click="$ctrl.edit($ctrl.licenses.license)">
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+				</button>
+				<button ng-disabled="!$ctrl.ready" type="button" class="btn btn-default btn-sm" title="{{$ctrl.language.Generic.Buttons.kRemove}}" ng-click="$ctrl.remove($ctrl.licenses.license)">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+				</ns-form>
+			</div>
+		</ns-panel>
+	</div>
+
+	<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 licenseAES print-block" ng-if="$ctrl.licenses.licenseAES">
+		<ns-panel panel-id="licenseAES" class="success" title="{{$ctrl.language.Generic.SchoolInfo.kLicenseAES}}" expanded="true">
+			<div class="form form-xs">
+				<ns-form control-size=" " label-size=" ">
+				<license license="$ctrl.licenses.licenseAES" readonly="true"></license>
+				<button ng-disabled="!$ctrl.ready" type="button" class="btn btn-default btn-sm" title="{{$ctrl.language.Generic.Buttons.kEdit}}" ng-click="$ctrl.edit($ctrl.licenses.licenseAES)">
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+				</button>
+				<button ng-disabled="!$ctrl.ready" type="button" class="btn btn-default btn-sm" title="{{$ctrl.language.Generic.Buttons.kRemove}}"  ng-click="$ctrl.remove($ctrl.licenses.licenseAES)">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+				</ns-form>
+			</div>
+		</ns-panel>
+	</div>
+
+	<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 accreditation print-block" ng-if="$ctrl.licenses.accreditation">
+		<ns-panel panel-id="accreditation" class="success" title="{{$ctrl.language.Generic.SchoolInfo.kCertificateAccreditation}}" expanded="true">
+			<div class="form form-xs">
+				<ns-form control-size=" " label-size=" ">
+				<license license="$ctrl.licenses.accreditation" readonly="true"></license>
+				<button ng-disabled="!$ctrl.ready" type="button" class="btn btn-default btn-sm" title="{{$ctrl.language.Generic.Buttons.kEdit}}" ng-click="$ctrl.edit($ctrl.licenses.accreditation)">
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+				</button>
+				<button ng-disabled="!$ctrl.ready" type="button" class="btn btn-default btn-sm" title="{{$ctrl.language.Generic.Buttons.kRemove}}" ng-click="$ctrl.remove($ctrl.licenses.accreditation)">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+				</ns-form>
+			</div>
+		</ns-panel>
+	</div>
+</div>

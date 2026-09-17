@@ -1,0 +1,94 @@
+<div class="form-group" ng-if="$ctrl.fullAccess">
+	<label class="control-label col-md-3 col-lg-3">{{$ctrl.language.Generic.Common.kHomeAddress}}</label>
+	<div class="col-md-8 col-lg-8">
+		<div class="row">
+			<div class="col-md-8" ng-if="$ctrl.homeAddress">
+				<address-text address="$ctrl.homeAddress" language="$ctrl.language"></address-text>
+			</div>
+			<div ng-class="{'col-md-4': $ctrl.homeAddress, 'col-md-12': !$ctrl.homeAddress}" ng-if="!$ctrl.readonly && $ctrl.ready">
+				<div class="ctx-btns-icons ctx-btns-icons-right ctx-btns-icons-lg">
+					<a href="JavaScript:void(0)" ng-click="$ctrl.editAddress($ctrl.addressType.home);" title="{{$ctrl.language.Generic.SetupSchoolUI.kBtnEditHomeAddress}}" class="primary">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+				</div>
+				<button ng-show="$ctrl.childHomeAddressDifferent()" title="{{$ctrl.language.Generic.SetupSchoolUI.kBtnAddrEqualChildHomeAddress}}" ng-click="$ctrl.setEqualChildHomeAddress()" type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-user"></span> 
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<hr ng-if="$ctrl.fullAccess">
+<div class="form-group" ng-if="$ctrl.fullAccess">
+	<label class="control-label col-md-3 col-lg-3">{{$ctrl.language.Generic.Common.kRegistrationAddress}}</label>
+	<div class="col-md-8 col-lg-8">
+		<div class="row">
+			<div class="col-md-8" ng-if="$ctrl.regAddress">
+				<p ng-if="$ctrl.regAddress.addressType === $ctrl.addressType.equals">{{$ctrl.language.Generic.SetupSchoolUI.kEqualAddress}}</p>
+
+				<address-text ng-if="$ctrl.regAddress.addressType !== $ctrl.addressType.equals" address="$ctrl.regAddress" language="$ctrl.language"></address-text>
+				<p class="small" ng-if="$ctrl.regAddress.regDate">{{$ctrl.language.Generic.Common.kRegDateTempAddress}} {{$ctrl.regAddress.regDate | nsDate}}</p>
+				<p class="small" ng-if="$ctrl.regAddress.regNumber">{{$ctrl.language.Generic.Movement.kDocNumber}} {{$ctrl.regAddress.regNumber}}</p>
+				<p class="small" ng-if="$ctrl.regAddress.expireDate">{{$ctrl.language.Generic.Common.kExpireDateTempAddress}} {{$ctrl.regAddress.expireDate | nsDate}}</p>
+			</div>
+			<div ng-class="{'col-md-4': $ctrl.regAddress, 'col-md-12': !$ctrl.regAddress}" ng-if="!$ctrl.readonly && $ctrl.ready">
+				<div class="ctx-btns-icons ctx-btns-icons-right ctx-btns-icons-lg">
+					<a href="JavaScript:void(0)" ng-click="$ctrl.editAddress($ctrl.addressType.registration);" title="{{$ctrl.language.Generic.SetupSchoolUI.kBtnEditRegistrationAddress}}" class="primary">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+				</div>
+				<button ng-if="$ctrl.homeAddress && $ctrl.regAddress.addressType !== $ctrl.addressType.equals" title="{{$ctrl.language.Generic.SetupSchoolUI.kBtnRegEqualHomeAddress}}" ng-click="$ctrl.setAddressEquals()" type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-home"></span> 
+				</button>
+				<button ng-show="$ctrl.childRegAddressDifferent()" title="{{$ctrl.language.Generic.SetupSchoolUI.kBtnAddrEqualChildRegAddress}}" ng-click="$ctrl.setEqualChildRegAddress()" type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-user"></span> 
+				</button>
+			</div>
+		</div>
+		<div ng-if="$ctrl.regAddress && $ctrl.regAddress.isTemporary" class="alert alert-info" role="alert">
+			{{$ctrl.language.Generic.Common.kRegistrationAddressIsLocalRegistrationAddress}}
+		</div>
+	</div>
+</div>
+
+<hr ng-if="$ctrl.fullAccess">
+
+<div class="form-group" ng-if="$ctrl.housingParameter">
+	<label class="control-label col-md-3 col-lg-3">{{$ctrl.housingParameter.title}}</label>
+	<div class="col-md-8 col-lg-8">
+		<form-parameter parameter="$ctrl.housingParameter"></form-parameter>
+	</div>
+</div>
+
+<div class="form-group">
+	<label class="control-label col-md-3 col-lg-3">{{$ctrl.language.Generic.SetupSchoolUI.kHomePhone}}</label>
+	<div class="col-md-8 col-lg-8">
+		<input type="text" class="form-control" name="HT" size="30" maxlength="30" track-changes ng-model="$ctrl.commondata.homePhone" ng-disabled="$ctrl.readonly">
+	</div>
+</div>
+
+<div class="form-group" ng-if="$ctrl.mobileParameter"> 
+	<label class="control-label col-md-3 col-lg-3">{{$ctrl.language.Generic.Common.kMobilePhone}}</label>
+	<div class="col-md-8 col-lg-8">
+		<form-parameter parameter="$ctrl.mobileParameter"></form-parameter>
+	</div>
+</div>
+
+<div class="form-group">
+	<label class="control-label col-md-3 col-lg-3">{{$ctrl.language.Generic.SetupSchoolUI.kMailManner}}</label>
+	<div class="col-md-8 col-lg-8">
+		<div class="radio">
+			<label><input type="radio" track-changes name="PCM" value="C" ng-disabled="$ctrl.readonly" ng-model="$ctrl.commondata.preferedCom">{{$ctrl.language.Generic.SetupSchoolUI.kNSSchoolAnnoun}} {{$ctrl.productName}}</label><br>
+			<label><input type="radio" track-changes name="PCM" value="E" ng-disabled="$ctrl.readonly" ng-model="$ctrl.commondata.preferedCom">{{$ctrl.language.Generic.Import.kEMail}}</label><br>
+			<label><input type="radio" track-changes name="PCM" value="P" ng-disabled="$ctrl.readonly" ng-model="$ctrl.commondata.preferedCom">{{$ctrl.language.Generic.Import.kPaperMail}}</label><br>
+		</div>
+	</div>
+</div>
+
+<div class="form-group">
+	<label class="control-label col-md-3 col-lg-3">{{$ctrl.language.Generic.Import.kEMail}}</label>
+	<div class="col-md-8 col-lg-8">
+		<email-component email="$ctrl.commondata.email" readonly="$ctrl.readonly">
+		<!--<input type="text" class="form-control" name="EM" size="35" maxlength="80" ng-disabled="$ctrl.readonly" ng-model="$ctrl.commondata.email" track-changes>-->
+	</div>
+</div>

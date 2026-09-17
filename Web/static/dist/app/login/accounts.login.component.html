@@ -1,0 +1,51 @@
+<loader ng-hide="$ctrl.ready"></loader>
+
+<main class="main" ng-if="$ctrl.ready">
+	<div class="form secondary-input-form h477 vertical">
+		<div class="form__headertext">Вход в систему</div>
+		<div class="headertext">Вход в запомненную учетную запись</div>
+		<div class="remembered-users">
+			<a class="remembered-users__item" ng-repeat="account in $ctrl.accounts" ng-click="$ctrl.accountLogin(account)">
+				<img class="remembered-users__item-closeicon" src="/static/dist/app/login/img/cross.png" ng-click="$ctrl.removeAccount(account)">
+				<div class="avatar avaColor{{$index}}">{{$ctrl.firstLetter(account)}}</div>
+				<div class="remembered-content">
+					<div class="remembered-content__name">
+						<span id="rem-name-data-0{{$index+1}}">{{account.user.name}}</span>
+					</div>
+					<div class="remembered-content__org">
+						Организация: <span id="rem-org-data-0{{$index+1}}">{{account.currentOrganization.name}}</span>
+					</div>
+					<div class="remembered-content__date">
+						Дата последнего входа:  <span id="rem-date-data-0{{$index+1}}">{{account.loginTime | date:'dd.MM.yy HH:mm'}}</span>
+					</div>
+					<div class="fog"></div>
+				</div>
+			</a>
+		</div>
+		<div class="wrapper-or order3">
+			<div class="wrapper-or__line"></div>
+			<div class="wrapper-or__text">или</div>
+		</div>
+		<div class="h_buttons2">
+			<!-- esa -->
+			<div class="gosbutton halfper" ng-show="$ctrl.canEsa()" ng-click="$ctrl.loginWithEsa()">
+				<div class="gosbutton__textgroup">
+					<div class="gosbutton__textgroup-text">Через</div>
+					<img class="gosbutton__textgroup-logo" src="/static/dist/app/login/img/gos.svg">
+				</div>
+			</div>
+			<!-- esa -->
+			<!-- esia -->
+			<div class="gosbutton halfper" ng-show="!$ctrl.canEsa() && $ctrl.canEsia()" ng-click="$ctrl.loginWithEsia()">
+				<div class="gosbutton__textgroup">
+					<div class="gosbutton__textgroup-text">Через</div>
+					<img class="gosbutton__textgroup-logo" src="/static/dist/app/login/img/gos.svg">
+				</div>
+			</div>
+			<!-- esia -->
+			<div class="primary-button halfper" ng-click="$ctrl.login(true)">
+				Войти другим пользователем
+			</div>
+		</div>
+	</div>
+</main>

@@ -1,0 +1,87 @@
+@charset "UTF-8";
+/*=================================================*/
+/*============Стили для модуля статистической отчетности===========*/
+.indicators-table td {
+  background: -o-linear-gradient(bottom, #e7eff7 5%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e7eff7), color-stop(1, #ffffff));
+  background: -moz-linear-gradient(center top, #e7eff7 5%, #ffffff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e7eff7", endColorstr="#ffffff");
+  background: -o-linear-gradient(top, #e7eff7, ffffff);
+  border: 1px solid #C0BABA;
+  border-width: 0 1px 1px 0;
+  text-align: left; }
+
+.indicators-table th {
+  background: -o-linear-gradient(bottom, #e7eff7 5%, #a4c1dd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e7eff7), color-stop(1, #a4c1dd));
+  background: -moz-linear-gradient(center top, #e7eff7 5%, #a4c1dd 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e7eff7", endColorstr="#a4c1dd");
+  background: -o-linear-gradient(top, #e7eff7, a4c1dd);
+  border: 0 solid #C0BABA;
+  text-align: center;
+  border-width: 0 0 1px 1px; }
+
+.indicator-group td {
+  background: -o-linear-gradient(bottom, #e7eff7 5%, #b1d0ef 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e7eff7), color-stop(1, #b1d0ef));
+  background: -moz-linear-gradient(center top, #e7eff7 5%, #b1d0ef 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e7eff7", endColorstr="#b1d0ef");
+  background: -o-linear-gradient(top, #e7eff7, b1d0ef); }
+
+.input-icon-align {
+  left: inherit;
+  top: 0;
+  right: 8px;
+  text-align: right;
+  width: 10px;
+  pointer-events: inherit; }
+
+#tooltip {
+  background: white;
+  font: menu;
+  border: 1px solid black;
+  margin: 0 0;
+  padding: 3px 5px;
+  position: absolute;
+  visibility: hidden; }
+
+.tooltip-inner {
+  min-width: 150px;
+  background-color: #ce8483; }
+
+.right .tooltip-arrow {
+  border-right-color: #ce8483 !important; }
+
+.calculator-input .form-control {
+  border-color: #ECDA21 !important;
+  color: #DFCF2F !important;
+  -webkit-box-shadow: inset 0 0 4px rgba(236, 218, 33, 0.5) !important;
+  -moz-box-shadow: inset 0 0 4px rgba(236, 218, 33, 0.5) !important;
+  box-shadow: inset 0 0 4px rgba(236, 218, 33, 0.5) !important; }
+
+.calculator-input .form-control:focus {
+  border-color: #E0D133 !important;
+  color: #DFCF2F !important;
+  -webkit-box-shadow: inset 0 0 7px rgba(224, 209, 51, 0.3) !important;
+  -moz-box-shadow: inset 0 0 7px rgba(224, 209, 51, 0.3) !important;
+  box-shadow: inset 0 0 7px rgba(224, 209, 51, 0.3) !important; }
+
+.explanation {
+  padding-left: 10px;
+  margin: 20px 0;
+  border-radius: 3px;
+  white-space: pre-line;
+  border-left: 5px solid #18a2eb; }
+  .explanation p {
+    font-size: 13px;
+    margin: 0 !important; }
+
+div.bootstrap-growl {
+  font-size: 13px;
+  font-weight: bold; }
+
+.has-feedback .form-control {
+  padding-right: 10px; }
+
+.has-error .form-control {
+  padding-right: 20px; }

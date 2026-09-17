@@ -1,0 +1,21 @@
+{
+    "sumCols": [
+		{
+			"col": 3,
+			"subCols": [ 4 ],
+			"type": "include"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 116,
+			"subRows": [ 117, 118, 119, 120 ],
+			"type": "sum"
+		},
+		{
+			"row": 106,
+			"subRows": [ 107, 108, 109 ],
+			"type": "sum"
+		}
+    ]
+}

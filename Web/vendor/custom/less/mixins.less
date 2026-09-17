@@ -1,0 +1,137 @@
+﻿/*============= функция округления всех углов =============*/
+.border_radius(@radius_px) {
+	-webkit-border-radius: @radius_px;
+	-moz-border-radius: @radius_px;
+	-ms-border-radius: @radius_px;
+	-o-border-radius: @radius_px;
+	border-radius: @radius_px;
+}
+/*========= функция округления ========*/
+.radius_top_left(@radius_px: 4px) {
+	-webkit-border-top-left-radius: @radius_px;
+	-moz-border-top-left-radius: @radius_px;
+	-ms-border-top-left-radius: @radius_px;
+	-o-border-top-left-radius: @radius_px;
+	border-top-left-radius: @radius_px;
+}
+.radius_top_right(@radius_px: 4px) {
+	-webkit-border-top-right-radius: @radius_px;
+	-moz-border-top-right-radius: @radius_px;
+	-ms-border-top-right-radius: @radius_px;
+	-o-border-top-right-radius: @radius_px;
+	border-top-right-radius: @radius_px;
+}
+
+//== Functions
+.margin (@top: 0px, @right: 0px, @bottom: 0px, @left: 0px) {
+	margin: @top @right @bottom @left;
+}
+
+// shadows
+.box-shadow (@x: 4px, @y: 0px, @blur: 4px, @ext: 0, @color) {
+	-webkit-box-shadow: @x @y @blur @ext @color;
+	-moz-box-shadow: @x @y @blur @ext @color;
+	box-shadow: @x @y @blur @ext @color;
+}
+.box-shadow-light-relief (@a: 0, @b: 1px, @c: 1px, @rgba: rgba(0, 0, 0, 0.05), @d: 0px, @e: 1px, @f: 0px, @rgba2: rgba(255, 255, 255, 1)) {
+	-webkit-box-shadow: @a @b @c @rgba, inset @d @e @f @rgba2;
+	-moz-box-shadow: @a @b @c @rgba, inset @d @e @f @rgba2;
+	box-shadow: @a @b @c @rgba, inset @d @e @f @rgba2;
+}
+.box-shadow-inset-all (@x; @y; @blur; @ext; @color) {
+	-webkit-box-shadow: inset @x @y @blur @ext @color;
+	-moz-box-shadow: inset @x @y @blur @ext @color;
+	box-shadow: inset @x @y @blur @ext @color;
+}
+.box-shadow-inset (@width: 8px; @rgba: rgba(169, 228, 162, 1)) {
+	.box-shadow-inset-all(0; 0; @width; 0; @rgba);
+}
+.box-shadow-inset-fade (@width: 8px, @alpha: fade(@theme-color, 25%)) {
+	-webkit-box-shadow: inset 0 0 @width @alpha;
+	-moz-box-shadow: inset 0 0 @width @alpha;
+	box-shadow: inset 0 0 @width @alpha;
+}
+.box-shadow-inset-fade-global (@width: 7px, @global-color: @state-danger-text, @alpha: fade(@global-color, 25%)) {
+	-webkit-box-shadow: inset 0 0 @width @alpha;
+	-moz-box-shadow: inset 0 0 @width @alpha;
+	box-shadow: inset 0 0 @width @alpha;
+}
+.form-control-validation(@text-color: @state-danger-text, @border-color: @state-danger-text, @shadow-color: @state-danger-text) {
+		input {
+		&:hover, &:active, &:focus {
+			color: @text-color;
+			border: 1px solid @border-color;
+			.box-shadow-inset-fade-global(@global-color: @shadow-color);
+		}
+		&.form-control {
+			&:hover, &:active, &:focus {
+			color: @text-color;
+			border: 1px solid @border-color;
+			.box-shadow-inset-fade-global(@global-color: @shadow-color);
+			}
+		}
+	}
+}
+// borders-radius
+.border-radius (@radius: @border-radius-base + 8px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius:  @radius;
+	border-radius:  @radius;
+}
+.border-bottom-left-radius (@radius: @border-radius-base) {
+	-webkit-border-bottom-left-radius: @radius;
+	-moz-border-radius-bottomleft:  @radius;
+	border-bottom-left-radius:  @radius;
+	
+}
+.border-bottom-right-radius (@radius: @border-radius-base) {
+	-webkit-border-bottom-right-radius: @radius;
+	-moz-border-radius-bottomright:  @radius;
+	border-bottom-right-radius:  @radius;
+}
+.border-top-right-radius (@radius: @border-radius-base) {
+	-webkit-border-top-right-radius: @radius;
+	-moz-border-radius-topright:  @radius;
+	border-top-right-radius:  @radius;
+}
+.border-top-left-radius (@radius: @border-radius-base) {
+	-webkit-border-top-left-radius: @radius;
+	-moz-border-radius-topleft:  @radius;
+	border-top-left-radius:  @radius;
+}
+
+// transition
+.transition (@element: all, @time: 0.2s) {
+	-webkit-transition: @element @time;
+	-moz-transition: @element @time;
+	-o-transition: @element @time;
+	transition: @element @time;
+}
+
+//== Mixins
+.empty-shadow {
+	-webkit-text-shadow: none;
+	-moz-text-shadow: none;
+	-ms-text-shadow: none;
+	-o-text-shadow: none;
+	text-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	background-color: #fafafa;
+	outline: none;
+}
+.full-empty-shadow {
+	-webkit-text-shadow: none;
+	-moz-text-shadow: none;
+	-ms-text-shadow: none;
+	-o-text-shadow: none;
+	text-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-ms-box-shadow: none;
+	-o-box-shadow: none;
+	box-shadow: none;
+	background: transparent;
+	outline: none;
+}

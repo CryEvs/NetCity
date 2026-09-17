@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Физика. 7 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Физика. 7 класс" ID="1" Filename="ni_phys_7/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Физические величины. Измерения физических величин." ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Физические величины. Измерения физических величин." 
+				Filename="sgo/ni_phys_7/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Строение вещества. Молекулы." ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Строение вещества. Молекулы." 
+				Filename="sgo/ni_phys_7/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Диффузия." ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Диффузия." 
+				Filename="sgo/ni_phys_7/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Взаимное притяжение и отталкивание молекул." ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Взаимное притяжение и отталкивание молекул." 
+				Filename="sgo/ni_phys_7/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Три состояния вещества. Различия в молекулярном строении твердых тел, жидкостей и газов." ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Три состояния вещества. Различия в молекулярном строении твердых тел, жидкостей и газов." 
+				Filename="sgo/ni_phys_7/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Механическое движение. Равномерное и неравномерное движение." ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Механическое движение. Равномерное и неравномерное движение." 
+				Filename="sgo/ni_phys_7/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Скорость. Единицы скорости. Расчет пути и времени движения." ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Скорость. Единицы скорости. Расчет пути и времени движения." 
+				Filename="sgo/ni_phys_7/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Инерция. Взаимодействие тел." ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Инерция. Взаимодействие тел." 
+				Filename="sgo/ni_phys_7/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Плотность вещества. Расчет массы и объема тела по его плотности." ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Плотность вещества. Расчет массы и объема тела по его плотности." 
+				Filename="sgo/ni_phys_7/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Сила. Сила тяжести. Единицы силы. Сложение двух сил." ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Сила. Сила тяжести. Единицы силы. Сложение двух сил." 
+				Filename="sgo/ni_phys_7/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Сила тяжести. Вес тела." ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Сила тяжести. Вес тела." 
+				Filename="sgo/ni_phys_7/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Сила упругости. Закон Гука. Динамометр." ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Сила упругости. Закон Гука. Динамометр." 
+				Filename="sgo/ni_phys_7/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Сила трения. Трение покоя." ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Сила трения. Трение покоя." 
+				Filename="sgo/ni_phys_7/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Давление. Давление газа и жидкости." ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Давление. Давление газа и жидкости." 
+				Filename="sgo/ni_phys_7/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Вес воздуха. Атмосферное давление. Манометр." ID="16">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Вес воздуха. Атмосферное давление. Манометр." 
+				Filename="sgo/ni_phys_7/15/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Поршневой и жидкостный насос. Гидравлический пресс. Действие жидкости." ID="17">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Поршневой и жидкостный насос. Гидравлический пресс. Действие жидкости." 
+				Filename="sgo/ni_phys_7/16/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Механическая работа. Мощность." ID="18">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Механическая работа. Мощность." 
+				Filename="sgo/ni_phys_7/17/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Рычаг. Момент силы. Подвижный и неподвижный блок." ID="19">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Рычаг. Момент силы. Подвижный и неподвижный блок." 
+				Filename="sgo/ni_phys_7/18/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Равенство работ при использовании простейших механизмов. Коэффициент полезного действия." ID="20">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Равенство работ при использовании простейших механизмов. Коэффициент полезного действия." 
+				Filename="sgo/ni_phys_7/19/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Потенциальная и кинетическая энергия." ID="21">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Потенциальная и кинетическая энергия." 
+				Filename="sgo/ni_phys_7/20/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

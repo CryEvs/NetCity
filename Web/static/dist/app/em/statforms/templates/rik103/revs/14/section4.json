@@ -1,0 +1,106 @@
+{
+	"sumCols": [
+		{
+			"col": 3,
+			"subCols": [4,5],
+			"type": "include"
+		},
+		{
+			"col": 6,
+			"subCols": [7],
+			"type": "ofthem"
+		}
+	],
+	"sumRows": [
+		{
+			"row": 27,
+			"subRows": [29,30,31],
+			"type": "sum"
+		},
+		{
+			"row": 32,
+			"subRows": [34, 35, 36],
+			"type": "sum"
+		},
+		{
+			"row": 45,
+			"subRows": [46, 47, 48, 49],
+			"type": "sum"
+		},
+		{
+			"row": 51,
+			"subRows": [52, 53, 54, 55],
+			"type": "sum"
+		},
+		{
+			"row": 1,
+			"subRows": [2,3,4],
+			"type": "include"
+		},
+		{
+			"row": 5,
+			"subRows": [6,7,8],
+			"type": "include"
+		},
+		{
+			"row": 9,
+			"subRows": [10,11,12],
+			"type": "include"
+		},
+		{
+			"row": 13,
+			"subRows": [14,15,16],
+			"type": "include"
+		},
+		{
+			"row": 17,
+			"subRows": [18],
+			"type": "ofthem"
+		},
+		{
+			"row": 18,
+			"subRows": [19,20,21],
+			"type": "include"
+		},
+		{
+			"row": 22,
+			"subRows": [23],
+			"type": "ofthem"
+		},
+		{
+			"row": 23,
+			"subRows": [24,25,26],
+			"type": "include"
+		},
+		{
+			"row": 27,
+			"subRows": [28],
+			"type": "ofthem"
+		},
+		{
+			"row": 32,
+			"subRows": [33],
+			"type": "ofthem"
+		},
+		{
+			"row": 39,
+			"subRows": [40,42,43,44],
+			"type": "ofthem"
+		},
+		{
+			"row": 40,
+			"subRows": [41],
+			"type": "ofthem"
+		},
+		{
+			"row": 45,
+			"subRows": [50],
+			"type": "ofthem"
+		},
+		{
+			"row": 51,
+			"subRows": [56],
+			"type": "ofthem"
+		}
+	]
+}

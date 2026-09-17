@@ -1,0 +1,67 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/pages/schedule/css/schedule.min.css">
+
+<style>
+	table.schedule-table td.weekend div a {
+		color: red;
+	}
+
+	table.schedule-table td div {
+		text-align: right;
+	}
+
+	table.schedule-table td span {
+		text-align: left;
+	}
+
+	table.schedule-table td.week div {
+		text-align: center;
+		vertical-align: central;
+	}
+
+	.cm-add {
+		position: relative;
+		width: 10px;
+		height: 10px;
+		float: left;
+		cursor: pointer;
+	}
+
+	a {
+		cursor: pointer
+	}
+</style>
+
+<div class="row" ng-if="$ctrl.showNoClassesMessage">
+	<div class="col-md-6">
+		<div class="alert alert-info" role="alert">
+			{{$ctrl.noClassesMessage}}
+		</div>
+	</div>
+</div>
+<div class="col-md-12" ng-if="$ctrl.show">
+	<table class="schedule-table table table-bordered table-condensed print-block">
+		<tbody>
+			<tr>
+				<th class="schedule-table-header">&nbsp;</th>
+				<th width="9%" class="schedule-table-header" ng-repeat="weekDay in $ctrl.weekDayNames">{{weekDay.name}}</th>
+			</tr>
+			<tr ng-repeat="week in $ctrl.weekDays">
+				<td ng-repeat="weekDay in week" class="{{weekDay.style}}">
+					<div ng-if="!weekDay.isWeekNum && weekDay.linkNeeded && $ctrl.showAddButton" class="cm-add">
+						<button class="btn btn-xs btn-warning" ng-click="$ctrl.openNewModal(weekDay)">+</button>
+					</div>
+					<div>
+						<span ng-if="!weekDay.linkNeeded && !weekDay.isWeekNum">{{ weekDay.dayNum > 0 ? weekDay.dayNum : "&nbsp;" }}</span>
+
+						<a ng-if="weekDay.linkNeeded && !weekDay.isWeekNum" title="{{$ctrl.language.Generic.SetupSchoolCalendar.kDayView}}" ng-click="$ctrl.go(weekDay)">{{weekDay.dayNum}}</a>
+						<a ng-if="weekDay.linkNeeded && weekDay.isWeekNum && weekDay.dayNum > 0" title="{{$ctrl.language.Generic.Calendar.kViewWeekSchedule}}" ng-click="$ctrl.go(weekDay)">{{$ctrl.language.Generic.Calendar.kWeekSchedule}} {{weekDay.dayNum}}</a>
+					</div>
+					<span ng-if="!weekDay.isWeekNum" ng-repeat="holiday in weekDay.holidays">
+						<br />
+						- <a class="{{holiday.style}}" ng-click="$ctrl.openNewModal(weekDay, holiday.id)">{{holiday.name}}</a> {{holiday.roomName}}
+					</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

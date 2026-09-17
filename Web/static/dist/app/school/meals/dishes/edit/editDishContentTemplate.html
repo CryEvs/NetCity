@@ -1,0 +1,58 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="header"></h4>
+			</div>
+			<div class="bootstrap-dialog-close-button">
+				<button class="close" ng-click="cancel()">&times;</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<span class="content-page-preloader" id="preloader" ng-hide="state.viewReady"><span>Пожалуйста подождите...</span></span>
+
+		<form role="form" name="dishContentForm" class="form form-xs ng-scope">
+			<!--Поля формы-->
+
+			<fieldset>
+				<div class="row form-group" ng-show="mode.edit">
+					<label for="product-name" class="control-label col-md-4 col-lg-3 col-sm-4">Продукт</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input class="form-control" id="product-name" ng-model="data.dishContent.product.name" maxlength="200" ng-change="onChange()" type="text" disabled="">
+					</div>
+				</div>
+				<div class="row form-group" ng-show="mode.create"ng-class="{'has-error': dishContentForm.product.$invalid && (!dishContentForm.product.$pristine || dishContentForm.$displayErrors)}">
+					<label for="product" class="control-label col-md-4 col-lg-3 col-sm-4">Продукт</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<select class="form-control" id="product" name="product" ng-options="product.name for product in data.products track by product.id" required ng-model="data.dishContent.product" ng-change="onChange();"></select>
+						<p ng-show="dishContentForm.product.$invalid && (!dishContentForm.product.$pristine || dishContentForm.$displayErrors)" class="help-block">Продукт должен быть выбран</p>
+					</div>
+				</div>
+				<div class="row form-group"ng-class="{'has-error': dishContentForm.weight.$invalid && (!dishContentForm.weight.$pristine || dishContentForm.$displayErrors)}">
+					<label for="content-weight" class="control-label col-md-4 col-lg-3 col-sm-4">Вес ингредиента, г.</label>
+					<div class="col-md-8 col-lg-9 col-sm-8">
+						<input class="form-control" id="content-weight" name="weight" ng-model="data.dishContent.weight" maxlength="200" ng-change="onChange()" ng-min="0" ng-max="10000" required="required" type="number">
+						<p ng-show="dishContentForm.weight.$invalid && (!dishContentForm.weight.$pristine || dishContentForm.$displayErrors)" class="help-block">Только непустые числовые значения от 0 до 10000</p>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+
+	</div>
+	<div class="modal-footer" ng-show="state.viewReady">
+		<button class="btn btn-primary ng-binding" ng-if="mode.edit" ng-click="dishContentForm.$displayErrors=true; save(dishContentForm.$valid, data.dishContent.item)" ng-disabled="!state.wasChanged">
+			Сохранить
+		</button>
+
+		<button class="btn btn-primary ng-binding" ng-if="mode.create" ng-click="dishContentForm.$displayErrors=true; save(dishContentForm.$valid)">
+			Добавить
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			Закрыть
+		</button>
+	</div>
+</div>

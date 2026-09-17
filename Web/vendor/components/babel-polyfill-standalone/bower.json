@@ -1,0 +1,22 @@
+{
+  "name": "Babel-Polyfill-Standalone",
+  "description": "Standalone version of Babel-Polyfill built into a single JS file.",
+  "version": "6.26.0",
+  "main": [
+	"polyfill.js"
+  ],
+  "keywords": [
+    "babel",
+	"polyfill",
+	"babel-polyfill",
+	"babeljs",
+	"standalone",
+	"babel-polyfill",
+	"babely-polyfill-standalone"
+  ],
+  "authors": [
+    "Babel"
+  ],
+  "license": "MIT",
+  "homepage": "https://babeljs.io/docs/usage/polyfill/"
+}

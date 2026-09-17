@@ -1,0 +1,50 @@
+<div ng-model="EmIndicators.EditGroup">
+	<form role="form" name="formIndcator">
+		<div class="bootstrap-dialog type-primary">
+			<div class="modal-header">
+				<div class="bootstrap-dialog-header">
+					<div class="bootstrap-dialog-title">
+						<h4 ng-if="editGroup.getParent() != null" class="modal-title">{{language.Generic.StatReports.kIndicatorGroupCreating}}</h4>
+						<h4 ng-if="editGroup.getParent() == null" class="modal-title">{{language.Generic.StatReports.kCreatingReport}}</h4>
+					</div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="form-group" ng-show="editGroup.getParent() != null">
+					<label for="groupName">{{language.Generic.StatReports.kParentIndicatorGroupName}}</label>
+					<input type="text" class="form-control" id="groupName" x-ng-model="editGroup.getParent().name" disabled="disabled">
+				</div>
+
+				<div class="form-group">
+					<label ng-if="editGroup.getParent() != null" for="name">{{language.Generic.StatReports.kIndicatorGroupName}}</label>
+					<label ng-if="editGroup.getParent() == null" for="name">{{language.Generic.StatReports.kReportName}}</label>
+					<div class="alert alert-danger" ng-show="$errorHandler.errorList.length > 0">
+						<span ng-repeat="error in $errorHandler.errorList" style="display: inherit;">
+							{{error}}
+						</span>
+					</div>
+					<div class="input-group">
+						<input type="text" class="form-control" id="name" ng-disabled="predefined" x-ng-model="editGroup.name" placeholder="{{language.Generic.Common.kEnterTheName}}" autofocus>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> &nbsp;<span class="caret"></span></button>
+							<ul class="dropdown-menu pull-right" role="menu">
+								<li ng-show="predefined"><a href="#" ng-click="cancelPredefined()">{{language.Generic.StatReports.kCreateNewGroup}}</a></li>
+								<li><a href="#" ng-click="selectPredefined()">{{language.Generic.StatReports.kSelectPredefinedGroup}}</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" x-ng-click="ok()">
+					<span class="glyphicon glyphicon-save"></span>
+					{{language.Generic.Buttons.kSave}}
+				</button>
+				<button class="btn btn-default" x-ng-click="cancel()">
+					<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+					{{language.Generic.Curriculum.kBtnCancel}}
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

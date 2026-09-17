@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-md-12">
+		<ul class="similar-user-option-list">
+			{{#each similarOptions}}
+				<li class="similar-user-option-item">
+					<div class="similar-user-option radio">
+						<label>
+							<input type="radio" value="{{id}}" name="SimilarRadio_{{DelQuots ../personId}}_" {{#if _checked}}checked{{/if}} />
+							<span class="similar-user-opton-title">{{title}}</span>
+						</label>
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>

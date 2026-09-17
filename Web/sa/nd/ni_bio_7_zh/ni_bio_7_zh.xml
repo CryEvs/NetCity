@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Биология 7 класс. Животные">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Биология 7 класс. Животные" ID="1" Filename="ni_bio_7_zh/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Простейшие" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Простейшие" 
+				Filename="sgo/ni_bio_7_zh/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Кишечно-полостные" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Кишечно-полостные" 
+				Filename="sgo/ni_bio_7_zh/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Плоские, Круглые, Кольчатые черви" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Плоские, Круглые, Кольчатые черви" 
+				Filename="sgo/ni_bio_7_zh/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Моллюски" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Моллюски" 
+				Filename="sgo/ni_bio_7_zh/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Членистоногие" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Членистоногие" 
+				Filename="sgo/ni_bio_7_zh/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Класс Насекомые (Жуки)" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Класс Насекомые (Жуки)" 
+				Filename="sgo/ni_bio_7_zh/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Рыбы" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Рыбы" 
+				Filename="sgo/ni_bio_7_zh/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Класс Земноводные и амфибии" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Класс Земноводные и амфибии" 
+				Filename="sgo/ni_bio_7_zh/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Пресмыкающиеся и рептилии" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Пресмыкающиеся и рептилии" 
+				Filename="sgo/ni_bio_7_zh/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Класс Птицы" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Класс Птицы" 
+				Filename="sgo/ni_bio_7_zh/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Класс Млекопитающие и звери: особенности, классификация" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Класс Млекопитающие и звери: особенности, классификация" 
+				Filename="sgo/ni_bio_7_zh/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Класс Млекопитающие и звери: разнообразие и значение" ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Класс Млекопитающие и звери: разнообразие и значение" 
+				Filename="sgo/ni_bio_7_zh/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+
+</Project>

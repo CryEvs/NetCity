@@ -1,0 +1,42 @@
+<tr>
+	<td>
+		{{userIndex}}
+	</td>
+	<td>
+		{{title}}
+	</td>
+	<td>
+		{{#if isParent}}{{{ToLowerCase language.Generic.Common.kParent}}}{{/if}}
+		{{#ifEqual isParent false}}{{{ToLowerCase language.Common.kStudent}}}{{/ifEqual}}
+	</td>
+	<td>
+		{{#each similarGroups}}
+			{{#each similarUsers}}
+				<p>
+					{{printTitle}} {{#if birthDate}} {{DateOnly2str birthDate}} {{/if}}
+				</p>
+			{{/each}}
+		{{/each}}
+	</td>
+	<td>
+		{{#each similarGroups}}
+			{{#each similarUsers}}
+				<p>
+					{{organization}}
+				</p>
+			{{/each}}
+		{{/each}}
+	</td>
+	<td>
+		{{#if similarGroups}}
+		<p style="text-decoration: {{ExistsEnabledGroups similarGroups}}">
+			{{{language.Generic.Movement.kUsePerson}}}
+		</p>
+		{{/if}}
+		{{#each similarOptions}}
+		<p>
+			{{title}}
+		</p>
+		{{/each}}
+	</td>
+</tr>

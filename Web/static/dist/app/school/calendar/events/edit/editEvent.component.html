@@ -1,0 +1,106 @@
+<form role="form" name="$ctrl.form" class="form form-sm form-horizontal">
+
+	<div class="form-group" ng-class="{ 'has-error': $ctrl.form.name.$invalid && (!$ctrl.form.name.$pristine || $ctrl.form.name.$dirty)}">
+		<label class="control-label col-md-4" for="Name">{{$ctrl.language.Generic.Common.kName}}</label>
+		<div class="col-md-8">
+			<input track-changes type="text" id="name" name="name" class="form-control FilterWhiteSpace" ng-model="$ctrl.model.name" required maxlength="200" ng-disabled="$ctrl.readonly" />
+
+			<p ng-if="$ctrl.form.name.$invalid && (!$ctrl.form.name.$pristine || $ctrl.form.name.$dirty)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error': $ctrl.form.eventType.$invalid && (!$ctrl.form.eventType.$pristine || $ctrl.form.eventType.$dirty)}">
+		<label class="control-label col-md-4" for="eventType">{{$ctrl.language.Generic.Common.kView}}</label>
+		<div class="col-md-8" ng-hide="$ctrl.readonly">
+			<select track-changes class="form-control" id="eventType" name="eventType" ng-model="$ctrl.model.eventType" ng-options="eventType.key as eventType.name for eventType in $ctrl.eventsTypes" ng-change="$ctrl.onChangeType()" disabled></select>
+			<p ng-if="$ctrl.form.eventType.$invalid && (!$ctrl.form.eventType.$pristine || $ctrl.form.eventType.$dirty)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+		</div>
+		<div class="col-md-8" ng-show="$ctrl.readonly"><input track-changes class="form-control" type="text" disabled="disabled" value="{{$ctrl.get($ctrl.eventsTypes, $ctrl.model.eventType, 'key', 'name')}}"></div>
+	</div>
+
+		<div class="form-group" ng-class="{ 'has-error': $ctrl.form.startTime.$invalid && (!$ctrl.form.startTime.$pristine || $ctrl.form.startTime.$dirty)}">
+			<label class="control-label col-md-4" for="startTime">{{$ctrl.startDateName()}}</label>
+			<div class="col-md-8" ng-if="!$ctrl.readonly">
+
+				<date-input-component track-changes ng-if="$ctrl.ready"
+					name="startTime"
+					id="startTime"
+					date-model="$ctrl.model.startTime"
+					min-date="$ctrl.dateLimits.start"
+					max-date="$ctrl.dateLimits.end"
+					required="true"
+					options="{ getterSetter: true }">
+				</date-input-component>
+
+				<time-input track-changes name="startTime2" ng-model="$ctrl.startTime2" offset="$ctrl.startTimeOffset" ng-if="$ctrl.withTime" ng-model-options="{ getterSetter: true }" />
+			
+				<p ng-if="$ctrl.form.startTime.$invalid && (!$ctrl.form.startTime.$pristine || $ctrl.form.startTime.$dirty)" class="help-block">{{$ctrl.dateInvalidMessage}}</p>
+
+			</div>
+			<div class="col-md-8" ng-if="$ctrl.readonly"><input track-changes class="form-control" type="text" disabled="disabled" value="{{$ctrl.formatDate($ctrl.model.startTime)}}"></div>
+		</div>				
+
+		<div class="form-group" ng-class="{ 'has-error': $ctrl.form.endTime.$invalid && (!$ctrl.form.endTime.$pristine || $ctrl.form.endTime.$dirty)}">
+			<label class="control-label col-md-4" for="endTime">{{$ctrl.endDateName()}}</label>
+			<div class="col-md-8" ng-if="!$ctrl.readonly">
+
+				<date-input-component track-changes ng-if="$ctrl.ready"
+					name="endTime"
+					id="endTime"
+					date-model="$ctrl.model.endTime"
+					min-date="$ctrl.dateLimits.start"
+					max-date="$ctrl.dateLimits.end"
+					required="true">
+				</date-input-component>
+				
+				<time-input track-changes name="endTime2" ng-model="$ctrl.endTime2" offset="$ctrl.endTimeOffset" ng-if="$ctrl.withTime" />
+
+				<p ng-if="$ctrl.form.endTime.$invalid && (!$ctrl.form.endTime.$pristine || $ctrl.form.endTime.$dirty)" class="help-block">{{$ctrl.dateInvalidMessage}}</p>
+
+			</div>
+			<div class="col-md-8" ng-if="$ctrl.readonly"><input track-changes class="form-control" type="text" disabled="disabled" value="{{$ctrl.formatDate($ctrl.model.endTime)}}"></div>
+		</div>
+
+
+	<div class="form-group" ng-class="{ 'has-error': $ctrl.form.class.$invalid && (!$ctrl.form.class.$pristine || $ctrl.form.class.$dirty)}" ng-if="$ctrl.model.eventType == 'ClassEvents'">
+		<label class="control-label col-md-4" for="class">{{$ctrl.language.Common.kClass}}</label>
+		<div class="col-md-8" ng-hide="$ctrl.readonly">
+			<select track-changes class="form-control" id="class" name="class" ng-model="$ctrl.model.class" ng-options="class as class.name for class in $ctrl.classes track by class.id" required></select>
+
+			<p ng-if="form.class.$invalid && (!form.class.$pristine || form.class.$dirty)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+		</div>
+		<div class="col-md-8" ng-show="$ctrl.readonly"><input track-changes class="form-control" type="text" disabled="disabled" ng-model="$ctrl.model.class.name"></div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error': $ctrl.form.periodicity.$invalid && (!$ctrl.form.periodicity.$pristine || $ctrl.form.periodicity.$dirty)}" ng-hide="$ctrl.model.eventType == 'ClassEvents'">
+		<label class="control-label col-md-4" for="periodicity">{{$ctrl.language.Generic.SetupSchoolCalendar.kPeriodicity}}</label>
+		<div class="col-md-8" ng-hide="$ctrl.readonly">
+			<select track-changes class="form-control" id="periodicity" name="periodicity" ng-model="$ctrl.model.periodicity" ng-options="id as value for (id, value) in $ctrl.periodicity" required ng-disabled="$ctrl.readonly"></select>
+
+			<p ng-if="$ctrl.form.periodicity.$invalid && (!$ctrl.form.periodicity.$pristine || $ctrl.form.periodicity.$dirty)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+		</div>
+		<div class="col-md-8" ng-show="$ctrl.readonly"><input track-changes class="form-control" type="text" disabled="disabled" value="{{periodicity[!!$ctrl.model.periodicity]}}"></div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error': $ctrl.form.room.$invalid && (!$ctrl.form.room.$pristine || $ctrl.form.room.$dirty)}" ng-if="$ctrl.model.eventType == 'ClassEvents' || $ctrl.model.eventType == 'SchoolEvent'">
+		<label class="control-label col-md-4" for="room">{{$ctrl.language.Common.kRoom}}</label>
+		<div class="col-md-8" ng-hide="$ctrl.readonly">
+			<select track-changes class="form-control" id="room" name="room"
+				ng-model="$ctrl.room"
+				ng-options="room as room.roomname for room in $ctrl.rooms track by room.id" required ng-disabled="$ctrl.readonly">
+			</select>
+
+			<p ng-if="$ctrl.form.room.$invalid && (!$ctrl.form.room.$pristine || $ctrl.form.room.$dirty)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+		</div>
+		<div class="col-md-8" ng-show="$ctrl.readonly"><input track-changes class="form-control" type="text" disabled="disabled" ng-value="$ctrl.room.name"></div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error': $ctrl.form.description.$invalid && (!$ctrl.form.description.$pristine || $ctrl.form.description.$dirty)}" ng-if="$ctrl.model.eventType == 'ClassEvents' || $ctrl.model.eventType == 'SchoolEvent'">
+		<label class="control-label col-md-4" for="description">{{$ctrl.language.Generic.SetupSchoolCalendar.kDescr}}</label>
+		<div class="col-md-8">
+			<textarea track-changes id="description" name="description" class="form-control FilterWhiteSpace" ng-model="$ctrl.model.description" rows="5" cols="40" wrap="soft" ng-disabled="$ctrl.readonly"></textarea>
+
+			<p ng-if="$ctrl.form.description.$invalid && (!$ctrl.form.description.$pristine || $ctrl.form.description.$dirty)" class="help-block">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</p>
+		</div>
+	</div>
+</form>

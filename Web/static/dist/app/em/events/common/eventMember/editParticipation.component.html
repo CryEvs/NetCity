@@ -1,0 +1,125 @@
+	<link rel="stylesheet" type="text/css" href="/static/dist/pages/common/css/file-attachments.min.css">
+	<legend>Результаты участия</legend>
+
+	<div class="row">
+		<div class="col-md-12" ng-if="!$ctrl.canEditResults">
+			<div class="alert alert-warning" role="alert">
+				Заполнять итоги участия можно только для мероприятий со статусами: "Проведение", "Подведение итогов"
+			</div>
+		</div>
+		<div class="col-md-12" ng-if="$ctrl.isContinuingAppeal">
+			<div class="alert alert-warning" role="alert">
+				<span>Результат участия находится в процессе просмотра/апелляции.</span>
+				<br>
+				<span>Изменение результатов на данный момент невозможно.</span>
+			</div>
+		</div>
+
+		<div class="col-md-12" ng-if="$ctrl.isNationOlympiad && $ctrl.noEmStaff">
+			<div class="alert alert-warning" role="alert">
+				Заполнение итогов участия мероприятий всероссийской олимпиады школьников доступно только сотрудникам.
+			</div>
+		</div>
+		<div class="col-md-12" ng-if="$ctrl.isNationOlympiad && !$ctrl.noEmStaff && $ctrl.noNationOlympOrg">
+			<div class="alert alert-warning" role="alert">
+				Заполнение итогов участия мероприятий всероссийской олимпиады школьников доступно только организаторам данного мероприятия.
+			</div>
+		</div>		
+	</div>
+
+	<ng-form name="participationForm" ng-if="$ctrl.canEditResults || $ctrl.resultsFilled">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group" ng-class="{'has-error': participationForm.title.$invalid && (!participationForm.title.$pristine || participationForm.$$parentForm.$displayErrors)}">
+					<label for="member-title" class="control-label">{{$ctrl.title}}</label>
+					<div>
+						<select ng-required="$ctrl.isNationOlympiad && $ctrl.canEditResults && !$ctrl.isRegionalOrDistrictEvent" ng-disabled="$ctrl.readonly || !$ctrl.canEditResults || $ctrl.isContinuingAppeal" name="title" track-changes class="form-control" id="member-title" ng-options="eventMemberTitle as eventMemberTitle.name for eventMemberTitle in $ctrl.titles track by eventMemberTitle.id" ng-model="$ctrl.participationInfo.title">
+							<option value=""></option>
+						</select>
+						<p ng-show="participationForm.title.$invalid && (!participationForm.title.$pristine || participationForm.$$parentForm.$displayErrors)" class="help-block">
+							{{$ctrl.language.Generic.Common.kEnterDataInPlace}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6" ng-if="!$ctrl.isNationOlympiad">
+				<div class="form-group" ng-class="{'has-error': participationForm.rank.$invalid && (!participationForm.rank.$pristine || participationForm.$$parentForm.$displayErrors)}">
+					<label for="member-rank" class="control-label">Место/рейтинг</label>
+					<div>
+						<input name="rank" track-changes type="text" id="member-rank" class="form-control" ng-model="$ctrl.participationInfo.rank" maxlength="200" ng-disabled="!$ctrl.canEditResults" ng-readonly="$ctrl.readonly">
+						<div ng-if="participationForm.rank.$invalid && (!participationForm.rank.$pristine || participationForm.$$parentForm.$displayErrors)" ng-messages="participationForm.rank.$error">
+							<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6" ng-if="$ctrl.isNationOlympiad">
+				<div class="form-group" ng-class="{'has-error': participationForm.score.$invalid && (!participationForm.score.$pristine || participationForm.$$parentForm.$displayErrors)}">
+					<label for="member-score" class="control-label">Количество набранных баллов</label>
+					<div>
+						<input name="score" track-changes type="number" id="member-score" ng-readonly="$ctrl.readonly" class="form-control" ng-model="$ctrl.participationInfo.score" ng-required="$ctrl.canEditResults" ng-min="0" ng-max="9999" ng-pattern="/^\d+$/" ng-disabled="!$ctrl.canEditResults || $ctrl.isContinuingAppeal">
+						<div ng-if="participationForm.score.$invalid && (!participationForm.score.$pristine || participationForm.$$parentForm.$displayErrors)" ng-messages="participationForm.score.$error">
+							<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Common.kEnterDataInPlace}}</span>
+							<span class="help-block" ng-message="number">{{$ctrl.digitsError()}}</span>
+							<span class="help-block" ng-message="pattern">{{$ctrl.digitsError()}}</span>
+							<span class="help-block" ng-message="min">{{$ctrl.minError()}}</span>
+							<span class="help-block" ng-message="max">{{$ctrl.maxError()}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row" ng-show="$ctrl.event.awardEventType.id=='SportEvent'">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="member-sportTitle" class="control-label">Спортивное звание</label>
+					<div>
+						<select track-changes class="form-control" id="member-sportTitle" ng-disabled="$ctrl.readonly" ng-options="sportTitle as sportTitle.name for sportTitle in $ctrl.refs.sportTitles track by sportTitle.id" ng-model="$ctrl.participationInfo.sportTitle">
+							<option value=""></option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-md-6">
+					<label for="member-sportCategory" class="control-label">Спортивный разряд</label>
+					<div>
+						<select track-changes class="form-control" id="member-sportCategory" ng-disabled="$ctrl.readonly" ng-options="sportCategory as sportCategory.name for sportCategory in $ctrl.refs.sportCategories track by sportCategory.id" ng-model="$ctrl.participationInfo.sportCategory" ng-disabled="!$ctrl.canEditResults">
+							<option value=""></option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="$ctrl.isNationOlympiad" ng-hide="$ctrl.readonly && !$ctrl.participationInfo.files.length">
+			<label for="member-files" class="control-label">Диплом призёра/победителя</label>
+			<div>
+				<file-attachments settings="$ctrl.fa"></file-attachments>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="member-specialNotes" class="control-label">Особые отметки</label>
+			<div>
+				<input track-changes type="text" id="member-specialNotes" class="form-control" ng-model="$ctrl.participationInfo.specialNotes" ng-readonly="$ctrl.readonly" maxlength="200" ng-disabled="!$ctrl.canEditResults || $ctrl.isContinuingAppeal">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<button class="btn btn-primary" ng-if="$ctrl.showAppealButton && !$ctrl.notValidDate(-4, $ctrl.event.dto.endTime)" ng-click="$ctrl.applyAppeal()">
+				<span>Подать заявление на просмотр работы</span>
+			</button>
+		</div>
+
+		<div class="col-md-12" ng-if="$ctrl.showAppealButton && $ctrl.notValidDate(-4, $ctrl.event.dto.endTime)">
+			<div class="alert alert-warning" role="alert">
+				Истёк срок подачи заявления на просмотр работы (4 дня)
+			</div>
+		</div>	
+
+	</ng-form>
+
+	<appeal-panel ng-if="$ctrl.isNationOlympiad && $ctrl.hasAppeal" event-end-time="$ctrl.event.dto.endTime" event-member-id="$ctrl.eventMemberId" appeal-id="$ctrl.participationInfo.dto.appealId"></appeal-panel>

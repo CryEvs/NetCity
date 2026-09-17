@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Физика. 11 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Физика. 11 класс" ID="1" Filename="ni_phys_11/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Электромагнитная индукция. Трансформатор. Электромагнитная индукция в современной технике." ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электромагнитная индукция. Трансформатор. Электромагнитная индукция в современной технике." 
+				Filename="sgo/ni_phys_11/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электрический ток в вакууме. Электронные лампы. Электронно-лучевая трубка." ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электрический ток в вакууме. Электронные лампы. Электронно-лучевая трубка." 
+				Filename="sgo/ni_phys_11/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электромагнетизм. Полупроводники." ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электромагнетизм. Полупроводники." 
+				Filename="sgo/ni_phys_11/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электромагнетизм. Полупроводниковый диод." ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электромагнетизм. Полупроводниковый диод." 
+				Filename="sgo/ni_phys_11/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электромагнетизм. Транзистор." ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электромагнетизм. Транзистор." 
+				Filename="sgo/ni_phys_11/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Квантовая физика. Планетарная модель атома. Опыт Резерфорда." ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Квантовая физика. Планетарная модель атома. Опыт Резерфорда." 
+				Filename="sgo/ni_phys_11/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Физика высоких энергий. Цепная ядерная реакция." ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Физика высоких энергий. Цепная ядерная реакция." 
+				Filename="sgo/ni_phys_11/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Физика высоких энергий. Ядерный реактор." ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Физика высоких энергий. Ядерный реактор." 
+				Filename="sgo/ni_phys_11/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Квантовая теория электромагнитного излучения и вещества. Рентгеновская трубка." ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Квантовая теория электромагнитного излучения и вещества. Рентгеновская трубка." 
+				Filename="sgo/ni_phys_11/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Электродинамика. Передача и распространение электроэнергии." ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Электродинамика. Передача и распространение электроэнергии." 
+				Filename="sgo/ni_phys_11/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Радиолокация." ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Радиолокация." 
+				Filename="sgo/ni_phys_11/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Квантовая физика. Лазер." ID="13">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Квантовая физика. Лазер." 
+				Filename="sgo/ni_phys_11/12/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Физика высоких энергий. Энергетическая система - атомная электростанция." ID="14">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Физика высоких энергий. Энергетическая система - атомная электростанция." 
+				Filename="sgo/ni_phys_11/13/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Термо- и фото- резистор." ID="15">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Термо- и фото- резистор." 
+				Filename="sgo/ni_phys_11/14/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Излучение и прием электромагнитных волн. Простейший радиоприемник." ID="16">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Излучение и прием электромагнитных волн. Простейший радиоприемник." 
+				Filename="sgo/ni_phys_11/15/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

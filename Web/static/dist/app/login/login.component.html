@@ -1,0 +1,49 @@
+<h1>Вход в систему</h1>
+
+
+<div class="content-preloader" ng-hide="$ctrl.ready">
+	<span class="arrows"></span>
+	<span class="title">Пожалуйста подождите</span>
+</div>
+
+<!-- <a href="#" ng-click="$ctrl.loginAnotherUser()" ng-hide="$ctrl.ready" ng-if="!$ctrl.fixedLogin">Перейти на форму авторизации</a> -->
+
+<div ng-if="$ctrl.ready && $ctrl.accounts.length == 0">
+	<a href="javascript:void(0)" ng-click="$ctrl.loginAnotherUser()">Войти</a>
+</div>
+
+<p ng-if="$ctrl.ready && $ctrl.accounts.length == 0">
+	<a href="javascript:void(0)" ng-click="$ctrl.loginWithEsia()" ng-if="$ctrl.canEsia()">Войти через госуcлуги</a>
+</p>
+
+<div ng-if="$ctrl.ready && $ctrl.accounts.length > 0">
+
+	<h3>Выберите пользователя для входа</h3>
+
+	<div class="row">
+	
+		<div class="col-md-12">
+			<div class="list-group">
+				<div class="list-group-item" ng-repeat="account in $ctrl.accounts" ng-class="{'list-group-item-info': account.active, 'single-org': account.organizations.length == 1}" ng-click="$ctrl.login(account, null)">
+					<h4 class="list-group-item-heading">{{account.user.name + (account.active ? " (активный сеанс)" : "")}} </h4>
+					<div class="list-group-item-text">
+						<p ng-repeat="org in account.organizations">
+							<a href="javascript:void(0)" title="Войти" ng-click="$ctrl.login(account, org)">Организация: {{org.name}}</a>
+						</p>
+						<p>Дата последнего входа: {{account.loginTime | date : "dd.MM.yy HH:mm"}}</p>
+						<button type="button" class="btn btn-sm btn-default" ng-click="$ctrl.forget(account)" onclick="event.stopPropagation();">Удалить</button>
+						<button type="button" class="btn btn-sm btn-default" ng-click="$ctrl.logout(account)" onclick="event.stopPropagation();" ng-if="account.activeToken">Завершить сессию</button>
+					</div>
+				</div>
+			</div>
+			<p>
+				<a href="javascript:void(0)" ng-click="$ctrl.loginAnotherUser()" ng-if="!$ctrl.fixedLogin">Войти другим пользователем</a>
+			</p>
+
+			<p>
+				<a href="javascript:void(0)" ng-click="$ctrl.loginWithEsia()" ng-if="$ctrl.canEsia()">Войти через госуcлуги</a>
+			</p>
+
+		</div>
+	</div>
+</div>

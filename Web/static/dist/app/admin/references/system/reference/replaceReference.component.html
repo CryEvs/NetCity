@@ -1,0 +1,76 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.title}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<div class="form-horizontal">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="referenceTypeFilter" class="control-label col-md-3">
+							{{$ctrl.language.Generic.ServAdmin.kReplaceTo}}
+						</label>
+
+						<div class="col-md-9">
+							<ui-select ng-model="$ctrl.result" ng-init="$ctrl.init()">
+								<ui-select-match placeholder="{{$ctrl.language.Generic.ServAdmin.kChooseReplacement}}">
+									<span ng-bind-html="$ctrl.getMain($select.selected.fields)"></span>
+								</ui-select-match>
+								<ui-select-choices repeat="item in ($ctrl.formatedData | filter: $select.search | limitTo: 25) track by item.id">
+									<div ng-bind-html="$ctrl.getMain(item.fields) | highlight: $select.search"></div>
+									<small>
+										<div ng-repeat="data in item.fields | filter: {isMain: false}">
+											{{data.name}}: <span ng-bind-html="''+data.value | highlight: $select.search"></span>
+										</div>
+									</small>
+								</ui-select-choices>
+							</ui-select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div ng-if="$ctrl.model.data && $ctrl.model.data.length">
+						<table class="table table-bordered table-xs table-hover table-thin">
+							<thead>
+								<tr>
+									<th>№</th>
+									<th ng-repeat="column in $ctrl.model.fields | filter:{isHidden: false}">
+										{{ column['uiName'].replace(br, '\n') || column['systemName']}}
+									</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr ng-repeat="line in page = $ctrl.model.data">
+									<td>{{$index + 1}}</td>
+									<td ng-repeat="column in $ctrl.model.fields | filter:{isHidden: false}">
+										<div>
+											{{ $ctrl.getText(line, column) }}
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-class="button.class"
+			ng-repeat="button in $ctrl.buttons track by button.id"
+			ng-click="button.action()" ng-disabled="button.disabled()" title="{{button.title}}">
+			<span ng-if="button.icon" class="bootstrap-dialog-button-icon glyphicon glyphicon" ng-class="button.icon"></span>
+			<span>{{button.title}}</span>
+		</button>
+	</div>
+</div>

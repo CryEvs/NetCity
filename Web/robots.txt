@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /vendor/
+Disallow: /static/
+Disallow: /js/

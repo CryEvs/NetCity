@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col-md-12">
+		<hr/>
+		<div class="buttons-panel">
+
+			<button title="Добавить куратора" type="button" class="btn btn-info" ng-click="$ctrl.add()" ng-hide="$ctrl.state.readOnly">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+			</button>
+
+			<button title="Удалить куратора" type="button" class="btn btn-danger" ng-click="$ctrl.delete()" ng-disabled="!$ctrl.data.selection.selected" ng-hide="$ctrl.state.readOnly">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+			</button>
+
+			<button title="Показать подопечных" type="button" class="btn btn-info" ng-click="$ctrl.viewStudents()" ng-disabled="!$ctrl.data.selection.selected">
+				<span class="icon-group"></span>
+				<span>{{$ctrl.language.Generic.TalentStudents.kCuratorTalentStudents}}</span>
+			</button>
+
+		</div>
+	</div>
+</div>
+
+
+<div class="alert alert-info" role="alert" ng-if="$ctrl.data.curators.length == 0">{{$ctrl.language.Generic.TalentStudents.kNoCurators}}</div>
+<div class="alert alert-info" role="alert" ng-if="$ctrl.data.curators.length > 0 && $ctrl.data.viewCurators.length == 0">{{$ctrl.language.Generic.TalentStudents.kNoCuratorsByFilter}}</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-thin table-bright table-bright-hover table-selectable" ng-show="$ctrl.data.viewCurators.length > 0">
+			<tr>
+				<th>{{$ctrl.language.Generic.Reports.kFIOstud}}</th>
+				<th>{{$ctrl.language.Generic.Common.kEO}}</th>
+				<th>{{$ctrl.language.Generic.Reports.kPosition}}</th>
+				<th>{{$ctrl.language.Generic.Common.kContactInfo}}</th>
+			</tr>
+			<tr ng-repeat="curator in $ctrl.data.viewCurators"  ng-class="{'selected': $ctrl.data.selection.isSelected(curator)}" ng-click="$ctrl.data.selection.select(curator)">
+				<td>{{curator.fio}}</td>
+				<td>{{curator.school.name}}</td>
+				<td>{{curator.position}}</td>
+				<td>{{curator.contacts}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

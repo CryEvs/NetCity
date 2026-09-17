@@ -1,0 +1,10 @@
+{
+	"sumRows": [
+		{
+			"row": 82,
+			"subRows": {"start": 83, "end": 104},
+			"cols": [ 4 ],
+			"type": "sum"
+		}
+	]
+}

@@ -1,0 +1,106 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+			<div class="bootstrap-dialog-close-button">
+				<button class="close" ng-click="ctrl.cancel()">×</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<span class="content-page-preloader" id="preloader" ng-hide="ctrl.ready"><span>{{ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+		
+		<form role="form" name="variantForm" class="form-horizontal ng-pristine ng-valid ng-scope">
+			<div class="panel-group" id="formPanel" ng-show="ctrl.ready">
+
+				<div class="row">
+					<div class="col-md-10">
+						<div class="form-group">
+							<label for="name" class="control-label col-md-4 col-lg-3 col-sm-4">Наименование</label>
+							<div class="col-md-8 col-lg-9 col-sm-8">
+								<input track-changes type="text" class="form-control" id="name" ng-model="ctrl.data.variant.name" required maxlength="200">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-10">
+						<div class="form-group">
+
+							<label class="control-label col-md-4 col-lg-3 col-sm-4">Назначено</label>
+							<div class="col-md-8 col-lg-9 col-sm-8">
+
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="radio-inline" ng-repeat="type in ctrl.data.appointedTypes">
+											<input track-changes type="radio" ng-model="ctrl.data.variant.appointedType.id" ng-value={{type.id}}>{{type.name}}
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div ng-show="ctrl.showAppointedSchools()">
+					<div class="row">
+						<div class="col-md-10">
+							<div class="form-group">
+								<label for="schools" class="control-label col-md-4 col-lg-3 col-sm-4">Школы для назначения:</label>
+								<div class="col-md-8 col-lg-9 col-sm-8">
+									<ui-select track-changes
+												multiple
+												id="currAppointedSchools"
+												ng-model="ctrl.data.variant.schools"
+												theme="bootstrap">
+										<ui-select-match placeholder="Пожалуйста, выберите ОО для назначения">{{$item.name}}</ui-select-match>
+										<ui-select-choices repeat="school in ctrl.data.schools | filter: $select.search">
+											<div ng-bind-html="school.name | highlight: $select.search"></div>
+										</ui-select-choices>
+									</ui-select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div ng-show="ctrl.showAppointedMunicipalities()">
+					<div class="row">
+						<div class="col-md-10">
+							<div class="form-group">
+								<label for="founders" class="control-label col-md-4 col-lg-3 col-sm-4">Муниципалитеты для назначения:</label>
+								<div class="col-md-8 col-lg-9 col-sm-8">
+									<ui-select track-changes
+												multiple
+												id="currFounders"
+												ng-model="ctrl.data.variant.founders"
+												theme="bootstrap">
+										<ui-select-match placeholder="Пожалуйста, выберите муниципалитет для назначения">{{$item.name}}</ui-select-match>
+										<ui-select-choices repeat="founder in ctrl.data.founders | filter: $select.search">
+											<div ng-bind-html="founder.name | highlight: $select.search"></div>
+										</ui-select-choices>
+									</ui-select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer" ng-show="ctrl.ready">
+		<button class="btn btn-primary ng-binding" ng-click="ctrl.ok(ctrl.data.variant.name)">
+			Сохранить
+		</button>
+		<button class="btn btn-default ng-binding" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			Отмена
+		</button>
+	</div>
+
+</div>

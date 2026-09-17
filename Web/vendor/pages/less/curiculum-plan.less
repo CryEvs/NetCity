@@ -1,0 +1,206 @@
+﻿@min-cell-width: 22px;
+@overflow-color: #FF6767;
+@changes-color: #C9DDF0;
+@hover-color: #FFF5C0;
+@no-iup-classes-color: #E584FF;
+@no-input-color: rgb(240, 240, 240);
+@subject-field-color: #E2FFEA;
+@header-color: #E7EFF7;
+@fact-load-row-color: #DFDFDF;
+@plan-load-row-color: #FEEAC9;
+
+div.legend {
+	span{
+		&.legend-overflow {
+			background-color: @overflow-color;
+		}
+		&.legend-changes {
+			background-color: @changes-color;
+		}
+		&.legend-iup-no-classes {
+			background-color: @no-iup-classes-color;
+		}
+	}
+}
+
+div#plan-container {
+	form {
+		margin: 0;
+	}
+}
+
+table.curiculum-plan {
+	td {
+		padding: 1px;
+	}
+
+	th.vertical {
+		vertical-align: bottom;
+	}
+
+	tr.header-row {
+		th {
+			-ms-word-break: break-all;
+			word-break: break-all;
+			-ms-word-wrap: break-word;
+			word-wrap: break-word;
+			text-align: center;
+			min-width: @min-cell-width;
+			&.no-iup-classes {
+				background-color: @no-iup-classes-color;
+			}
+		}
+
+		background-color: @header-color;
+	}
+
+	tr.class-row {
+		background-color: @header-color;
+
+		th {
+			text-align: center;
+			min-width: @min-cell-width;
+
+			&.hover {
+				background-color: @hover-color;
+			}
+
+			&.no-iup-classes {
+				background-color: @no-iup-classes-color;
+			}
+		}
+	}
+
+	body.preschool & {
+		tr.grade-row {
+			th {
+				font-size: 9px;
+				-ms-word-break: break-all;
+				word-break: break-all;
+			}
+		}
+	}
+
+	tr.grade-row {
+		background-color: @header-color;
+
+		th {
+			text-align: center;
+			min-width: @min-cell-width;
+		}
+	}
+
+	tr.total-row {
+		text-align: center;
+		font-weight: bold;
+		background-color: @plan-load-row-color;
+	}
+
+	tr.total-fact-load-row {
+		background-color: @fact-load-row-color;
+		font-weight: bold;
+
+		td {
+			min-width: @min-cell-width;
+			text-align: center;
+
+			&.overflow {
+				background-color: @overflow-color;
+			}
+		}
+	}
+
+	tr.component-row {
+		text-align: center;
+		font-weight: bold;
+		background-color: @plan-load-row-color;
+	}
+
+	tr.component-fact-load-row {
+		background-color: @fact-load-row-color;
+		font-weight: bold;
+
+		td {
+			min-width: @min-cell-width;
+			text-align: center;
+
+			&.overflow {
+				background-color: @overflow-color;
+			}
+		}
+	}
+
+	tr.total-teacher-load-row {
+		> td {
+			padding-left: 1px;
+			padding-right: 1px;
+			min-width: @min-cell-width;
+			text-align: center;
+			font-weight: bold;
+		}
+
+		background-color: @fact-load-row-color;
+	}
+
+	tr.subject-field-row {
+		background-color: @subject-field-color;
+
+		> td {
+			padding-left: 5px;
+		}
+	}
+
+	&.readonly {
+		tr.subject-row {
+			> td:not(:first-child) {
+				cursor: not-allowed;
+				background-color: @no-input-color;
+			}
+		}
+	}
+
+	tr.subject-row {
+		> td {
+			font-size: 12px;
+			min-width: @min-cell-width;
+
+			&.no-input {
+				background-color: @no-input-color;
+				cursor: not-allowed;
+			}
+
+			&.waschanged {
+				background-color: @changes-color;
+			}
+
+			> input {
+				min-height: 20px;
+				border-radius: 0;
+				padding: 0;
+				margin: 0;
+				width: 100%;
+				max-width: @min-cell-width - 2;
+			}
+
+			&.input-cell {
+				cursor: text;
+				padding: 0;
+				margin: 0;
+
+				span {
+					display: block;
+				}
+
+				&:hover {
+					background-color: @hover-color;
+				}
+			}
+
+			span.subject-name {
+				padding-left: 10px;
+				white-space: nowrap;
+				overflow-x: hidden;
+			}
+		}
+	}
+}

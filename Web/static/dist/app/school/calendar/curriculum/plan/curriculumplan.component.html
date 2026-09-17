@@ -1,0 +1,107 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/calendar/curriculum/plan/css/curiculum-plan.min.css">
+
+<div ng-show="$ctrl.withTermTypeNotDefined" class="alert alert-warning" role="alert">
+	{{$ctrl.language.Generic.Common.kNoTermsInYear}}
+	<br>{{$ctrl.language.Generic.Common.kDefineTermsTypes_1}}
+	<a style="cursor: pointer;" ng-click="$ctrl.goTermTypes()">{{$ctrl.language.Generic.SetupSchoolCalendar.kTermTypes}}</a> {{$ctrl.language.Generic.Common.kDefineTermsTypes_2}}
+</div>
+
+<div ng-hide="$ctrl.withTermTypeNotDefined">
+	<div class="row ns-cloak">
+		<div class="col-md-12 buttons-filters-panel form-horizontal single-row">
+			<div class="buttons-panel" ng-if="$ctrl.ready && !$ctrl.noClasses && !$ctrl.noLimits">
+				<div class="buttons-panel-right">
+					<print-component settings="$ctrl.printSettings" ng-if="$ctrl.ready && !$ctrl.noClasses && !$ctrl.noLimits"></print-component>
+				</div>
+			</div>
+			<filter-panel class="filters-panel filters-panel-compact" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings">
+				<div class="form-group aux active" ng-if="!$ctrl.extraActivity && $ctrl.appContext.funcType != 3">
+					<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.SetupSchoolCalendar.kTitleSubjectGroups}}</label>
+					<div class="col-md-8 col-lg-5 col-sm-8">
+						<select class="form-control" name="parentSubjects" ng-change="$ctrl.changeViewType()" ng-model="$ctrl.settings.parentSubjectsViewType" ng-options="viewType.id as viewType.name for viewType in $ctrl.parentSubjectsViewTypes"></select>
+					</div>
+				</div>
+			</filter-panel>
+		</div>
+	</div>
+
+	<div class="alert alert-info" role="alert" ng-if="$ctrl.noClasses && $ctrl.ready">
+		{{$ctrl.language.SetupSchoolCurPlan.kNoClassesForGradeAndPeriodType}}
+	</div>
+
+	<div class="alert alert-info" role="alert" ng-if="$ctrl.noLimits">
+		{{$ctrl.getNoLimitsMessage()}}
+	</div>
+
+	<div class="row ns-cloak">
+		<div class="col-md-12" ng-if="$ctrl.ready && !$ctrl.noClasses && !$ctrl.noLimits">
+			<div class="buttons-panel extra">
+				<div class="buttons-panel-left" ng-if="!$ctrl.readonly">
+					<button type="button" class="btn btn-primary btn-sm" ng-click="$ctrl.save()">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+					<button title="{{$ctrl.language.Generic.Buttons.kReset}}" type="button" class="btn btn-warning btn-sm" ng-click="$ctrl.reset()" ng-disabled="!$ctrl.isDataChanged">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+					</button>
+
+					<button title="{{$ctrl.language.Generic.Buttons.kCopy}}" type="button" class="btn btn-default btn-sm" ng-click="$ctrl.copy()" ng-if="!$ctrl.extraActivity">
+						<span class="glyphicon glyphicon-duplicate"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kCopy}}</span>
+					</button>
+
+					<button title="{{$ctrl.language.Generic.SetupSchoolCurPlan.kAddLimit}}" type="button" class="btn btn-info btn-sm" ng-click="$ctrl.addHours()">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>{{$ctrl.language.Generic.SetupSchoolCurPlan.kAddLimit}}</span>
+					</button>
+					<button title="{{$ctrl.getClearCurriculumPlanBtnTitle()}}" type="button" class="btn btn-danger btn-sm" ng-click="$ctrl.clear()">
+						<span class="glyphicon glyphicon-minus-sign"></span>
+						<span>{{$ctrl.language.Generic.SetupSchoolCurPlan.kClearCurriculumPlanBtn}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="content-preloader" ng-show="$ctrl.model && !$ctrl.ready">
+		<span class="arrows"></span>
+		<span class="title">{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+	</div>
+
+	<div class="alert alert-info" role="alert" ng-if="$ctrl.ready && $ctrl.emptyData">
+		{{$ctrl.planMessages.kCurriculumEmpty}}
+	</div>
+
+	<div class="row">
+		<div class="col-md-12" ng-if="$ctrl.model && $ctrl.ready && !$ctrl.emptyData && !$ctrl.noClasses && !$ctrl.noLimits">
+			<classic-curriculum-plan-table model="$ctrl.model" settings="$ctrl.settings" ng-if="!$ctrl.iup && !$ctrl.extraActivity"></classic-curriculum-plan-table>
+			<iup-curriculum-plan-table model="$ctrl.model" legends="$ctrl.legends" ng-if="$ctrl.iup"></iup-curriculum-plan-table>
+			<ea-curriculum-plan-table model="$ctrl.model" ng-if="$ctrl.extraActivity"></ea-curriculum-plan-table>
+
+			<div class="legend">
+				<div>
+
+					<p>
+						<span class="legend-label legend-changes"></span>
+						<span class="legend-description"> — {{$ctrl.planMessages.kChangeCurriculum}}</span>
+					</p>
+
+					<p>
+						<span class="legend-label legend-overflow"></span>
+						<span class="legend-description"> — {{$ctrl.planMessages.kOverflowCurriculum}}</span>
+					</p>
+
+				</div>
+
+				<div>
+					<p ng-repeat="legend in $ctrl.legends" ng-if="legend.show">
+						<span class="legend-label {{legend.class}}"></span>
+						<span class="legend-description"> — {{legend.description}}</span>
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

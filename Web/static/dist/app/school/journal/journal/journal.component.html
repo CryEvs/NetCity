@@ -1,0 +1,93 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/journal/journal/css/journal.min.css">
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/journal/journal/css/edit-journal.min.css">
+
+<div class="buttons-filters-panel form-horizontal single-row ns-cloak">
+	<div class="row journal-filters">
+		<div class="buttons-panel">
+			<div class="buttons-panel-right">
+				<button title="{{$ctrl.language.Assignment.kLessonThemeAndAssignments}}" type="button" class="btn btn-default assign-themes-btn" ng-click="$ctrl.editAssignments()">
+					<span>{{$ctrl.language.Assignment.kLessonThemeAndAssignments}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Buttons.kPrint}}" ng-if="$ctrl.loaded" type="button" class="btn btn-default journal-print-btn" ng-click="$ctrl.printJournal()">
+					<span class="glyphicon glyphicon-print"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kPrint}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kBtnExcel}}" ng-if="$ctrl.loaded" type="button" class="btn btn-default journal-export-btn" ng-click="$ctrl.exportJournal()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>{{$ctrl.language.Generic.Common.kBtnExcel}}</span>
+				</button>
+			</div>
+		</div>
+		<filter-panel class="filters-panel col-md-12 filters-panel-compact" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+	</div>
+	<div id="quick-edit-panel" class="quick-edit-panel hide">
+		<div id="quick-edit-options" class="filters-panel-compact form-horizontal hide">
+			<div class="form-group"> 
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Assignment.kATAssignmentType}}</label> 
+				<div class="col-md-8 col-lg-5 col-sm-8"> 
+					<select class="form-control" style="display: inline-block;" id="quick-edit-assign-type-select"></select>
+				</div> 
+			</div>
+			<div class="form-group"> 
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Common.kMark}}</label> 
+				<div class="col-md-8 col-lg-5 col-sm-8"> 
+					<select class="form-control visible-sm visible-xs" style="display: inline-block;" id="quick-edit-mark"></select>
+					<div class="btn-group hidden-xs hidden-sm" role="group" id="quick-edit-mark-btns"></div>
+				</div> 
+			</div>
+			<div class="form-group"> 
+				<label class="control-label col-md-4 col-lg-3 col-sm-4">{{$ctrl.language.Generic.Grade.kAttendanceColumn}}</label> 
+				<div class="col-md-8 col-lg-5 col-sm-8"> 
+					<select class="form-control visible-sm visible-xs" style="display: inline-block;" id="quick-edit-attendance"></select>
+					<div class="btn-group hidden-xs hidden-sm" role="group" id="quick-edit-attendance-btns"></div>
+				</div> 
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row ns-cloak">
+	<div class="col-md-12 col-lg-12">
+		<div class="form-horizontal">
+			<div class="form-group">
+				<div class="col-md-12"> 
+					<button id="load-journal-btn" title="{{$ctrl.language.Generic.Buttons.kLoad}}" type="button" class="btn btn-primary btn-sm" ng-click="$ctrl.load()" ng-disabled="$ctrl.emptyFilter">
+						<span class="glyphicon glyphicon-search"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kLoad}}</span>
+					</button>
+					<button type="button" class="btn btn-warning btn-sm hide" data-toggle="button" aria-pressed="false" id="quick-edit-switch-btn"  ng-disabled="$ctrl.emptyData" ng-if="!$ctrl.emptyData && $ctrl.journalData">
+						<span>{{$ctrl.language.Generic.Buttons.kQuickEditMode}}</span>
+					</button>
+					<div class="hide" id="quick-edit-controls" style="display: inline">
+						<button title="{{$ctrl.language.Generic.Buttons.kSave}}" type="button" class="btn btn-primary btn-sm" disabled="disabled" id="quick-edit-save-btn">
+							<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+						</button>
+						<button title="{{$ctrl.language.Generic.Buttons.kCancel}}" type="button" class="btn btn-default btn-sm" disabled="disabled" id="quick-edit-cancel-btn">
+							<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+						</button>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 col-lg-12">
+		<div class="info-message ns-cloak" ng-show="!$ctrl.loaded && !$ctrl.loading && !$ctrl.emptyData">
+			<div class="alert alert-info" role="alert">{{$ctrl.language.Grade.kDisplayClassJournal}}</div>
+		</div>
+
+		<div class="info-message ns-cloak" ng-show="$ctrl.emptyData && !$ctrl.loading">
+			<div class="alert alert-info" role="alert" ng-bind-html="$ctrl.emptyText | newLineToBr"></div>
+		</div>
+
+
+		<div class="content-preloader" ng-if="$ctrl.loading">
+			<span class="arrows"></span>
+			<span class="title">{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+		</div>
+
+		<journal-table ng-hide="$ctrl.loading" ng-if="$ctrl.journalData && !$ctrl.emptyData" attendance-reasons="$ctrl.attendanceReasons" model="$ctrl.journalData" extra-activity="$ctrl.extraActivity"></journal-table>
+		<journal-last-access ng-hide="$ctrl.loading" ng-if="$ctrl.journalData && $ctrl.journalData.lastAccess" model="$ctrl.journalData.lastAccess"></journal-last-access>
+		<journal-legend ng-hide="$ctrl.loading" ng-if="$ctrl.journalData && !$ctrl.emptyData" ></journal-legend>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="header"></h4>
+				{{title}}
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<form role="form" name="form" class="form form-sm form-horizontal">
+			<div ng-include="'/static/dist/app/school/calendar/events/edit/template.html'"></div>
+		</form>				
+	</div>
+
+	<div class="modal-footer">
+
+		<button class="btn btn-primary" ng-click="ok()" ng-hide="readonly">
+			<span class="bootstrap-dialof-button-icon glyphicon glyphicon-plus-sign"></span>
+			<span>{{language.Generic.Buttons.kSave}}</span>
+		</button>
+
+		<button class="btn btn-default" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{language.Generic.Buttons.kCancel}}</span>
+		</button>
+
+	</div>
+
+</div>

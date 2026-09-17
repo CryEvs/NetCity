@@ -1,0 +1,39 @@
+﻿<table class="table table-bordered table-xs table-bright-striped table-bright-hover print-block table-thin">
+	<tr>
+		<th rowspan="2">{{language.Generic.Common.kDate}}</th>
+		<th rowspan="2">{{{language.Generic.ServAdmin.kAllLoginsCount}}}</th>
+		<th colspan="3">{{{language.Generic.ServAdmin.kIncluding}}}</th>
+		<th rowspan="2">{{{language.Generic.ServAdmin.kUniqueLoginsCount}}}</th>
+		<th colspan="3">{{{language.Generic.ServAdmin.kIncluding}}}</th>
+	</tr>
+	<tr>
+		<th>{{{language.Common.kStudents}}}</th>
+		<th>{{{language.Generic.Common.kStaffs}}}</th>
+		<th>{{{language.Generic.Common.kParents}}}</th>
+		<th>{{{language.Generic.Common.kStaffs}}}</th>
+		<th>{{{language.Common.kStudents}}}</th>
+		<th>{{{language.Generic.Common.kParents}}}</th>
+	</tr>
+	{{#each userStatEmInfo.userStats}}
+	<tr>
+		<td class="cell-date-short">{{date2strDayOnly statDate}}</td>
+		<td class="cell-num">{{allEntriesAmount}}</td>
+		<td class="cell-num">{{studentsEntriesAmount}}</td>
+		<td class="cell-num">{{staffEntriesAmount}}</td>
+		<td class="cell-num">{{parentsEntriesAmount}}</td>
+		<td class="cell-num">{{uniqueEntriesAmount}}</td>
+		<td class="cell-num">{{uniqueStaffEntriesAmount}}</td>
+		<td class="cell-num">{{uniqueStudentsEntriesAmount}}</td>
+		<td class="cell-num">{{uniqueParentsEntriesAmount}}</td>
+	</tr>
+	{{/each}}
+</table>
+<div class="row print-block">
+	<div class="col-md-6">
+		<span class="glyphicon glyphicon-user"></span>
+		<small>{{language.Generic.ServAdmin.kTotalLogins}}</small>
+		<strong>{{userStatEmInfo.statsAmount}}</strong>
+		<small>{{language.Generic.ServAdmin.kUniqueLogins}}</small>
+		<strong>{{userStatEmInfo.uniqueStatsAmount}}</strong>
+	</div>
+</div>

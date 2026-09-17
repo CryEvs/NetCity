@@ -1,0 +1,277 @@
+<style>
+	.select2-dropdown {
+		max-width: 400px;
+	}
+</style>
+<form class="form-horizontal form-xs" name="$ctrl.form">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()" ng-if="$ctrl.state.isLastYearToNewYear && $ctrl.state.hasEditRight || (!$ctrl.state.readOnly && $ctrl.data.moveDoc.subDocs && $ctrl.data.moveDoc.subDocs.length)">
+						<span class="glyphicon glyphicon-floppy-save"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+					</button>
+
+					<button title="{{$ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="$ctrl.reset()" ng-if="!$ctrl.state.readOnly && $ctrl.data.docId > 0">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+					</button>
+
+					<button title="{{$ctrl.language.Movement.kAddStudentsToDoc}}" type="button" class="btn btn-info" ng-click="$ctrl.addStudents()" ng-if="!$ctrl.state.readOnly">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>{{$ctrl.language.Movement.kAddStudentsToDoc}}</span>
+					</button>
+
+					<button title="{{$ctrl.language.Movement.kDelStudentsFromDoc}}" type="button" class="btn btn-danger" ng-click="$ctrl.deleteStudents()" ng-if="!$ctrl.state.readOnly && $ctrl.data.moveDoc.subDocs && $ctrl.data.moveDoc.subDocs.length">
+						<span class="glyphicon glyphicon-minus-sign"></span>
+						<span>{{$ctrl.language.Movement.kDelStudentsFromDoc}}</span>
+					</button>
+					
+					<button title="{{$ctrl.language.Generic.Movement.kDeleteMoveDoc}}" type="button" class="btn btn-danger" ng-click="$ctrl.delete()" ng-if="!$ctrl.state.readOnly && $ctrl.data.moveDoc.subDocs && $ctrl.data.moveDoc.subDocs.length">
+						<span class="glyphicon glyphicon-minus-sign"></span> 
+						<span>{{$ctrl.language.Generic.Movement.kDeleteMoveDoc}}</span>
+					</button>
+				</div>
+
+				<div class="buttons-panel-right">
+					<button title="Бланк договора" ng-if="$ctrl.showEducContractBlanks" type="button" class="btn btn-default" ng-click="$ctrl.educContractBlanks()">
+						<span>Бланк договора</span>
+					</button>
+					<button title="{{$ctrl.language.Generic.Buttons.kPrint}}" type="button" class="btn btn-default" ng-click="$ctrl.printMoveDoc()">
+						<span class="glyphicon glyphicon-print"></span>
+						<span>{{$ctrl.language.Generic.Buttons.kPrint}}</span>
+					</button>
+					<button title="{{$ctrl.language.Generic.Common.kBtnExcel}}" type="button" class="btn btn-default"  ng-click="$ctrl.export()">
+						<span class="glyphicon glyphicon-export"></span>
+						<span>{{$ctrl.language.Generic.Common.kBtnExcel}}</span>
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="filters-panel col-md-8 col-lg-5" ng-if="$ctrl.data.moveDoc">
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingfilters">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" class="" data-target="#filters" aria-expanded="true" aria-controls="filters">{{$ctrl.language.Generic.Movement.kDocument}}</a>
+					</h4>
+				</div>
+				<div id="filters" class="panel-collapse collapse in" aria-labelledby="headingfilters" role="tabpanel" style="" aria-expanded="true">
+					<div class="panel-body" ng-if="$ctrl.state.ready">
+						<div class="form-group">
+							<label class="control-label col-md-4 col-lg-4">{{$ctrl.language.Generic.Common.kSchoolYear}}</label>
+							<div class="col-md-8 col-lg-8">
+								<input class="form-control" type="text" disabled="disabled" ng-value="$ctrl.data.yearName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4 col-lg-4">{{$ctrl.language.Generic.Movement.kDocType}}</label>
+							<div class="col-md-8 col-lg-8">
+								<select track-changes ng-if="$ctrl.state.createMode" class="form-control" name="DOCTYPE" ng-model="$ctrl.data.docType" ng-options="docType as docType.name for docType in $ctrl.data.docTypes" ng-change="$ctrl.changeDocType()"></select>
+								<input ng-if="$ctrl.state.editMode" class="form-control" disabled="disabled" type="text" value="{{$ctrl.data.docType.name}}">
+							</div>
+						</div>
+						<div class="form-group" ng-if="$ctrl.withSubTypes">
+							<label class="control-label col-md-4 col-lg-4">{{$ctrl.language.Generic.Movement.kDocSubType}}</label>
+							<div class="col-md-8 col-lg-8">
+								<select track-changes ng-if="$ctrl.state.createMode && $ctrl.data.allowedDocSubTypes.length > 1" class="form-control" name="DOCSUBTYPE" ng-model="$ctrl.data.docSubType" ng-options="docSubType as docSubType.name for docSubType in $ctrl.data.allowedDocSubTypes"></select>
+								<input ng-if="$ctrl.state.editMode || $ctrl.data.allowedDocSubTypes.length === 1" class="form-control" disabled="disabled" type="text" value="{{$ctrl.data.docSubType.name}}">
+							</div>
+						</div>
+
+						<div class="form-group" ng-class="{ 'has-error': $ctrl.form.DOCNUMBER.$invalid && ($ctrl.form.DOCNUMBER.$dirty || $ctrl.validateDocNumber) }">
+							<label class="control-label col-md-4 col-lg-4">{{$ctrl.language.Generic.Movement.kDocNumber}}</label>
+							<div class="col-md-8 col-lg-8">
+								<input track-changes type="text" class="form-control" name="DOCNUMBER" size="35" maxlength="20" ng-model="$ctrl.data.moveDoc.docNumber" ng-disabled="$ctrl.state.readOnly" required>
+
+								<div ng-messages="$ctrl.form.DOCNUMBER.$error" ng-if="$ctrl.form.DOCNUMBER.$dirty || $ctrl.validateDocNumber">
+									<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Movement.kErrEmptyDocNumber}}</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group" ng-class="{ 'has-error': $ctrl.form.DOCDATE.$invalid }" ng-if="$ctrl.data.state">
+							<label class="control-label col-md-4 col-lg-4">{{$ctrl.language.Generic.Movement.kDocDate}}</label>
+	
+							<div class="col-md-8 col-lg-8">
+								<date-input-component
+									readonly="$ctrl.state.readOnly"
+									date-model="$ctrl.data.moveDoc.docDate"
+									min-date="$ctrl.data.state.docDateRange.start"
+									max-date="$ctrl.data.state.docDateRange.end"
+									name="DOCDATE"
+									required="true"
+									date-change="$ctrl.runAdminDateValidator()">
+								</date-input-component>
+
+								<div ng-messages="$ctrl.form.DOCDATE.$error">
+									<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Common.kEnterDate}}</span>
+									<span class="help-block" ng-message="dateFormat">{{$ctrl.dateFormatMessage()}}</span>
+									<span class="help-block" ng-message="datePeriod">{{$ctrl.getValidateDocDateMessage()}}</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group" ng-class="{ 'has-error': $ctrl.form.ADMINDATE.$invalid }" ng-if="$ctrl.showAdminDate()">
+							<label class="control-label col-md-4 col-lg-4">{{$ctrl.language.Generic.Movement.kAdminDate}}</label>
+							<div class="col-md-8 col-lg-8">
+								<div class="row">
+									<div class="col-md-12">
+										<date-input-component
+											readonly="$ctrl.state.readOnly"
+											date-model="$ctrl.data.moveDoc.adminDate"
+											min-date="$ctrl.adminDateStart"
+											max-date="$ctrl.data.moveDoc.docDate"
+											required="true"
+											name="ADMINDATE"
+											id="adminDate">
+										</date-input-component>
+
+										<div ng-messages="$ctrl.form.ADMINDATE.$error">
+											<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Common.kEnterDate}}</span>
+											<span class="help-block" ng-message="dateFormat">{{$ctrl.dateFormatMessage()}}</span>
+											<span class="help-block" ng-message="datePeriod">{{$ctrl.getValidateAdminDateMessage()}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="alert alert-warning col-md-8" role="alert" ng-if="$ctrl.data.docType.key === 'Enroll' && $ctrl.data.docSubType.id === 0"> 
+		<button type="button" class="close" data-dismiss="alert" ng-click="$ctrl.reset()">×</button>
+		{{$ctrl.language.Generic.Messages.kAttachedToOrgNotApplied}}
+	</div>
+	<div class="alert alert-warning col-md-8" role="alert" ng-if="$ctrl.data.docType.key === 'Enroll' && $ctrl.data.docSubType.id === 0"> 
+		<button type="button" class="close" data-dismiss="alert" ng-click="$ctrl.reset()">×</button>
+		{{$ctrl.language.Generic.Messages.kAttachedToOrgNotVisible}} <a href="/Help/AttachedStudents.htm" target="_blank">{{$ctrl.language.Generic.Messages.kAttachedToOrgInHelp}}</a>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-md-12 col-lg-10" ng-if="$ctrl.data.moveDoc">
+
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingstudents">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" class="collapsed" data-target="#students" aria-expanded="true" aria-controls="students">{{$ctrl.language.Common.kStudents}}</a>
+					</h4>
+				</div>
+				<div id="students" class="panel-collapse collapse in" aria-labelledby="headingstudents" role="tabpanel">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+
+								<div class="alert alert-info" role="alert" ng-if="!$ctrl.state.readOnly && !$ctrl.data.moveDoc.subDocs || !$ctrl.data.moveDoc.subDocs.length">
+									{{$ctrl.language.Movement.kAddStudentsPrompt}}
+								</div>
+
+								<table class="table table-bordered table-striped table-xs print-block" ng-if="$ctrl.data.moveDoc.subDocs && $ctrl.data.moveDoc.subDocs.length">
+									<tr>
+										<th ng-bind-html="$ctrl.language.Generic.Filter.kN_PP"></th>
+										<th>{{$ctrl.language.Generic.Common.kDisplayName}}</th>
+										
+										<th>{{$ctrl.language.Generic.Common.kGender}}</th>
+										<th>{{$ctrl.language.Generic.Common.kBDate}}</th>
+										
+										<th ng-if="$ctrl.existsAwardColumn()">{{$ctrl.language.SetupSchoolCalendar.kAward}}</th>
+										<th ng-if="$ctrl.existsPassDebtDateColumn()">{{$ctrl.language.Generic.Movement.kPassDebtDate}}</th> 
+										<th ng-if="$ctrl.existsArriveFromColumn()">{{$ctrl.language.Generic.Common.kArriveFrom}}</th>
+										<th ng-if="$ctrl.existsInstitutSpecifedInDocOfDisposalColumn()">{{$ctrl.language.Generic.Common.kInstitutSpecifedInDocOfDisposal}}</th>
+										<th ng-if="$ctrl.existsDepartColumn()">{{$ctrl.language.Generic.Movement.kDepartTo}}</th>
+										<th ng-if="$ctrl.existsDepartReasonColumn()">{{$ctrl.language.Generic.Movement.kDepartReason}}</th>
+										<th ng-if="$ctrl.existsEditingColumn()">{{$ctrl.language.Generic.SetupSchoolPortfolio.kEditingS}}</th>
+										<th ng-bind-html="$ctrl.language.Generic.Common.kDeletingMark" class="min" ng-if="!$ctrl.state.readOnly"></th>
+									</tr>
+									<tr ng-repeat-start="subDoc in $ctrl.data.moveDoc.subDocs">
+										<td colspan="{{$ctrl.data.columnsAmount}}" class="text-left" style="background-color: #D0E8FF; font-weight: bold">
+											<span ng-if="subDoc.educGroupFrom">{{subDoc.educGroupFrom.name}}</span> <span ng-if="subDoc.educGroupFrom && subDoc.educGroupTo">=></span> <span ng-if="subDoc.educGroupTo">{{subDoc.educGroupTo.name}}</span>
+										</td>
+										<td ng-if="!$ctrl.state.readOnly" class="text-center" style="background-color: #D0E8FF;">
+											<input type="checkbox" ng-init="selectAll=false" ng-model="selectAll" ng-click="$ctrl.toggleSubDocChecks(selectAll, subDoc)">
+										</td>
+									</tr>
+									<tr ng-repeat="student in subDoc.students" ng-repeat-end>
+										<td>{{student.idx}}</td>
+										<td>{{student.name}}</td>
+										<td>{{student.gender.name}}</td>
+										<td class="text-center">{{student.birthDate | date:'dd.MM.yyyy'}}</td>
+
+										<td ng-if="$ctrl.existsAwardColumn() && !student.canEdit">
+											<span ng-if="student.awardType">{{student.awardType.name}}</span>
+										</td> 
+										<td ng-if="$ctrl.existsAwardColumn() && student.canEdit">
+											<select track-changes class="form-control" ng-model="student.awardType" ng-options="awardType.name for awardType in $ctrl.data.awardTypes track by awardType.key"></select>
+										</td>
+
+										<td ng-if="!student.canEdit && $ctrl.existsPassDebtDateColumn()"> 
+											<span ng-if="student.passDebtDate">{{student.passDebtDate | date:'dd.MM.yyyy'}}</span>
+										</td>
+										<td ng-if="student.canEdit && $ctrl.existsPassDebtDateColumn()">
+											<div class="input-group date" id="pass-debt-date">
+												<input track-changes type="text" class="form-control date-input" name="PASSDEBTDATE" size="11" maxlength="10" ns-date-model="student.passDebtDate">
+												<span class="input-group-btn"><button title="" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-calendar"></span> </button></span>
+											</div>
+										</td>
+										<td ng-if="($ctrl.existsDepartColumn() || $ctrl.existsArriveFromColumn()) && $ctrl.displayOrgsSelection()">
+											<div ng-if="!student.canEdit">
+												{{student.outsideType.name}}
+												<br ng-if="student.educOrg"/>
+												{{student.educOrg.name}}
+											</div>
+											<ns-depart-org-selector on-change-event="$ctrl.departOrgEventEmitter" ng-if="student.canEdit"
+											                        step="$ctrl.data.step"
+											                        outside-type="student.outsideType.key"
+											                        org="student.educOrg"
+											                        school-id="$ctrl.data.schoolId"
+											                        options="$ctrl.departOrgOptions">
+												<ns-outside-type></ns-outside-type>
+												<ns-depart-org></ns-depart-org>
+											</ns-depart-org-selector>
+										</td>
+
+										<td ng-if="$ctrl.existsInstitutSpecifedInDocOfDisposalColumn() && !student.departToEducOrg">
+										</td>
+										<td ng-if="$ctrl.existsInstitutSpecifedInDocOfDisposalColumn() && student.departToEducOrg">
+											<button ng-if="student.canEdit" ng-click="$ctrl.moveEducOrg(student)" title="" type="button" class="btn btn-xs" style="display: inline-block;">
+												<span class="glyphicon glyphicon-circle-arrow-left"></span> 
+											</button>
+											<span>{{student.departToEducOrg.name}}</span>
+										</td>
+
+										<td ng-if="$ctrl.existsDepartReasonColumn() && !student.canEdit">
+											{{student.reason.name}}
+										</td>
+										<td ng-if="$ctrl.existsDepartReasonColumn() && student.canEdit">
+											<select track-changes class="form-control" ng-model="student.reason" ng-options="reason.name for reason in $ctrl.data.reasons track by reason.id"></select>
+										</td>
+
+										<td class="text-center" ng-if="$ctrl.existsEditingColumn()">
+											<div class="ctx-btns-icons ctx-btns-icons-center ctx-btns-icons-md"><a class="primary" href="javascript:void(0);" ng-click="$ctrl.edit(student, subDoc);"><span class="glyphicon glyphicon-pencil"></span></a></div>
+										</td>
+
+										<td class="text-center" ng-if="!$ctrl.state.readOnly">
+											<input type="checkbox" ng-checked="$ctrl.selection.isSelected(student)" ng-click="$ctrl.selection.select(student)"/>
+										</td>
+									</tr>
+								</table>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>
+

@@ -1,0 +1,148 @@
+<html>
+<head>
+   <title>Шаг 5 - Выбор возвращаемых полей</title>
+   <meta name="generator" content="Help & Manual">
+   <meta name="keywords" content="Конструктор отчётов, возвращаемые поля">
+   <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=windows-1251">
+</head>
+
+
+  <!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+  <script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?reportbuildwizardstep5.htm'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#C0C0C0">
+  <tr>
+    <td align="left">
+      
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Шаг 5 - Выбор возвращаемых полей
+<br>
+</b></span>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Выборвозвращаемыхполей"></a>Выбор возвращаемых полей</b><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+На этом шаге, на основе выбранных ранее объектов данных, вы должны указать те поля, которые будут выводиться в отчете на экран. Для определения нужных полей, выберите их из выпадающего списка. 
+<br>
+При добавлении двух и более возвращаемых полей, появляются кнопки для изменения порядка следования этих полей в результирующем отчете: <img src="upUp1_on.PNG" width="21" height="23" border="0" alt="upUp1_on"> - <b>На самый верх</b>, <img src="arrowup1_on.PNG" width="21" height="23" border="0" alt="arrowup1_on"> - <b>Вверх</b>, <img src="arrowdn1_on.PNG" width="21" height="23" border="0" alt="arrowdn1_on"> - <b>Вниз</b>, <img src="downDn1_on.PNG" width="21" height="23" border="0" alt="downDn1_on"> - <b>В самый низ</b>. В данном случае <b>Самый низ</b> означает самый правый столбец, а <b>Самый верх</b> - самый левый. Для смены порядка строк в выбранной строке, поставьте галочку <b>Отм.</b> и нажмите одну из этих четырех кнопок.
+<br>
+
+<br>
+<b><u>Примечание:</u></b> При удалении одного из группируемых полей, введенных на <b>Шаге 4 &#150; «Выбор способа группировки данных»</b>, автоматически системой это поле будет удалено и с <b>Шагов 5 &#150; «Выбор возвращаемых полей»</b>,<b> 7 &#150; «Выбор порядка сортировки»</b>. При добавлении нового возвращаемого поля на <b>Шаге 5</b> или новой сортировки по полю на <b>Шаге 7</b>, если в создаваемом отчете уже были добавлены поля для группировки на <b>Шаге 4</b>, система автоматически добавит это новое поле в число группируемых. При удалении же из группировки всех полей сразу<b> </b>возвращаемые поля и поля, по которым производится сортировка, останутся в отчете в неизменном состоянии.
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b><a name="Редакторвыражений"></a>Редактор выражений</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Если вам нужно не просто поле, а какая-то производная от него (например, количество), то с помощью кнопки <b>Добавить выражение</b> вы сможете попасть в конструктор выражений. Здесь на основе данных от объектов, выбранных на <b><a href=reportbuildwizardstep2.htm#Объектданныхдлязапроса>Шаге 2</a></b> и <b><a href=reportbuildwizardstep3.htm#Дополнительныеобъектыданных>Шаге 3</a></b>, вы сможете с помощью встроенных функций <i>Минимум</i>, <i>Максимум</i>, <i>Количество</i> получить интересующий результат. Эти выражения вы можете, в свою очередь, использовать в более сложных формулах.
+<br>
+
+<br>
+Отчеты могут возвращать от 1 до 5 обобщенных, т.е. групповых значений по полям строк группы, точно так же, как и значение одного поля. Это делается с помощью групповых функций. Групповые функции производят одно значение для всей группы:
+<br>
+
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></b></span></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>КОЛИЧЕСТВО</b> возвращает количество строк для всей группы полей;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>СУММА</b> возвращает арифметическую сумму всех выбранных значений данного поля;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>СРЕДНЕЕ</b> возвращает усреднение всех выбранных значений данного поля;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>МАКСИМУМ</b> возвращает наибольшее из всех выбранных значений данного поля;
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b></b><font face="Symbol" size="2" color="#000000">&#183;</font><b></b></span></td><td><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b>МИНИМУМ</b> возвращает наименьшее из всех выбранных значений данного поля.
+&nbsp;<br>
+</span></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="top"><td width="14"></td><td width="14"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span></td><td></td></tr></table><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"></span><span style="font-family:Courier New; font-size:9pt; color:#000000">
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><b><u>Примечание</u></b><b>:</b> При удалении группировки с выражением, ранее введенной на <b>Шаге 4 &#150; «Выбор способа группировки данных»</b>, автоматически системой будет удалена и групповая функция с <b>Шага 5 &#150; «Выбор возвращаемых полей»</b>, а при добавлении автоматически добавлена с функцией<b> КОЛИЧЕСТВО.
+<br>
+</b></span><span style="font-family:Courier New; font-size:9pt; color:#000000">
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Флаг "Выбрать только уникальные значения"</b></span><span style="font-family:Helvetica,Arial; font-size:9pt; color:#000000">
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">В некоторых из сконструированных запросов возможно «размножение информации», если не использовать при выводе все его поля (или использовать какой-нибудь объект, содержащий в себе «уточняющую информацию»). В результате, при выводе, поле будет размножено столько раз, сколько будет существовать пар «свойство-уточняющее свойство». Например, мы хотим получить список учеников в учебном году, но при конструировании мы добавим уточняющий объект с учебными периодами. Тогда будут существовать пары: (имя ученика - 1 четверть), (имя ученика - 2 четверть), (имя ученика - 3 четверть), (имя ученика - 4 четверть). А при выводе только имени - оно напечатается четыре раза - если не выставлен флаг <b>«Выбрать только уникальные значения»</b>, и один раз - если флаг выставлен. 
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:12pt; color:#000000"><b>Флаг "Сделать сводный отчёт"
+<br>
+</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">В некоторых случаях отчёт простого вида: 
+<br>
+</span><span style="font-family:Courier New; font-size:8pt; color:#000000"><b>№&nbsp;&nbsp;Поле&nbsp;А&nbsp;&nbsp;Поле&nbsp;B&nbsp;&nbsp;Поле&nbsp;С&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+1</b>&nbsp;&nbsp;&nbsp;&nbsp;A1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;С1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<b>2</b>&nbsp;&nbsp;&nbsp;&nbsp;A1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;С2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<b>3</b>&nbsp;&nbsp;&nbsp;&nbsp;A1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;С3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<b>4</b>&nbsp;&nbsp;&nbsp;&nbsp;A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;С4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<b>5</b>&nbsp;&nbsp;&nbsp;&nbsp;A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;С5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<b>6</b>&nbsp;&nbsp;&nbsp;&nbsp;A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;С6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<b>7</b>&nbsp;&nbsp;&nbsp;&nbsp;A3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;С7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<b>8</b>&nbsp;&nbsp;&nbsp;&nbsp;A3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;С8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<b>9&nbsp;</b>&nbsp;&nbsp;&nbsp;A3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;С9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">удобно напечатать в виде сводного отчёта: 
+<br>
+</span><span style="font-family:Courier New; font-size:8pt; color:#000000"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B3&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+A1</b>&nbsp;&nbsp;C1,&nbsp;...&nbsp;&nbsp;С2,&nbsp;...&nbsp;&nbsp;C3,&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<b>A2</b>&nbsp;&nbsp;C4,&nbsp;...&nbsp;&nbsp;С5,&nbsp;...&nbsp;&nbsp;C6,&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<b>A3</b>&nbsp;&nbsp;C7,&nbsp;...&nbsp;&nbsp;С8,&nbsp;...&nbsp;&nbsp;C9,&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+</span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Для этого необходимо установить флаг <b>Сделать сводный отчёт</b>.
+<br>
+
+<br>
+<b><u>Примечание:</u></b> Для сводного отчёта необходимо, чтобы было более двух полей вывода и была выполнена сортировка (или группировка) по первому и второму выводимым свойствам. Иначе отчет не будет выводиться (в первом случае) или отобразится некорректно (во втором случае). 
+<br>
+
+<br>
+
+<br>
+В нашем примере отчета <b>Списки мальчиков 90-91 гг. рождения</b>, возвращаемые поля выберем из двух объектов: "<i>Классы"</i> и "<i>Ученики"</i>. Из первого объекта в качестве возвращаемого поля выберем <b>класс</b>, а из второго: <b>фамилия</b>, <b>имя</b>, <b>дата рождения</b>. После определения всех необходимых полей и выражений нажимаем на кнопку <b>След. &gt;&gt;</b> для перехода на <b><a href=reportbuildwizardstep6.htm#Фильтры>Шаг 6 - Выбор критерия (фильтры)</a></b>.
+<br>
+
+<br>
+<b><img src="constructor_5.png" width="778" height="261" border="0" alt="constructor_5">
+<br>
+</b></span></span></span>
+
+<p align='left'><input TYPE=BUTTON
+			NAME=print
+			VALUE="Печать"
+			ONCLICK="javascript:window.print()">
+</p>
+<p align='left'>
+    <font face="Arial" size="2">
+     <a href="javaScript:parent.reDisplay('7.3.6',1,0)"><img src="leftarrow.png" border=0 alt="<<Пред."></a>
+     <a href="javaScript:parent.reDisplay('7.3.8',1,0)"><img src="rightarrow.png" border=0 alt="След.>>"></a>
+    </font>
+</p>
+
+</body>
+</html>

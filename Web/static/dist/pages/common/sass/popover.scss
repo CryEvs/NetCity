@@ -1,0 +1,63 @@
+/*======================*/
+/*вёрстка всплывающая подсказка*/
+.popover {
+	
+	background-color: #fff9e9;
+	border: 1px solid #e6ca95;
+	z-index: 10000;
+	
+	.popover-content {
+		background-color: #fff9e9;
+		padding: 4px 7px;
+		z-index: 10001;
+		span {
+			line-height: 2;
+			display: block;
+			height: 20px;
+			text-align: left;
+			font-size: 11px!important;
+			white-space: nowrap;
+			overflow: hidden;
+			position: relative;
+			text-overflow: ellipsis!important;
+		}
+	}
+	
+	.popover-title {
+		background-color: #fff9e9;
+		padding: 4px 7px;
+		z-index: 10001;
+		span {
+			display: block;
+			line-height: 2;
+			height: 20px;
+			font-size: 11px;
+			white-space: nowrap;
+			overflow: hidden;
+			position: relative;
+			text-overflow: ellipsis!important;
+
+			text-align: center;
+			border-bottom: 1px solid #e6ca95;
+			line-height: 1.2;
+			color: #f2a71a;
+
+
+		}
+	}
+	
+	& > .arrow {
+		border-width: 8px;
+		&:after {
+		
+		}
+	}
+}
+.popover.bottom{
+	& > .arrow {
+		top: -8px;
+		&:after {
+			border-bottom-color: #fff9e9;
+		}
+	}
+}

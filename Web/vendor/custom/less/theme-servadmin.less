@@ -1,0 +1,101 @@
+﻿@import (reference) "var.less";
+@import (reference) "mixins.less";
+
+//**********************ШАБЛОН СТРАНИЦ***********************/
+@theme-base-color: #689ab5;
+// фоновый цвет шапки
+@theme-header-color: @theme-base-color;
+// надпись "название продукта" (в шапке)
+@title-product-color : saturate(lighten(@theme-base-color, 50%), 14%); // #ecf5fc
+// фон заголовка
+@page-title-bg: #E0E8EF;
+// цвет текста заголовка
+@page-title-color:  saturate(darken(@theme-base-color, 16%), 16%); // #135487
+
+//****************меню****************/
+// фон меню
+@menu-bg : spin(saturate(darken(@theme-base-color, 10%), 14%), 1); // #1963a0
+// при наведении "вложенного меню"
+@submenu-hover: saturate(@theme-base-color, 1.5%);
+// фон пунктов дменю
+@menu-items-bg:  spin(desaturate(lighten(@theme-base-color, 50%), 14%), -2);
+// фон открытого пункта поменю
+@menu-items-open-bg:  spin(desaturate(lighten(@theme-base-color, 34%), 14%), -3); // #b6d2e3
+// фон заголовок меню
+@submenu-header-bg: spin(saturate(lighten(@theme-base-color, 4%), 4%), -3); // #2e91cf
+// фон пунктов подменю
+@submenu-items-bg: spin(desaturate(lighten(@theme-base-color, 40%), 25%), -1);
+// фон активного пункта подменю
+@submenu-items-active-bg: spin(desaturate(lighten(@theme-base-color, 34%), 14%), -3); // #b6d2e3
+
+/************************кнопки справа на уровне хлебных крошек************************/
+// цвет при наведении
+@breadcrumbs-buttons-color: spin(desaturate(lighten(@theme-base-color, 11%), 3%), 1); // #7c59c0;
+
+//****************персональный кабинет****************/
+// цвет текста "количество вошедших в систему"
+@pc-number-employees-color: spin(saturate(lighten(@theme-base-color, 49%), 41%), -1); // #e4f4ff
+// фон переключателя года
+@pc-switch-year-bg: spin(desaturate(lighten(@theme-base-color, 7%), 1%), 1); // #418fcd; // #1963a0
+// текст переключателя года
+@pc-switch-year-color:  spin(saturate(lighten(@theme-base-color, 49%), 41%), -1); // #e4f4ff
+// цвет "шара" текущего года
+@pc-switch-year-current-ball: spin(saturate(lighten(@theme-base-color, 35%), 9%), 2); // #afd2f0 
+// цвет "шара" будущего года
+@pc-switch-year-future-ball: spin(desaturate(lighten(@theme-base-color, 12%), 12%), -55); // #62c696;;
+
+//**********************КОНТЕНТ***********************/
+
+// цвет "правых" кнопок при наведении 
+@buttons-right-color-hover: darken(saturate(@theme-base-color, 10%), 10%);
+// цвет ссылок
+@links-color: spin(saturate(darken(@theme-base-color, 10%), 14%), 1); 
+// цвет элементов при наведении (input, textarea)
+@elements-hover-color: darken(@theme-base-color, 10%);
+// тени элементов при наведении (input, textarea)
+@elements-hover-shadow: spin(saturate(lighten(@theme-base-color, 22%), 21%), -5);
+
+// выделители
+@highlight-light-color: lighten(@theme-base-color, 41%);
+@highlight-color: saturate(lighten(@theme-base-color, 45%), 9%);
+@highlight-border-color: saturate(lighten(@theme-base-color, 38%), 9%);
+@highlight-font-color: desaturate(darken(@theme-base-color, 8%), 7%);
+
+/************************* Цвета для таблиц *********************/ // A8D1F9
+@bright-header-bg: spin(saturate(darken(@theme-base-color, 1%), 21%), 2); // #177bd1; 
+@bright-header-hover: spin(saturate(lighten(@theme-base-color, 5%), 25%), -5);
+//шапка th у таблицы
+@common-header-bg:spin(desaturate(lighten(@theme-base-color, 40%), 2%), 3);
+//шабка th у таблицы (класс .table-striped)
+@table-striped-header-bg:spin(desaturate(lighten(@theme-base-color, 5%), 2%), 3); // #3c86ca
+//шапка th у таблицы при наведении
+@common-header-hover-bg: spin(saturate(lighten(@theme-base-color, 25%), 25%), -5);
+// цвет чётных строчек таблицы
+@common-table-even : spin(saturate(lighten(@theme-base-color, 39%), 15%), 2); // #bbdaf5
+// цвет чётных строчек таблицы
+@common-table-odd : spin(saturate(lighten(@theme-base-color, 43%), 20%), 2); // #cce4f9
+@common-table-hover : spin(saturate(lighten(@theme-base-color, 50%), 19%), 4); // #eff6fd
+
+/*==============================Частные случаи:====================================*/
+/******************************** Цвета для "классного журнала"********************/
+// фон шапки таблицы
+@edit-journal-header-bg: spin(desaturate(lighten(@theme-base-color, 8%), 7%), 2); // #4c8ec7
+// цвет букв у шапки
+@edit-journal-header-color: spin(desaturate(lighten(@theme-base-color, 40%), 2%), 3); // #c9ddf0
+// шапка колонки "новое задание" особым цветом
+@edit-journal-new-bg: spin(@theme-header-color, -8);
+
+/****************Цвета для календаря*********************/
+@schedule-header-bg: @bright-header-bg;
+// вторая шапка в таблице (например в календаре) 
+@schedule-add-header-bg: spin(saturate(lighten(@theme-base-color, 37%), 23%), 4); 
+
+/****************Цвета скролла*********************/
+@scroll-bg: spin(saturate(lighten(@theme-base-color, 9%), 3%), -3); // #469dd4
+
+/*==========================путь картинки силуета=======================*/
+@path-reference:  "";
+
+.servadmin {
+	@import (multiple) "common-theme.less";
+}

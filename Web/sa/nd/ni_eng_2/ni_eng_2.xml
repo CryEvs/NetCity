@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Английский язык. Глаголы BE, HAVE, CAN, MUST">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Английский язык. Глаголы BE, HAVE, CAN, MUST" ID="1" Filename="ni_eng_2/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Глагол BE" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" NumBEr="1">
+         <Page Name="Глагол BE" 
+				Filename="sgo/ni_eng_2/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Глагол BE в вопросах" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" NumBEr="1">
+         <Page Name="Глагол BE в вопросах" 
+				Filename="sgo/ni_eng_2/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Глагол BE в отрицательных предложениях" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" NumBEr="1">
+         <Page Name="Глагол BE в отрицательных предложениях" 
+				Filename="sgo/ni_eng_2/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Глагол HAVE" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" NumBEr="1">
+         <Page Name="Глагол HAVE" 
+				Filename="sgo/ni_eng_2/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Глагол HAVE в вопросах" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" NumBEr="1">
+         <Page Name="Глагол HAVE в вопросах" 
+				Filename="sgo/ni_eng_2/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Глагол HAVE в отрицательных предложениях" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" NumBEr="1">
+         <Page Name="Глагол HAVE в отрицательных предложениях" 
+				Filename="sgo/ni_eng_2/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Глагол CAN" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" NumBEr="1">
+         <Page Name="Глагол CAN" 
+				Filename="sgo/ni_eng_2/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Глагол MUST" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" NumBEr="1">
+         <Page Name="Глагол MUST" 
+				Filename="sgo/ni_eng_2/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+ 	  	 
+</Project>

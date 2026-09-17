@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Для заданий учителю.
+Цвет фона #5b91c0
+Под текст заголовка (белый) - #83b2db
+-->
+<Project Name="Русский язык. 10-11 класс">
+
+<!-- Непосредственно плакат. Как-бы теория + тренажер. Все темы 
+	Передачи данных по API нет. Надо на стороне СГО проставлять посмотрел/не посмотрел-->
+<Chapter Name="Русский язык. 10-11 класс" ID="1" Filename="ni_rus_10_11/start.html"/>
+
+<!-- Начало тестов по темам. Тут уже есть передача данных по API -->
+<Chapter Name="Спряжение глаголов" ID="2">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Спряжение глаголов" 
+				Filename="sgo/ni_rus_10_11/1/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Правописание суффиксов действительных причастий" ID="3">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Правописание суффиксов действительных причастий" 
+				Filename="sgo/ni_rus_10_11/2/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Обособление определений" ID="4">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Обособление определений" 
+				Filename="sgo/ni_rus_10_11/3/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Обособление обстоятельств" ID="5">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Обособление обстоятельств" 
+				Filename="sgo/ni_rus_10_11/4/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Знаки препинания при обращении" ID="6">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Знаки препинания при обращении" 
+				Filename="sgo/ni_rus_10_11/5/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Односоставное предложение" ID="7">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Односоставное предложение" 
+				Filename="sgo/ni_rus_10_11/6/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="План разбора сложносочиненного предложения" ID="8">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="План разбора сложносочиненного предложения" 
+				Filename="sgo/ni_rus_10_11/7/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Пример разбора сложносочиненного предложения" ID="9">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Пример разбора сложносочиненного предложения" 
+				Filename="sgo/ni_rus_10_11/8/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="План разбора сложноподчинённого предложения" ID="10">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="План разбора сложноподчинённого предложения" 
+				Filename="sgo/ni_rus_10_11/9/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Пример разбора сложноподчинённого предложения" ID="11">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Пример разбора сложноподчинённого предложения" 
+				Filename="sgo/ni_rus_10_11/10/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+<Chapter Name="Деловые бумаги" ID="12">
+     <Lesson Name="Контрольные тесты" ID="1" Number="1">
+         <Page Name="Деловые бумаги" 
+				Filename="sgo/ni_rus_10_11/11/start.html"/>
+     </Lesson>     	     	 	 	 		 
+</Chapter>
+
+</Project>

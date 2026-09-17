@@ -1,0 +1,20 @@
+<div class="container" ng-show="$ctrl.ready">
+	<div class="alert alert-warning" role="alert">
+		<b>{{$ctrl.language.Generic.Common.kAttention}}</b> {{$ctrl.language.Generic.Login.kComboRoleUser}}
+	</div>
+	<ns-form-group
+		title="{{$ctrl.language.Generic.Login.kSelectNeeded}}"
+		label-size="col-md-4 col-lg-3 col-sm-4"
+		control-size="col-md-8 col-lg-5 col-sm-8">
+
+		<select class="form-control"
+			ng-options="role.name for role in $ctrl.sessionRoles track by role.id"
+			ng-model="$ctrl.sessionRole"></select>
+	</ns-form-group>
+	<div class="block-inline">
+		<button title="{{$ctrl.language.Generic.Buttons.kContinue}}" type="button" class="btn btn-default" ng-click="$ctrl.doContinue()">
+			<span class="glyphicon glyphicon-new-window"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kContinue}}</span>
+		</button>
+	</div>
+</div>

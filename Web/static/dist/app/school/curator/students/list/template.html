@@ -1,0 +1,57 @@
+<div class="row" ng-if="data.students.length > 0">
+	<div class="col-md-12">
+		<form class="form-horizontal form-sm">
+
+			<div class="form-group">
+				<label class="control-label col-md-4 col-lg-2 col-sm-4">Образовательная организация</label>
+				<div class="col-md-8 col-lg-3 col-sm-8">
+					<select storage name="school" class="form-control" ng-model="filter.selected.schoolId" ng-options="school.id as school.name for school in filter.items.schools" ng-change="filterViewStudents()"></select>
+				</div>
+			</div>
+
+		</form>
+		<hr />
+
+	</div>
+</div>
+
+<div class="row" ng-if="data.students.length > 0">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+
+			<button title="Просмотреть портфолио ученика" type="button" class="btn btn-info" ng-click="viewPortfolio()" ng-disabled="!data.selection.selected">
+				<span class="glyphicon glyphicon-briefcase"></span>
+				<span>Портфолио</span>
+			</button>
+
+			<button title="Просмотреть личные достижения ученика" type="button" class="btn btn-warning" ng-click="viewAwards()" ng-disabled="!data.selection.selected">
+				<span class="glyphicon glyphicon-education"></span>
+				<span>Личные достижения</span>
+			</button>
+
+		</div>
+	</div>
+</div>
+
+<div class="alert alert-info" role="alert" ng-if="data.students.length == 0">Нет курируемых детей</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-thin table-bright table-bright-hover table-selectable" ng-show="data.students.length > 0">
+			<tr>
+				<th>Имя на экране</th>
+				<th>Дата рождения</th>
+				<th>{{language.Generic.Common.kEO}}</th>
+				<th>Класс</th>
+				<th>Направление одаренности</th>
+			</tr>
+			<tr ng-repeat="student in data.viewStudents" ng-class="{'selected': data.selection.isSelected(student)}" ng-click="data.selection.select(student)">
+				<td>{{student.name}}</td>
+				<td>{{student.birthDate}}</td>
+				<td>{{student.education && student.education.school.name	|| "-"}}</td>
+				<td>{{student.education && student.education.className		|| "-"}}</td>
+				<td>{{student.viewDirections								|| "-"}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

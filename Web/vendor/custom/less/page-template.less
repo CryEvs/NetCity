@@ -1,0 +1,731 @@
+﻿@import (reference) "../../custom/less/var.less";
+@import (reference) "../../custom/less/mixins.less";
+@import (reference) "../../custom/img/sprite-template.png.less";
+
+/**********будущий год - future***********/
+.future {
+	.header {
+		background: #b20186 !important;
+	}
+}
+
+.content {
+	padding: 16px 10px 16px 10px;
+	min-height: 430px;
+}
+
+.block-content {
+	position: relative;
+	min-height: 550px;
+
+	span.title-delim {
+		padding-left: 3px;
+		padding-right: 3px;
+	}
+
+	.back { /*кнопка "назад" */
+		position: absolute;
+		left: 10px;
+		top: 22px;
+		width: 27px;
+		height: 19px;
+		font-size: 26px;
+		text-decoration: initial;
+		background: transparent !important;
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		transform: rotate(180deg);
+
+		span.icon-signout:before {
+			-moz-transform: scale(1.2,1);
+			-ms-transform: scale(1.2,1);
+			-o-transform: scale(1.2,1);
+			-webkit-transform: scale(1.2,1);
+			transform: scale(1.2,1);
+		}
+
+		&.back-fixed {
+			position: fixed;
+			top: 28px;
+			left: 6px;
+			z-index: 9999;
+		}
+	}
+
+	.back.active {
+		cursor: default;
+	}
+
+	h1 {
+		padding: 9px 130px 11px 51px;
+		font-weight: 400;
+		color: #0d76b9;
+		font-size: 20px;
+		background: #F2F4F8;
+		height: 42px;
+		-ms-text-overflow: ellipsis;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	ul {
+		&.top-right-menu {
+			position: absolute;
+			color: @alert-success-bg;
+			color: #0BB381;
+			top: 1px;
+			right: 8px;
+			height: 30px;
+			margin-bottom: 0;
+
+			li {
+				height: 100%;
+				display: inline-block;
+				padding: 0 3px;
+
+				a {
+					font-size: 25px;
+					position: relative;
+					display: table;
+					height: 100%;
+					outline: none;
+
+					&:hover, &:focus {
+						text-decoration: inherit;
+					}
+				}
+
+				&:nth-child(odd) {
+					a {
+						margin-top: 1px;
+					}
+				}
+
+				&:only-child {
+					margin-right: 16px;
+				}
+			}
+		}
+	}
+}
+
+/************************************************************************************/
+/*кнопка "назад" */
+/*==================================================*/
+/*хак для ff*/
+@-moz-document url-prefix() {
+	.block-content {
+		.back {
+			top: 24px;
+		}
+	}
+}
+
+.header, .left-menu, .footer, .title {
+	margin: 0;
+	padding: 0;
+
+	div, span, h1, h2, h3, h4, h5, h6, p, ul, li {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	line-height: 1.5;
+	min-height: 100%;
+	position: relative;
+	color: #000;
+	//background-color: rgba(201, 221, 240, 0.36);
+	margin: 0;
+	padding: 0;
+	padding-bottom: 110px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	font-family: 'PT Sans Caption';
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	font-stretch: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: geometricPrecision;
+	//text-shadow: 0 0 0 rgba(0, 0, 0, 0.75) !important;
+	min-width: 330px;
+
+	.title_product {
+		white-space: nowrap;
+	}
+}
+
+.header {
+	color: #fff;
+	background: url('@{img-folder}header-right-bg.png') no-repeat right 4px @base-blue-bg-color;
+	position: relative !important;
+
+	.navbar {
+		min-height: 36px;
+
+		.navbar-nav {
+			.dropdown {
+				li {
+					ul {
+						margin-top: -1px;
+					}
+				}
+			}
+
+			a {
+				outline: none;
+				color: #fff;
+			}
+
+			.dropdown-menu {
+				.dropdown-header {
+					font-size: 14px;
+					text-align: center;
+				}
+			}
+		}
+		/******************************************************************************/
+		/*переключатель "учебного года" */
+		.switch-year {
+			float: right;
+			margin-top: 4px;
+			margin-right: 10px;
+
+			.switch-year-btn {
+				outline: none;
+				-webkit-box-shadow: none;
+				box-shadow: none;
+				border: 0px solid;
+				width: 157px;
+				.border_radius(12px);
+				position: relative;
+				height: 26px;
+				-webkit-transition: background 1.4s;
+				-moz-transition: background 1.4s;
+				-ms-transition: background 1.4s;
+				-o-transition: background 1.4s;
+				transition: background 1.4s;
+				overflow: hidden;
+				background: #418FCD;
+
+				& > div {
+					top: 1px;
+					width: 270px;
+					left: 7px;
+					text-transform: lowercase;
+					position: absolute;
+
+					div {
+						display: inline-block;
+						margin-top: -1px;
+
+						&.lever-switch {
+							width: 30px;
+							position: relative;
+							margin-left: 0px;
+
+							span {
+								position: absolute;
+								top: -13px;
+								width: 19px;
+								height: 18px;
+								display: block;
+								.border-radius(10px);
+								-webkit-transition: background 1s;
+								-moz-transition: background 1s;
+								-ms-transition: background 1s;
+								-o-transition: background 1s;
+								transition: background 1s;
+								left: 7px;
+								background: #AFD2F0;
+							}
+						}
+					}
+				}
+
+				&.go_left {
+
+
+					#flip_container {
+						left: -119px !important;
+
+						.lever-switch {
+							span {
+								left: 4px;
+							}
+						}
+					}
+				}
+			}
+		}
+		/*************************************************************************/
+	}
+
+	a {
+		color: white;
+		text-decoration: initial;
+	}
+
+	.block-logo {
+		line-height: 1.4;
+		.sprite-header-logo-bg;
+		height: 66px;
+		width: auto;
+		background-repeat: no-repeat;
+	}
+
+	.logo-servadmin {
+		.sprite-header-logo()
+	}
+
+	.logo-preschool {
+		.sprite-header-logo-preschool()
+	}
+
+	.logo-school {
+		.sprite-header-logo()
+	}
+
+	.logo-addschool {
+		.sprite-header-logo-addschool()
+	}
+
+	.logo.profschool {
+		.sprite-header-logo()
+	}
+
+	.logo-em {
+		.sprite-header-logo()
+	}
+
+	.logo-ns {
+		.sprite-header-logo-ns()
+	}
+
+	.logo {
+		display: block;
+		margin: 6px 12px 6px 8px;
+		float: left;
+		cursor: default;
+		border-radius: 7px;
+		box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+	}
+
+	.title_product {
+		font-size: 15px;
+		font-weight: 100;
+		color: #D0EBF9;
+		padding-top: 6px;
+	}
+
+	.school {
+		font-size: 20px;
+		white-space: nowrap;
+		-ms-text-overflow: ellipsis;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		padding-right: 30px;
+	}
+
+	.school:hover {
+		color: #c6def3;
+	}
+
+	.block-personal-cabinet {
+		float: right;
+		margin: 8px 10px 0 0;
+		a {
+			color: #fff;
+			font-size: 15px;
+		}
+
+		.date {
+			text-align: right;
+			font-size: 13px;
+			color: #D0EBF9;
+			margin-bottom: 1px;
+		}
+
+		ul {
+			li {
+				display: inline-block;
+				float: left;
+				margin-top: 2px;
+				margin-right: 4px;
+
+				& > a {
+					& > img {
+						margin-right: 4px;
+						float: left;
+						margin-top: 3px;
+					}
+				}
+
+				&.switch-year-text {
+					margin-right: 23px;
+					position: relative;
+
+					&:after {
+						content: " ";
+						display: block;
+						position: absolute;
+						top: -10px;
+						right: -15px;
+						.sprite-header-vertical-line;
+					}
+
+					& > p {
+						font-size: 15px;
+					}
+
+					button {
+						-webkit-box-shadow: none;
+						box-shadow: none;
+						border: 0 solid;
+
+						& > div {
+							&#flip_container {
+								top: 0;
+								width: 405px;
+								left: 0;
+								//left: -195px;
+								text-transform: lowercase;
+
+								div {
+									&.lever-switch {
+										width: 30px;
+										position: relative;
+
+										span {
+											position: absolute;
+											top: -13px;
+											width: 19px;
+											height: 18px;
+											display: block;
+											.border-radius(10px);
+											-webkit-transition: background 1s;
+											-moz-transition: background 1s;
+											-ms-transition: background 1s;
+											-o-transition: background 1s;
+											transition: background 1s;
+											left: 7px;
+										}
+									}
+								}
+							}
+						}
+
+						&.go_left {
+							#flip_container {
+								left: -189px;
+
+								.lever-switch {
+									span {
+										left: 7px;
+									}
+								}
+							}
+						}
+					}
+
+					.switсh_year {
+						width: 216px;
+						overflow: hidden;
+						height: 24px;
+						margin-top: 1px;
+					}
+				}
+
+				&.separator_small {
+					margin-right: 20px;
+					position: relative;
+
+					&:after {
+						content: " ";
+						display: block;
+						position: absolute;
+						top: -5px;
+						right: -13px;
+						.sprite-header-vertical-line-small;
+					}
+
+					span {
+
+						&.glyphicon {
+							margin-right: 4px;
+							font-size: 14px;
+						}
+					}
+				}
+
+				&.no_separator {
+					& > a {
+						span {
+							&.icon-off {
+								font-size: 16px;
+								margin-right: 5px;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.number-employees-in-system {
+			margin-top: 0;
+			position: relative;
+			text-align: right;
+			padding-right: 20px;
+			color: #d0ebf9;
+
+			& > p {
+				font-size: 15px;
+
+				& > a {
+					width: 23px;
+					position: absolute;
+					top: 1px;
+
+					span {
+						position: absolute;
+						left: -1px;
+						top: 5px;
+						font-size: 12px;
+						z-index: 2;
+					}
+
+					span + span {
+						color: rgb(80, 46, 147);
+						font-size: 13px;
+						z-index: 1;
+						right: 5px;
+						top: 2px;
+					}
+				}
+
+				& .number-employees-span {
+					padding-right: 5px;
+				}
+			}
+		}
+	}
+}
+
+/************************************************************************************/
+/*переключатель "учебного года" */
+/*==================================================*/
+/*хак для ff*/
+@-moz-document url-prefix() {
+	.header {
+		.navbar {
+			.switch-year {
+				margin-top: 1px;
+
+				.switch-year-btn {
+					& > div {
+						top: 2px;
+
+						.lever-switch {
+							span {
+								top: -14px !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*=====================================================*/
+/*цвета для темы "preschool"*/
+.preschool {
+	.navbar {
+		.switch-year-btn {
+			background: #418FCD !important;
+
+			.lever-switch {
+				span {
+					background: #AFD2F0;
+				}
+			}
+		}
+	}
+}
+/************************************************************************************/
+
+.header .div_top_menu ul.top-menu li.active, .header .div_top_menu ul.top-menu li:hover {
+	background: #F2F4F8;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	color: #2889c7;
+}
+
+.header .div_top_menu ul.top-menu li.active a, .header .div_top_menu ul.top-menu li a:hover {
+	color: #2889c7;
+}
+
+//== Переключатель уч.года в шапке с плавным сдвигом влево-вправо
+.switсh_year {
+	width: 233px;
+	background: #18a2eb;
+	border: 1px solid #6FCAFF;
+	.box-shadow-inset (@rgba: rgba(0, 0, 0, .3));
+	.border_radius(12px);
+	position: relative;
+	overflow: hidden;
+	height: 26px;
+	margin-top: 1px;
+	-webkit-transition: background 1.4s;
+	-moz-transition: background 1.4s;
+	-ms-transition: background 1.4s;
+	-o-transition: background 1.4s;
+	transition: background 1.4s;
+
+	&[class*="go_left"] {
+		background: #30a057; /* desaturate(spin("Базовый цвет темы", 300), 40%) */
+	}
+
+	div, img {
+		display: inline-block;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	#flip_container {
+		width: 410px;
+		position: absolute;
+		height: 26px;
+		left: 3px;
+		top: 0;
+		-webkit-transition: left .5s;
+		-moz-transition: left .5s;
+		-ms-transition: left .5s;
+		-o-transition: left .5s;
+		transition: left .5s;
+
+		#current, #future {
+			height: 26px;
+		}
+	}
+}
+
+.go_left #flip_container {
+	left: -185px;
+}
+// /.Переключатель уч.года в шапке с плавным сдвигом окончен
+
+@-moz-document url-prefix() { // hacks-for-firefox
+	.block-content {
+		ul {
+			&.left-menu {
+				li {
+					border-top: 1px solid #fff;
+					border-bottom: 1px solid #fff;
+
+					&:hover {
+						background: #F0F0F0;
+						border-top: 1px solid #C5C5C5;
+						border-bottom: 1px solid #C5C5C5;
+						outline: 0px solid #C5C5C5;
+
+						& > a {
+						}
+					}
+
+					.absolute_div_ul {
+						li {
+							border-bottom: 0px solid #E4E4E4;
+							border-top: 0px solid #E4E4E4;
+						}
+
+						& > a {
+							padding: 5px 15px 6px 1px;
+						}
+					}
+
+					& > a {
+					}
+				}
+			}
+		}
+	}
+}
+
+/*хаки на IE*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { /*9,10,11*/
+	.header {
+		.block-personal-cabinet {
+			margin: 8px 20px 0 0;
+		}
+	}
+
+	.block-content {
+		ul.top-right-menu {
+			right: 18px;
+		}
+	}
+
+	.footer {
+		padding: 5px 10px 15px 0;
+	}
+}
+
+.mail {
+	overflow: hidden;
+	position: relative;
+}
+
+.numberMail {
+	font-family: Verdana;
+	font-size: 11px;
+	-webkit-border-radius: 14px;
+	-moz-border-radius: 14px;
+	-ms-border-radius: 14px;
+	-o-border-radius: 14px;
+	border-radius: 12px;
+	background: #00B507;
+	position: relative;
+	display: inline-block;
+	top: -8px;
+	min-width: 2px;
+	max-width: 37px;
+	width: auto;
+	margin: auto;
+	right: 13px;
+	padding: 4px 5px;
+	line-height: 6px;
+	border: 2px solid #c9ddf0;
+	overflow: hidden;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	vertical-align: middle;
+	z-index: 1;
+	-ms-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-right: -16px;
+}

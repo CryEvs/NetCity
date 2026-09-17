@@ -1,0 +1,49 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+	<ng-form name="$ctrl.form" ng-if="$ctrl.ready">
+		<ns-form class="form-horizontal form-sm">
+			<ns-form-group title="Период, с" ng-class="{ 'has-error': !$ctrl.validation.isStartDateValid() || !$ctrl.validation.isStartTimeValid() || !$ctrl.validation.isAfterMinDateValid()}">
+				<div class="row">
+					<div class="col-md-9">
+						<date-input-component name="startDate" date-model="$ctrl.startDate" required="true"></date-input-component>
+					</div>
+					<div class="col-md-3">
+						<input class="form-control" type="time" name="startTime" ng-model="$ctrl.startTime" placeholder="HH:mm"/>
+					</div>
+				</div>
+				<p ng-if="!$ctrl.validation.isStartDateValid()" class="help-block">{{$ctrl.validation.dateInvalidMessage}}</p>
+				<p ng-if="!$ctrl.validation.isStartTimeValid()" class="help-block">{{$ctrl.validation.timeInvalidMessage}}</p>
+				<p ng-if="!$ctrl.validation.isAfterMinDateValid()" class="help-block">{{$ctrl.validation.afterMinDateMessage()}}</p>
+			</ns-form-group>
+
+			<ns-form-group title="Период, по" ng-class="{ 'has-error': !$ctrl.validation.isEndDateValid() || !$ctrl.validation.isEndTimeValid() || !$ctrl.validation.isRangeValid() }">
+				<div class="row">
+					<div class="col-md-9">
+						<date-input-component name="endDate" date-model="$ctrl.endDate" required="true"></date-input-component>
+					</div>
+					<div class="col-md-3">
+						<input class="form-control" type="time" name="endTime" ng-model="$ctrl.endTime" placeholder="HH:mm"/>
+					</div>
+				</div>
+				<p ng-if="!$ctrl.validation.isEndDateValid()" class="help-block">{{$ctrl.validation.dateInvalidMessage}}</p>
+				<p ng-if="!$ctrl.validation.isEndTimeValid()" class="help-block">{{$ctrl.validation.timeInvalidMessage}}</p>
+				<p ng-if="!$ctrl.validation.isRangeValid()" class="help-block">{{$ctrl.validation.rangeInvalidMessage}}</p>
+			</ns-form-group>
+
+			<ns-form-group title="Текст (не более 500 символов)" ng-class="{ 'has-error': !$ctrl.validation.isTextValid() }">
+				<textarea name="name" ng-model="$ctrl.notification.text" maxlength="500" class="form-control" rows="3" wrap="soft" required track-changes></textarea>
+				<p ng-if="!$ctrl.validation.isTextValid()" class="help-block">{{$ctrl.validation.textInvalidMessage}}</p>
+			</ns-form-group>
+
+			<ns-form-group title="Блокирование работы пользователей в МП">
+				<div class="checkbox"><label><input type="checkbox" ng-click="$ctrl.notification.blockWorking = !$ctrl.notification.blockWorking" ng-checked="$ctrl.notification.blockWorking"></label></div>
+			</ns-form-group>
+
+			<ns-form-group title="Множественное отображение">
+				<div class="checkbox"><label><input type="checkbox" ng-click="$ctrl.notification.multipleTimes = !$ctrl.notification.multipleTimes" ng-checked="$ctrl.notification.multipleTimes"></label></div>
+			</ns-form-group>
+		</ns-form>
+	</ng-form>
+</ns-modal>

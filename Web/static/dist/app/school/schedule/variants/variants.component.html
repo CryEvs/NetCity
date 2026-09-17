@@ -1,0 +1,80 @@
+<div class="row ns-cloak" ng-if="!$ctrl.readonly">
+	<div class="col-md-12">
+		<div class="buttons-panel">	
+			<div class="buttons-panel-left">
+				<button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span> 
+					<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Common.kReset}}" type="button" class="btn btn-warning" ng-click="$ctrl.reset()">
+					<span class="glyphicon glyphicon-repeat"></span> 
+					<span>{{$ctrl.language.Generic.Buttons.kReset}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Buttons.kAdd}} {{$ctrl.language.Generic.Curriculum.kVariant}}" type="button" class="btn btn-info" ng-click="$ctrl.add()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+				</button>
+				<button title="{{$ctrl.language.Generic.Curriculum.kDelVariants}}" type="button" class="btn btn-danger" ng-click="$ctrl.delete()">
+					<span class="glyphicon glyphicon-minus-sign"></span> 
+					<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right">
+				<button title="{{$ctrl.language.Generic.Calendar.kSTVariantsAssignments}}" type="button" class="btn btn-default" ng-click="$ctrl.gotoVariantsUsage()">
+					<span class="glyphicon glyphicon-check"></span> 
+					<span>{{$ctrl.language.Generic.Calendar.kSTVariantsAssignments}}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<table class="table table-bordered table-condensed table-thin">
+			<thead>
+			<tr>
+				<th>{{$ctrl.language.Generic.Curriculum.kVariant}}</th>
+				<th>{{$ctrl.language.Generic.Calendar.kSTVariantsAssignments}}</th>
+				<th>{{$ctrl.language.Generic.Calendar.kSchedTimes}}</th>
+				<th ng-bind-html="$ctrl.language.Generic.Common.kDeletingMark" ng-if="!$ctrl.readonly"></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="variant in $ctrl.variants">
+				<td>
+					<input type="text" name="VariantName" class="form-control" ng-model="variant.name" ng-value="variant.name" size="35" maxlength="100" track-changes ng-disabled="$ctrl.readonly">
+				</td>
+				<td>
+					<span ng-if="variant.assignment.schoolyear">{{$ctrl.language.Generic.Calendar.kBaseEOVariant}}</span>
+					<p ng-if="variant.assignment.classes && variant.assignment.classes.length">
+						{{$ctrl.language.MenuFolders.kFNClasses}}:
+						<span ng-repeat-start="item in variant.assignment.classes">{{item.name}}</span><span ng-repeat-end ng-if="!$last">, </span>
+					</p>
+					<p ng-if="variant.assignment.grades && variant.assignment.grades.length">
+						{{$ctrl.language.SetupSchoolCalendar.kGradeset}} {{$ctrl.language.Generic.Curriculum.kClassicCP_S}}:
+						<span ng-repeat-start="item in variant.assignment.grades">{{item.name}}</span><span ng-repeat-end ng-if="!$last">, </span>
+					</p>
+					<p ng-if="variant.assignment.iupGrades && variant.assignment.iupGrades.length">
+						{{$ctrl.language.SetupSchoolCalendar.kGradeset}} {{$ctrl.language.Generic.Curriculum.kIndividualCP_S}}:
+						<span ng-repeat-start="item in variant.assignment.iupGrades">{{item.name}}</span><span ng-repeat-end ng-if="!$last">, </span>
+					</p>
+					<p ng-if="variant.assignment.eaSubjectGroups && variant.assignment.eaSubjectGroups.length">
+						{{$ctrl.language.Generic.ClassManagement.kEaSubjectGroups}}:
+						<span ng-repeat-start="item in variant.assignment.eaSubjectGroups">{{item.name}}</span><span ng-repeat-end ng-if="!$last">, </span>
+					</p>
+				</td>
+				<td style="text-align: center;">
+					<button type="button" class="btn btn-default" ng-click="$ctrl.viewVariantTimes(variant)">
+						<span class="glyphicon glyphicon-zoom-in"></span>
+					</button>
+				</td>
+				<td style="text-align: center;" ng-if="!$ctrl.readonly">
+					<span ng-if="$ctrl.checkVariantIsUsing(variant)">{{$ctrl.language.Generic.SetupSchoolCalendar.kProfileUse}}</span>
+					<input ng-if="!$ctrl.checkVariantIsUsing(variant)" type="checkbox" name="del" ng-checked="$ctrl.selection.isSelected(variant)" ng-click="$ctrl.selection.select(variant)"/>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

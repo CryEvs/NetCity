@@ -1,0 +1,117 @@
+<ns-modal controller="ctrl" header="{{ctrl.header}}">
+	<form role="form" name="groupForm" class="form-horizontal form-xs" novalidate>
+		<!--Поля формы-->
+		
+		<div class="form-group">
+			<label class="control-label col-md-4 col-sm-4">{{ctrl.language.Generic.Filter.kCourseGB}}</label>
+			<div class="col-md-8 col-sm-8">
+				<span class="form-control form-control-title">
+					<span class="text">{{ctrl.data.assignInfo.subjectGroup.name}}</span>
+				</span>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="control-label col-md-4 col-sm-4">{{ctrl.language.Common.kTeacher}}</label>
+			<div class="col-md-8 col-sm-8">
+				<span class="form-control form-control-title">
+					<span class="text">{{ctrl.data.assignInfo.teachersStr}}</span>
+				</span>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="control-label col-md-4 col-sm-4">{{ctrl.titles.assignmentDate}}</label>
+			<div class="col-md-8 col-sm-8">
+				<span class="form-control form-control-title">
+					<span class="text">{{ctrl.data.assignInfo.date}}</span>
+				</span>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="control-label col-md-4 col-sm-4">{{ctrl.language.Generic.Assignment.kATAssignmentType}}</label>
+			<div class="col-md-8 col-sm-8">
+				<span class="form-control form-control-title">
+					<span class="text">{{ctrl.data.assign.typeName}}</span>
+				</span>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="control-label col-md-4 col-sm-4">{{ctrl.titles.assignmentName}}</label>
+			<div class="col-md-8 col-sm-8">
+				<div ng-bind="ctrl.data.assignInfo.assignmentName" class="form-control-area"></div>
+			</div>
+		</div>
+	
+		<div class="form-group" ng-if="ctrl.data.assignInfo.description">
+			<label class="control-label col-md-4 col-sm-4">{{ctrl.titles.assignmentDescription}}</label>
+			<div class="col-md-8 col-sm-8">
+				<div ng-bind-html="ctrl.data.assignInfo.description | linky:'_blank'" class="form-control-area"></div>
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="ctrl.data.assignInfo.weight || ctrl.data.assignInfo.weight == 0">
+			<label class="control-label col-md-4 col-sm-4">Вес</label>
+			<div class="col-md-8 col-sm-8">
+				<span class="form-control form-control-title">
+					<span class="text">{{ctrl.data.assignInfo.weight}}</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="ctrl.data.result">
+			<label class="control-label col-md-4 col-sm-4">Оценка</label>
+			<div class="col-md-8 col-sm-8">
+				<span class="form-control form-control-title">
+					<span class="text">{{ctrl.data.result.mark}}</span>
+				</span>
+			</div>
+		</div>
+		
+		<div class="form-group" ng-if="ctrl.data.assignInfo.codeContentElements">
+			<label class="control-label col-md-4 col-sm-4">{{ctrl.language.Generic.Curriculum.kCodeElementContent}}</label>
+			<div class="col-md-8 col-sm-8">
+				<span class="form-control form-control-title">
+					<span class="text">{{ctrl.data.assignInfo.codeContentElements}}</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="form-group" ng-if="ctrl.data.assignInfo.contentElements">
+			<label class="control-label col-md-4 col-sm-4">{{ctrl.language.Generic.Curriculum.kElementContent}}</label>
+			<div class="col-md-8 col-sm-8">
+				<span class="form-control form-control-title">
+					<span class="text">{{ctrl.data.assignInfo.contentElements}}</span>
+				</span>
+			</div>
+		</div>
+		
+		<div class="form-group" ng-if="ctrl.data.assignInfo.activityName">
+			<label class="control-label col-md-4 col-sm-4">{{ctrl.language.Generic.Common.kLearnApp}}</label>
+			<div class="col-md-8 col-sm-8">
+				<a href="#" ng-click="ctrl.goLa()">{{ctrl.data.assignInfo.activityName}}</a>
+			</div>
+		</div>
+		
+		<div class="form-group" ng-if="ctrl.data.assignInfo.problemName">
+			<label class="control-label col-md-4 col-sm-4">{{ctrl.language.Generic.Assignment.kATAssignmentTheme}}</label>
+			<div class="col-md-8 col-sm-8">
+				{{ctrl.data.assignInfo.problemName}}
+			</div>
+		</div>
+		
+		<div class="form-group" ng-if="ctrl.data.assignInfo.attachments && ctrl.data.assignInfo.attachments.length">
+			<div class="col-md-12">
+				<div class="file-attachment-block multiple">
+					<div ng-repeat="attach in ctrl.data.assignInfo.attachments" class="file-attachment" ng-click="ctrl.openAttach(attach)" title="{{attach.originalFileName}} {{attach.description}}">
+						<span class="file-name">{{attach.originalFileName}}</span>
+						<span ng-if="attach.description" class="file-description">{{attach.description}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</ns-modal>

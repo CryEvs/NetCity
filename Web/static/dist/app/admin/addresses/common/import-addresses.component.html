@@ -1,0 +1,59 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form class="form-horizontal form-sm" name="$ctrl.form">
+		<ns-form control-size="col-md-8" label-size="col-md-4">
+
+			<ns-form-group title="Регион" ng-if="$ctrl.settings.state">
+				<input type="text" class="form-control" disabled name="fullName" size="60" maxlength="400" ng-model="$ctrl.settings.state.name">
+			</ns-form-group>
+
+			<ns-form-group title="Муниципалитет" ng-if="$ctrl.settings.municipality">
+				<input type="text" class="form-control" disabled name="fullName" size="60" maxlength="400" ng-model="$ctrl.settings.municipality.name">
+			</ns-form-group>
+
+			<ns-form-group title="Населенный пункт" ng-if="$ctrl.settings.city">
+				<input type="text" class="form-control" disabled name="fullName" size="60" maxlength="400" ng-model="$ctrl.settings.city.name">
+			</ns-form-group>
+
+			<ns-form-group title="Поставщик данных">
+				<select class="form-control" name="provider" required ng-model="$ctrl.currentProviderId" ng-change="$ctrl.init()" ng-options="x.id as x.name for x in $ctrl.providers" track-changes></select>
+				<p ng-show="$ctrl.form.provider.$error.required && ($ctrl.form.provider.$dirty || $ctrl.form.$displayErrors)" class="help-block">Обязательное поле</p>
+			</ns-form-group>
+
+			<ns-form-group title="Не показывать имеющиеся элементы">
+				<div class="checkbox"><label><input type="checkbox" name="hideExists" ng-click="$ctrl.toggleHide()" ng-checked="$ctrl.hideExists"></label></div>
+			</ns-form-group>
+
+		</ns-form>
+	</form>
+
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready"><span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+
+	<div class="alert alert-warning" role="alert" ng-if="$ctrl.ready && $ctrl.isError"> 
+		{{$ctrl.errorMsg}}
+	</div>
+
+	<div class="alert alert-warning" role="alert" ng-if="$ctrl.ready && !$ctrl.records.length && !$ctrl.isError"> 
+		{{$ctrl.emptyMsg}}
+	</div>
+
+	<div class="table-responsive" style="max-height: 600px" ng-if="$ctrl.ready && $ctrl.records.length && !$ctrl.isError">
+		<table class="table table-bordered table-bright-hover table-bright-striped table-xs print-block table-selectable">
+			<tr>
+				<th ng-bind-html="$ctrl.language.Generic.Filter.kN_PP"></th>
+				<th> Наименование </th>
+				<th> Тип </th>
+				<th> {{ $ctrl.currentProvider.name }} </th>
+				<th ng-if="$ctrl.showIndex"> Индекс </th>
+			</tr>
+			<tr ng-repeat="record in $ctrl.records" ng-class="{'selected': $ctrl.selection.isSelected(record)}" ng-click="$ctrl.selection.select(record)">
+				<td>
+					{{ $index + 1}}
+				</td>
+				<td>{{ record.name }}</td>
+				<td>{{ record.socr }}</td>
+				<td>{{ $ctrl.isKladr ? record.code : record.fiasCode }}</td>
+				<td ng-if="$ctrl.showIndex">{{ record.index }}</td>
+			</tr>
+		</table>
+	</div>
+</ns-modal>

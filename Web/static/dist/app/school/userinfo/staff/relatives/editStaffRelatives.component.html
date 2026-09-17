@@ -1,0 +1,47 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+    <content-pre-loader ng-if="!$ctrl.ready"></content-pre-loader>
+    <form class="form-horizontal form-md" name="$ctrl.relativesForm">
+    <ns-form control-size="col-md-9" label-size="col-md-3" class="form-horizontal" ng-show="$ctrl.ready">
+        <ns-form-group title="{{ 'language.Generic.SetupSchool.kRelationShipType' | language }}" ng-class="{'has-error': $ctrl.relativesForm.relationShipType.$invalid && (!$ctrl.relativesForm.relationShipType.$pristine || $ctrl.relativesForm.$displayErrors)}">
+            <select track-changes required class="form-control" name="relationShipType"
+                    ng-options="relationShipType.key as relationShipType.name for relationShipType in $ctrl.relationShipTypes"
+                    ng-model="$ctrl.relative.relationShipType"></select>
+            <div ng-if="$ctrl.relativesForm.relationShipType.$invalid && (!$ctrl.relativesForm.relationShipType.$pristine || $ctrl.relativesForm.$displayErrors)" ng-messages="$ctrl.relativesForm.relationShipType.$error">
+                <span class="help-block" ng-message="required">{{ 'language.Generic.Messages.kRequiredField' | language }}</span>
+            </div>
+        </ns-form-group>
+
+        <ns-form-group title="{{ 'language.Generic.Common.kLastName' | language }}" ng-class="{'has-error': $ctrl.relativesForm.lastName.$invalid && (!$ctrl.relativesForm.lastName.$pristine || $ctrl.relativesForm.$displayErrors)}">
+            <input track-changes required type="text" class="form-control" name="lastName" size="30" maxlength="30" ng-model="$ctrl.relative.lastName" ng-pattern="$ctrl.regExpFio">
+            <div ng-if="$ctrl.relativesForm.lastName.$invalid && (!$ctrl.relativesForm.lastName.$pristine || $ctrl.relativesForm.$displayErrors)" ng-messages="$ctrl.relativesForm.lastName.$error">
+                <span class="help-block" ng-message="required">{{ 'language.Generic.Messages.kRequiredField' | language }}</span>
+                <span class="help-block" ng-message="pattern">{{ 'language.Generic.SetupSchool.kLettersSpacesDashesOnly' | language }}</span>
+            </div>
+        </ns-form-group>
+
+        <ns-form-group title="{{ 'language.Generic.Common.kFirstName' | language }}" ng-class="{'has-error': $ctrl.relativesForm.firstName.$invalid && (!$ctrl.relativesForm.firstName.$pristine || $ctrl.relativesForm.$displayErrors)}">
+            <input track-changes required type="text" class="form-control" name="firstName" size="30" maxlength="30" ng-model="$ctrl.relative.firstName" ng-pattern="$ctrl.regExpFio">
+            <div ng-if="$ctrl.relativesForm.firstName.$invalid && (!$ctrl.relativesForm.firstName.$pristine || $ctrl.relativesForm.$displayErrors)" ng-messages="$ctrl.relativesForm.firstName.$error">
+                <span class="help-block" ng-message="required">{{ 'language.Generic.Messages.kRequiredField' | language }}</span>
+                <span class="help-block" ng-message="pattern">{{ 'language.Generic.SetupSchool.kLettersSpacesDashesOnly' | language }}</span>
+            </div>
+        </ns-form-group>
+
+        <ns-form-group title="{{ 'language.Generic.Common.kMiddleName' | language }}" ng-class="{'has-error': $ctrl.relativesForm.middleName.$invalid && (!$ctrl.relativesForm.middleName.$pristine || $ctrl.relativesForm.$displayErrors)}">
+            <input track-changes type="text" class="form-control" name="middleName" size="30" maxlength="30" ng-model="$ctrl.relative.middleName" ng-pattern="$ctrl.regExpFio">
+            <div ng-if="$ctrl.relativesForm.middleName.$invalid && (!$ctrl.relativesForm.middleName.$pristine || $ctrl.relativesForm.$displayErrors)" ng-messages="$ctrl.relativesForm.middleName.$error">
+                <span class="help-block" ng-message="pattern">{{ 'language.Generic.SetupSchool.kLettersSpacesDashesOnly' | language }}</span>
+            </div>
+        </ns-form-group>
+
+        <ns-form-group title="{{ 'language.Generic.Common.kBDate' | language }}" ng-class="{'has-error': $ctrl.relativesForm.bDate.$invalid && (!$ctrl.relativesForm.bDate.$pristine || $ctrl.relativesForm.$displayErrors)}">
+            <date-input-component track-changes name="bDate" date-model="$ctrl.relative.birthDate"
+                                  min-date="$ctrl.dateOptions.minDate" max-date="$ctrl.dateOptions.maxDate" options="{ getterSetter: true }">
+            </date-input-component>
+            <div ng-if="$ctrl.relativesForm.bDate.$invalid && (!$ctrl.relativesForm.bDate.$pristine || $ctrl.relativesForm.$displayErrors)" ng-messages="$ctrl.relativesForm.bDate.$error">
+                <span class="help-block" ng-message="datePeriod">Указано недопустимое значение</span>
+            </div>
+        </ns-form-group>
+    </ns-form>
+    </form>
+</ns-modal>

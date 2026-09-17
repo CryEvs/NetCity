@@ -1,0 +1,110 @@
+<style>
+	.move {
+		background-color: white;
+		border: 1px solid #ddd;
+		height: 29px;
+	}
+
+	table.subjects tr:first-child td {
+		border-top: 0 !important;
+	}
+
+	table.subjects td:nth-child(-n+3) {
+		border-right: 1px solid #ddd;
+	}
+
+	table.subjects {
+		margin-bottom: 0;
+		cursor: move;
+	}
+
+	table.subjects input[type="checkbox"]:not(:disabled) {
+		cursor: default;
+	}
+
+	.glyphicon-resize-vertical {
+		opacity: 0.5;
+	}
+
+	.highlight {
+		background-color: #fff5c0;
+		height: 29px;
+	}
+
+	.highlight > td:nth-child(-n+3) {
+		border-right: 0 !important;
+	}
+
+	.not-active > td > table {
+		background-color: #d3d3d3 !important;
+	}
+</style>
+
+<div class="row ns-cloak" ng-if="!$ctrl.showSubjectsExtraData">
+	<div class="col-md-12 col-lg-9">
+		<subject-list ctrl="$ctrl" ng-if="$ctrl.state.dataReady" readonly="$ctrl.state.readOnly" subjects="$ctrl.data.subjects" show-subject-fields="$ctrl.showSubjectFields" show-groups="false" with-sorting="true" with-status-filter="true" subject-fields="$ctrl.data.subjectFields"></subject-list>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-if="$ctrl.showSubjectsExtraData">
+	<div class="col-md-9 col-md-push-3">
+		<ns-panel panel-id="subjects" class="info" title="{{$ctrl.language.Generic.Common.kSubjects}}" expanded="true">
+			<subject-list ctrl="$ctrl" ng-if="$ctrl.state.dataReady" readonly="$ctrl.state.readOnly" subjects="$ctrl.data.subjects" show-groups="true" show-subject-fields="true" with-sorting="true" with-status-filter="true" subject-fields="$ctrl.data.subjectFields"></subject-list>
+		</ns-panel>
+	</div>
+
+	<div class="col-md-3 col-md-pull-9">
+		<ns-panel panel-id="subject_groups" class="danger" title="{{$ctrl.language.Generic.SetupSchoolCurPlan.kSubjectGroups}}" expanded="true">
+		
+			<div class="row">
+				<div class="col-md-12">
+					<div class="buttons-panel">
+						<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kEditSubjectGroups}}" type="button" class="btn btn-warning" ng-click="$ctrl.editParentSubjects()">
+							<span class="{{$ctrl.getParentSubjectGlyphicon()}}"></span>
+							<span>{{$ctrl.getParentSubjectButtonText()}}</span>
+						</button>
+
+					</div>
+				</div>
+			</div>
+			<table class="table table-bordered table-sm">
+				<tr ng-repeat="parentSubject in $ctrl.data.parentSubjects">
+					<td>{{parentSubject.name}}</td>
+				</tr>
+			</table>
+
+		</ns-panel>
+
+		<ns-panel panel-id="subject_fields" class="success" title="{{$ctrl.language.Generic.SetupSchoolCalendar.kSubjectFields}}" expanded="true">
+		
+			<div class="row">
+				<div class="col-md-12">
+					<div class="buttons-panel" ng-if="!$ctrl.state.readOnly">
+						<button title="{{$ctrl.language.Generic.SetupSchoolCalendar.kAddSubjectField}}" type="button" class="btn btn-info" ng-click="$ctrl.createSubjectField()">
+							<span class="glyphicon glyphicon-plus-sign"></span>
+							<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			
+			<div ng-if="$ctrl.data.unusedSubjectFields.length">
+				<form>
+					<h3>{{$ctrl.language.Generic.SetupSchoolCalendar.kNonBoundedFields}}</h3>
+				</form>
+			
+				<table class="table table-bordered table-xs table-bright-striped">
+					<tbody>
+					<tr ng-repeat="subjectField in $ctrl.data.unusedSubjectFields">
+						<td>
+							<a ng-if="!$ctrl.state.readOnly" href="JavaScript:void(0);" ng-click="$ctrl.editSubjectField(subjectField)" title="{{$ctrl.language.Generic.SetupSchoolCalendar.kEditSubjectField}}">{{subjectField.name}}</a>
+							<span ng-if="$ctrl.state.readOnly">{{subjectField.name}}</span>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</ns-panel>
+	</div>
+</div>

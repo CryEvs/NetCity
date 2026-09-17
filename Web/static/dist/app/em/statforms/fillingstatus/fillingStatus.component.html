@@ -1,0 +1,111 @@
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="buttons-filters-panel form-horizontal form-sm single-row">
+			<div class="row">
+
+				 <filter-panel class="filters-panel col-md-12" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel" id="buttonPanel" style="display: block;">
+			<div class="buttons-panel-left">
+				<button id="refreshButton" title="Обновить" type="button" class="btn btn-default" ng-click="$ctrl.browseStatFormInfo()">
+					<span class="glyphicon glyphicon-refresh"></span>
+					<span>Обновить</span>
+				</button>
+			</div>
+			<div class="buttons-panel-right" id="actionPanel">
+				<div class="display-inline buttons-panel-export-send">
+					<button id="openToEditButton" title="Открыть на редактирование" type="button" class="btn btn-default" ng-click="$ctrl.openToEdit()" style="display: none;">
+						<span>Открыть на редактирование</span>
+					</button>
+					<button title="На печать" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+						<span class="glyphicon glyphicon-print"></span> <span>На печать</span>
+					</button>
+					<button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="$ctrl.export()">
+						<span class="glyphicon glyphicon-export"></span> <span>Экспорт в Excel</span>
+					</button>
+				</div>
+			</div>
+
+			<div class="buttons-panel-adaptive btn-group" style="float: right; display: none; margin-right: 0px; right: 0px;">
+				<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<span class="glyphicon glyphicon-menu-hamburger"></span> <span id="action">Действия</span> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu buttons-panel-right buttons-panel-adaptive-wrapper pull-right" role="menu" style="display: block;">
+					<li>
+						<button id="openToEditButton" title="Открыть на редактирование" type="button" class="btn btn-default" ng-click="$ctrl.openToEdit()" style="display: none;">
+							<span>Открыть на редактирование</span>
+						</button>
+					</li>
+					<li>
+						<button title="На печать" type="button" class="btn btn-default" ng-click="$ctrl.print()">
+							<span class="glyphicon glyphicon-print"></span> <span>На печать</span>
+						</button>
+					</li>
+					<li><button title="Экспорт в Excel" type="button" class="btn btn-default" ng-click="$ctrl.export()">
+						<span class="glyphicon glyphicon-export"></span> <span>Экспорт в Excel</span>
+					</button></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-show="$ctrl.getForEditing()">
+
+	<div class="alert alert-info" role="alert">
+		{{$ctrl.language.Generic.Reports.kChoiceEoByOpenForm}}
+	</div>
+
+	<div class="buttons-panel buttons-panel-left">
+		<button title="{{$ctrl.language.Generic.Buttons.kOpen}}" type="button" class="btn btn-default" ng-click="$ctrl.reopenForms()">
+			<span>{{$ctrl.language.Generic.Buttons.kOpen}}</span>
+		</button>
+		<button title="{{$ctrl.language.Generic.Buttons.kCancel}}" type="button" class="btn btn-default" ng-click="$ctrl.cancel()">
+			<span>{{$ctrl.language.Generic.Buttons.kCancel}}</span>
+		</button>
+	</div>
+
+</div>
+
+<div id="statFormInfoPanel" ng-show="$ctrl.getStatFormInfoPanelView()">
+	<table class="table table-bordered table-xs table-bright-striped table-bright-hover table-thin print-block">
+		<tr>
+			<th>{{$ctrl.language.Generic.EM.kManagement}}</th>
+			<th>{{$ctrl.language.Generic.Common.kProvince}}</th>
+			<th>{{$ctrl.language.Generic.Common.kCity}}</th>
+			<th>{{$ctrl.language.Generic.Common.kEO}}</th>
+			<th>{{$ctrl.language.Generic.Curriculum.kStatus}}</th>
+			<th ng-if="$ctrl.forEditing" class="NotPrintable"></th>
+		</tr>
+		<tr ng-repeat="stat in $ctrl.statFormInfo">
+			<td>
+				{{stat.emName}}
+			</td>
+			<td>
+				{{stat.provinceName}}
+			</td>
+			<td>
+				{{stat.cityName}}
+			</td>
+			<td>
+				{{stat.eoName}}
+			</td>
+			<td>
+				{{$ctrl.getSchoolStatus(stat.status)}}
+			</td>
+			<td ng-if="$ctrl.forEditing">
+				<input ng-if="stat.status" track-changes type="checkbox" ng-checked="$ctrl.selected.isSelected(stat)" ng-click="$ctrl.selected.select(stat.schoolId)">
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,28 @@
+﻿<table class="table table-bordered table-xs table-bright-striped table-bright-hover print-block table-thin">
+	<tr>
+		<th rowspan="2">{{language.Generic.Common.kDate}}</th>
+		<th rowspan="2">{{{language.Generic.ServAdmin.kAllLoginsCount}}}</th>
+		<th colspan="3">{{{language.Generic.ServAdmin.kIncluding}}}</th>
+	</tr>
+	<tr>
+		<th>{{{language.Generic.ServAdmin.kEMAdmins}}}</th>
+		<th>{{{language.Generic.ServAdmin.kHDEMs}}}</th>
+		<th>{{{language.Generic.ServAdmin.kOFREMs}}}</th>
+	</tr>
+	{{#each userStatEmInfo.userStats}}
+	<tr>
+		<td class="cell-date-short">{{date2strDayOnly statDate}}</td>
+		<td class="cell-num">{{allEntriesAmount}}</td>
+		<td class="cell-num">{{emAdmEntriesAmount}}</td>
+		<td class="cell-num">{{emBossEntriesAmount}}</td>
+		<td class="cell-num">{{emStaffEntriesAmount}}</td>
+	</tr>
+	{{/each}}
+</table>
+<div class="row print-block">
+	<div class="col-md-6">
+		<span class="glyphicon glyphicon-user"></span>
+		<small>{{language.Generic.ServAdmin.kTotalLogins}}</small>
+		<strong>{{userStatEmInfo.statsAmount}}</strong>
+	</div>
+</div>

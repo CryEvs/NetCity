@@ -1,0 +1,136 @@
+<loader ng-hide="$ctrl.ready"></loader>
+
+<main class="main" ng-form="$ctrl.form">
+	<div class="form esia-01 h348" ng-if="$ctrl.ready && $ctrl.users.length == 0">
+		<div class="form__headertext">Запись не найдена</div>
+		<div class="form__icon">
+			<img class="form__icon-img" src="/static/dist/app/login/img/nouser.png">
+		</div>
+		<div class="hinttext">
+			<!-- <div class="hinttext__header">
+				У Вас нет привязанных учетных записей, попробуйте авторизоваться другим способом.
+			</div> -->
+			<div ng-if="!$ctrl.hasPotentialUsers" class="hinttext__header">
+				{{$ctrl.errNoUsersLinkedWithIdpAccountMessage}}
+			</div>
+			<div ng-if="$ctrl.mobileEntry && $ctrl.hasPotentialUsers" class="hinttext__header">
+				{{$ctrl.displayMobileAppMessage()}}
+			</div>
+			<!-- <div class="hinttext__header">
+				{{$ctrl.continueBindAccountMessage}}
+			</div> -->
+			<div ng-if="!$ctrl.personTrusted && $ctrl.isEsia()" class="hinttext__header">
+				{{$ctrl.language.Generic.Login.kPersonTrustedCheck}}
+			</div>
+			<div ng-if="!$ctrl.mobileEntry || !$ctrl.hasPotentialUsers" class="hinttext__regular">
+				Перейдите на страницу <a href ng-click="$ctrl.bindUser()">Привязать учетную запись</a> и следуйте дальнейшим инструкциям или нажмите «Выход» для выбора другого способа авторизации.
+			</div>
+			<div ng-if="$ctrl.mobileEntry && $ctrl.hasPotentialUsers" class="hinttext__regular">
+				Нажмите «Выход» для выбора другого способа авторизации.
+			</div>
+			<!-- <div class="alert alert-warning" role="alert">
+				{{$ctrl.errNoUsersLinkedWithIdpAccountMessage}}
+			</div>
+
+			<div class="alert alert-info" role="alert">
+				{{$ctrl.continueBindAccountMessage}}
+			</div> -->
+		</div>
+		<div class="primary-button top32" ng-click="$ctrl.bindUser()">Привязать учетную запись</div>
+		<div class="primary-button" ng-click="$ctrl.logout()">Выход</div>
+	</div>
+
+	<div class="form esia-02 h580" ng-if="$ctrl.ready && $ctrl.users.length > 0" ng-enter="$ctrl.enter()">
+		<div class="form__headertext">Вход в систему</div>
+		<div class="hinttext">
+			<!-- <div class="hinttext__header">Выберите пользователя, организацию и роль, в которые хотите выполнить вход.</div> -->
+			<div class="hinttext__header" ng-if="$ctrl.users.length > 1">{{$ctrl.selectUserForIdpLoginMessage}}</div>
+			<div class="hinttext__header" ng-if="$ctrl.needInteract()">
+				Ваша учётная запись в СГО требует повышенной безопасности. Для подтверждения учётной записи, после успешной авторизации в {{$ctrl.idp == 'esa'? 'ЕСА': 'ЕСИА'}}, требуется ввести логин и пароль СГО
+			</div>
+			<div class="hinttext__regular">Выберите необходимые данные или нажмите <a href ng-click="$ctrl.logout()">Выйти</a> для выхода из системы портала ГОСУСЛУГИ.</div>
+		</div>
+		<div class="select-options" ng-click="$ctrl.toggleUsers()" ng-click-outside="$ctrl.showUsers">
+			<div class="select-options__button" id="user" ng-class="{ 'active-button': $ctrl.showUsers }">
+				<div class="select-options__button-text">
+					{{$ctrl.user.displayName}}
+				</div>
+				<div class="select-options__button-icon" ng-hide="$ctrl.singleRecord">
+					<img src="/static/dist/app/login/img/select_opt.png">
+				</div>
+			</div>
+			<div class="select-options__menu-username" ng-slide-toggle="$ctrl.showUsers" ng-hide="$ctrl.singleRecord">
+				<a class="select-options__item-username select-options__overlap-height" ng-class="{ 'active': $ctrl.user.id == user.id }" ng-repeat="user in $ctrl.users" ng-click="$ctrl.chooseUser(user)">
+					<div class="user-name-text">
+						{{user.displayName}}
+					</div>
+					<div class="user-name-icon">
+						<img src="/static/dist/app/login/img/check.png">
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="select-options margintop8" ng-if="$ctrl.needChooseRole()" ng-click="$ctrl.toggleRoles()" ng-click-outside="$ctrl.showRoles">
+			<div class="select-options__button" ng-class="{ 'active-button': $ctrl.showRoles }">
+				<div class="select-options__button-text">{{$ctrl.activeRole.name}}</div>
+				<div class="select-options__button-icon">
+					<img src="/static/dist/app/login/img/select_opt.png">
+				</div>
+			</div>
+			<div class="select-options__menu-role" ng-slide-toggle="$ctrl.showRoles">
+				<a class="select-options__item-role" ng-class="{ 'active': $ctrl.activeRole.id == role.id }" ng-repeat="role in $ctrl.user.roles" ng-click="$ctrl.chooseRole(role)">
+					<div class="role-text">{{role.name}}</div>
+					<div class="role-icon">
+						<img src="/static/dist/app/login/img/check.png">
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="logpass-box" ng-if="$ctrl.needInteract()">
+			<div class="lc-input lc-input-login" id="login" ng-class="{ 'valid': $ctrl.loginName, 'active': $ctrl.editLoginName || $ctrl.loginName }">
+				<div class="lc-input-placeholder">
+					{{$ctrl.language.Generic.Common.kLogin}}
+				</div>
+				<input name="loginname" class="lc-input-control" type="text" required ng-model="$ctrl.loginName" ng-click="$ctrl.editLoginName = true" ng-blur="$ctrl.editLoginName = false">
+				<div class="lc-input-valid-icon">
+					<img src="/static/dist/app/login/img/check.png">
+				</div>
+			</div>
+			<div ng-if="$ctrl.form.loginname.$invalid && ($ctrl.form.loginname.$dirty || $ctrl.form.$displayErrors)" class="has-error">
+				<span class="help-block">Заполните логин</span>
+			</div>
+
+			<div class="logpass__pass" id="password" ng-class="{ 'openeye': $ctrl.showPassword, 'active': $ctrl.editPassword || $ctrl.password }">
+				<div class="logpass__pass-placeholder">
+					{{$ctrl.language.Generic.Common.kPassword}}
+				</div>
+				<input name="password" class="logpass__input" ng-attr-type="{{ $ctrl.showPassword ? 'text' : 'password' }}" required ng-model="$ctrl.password" ng-click="$ctrl.editPassword = true" ng-blur="$ctrl.editPassword = false">
+				<div class="logpass__pass-icon" ng-click="$ctrl.togglePasswordIcon()">
+					<img class="eyeon" src="/static/dist/app/login/img/eye.png">
+					<img class="eyeoff" src="/static/dist/app/login/img/eyeoff.png">
+					<img class="eyeon-blue" src="/static/dist/app/login/img/blue_eye.png">
+					<img class="eyeoff-blue" src="/static/dist/app/login/img/blue_eyeoff.png">
+				</div>
+			</div>
+			<div ng-if="$ctrl.form.password.$invalid && ($ctrl.form.password.$dirty || $ctrl.form.$displayErrors)" class="has-error">
+				<span class="help-block">Заполните пароль</span>
+			</div>
+			<div class="add_features">
+				<a class="lc-checkbox" href ng-class="{ 'active': $ctrl.remember }" ng-click="$ctrl.toggleRemember()">
+					<div class="lc-checkbox-icon">
+						<img class="state01" src="/static/dist/app/login/img/checkbox.png">
+						<img class="state02" src="/static/dist/app/login/img/checkbox_2.png">
+						<img class="state03" src="/static/dist/app/login/img/checkbox_3.png">
+						<img class="state04" src="/static/dist/app/login/img/checkbox_4.png">
+					</div>
+					<div class="lc-checkbox-text">Оставаться в системе</div>
+				</a>
+				<a class="add_features-forgotpass" href ng-click="$ctrl.recoveryPassword()">Забыли пароль?</a>
+			</div>
+		</div>
+		<div class="h_buttons">
+			<div class="white-button halfper" ng-click="$ctrl.logout()">Выйти</div>
+			<div class="primary-button halfper" ng-click="$ctrl.login()">Войти</div>
+		</div>
+	</div>
+</main>

@@ -1,0 +1,141 @@
+<div class="header" ng-if="$ctrl.drawHeader" ng-style="{'background-color': $ctrl.futureMode ? '#b20186 !important' : '' }">
+
+    <!--блок правая половина "шапки"-->
+    <div class="block-personal-cabinet" ng-if="!$ctrl.isWizard">
+        <div class="number-employees-in-system hidden-scr-sm hidden-scr-xs">
+            <p id="working-cnt-block">
+                {{$ctrl.context.now}} - В системе работает <span class="number-employees-span">{{$ctrl.context.activeUsers}}</span>
+                <a href="javascript:void(0);" type="button" ng-click="$ctrl.updateWorkInSystemCnt()" title="Список пользователей в сети">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </p>
+        </div>
+
+        <ul class="pull-right">
+            <li class="switch-year-text hidden-scr-xs" ng-if="$ctrl.context.schoolyear">
+                <p><span class="hidden-scr-sm" ng-if="$ctrl.context.schoolyear.closed == 'Future'">будущий</span><span class="hidden-scr-sm" ng-if="$ctrl.context.schoolyear.closed == 'Open'">текущий</span> {{$ctrl.context.schoolyear.name}} <span class="hidden-scr-sm">уч. год</span></p>
+            </li>
+            <li class="separator_small" ng-if="$ctrl.context.user">
+                <a ng-if="$ctrl.isServAdmin || $ctrl.isEmForSchool">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="hidden-scr-sm" title="Персональные настройки">{{$ctrl.getUserName()}}</span>
+                </a>
+                <a ng-if="!$ctrl.isServAdmin && !$ctrl.isEmForSchool" href="javascript:void(0);" ng-click="$ctrl.openPersonalSettings()">
+                    <span class="glyphicon glyphicon-user" title="Персональные настройки"></span>
+                    <span class="hidden-scr-sm" title="Персональные настройки">{{$ctrl.getUserName()}}</span>
+                </a>
+            </li>
+            <li class="no_separator">
+                <a href="javascript:void(0);" ng-click="$ctrl.logout()">
+                    <span class="icon-off" title="Выход"></span>
+                    <span class="hidden-scr-sm">Выход</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--логотип-->
+    <div class="block-logo">
+        <a class="logo logo-{{$ctrl.getScreenScheme()}}" href="#"></a>
+        <p class="title_product">{{$ctrl.context.productName}}</p>
+        <p class="school" ng-attr-title="{{!$ctrl.isEducManager ? $ctrl.language.Generic.SchoolInfo.kTitleSchoolInfoCard : ''}}"
+            style="cursor: pointer;" ng-if="$ctrl.context.organization" ng-click="!$ctrl.isEducManager && $ctrl.openSchoolInfo()">
+            {{$ctrl.context.organization.name}}
+        </p>
+    </div>
+
+	<app-mobile-menu ng-if="$ctrl.drawMenu"></app-mobile-menu>
+    <div class="navbar navbar-default" ng-if="$ctrl.drawMenu">
+        <div>
+            <app-menu ng-if="$ctrl.ready"></app-menu>
+        </div>
+        <app-switch-year ng-if="$ctrl.ready && $ctrl.showYearsTab()" info="$ctrl.switchYearInfo"></app-switch-year>
+    </div>
+
+    <div class="slide-menu-left" ng-if="$ctrl.drawMenu">&nbsp;</div>
+    <div class="slide-menu-right" ng-if="$ctrl.drawMenu">&nbsp;</div>
+        
+</div>
+
+
+<div class="block-content" ng-if="$ctrl.ready">
+    <page-back></page-back>
+    <page-title></page-title>
+
+
+    <!--мини-меню, расположенное в правой части главного заголовка 2-->
+    <ul class="top-right-menu">
+
+
+        <parent-students-list ng-if="$ctrl.drawChSelect"></parent-students-list>
+
+        <li ng-if="$ctrl.drawChats">
+            <app-chats-button></app-chats-button>
+        </li>
+        <li ng-if="$ctrl.drawAnnouncements">
+            <app-announcements-button></app-announcements-button>
+        </li>
+        <li ng-if="$ctrl.drawMail">
+            <app-mail-button></app-mail-button>
+        </li>
+        <li ng-if="$ctrl.drawForum">
+            <app-forum-button></app-forum-button>
+        </li>
+        <!-- <li ng-if="$ctrl.drawForum">
+            <a href="javascript:void(0);" ng-click="$ctrl.forum()" title="Форум new" >
+                <span class="cb-forum"></span>
+            </a>
+        </li> -->
+        <li ng-if="!$ctrl.isEducManager && !$ctrl.isServAdmin">
+            <app-help-button></app-help-button>
+        </li>
+    </ul>
+    <parent-students-list mobile="true" ng-if="$ctrl.drawChSelect"></parent-students-list>
+
+
+    <!--content-->
+    <div class="content">
+        <div class="container-fluid">
+
+            <sferum-banner></sferum-banner>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- в asp тут рисуется apploader -->
+                    <!-- <div class="apploader" style="opacity: 1; z-index: 999; display: block;">
+                        <div class="placeholder">
+                            <span class="arrows"></span>
+                            <span class="title">{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+                        </div>
+                    </div> -->
+                    <div>
+                        <form name="refreshfix" method="post" class="hidden">
+                            <input type="hidden" name="at" value="{{$ctrl.context.at}}"/>
+                            <input type="hidden" name="baseurl" value="{{$ctrl.angularContext.app}}"/>
+                            <input type="hidden" name="route" value="{{$ctrl.angularContext.route}}"/>
+                            <input type="hidden" name="TabItem" value="{{$ctrl.pageContext.tabItem}}"/>
+                            <input type="hidden" name="search" value="{{$ctrl.angularContext.search}}"/>
+                        </form>
+                        <form name="MenuForm" method="post" class="hidden">
+                            <input type="hidden" name="at" value="{{$ctrl.context.at}}"/>
+                            <input type="hidden" name="MenuItem value="-1"/>
+                            <input type="hidden" name="TabItem"/>
+                        </form>
+                        <div ng-view autoscroll="true" id="view"></div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <div class="height-footer-empty"></div>
+</div> 
+
+<div class="footer">
+    <a class="logo-footer" href="#"></a>
+    <div class="block-debug-information">
+        <p class="p-line-height-09 p-font-weight-900">{{$ctrl.context.productName}} {{$ctrl.context.version}} {{$ctrl.context.versionDate}}</p>	
+        <p class="p-line-height-09">Ⓒ 2007-2022 ИРТех, г. Самара. Все права защищены</p>	
+    </div>
+</div>	

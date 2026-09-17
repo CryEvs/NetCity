@@ -1,0 +1,39 @@
+<script language="javascript" src="/vendor/select2/js/select2.full.min.js"></script>
+
+<div class="buttons-filters-panel form-horizontal">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-right">
+				</div>
+			</div>
+			<filter-panel class="filters-panel form-horizontal" ng-if="ctrl.filterPanelSettings" fp="ctrl.filterPanel" fp-settings="ctrl.filterPanelSettings"></filter-panel>
+		</div>
+	</div>
+</div>
+<div class="row load-button-panel">
+	<div class="col-md-12 form-group">
+		<div class="btn-group" role="group">
+			<span>
+				<button title={{$ctrl.language.Generic.Buttons.kSave}} type="button" class="btn btn-primary btn-sm" ng-click="ctrl.save()">
+					<span class="glyphicon glyphicon-save"></span>
+					<span>{{ctrl.language.Generic.Buttons.kSave}}</span>
+				</button>
+			</span>
+		</div>
+	</div>
+</div>
+<div>
+	<edit-limits 
+			results-attendance-past-edit-days ="ctrl.resultsAttendancePastEditDays" 
+			results-attendance-past-edit-checked="ctrl.resultsAttendancePastEditChecked"
+			results-attendance-past-edit-actual="ctrl.resultsAttendancePastEditActual"
+			totals-past-edit-days="ctrl.totalsPastEditDays" 
+			totals-past-edit-checked="ctrl.totalsPastEditChecked"
+			totals-past-edit-actual="ctrl.totalsPastEditActual"
+			future-edit-days="ctrl.futureEditDays"
+			future-edit-checked="ctrl.futureEditChecked"
+			future-edit-actual="ctrl.futureEditActual">
+	<edit-limits>
+</div>
+

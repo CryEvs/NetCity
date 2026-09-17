@@ -1,0 +1,25 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form class="form-horizontal form-sm" name="$ctrl.form">
+		<ns-form control-size="col-md-8" label-size="col-md-4">
+			<ns-form-group title="Компонент">
+				<input class="form-control" type="text" disabled ng-value="$ctrl.component.name" />
+			</ns-form-group>
+
+			<div class="alert alert-warning" role="alert" ng-if="!$ctrl.component.used">
+				Выбранный компонент не используется в системе.
+			</div>
+
+			<ns-form-group title="Заменить на" ng-if="$ctrl.component.used" ng-class="{'has-error': $ctrl.componentTo.id == $ctrl.component.id }">
+				<select class="form-control" ng-options="component as component.name for component in $ctrl.components" ng-model="$ctrl.componentTo"></select>
+				<p class="help-block" ng-show="$ctrl.componentTo.id == $ctrl.component.id">Необходимо выбрать другой компонент</p>
+			</ns-form-group>
+
+			<ns-form-group title="Учебный год" ng-if="$ctrl.component.used" ng-class="{'has-error': $ctrl.selection.items.length == 0 }">
+				<div class="checkbox" ng-repeat="year in $ctrl.component.usedYears">
+					<label><input type="checkbox" ng-checked="$ctrl.selection.isSelected(year.id)" ng-click="$ctrl.selection.select(year.id)">{{year.name}}</label>
+				</div>
+				<p class="help-block" ng-show="$ctrl.selection.items.length == 0">Необходимо выбрать хотя бы один учебный год</p>
+			</ns-form-group>
+		</ns-form>
+	</form>
+</ns-modal>

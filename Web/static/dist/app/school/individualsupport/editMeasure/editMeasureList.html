@@ -1,0 +1,49 @@
+	<div class="buttons-panel">
+		<div class="buttons-panel-left">
+
+			<!-- ДОБАВИТЬ -->
+			<button class="btn btn-info btn-sm" ng-click="$ctrl.addMeasure()" ng-disabled="$ctrl.state.readOnly">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+			</button>
+
+			<!-- РЕДАКТИРОВАТЬ -->
+			<button class="btn btn-default btn-sm" ng-click="$ctrl.editMeasure($ctrl.selection.selected)" ng-disabled="!$ctrl.selection.selected || !$ctrl.canEdit()" ng-hide="$ctrl.measures.length == 0">
+				<span class="glyphicon glyphicon-pencil"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kEdit}}</span>
+			</button>
+
+			<!-- УДАЛИТЬ -->
+			<button class="btn btn-danger btn-sm" ng-click="$ctrl.removeMeasure($ctrl.selection.selected)" ng-disabled="!$ctrl.selection.selected || !$ctrl.canEdit()" ng-hide="$ctrl.measures.length == 0">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+			</button>
+
+		</div>
+	</div>
+
+	<div class="alert alert-info" role="alert" ng-if="$ctrl.measures.length == 0">
+		Нет информации о мерах индвидуальной поддержки
+	</div>
+
+	<table class="table table-xs table-bright table-bright-hover table-selectable" ng-if="$ctrl.measures.length">
+		<tr>
+			<th>{{$ctrl.language.Generic.Reports.kNumberRow}}</th>
+			<th>Мероприятие</th>
+			<th>Пользователь, внесший информацию</th>
+			<th>Дата проведения</th>
+			<th>Доп. информация</th>
+			<th>{{$ctrl.language.Generic.Curriculum.kDescription}}</th>
+			<th>{{$ctrl.language.Generic.Reports.kResult}}</th>
+		</tr>
+
+		<tr ng-repeat="measure in $ctrl.measures" ng-class="{'selected': $ctrl.selection.isSelected(measure)}" ng-click="$ctrl.selection.select(measure)">
+			<td>{{$index + 1}}</td>
+			<td>{{measure.measureType.name}}</td>
+			<td>{{measure.user.name}}</td>
+			<td>{{measure.date | nsDate}}</td>
+			<td>{{measure.extraInfo}}</td>
+			<td>{{measure.description}}</td>
+			<td>{{measure.result}}</td>
+		</tr>
+	</table>

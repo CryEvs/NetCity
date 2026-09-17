@@ -1,0 +1,156 @@
+<style>
+	.move {
+		background-color: white;
+		border: 1px solid #ddd;
+		height: 29px;
+	}
+
+	.glyphicon-resize-vertical {
+		opacity: 0.5;
+	}
+
+	.highlight {
+		background-color: #fff5c0;
+		height: 29px;
+	}
+
+	.highlight > td:nth-child(-n+3) {
+		border-right: 0 !important;
+	}
+
+	.not-active > td > table {
+		background-color: #d3d3d3 !important;
+	}
+</style>
+
+
+<div class="row ns-cloak">
+	<div class="col-md-12 buttons-filters-panel form-horizontal">
+
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<div class="display-inline">
+					<button title="{{'language.Generic.Common.kAdd' | language}}" type="button" class="btn btn-info" ng-if="!$ctrl.readonly" ng-click="$ctrl.addTask()">
+						<span class="glyphicon glyphicon-plus-sign"></span> 
+						<span>Добавить задание</span>
+					</button>
+				</div>
+
+				<button type="button" class="btn btn-warning" data-toggle="button" ng-if="!$ctrl.readonly && $ctrl.testPlanId && $ctrl.tasks.length" aria-pressed="{{$ctrl.sortMode}}" ng-click="$ctrl.toggleSortMode()">
+					<span>Изменить порядок заданий</span>
+				</button>
+
+				<div class="display-inline" ng-if="!$ctrl.readonly && $ctrl.testPlanId && !$ctrl.sortMode && $ctrl.tasks.length">
+					<button title="{{'language.Generic.QualityAssessment.kDeleteSelectedTestTask' | language}}" type="button" class="btn btn-danger" ng-click="$ctrl.deleteTasks()">
+						<span class="glyphicon glyphicon-minus-sign"></span> 
+						<span>{{'language.Generic.QualityAssessment.kDeleteSelectedTestTask' | language}}</span>
+					</button>
+					
+					<button	title="{{'language.Generic.QualityAssessment.kDeleteTestPlanFull' | language}}" type="button" class="btn btn-danger" ng-if="$ctrl.canDeletePlan()" ng-click="$ctrl.deletePlan()">
+						<span class="glyphicon glyphicon-minus-sign"></span> 
+						<span>{{'language.Generic.QualityAssessment.kDeleteTestPlanShort' | language}}</span>
+					</button>
+				</div>
+
+			</div>
+			<div class="buttons-panel-right">
+				<button ng-if="!$ctrl.readonly && (!$ctrl.testPlanId || !$ctrl.tasks.length)" title="{{$ctrl.language.Generic.QualityAssessment.kImportTestPlan}}" type="button" class="btn btn-default" ng-click="$ctrl.import()">
+					<span class="glyphicon glyphicon-import"></span>
+					<span>{{$ctrl.language.Generic.QualityAssessment.kImportTestPlan}}</span>
+				</button>
+				<button ng-if="$ctrl.testPlanId && $ctrl.tasks.length" title="Экспорт Плана контрольной работы" type="button" class="btn btn-default"  ng-click="$ctrl.export()">
+					<span class="glyphicon glyphicon-export"></span>
+					<span>Экспорт Плана контрольной работы</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-if="$ctrl.testPlanId">
+	<div class="col-md-6 col-lg-6">
+		<div id="popUpTestLevel" style="display: block;">
+			<div class="form-group">
+				<div class="col-md-5 col-lg-4">
+					<label class="control-label", ng-if="$ctrl.readonly">{{'language.Generic.QualityAssessment.kTestLevel'| language}}</label>
+					<label class="control-label", ng-if="!$ctrl.readonly">{{'language.Generic.QualityAssessment.kSelectTestLevel' | language}}</label>
+				</div>
+				<div class="col-md-7 col-lg-8">
+					<select class="form-control" ng-if="!$ctrl.readonly" name="LEVELID" ng-change="$ctrl.changeLevel()" 
+						ng-model="$ctrl.testPlan.testLevel" ng-options="level.key as level.name for level in $ctrl.testLevels"
+						ng-disabled="!$ctrl.canChangeLevel()"></select>
+					<span ng-if="$ctrl.readonly">{{$ctrl.getTestLevelName($ctrl.testPlan.testLevel)}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak">
+	<div class="col-md-12">
+		<table class="table table-bordered table-condensed testPlan print-block" ng-class="{'table-selectable': !$ctrl.readonly}" ng-if="$ctrl.testPlanId && $ctrl.ready && $ctrl.tasks.length">
+			<thead>
+				<tr>
+					<th>{{'language.Generic.QualityAssessment.kTestTaskNumber' | language}}</th>
+					<th ng-if="!$ctrl.assignInfo.isRusDictation">{{'language.Generic.QualityAssessment.kTaskDifficult' | language}}</th>
+					<th ng-if="!$ctrl.assignInfo.isRusDictation">{{'language.Generic.QualityAssessment.kMaxScore' | language}}</th>
+					<th ng-if="$ctrl.assignInfo.isRusDictation">{{'language.Generic.QualityAssessment.kTaskMistakeType' | language}}</th>
+					<th>{{'language.Generic.QualityAssessment.kContentElement' | language}}</th>
+					<th>{{'language.Generic.QualityAssessment.kCheckedContentElements' | language}}</th>
+				</tr>
+			</thead>
+			<tbody ng-if="!$ctrl.sortMode" style="vertical-align: top;">
+				<tr style="vertical-align: top;" ng-repeat="task in $ctrl.tasks" ng-click="$ctrl.selection.select(task)" ng-class="{'selected': $ctrl.selection.isSelected(task)}">
+					<td class="number">{{task.number}}</td>
+					<td ng-if="!$ctrl.assignInfo.isRusDictation">
+						<a ng-if="!$ctrl.readonly" href="javascript:void(0)" ng-click="$ctrl.editTask(task); $event.stopPropagation()">{{$ctrl.getDifficultName(task.difficult)}}</a>
+						<span ng-if="$ctrl.readonly">{{$ctrl.getDifficultName(task.difficult)}}</span>
+					</td>
+					<td ng-if="!$ctrl.assignInfo.isRusDictation">
+						<a ng-if="!$ctrl.readonly" href="javascript:void(0)" ng-click="$ctrl.editTask(task); $event.stopPropagation()">{{task.possiblePoints}}</a>
+						<span ng-if="$ctrl.readonly">{{task.possiblePoints}}</span>
+					</td>
+					<td ng-if="$ctrl.assignInfo.isRusDictation">
+						<a ng-if="!$ctrl.readonly" href="javascript:void(0)" ng-click="$ctrl.editTask(task); $event.stopPropagation()">{{$ctrl.getMistakeName(task.mistakeType)}}</a>
+						<span ng-if="$ctrl.readonly">{{$ctrl.getMistakeName(task.mistakeType)}}</span>
+					</td>
+					<td class="contentElementCodes">
+						<p class="mini" ng-repeat="item in task.contentElements">{{item.number}}</p>
+					</td>
+					<td class="contentElementNames">
+						<p class="mini" ng-repeat="item in task.contentElements">{{item.name}}</p>
+						<div ng-if="task.additional">
+							<br><b>{{'language.Generic.QualityAssessment.kAdditional' | language}}: </b>{{task.additional}}
+						</div>
+					</td>
+				</tr>
+			</tbody>
+			<tbody ng-if="$ctrl.sortMode" style="vertical-align: top;" ui-sortable="$ctrl.sortableOptions" ng-model="$ctrl.tasks">
+				<tr style="vertical-align: top;" ng-repeat="task in $ctrl.tasks">
+					<td class="number">
+						<span class="glyphicon glyphicon-resize-vertical"></span>
+						{{task.number}}
+					</td>
+
+					<td ng-if="!$ctrl.assignInfo.isRusDictation">{{$ctrl.getDifficultName(task.difficult)}}</td>
+					<td ng-if="!$ctrl.assignInfo.isRusDictation">{{task.possiblePoints}}</td>
+					<td ng-if="$ctrl.assignInfo.isRusDictation">{{$ctrl.getMistakeName(task.mistakeType)}}</td>
+
+					<td class="contentElementCodes">
+						<p class="mini" ng-repeat="item in task.contentElements">{{item.number}}</p>
+					</td>
+					<td class="contentElementNames">
+						<p class="mini" ng-repeat="item in task.contentElements">{{item.name}}</p>
+						<div ng-if="task.additional">
+							<br><b>Дополнительно: </b>{{task.additional}}
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="alert alert-info" role="alert" ng-if="!$ctrl.tasks.length">
+			{{'language.Generic.QualityAssessment.kNotExistsTestPlan' | language}}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+<link rel="stylesheet" type="text/css" href="/static/dist/app/school/studentdiary/netschool-app/netschool-app.component.css" />
+
+<div class="ns_container">
+	<div class="ns_description_section">
+		<div class="ns_head">NetSchool</div>
+		<div class="ns_description">
+			Вся успеваемость в Вашем смартфоне. Для учеников и их родителей.
+		</div>
+		<a href="javascript: void(0)" ng-click="ctrl.showGoAppStoreWindow = true" id="ns_button_appstore" ng-show="ctrl.isApple">
+			Для iPhone
+		</a>
+		<a href="javascript: void(0)" ng-click="ctrl.showGoGoogleStoreWindow = true" id="ns_button_googleplay" ng-show="ctrl.isAndroid">
+			Для Android
+		</a>
+	</div>
+	<div id="ns_bubble_violt"></div>
+	<div id="ns_bubble_orng"></div>
+	<div id="ns_bubble_yllw"></div>
+	<div id="ns_bubble_blue"></div>
+	<div class="ns_phones">
+		<img id="ns_phone_back" src="/static/dist/app/school/studentdiary/netschool-app/img/phone_back.png" srcset="/static/dist/app/school/studentdiary/netschool-app/img/phone_back@2x.png 2x, /static/dist/app/school/studentdiary/netschool-app/img/phone_back@3x.png 3x">
+		<img id="ns_phone_front" src="/static/dist/app/school/studentdiary/netschool-app/img/phone_front.png" srcset="/static/dist/app/school/studentdiary/netschool-app/img/phone_front@2x.png 2x, /static/dist/app/school/studentdiary/netschool-app/img/phone_front@3x.png 3x">
+	</div>
+</div>
+
+<!-- всплывающее окно -->
+<section class="ns_child-window" ng-show="ctrl.showGoAppStoreWindow">
+	<div class="ns_placeholder">
+		<div class="ns_litebox">
+			<div class="ns_close" ng-click="ctrl.showGoAppStoreWindow = false"></div>
+			<h4 class="ns_title">Мобильное приложение</h4>
+			<div class="ns_description">
+				Отсканировав QR-код, Вы перейдете в магазин приложений App Store Market для загрузки мобильного приложения.
+			</div>
+			<img width="324" height="324" src="/static/dist/app/school/studentdiary/netschool-app/img/qr-applestore.svg" class="ns_qrcode">
+			<div class="ns_buttons">
+				<div class="ns_button goToStore" ng-click="ctrl.openAppStore()">Посетить магазин</div>
+				<div class="ns_button Done" ng-click="ctrl.showGoAppStoreWindow = false">Готово!</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- всплывающее окно -->
+<section class="ns_child-window" ng-show="ctrl.showGoGoogleStoreWindow">
+	<div class="ns_placeholder">
+		<div class="ns_litebox">
+			<div class="ns_close" ng-click="ctrl.showGoGoogleStoreWindow = false"></div>
+			<h4 class="ns_title">Мобильное приложение</h4>
+			<div class="ns_description">
+				Отсканировав QR-код, Вы перейдете в магазин приложений Google Play Market для загрузки мобильного приложения.
+			</div>
+			<img width="324" height="324" src="/static/dist/app/school/studentdiary/netschool-app/img/qr-googleplay.svg" class="ns_qrcode">
+			<div class="ns_buttons">
+				<div class="ns_button goToStore" ng-click="ctrl.openGoogleStore()">Посетить магазин</div>
+				<div class="ns_button Done" ng-click="ctrl.showGoGoogleStoreWindow = false">Готово!</div>
+			</div>
+		</div>
+	</div>
+</section>

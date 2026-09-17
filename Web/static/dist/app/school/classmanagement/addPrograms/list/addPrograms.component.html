@@ -1,0 +1,164 @@
+<div class="buttons-filters-panel form-horizontal ns-cloak">
+
+	<div class="row">
+		<div class="filters-panel col-md-7 col-lg-7">
+			<div class="form-group">
+				<label class="control-label col-md-3">{{$ctrl.language.Generic.Common.kSchoolYear}}</label>
+				<div class="col-md-5">
+					<select class="form-control" name="CURRYEAR" ng-model="$ctrl.search.yearId" ng-change="$ctrl.yearChanged()" 
+							ng-options="year.id as year.name for year in $ctrl.years">
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-3">{{$ctrl.language.Generic.SetupSchool.kProgramDirection}}</label>
+				<div class="col-md-5">
+					<select class="form-control" name="DIRID" ng-model="$ctrl.search.directionId" ng-change="$ctrl.changeFilter()" 
+							ng-options="direction.id as direction.name for direction in $ctrl.directions">
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-3">{{$ctrl.language.Generic.SetupAddSchool.kStatus}}</label>
+				<div class="col-md-5">
+					<select class="form-control" name="STATUS" ng-model="$ctrl.search.status" ng-change="$ctrl.changeFilter()" 
+							ng-options="status.id as status.name for status in $ctrl.statuses">
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="NameFilter" class="control-label col-md-3">{{$ctrl.language.Generic.SetupSchool.kProgramName}}</label>
+				<div class="col-md-5">
+					<input id="NameFilter" type="search" class="form-control" ng-model="$ctrl.search.name" ng-change="$ctrl.changeFilter()" placeholder="{{$ctrl.language.Generic.Common.kAll}}"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-if="!$ctrl.state.readOnly" class="row">
+		<div class="col-md-12">
+			<div class="buttons-panel">
+				<div class="buttons-panel-left">
+					<button title="Добавить" type="button" class="btn btn-info" ng-if="!$ctrl.state.integrationInLearno && !$ctrl.state.integrationPFDO" ng-click="$ctrl.add()">
+						<span class="glyphicon glyphicon-plus-sign"></span>
+						<span>{{$ctrl.language.Generic.Common.kAdd}}</span>
+					</button>
+					<button title="Удалить" type="button" class="btn btn-danger" ng-click="$ctrl.remove()">
+						<span class="glyphicon glyphicon-minus-sign"></span>
+						<span>{{$ctrl.language.Generic.Common.kRemove}}</span>
+					</button>
+					<button title="Обновить программы" type="button" class="btn btn-info" ng-if="$ctrl.state.integrationInLearno" ng-click="$ctrl.sync()">
+						<span class="glyphicon glyphicon-repeat"></span>
+						<span>Обновить программы</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row col-md-12 ns-cloak" ng-switch="$ctrl.programsWithLimitsFiltered.length">
+	<div class="row" ng-switch-when="0">
+		<div class="col-md-8 col-lg-6">
+			<div class="alert alert-info" role="alert">Нет программ дополнительного образования с таким статусом</div>
+		</div>
+	</div>
+	<div ng-switch-default>
+		<table class="table table-thin table-xs table-bright-striped">
+			<tr>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupSchool.kProgramName}}</th>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupSchool.kProgramAttr}}</th>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupSchool.kProgramDirection}}</th>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupAddSchool.kActivityType}}</th>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupSchool.kProgramType}}</th>
+
+				<th colspan="2">{{$ctrl.language.Generic.SetupAddSchool.kDuration}}</th>
+				<th colspan="3">{{$ctrl.language.Generic.SetupSchool.kProgramHours}}</th>
+
+				<th rowspan="2">{{$ctrl.language.Generic.SetupSchool.kAdaptation}}</th>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupAddSchool.kDisabilityChildAdapted}}</th>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupAddSchool.kAdaptationType}}</th>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupAddSchool.kEducForm}}</th>
+				
+				<th colspan="7">{{$ctrl.language.Generic.SetupSchool.kProgramDescr}}</th>
+
+				<th rowspan="2">{{$ctrl.language.Generic.SetupAddSchool.kAgeRange}}</th>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupAddSchool.kCost}}</th>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupAddSchool.kSeatsNumber}}</th>
+				<th rowspan="2">{{$ctrl.language.Generic.SetupAddSchool.kStatus}}</th>
+
+				<th ng-if="!$ctrl.state.readOnly" class="NotPrintable" rowspan="2">{{$ctrl.language.Generic.Common.kDeletingMark2}}</th>
+			</tr>
+		
+			<tr>
+				<th>{{$ctrl.language.Generic.SetupAddSchool.kYears}}</th>
+				<th>{{$ctrl.language.Generic.SetupAddSchool.kMonths}}</th>
+				<th>{{$ctrl.language.Generic.SetupSchool.kLearningYear2}}</th>
+				<th>{{$ctrl.language.Generic.SetupSchool.kForYear}}</th>
+				<th>{{$ctrl.language.Generic.SetupSchool.kForWeek}}</th>
+				<th>{{$ctrl.language.Generic.SetupAddSchool.kShortDescription}}</th>
+				<th>{{$ctrl.language.Generic.SetupAddSchool.kKeyWord}}</th>
+				<th>{{$ctrl.language.Generic.SetupAddSchool.kTarget}}</th>
+				<th>{{$ctrl.language.Generic.SetupAddSchool.kResult}}</th>
+				<th>{{$ctrl.language.Generic.SetupAddSchool.kMaterialBase}}</th>
+				<th>{{$ctrl.language.Generic.SetupAddSchool.kHealthRequirements}}</th>
+				<th>{{$ctrl.language.Generic.SetupAddSchool.kMedReference}}</th>
+			</tr>
+		
+			<tr ng-repeat-start="info in $ctrl.programsWithLimitsFiltered">
+				<td ng-if="!$ctrl.state.integrationInLearno" rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">
+					<a href="javascript:void(0);" ng-click="$ctrl.edit(info.addProgram);" title="Перейти к программе">{{info.addProgram.name}}</a>
+				</td>
+				<td ng-if="$ctrl.state.integrationInLearno" rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.name}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.shortName}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.direction.name}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.activityType.name}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.programType.name}}</td>
+
+				<td class="text-center" rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.durationYear}}</td>
+				<td class="text-center" rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.durationMonth}}</td>
+
+				<td class="text-center">{{info.limits[0].grade}}</td>
+				<td class="text-center">{{info.limits[0].yearHours}}</td>
+				<td class="text-center">{{info.limits[0].weekHours}}</td>
+
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}" class="text-center">{{info.addProgram.adaptation | yesEmpty}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}" class="text-center">{{info.addProgram.disabilityChildAdapted | yesEmpty}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.adaptationType.name}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.educForm.name}}</td>
+
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.description}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.keyWord}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.target}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.result}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.materialBase}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.healthRequirements}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}" class="text-center">{{info.addProgram.medReference | yesEmpty}}</td>
+
+				<td ng-if="info.addProgram.ageMin && info.addProgram.ageMin" rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}" class="text-center">{{info.addProgram.ageMin}}&nbsp;-&nbsp;{{info.addProgram.ageMax}}</td>
+				<td ng-if="!(info.addProgram.ageMin && info.addProgram.ageMin)" rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}" class="text-center"></td>
+
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">
+					<div ng-repeat="paymentType in $ctrl.getProgramPaymentTypes(info.addProgram)">
+						{{paymentType.name}}
+					</div>
+				</td>
+
+				<td class="text-center" rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.seatsNumber}}</td>
+				<td rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}">{{info.addProgram.status.name}}</td>
+
+				<td ng-if="!$ctrl.state.readOnly" rowspan="{{$ctrl.rowSpan[info.addProgram.id]}}" class="text-center">
+					<span ng-if="info.addProgram.used">{{$ctrl.language.Generic.Common.kEmploy}}</span>
+					<span ng-if="!info.addProgram.used && !info.addProgram.canBeDeleted"></span>
+					<input ng-if="!info.addProgram.used && info.addProgram.canBeDeleted" type="checkbox" name="del" ng-value="info.addProgram.id" ng-checked="$ctrl.selected.isSelected(info.addProgram.id)" ng-click="$ctrl.toggleChecks(info.addProgram.id)" />
+				</td>
+			</tr>
+
+			<tr ng-if="info.limits.length > 1" ng-repeat-end ng-repeat="limit in info.limits.slice(1)">
+				<td class="text-center">{{limit.grade}}</td>
+				<td class="text-center">{{limit.yearHours}}</td>
+				<td class="text-center">{{limit.weekHours}}</td>
+			</tr>
+
+		</table>
+	</div>
+</div>

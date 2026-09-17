@@ -1,0 +1,49 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<form role="form" class="form-horizontal form-sm" name="$ctrl.form" ng-if="$ctrl.ready">
+		<ns-form>
+			<ns-form-group title="{{$ctrl.language.Generic.SetupSchoolCalendar.kStrFrom}}" ng-class="{ 'has-error': $ctrl.form.FROM.$invalid && $ctrl.form.$displayErrors}">
+				<date-input-component 
+					date-model="$ctrl.moveDay.dateFrom"
+					min-date="$ctrl.yearLimits.startDate"
+					max-date="$ctrl.yearLimits.endDate"
+					name="FROM"
+					required="true">
+				</date-input-component>
+				<div ng-if="$ctrl.form.FROM.$invalid && $ctrl.form.$displayErrors" ng-messages="$ctrl.form.FROM.$error">
+					<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+					<span class="help-block" ng-message="datePeriod">Указано недопустимое значение</span>
+				</div>
+			</ns-form-group>
+			<ns-form-group title="{{$ctrl.language.Generic.SetupSchoolCalendar.kStrTo}}" ng-class="{ 'has-error': $ctrl.form.TO.$invalid && $ctrl.form.$displayErrors}">
+				<date-input-component 
+					date-model="$ctrl.moveDay.dateTo"
+					min-date="$ctrl.yearLimits.startDate"
+					max-date="$ctrl.yearLimits.endDate"
+					name="TO"
+					required="true">
+				</date-input-component>
+				<div ng-if="$ctrl.form.TO.$invalid && $ctrl.form.$displayErrors" ng-messages="$ctrl.form.TO.$error">
+					<span class="help-block" ng-message="required">{{$ctrl.language.Generic.Messages.kRequiredField}}</span>
+					<span class="help-block" ng-message="datePeriod">Указано недопустимое значение</span>
+				</div>
+			</ns-form-group>
+			<ns-form-group title="{{$ctrl.language.Generic.SetupSchoolCalendar.kMoveDayReason}}" ng-class="{ 'has-error': $ctrl.form.DESCR.$invalid && $ctrl.form.$displayErrors}">
+				<textarea 
+					class="form-control" 
+					ng-model="$ctrl.moveDay.description" 
+					rows="5" 
+					required
+					cols="40" 
+					name="DESCR"
+					wrap="soft" 
+					maxlength="2000" 
+					track-changes>
+				</textarea>
+				<div ng-if="$ctrl.form.DESCR.$invalid && $ctrl.form.$displayErrors" ng-messages="$ctrl.form.DESCR.$error">
+					<span class="help-block" ng-message="required">{{$ctrl.language.Generic.SetupSchoolCalendar.kErrDescriptionEmpty}}</span>
+				</div>
+
+			</ns-form-group>				
+		</ns-form>
+	</form>
+</ns-modal>

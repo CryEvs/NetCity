@@ -1,0 +1,60 @@
+{
+    "sumCols": [
+		{
+			"col": 3,
+			"subCols": [4, 6],
+			"type": "include"
+		},
+		{
+			"col": 4,
+			"subCols": [5],
+			"type": "include"
+		},
+		{
+			"col": 6,
+			"subCols": [7],
+			"type": "include"
+		},
+		{
+			"col": 3,
+			"subCols": [8],
+			"type": "include"
+		}
+    ],
+    "sumRows": [
+		{
+			"row": 1,
+			"subRows": [2, 6, 19, 22],
+			"cols": [3,4,5,6,7,8],
+			"type": "sum"
+		},
+		{
+			"row": 6,
+			"subRows": [7,8,9,10,11,12,13,14,15,16,17,18],
+			"cols": [3,4,5,6,7,8],
+			"type": "sum"
+		},
+		{
+			"row": 2,
+			"subRows": [3,4,5],
+			"type": "include"
+		},
+		{
+			"row": 19,
+			"subRows": [20,21],
+			"type": "include"
+		},
+		{
+			"row": 12,
+			"subRows": [23],
+			"cols": [3,8],
+			"type": "include"
+		},
+		{
+			"row": 6,
+			"subRows": [24],
+			"cols": [3,4,5,6,7,8],
+			"type": "include"
+		}
+    ]
+}

@@ -1,0 +1,44 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-header">
+			<div class="bootstrap-dialog-title">
+				<h4 class="modal-title" ng-bind="ctrl.header"></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<span class="content-page-preloader" id="preloader" ng-hide="ctrl.ready"><span>{{ctrl.language.Generic.Movement.kPleaseWait}}</span></span>
+		
+		<form role="form" name="memberForm" class="form form-sm">
+			<fieldset>
+
+				<div class="form-group" ng-if="ctrl.mode.create">
+					<label for="member-user" class="control-label">Подопечный</label>
+					<div>
+						<ui-select track-changes id="member-user" ng-model="ctrl.data.user" theme="bootstrap">
+							<ui-select-match placeholder="Выберите подопечного">{{$select.selected.name}}</ui-select-match>
+							<ui-select-choices repeat="student as student in ctrl.data.curatorStudents | filter: $select.search">
+								<div ng-bind-html="student.name | highlight: $select.search"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</div>
+				</div>
+
+				<div ng-include="'/static/dist/app/em/events/common/eventResult/template.html'" ng-if="(ctrl.data.event.id > 0 && ctrl.data.user.id > 0) || ctrl.mode.edit"></div>
+			</fieldset>
+		</form>
+
+	</div>
+	<div class="modal-footer" ng-show="ctrl.ready">
+		<button class="btn btn-primary ng-binding" ng-click="ctrl.save()" ng-disabled="!ctrl.data.user">
+			Сохранить
+		</button>
+
+		<button class="btn btn-default ng-binding" ng-click="ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-remove-sign"></span>
+			Закрыть
+		</button>
+	</div>
+</div>

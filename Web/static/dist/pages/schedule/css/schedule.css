@@ -1,0 +1,238 @@
+@charset "UTF-8";
+table.schedule-table {
+  /*	
+  	.relay1 {
+  		background-color: #E6FFB8;
+  		color: #82C800;
+  	}
+
+  	.relay2 {
+  		background-color: #DEF4F9;
+  		color: #00B2DA;
+  	}
+
+  	.relay3 {
+  		background-color: #FFF7DD;
+  		color: #C89900;
+  	}
+  */
+}
+table.schedule-table th.schedule-table-header {
+  background-color: #E7F3FF;
+  color: #2491FF;
+}
+table.schedule-table td.vacation-day {
+  background-color: #D7FFD9;
+}
+table.schedule-table td.vacation-day a {
+  color: #00BB09;
+}
+table.schedule-table td.class-event {
+  background-color: #C4E8E8;
+}
+table.schedule-table td.class-event a {
+  color: #0073A9;
+}
+table.schedule-table td.school-event a {
+  color: #3F68C2;
+}
+table.schedule-table td.class-schedule-day {
+  white-space: nowrap;
+}
+table.schedule-table td.schedule-day {
+  background-color: #FBFFBD;
+}
+table.schedule-table td.filled-cell {
+  background-color: #DCFDDC;
+  color: #00B61E;
+}
+table.schedule-table td.filled-cell a {
+  color: #00B61E;
+}
+table.schedule-table td.event {
+  background-color: #F7EDFF;
+  color: #B051FF;
+}
+table.schedule-table td.event a {
+  color: #B051FF;
+}
+table.schedule-table td.week {
+  background-color: #F4FAFF;
+}
+table.schedule-table td.leftheader, table.schedule-table th.leftheader {
+  background-color: #ECF2FD;
+  color: #5691FF;
+}
+table.schedule-table div.cm-cell a {
+  display: block;
+}
+table.schedule-table div.extraActivity, table.schedule-table td.extraActivity {
+  background-color: #ffd485;
+  color: black;
+}
+table.schedule-table div.extraActivity a, table.schedule-table td.extraActivity a {
+  color: black;
+}
+table.schedule-table .vacationEvent {
+  background-color: #D7FFD9;
+  color: #00BB09;
+}
+table.schedule-table .holidayEvent {
+  color: red !important;
+}
+table.schedule-table .schoolEvent {
+  color: #3F68C2;
+}
+table.schedule-table .classEvent {
+  background-color: #C4E8E8;
+  color: #0073A9;
+}
+
+.relay1 {
+  background-color: #E6FFB8;
+  color: #82C800;
+}
+
+.relay2 {
+  background-color: #DEF4F9;
+  color: #00B2DA;
+}
+
+.relay3 {
+  background-color: #FFF7DD;
+  color: #C89900;
+}
+
+.freeDay {
+  color: red !important;
+}
+
+/*=======Стили к странице "Календарь на год"=======*/
+.year-calendar {
+  max-width: 900px;
+  float: left;
+  padding: 0;
+}
+.year-calendar li {
+  display: inline-table;
+  margin: 0 20px 20px 0;
+}
+.year-calendar li > a {
+  text-align: center;
+  display: block;
+  height: 25px;
+  line-height: 2;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  background: #177bd1;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  border-top-right-radius: 6px;
+  -webkit-border-top-left-radius: 6px;
+  -moz-border-radius-topleft: 6px;
+  border-top-left-radius: 6px;
+  overflow: hidden;
+}
+.year-calendar li > a:hover, .year-calendar li > a:focus {
+  background: #18a2eb;
+  text-decoration: inherit;
+}
+.year-calendar li > div {
+  height: 25px;
+  /*дни недели*/
+}
+.year-calendar li > div:last-child div:last-child {
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  border-bottom-right-radius: 6px;
+}
+.year-calendar li > div:last-child div:first-child {
+  -webkit-border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-bottom-left-radius: 6px;
+}
+.year-calendar li > div.weekday {
+  background: #A8DAF5;
+}
+.year-calendar li > div.weekday div {
+  background: #A8DAF5;
+  font-size: 12px;
+  color: #666666;
+  line-height: 2.3;
+}
+.year-calendar li > div.weekday div:hover, .year-calendar li > div.weekday div:focus {
+  cursor: context-menu;
+}
+.year-calendar li > div > div {
+  text-align: center;
+  border-left: 1px solid #BDBDBD;
+  border-bottom: 1px solid #BDBDBD;
+  width: 25px;
+  height: 25px;
+  font-weight: 100;
+  float: left;
+  font-size: 12px;
+  /*каникулы*/
+  /*выходные*/
+  /*номера недели*/
+}
+.year-calendar li > div > div:last-child {
+  border-right: 1px solid #BDBDBD;
+  background: #F0F0F0;
+}
+.year-calendar li > div > div:hover, .year-calendar li > div > div:focus {
+  cursor: context-menu;
+}
+.year-calendar li > div > div a, .year-calendar li > div > div span {
+  text-align: center;
+  color: #555;
+  padding: 5px 5px 4px 5px;
+  display: block;
+  font-weight: 600;
+}
+.year-calendar li > div > div a:hover, .year-calendar li > div > div a:focus, .year-calendar li > div > div span:hover, .year-calendar li > div > div span:focus {
+  text-decoration: inherit;
+  background: #79c9f3;
+  color: #fff;
+}
+.year-calendar li > div > div a:hover {
+  cursor: pointer;
+}
+.year-calendar li > div > div.month a, .year-calendar li > div > div.month span {
+  color: black;
+}
+.year-calendar li > div > div.vacation {
+  background: #E0F3BA;
+}
+.year-calendar li > div > div.weekend a, .year-calendar li > div > div.weekend span {
+  color: red !important;
+}
+.year-calendar li > div > div.school-day a, .year-calendar li > div > div.school-day span {
+  color: #2280bb;
+}
+.year-calendar li > div > div.weeknum a, .year-calendar li > div > div.weeknum span {
+  color: green;
+  font-weight: 100;
+}
+.year-calendar li > div > div.weeknum a:hover, .year-calendar li > div > div.weeknum a:focus, .year-calendar li > div > div.weeknum span:hover, .year-calendar li > div > div.weeknum span:focus {
+  color: green;
+  background: #D0D0D0;
+}
+
+.summary-information {
+  float: right;
+}
+
+.summary-inform-bottom {
+  display: none;
+}
+
+@media only screen and (max-width: 1100px) {
+  .summary-information {
+    display: none;
+  }
+  .summary-inform-bottom {
+    display: block;
+  }
+}

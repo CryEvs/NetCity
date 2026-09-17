@@ -1,0 +1,59 @@
+<div class="container">
+
+	<form class="form form-horizontal">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-warning" role="alert">
+					<span>{{$ctrl.language.Generic.Wizard.kPlease}} <i>{{$ctrl.context.productName}}</i>.</span><br>
+					<span>{{$ctrl.language.Generic.Wizard.kThenContinue}}</span>
+				</div>
+
+				<p>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="$ctrl.disableTips">{{$ctrl.language.Generic.Wizard.kDisableTips}}
+						</label>
+					</div>
+				</p>
+
+				<span>{{$ctrl.language.Generic.Wizard.kDoThis}}</span>
+
+				<ol>
+					<li>
+						<span>{{$ctrl.language.Generic.Wizard.kDoThis1}}</span><br>
+						<a href="javascript:void(0)" ng-click="$ctrl.goStep(21)" title="{{$ctrl.language.Generic.Common.kChoose}}">
+							{{$ctrl.language.Generic.MenuFolders.kPlanning}} -> {{$ctrl.language.Generic.Common.kSubjects}}
+						</a>
+					</li>
+					<li>
+						<span>{{$ctrl.language.Generic.Wizard.kDoThis2}}</span><br>
+						<a href="javascript:void(0)" ng-click="$ctrl.goStep(22)" title="{{$ctrl.language.Generic.Common.kChoose}}">
+							{{$ctrl.language.Generic.MenuFolders.kPlanning}} -> {{$ctrl.language.Generic.MenuFolders.kFNCurriculumLimits}}
+						</a><br>
+						<a href="javascript:void(0)" ng-click="$ctrl.goStep(23)" title="{{$ctrl.language.Generic.Common.kChoose}}">
+							{{$ctrl.language.Generic.MenuFolders.kPlanning}} -> {{$ctrl.language.Generic.MenuFolders.kCurriculumPlan}}
+						</a>
+					</li>
+					<li>
+						<span>{{$ctrl.language.Wizard.kDoThis3}}</span><br>
+						<a href="javascript:void(0)" ng-click="$ctrl.goStep(24)" title="{{$ctrl.language.Generic.Common.kChoose}}">
+							{{$ctrl.language.Generic.MenuFolders.kLearning}} -> {{$ctrl.language.Generic.Common.kSubjects}}
+						</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="buttons-panel">
+					<div class="buttons-panel-left">
+						<button title="{{$ctrl.language.Generic.Common.kContinue}}" type="button" class="btn btn-default" ng-click="$ctrl.doSave()">
+							<span class="glyphicon glyphicon-new-window"></span> <span>{{$ctrl.language.Generic.Buttons.kContinue}}</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

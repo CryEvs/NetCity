@@ -1,0 +1,6 @@
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.ready">
+		<span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+	</span>
+	<edit-event ng-hide="!$ctrl.ready" ctrl="$ctrl.editCtrl" readonly="$ctrl.readonly" event="$ctrl.event" predefined="$ctrl.predefined" on-ready="$ctrl.onReady()"></edit-event>
+</ns-modal>

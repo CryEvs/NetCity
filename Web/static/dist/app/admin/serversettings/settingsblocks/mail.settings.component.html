@@ -1,0 +1,109 @@
+<ng-form class="form-horizontal" name="$ctrl.form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="buttons-panel">
+                <button title="{{$ctrl.language.Generic.Common.kSave}}" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+                    <span class="glyphicon glyphicon-floppy-save"></span> <span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+                </button>
+                <button title="{{$ctrl.language.Generic.ServAdmin.kMailTesting}}" type="button" class="btn btn-default" ng-click="$ctrl.showFormTestEMail()">
+                    <span>{{$ctrl.language.Generic.ServAdmin.kBtnTesting}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': $ctrl.form.NSMailHost.$invalid}">
+        <label class="control-label col-md-4 col-lg-3 col-sm-4">
+            {{$ctrl.language.Generic.ServAdmin.kOutMailServerAddress}}
+        </label>
+        <div class="col-md-8 col-lg-5 col-sm-8">
+            <input type="text" class="form-control" name="NSMailHost" size="40" maxlength="100" ng-model="$ctrl.data.mailSettings.mailHost" required track-changes>
+            <div ng-messages="$ctrl.form.NSMailHost.$error">
+                <span class="help-block" ng-message="required">{{$ctrl.mailErrors.mailHostError()}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4 col-lg-3 col-sm-4">
+            {{$ctrl.language.Generic.ServAdmin.kPort}}
+        </label>
+        <div class="col-md-8 col-lg-5 col-sm-8">
+            <input type="text" class="form-control" name="NSMailHostPort" maxlength="5" ng-model="$ctrl.data.mailSettings.mailHostPort" track-changes>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4 col-lg-3 col-sm-4">
+            {{$ctrl.language.Generic.ServAdmin.kMailUseSsl}}
+        </label>
+        <div class="col-md-8 col-lg-5 col-sm-8">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="$ctrl.data.mailSettings.useSsl" track-changes>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': $ctrl.form.NSMailFrom.$invalid}">
+        <label class="control-label col-md-4 col-lg-3 col-sm-4">
+            {{$ctrl.language.Generic.ServAdmin.kMailFrom}}
+        </label>
+        <div class="col-md-8 col-lg-5 col-sm-8">
+            <input type="text" class="form-control" name="NSMailFrom" size="40" maxlength="100" ng-model="$ctrl.data.mailSettings.mailFrom" required track-changes>
+            <div ng-messages="$ctrl.form.NSMailFrom.$error">
+                <span class="help-block" ng-message="required">{{$ctrl.mailErrors.mailFromError()}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4 col-lg-3 col-sm-4">
+            {{$ctrl.language.Generic.ServAdmin.kMailServerRequiresAuth}}
+        </label>
+        <div class="col-md-8 col-lg-5 col-sm-8">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="SMTPServerRequiresAuth" ng-model="$ctrl.data.needMailAuth" track-changes>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="$ctrl.data.needMailAuth" ng-class="{'has-error': $ctrl.form.NSMailUser.$invalid}">
+        <label class="control-label col-md-4 col-lg-3 col-sm-4">
+            {{$ctrl.language.Generic.ServAdmin.kLoginName}}
+        </label>
+        <div class="col-md-8 col-lg-5 col-sm-8">
+            <input type="text" class="form-control" name="NSMailUser" size="100" maxlength="100" ng-model="$ctrl.data.mailSettings.mailUser" required track-changes>
+            <div ng-messages="$ctrl.form.NSMailUser.$error">
+                <span class="help-block" ng-message="required">{{$ctrl.mailErrors.mailUserError()}}</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group" ng-if="$ctrl.data.needMailAuth" ng-class="{'has-error': $ctrl.form.NSMailPassword.$invalid}">
+        <label class="control-label col-md-4 col-lg-3 col-sm-4">
+            {{$ctrl.language.Generic.Common.kPassword}}
+        </label>
+        <div class="col-md-8 col-lg-5 col-sm-8">
+            <input type="password" class="form-control" autocomplete="off" name="NSMailPassword" size="100" maxlength="100" ng-model="$ctrl.data.mailSettings.mailPassword" required track-changes>
+            <div ng-messages="$ctrl.form.NSMailPassword.$error">
+                <span class="help-block" ng-message="required">{{$ctrl.mailErrors.mailPasswordError()}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': $ctrl.form.NSServAdminMail.$invalid}">
+        <label class="control-label col-md-4 col-lg-3 col-sm-4">
+            {{$ctrl.language.Generic.ServAdmin.kServAdminMail}}
+        </label>
+        <div class="col-md-8 col-lg-5 col-sm-8">
+            <input type="text" class="form-control" name="NSServAdminMail" size="40" maxlength="80" ng-model="$ctrl.data.mailSettings.servAdminMail" required track-changes>
+            <div ng-messages="$ctrl.form.NSServAdminMail.$error">
+                <span class="help-block" ng-message="required">{{$ctrl.mailErrors.servAdminMailError()}}</span>
+            </div>
+        </div>
+    </div>
+</ng-form>

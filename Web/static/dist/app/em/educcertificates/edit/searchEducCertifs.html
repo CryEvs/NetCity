@@ -1,0 +1,140 @@
+<div class="bootstrap-dialog type-primary">
+
+
+	<!-- ЗАГОЛОВОК МОДАЛЬНОГО ОКНА -->
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">Поиск сертификата</h4>
+		</div>
+	</div>
+
+
+	<!-- ТЕЛО МОДАЛЬНОГО ОКНА -->
+	<div class="modal-body">
+		<form role="form" class="form form-xs">
+
+			<fieldset>
+				<!-- НОМЕР СЕРТИФИКАТА -->
+				<div class="row">
+
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="search-lastname" class="control-label">{{language.Generic.Reports.kNunberCertificate}}</label>
+							<div>
+								<input type="text" required id="search-lastname" name="lastname" class="form-control" ng-model="certifNumber">
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<legend>{{language.Generic.EMReports.kStudentFIO}}</legend>
+				<div class="row">
+
+					<!-- ФАМИЛИЯ СТУДЕНТА -->
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="search-lastname" class="control-label">{{language.Generic.Common.kLastName}}</label>
+							<div>
+								<input type="text" required id="search-lastname" name="lastname" class="form-control" ng-model="lastname">
+							</div>
+						</div>
+					</div>
+
+					<!-- ИМЯ СТУДЕНТА -->
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="search-firstname" class="control-label">{{language.Generic.Common.kFirstName}}</label>
+							<div>
+								<input type="text" required id="search-firstname" name="firstname" class="form-control" ng-model="firstname">
+							</div>
+						</div>
+					</div>
+
+					<!-- ОТЧЕСТВО СТУДЕНТА -->
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="search-middlename" class="control-label">{{language.Generic.Common.kMiddleName}}</label>
+							<div>
+								<div class="input-group">
+									<input type="text" id="search-middlename" name="middlename" class="form-control" ng-disabled="noMiddlename"
+									 ng-model="middlename">
+									<span class="input-group-addon"><input type="checkbox" ng-model="noMiddlename"> Нет</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+
+
+		<div class="alert alert-info" ng-if="!isSearchCompleted" role="alert">Для поиска учащегося заполните № сертификата и/или ФИО учащегося</div>
+
+
+		<!-- РЕЗУЛЬТАТЫ ПОИСКА -->
+
+		<div ng-if="isSearchCompleted">
+
+			<h3 class="first">Результаты поиска</h3>
+
+			<div class="alert alert-info" ng-if="isCertifNotFinded" role="alert">По указанным данным учащихся не обнаружено</div>
+
+			<div ng-if="!isCertifNotFinded" style="max-height: 400px; overflow-y: auto">
+				<div class="table-responsive">
+					<table class="table table-bright table-bright-hover table-xs table-selectable">
+						<tr>
+							<th>Номер сертификата</th>
+							<th>Текущий муниципалитет</th>
+							<th>ФИО учащегося</th>
+							<th>Дата рождения учащегося</th>
+							<th>Дата начала действия</th>
+							<th>Дата окончания действия</th>
+							<th>Статус</th>
+							<th>Категория сертификата</th>
+						</tr>
+
+						<tr ng-repeat="certif in findCertifStudList">
+							<td>{{certif.number}}</td>
+							<td>
+								<select class="form-control" ng-model="certif.currentMunicipalitet" ng-options="item.name for item in certif.municipalitetList track by item.id"></select>
+							</td>
+							<td>{{certif.studentFio}}</td>
+							<td>{{certif.studentBirthDate | date : 'dd.MM.yyyy'}}</td>
+							<td>{{certif.startDate | date : 'dd.MM.yyyy'}}</td>
+							<td>{{certif.endDate | date : 'dd.MM.yyyy'}}</td>
+							<td>{{certif.statusStr}}</td>
+							<td>{{certif.addCertifCategoryName}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+	<div class="modal-footer">
+
+		<!-- ПОИСК -->
+		<button class="btn btn-primary" ng-click="search()" ng-disabled="!isValidForm()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon glyphicon-search"></span>
+			<span>Поиск</span>
+		</button>
+
+		<!-- СОХРАНИТЬ -->
+		<button class="btn btn-primary" ng-click="save()" ng-disabled="isCertifNotFinded" >
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-floppy-save"></span>
+			<span>Сохранить</span>
+		</button>
+
+		<!-- ОТМЕТА -->
+		<button class="btn btn-default" ng-click="cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			Отмена
+		</button>
+
+	</div>
+</div>

@@ -1,0 +1,16 @@
+﻿<% ' © 2007-2008 IRTech. All rights reserved.
+Const kGetCntWorkingUsersMTD	= "GetWorkingCounter"
+Const kGetKLADRStates		= "GetKLADRStates"
+Const kGetKLADRProvinces		= "GetKLADRProvinces"
+Const kGetKLADRCities			= "GetKLADRCities"
+Const kGetKLADRLocations		= "GetKLADRLocations"
+Const kGetClassSubjectGroups4Class  = "kGetClassSubjectGroups4Class"
+Const kDelDayAttendance			= "DelDayAttendance"
+Const kGetEMSchoolsForEOType	= "GetEMSchoolsForEOType"
+Const kUpdatePoolStudentsLine	= "UpdatePoolStudentsLine"
+Const kCanDelSchool				= "CanDelSchool"
+Const kCanOpenFuture			= "kCanOpenFuture"
+Const kHeavySessionIsPosible	= "kHeavySessionIsPosible"
+Const kPrepareLoginForm			= "kPrepareLoginForm"
+Const kRemoveToken				= "kRemoveToken"
+%>

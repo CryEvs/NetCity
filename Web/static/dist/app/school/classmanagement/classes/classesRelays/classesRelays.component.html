@@ -1,0 +1,68 @@
+
+<div class="row ns-cloak" ng-show="$ctrl.showButtons()">
+	<div class="col-md-12">
+		<div class="buttons-panel">
+			<div class="buttons-panel-left">
+				<button class="btn btn-primary ng-binding" type="button" ng-click="$ctrl.roomsForm.$displayErrors=true; $ctrl.save()">
+					<span class="glyphicon glyphicon-floppy-save"></span> {{$ctrl.language.Generic.Buttons.kSave}}
+				</button>
+				<button class="btn btn-warning" type="button" ng-click="$ctrl.reset()">
+					<span class="glyphicon glyphicon-repeat"></span> {{$ctrl.language.Generic.Buttons.kReset}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row ns-cloak" ng-show="$ctrl.state.dataReady">
+
+	<div class="col-md-8 col-lg-6">
+		<div ng-form class="form-horizontal form-sm" name="$ctrl.form">
+			<ns-form control-size="col-md-4" label-size="col-md-4" ng-if="!$ctrl.state.emptyClasses">
+				<ns-form-group title="{{$ctrl.language.Generic.ClassManagement.kTermTypeTitle}}">
+					<span ng-if="$ctrl.state.onlyOneTermType" class="form-control form-control-title"><span class="text">{{$ctrl.termTypeName}}</span></span>
+					<select ng-if="!$ctrl.state.onlyOneTermType"
+							ng-change="$ctrl.changeTermType()"
+							ng-model="$ctrl.termType" class="form-control" name="TermType"
+							ng-options="termType as termType.name for termType in $ctrl.termTypes track by termType.id">
+					</select>
+				</ns-form-group>
+			</ns-form>
+		</div>
+	</div>
+	<br /><br />
+
+	<div class="col-md-8">
+		<table class="table table-xs table-bright table-striped table-thin" ng-if="!$ctrl.state.emptyClasses">
+			<tbody>
+				<tr>
+					<th>{{$ctrl.language.Common.kClass}}</th>
+					<th ng-if="!$ctrl.state.onlyOneProfile">{{$ctrl.language.Common.kProfile}}</th>
+					<th>{{$ctrl.language.Common.kClassChief}}</th>
+					<th ng-repeat="term in $ctrl.termTypeTerms">{{term.termName}}</th>
+				</tr>
+
+				<tr ng-repeat="class in $ctrl.editClasses">
+					<td>{{class.name}}</td>
+					<td ng-if="!$ctrl.state.onlyOneProfile">{{$ctrl.dictProfiles[class.profileId]}}</td>
+					<td>{{$ctrl.getClassChiefName(class)}}</td>
+
+					<td class="text-center" ng-repeat="term in $ctrl.termTypeTerms" ng-class="{'danger' : $ctrl.checkRelayChange(class.id, term.id)}">
+						<span ng-if="$ctrl.state.readOnly" class="text">{{$ctrl.getRelayText(class.id, term.id)}}</span>
+						<select ng-if="!$ctrl.state.readOnly" track-changes class="form-control" 
+							ng-style="{'background-color': $ctrl.checkRelayChange(class.id, term.id) ? '#f2dede' : '' }"
+							name="relay" id="relay" ng-model="$ctrl.getRelayByClassAndTerm(class.id, term.id).relay"
+							ng-options="relay for relay in $ctrl.relays track by relay">
+						</select>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+		
+		<div class="alert alert-info" role="alert" ng-if="$ctrl.state.emptyClasses">
+			{{$ctrl.language.ClassManagement.kNoClasses}}
+		</div>
+	</div>
+
+</div>

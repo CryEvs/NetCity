@@ -1,0 +1,72 @@
+<div class="bootstrap-dialog type-primary">
+	<div class="modal-header">
+		<div class="bootstrap-dialog-title">
+			<h4 class="modal-title">{{$ctrl.header}}</h4>
+		</div>
+		<div class="bootstrap-dialog-close-button">
+			<button class="close" ng-click="$ctrl.cancel()">×</button>
+		</div>
+	</div>
+
+	<div class="modal-body">
+		<div class="alert alert-info" role="alert" ng-if="!$ctrl.comissions.length">
+			{{$ctrl.language.Generic.SetupSchool.kNoCommissions}}
+		</div>
+
+		<div style="overflow:auto" ng-if="$ctrl.comissions.length">
+			<table class="table table-bordered table-xs table-thin table-selectable">
+				<tr>
+					<th>Тип комиссии</th>
+					<th>Номер решения</th>
+					<th>Дата выписки из протокола<br>(Дата начала льготы)</th>
+					<th>Дата окончания</th>
+					<th ng-if="$ctrl.drawEducForm()">{{$ctrl.language.Generic.SetupSchool.kEducForm}}</th>
+					<th>Рекоменд. программа обучения</th>
+					<th>Вид нарушения<br>(Вид льготного содержания)</th>
+					<th>Социальное положение</th>
+				</tr>
+				<tr ng-repeat="comission in $ctrl.comissions" ng-class="{'selected': $ctrl.data.selection.isSelected(comission)}" ng-click="$ctrl.data.selection.select(comission)">
+					<td valign="top">
+						<a href="javaScript:void(0)" ng-click="$ctrl.edit(comission)" title="Изменить">
+							{{comission.type.name}}
+						</a>
+					</td>
+					<td valign="top">{{comission.commissNum}}</td>
+					<td valign="top">{{comission.startDate | nsDate}}</td>
+					<td valign="top">{{comission.endDate | nsDate}}</td>
+					
+					<td valign="top" nowrap="" ng-if="$ctrl.drawEducForm()">{{comission.recommendEducForm.name}}</td>
+					<td valign="top" nowrap="">{{comission.recommendEducProgr.name}}</td>
+					<td valign="top" nowrap="">
+						<p ng-repeat="viol in comission.violations">{{viol.name}}</p>
+					</td>
+					
+					<td valign="top">
+						{{comission.socStatus.name}}
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+	</div>
+
+	<div class="modal-footer">
+
+		<button class="btn btn-info btn-sm" ng-click="$ctrl.add()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-plus-sign"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kAdd}}</span>
+		</button>
+
+		<button class="btn btn-danger btn-sm" ng-click="$ctrl.remove()" ng-disabled="!$ctrl.data.selection.selected">
+			<span class="glyphicon glyphicon-minus-sign"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kRemove}}</span>
+		</button>
+
+		<!-- ОТМЕНИТЬ -->
+		<button class="btn btn-default btn-sm" ng-click="$ctrl.cancel()">
+			<span class="bootstrap-dialog-button-icon glyphicon glyphicon-ban-circle"></span>
+			<span>{{$ctrl.language.Generic.Buttons.kClose}}</span>
+		</button>
+
+	</div>
+</div>

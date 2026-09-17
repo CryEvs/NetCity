@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="buttons-panel buttons-panel-left">
+			<button title="Сохранить" type="button" class="btn btn-primary" ng-click="$ctrl.save()">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<span>{{$ctrl.language.Generic.Buttons.kSave}}</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row form-group">
+	<label class="control-label col-md-2">{{$ctrl.language.Generic.Common.kSchoolYear}}</label>
+	<div class="col-md-4">
+		<input ng-if="$ctrl.yearId" class="form-control" type="text" disabled="disabled" value="{{$ctrl.yearInfo.name}}">
+		<select ng-if="!$ctrl.yearId" class="form-control" ng-options="year.id as year.name for year in $ctrl.globalYears" ng-model="$ctrl.globalYearId"></select>
+	</div>
+</div>
+
+
+<div class="row form-group">
+	<label class="control-label col-md-2">{{$ctrl.language.Generic.SetupSchoolCalendar.kWeekendDays}}</label>
+	<div class="col-md-4">
+		<div class="row">
+			<div ng-repeat="weekDay in $ctrl.weeksDaysControls">
+				<div class="col-xs-1">
+					<div>{{weekDay.shortName}}</div>
+					<input type="checkbox" value="{{weekday.value}}" track-changes ng-model="weekDay.checked">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

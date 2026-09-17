@@ -1,0 +1,67 @@
+<OBJECT ID=obComponentMgr RUNAT="Server" SCOPE=Application CLASSID="clsid:337235D2-92CE-4c5b-8DA4-B62BB6946D95"></OBJECT>
+<OBJECT ID=obConfig RUNAT="Server" SCOPE=Application CLASSID="clsid:A34F71A3-5BFB-4283-B84A-A218145B00D3"></OBJECT>
+<OBJECT ID=obTokenMgr RUNAT="Server" SCOPE=Application CLASSID="clsid:53494DAC-E3FF-49fa-A3F5-AC82EF5FAAAC"></OBJECT>
+<OBJECT ID=obSecurityHelper RUNAT="Server" SCOPE=Application CLASSID="clsid:7B04E8C2-6B7A-3A81-BB51-669C1058D364"></OBJECT>
+<OBJECT ID=obLanguage RUNAT="Server" SCOPE=Application CLASSID="clsid:C5981357-53A6-4A56-8309-83808CCBC7A9"></OBJECT>
+<OBJECT ID=comHelper RUNAT="Server" SCOPE=Application CLASSID="clsid:FD22C115-5574-465C-B57A-A890238C6ADE"></OBJECT>
+<OBJECT ID=obContext RUNAT="Server" SCOPE=Application CLASSID="clsid:F7C94031-8850-4D09-BACB-F15DFDE923CF"></OBJECT>
+<!--METADATA TYPE="TypeLib" uuid="2fe30f7f-a4ac-483a-af9b-bfd204a1a638"-->
+<!--METADATA TYPE="TypeLib" uuid="4825FF42-D8F9-4B30-9115-FE4445130FB6"-->
+
+<script LANGUAGE="VBScript" RUNAT="Server" SRC="/asp/scripts/upload_inc.asp"></script>
+<script LANGUAGE="VBScript" RUNAT="Server" SRC="/asp/scripts/init.asp"></script>
+<script LANGUAGE="VBScript" RUNAT="Server" SRC="/asp/scripts/AppFlags.asp"></script>
+<script LANGUAGE="VBScript" RUNAT="Server" SRC="/asp/scripts/Constants.asp"></script>
+
+<script LANGUAGE="VBScript" RUNAT="Server">
+' © 2007-2022 IRTech. All rights reserved.
+
+Const strFbProvider="Provider=LCPI.IBProvider;Data Source="
+Const strMSSQLProvider="Provider=SQLOLEDB;"
+
+Sub Application_OnStart
+	Call obComponentMgr.Init()
+	Call obConfig.StaticInstance.Init(Server.MapPath("\"), True)
+	Application("MSSQL") = "1"
+	Application("NS_VERSION") = "5.14"
+	Application("NS_VERSION_DATE") = "21.02.2023"
+	Application("NS_REVISION") = "65351"
+	Application("NS_PRODUCT_NAME") = "Сетевой Город. Образование"
+	Application("NS_COPYRIGHT") = "&copy; 2007-2023 ИРТех"
+	Application("NS_COPYRIGHT2") = "г. Самара. Все права защищены"
+	obTokenMgr.Application()("NS_PRODUCT_NAME") = Application("NS_PRODUCT_NAME")
+	Dim strDbProvider
+
+  Application("IsCollege") = False
+  Application("SERVER_HOSTNAME") = "NET_SCHOOL:80"
+
+	obTokenMgr.Application()("MAX_HEAVY_SESSIONS") = 5
+	Application("WEB_INSTANCE_ID") = ""
+
+	Application("KLADRFolder") = obConfig.StaticInstance.DbPath & "\KLADR\"
+	Application("NS_FILES_PATH") = obConfig.StaticInstance.DbPath
+
+	strDbProvider = strMSSQLProvider
+
+	Application("DB_STRING") = strDbProvider & obConfig.StaticInstance.DbConfiguration.WorkConnection
+	Application("DB_STRING_ARCH") = strDbProvider & obConfig.StaticInstance.DbConfiguration.ArchConnection
+	Application("CONNECTION_STRING") = Application("DB_STRING")
+
+	Application("LASTGRADE") = Array(0,8,12,12,12)
+
+	If Application("IsCollege") Then
+		obLanguage.FixedFunctionality = FuncType_ProfSchool
+	End If
+	Call RegisterComponents()
+	Call InitConstants()
+	Call InitUploadLimits()
+	Application("APP_EVENTS_HOOK") = Server.CreateObject("NetCity.Common.Legacy.Hooks.AppEventsHook")
+End Sub
+
+Sub Session_OnStart
+End Sub
+
+Sub Session_OnEnd
+End Sub
+
+</script>

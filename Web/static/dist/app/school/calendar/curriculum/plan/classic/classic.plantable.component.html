@@ -1,0 +1,88 @@
+<div composit-table="$ctrl.compositTableCtrl" class="composit-table-wrap"> 
+<table class="curiculum-plan table-xs table-export table-print" id="plan-table-header" style="table-layout: fixed">
+	<tr class="header-row">
+		<th rowspan="{{$ctrl.headerSettings.rows}}">{{$ctrl.language.Generic.Common.kSubject}}</th>
+		<!-- <th rowspan="{{$ctrl.headerSettings.rows}}" ng-if="!$ctrl.isPreSchool">{{$ctrl.language.Generic.Common.kSubject}}</th>
+		<th rowspan="{{$ctrl.headerSettings.rows}}" ng-if="$ctrl.isPreSchool">{{$ctrl.language.Generic.Common.kSubject}}</th> -->
+		<!-- <th rowspan="{{$ctrl.headerSettings.rows-1}}" ng-if="$ctrl.isPreSchool">{{$ctrl.language.Generic.Common.kSubject}}</th> -->
+		<th class="text-center" colspan="{{pc.classesCount}}" style="width: 1px" ng-repeat="pc in $ctrl.model.profilesRow" ng-if="$ctrl.headerSettings.withProfilesRow">
+			<small class="text-vertical text-compact" ng-if="$ctrl.needVerticalDrawProfile(pc)"><i>{{pc.profile.name}}</i></small>
+			<span ng-if="!$ctrl.needVerticalDrawProfile(pc)">{{pc.profile.name}}</span>
+		</th>
+		<th ng-if="!$ctrl.headerSettings.withProfilesRow" class="text-center" colspan="{{gc.classes.length}}" ng-repeat="gc in $ctrl.model.gradesRow">{{gc.grade.name}}</th>
+	</tr>
+
+	<tr class="grade-row" ng-if="$ctrl.headerSettings.withProfilesRow && !$ctrl.isPreSchool">
+		<th class="text-center" colspan="{{gc.classes.length}}" ng-repeat="gc in $ctrl.model.gradesRow" title="{{gc.grade.name}}">{{gc.grade.name}}</th>
+	</tr>
+
+	<tr class="grade-row" ng-if="$ctrl.headerSettings.withProfilesRow && $ctrl.isPreSchool">
+		<th id="rot" class="text-center" colspan="{{gc.classes.length}}" ng-repeat="gc in $ctrl.model.gradesRow" title="{{gc.grade.name}}">
+			<div>
+				{{gc.grade.name}}
+			</div>
+		</th>
+	</tr>
+
+	<tr class="class-row" ng-if="$ctrl.headerSettings.withClassesRow && !$ctrl.isPreSchool">
+		<th nowrap class="vertical" ng-repeat="class in $ctrl.model.classesRow">
+			<small class="text-vertical text-compact"><i>{{class.name}}</i></small>
+		</th>
+	</tr>
+
+	<tr class="class-row" ng-if="$ctrl.headerSettings.withClassesRow && $ctrl.isPreSchool">
+		<th nowrap class="vertical" ng-repeat="class in $ctrl.model.classesRow">
+			<small class="text-vertical text-compact"><i>{{class.letter}}</i></small>
+		</th>
+	</tr>
+
+	<tr composit-table-row style="visibility:hidden;">
+		<td><div style="width: 340px"></div></td>
+		<td ng-repeat="class in $ctrl.model.classesRow"><div></div></td>
+	</tr>
+</table>
+<div class="plan-table">
+<table class="curiculum-plan table-xs text-compact table-export table-print" id="plan-table" input-table="$ctrl.inputSettings" ng-class="{'readonly': $ctrl.readonly}" style="table-layout: fixed">
+	<tr composit-table-row class="total-teacher-load-row text-center text-compact">
+		<td colspan="2">
+			<div style="width: 340px"><b>{{$ctrl.language.Generic.SetupSchoolCurPlan.kGeneralPedagogicalLoad}}:</b></div>
+		</td>
+		<td ng-repeat="total in $ctrl.model.totalRow.totals"><div>{{total.pedHours | float2str:'onlyPositive'}}</div></td>
+	</tr>
+	<tr class="component-row">
+		<td class="text-compact" rowspan="2">
+			<b>{{$ctrl.language.Generic.SetupSchoolCalendar.kLimit}}</b>
+		</td>
+		<td class="text-compact"><b>{{$ctrl.language.Generic.SetupSchoolCurPlan.kPlanned}}:</b></td>
+		<td ng-repeat="limit in $ctrl.model.totalRow.limits" colspan="{{limit.objects}}">{{limit.hours | float2str:'onlyPositive' }}</td>
+	</tr>
+	<tr class="component-fact-load-row">
+		<td class="text-compact"><b>{{$ctrl.language.Generic.SetupSchoolCurPlan.kFactual}}:</b></td>
+		<td ng-repeat="total in $ctrl.model.totalRow.totals" ng-class="{'overflow': total.overflow}">{{total.hours | float2str:'onlyPositive'}}</td>
+	</tr>
+	<tr class="component-row" ng-repeat-start="componentData in $ctrl.model.planRows">
+		<td class="text-compact" rowspan="2">
+			<b>{{componentData.component.name}}</b>
+		</td>
+		<td class="text-compact"><b>{{$ctrl.language.Generic.SetupSchoolCurPlan.kPlanned}}:</b></td>
+		<td ng-repeat="limit in componentData.limits" colspan="{{limit.objects}}">{{limit.hours | float2str:'onlyPositive'}}</td>
+	</tr>
+	<tr class="component-fact-load-row">
+		<td class="text-compact"><b>{{$ctrl.language.Generic.SetupSchoolCurPlan.kFactual}}:</b></td>
+		<td ng-repeat="total in componentData.totals" ng-class="{'overflow': total.overflow}">{{total.hours | float2str:'onlyPositive'}}</td>
+	</tr>
+	<tr class="subject-field-row" ng-repeat-start="subjectFieldData in componentData.subjectFieldsData" >
+		<td colspan="{{$ctrl.model.classesRow.length + 2}}"><b>{{subjectFieldData.subjectField.name}}</b></td>
+	</tr>
+	<tr class="subject-row text-center" ng-class="{'newLimits': subjectData.new}" ng-repeat="subjectData in subjectFieldData.subjectsData" ng-repeat-end>
+		<td class="text-left text-break text-compact" colspan="2">
+			<span class="subject-name">{{subjectData.subject.name}}</span>
+		</td>
+		<td ng-if="$ctrl.headerSettings.withClassesRow" ng-class="{'no-input': hour.noLimits}" class="input-cell" input-table-cell model="hour.hours" ng-repeat="hour in subjectData.hours"><span>{{hour.hours | float2str:'onlyPositive'}}</span></td>
+		<td ng-if="!$ctrl.headerSettings.withClassesRow" colspan="{{gradeHours.classes}}" ng-repeat="gradeHours in subjectData.gradeHours">{{gradeHours.hours}}</td>
+	</tr>
+	<tr ng-repeat-end></tr>
+</table>
+
+</div>
+</div>

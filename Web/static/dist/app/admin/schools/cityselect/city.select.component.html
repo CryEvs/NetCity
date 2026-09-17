@@ -1,0 +1,16 @@
+<style>
+	.select2-dropdown {
+		z-index: 1070;
+	}
+</style>
+
+<ns-modal controller="$ctrl" header="{{$ctrl.header}}" buttons="$ctrl.buttons">
+	<div class="form-horizontal form-xs">
+		<div class="row">
+			<span class="content-page-preloader" id="preloader" ng-hide="$ctrl.state.dataReady">
+				<span>{{$ctrl.language.Generic.Movement.kPleaseWait}}</span>
+			</span>
+			<filter-panel class="filters-panel col-md-12 filters-panel-compact" ng-if="$ctrl.filterPanelSettings" fp="$ctrl.filterPanel" fp-settings="$ctrl.filterPanelSettings"></filter-panel>
+		</div>
+	</div>
+</ns-modal>
